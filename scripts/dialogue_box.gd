@@ -14,6 +14,7 @@ var text_label: Label
 var choices_box: VBoxContainer
 var typing: Tween
 var current_node: Dictionary = {}
+var portrait: TextureRect
 
 
 func _ready() -> void:
@@ -31,9 +32,22 @@ func _ready() -> void:
 	panel.gui_input.connect(_on_panel_input)
 	add_child(panel)
 
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	panel.add_child(row)
+	# Portrait de Lyra : son expression réagit à la scène.
+	portrait = TextureRect.new()
+	portrait.custom_minimum_size = Vector2(140, 140)
+	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	portrait.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	portrait.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	row.add_child(portrait)
+
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 8)
-	panel.add_child(vb)
+	vb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(vb)
 
 	var header := HBoxContainer.new()
 	vb.add_child(header)
@@ -49,7 +63,7 @@ func _ready() -> void:
 
 	text_label = Label.new()
 	text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	text_label.custom_minimum_size = Vector2(970, 60)
+	text_label.custom_minimum_size = Vector2(810, 60)
 	text_label.add_theme_font_size_override("font_size", 18)
 	vb.add_child(text_label)
 
@@ -83,6 +97,7 @@ func _show(node_id: String) -> void:
 	text_label.text = Dialogues.resolve_text(current_node["text"], npc_id)
 	GameState.apply_effects(current_node.get("effects", {}), npc_id)
 	_update_header()
+	portrait.texture = LyraArt.portrait(_lyra_expression(current_node))
 
 	text_label.visible_ratio = 0.0
 	typing = create_tween()
@@ -132,6 +147,21 @@ func _on_choice(choice: Dictionary) -> void:
 		_show(roll["success"] if randf() < roll["chance"] else roll["fail"])
 	else:
 		_show(choice["next"])
+
+
+## Expression de Lyra : "lyra" dans le nœud, sinon déduite de ses effets.
+func _lyra_expression(node: Dictionary) -> String:
+	if node.has("lyra"):
+		return node["lyra"]
+	var effects: Dictionary = node.get("effects", {})
+	var mood: int = effects.get("opinion", 0) + effects.get("reputation", 0)
+	if mood >= 15:
+		return "rougissante"
+	if mood > 0:
+		return "souriante"
+	if mood < 0:
+		return "triste"
+	return "souriante"
 
 
 func _update_header() -> void:

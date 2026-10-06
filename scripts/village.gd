@@ -218,8 +218,11 @@ func _draw() -> void:
 			"npc":
 				_draw_npc(d["npc"])
 			"player":
-				var bob := absf(sin(walk_time * 12.0)) * 3.0
-				_draw_character(player_pos - Vector2(0, bob), Color(0.25, 0.4, 0.85), Color(0.95, 0.8, 0.35))
+				_draw_shadow(player_pos, 14)
+				var pose := "idle"
+				if walk_time > 0.0:
+					pose = "marche" if int(walk_time * 6.0) % 2 == 0 else "idle"
+				LyraArt.draw(self, pose, player_pos + Vector2(0, 2), facing.x > 0.0)
 
 	if not dialogue.is_open():
 		var n := _nearest_npc()
@@ -293,10 +296,14 @@ func _draw_npc(n: Dictionary) -> void:
 	_text(p + Vector2(0, -74 + sin(time * 4.0) * 2.0), mood, 16, col)
 
 
-func _draw_character(p: Vector2, body: Color, hair: Color) -> void:
+func _draw_shadow(p: Vector2, radius: float) -> void:
 	draw_set_transform(p + Vector2(0, 2), 0, Vector2(1, 0.4))
-	draw_circle(Vector2.ZERO, 14, Color(0, 0, 0, 0.3))
+	draw_circle(Vector2.ZERO, radius, Color(0, 0, 0, 0.3))
 	draw_set_transform(Vector2.ZERO)
+
+
+func _draw_character(p: Vector2, body: Color, hair: Color) -> void:
+	_draw_shadow(p, 14)
 	draw_rect(Rect2(p + Vector2(-10, -26), Vector2(20, 24)), body)
 	draw_rect(Rect2(p + Vector2(-10, -26), Vector2(20, 24)), Color(0, 0, 0, 0.5), false, 1.5)
 	draw_circle(p + Vector2(0, -34), 10, Color(0.96, 0.82, 0.68))

@@ -31,6 +31,11 @@ var ct := 0
 var draw_pos: Vector2
 var has_moved := false
 var has_acted := false
+## Si l'unité a des sprites (seulement Lyra pour l'instant) : pose affichée
+## ("idle", "marche", "attaque", "hit", "mort"...) et orientation.
+var has_sprites := false
+var pose := "idle"
+var look_right := true
 
 
 static func create(data: Dictionary) -> Unit:

@@ -111,6 +111,7 @@ func _spawn_units() -> void:
 		units.append(Unit.create(data))
 	if GameState.has_flag("epee_obtenue"):
 		units[0].atk += 4
+	units[0].has_sprites = true
 	for data in ENEMY_UNITS:
 		var d := data.duplicate()
 		d["team"] = Unit.Team.ENEMY
@@ -338,16 +339,21 @@ func _walk(u: Unit, dest: Vector2i) -> void:
 		path.push_front(c)
 		c = move_parents[c]
 	for step in path:
+		u.look_right = cell_to_screen(step).x >= u.draw_pos.x
+		u.pose = "marche" if u.pose != "marche" else "idle"
 		u.cell = step
 		var tw := create_tween()
 		tw.tween_property(u, "draw_pos", cell_to_screen(step), 0.12)
 		await tw.finished
+	u.pose = "idle"
 	u.has_moved = true
 
 
 func _perform_attack(att: Unit, target: Unit) -> void:
 	var base := att.draw_pos
 	var dir := (target.draw_pos - base).normalized()
+	att.look_right = dir.x >= 0
+	att.pose = "cast" if att.damage_type == "feu" else "attaque"
 	var tw := create_tween()
 	tw.tween_property(att, "draw_pos", base + dir * 12, 0.08)
 	tw.tween_property(att, "draw_pos", base, 0.1)
@@ -385,12 +391,15 @@ func _perform_attack(att: Unit, target: Unit) -> void:
 		msg += " %s est vaincu." % target.unit_name
 	_log(msg)
 
+	target.pose = "hit"
 	var shake := create_tween()
 	var p := target.draw_pos
 	shake.tween_property(target, "draw_pos", p + Vector2(4, 0), 0.04)
 	shake.tween_property(target, "draw_pos", p + Vector2(-4, 0), 0.04)
 	shake.tween_property(target, "draw_pos", p, 0.04)
 	await shake.finished
+	att.pose = "idle"
+	target.pose = "idle" if target.is_alive() else "mort"
 	_update_order()
 
 
@@ -650,7 +659,7 @@ func _draw() -> void:
 			if in_bounds(c):
 				_draw_tile(c)
 		for u in units:
-			if u.is_alive() and u.cell.x + u.cell.y == s:
+			if (u.is_alive() or u.has_sprites) and u.cell.x + u.cell.y == s:
 				_draw_unit(u)
 	for p in popups:
 		var c: Color = p["color"]
@@ -690,6 +699,16 @@ func _draw_unit(u: Unit) -> void:
 	draw_circle(Vector2.ZERO, 14 * big, Color(0, 0, 0, 0.35))
 	draw_set_transform(Vector2.ZERO)
 
+	if u.has_sprites:
+		LyraArt.draw(self, u.pose if u.is_alive() else "mort", p + Vector2(0, 4), u.look_right)
+		if not u.is_alive():
+			return
+	else:
+		_draw_shape_body(u, p, big)
+	_draw_overlay(u, p, big)
+
+
+func _draw_shape_body(u: Unit, p: Vector2, big: float) -> void:
 	var body := u.color.darkened(0.45) if u.is_broken() else u.color
 	var body_rect := Rect2(p + Vector2(-9, -30) * big, Vector2(18, 26) * big)
 	draw_rect(body_rect, body)
@@ -713,6 +732,9 @@ func _draw_unit(u: Unit) -> void:
 			draw_line(p + Vector2(12, -2), p + Vector2(12, -44), Color(0.5, 0.35, 0.2), 2)
 			draw_circle(p + Vector2(12, -46), 4 + sin(time * 8.0), Color(1, 0.5, 0.15))
 
+
+
+func _draw_overlay(u: Unit, p: Vector2, big: float) -> void:
 	# Barre de PV
 	var bar := Rect2(p + Vector2(-16, -56 * big), Vector2(32, 4))
 	draw_rect(bar, Color(0.1, 0.1, 0.1))

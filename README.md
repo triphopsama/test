@@ -2,8 +2,8 @@
 
 Prototype de RPG 2D inspiré de **Final Fantasy Tactics Advance** (combat tactique
 sur grille isométrique) et d'**Octopath Traveler** (faiblesses/Break, actions de
-chemin comme le vol). Tout est dessiné en code pour l'instant : pas d'assets à
-importer, on pourra remplacer par du pixel art plus tard.
+chemin comme le vol). Lyra a ses sprites pixel et ses portraits ; le reste est
+encore dessiné en code.
 
 | Village | Combat |
 |---|---|
@@ -58,6 +58,28 @@ son tour la réputation et les dialogues.
 - **Faiblesses / Break** (style Octopath) : chaque ennemi a un bouclier et des
   faiblesses (épée, lance, arc, feu). Toucher une faiblesse retire un point ;
   à 0 l'ennemi est **brisé** : il perd son prochain tour et subit des dégâts doublés.
+
+## Art de Lyra
+
+Les images viennent de la planche de référence `assets/reference/lyra_sheet.webp`,
+découpée par `tools/extract_lyra.py` (`pip install pillow`, puis
+`python3 tools/extract_lyra.py`) :
+
+- `assets/lyra/sprites/` : sprites pixel (~32×46, fond transparent, 32 couleurs) :
+  `idle`, `marche`, `course`, `saut`, `attaque`, `cast`, `hit`, `mort`.
+  Utilisés au village (marche) et en combat (attaque, coup reçu, K.O.).
+- `assets/lyra/portraits/` : portraits de dialogue (140×140) :
+  `souriante`, `clin_oeil`, `colere`, `surprise`, `triste`, `rougissante`.
+  L'expression suit la scène : clé `"lyra"` d'un nœud de dialogue, sinon elle
+  est déduite des effets (opinion en hausse = sourire, en baisse = tristesse).
+
+Pour améliorer l'art, il suffit d'écraser les PNG en gardant les mêmes noms :
+le code ne change pas. Les sprites doivent regarder vers la gauche
+(sinon passer `FACES_LEFT` à `false` dans `scripts/lyra_art.gd`). Godot est
+réglé en filtre « Nearest » pour garder le pixel net.
+
+Limites actuelles : une seule image par animation (la marche alterne idle et
+marche) et une seule direction (retournée en miroir).
 
 ## Ajouter du contenu
 

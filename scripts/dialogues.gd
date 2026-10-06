@@ -7,6 +7,8 @@ extends RefCounted
 ##               passe choisit le nœud de départ (sans "if" = par défaut).
 ##   "nodes"   : nœuds {"text", "effects", "choices", "next"}.
 ## "text" peut être une liste de variantes {"if", "text"}.
+## "lyra" (optionnel) choisit l'expression de Lyra : souriante, clin_oeil,
+## colere, surprise, triste, rougissante (sinon déduite des effets).
 ## Un choix a "text", un "if" optionnel, et soit "next", soit
 ## "roll": {"chance", "success", "fail"} (actions risquées comme le vol).
 ## Conditions et effets : voir GameState.check() et GameState.apply_effects().
@@ -23,6 +25,7 @@ const DATA := {
 		],
 		"nodes": {
 			"intro": {
+				"lyra": "surprise",
 				"text": "Ah, Lyra. Les gobelins de la colline pillent nos réserves depuis des semaines. Peux-tu nous en débarrasser ?",
 				"choices": [
 					{"text": "Bien sûr. C'est mon devoir.", "next": "accepte"},
@@ -51,6 +54,7 @@ const DATA := {
 				"effects": {"opinion": 20, "reputation": 10, "set": "quete_acceptee"},
 			},
 			"refus": {
+				"lyra": "colere",
 				"text": "Je vois. Le village s'en souviendra.",
 				"effects": {"opinion": -15, "reputation": -5, "witnessed": -5, "set": "quete_refusee"},
 			},
@@ -73,11 +77,13 @@ const DATA := {
 				],
 			},
 			"depart": {
+				"lyra": "colere",
 				"text": "Que les dieux te protègent.",
 				"effects": {"battle": true},
 			},
 			"attendre": {"text": "Ne tarde pas trop."},
 			"hostile": {
+				"lyra": "triste",
 				"text": "Tu oses te montrer ici après ce que tu as fait ? Va-t'en.",
 				"choices": [
 					{"text": "Je suis désolée. Prenez ces 20 pièces en dédommagement.", "if": {"gold_min": 20}, "next": "excuses"},
@@ -126,21 +132,27 @@ const DATA := {
 			},
 			"pas_de_don": {"text": "Désolée, je dois manger aussi. Si tu veux l'épée, c'est 40 pièces."},
 			"compliment": {
+				"lyra": "clin_oeil",
 				"text": "Ha ! Enfin quelqu'un qui sait reconnaître du bon travail.",
 				"effects": {"opinion": 15, "set": "forge_compliment"},
 				"next": "intro",
 			},
 			"vol_reussi": {
+				"lyra": "clin_oeil",
 				"text": "*Pendant que Brunhild tourne le dos, tu glisses l'épée sous ta cape.* (Lyra : ATQ +4)",
 				"effects": {"set": ["epee_obtenue", "vol_forge"], "reputation": -5},
 			},
 			"vol_rate": {
+				"lyra": "surprise",
 				"text": "AU VOLEUR ! Repose ça immédiatement ! Tout le monde va savoir ce que tu es !",
 				"effects": {"opinion": -50, "reputation": -15, "witnessed": -25},
 			},
 			"au_revoir": {"text": "Reviens quand tu veux."},
 			"ferme": {"text": "Je ne sers pas les voleurs. Dehors."},
-			"disparue": {"text": "Étrange... Ma plus belle épée a disparu. Tu n'aurais rien vu, par hasard ?"},
+			"disparue": {
+				"lyra": "clin_oeil",
+				"text": "Étrange... Ma plus belle épée a disparu. Tu n'aurais rien vu, par hasard ?",
+			},
 			"apres": {"text": "Prends soin de cette lame, elle te le rendra."},
 		},
 	},
@@ -182,6 +194,7 @@ const DATA := {
 				"next": "intro",
 			},
 			"vexe": {
+				"lyra": "surprise",
 				"text": "Cet arc appartenait à mon père. Fais attention à ce que tu dis.",
 				"effects": {"opinion": -15},
 			},
@@ -256,6 +269,7 @@ const DATA := {
 				],
 			},
 			"rudoie": {
+				"lyra": "colere",
 				"text": "*Pip court se cacher derrière sa mère. Plusieurs villageois te dévisagent.*",
 				"effects": {"opinion": -30, "reputation": -5, "witnessed": -10},
 			},
