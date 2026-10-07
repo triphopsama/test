@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
-PNJ = RACINE / "data/pnj.csv"
+PNJ = [RACINE / "data/pnj.csv", RACINE / "data/pierrefane/pnj.csv"]
 SORTIE = RACINE / "data/intime.csv"
 COLONNES = ["id", "nom", "attire", "cherche", "libido", "axe", "pudeur", "experience", "bdsm", "partage",
             "jalousie", "couple", "aime", "talents", "refuse", "endurance", "bruit", "fantasme", "prefere", "ages", "fige"]
@@ -79,7 +79,7 @@ def profil(p):
         jalousie = 0
     if "plaisir" in cherche or "aventure" in cherche:
         jalousie = min(jalousie, 20)
-    m = re.search(r"(?:en couple avec|mariée? à)[^(]*\((BRU\d+)\)", t)
+    m = re.search(r"(?:en couple avec|mariée? à)[^(]*\(((?:BRU|PIE)\d+)\)", t)
     couple = m.group(1) if m else ""
     return {"id": p["id"], "nom": p["nom"], "attire": ",".join(attire), "cherche": ",".join(cherche), "libido": libido,
             "axe": axe, "pudeur": pudeur, "experience": experience, "bdsm": bdsm, "partage": partage, "jalousie": jalousie,
@@ -96,8 +96,12 @@ def main():
         for l in csv.DictReader(SORTIE.open(encoding="utf-8"), delimiter=";"):
             anciens[l["id"]] = l
     lignes = []
-    for p in csv.DictReader(PNJ.open(encoding="utf-8"), delimiter=";"):
+    tous = [p for f in PNJ for p in csv.DictReader(f.open(encoding="utf-8"), delimiter=";")]
+    for p in tous:
         if int(p["age"] or 0) < 18 or p["profil_intime"].strip() in ("", "—"):
+            continue
+        # un captif (esclave, dette) ne peut pas consentir : pas de profil tant qu'il l'est
+        if re.search(r"esclave|sous contrat|captif", p["statut_social"].lower()):
             continue
         if anciens.get(p["id"], {}).get("fige") == "1":
             lignes.append(anciens[p["id"]])

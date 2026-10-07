@@ -52,7 +52,7 @@ static func dans_equipe(m: Node, id: String) -> bool:
 
 ## Oui ("") ou non : un adulte qui t'aime assez (affection 50 et un couple ou un pacte, ou 70).
 static func peut_suivre(m: Node, n: Node) -> String:
-	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(n.donnees.nom)
 	var f: Fiche = m.fiche
 	if int(n.donnees.get("age", "0")) < 18:
 		return "%s est un enfant : sa place est chez lui." % nom
@@ -118,7 +118,7 @@ static func tenue(m: Node, id: String) -> Dictionary:
 ## Mettre (ou retirer) un accessoire, ou la nudité (quoi = "nu"). Renvoie "" si c'est fait, sinon pourquoi.
 static func habiller(m: Node, n: Node, quoi: String, mettre: bool) -> String:
 	var t := tenue(m, n.id)
-	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(n.donnees.nom)
 	if not mettre:
 		if quoi == "nu":
 			t.nu = false
@@ -184,7 +184,7 @@ static func couvrir_si_enfant(m: Node) -> String:
 		var n: Node = m._pnj_par_id(id)
 		if n and choc(m, id) > 0 and m.enfant_proche(n.pos2d()):
 			_tout_retirer(m, id)
-			couverts.append(n.donnees.nom.get_slice(" ", 0))
+			couverts.append(Donnees.prenom(n.donnees.nom))
 	if couverts.is_empty():
 		return ""
 	m.fiche.sauver()
@@ -201,7 +201,7 @@ static func reactions(m: Node) -> Array:
 		if c == 0 or n == null:
 			continue
 		var pc := Intime.profil(id)
-		var nom: String = n.donnees.nom.get_slice(" ", 0)
+		var nom: String = Donnees.prenom(n.donnees.nom)
 		for t in m.temoins(15.0):
 			if t.id in f.equipiers or int(t.donnees.get("age", "0")) < 18:
 				continue
@@ -211,7 +211,7 @@ static func reactions(m: Node) -> Array:
 			f.drapeaux[cle] = true
 			var p := Intime.profil(t.id)
 			var pudeur: int = p.get("pudeur", 60)
-			var qui: String = t.donnees.nom.get_slice(" ", 0)
+			var qui: String = Donnees.prenom(t.donnees.nom)
 			var outre := false
 			if t.id == "BRU014" and tenue(m, id).nu:
 				var amende := mini(60, f.bourse)

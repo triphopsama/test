@@ -143,7 +143,7 @@ static func passer_temps(m: Node, heures: int) -> void:
 ## avec : les autres participants déjà là (une nuit à plusieurs).
 static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> String:
 	var p := profil(pnj.id)
-	var nom: String = pnj.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(pnj.donnees.nom)
 	if p.is_empty() or not m.actions.intime_possible(pnj):
 		return "%s n'est pas de ceux-là, ou pas ici, pas maintenant." % nom
 	var f: Fiche = m.fiche
@@ -182,7 +182,7 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 		return "%s jette un œil aux autres : « Pas devant tout le monde. »" % nom
 	for autre in avec:
 		if str(pnj.donnees.get("relations", "")).contains("ennemi") and str(pnj.donnees.get("relations", "")).contains(autre.id):
-			return "%s ne veut pas de %s dans ce lit." % [nom, autre.donnees.nom.get_slice(" ", 0)]
+			return "%s ne veut pas de %s dans ce lit." % [nom, Donnees.prenom(autre.donnees.nom)]
 	return ""
 
 
@@ -273,7 +273,7 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 	for n in actifs(s):
 		var b: Dictionary = s.barres[n.id]
 		var p := profil(n.id)
-		var nom: String = n.donnees.nom.get_slice(" ", 0)
+		var nom: String = Donnees.prenom(n.donnees.nom)
 		if id_geste == "demander":
 			lignes.append(_reveler(m, n, p, "lecture_envies" in comps))
 			continue
@@ -347,6 +347,7 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 		var limite_intensite: float = maxf(30.0, p.bdsm + (20.0 if f.pactes.has(n.id) else 0.0))
 		if b.malaise >= 60.0 or b.intensite > limite_intensite:
 			b.stop = true
+			f.drapeaux["brute_" + n.id] = true   # il s'en souviendra (Margo ne te reprendra pas)
 			lignes.append("« %s. » %s a dit le mot d'arrêt. Pour %s, tout s'arrête là." % [MOT_D_ARRET, nom, nom])
 		elif deplait:
 			lignes.append("%s se raidit : ce n'est pas pour %s." % [nom, nom])
@@ -384,7 +385,7 @@ static func _reveler(m: Node, n: Node, p: Dictionary, tout: bool) -> String:
 	if p.fantasme != "" and not ("fantasme_" + p.fantasme) in connus and int(m.relations.get(n.id, 0)) >= 70:
 		connus.append("fantasme_" + p.fantasme)
 		f.gouts_connus[n.id] = connus
-		return "%s hésite, puis te l'avoue tout bas : son fantasme, c'est %s." % [n.donnees.nom.get_slice(" ", 0), p.fantasme.replace("_", " ")]
+		return "%s hésite, puis te l'avoue tout bas : son fantasme, c'est %s." % [Donnees.prenom(n.donnees.nom), p.fantasme.replace("_", " ")]
 	for t in p.aime + p.talents:
 		if not t in connus and (tout or nouveaux.is_empty()):
 			nouveaux.append(t)
@@ -394,7 +395,7 @@ static func _reveler(m: Node, n: Node, p: Dictionary, tout: bool) -> String:
 			limites.append("non_" + t)
 	connus.append_array(nouveaux + limites)
 	f.gouts_connus[n.id] = connus
-	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(n.donnees.nom)
 	if nouveaux.is_empty() and limites.is_empty():
 		return "%s rit : « Tu sais déjà tout de moi. »" % nom
 	return "%s te le dit à l'oreille : %s." % [nom, ", ".join((nouveaux + limites).map(func(t): return t.replace("_", " ").replace("non ", "jamais : ")))]
@@ -412,7 +413,7 @@ static func finir(m: Node, s: Dictionary, apres: String) -> String:
 	for n in s.pnjs:
 		var b: Dictionary = s.barres[n.id]
 		var p := profil(n.id)
-		var nom: String = n.donnees.nom.get_slice(" ", 0)
+		var nom: String = Donnees.prenom(n.donnees.nom)
 		var d := 2
 		if b.comble:
 			d = 6 + 2 * b.fois
@@ -456,7 +457,7 @@ static func finir(m: Node, s: Dictionary, apres: String) -> String:
 ## Devenir un couple. Un harem, c'est plusieurs couples : chacun l'apprend, et les jaloux en souffrent.
 static func devenir_couple(m: Node, n: Node) -> String:
 	var f: Fiche = m.fiche
-	var lignes := ["%s et toi, c'est officiel." % n.donnees.nom.get_slice(" ", 0)]
+	var lignes := ["%s et toi, c'est officiel." % Donnees.prenom(n.donnees.nom)]
 	for id in f.partenaires.keys():
 		if id == n.id or f.partenaires[id] != "couple":
 			continue
@@ -464,7 +465,7 @@ static func devenir_couple(m: Node, n: Node) -> String:
 		if p.partage < 50:
 			var perte := int(p.jalousie / 3.0)
 			m.relations[id] = clampi(m.relations.get(id, 0) - perte, -100, 100)
-			lignes.append("%s l'apprend et le vit mal (-%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0), perte])
+			lignes.append("%s l'apprend et le vit mal (-%d)." % [Donnees.prenom(m._pnj_par_id(id).donnees.nom), perte])
 	f.partenaires[n.id] = "couple"
 	return " ".join(lignes)
 
@@ -476,13 +477,13 @@ static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 	var fuite := 0.25 + bruit / 400.0 - (0.15 if "discretion" in f.competences() else 0.0)
 	if regards.is_empty() and randf() >= fuite:
 		return ""
-	var lignes := ["Ça se sait%s." % ((" : %s %s vu" % [", ".join(regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))), "ont" if regards.size() > 1 else "a"]) if regards else ", sans qu'on sache comment")]
+	var lignes := ["Ça se sait%s." % ((" : %s %s vu" % [", ".join(regards.map(func(n): return Donnees.prenom(n.donnees.nom))), "ont" if regards.size() > 1 else "a"]) if regards else ", sans qu'on sache comment")]
 	var ids := pnjs.map(func(n): return n.id)
 	for n in pnjs:
 		var c: String = profil(n.id).get("couple", "")
 		if c != "" and not c in ids and not m.morts.has(c):
 			m.relations[c] = clampi(m.relations.get(c, 0) - 40, -100, 100)
-			lignes.append("%s découvre %s avec %s (-40)." % [str(m._pnj_par_id(c).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(c) else c, quoi, n.donnees.nom.get_slice(" ", 0)])
+			lignes.append("%s découvre %s avec %s (-40)." % [Donnees.prenom(m._pnj_par_id(c).donnees.nom) if m._pnj_par_id(c) else c, quoi, Donnees.prenom(n.donnees.nom)])
 	for id in f.partenaires:
 		if id in ids:
 			continue
@@ -490,7 +491,7 @@ static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 		if p.jalousie > p.partage:
 			var perte := int(p.jalousie / 3.0)
 			m.relations[id] = clampi(m.relations.get(id, 0) - perte, -100, 100)
-			lignes.append("%s est jaloux·se (-%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(id) else id, perte])
+			lignes.append("%s est jaloux·se (-%d)." % [Donnees.prenom(m._pnj_par_id(id).donnees.nom) if m._pnj_par_id(id) else id, perte])
 	for id in profils():
 		if profil(id).pudeur >= 70 and not id in ids and not f.partenaires.has(id):
 			m.relations[id] = clampi(m.relations.get(id, 0) - 3, -100, 100)
@@ -502,7 +503,7 @@ static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 ## Le pacte maître/esclave, un jeu convenu entre adultes (univers.md). role : ton rôle, maitre ou esclave.
 static func pacte(m: Node, n: Node, role: String) -> String:
 	var p := profil(n.id)
-	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(n.donnees.nom)
 	var raison := consentement(m, n, "pacte")
 	if raison != "":
 		return raison

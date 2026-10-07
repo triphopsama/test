@@ -165,7 +165,7 @@ func _afficher() -> void:
 	for g in Intime.gestes_possibles(monde, scene):
 		_bouton(g.nom, _geste.bind(g.id))
 	for n in _invitables():
-		_bouton("Inviter %s à se joindre" % n.donnees.nom.get_slice(" ", 0), _inviter.bind(n))
+		_bouton("Inviter %s à se joindre" % Donnees.prenom(n.donnees.nom), _inviter.bind(n))
 	_bouton("Arrêter", _arreter)
 
 
@@ -205,7 +205,7 @@ func _geste(id: String) -> void:
 
 func _inviter(n: Node) -> void:
 	Intime.ajouter(monde, scene, n)
-	_journal.text = "%s vous rejoint." % n.donnees.nom.get_slice(" ", 0)
+	_journal.text = "%s vous rejoint." % Donnees.prenom(n.donnees.nom)
 	_montrer_media("scene_a_plusieurs")
 	_afficher()
 

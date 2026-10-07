@@ -70,7 +70,7 @@ static func accepter(m: Node, n: Node, id: String) -> void:
 			var st := morceaux[0]
 			var moi: int = m.fiche.stats_totales()[st] + randi_range(1, 20)
 			var lui: int = int(morceaux[1]) + randi_range(1, 20)
-			resoudre(m, n, id, moi >= lui, " (%s : toi %d, %s %d)" % [st, moi, n.donnees.nom.get_slice(" ", 0), lui])
+			resoudre(m, n, id, moi >= lui, " (%s : toi %d, %s %d)" % [st, moi, Donnees.prenom(n.donnees.nom), lui])
 		"apporter":
 			m.fiche.defis_actifs[id] = Horloge.jour()
 			m.fiche.sauver()

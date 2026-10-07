@@ -1,8 +1,18 @@
-# Le village de Brumeval, construit à partir du plan (data/*.csv).
+# Le monde, construit à partir du plan d'une carte : Brumeval (data/*.csv) ou une autre
+# (data/<carte>/*.csv, ex. data/pierrefane/). La carte courante est dans la fiche (drapeau « carte ») ;
+# on passe de l'une à l'autre par le sentier côtier (voyager()).
 # 1 unité = 1 mètre. x vers l'est, z vers le sud, y vers le haut.
 extends Node3D
 
-const TAILLE := Vector2(2400, 1180)
+## Les cartes : où l'on se réveille après une défaite, et qui t'y a porté.
+const CARTES := {
+	"brumeval": {"refuge": "agnes", "soigneur": "Agnès", "voisine": "pierrefane"},
+	"pierrefane": {"refuge": "mahaut", "soigneur": "la vieille Mahaut", "voisine": "brumeval"},
+}
+const VOYAGE_MIN := 180.0       # 16 km de sentier côtier : 3 h de marche
+
+var carte := "brumeval"
+var TAILLE := Vector2(2400, 1180)   # calculée d'après la côte de la carte
 const PAS := 8.0
 const ENFANT_MAX := 17
 
@@ -58,9 +68,16 @@ var _zoom := 1.6
 func _ready() -> void:
 	randomize()
 	_bruit.frequency = 0.02
+	fiche = Fiche.charger()
+	carte = str(fiche.drapeaux.get("carte", "brumeval"))
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--carte="):      # tests et captures : --carte=pierrefane
+			carte = a.trim_prefix("--carte=")
+			fiche.drapeaux["carte"] = carte
+	if not CARTES.has(carte):
+		carte = "brumeval"
 	_charger()
 	_charger_etat()
-	fiche = Fiche.charger()
 	_construire_environnement()
 	_construire_terrain()
 	_construire_chemins()
@@ -71,7 +88,8 @@ func _ready() -> void:
 	_creer_joueur()
 	_creer_pnjs()
 	Compagnons.restaurer(self)
-	Vesperine.installer(self)
+	if carte == "brumeval":
+		Vesperine.installer(self)
 	Fees.installer(self)
 	Compagnons.installer_betes(self)
 	hud = preload("res://scripts/hud.gd").new()
@@ -101,8 +119,13 @@ func _ready() -> void:
 
 # ---------------------------------------------------------------- données
 
+## Le dossier des données de la carte courante.
+func dossier() -> String:
+	return "res://data/" if carte == "brumeval" else "res://data/%s/" % carte
+
+
 func _charger() -> void:
-	for l in Donnees.lire_csv("res://data/lieux.csv"):
+	for l in Donnees.lire_csv(dossier() + "lieux.csv"):
 		var pos := Vector2(float(l.x), float(l.y))
 		lieux[l.cle] = {"id": l.id, "nom": l.nom, "type": l.type, "pos": pos, "h": float(l.hauteur), "ligne": l}
 		graphe[l.cle] = []
@@ -111,22 +134,34 @@ func _charger() -> void:
 	var par_id := {}
 	for cle in lieux:
 		par_id[lieux[cle].id] = cle
-	for c in Donnees.lire_csv("res://data/chemins.csv"):
+	for c in Donnees.lire_csv(dossier() + "chemins.csv"):
 		var a: String = par_id[c.de]
 		var b: String = par_id[c.a]
 		var maree: bool = c.condition.contains("marée basse")
 		graphe[a].append({"vers": b, "d": float(c.distance_m), "maree": maree})
 		graphe[b].append({"vers": a, "d": float(c.distance_m), "maree": maree})
 	var zones := {"cote": cote, "bois": bois, "landes": landes, "ruisseau": ruisseau}
-	for z in Donnees.lire_csv("res://data/zones.csv"):
+	for z in Donnees.lire_csv(dossier() + "zones.csv"):
 		zones[z.zone].append(Vector2(float(z.x), float(z.y)))
 	cote = zones.cote
 	bois = zones.bois
 	landes = zones.landes
 	ruisseau = zones.ruisseau
-	for p in Donnees.lire_csv("res://data/pnj.csv"):
-		pnj_donnees[p.id] = p
-		relations[p.id] = 0
+	var coin := Vector2.ZERO
+	for q in cote:
+		coin = coin.max(q)
+	TAILLE = coin
+	# tous les habitants de toutes les cartes : un compagnon te suit d'une carte à l'autre
+	for c in CARTES:
+		var d := "res://data/" if c == "brumeval" else "res://data/%s/" % c
+		for p in Donnees.lire_csv(d + "pnj.csv"):
+			pnj_donnees[p.id] = p
+			relations[p.id] = 0
+
+
+## Un point dans une zone (vide : nulle part).
+func dans_zone(p: Vector2, zone: PackedVector2Array) -> bool:
+	return zone.size() >= 3 and Geometry2D.is_point_in_polygon(p, zone)
 
 
 # ---------------------------------------------------------------- terrain
@@ -179,9 +214,9 @@ func _couleur_sol(p: Vector2, h: float) -> Color:
 		return Color(0.45, 0.42, 0.32)
 	if h < 1.6 and distance_cote(p) < 50.0:
 		return Color(0.86, 0.79, 0.6) + Color(n, n, n)
-	if Geometry2D.is_point_in_polygon(p, bois):
+	if dans_zone(p, bois):
 		return Color(0.2, 0.33, 0.17) + Color(n, n, n)
-	if Geometry2D.is_point_in_polygon(p, landes):
+	if dans_zone(p, landes):
 		return Color(0.5, 0.43, 0.38) + Color(n, n * 0.5, n)
 	return Color(0.4, 0.56, 0.26) + Color(n, n, n * 0.5)
 
@@ -334,7 +369,7 @@ func _construire_batiments() -> void:
 			batiments.append(Rect2(centre - t / 2.0 + Vector2(0.4, 0.4), t - Vector2(0.8, 0.8)))
 			# lumière aux fenêtres la nuit
 			var lum := OmniLight3D.new()
-			lum.light_color = Color(1.0, 0.72, 0.4)
+			lum.light_color = Color(1.0, 0.25, 0.2) if cle == "lanternes" else Color(1.0, 0.72, 0.4)   # la lanterne rouge
 			lum.omni_range = 9.0
 			lum.light_energy = 1.4
 			lum.position = Vector3(p.x, h + 2.5, p.y - 1.5)
@@ -382,11 +417,11 @@ func _construire_arbres() -> void:
 	var positions := []
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 7
-	var essais := 0
+	var essais := 0 if bois.size() >= 3 else 40000
 	while positions.size() < 3600 and essais < 40000:
 		essais += 1
 		var p := Vector2(rng.randf_range(960, TAILLE.x), rng.randf_range(0, 860))
-		if not Geometry2D.is_point_in_polygon(p, bois):
+		if not dans_zone(p, bois):
 			continue
 		var proche := false
 		for cle in lieux:
@@ -528,7 +563,7 @@ func nouvelle_vie() -> void:
 	for n in pnjs:
 		n.mort = false
 		n.hostile = false
-	var p: Vector2 = lieux.reveil.pos
+	var p: Vector2 = point_d_arrivee()
 	joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 	var r := {}
 	match fiche.peuple:
@@ -601,15 +636,40 @@ func _unhandled_input(event: InputEvent) -> void:
 func _creer_joueur() -> void:
 	joueur = preload("res://scripts/joueur.gd").new()
 	joueur.monde = self
-	var p: Vector2 = lieux.reveil.pos
+	var p: Vector2 = point_d_arrivee()
 	joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 	add_child(joueur)
 	camera.position = joueur.position + Vector3(0, 10, 14)
 
 
+## Où tu apparais : au bout du sentier si tu arrives de voyage, sinon à ta dernière place
+## sur cette carte, sinon à la clairière du réveil (Brumeval) ou au sentier.
+func point_d_arrivee() -> Vector2:
+	var bout: Vector2 = lieux.sentier.pos + Vector2(-3, -3) if lieux.has("sentier") else lieux.values()[0].pos
+	if fiche.drapeaux.get("arrivee", "") == carte:
+		fiche.drapeaux.erase("arrivee")
+		return bout
+	if fiche.drapeaux.get("pos_" + carte, null) is Vector2:
+		return fiche.drapeaux["pos_" + carte]
+	return lieux.reveil.pos if lieux.has("reveil") else bout
+
+
+## Prendre le sentier côtier vers l'autre carte : 3 h de marche, ton équipe avec toi.
+func voyager(vers: String) -> void:
+	if not CARTES.has(vers) or vers == carte:
+		return
+	fiche.drapeaux["pos_" + carte] = lieux.sentier.pos + Vector2(-3, -3)
+	fiche.drapeaux["carte"] = vers
+	fiche.drapeaux["arrivee"] = vers
+	Horloge.avancer(VOYAGE_MIN)
+	sauver_etat()
+	fiche.sauver()
+	get_tree().reload_current_scene()
+
+
 func _creer_pnjs() -> void:
 	var emplois := {}
-	for e in Donnees.lire_csv("res://data/emplois.csv"):
+	for e in Donnees.lire_csv(dossier() + "emplois.csv"):
 		if not emplois.has(e.pnj):
 			emplois[e.pnj] = []
 		emplois[e.pnj].append([float(e.heure), e.lieu, e.activite])
@@ -622,6 +682,20 @@ func _creer_pnjs() -> void:
 		n.donnees = pnj_donnees[id]
 		n.emploi = emplois[id]
 		n.mort = morts.has(id)
+		add_child(n)
+		pnjs.append(n)
+	# ton équipe venue d'une autre carte : elle marche avec toi, et t'attend au sentier si tu la laisses
+	for id in fiche.equipiers:
+		if emplois.has(id) or not pnj_donnees.has(id) or id in [Vesperine.ID, Fees.ID] or Fees.SOEURS.has(id):
+			continue
+		var n := preload("res://scripts/pnj.gd").new()
+		n.monde = self
+		n.id = id
+		n.donnees = pnj_donnees[id]
+		n.emploi = [[0.0, "sentier" if lieux.has("sentier") else lieux.keys()[0], "loin de chez soi"]]
+		n.mort = morts.has(id)
+		var p: Vector2 = joueur.pos2d() + Vector2(randf_range(-3, 3), 3)
+		n.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 		add_child(n)
 		pnjs.append(n)
 
@@ -717,13 +791,18 @@ func _construire_decor() -> void:
 	arbre.radial_segments = 8
 	arbre.rings = 4
 	arbre.material = _mat(Color(0.2, 0.36, 0.16))
+	# Brumeval : le village à l'ouest du bois ; ailleurs, toute la carte
+	var zone := Rect2(80, 40, 1020, 1110) if carte == "brumeval" else Rect2(Vector2.ZERO, TAILLE)
+	var echelle := 1.0 if carte == "brumeval" else 0.6
 	for modele in [[buisson, 900, 0.5], [rocher, 350, 0.3], [arbre, 260, 4.5]]:
 		var pts := []
-		while pts.size() < modele[1]:
-			var p := Vector2(rng.randf_range(80, 1100), rng.randf_range(40, 1150))
-			if not sur_terre(p) or Geometry2D.is_point_in_polygon(p, bois):
+		var tentatives := 0
+		while pts.size() < int(modele[1] * echelle) and tentatives < 60000:
+			tentatives += 1
+			var p := Vector2(rng.randf_range(zone.position.x, zone.end.x), rng.randf_range(zone.position.y, zone.end.y))
+			if not sur_terre(p) or dans_zone(p, bois):
 				continue
-			if modele[0] == rocher and distance_cote(p) > 60.0 and not Geometry2D.is_point_in_polygon(p, landes):
+			if modele[0] == rocher and distance_cote(p) > 60.0 and not dans_zone(p, landes):
 				continue
 			if _pres_chemin(p, 3.5) or not praticable(p) or lieu_proche(p, 14.0) != "":
 				continue
@@ -742,23 +821,64 @@ func _construire_decor() -> void:
 	# remises et granges le long des chemins du village (sans habitants)
 	var bois_m := _mat(Color(0.45, 0.32, 0.2))
 	var toit := _mat(Color(0.35, 0.22, 0.15))
+	var crepi := _mat(Color(0.82, 0.8, 0.74))
+	var ardoise := _mat(Color(0.28, 0.3, 0.36))
 	var poses := 0
 	var essais := 0
-	while poses < 16 and essais < 4000:
+	var village := Rect2(250, 450, 650, 450) if carte == "brumeval" else Rect2(180, 200, 500, 520)
+	var ville := carte != "brumeval"     # Pierrefane : une petite ville, des maisons serrées le long des rues
+	var combien := 140 if ville else 16
+	# en ville, les maisons bordent les rues : des emplacements tous les 11 m, de chaque côté
+	var bords: Array = []
+	if ville:
+		for a in graphe:
+			for arete in graphe[a]:
+				if a > arete.vers:
+					continue
+				var A: Vector2 = lieux[a].pos
+				var B: Vector2 = lieux[arete.vers].pos
+				var dir := (B - A).normalized()
+				var k := 0.0
+				while k < A.distance_to(B):
+					for cote_rue in [-1.0, 1.0]:
+						var q: Vector2 = A + dir * k + dir.orthogonal() * cote_rue * 10.0
+						if village.has_point(q):
+							bords.append(q)
+					k += 11.0
+	while poses < combien and essais < 8000:
 		essais += 1
-		var p := Vector2(rng.randf_range(250, 900), rng.randf_range(450, 900))
-		if not praticable(p) or _pres_chemin(p, 6.0) or not _pres_chemin(p, 14.0) or lieu_proche(p, 25.0) == "" or lieu_proche(p, 16.0) != "":
+		var p := Vector2(rng.randf_range(village.position.x, village.end.x), rng.randf_range(village.position.y, village.end.y))
+		if ville:
+			if bords.is_empty():
+				break
+			p = bords.pop_at(rng.randi() % bords.size()) + Vector2(rng.randf_range(-1, 1), rng.randf_range(-1, 1))
+		if not praticable(p) or _pres_chemin(p, 6.0) or not _pres_chemin(p, 14.0) or lieu_proche(p, 16.0 if not ville else 13.0) != "":
 			continue
-		var t := Vector2(rng.randf_range(4, 6), rng.randf_range(3, 5))
+		if not ville and lieu_proche(p, 25.0) == "":
+			continue
+		var t := Vector2(rng.randf_range(6, 9), rng.randf_range(5, 7)) if ville else Vector2(rng.randf_range(4, 6), rng.randf_range(3, 5))
+		var r := Rect2(p - t / 2.0, t)
+		if batiments.any(func(b): return b.grow(1.5).intersects(r)):
+			continue
 		var h := hauteur(p.x, p.y)
-		_boite(Vector3(t.x, 5.0, t.y), Vector3(p.x, h, p.y), bois_m)
+		var haut := rng.randf_range(5.0, 8.0) if ville else 5.0     # en ville : un étage, crépi et ardoise
+		_boite(Vector3(t.x, haut, t.y), Vector3(p.x, h + haut / 2.0 - 2.5, p.y), crepi if ville else bois_m)
 		var pr := MeshInstance3D.new()
 		var pm := PrismMesh.new()
-		pm.size = Vector3(t.x + 0.6, 1.6, t.y + 0.6)
+		pm.size = Vector3(t.x + 0.6, 1.6 if not ville else 2.2, t.y + 0.6)
 		pr.mesh = pm
-		pr.position = Vector3(p.x, h + 3.3, p.y)
-		pr.material_override = toit
+		pr.position = Vector3(p.x, h + haut - 2.5 + pm.size.y / 2.0, p.y)
+		pr.material_override = ardoise if ville else toit
 		add_child(pr)
+		if ville and rng.randf() < 0.5:
+			var lum := OmniLight3D.new()
+			lum.light_color = Color(1.0, 0.72, 0.4)
+			lum.omni_range = 7.0
+			lum.light_energy = 1.0
+			lum.position = Vector3(p.x, h + 2.0, p.y + t.y / 2.0 + 0.5)
+			lum.visible = false
+			add_child(lum)
+			_lumieres.append(lum)
 		batiments.append(Rect2(p - t / 2.0, t))
 		poses += 1
 
@@ -855,7 +975,7 @@ func surprendre(n: Node) -> void:
 	ids.sort()
 	for x in groupe:
 		desirs[x.id] = 0
-	var noms: Array = groupe.map(func(x): return x.donnees.nom.get_slice(" ", 0))
+	var noms: Array = groupe.map(func(x): return Donnees.prenom(x.donnees.nom))
 	var texte := ""
 	if autre == null:
 		texte = "Tu surprends %s, seul·e, qui ne t'a pas vu·e. Le désir a été le plus fort." % noms[0]
@@ -863,7 +983,7 @@ func surprendre(n: Node) -> void:
 		texte = "Tu surprends %s et %s, l'un contre l'autre, qui ne t'ont pas vu·e." % noms
 	for x in groupe:
 		if fiche.partenaires.has(x.id):
-			texte += " %s… ton %s. Ça serre le cœur." % [x.donnees.nom.get_slice(" ", 0), "couple" if fiche.partenaires[x.id] == "couple" else "amant"]
+			texte += " %s… ton %s. Ça serre le cœur." % [Donnees.prenom(x.donnees.nom), "couple" if fiche.partenaires[x.id] == "couple" else "amant"]
 	var lieu := lieu_proche(n.pos2d(), 40.0)
 	Illustrations.montrer("se_soulager" if autre == null else "surpris_ensemble", ["+".join(ids)] + ids + [lieu], texte)
 	await Illustrations.ferme
@@ -876,7 +996,7 @@ func _se_montrer(groupe: Array) -> void:
 	var lignes := []
 	for x in groupe:
 		var p := Intime.profil(x.id)
-		var nom: String = x.donnees.nom.get_slice(" ", 0)
+		var nom: String = Donnees.prenom(x.donnees.nom)
 		var aff: int = relations.get(x.id, 0)
 		if "risque" in p.aime or (p.pudeur < 40 and aff >= 20):
 			relations[x.id] = clampi(aff + 3, -100, 100)
@@ -1003,7 +1123,7 @@ func combat_contre_pnj(cible: Node, mode: String, extra := {}) -> void:
 func _surveiller_loups() -> void:
 	if combat != null or Illustrations.ouvert or joueur == null:
 		return
-	if Horloge.jour() == _dernier_jour_loups:
+	if Horloge.jour() == _dernier_jour_loups or not lieux.has("loups"):
 		return
 	if joueur.pos2d().distance_to(lieux.loups.pos) > 28.0:
 		return
@@ -1049,13 +1169,13 @@ func _surveiller_rencontres(delta: float) -> void:
 	var t: float = Horloge.maintenant()
 	if t < _prochaine_rencontre.get("toutes", 0.0):
 		return
-	var dans_bois := Geometry2D.is_point_in_polygon(p, bois)
-	var dans_landes := Geometry2D.is_point_in_polygon(p, landes)
+	var dans_bois := dans_zone(p, bois)
+	var dans_landes := dans_zone(p, landes)
 	var greve := false
 	for k in ["plage", "crique", "bouche"]:
 		if lieux.has(k) and p.distance_to(lieux[k].pos) < 25.0:
 			greve = true
-	var loin_taniere: bool = p.distance_to(lieux.loups.pos) > 40.0
+	var loin_taniere: bool = not lieux.has("loups") or p.distance_to(lieux.loups.pos) > 40.0
 	var choix := ""
 	if dans_bois:
 		var egare := Fees.dans_le_bois(self)
@@ -1144,11 +1264,11 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 			if contexte.has("loups"):
 				texte = "Le noir. Puis l'odeur des herbes : Pierrick t'a trouvé et porté chez Agnès. « T'as de la chance que j'aie entendu les loups. »"
 			elif contexte.has("betes"):
-				texte = "Le noir. Tu te réveilles chez Agnès, qui recoud en grommelant : « Battu par une bête. Ça arrive aux meilleurs, et surtout aux autres. »"
+				texte = "Le noir. Tu te réveilles chez Agnès, qui recoud en grommelant : « Battu par une bête. Ça arrive aux meilleurs, et surtout aux autres. »" if carte == "brumeval" else "Le noir. Tu te réveilles chez %s, qui recoud sans un mot, une pipe froide entre les dents." % CARTES[carte].soigneur
 			else:
-				texte = "Tu te réveilles plus tard, chez Agnès, le visage en sang." if contexte.mode == "bagarre" else "Tu te réveilles plus tard, chez Agnès, le visage en sang et la bourse plus légère."
+				texte = ("Tu te réveilles plus tard, chez %s, le visage en sang." if contexte.mode == "bagarre" else "Tu te réveilles plus tard, chez %s, le visage en sang et la bourse plus légère.") % CARTES[carte].soigneur
 			Horloge.avancer(180.0)
-			var p: Vector2 = lieux.agnes.pos + Vector2(0, 4)
+			var p: Vector2 = lieux[CARTES[carte].refuge].pos + Vector2(0, 4)
 			joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 		"fuite":
 			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."

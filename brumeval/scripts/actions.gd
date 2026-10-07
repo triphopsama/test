@@ -4,7 +4,8 @@
 #   id              nom technique, aussi le nom du dossier d'illustrations
 #   nom             ce qui s'affiche dans le menu
 #   cible           pnj (on agit sur quelqu'un) ou lieu (on agit sur place)
-#   lieux           * ou liste de lieux séparés par des virgules (cle de lieux.csv)
+#   lieux           * ou liste de lieux séparés par des virgules (cle de lieux.csv) ;
+#                   « pierrefane:port » : ce lieu sur cette carte seulement (remplace la ligne générale)
 #   pnj             * ou liste d'ids (BRU001…) : une ligne avec un id précis
 #                   remplace la ligne * pour ce PNJ (texte propre à chacun)
 #   intime          1 pour une action intime
@@ -60,9 +61,12 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 		var sur_pnj: bool = l.cible == "pnj"
 		if sur_pnj != (pnj != null):
 			continue
-		if l.lieux != "*" and not _liste(l.lieux).has(lieu):
-			continue
 		var precise := false
+		if l.lieux != "*" and not _liste(l.lieux).has(lieu):
+			# « pierrefane:port » : seulement sur cette carte, et prend le pas sur la ligne générale
+			if not _liste(l.lieux).has("%s:%s" % [monde.carte, lieu]):
+				continue
+			precise = true
 		if sur_pnj and l.pnj != "*":
 			if not _liste(l.pnj).has(pnj.id):
 				continue
@@ -119,6 +123,9 @@ func _intime_dispo(donne: String, pnj: Node) -> bool:
 			return f.pactes.has(id)
 		"danser", "courtisan":
 			return _de_nuit()
+		"nuit_payee":
+			var h: float = Horloge.heure()
+			return h >= 18.0 or h < 4.0
 		"risque":
 			return monde.lieu_proche(pnj.pos2d() if pnj else monde.joueur.pos2d(), 40.0) in LIEUX_RISQUES and (monde.lieu_proche(monde.joueur.pos2d(), 40.0) != "taverne" or _de_nuit())
 	return true
@@ -172,6 +179,14 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne in ["v_nourrir", "v_guider"]:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))
+		return
+	if donne == "voyage":
+		var vers: String = monde.CARTES[monde.carte].voisine
+		var qui: int = monde.fiche.equipiers.size()
+		Illustrations.montrer(l.id, cles, _remplacer(texte if texte != "" else "Seize kilomètres de lande et de vent, la mer à main gauche.", pnj, lieu)
+			+ (" Ton équipe marche avec toi." if qui > 0 else ""))
+		await Illustrations.ferme
+		monde.voyager(vers)
 		return
 	if donne == "relacher":
 		var options := []
@@ -346,7 +361,7 @@ func _metier(id: String, h: float, action: String) -> String:
 		f.sauver()
 		return t
 	if avec_maitre:
-		r.append("%s te montre les gestes : tu apprends deux fois plus vite." % maitre.donnees.nom.get_slice(" ", 0))
+		r.append("%s te montre les gestes : tu apprends deux fois plus vite." % Donnees.prenom(maitre.donnees.nom))
 	if t != "":
 		r.append(t)
 	f.sauver()
@@ -354,10 +369,10 @@ func _metier(id: String, h: float, action: String) -> String:
 
 
 ## Les lieux exposés où l'on peut se risquer (la taverne : seulement la nuit, après la fermeture).
-const LIEUX_RISQUES := ["crique", "ferme", "lavoir", "plage", "chene", "taverne", "falaise", "guet", "source", "clairiere", "etang"]
+const LIEUX_RISQUES := ["crique", "ferme", "lavoir", "plage", "chene", "taverne", "falaise", "guet", "source", "clairiere", "etang", "jetee", "lande"]
 
 const INTIMES := ["risque", "seduire", "embrasser", "nuit", "gouts", "masser", "couple", "rompre", "pacte_maitre", "pacte_esclave",
-	"rompre_pacte", "danser", "courtisan"]
+	"rompre_pacte", "danser", "courtisan", "nuit_payee"]
 
 
 ## L'intime (intime.gd). Renvoie [texte, refusé ?] ; ["", false] si la scène de nuit s'ouvre.
@@ -383,6 +398,18 @@ func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String
 			f.desir = mini(100, f.desir + 10)
 			r = texte if texte != "" else "Un baiser. Puis un autre. Le monde autour peut attendre."
 		"nuit":
+			monde.scene_intime([pnj], lieu)
+			return ["", false]
+		"nuit_payee":
+			# une courtisane libre (Margo) : c'est son métier, et son droit de dire non
+			var nom: String = Donnees.prenom(pnj.donnees.nom)
+			var aff: int = monde.relations.get(id, 0)
+			if aff < -10 or monde.fiche.drapeaux.get("brute_" + id, false):
+				f.bourse += Objets.cuivre_de(str(l.prix))      # elle te rend ton argent
+				return ["%s repose les pièces dans ta main : « Pas toi. Va voir ailleurs. »" % nom, true]
+			if not Intime.attire_par(Intime.profil(id), f) and aff < 30:
+				return [texte if texte != "" else "%s prend l'argent, te mène en haut, et fait son métier, avec métier." % nom, false]
+			monde.relations[id] = mini(100, aff + 2)
 			monde.scene_intime([pnj], lieu)
 			return ["", false]
 		"risque":
@@ -511,7 +538,7 @@ func _hors_combat(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: S
 				for n in regards:
 					monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 15, -100, 100)
 				monde.sauver_etat()
-				var vus: Array = regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))
+				var vus: Array = regards.map(func(n): return Donnees.prenom(n.donnees.nom))
 				return "Le crochet ripe, la serrure tient bon (%d %%).%s" % [chance,
 					(" Et %s %s vu faire." % [", ".join(vus), "t'ont" if vus.size() > 1 else "t'a"]) if vus else ""]
 			var c := randi_range(4, 20) if lieu == "falaise" else randi_range(12, 30)
@@ -641,7 +668,7 @@ func _vol_tire(pnj: Node, texte: String) -> String:
 	for n in regards:
 		monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 15, -100, 100)
 	monde.sauver_etat()
-	var vus: Array = regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))
+	var vus: Array = regards.map(func(n): return Donnees.prenom(n.donnees.nom))
 	return "{nom} attrape ton poignet : « Au voleur ! »%s (%d %%)" % [
 		(" %s %s vu." % [", ".join(vus), "l'ont" if vus.size() > 1 else "l'a"]) if vus else " Heureusement, personne d'autre n'a vu.", chance]
 

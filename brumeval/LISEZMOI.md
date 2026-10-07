@@ -172,6 +172,22 @@ D'après les vieilles croyances (`univers.md` : la Brume guide ceux qu'elle aime
 - « Relâcher une bête » : elle retourne au bois.
 - On n'apprivoise que des bêtes, jamais un être qui pense (les fées se gagnent, elles ne se domptent pas), et rien d'intime avec une bête.
 
+## Pierrefane
+
+La ville portuaire, au bout du sentier côtier : une vraie carte en 3D, avec ses rues, ses 18 habitants
+et leurs emplois du temps (plan : [monde/cartes/pierrefane.md](../monde/cartes/pierrefane.md), touche Tab en jeu).
+
+- **Le voyage** : au lieu « Sentier côtier », l'action « Prendre le sentier côtier (3 h) ». Ton équipe vient avec toi ;
+  si tu laisses un compagnon dans l'autre ville, il t'attend au sentier.
+- **Margo**, courtisane libre, au salon des Lanternes (18 h - 4 h) : 2 argent, et son droit de dire non.
+- **Le Mouillage** (Ondine) : dormir, manger, danser ; le travail de nuit libre, là et au port.
+- **Lysa et Bastien**, captifs de la Maison des Lanternes : aucun profil intime, aucune action intime.
+- **Défis** : Thorga (bras de fer), Kael (course sur la lande).
+- **Ajouter une carte** : un module `outils/<carte>_data.py` (lieux, chemins, côte), puis
+  `python3 outils/build_carte.py <carte> <PREFIXE>`, `python3 outils/image_carte.py <carte> "<Nom>"`,
+  `data/<carte>/pnj.csv` et `emplois.csv`, et une ligne dans `CARTES` (scripts/monde.gd).
+  Une action réservée à une carte : `pierrefane:port` dans la colonne lieux.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).
@@ -209,5 +225,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 ## Vérifier que tout marche
 
 `godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, la magie, les leçons et les compétences hors combat, et des combats joués tout seuls (bagarre, loups, agression).
+
+`godot --headless -- --autotest --carte=pierrefane` teste Pierrefane (et `--carte=pierrefane` marche aussi avec `--capture`).
 
 `godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso`, `classe` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.

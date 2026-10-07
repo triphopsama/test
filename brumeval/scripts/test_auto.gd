@@ -17,6 +17,12 @@ func ok(cond: bool, quoi: String) -> void:
 func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
+	if monde.carte == "pierrefane":
+		_pierrefane()
+		monde.fiche.drapeaux.erase("carte")
+		print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
+		get_tree().quit(erreurs)
+		return
 	print("== Données")
 	ok(monde.lieux.size() == 33, "33 lieux, avec le bois profond (%d)" % monde.lieux.size())
 	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
@@ -28,6 +34,8 @@ func _ready() -> void:
 	ok(c.size() >= 2, "un chemin place > crique (%d étapes)" % c.size())
 	var c2: PackedVector2Array = monde.chemin("reveil", "forge")
 	ok(c2.size() >= 3, "un chemin réveil > forge (%d étapes)" % c2.size())
+	ok(_ids(monde.actions.disponibles(null, "sentier")).has("voyager"), "le sentier côtier mène à Pierrefane")
+	ok(not _ids(monde.actions.disponibles(null, "port")).has("travailler_nuit"), "pas de travail de nuit au port de Brumeval")
 	print("== Heure : jour %d, %s, marée basse : %s" % [Horloge.jour(), Horloge.texte_heure(), Horloge.maree_basse()])
 	print("== PNJ")
 	for n in monde.pnjs:
@@ -556,7 +564,7 @@ func _intime() -> void:
 	print("== Intime (adultes consentants)")
 	var f := Fiche.new()
 	monde.fiche = f
-	ok(Intime.profils().size() == 24 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "24 profils d'adultes (avec Vesperine et les trois fées), aucun pour Tim et Nina")
+	ok(Intime.profils().size() == 38 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "38 profils d'adultes (Brumeval, Pierrefane, Vesperine, les fées), aucun pour Tim et Nina")
 	ok(Intime.gestes().size() >= 15, "%d gestes de scène" % Intime.gestes().size())
 	# personne d'autre autour : pas de témoins
 	var caches := []
@@ -937,7 +945,9 @@ func _domptage() -> void:
 		ok(monde.combat._cibles(moi, "apprivoiser").is_empty(), "un loup en pleine forme ne se laisse pas apprivoiser")
 		loup.pv = 3
 		loup.case = moi.case + Vector2i(1, 0)
-		monde.combat._attaquer(moi, loup, "apprivoiser")
+		for essai in 4:     # 90 % par essai : le test ne doit pas dépendre d'un dé
+			if not loup.apprivoise:
+				monde.combat._attaquer(moi, loup, "apprivoiser")
 		ok(loup.apprivoise and loup.sorti, "affaibli, à côté de toi, Vol 30 : il cède")
 		monde.combat._verifier_fin()
 		var r = await monde.combat.fini
@@ -969,3 +979,47 @@ func _pnj(id: String) -> Node:
 
 func _ids(liste: Array) -> Array:
 	return liste.map(func(l): return l.id)
+
+
+## godot --headless -- --autotest --carte=pierrefane
+func _pierrefane() -> void:
+	print("== Pierrefane")
+	ok(monde.lieux.size() == 14, "14 lieux (%d)" % monde.lieux.size())
+	ok(monde.pnjs.filter(func(n): return n.id.begins_with("PIE")).size() == 18, "18 habitants")
+	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).is_empty(), "personne de Brumeval sans y être invité")
+	ok(monde.TAILLE == Vector2(1100, 800), "la carte fait 1100 x 800 m")
+	ok(monde.batiments.size() >= 50, "une vraie ville : %d bâtiments" % monde.batiments.size())
+	ok(monde.praticable(monde.lieux.place.pos) and not monde.praticable(Vector2(60, 450)), "la place à pied, la mer non")
+	ok(monde.joueur.pos2d().distance_to(monde.lieux.sentier.pos) < 10.0, "on arrive par le sentier côtier")
+	ok(monde.chemin("place", "mahaut").size() >= 3, "un chemin place > cabane de Mahaut")
+	ok(monde.chemin("port", "hangar").size() >= 2, "un chemin port > hangar du Passeur")
+	ok(_ids(monde.actions.disponibles(null, "sentier")).has("voyager"), "le sentier ramène à Brumeval")
+	var peche := _action("pecher", null, "port")
+	ok(str(peche.get("description", "")).contains("Pierrefane"), "pêcher : le texte du quai de Pierrefane")
+	for id in ["PIE002", "PIE003", "PIE008", "PIE017"]:
+		var n := _pnj(id)
+		ok(n != null and not monde.actions.intime_possible(n), "rien d'intime avec %s (%s)" % [n.donnees.nom, n.donnees.statut_social])
+		ok(Intime.profil(id).is_empty(), "pas de profil intime pour %s" % n.donnees.nom)
+	var margo := _pnj("PIE004")
+	ok(not Intime.profil("PIE004").is_empty(), "Margo a un profil")
+	Horloge.avancer(fposmod(12.0 - Horloge.heure(), 24.0) * 60.0)
+	ok(_action("nuit_margo", margo, "lanternes").is_empty(), "Margo ne monte pas à midi")
+	Horloge.avancer(fposmod(21.0 - Horloge.heure(), 24.0) * 60.0)
+	ok(not _action("nuit_margo", margo, "lanternes").is_empty(), "Margo, à 21 h, au salon")
+	ok(_action("nuit_margo", _pnj("PIE001"), "lanternes").is_empty(), "l'offre est celle de Margo, pas d'Orsoline")
+	var f: Fiche = monde.fiche
+	f.bourse = 500
+	monde.relations["PIE004"] = -30
+	var r: Array = monde.actions._intime("nuit_payee", _action("nuit_margo", margo, "lanternes"), margo, "lanternes", "")
+	ok(r[1] and r[0].contains("Pas toi"), "Margo refuse qui elle n'aime pas : " + r[0])
+	monde.relations["PIE004"] = 0
+	f.drapeaux["brute_PIE004"] = true
+	r = monde.actions._intime("nuit_payee", _action("nuit_margo", margo, "lanternes"), margo, "lanternes", "")
+	ok(r[1], "... et qui l'a forcée à dire le mot d'arrêt")
+	f.drapeaux.erase("brute_PIE004")
+	ok(not _action("travailler_nuit", null, "auberge").is_empty(), "le travail de nuit, libre, au Mouillage")
+	ok(not _action("dormir", null, "auberge").is_empty() and _action("dormir", null, "auberge").description.contains("Ondine"), "dormir chez Ondine")
+	var thorga := _pnj("PIE012")
+	monde.relations["PIE012"] = 0
+	ok(Defis.de(monde, thorga).any(func(d): return d.id == "thorga_bras"), "Thorga te défie au bras de fer")
+	Horloge.avancer(-float(Horloge._decalage) / 60.0)

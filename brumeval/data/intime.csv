@@ -19,6 +19,20 @@ BRU019;Isaure Champart;hommes;amour,fidélité;50;-40;75;experimente;0;5;85;;mas
 BRU020;Pierrick Sauvage;femmes;;15;10;70;experimente;0;30;40;;dehors,nuit_entiere;;;1;35;dehors;;;0
 BRU021;Garec;femmes;plaisir;75;70;10;experimente;30;70;20;;cadeaux,rapide;;;3;65;;;;0
 BRU022;Mouche;hommes,femmes;aventure;75;-10;15;experimente;0;70;20;;risque;;engagement;3;63;risque;;;0
+PIE001;Madame Orsoline;hommes;statut;20;60;80;experimente;20;30;40;;;;;2;30;;;;1
+PIE004;Margo;hommes,femmes;plaisir,amour;65;0;10;experimente;0;30;40;;conversation,rire,tendresse;;brutal;3;65;;;;1
+PIE005;Gros Hugues;femmes;;50;-40;80;peu;0;30;40;;tendresse;;;2;30;;;;0
+PIE006;Capitaine Ambroise Daunel;femmes;plaisir;75;40;20;experimente;0;70;20;PIE007;;;;3;60;;;;0
+PIE007;Bérénice Daunel;hommes;;15;30;85;experimente;0;30;40;PIE006;;;;1;28;;;;0
+PIE009;Prévôt Anselme Gourdin;femmes;;50;-30;70;peu;0;30;40;;;;;2;35;;;;0
+PIE010;Sœur Odile;hommes;;15;0;50;experimente;0;30;40;;rire;;;1;45;;;;0
+PIE011;Maître Ferrat;femmes;fidélité;50;40;85;experimente;0;5;85;;tendresse;;infidelite;2;28;;;;0
+PIE012;Thorga;hommes,femmes;plaisir;75;40;50;experimente;0;70;20;;nuit_entiere,rire;;;3;45;;musclee,petite;;1
+PIE013;Ondine Lebras;hommes;amour,fidélité;50;30;50;experimente;0;10;70;PIE014;nuit_entiere,rire;;;2;45;;;;0
+PIE014;Pâris Lebras;femmes;amour;50;-20;40;experimente;0;30;40;PIE013;tendresse;;;2;50;;;;0
+PIE015;Vieille Mahaut;hommes;;15;40;10;experimente;0;30;40;;;;;1;65;;;;0
+PIE016;Kael;femmes;;50;20;50;peu;0;30;40;;;;pitie;2;45;;;;0
+PIE018;Gilles le Passeur;hommes,femmes;aventure;70;0;30;experimente;0;70;10;;conversation,risque;;;2;55;risque;;;1
 VES019;Vesperine;hommes,femmes;liberté,plaisir;95;-20;10;experimente;60;70;10;;audace,etre_domine,jeu,passion,risque;;brutal,captivite;6;70;cordes;sexe_grand,poitrine_genereuse,athletique;;1
 FEE001;Brumelle;hommes,femmes;plaisir,aventure;85;0;0;experimente;30;100;0;;dehors,bain,jeu,roleplay,risque,passion,audace,groupe_ok,baisers;;brutal,mensonge;5;30;groupe_ok;;;1
 FEE002;Lirelle;hommes,femmes;plaisir,aventure;85;0;0;experimente;30;100;0;;dehors,bain,jeu,roleplay,risque,passion,audace,groupe_ok,baisers;;brutal,mensonge;5;30;groupe_ok;;;1

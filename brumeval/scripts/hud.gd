@@ -51,7 +51,7 @@ func _ready() -> void:
 	boite.add_child(_liste)
 
 	_plan = TextureRect.new()
-	_plan.texture = load("res://images/plan.png")
+	_plan.texture = load("res://images/plan.png" if monde.carte == "brumeval" else "res://images/plan_%s.png" % monde.carte)
 	_plan.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_plan.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_plan.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -118,13 +118,13 @@ func _process(_delta: float) -> void:
 		var tex_taille: Vector2 = _plan.texture.get_size()
 		var echelle := minf(_plan.size.x / tex_taille.x, _plan.size.y / tex_taille.y)
 		var origine := (_plan.size - tex_taille * echelle) / 2.0
-		_point.position = origine + p * 0.8 * echelle - Vector2(5, 5)
+		_point.position = origine + p * (tex_taille.x / monde.TAILLE.x) * echelle - Vector2(5, 5)
 
 
 func _membre(id: String) -> String:
 	var n: Node = monde._pnj_par_id(id)
 	var d := Compagnons.description(monde, id)
-	return (n.donnees.nom.get_slice(" ", 0) if n else id) + (" (%s)" % d if d != "" else "")
+	return (Donnees.prenom(n.donnees.nom) if n else id) + (" (%s)" % d if d != "" else "")
 
 
 ## Un message qui s'affiche quelques secondes (les passants qui réagissent…).
@@ -162,7 +162,7 @@ func _ouvrir_menu() -> void:
 		c.queue_free()
 	for i in _choix.size():
 		var b := Button.new()
-		b.text = "%d. %s" % [i + 1, str(_choix[i].nom).replace("{nom}", _cible_pnj.donnees.nom.get_slice(" ", 0) if _cible_pnj else "")]
+		b.text = "%d. %s" % [i + 1, str(_choix[i].nom).replace("{nom}", Donnees.prenom(_cible_pnj.donnees.nom) if _cible_pnj else "")]
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.pressed.connect(_choisir.bind(i))
 		_liste.add_child(b)

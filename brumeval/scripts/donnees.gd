@@ -19,3 +19,15 @@ static func lire_csv(chemin: String) -> Array:
 			d[entete[i]] = l[i]
 		lignes.append(d)
 	return lignes
+
+
+const TITRES := ["Capitaine", "Prévôt", "Maître", "Sœur", "Madame", "Gros", "Vieille", "Vieux", "Père", "Mère", "Dame"]
+
+
+## Le prénom, sans le titre : « Capitaine Ambroise Daunel » > Ambroise, « Gros Hugues » > Hugues.
+static func prenom(nom: String) -> String:
+	var mots := nom.split(" ", false)
+	for m in mots:
+		if not m in TITRES:
+			return m
+	return nom

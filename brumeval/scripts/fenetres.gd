@@ -326,7 +326,7 @@ func lecons(pnj: Node) -> void:
 		_ouvrir("lecon")
 	var f: Fiche = monde.fiche
 	_titre.text = "Leçons de %s" % pnj.donnees.nom
-	_entete.text = "Ce que %s veut bien t'apprendre. Une leçon dure deux heures. Bourse : %s." % [pnj.donnees.nom.get_slice(" ", 0), Objets.texte_prix(f.bourse)]
+	_entete.text = "Ce que %s veut bien t'apprendre. Une leçon dure deux heures. Bourse : %s." % [Donnees.prenom(pnj.donnees.nom), Objets.texte_prix(f.bourse)]
 	_vider()
 	var t := f.stats_totales()
 	for k in monde.lecons_de(pnj):
@@ -341,7 +341,7 @@ func lecons(pnj: Node) -> void:
 			texte += " (%s)" % manque
 		_ligne(texte, _apprendre.bind(pnj, k), _detail_comp(k), manque == "" and f.bourse >= prix)
 	if _liste.get_child_count() == 0:
-		_detail.text = "Tu sais déjà tout ce que %s pourrait t'apprendre." % pnj.donnees.nom.get_slice(" ", 0)
+		_detail.text = "Tu sais déjà tout ce que %s pourrait t'apprendre." % Donnees.prenom(pnj.donnees.nom)
 
 
 func _apprendre(pnj: Node, k: String) -> void:
@@ -354,7 +354,7 @@ func _apprendre(pnj: Node, k: String) -> void:
 	f.sauver()
 	monde.sauver_etat()
 	lecons(pnj)
-	_message.text = "Deux heures avec %s. Tu sais maintenant : %s." % [pnj.donnees.nom.get_slice(" ", 0), Combattant.COMPETENCES[k].nom]
+	_message.text = "Deux heures avec %s. Tu sais maintenant : %s." % [Donnees.prenom(pnj.donnees.nom), Combattant.COMPETENCES[k].nom]
 
 
 # ---------------------------------------------------------------- la tenue d'un compagnon
@@ -363,7 +363,7 @@ func tenue_compagnon(n: Node) -> void:
 	_marchand = n
 	if ouvert != "tenue":
 		_ouvrir("tenue")
-	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var nom: String = Donnees.prenom(n.donnees.nom)
 	var t := Compagnons.tenue(monde, n.id)
 	var d := Compagnons.description(monde, n.id)
 	_titre.text = "La tenue de %s" % nom
@@ -388,7 +388,7 @@ func _habiller(n: Node, quoi: String, mettre: bool) -> void:
 	_message.text = r if r != "" else "C'est fait."
 	if r == "" and mettre:
 		var nom := "nu" if quoi == "nu" else quoi
-		Illustrations.montrer("habiller_" + nom, [n.id, "defaut"], "%s : %s." % [n.donnees.nom.get_slice(" ", 0), Compagnons.description(monde, n.id)])
+		Illustrations.montrer("habiller_" + nom, [n.id, "defaut"], "%s : %s." % [Donnees.prenom(n.donnees.nom), Compagnons.description(monde, n.id)])
 
 
 # ---------------------------------------------------------------- défis et entraînement
@@ -406,7 +406,7 @@ func defis(n: Node) -> void:
 		if Defis.tous()[id].pnj == n.id:
 			_ligne("Rendre : %s" % Defis.tous()[id].nom, _rendre_defi.bind(n, id), "Avant la fin du jour.")
 	if _liste.get_child_count() == 0:
-		_detail.text = "%s n'a pas de défi pour toi aujourd'hui." % n.donnees.nom.get_slice(" ", 0)
+		_detail.text = "%s n'a pas de défi pour toi aujourd'hui." % Donnees.prenom(n.donnees.nom)
 
 
 func _accepter_defi(n: Node, id: String) -> void:
@@ -431,7 +431,7 @@ func entrainement() -> void:
 		var n: Node = monde._pnj_par_id(id)
 		if n == null:
 			continue
-		var nom: String = n.donnees.nom.get_slice(" ", 0)
+		var nom: String = Donnees.prenom(n.donnees.nom)
 		_ligne("Combat d'entraînement contre %s" % nom, _lutter.bind(n), "À mains nues, comme une bagarre : la moitié de l'expérience, personne ne t'en veut.")
 		if not Intime.profil(id).is_empty() and Intime.consentement(monde, n, "nuit") == "":
 			_ligne("Pratique à deux avec %s" % nom, _pratiquer.bind(n, lieu), "Une nuit consentie : l'Art d'aimer monte.")
