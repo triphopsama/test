@@ -117,6 +117,8 @@ func _intime_dispo(donne: String, pnj: Node) -> bool:
 			return f.pactes.has(id)
 		"danser", "courtisan":
 			return _de_nuit()
+		"risque":
+			return monde.lieu_proche(pnj.pos2d() if pnj else monde.joueur.pos2d(), 40.0) in LIEUX_RISQUES and (monde.lieu_proche(monde.joueur.pos2d(), 40.0) != "taverne" or _de_nuit())
 	return true
 
 
@@ -337,7 +339,10 @@ func _metier(id: String, h: float, action: String) -> String:
 	return " ".join(r)
 
 
-const INTIMES := ["seduire", "embrasser", "nuit", "gouts", "masser", "couple", "rompre", "pacte_maitre", "pacte_esclave",
+## Les lieux exposés où l'on peut se risquer (la taverne : seulement la nuit, après la fermeture).
+const LIEUX_RISQUES := ["crique", "ferme", "lavoir", "plage", "chene", "taverne", "falaise", "guet"]
+
+const INTIMES := ["risque", "seduire", "embrasser", "nuit", "gouts", "masser", "couple", "rompre", "pacte_maitre", "pacte_esclave",
 	"rompre_pacte", "danser", "courtisan"]
 
 
@@ -345,7 +350,7 @@ const INTIMES := ["seduire", "embrasser", "nuit", "gouts", "masser", "couple", "
 ## texte : la description de data/actions.csv (à toi de l'écrire) ; sinon un texte suggéré.
 func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String) -> Array:
 	var f: Fiche = monde.fiche
-	var demande := {"seduire": "seduire", "embrasser": "embrasser", "nuit": "nuit", "gouts": "seduire", "masser": "embrasser", "couple": "couple"}
+	var demande := {"risque": "risque", "seduire": "seduire", "embrasser": "embrasser", "nuit": "nuit", "gouts": "seduire", "masser": "embrasser", "couple": "couple"}
 	if demande.has(quoi):
 		var raison := Intime.consentement(monde, pnj, demande[quoi])
 		if raison != "":
@@ -365,6 +370,9 @@ func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String
 			r = texte if texte != "" else "Un baiser. Puis un autre. Le monde autour peut attendre."
 		"nuit":
 			monde.scene_intime([pnj], lieu)
+			return ["", false]
+		"risque":
+			monde.scene_intime([pnj], lieu, {"risque": true})
 			return ["", false]
 		"gouts":
 			r = Intime._reveler(monde, pnj, Intime.profil(id), "lecture_envies" in f.competences())

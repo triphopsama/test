@@ -36,7 +36,9 @@
 class_name Intime
 extends RefCounted
 
-const SEUILS := {"seduire": 30, "embrasser": 40, "nuit": 60, "groupe": 65, "couple": 70, "pacte": 75}
+const SEUILS := {"seduire": 30, "embrasser": 40, "risque": 55, "nuit": 60, "groupe": 65, "couple": 70, "pacte": 75}
+## Le risque d'être surpris, à chaque geste, dans un lieu exposé.
+const RISQUE_SURPRIS := 0.08
 const MOT_D_ARRET := "Brume"
 ## Les étiquettes qui gênent quand on ne les aime pas.
 const OSE := ["anal", "douleur_douce", "mots_crus", "jouet", "cordes", "derriere"]
@@ -169,10 +171,14 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 		return "%s le sait : tu n'es pas seul dans ton cœur. « Je ne partage pas. »" % nom
 	if quoi == "groupe" and (p.partage < 50 or "groupe" in p.refuse):
 		return "%s refuse : à deux, ou pas du tout." % nom
+	if quoi == "risque" and not ("risque" in p.aime or "dehors" in p.aime or "audace" in p.aime or p.pudeur < 40):
+		return "%s rit nerveusement : « Ici ? N'importe qui pourrait passer. Non. »" % nom
+	if quoi == "risque" and "public" in p.refuse:
+		return "%s refuse : être vu, c'est sa limite." % nom
 	if quoi == "pacte" and p.bdsm < 40:
 		return "Ce jeu-là n'attire pas %s." % nom
 	var regards: Array = m.temoins(20.0).filter(func(n): return n != pnj and not n in avec and int(n.donnees.get("age", "0")) >= 18)
-	if quoi != "seduire" and not regards.is_empty() and ("public" in p.refuse or (p.pudeur >= 60 and not "risque" in p.aime)):
+	if quoi != "seduire" and quoi != "risque" and not regards.is_empty() and ("public" in p.refuse or (p.pudeur >= 60 and not "risque" in p.aime)):
 		return "%s jette un œil aux autres : « Pas devant tout le monde. »" % nom
 	for autre in avec:
 		if str(pnj.donnees.get("relations", "")).contains("ennemi") and str(pnj.donnees.get("relations", "")).contains(autre.id):
@@ -316,6 +322,8 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 				mal += 15.0
 		if g.competence != "" and g.competence in comps:
 			gain += 8.0
+		if s.get("risque", false) and ("risque" in p.aime or "dehors" in p.aime):
+			gain += 10.0   # le frisson d'être vus
 		if p.fantasme != "" and p.fantasme in g.tags and not deplait:
 			gain += 25.0
 			if not b.fantasme:
@@ -360,6 +368,9 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 				lignes.append("%s est comblé·e%s." % [nom, (" (%d/%d)" % [defi.compte, defi.fois]) if defi.get("pnj", "") == n.id else ""])
 		elif plait:
 			lignes.append("%s aime ça." % nom)
+	if s.get("risque", false) and not s.has("surpris") and id_geste != "demander" and randf() < RISQUE_SURPRIS:
+		s.surpris = true
+		lignes.append("Des pas, une lanterne : quelqu'un vous a vus. Ça se saura.")
 	if actifs(s).is_empty():
 		s.fini = true
 	return lignes
@@ -432,6 +443,8 @@ static func finir(m: Node, s: Dictionary, apres: String) -> String:
 	var bruit := 0
 	for n in s.pnjs:
 		bruit = maxi(bruit, profil(n.id).bruit)
+	if s.has("surpris"):
+		bruit = 1000   # surpris : la rumeur part à coup sûr
 	var r := rumeur(m, s.pnjs, "une nuit", bruit)
 	if r != "":
 		lignes.append(r)

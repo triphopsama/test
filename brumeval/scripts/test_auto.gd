@@ -626,6 +626,22 @@ func _intime() -> void:
 	var t := Intime.devenir_couple(monde, elise)
 	ok(monde.relations["BRU019"] < a_isaure and t.contains("Isaure"), "un harem : Isaure, jalouse, le vit mal (%s)" % t)
 	ok(Intime.consentement(monde, isaure, "nuit") != "", "Isaure ne partage pas")
+	# l'exhibition consentie : un lieu exposé, le risque d'être surpris
+	var audacieux: Node = _pnj("BRU022")
+	monde.relations["BRU022"] = 70
+	monde.relations["BRU019"] = 95
+	ok(Intime.consentement(monde, isaure, "risque").contains("Non"), "Isaure, pudique : pas ici")
+	ok(Intime.consentement(monde, audacieux, "risque") == "", "Mouche, qui aime le risque : oui")
+	var sr := Intime.nouvelle_scene(monde, [audacieux], "crique")
+	sr["risque"] = true
+	var surpris := false
+	for i in 200:
+		Intime.jouer(monde, sr, "embrasser")
+		if sr.has("surpris"):
+			surpris = true
+			break
+		sr.barres["BRU022"].plaisir = 0.0
+	ok(surpris, "à force, quelqu'un finit par vous surprendre")
 	# le pacte, un jeu convenu
 	_seul_avec(silas, [elise, isaure, silas, aldric])
 	monde.relations["BRU003"] = 90

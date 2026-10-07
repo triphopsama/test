@@ -51,3 +51,4 @@ entrainement;T'entraîner;lieu;*;*;0;0;-100;0;;entrainement;;
 nourrir_pain;Lui donner du pain;pnj;*;VES019;0;10;-100;0;OBJ327 1;v_nourrir;;
 nourrir_poisson;Lui donner un poisson;pnj;*;VES019;0;10;-100;0;BRV003 1;v_nourrir;;
 guider;La guider chez Agnès, loin des lumières;pnj;*;VES019;0;10;-100;0;;v_guider;;
+moment_risque;Un moment ici avec {nom}, au risque d'être vus;pnj;*;*;1;45;-100;0;;risque;;
