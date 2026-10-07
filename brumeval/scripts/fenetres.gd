@@ -228,7 +228,7 @@ func personnage() -> void:
 		if bonus != 0:
 			texte += " (%d %+d)" % [f.stats[s], bonus]
 		if s in fav:
-			texte += "  ★"
+			texte += "  *"
 		if f.points > 0:
 			texte += "   [+1]"
 		_ligne(texte, _monter.bind(s), ROLES[s] + (" · favorite de ta classe : elle monte d'office à chaque niveau" if s in fav else ""), f.points > 0)
