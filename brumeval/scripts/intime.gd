@@ -284,8 +284,16 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 		elif deplait:
 			lignes.append("%s se raidit : ce n'est pas pour %s." % [nom, nom])
 		elif b.plaisir >= 100.0:
-			b.comble = true
-			lignes.append("%s est comblé·e." % nom)
+			var defi: Dictionary = s.get("defi", {})
+			if defi.get("pnj", "") == n.id:
+				defi.compte = int(defi.get("compte", 0)) + 1
+			if defi.get("pnj", "") == n.id and defi.compte < int(defi.fois):
+				b.plaisir = 0.0
+				b.desir = maxf(b.desir, 50.0)
+				lignes.append("%s est comblé·e (%d/%d)… et en redemande." % [nom, defi.compte, defi.fois])
+			else:
+				b.comble = true
+				lignes.append("%s est comblé·e%s." % [nom, (" (%d/%d)" % [defi.compte, defi.fois]) if defi.get("pnj", "") == n.id else ""])
 		elif plait:
 			lignes.append("%s aime ça." % nom)
 	if actifs(s).is_empty():

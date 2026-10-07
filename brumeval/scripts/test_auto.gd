@@ -185,6 +185,7 @@ func _ready() -> void:
 	await _classes_metiers(mara, tim)
 	await _magie(mara)
 	await _intime()
+	await _defis()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -719,6 +720,82 @@ func _intime() -> void:
 	monde.desirs.clear()
 	monde.sauver_etat()
 	monde.fiche = Fiche.new()
+
+
+func _defis() -> void:
+	print("== Défis et entraînement")
+	var f := Fiche.new()
+	monde.fiche = f
+	monde.combat_auto = true
+	ok(Defis.tous().size() >= 7, "%d défis lus" % Defis.tous().size())
+	var bram: Node = _pnj("BRU002")
+	var pierrick: Node = _pnj("BRU020")
+	var elise: Node = _pnj("BRU013")
+	var lucas: Node = _pnj("BRU012")
+	monde.relations["BRU002"] = 0
+	ok(Defis.de(monde, bram).size() == 1, "Bram a un défi pour toi")
+	f.stats.For = 40   # assez pour gagner à coup sûr
+	Defis.accepter(monde, bram, "bram_bras_de_fer")
+	ok(Illustrations._texte.text.contains("cède") and "parade" in f.apprises and monde.relations["BRU002"] == 10, "le bras de fer gagné : Bram t'apprend la parade")
+	Illustrations.fermer()
+	ok(Defis.de(monde, bram).is_empty(), "un défi par jour")
+	f.stats.For = 7
+	Defis.accepter(monde, pierrick, "pierrick_peau")
+	Illustrations.fermer()
+	ok(f.defis_actifs.has("pierrick_peau"), "le défi de Pierrick attend sa peau de loup")
+	ok(_ids(monde.actions.disponibles(pierrick, monde.lieu_proche(pierrick.pos2d(), 40.0))).has("defis"), "« Les défis de Pierrick » pour la rendre")
+	f.ajouter("OBJ407")
+	Defis.rendre(monde, pierrick, "pierrick_peau")
+	ok("pistage" in f.apprises and f.nombre("OBJ407") == 0 and f.bourse == 12, "la peau rendue : Pistage appris, 12 cuivre")
+	Illustrations.fermer()
+	# le défi intime d'Élise : trois fois dans la même nuit
+	var caches := []
+	for n in monde.pnjs:
+		if n.visible and n != elise:
+			caches.append(n)
+			n.visible = false
+	elise.visible = true
+	monde.joueur.position = elise.position + Vector3(1, 0, 0)
+	monde.relations["BRU013"] = 80
+	var sc := Intime.nouvelle_scene(monde, [elise], "moulin")
+	sc["defi"] = {"defi": "elise_trois", "fois": 3, "pnj": "BRU013"}
+	var lignes := []
+	for i in 40:
+		lignes.append_array(Intime.jouer(monde, sc, "amour_passion"))
+		if sc.fini:
+			break
+	ok(sc.defi.compte == 3 and sc.barres["BRU013"].comble, "Élise comblée trois fois (%d)" % sc.defi.get("compte", 0))
+	ok("\n".join(lignes).contains("en redemande"), "… et entre deux, elle en redemande")
+	Intime.finir(monde, sc, "rester")
+	Defis.resoudre(monde, elise, "elise_trois", sc.defi.compte >= 3)
+	ok("danse_lascive" in f.apprises, "défi relevé : Élise t'apprend la danse")
+	Illustrations.fermer()
+	for n in caches:
+		n.visible = true
+	# une lutte avec Lucas, jouée par l'IA
+	lucas.visible = true
+	monde.joueur.position = lucas.position + Vector3(2, 0, 0)
+	monde.relations["BRU012"] = 0
+	Defis.accepter(monde, lucas, "lucas_lutte")
+	await get_tree().process_frame
+	ok(monde.combat != null and monde.combat.mode == "bagarre", "le défi de Lucas : une lutte")
+	if monde.combat:
+		var r = await monde.combat.fini
+		await get_tree().process_frame
+		Illustrations.fermer()
+		await get_tree().process_frame
+		ok(Illustrations._texte.text.contains("Lucas"), "le défi se résout (%s) : %s" % [r, Illustrations._texte.text.left(50)])
+		Illustrations.fermer()
+	# l'entraînement
+	var xp0 := f.xp + f.niveau * 1000
+	ok(Defis.entrainer_competences(monde).contains("+15") and f.xp + f.niveau * 1000 > xp0, "une heure d'entraînement : +15 expérience")
+	ok(Defis.entrainer_competences(monde).contains("déjà"), "une fois par jour")
+	monde.combat_auto = false
+	for id in ["BRU002", "BRU012", "BRU013", "BRU020"]:
+		monde.relations[id] = 0
+	monde.sauver_etat()
+	monde.fiche = Fiche.new()
+	Horloge.avancer(-float(Horloge._decalage) / 60.0)
 
 
 ## Seul avec n : les autres de la liste ne sont pas là (pas de témoins).

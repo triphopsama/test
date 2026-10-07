@@ -487,6 +487,7 @@ func _process(delta: float) -> void:
 	_surveiller_rencontres(delta)
 	_surveiller_desirs(delta)
 	_surveiller_equipe(delta)
+	_surveiller_defis(delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -563,6 +564,7 @@ func _regenerer() -> void:
 	var heures := floori((t - _derniere_regen) / 3600.0)
 	_derniere_regen += heures * 3600.0
 	Intime.passer_temps(self, heures)
+	Defis.expirer(self)
 	if fiche.pv < fiche.pv_max() or fiche.mana_actuelle() < fiche.mana_max():
 		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
 		# la mana revient plus vite que le sang : un quart par heure
@@ -915,13 +917,41 @@ func _surveiller_equipe(delta: float) -> void:
 
 
 ## Une nuit avec un ou plusieurs PNJ : la fenêtre de scène.
-func scene_intime(pnjs: Array, lieu: String) -> void:
+func scene_intime(pnjs: Array, lieu: String, defi := {}) -> void:
 	var s = preload("res://scripts/scene_intime.gd").new()
 	add_child(s)
-	s.commencer(self, pnjs, lieu)
+	s.commencer(self, pnjs, lieu, defi)
 	var texte: String = await s.finie
 	Horloge.avancer(480.0)
 	Illustrations.montrer("passer_la_nuit_fin", pnjs.map(func(n): return n.id) + [lieu], texte)
+	if not defi.is_empty():
+		await Illustrations.ferme
+		Defis.resoudre(self, pnjs[0], defi.defi, int(defi.get("compte", 0)) >= int(defi.fois))
+
+
+var _t_defis := 0.0
+
+
+## Toutes les 20 secondes : un PNJ près de toi peut te lancer un de ses défis (une fois par jour).
+func _surveiller_defis(delta: float) -> void:
+	_t_defis += delta
+	if _t_defis < 20.0:
+		return
+	_t_defis = 0.0
+	if combat != null or Illustrations.ouvert or fenetres.ouvert != "" or get_tree().paused or combat_auto:
+		return
+	for n in pnjs:
+		if not n.visible or n.mort or n.suit or n.pos2d().distance_to(joueur.pos2d()) > 6.0:
+			continue
+		var cle := "propose_%s_%d" % [n.id, Horloge.jour()]
+		var offres := Defis.de(self, n).filter(func(d): return d.propose == "1")
+		if offres.is_empty() or fiche.drapeaux.has(cle) or randf() > 0.25:
+			continue
+		fiche.drapeaux[cle] = true
+		var d: Dictionary = offres.pick_random()
+		fenetres.choix(d.nom, d.texte, [["Accepter", Defis.accepter.bind(self, n, d.id), d.recompense],
+			["Refuser", func(): relations[n.id] = clampi(relations.get(n.id, 0) - 1, -100, 100), "Il haussera les épaules."]])
+		return
 
 
 func _pnj_par_id(id: String) -> Node:
@@ -932,10 +962,17 @@ func _pnj_par_id(id: String) -> Node:
 
 
 ## Le joueur s'en prend à un PNJ : "bagarre" (à mains nues) ou "mortel".
-func combat_contre_pnj(cible: Node, mode: String) -> void:
-	if cible.suit:
+func combat_contre_pnj(cible: Node, mode: String, extra := {}) -> void:
+	var amical: bool = extra.has("defi") or extra.has("entrainement")
+	if cible.suit and not amical:
 		Compagnons.laisser(self, cible)   # on ne frappe pas son équipe en la gardant
 	var ennemis := [Combattant.depuis_pnj(cible.donnees, cible)]
+	var contexte := {"cible": cible}
+	contexte.merge(extra)
+	if amical:
+		# un défi ou un entraînement : personne ne t'en veut
+		_lancer([Combattant.joueur(joueur, fiche)], ennemis, mode, contexte)
+		return
 	if mode == "mortel":
 		relations[cible.id] = clampi(relations.get(cible.id, 0) - 40, -100, 100)
 		for t in temoins():
@@ -949,7 +986,7 @@ func combat_contre_pnj(cible: Node, mode: String) -> void:
 	else:
 		relations[cible.id] = clampi(relations.get(cible.id, 0) - 5, -100, 100)
 	sauver_etat()
-	_lancer([Combattant.joueur(joueur, fiche)], ennemis, mode, {"cible": cible})
+	_lancer([Combattant.joueur(joueur, fiche)], ennemis, mode, contexte)
 
 
 func _surveiller_loups() -> void:
@@ -1099,6 +1136,8 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."
 		"reddition":
 			texte = "Tu lèves les mains. On te laisse partir, cette fois, avec un dernier coup pour la route."
+	if contexte.has("entrainement"):
+		texte = "L'entraînement est fini. %s" % ("Tu l'as mis au tapis." if resultat == "victoire" else "Tu as mordu la poussière, mais tu as appris.")
 	texte += _apres_combat(resultat, contexte, allies, ennemis)
 	for n in _loups:
 		n.queue_free()
@@ -1106,6 +1145,10 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 	sauver_etat()
 	if texte != "":
 		Illustrations.montrer(action, cles, texte)
+	if contexte.has("defi"):
+		if Illustrations.ouvert:
+			await Illustrations.ferme
+		Defis.resoudre(self, contexte.cible, contexte.defi, resultat == "victoire")
 	# les vaincus encore à terre : à toi de décider de leur sort
 	var vaincus := ennemis.filter(func(c): return c.a_terre and not c.mort and not c.est_bete)
 	if resultat == "victoire" and contexte.mode != "bagarre" and not vaincus.is_empty() and not combat_auto:

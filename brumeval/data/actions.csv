@@ -46,3 +46,5 @@ travailler_nuit;Travailler la nuit (courtisan·e);lieu;taverne;*;1;60;-100;0;;co
 suivre;Proposer à {nom} de te suivre;pnj;*;*;0;5;-100;0;;suivre;;
 laisser;Dire à {nom} de rentrer chez lui;pnj;*;*;0;2;-100;0;;laisser;;
 habiller;Habiller ou déshabiller {nom};pnj;*;*;1;10;-100;0;;habiller;;
+defis;Les défis de {nom};pnj;*;*;0;1;-100;0;;defis;;
+entrainement;T'entraîner;lieu;*;*;0;0;-100;0;;entrainement;;

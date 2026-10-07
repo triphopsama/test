@@ -5,7 +5,7 @@ extends CanvasLayer
 signal ferme
 
 var monde: Node3D
-var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon", "vaincus", "choix", "tenue"
+var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon", "vaincus", "choix", "tenue", "defis", "entrainement"
 var _panneau: PanelContainer
 var _titre: Label
 var _entete: Label
@@ -374,6 +374,68 @@ func _habiller(n: Node, quoi: String, mettre: bool) -> void:
 	if r == "" and mettre:
 		var nom := "nu" if quoi == "nu" else quoi
 		Illustrations.montrer("habiller_" + nom, [n.id, "defaut"], "%s : %s." % [n.donnees.nom.get_slice(" ", 0), Compagnons.description(monde, n.id)])
+
+
+# ---------------------------------------------------------------- défis et entraînement
+
+func defis(n: Node) -> void:
+	_marchand = n
+	if ouvert != "defis":
+		_ouvrir("defis")
+	_titre.text = "Les défis de %s" % n.donnees.nom
+	_entete.text = "Accepter, c'est risquer ce qui est en jeu : affection, argent, fierté."
+	_vider()
+	for d in Defis.de(monde, n):
+		_ligne(d.nom, _accepter_defi.bind(n, d.id), "%s\nSi tu gagnes : %s. Si tu perds : %s." % [d.texte, d.recompense, d.penalite])
+	for id in monde.fiche.defis_actifs:
+		if Defis.tous()[id].pnj == n.id:
+			_ligne("Rendre : %s" % Defis.tous()[id].nom, _rendre_defi.bind(n, id), "Avant la fin du jour.")
+	if _liste.get_child_count() == 0:
+		_detail.text = "%s n'a pas de défi pour toi aujourd'hui." % n.donnees.nom.get_slice(" ", 0)
+
+
+func _accepter_defi(n: Node, id: String) -> void:
+	fermer()
+	Defis.accepter(monde, n, id)
+
+
+func _rendre_defi(n: Node, id: String) -> void:
+	fermer()
+	Defis.rendre(monde, n, id)
+
+
+## S'entraîner : seul (une heure de compétences) ou avec ton équipe (lutte, ou à deux si consentant).
+func entrainement() -> void:
+	_ouvrir("entrainement")
+	_titre.text = "L'entraînement"
+	_entete.text = "Seul ou avec ton équipe. Personne ne meurt, personne ne t'en veut."
+	_vider()
+	_ligne("Entraîner tes compétences (1 h)", _entrainer_seul, "Une fois par jour : +15 expérience, ta classe progresse aussi.")
+	var lieu: String = monde.lieu_proche(monde.joueur.pos2d(), 40.0)
+	for id in monde.fiche.equipiers:
+		var n: Node = monde._pnj_par_id(id)
+		if n == null:
+			continue
+		var nom: String = n.donnees.nom.get_slice(" ", 0)
+		_ligne("Combat d'entraînement contre %s" % nom, _lutter.bind(n), "À mains nues, comme une bagarre : la moitié de l'expérience, personne ne t'en veut.")
+		if not Intime.profil(id).is_empty() and Intime.consentement(monde, n, "nuit") == "":
+			_ligne("Pratique à deux avec %s" % nom, _pratiquer.bind(n, lieu), "Une nuit consentie : l'Art d'aimer monte.")
+
+
+func _entrainer_seul() -> void:
+	fermer()
+	Horloge.avancer(60.0)
+	Illustrations.montrer("entrainement", ["defaut"], Defis.entrainer_competences(monde))
+
+
+func _lutter(n: Node) -> void:
+	fermer()
+	monde.combat_contre_pnj(n, "bagarre", {"entrainement": true})
+
+
+func _pratiquer(n: Node, lieu: String) -> void:
+	fermer()
+	monde.scene_intime([n], lieu)
 
 
 # ---------------------------------------------------------------- un choix

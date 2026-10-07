@@ -75,6 +75,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id == "lecon" and monde.lecons_de(pnj).is_empty():
 			continue
+		if l.id == "defis" and (pnj == null or (Defis.de(monde, pnj).is_empty() and not monde.fiche.defis_actifs.keys().any(func(id): return Defis.tous()[id].pnj == pnj.id))):
+			continue
 		if l.id == "suivre" and (pnj == null or pnj.suit or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if l.id in ["laisser", "habiller"] and (pnj == null or not pnj.suit):
@@ -155,6 +157,12 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		return
 	if donne == "lecon":
 		monde.fenetres.lecons(pnj)
+		return
+	if donne == "defis":
+		monde.fenetres.defis(pnj)
+		return
+	if donne == "entrainement":
+		monde.fenetres.entrainement()
 		return
 	if donne == "habiller":
 		monde.fenetres.tenue_compagnon(pnj)

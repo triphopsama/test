@@ -131,6 +131,14 @@ D'après `univers.md` (« Désir et sexualité »). Désactivable à la créatio
 - **Les passants réagissent** une fois par jour chacun : les prudes et les pieux s'indignent (−5), les autres sont gênés (−2), les audacieux ne détournent pas les yeux (+2, désir). Corentin verbalise la nudité (amende, on rhabille). Un compagnon qui n'aime pas être vu accumule du malaise : trop de regards outrés et c'est le mot d'arrêt (−10, on le couvre).
 - **Un enfant à portée : tu le couvres aussitôt**, toujours.
 
+## Les défis et l'entraînement
+
+- **Les PNJ te lancent des défis** (`data/defis.csv`, à compléter) : quand tu passes près d'eux (une fois par jour), ou « Les défis de… ». Accepter, c'est risquer ce qui est en jeu.
+  - Lucas : une lutte au port ; Bram : un bras de fer (gagné, il t'apprend la parade) ; Pierrick : une peau de loup avant la nuit (il t'apprend le pistage), un concours de tir ; Rosalie : un concours de boisson ; Silas : une partie de cartes ; Élise : trois fois cette nuit (elle t'apprend la danse).
+  - Types : `bagarre` (une lutte, personne ne t'en veut), `jet` (ta caractéristique + 1d20 contre la sienne), `apporter` (un objet avant la fin du jour), `intime` (le combler N fois en une nuit : adultes consentants, mêmes règles que toute nuit ; entre deux, il en redemande).
+  - Récompenses et pénalités : affection, cuivre, objet, leçon gratuite, Art d'aimer, et `pacte maitre` (il te propose un pacte où tu mènes, si son profil le veut aussi).
+- **« T'entraîner »** : une heure de compétences par jour (+15 expérience), un combat d'entraînement contre quelqu'un de ton équipe (à mains nues, personne ne t'en veut), ou une pratique à deux avec un partenaire consentant (l'Art d'aimer monte).
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

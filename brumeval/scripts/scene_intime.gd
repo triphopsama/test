@@ -72,9 +72,11 @@ func _ready() -> void:
 	defile.add_child(_boutons)
 
 
-func commencer(m: Node, pnjs: Array, lieu: String) -> void:
+func commencer(m: Node, pnjs: Array, lieu: String, defi := {}) -> void:
 	monde = m
 	scene = Intime.nouvelle_scene(m, pnjs, lieu)
+	if not defi.is_empty():
+		scene["defi"] = defi
 	get_tree().paused = true
 	_montrer_media("passer_la_nuit")
 	_journal.text = "Vous êtes seuls. Le reste du monde attend dehors."
