@@ -474,7 +474,10 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 		_ecrire("%s : raté (%d %%)." % [titre, chance])
 		return
 	var brut: float = att.arme.degats + comp.mult * att.stats[comp.stat]
-	var final := brut * 100.0 / (100.0 + cible.def_phys)
+	var defense: int = cible.def_phys
+	if cible.ventre_mou and cote != "face":
+		defense = cible.stats.Rob / 2   # sur le ventre, la carapace ne protège plus
+	var final := brut * 100.0 / (100.0 + defense)
 	final *= {"face": 1.0, "flanc": 1.15, "dos": 1.3}[cote]
 	final *= clampf(pow(1.05, ecart_h), 0.8, 1.25)
 	var bloque := false

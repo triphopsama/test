@@ -22,3 +22,4 @@ descendre_puits;Descendre dans le puits;lieu;puits;*;0;1;0;0;;;Une pierre jetée
 cueillir;Cueillir des plantes;lieu;reveil,fontaine,chene,agnes;*;0;20;0;0;;BRV004 1;Sauge, consoude, et une plante que tu ne connais pas. Agnès saurait.
 regarder_mer;Regarder la mer;lieu;crique,guet,bouche,plage;*;0;5;0;0;;;Au large, rien. Ou peut-être une lanterne, qui s'éteint dès que tu la fixes.
 fouiller_fourres;Fouiller les fourrés;lieu;reveil;*;0;15;0;0;;lame_sans_nom;Tu écartes les ronces autour de la clairière où tu t'es réveillé. Des feuilles, des épines, un vieux nid.
+chasser_rats;Chasser les rats de la cave (1 argent);lieu;taverne;*;0;30;0;0;;chasse_rats;"Rosalie te tend une lanterne et un gourdin : « Des rats gros comme des chats, dans ma cave. Débarrasse-m'en et t'auras une pièce d'argent. » En bas, ça couine, et des yeux rouges s'allument entre les tonneaux."

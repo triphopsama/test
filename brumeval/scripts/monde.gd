@@ -31,6 +31,15 @@ var _dernier_jour_silas := 0
 var fiche: Fiche                 # le joueur : caractéristiques, niveau, sac, bourse
 var fenetres: CanvasLayer        # sac (I), personnage (C), marchands
 var _derniere_regen := -1.0
+var _t_rencontres := 0.0
+var _prochaine_rencontre := {}   # type de bête -> heure du monde (secondes) avant laquelle elle ne revient pas
+## Ce que laissent les bêtes (bestiaire.md) : [objet, chance].
+const BUTIN := {
+	"loup": [["OBJ407", 1.0], ["BRV002", 0.5]],
+	"rat": [],
+	"crabe": [["BRV020", 1.0]],
+	"sanglier": [["BRV021", 1.0], ["BRV021", 1.0], ["BRV022", 1.0]],
+}
 
 var _lp := PackedVector2Array()
 var _lh := PackedFloat32Array()
@@ -65,7 +74,7 @@ func _ready() -> void:
 	fenetres.monde = self
 	add_child(fenetres)
 	var args := Array(OS.get_cmdline_user_args())
-	var outil: bool = "--autotest" in args or args.any(func(a): return a.begins_with("--capture="))
+	var outil: bool = "--autotest" in args or "--equilibre" in args or args.any(func(a): return a.begins_with("--capture="))
 	if not outil and ("--nouveau" in args or not fiche.drapeaux.has("cree")):
 		_creation()
 	for a in OS.get_cmdline_user_args():
@@ -73,6 +82,10 @@ func _ready() -> void:
 			var cap := preload("res://scripts/capture.gd").new()
 			cap.monde = self
 			add_child(cap)
+	if "--equilibre" in OS.get_cmdline_user_args():
+		var eq := preload("res://scripts/equilibre.gd").new()
+		eq.monde = self
+		add_child(eq)
 	if "--autotest" in OS.get_cmdline_user_args():
 		var t := preload("res://scripts/test_auto.gd").new()
 		t.monde = self
@@ -468,6 +481,7 @@ func _process(delta: float) -> void:
 		l.visible = nuit
 	_suivre_camera(delta)
 	_surveiller_loups()
+	_surveiller_rencontres(delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -803,18 +817,71 @@ func _surveiller_loups() -> void:
 		Illustrations.montrer("loups_passent", ["loups"], "Des yeux jaunes dans les fourrés. La meute te regarde longtemps, renifle l'air, puis s'écarte. Les bêtes n'attaquent pas d'abord ceux qui sont des leurs.")
 		return
 	sauver_etat()
+	attaque_de_betes("loup", 2 + randi() % 2, lieux.loups.pos + Vector2(0, 7),
+		"Des grognements dans les fourrés. Des yeux jaunes, bas, qui s'approchent. La meute t'a senti.", {"loups": true})
+
+
+## Des bêtes surgissent autour de « centre » et attaquent après l'illustration.
+func attaque_de_betes(type: String, nombre: int, centre: Vector2, texte: String, contexte := {}) -> void:
 	var ennemis := []
-	for i in 2 + randi() % 2:
+	for i in nombre:
 		var n := preload("res://scripts/bete.gd").new()
-		n.planche = "res://sprites/loup_planche.png"
-		var p: Vector2 = lieux.loups.pos + Vector2(randf_range(-6, 6), randf_range(4, 10))
+		n.planche = Combattant.BETES[type].planche
+		var p := centre + Vector2(randf_range(-4, 4), randf_range(-4, 4))
+		if not praticable(p):
+			p = centre
 		n.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 		add_child(n)
 		_loups.append(n)
-		ennemis.append(Combattant.loup(i + 1, n))
-	Illustrations.montrer("loups", ["loups"], "Des grognements dans les fourrés. Des yeux jaunes, bas, qui s'approchent. La meute t'a senti.")
+		ennemis.append(Combattant.bete(type, i + 1 if nombre > 1 else 0, n))
+	contexte.betes = type
+	Illustrations.montrer("loups" if contexte.has("loups") else "betes_" + type, [type], texte)
 	await Illustrations.ferme
-	_lancer([Combattant.joueur(joueur, fiche)], ennemis, "mortel", {"loups": true})
+	_lancer([Combattant.joueur(joueur, fiche)], ennemis, "mortel", contexte)
+
+
+## Les rencontres de la côte, une chance toutes les 6 secondes selon l'endroit :
+## un loup isolé ou un sanglier dans le bois, un crabe-rocher sur la grève à marée basse.
+func _surveiller_rencontres(delta: float) -> void:
+	_t_rencontres += delta
+	if _t_rencontres < 6.0:
+		return
+	_t_rencontres = 0.0
+	if combat != null or Illustrations.ouvert or joueur == null or get_tree().paused:
+		return
+	var p: Vector2 = joueur.pos2d()
+	var t: float = Horloge.maintenant()
+	if t < _prochaine_rencontre.get("toutes", 0.0):
+		return
+	var dans_bois := Geometry2D.is_point_in_polygon(p, bois)
+	var dans_landes := Geometry2D.is_point_in_polygon(p, landes)
+	var greve := false
+	for k in ["plage", "crique", "bouche"]:
+		if lieux.has(k) and p.distance_to(lieux[k].pos) < 25.0:
+			greve = true
+	var loin_taniere: bool = p.distance_to(lieux.loups.pos) > 40.0
+	var choix := ""
+	if dans_bois and loin_taniere and randf() < 1.0 / 20.0:
+		choix = "loup"
+	elif (dans_bois or dans_landes) and randf() < 1.0 / 35.0:
+		choix = "sanglier"
+	elif greve and Horloge.maree_basse() and randf() < 1.0 / 8.0:
+		choix = "crabe"
+	if choix == "" or t < _prochaine_rencontre.get(choix, 0.0):
+		return
+	_prochaine_rencontre[choix] = t + {"loup": 7200.0, "sanglier": 14400.0, "crabe": 10800.0}[choix]
+	_prochaine_rencontre["toutes"] = t + 1200.0
+	if choix != "crabe" and fiche.a("ami_betes"):
+		Illustrations.montrer("betes_passent", [choix], "Une bête dans les fourrés. Elle te regarde, renifle, et passe son chemin.")
+		return
+	var centre: Vector2 = p + Vector2(randf_range(-5, 5), randf_range(4, 6))
+	match choix:
+		"loup":
+			attaque_de_betes("loup", 1, centre, "Un loup seul, maigre, la queue basse. Chassé de sa meute, il a faim, et toi tu marches seul. Un loup isolé fuit quand ça tourne mal.")
+		"sanglier":
+			attaque_de_betes("sanglier", 1, centre, "Les ronces craquent. Un sanglier sort du fourré, la hure basse, et gratte la terre. Il va charger : écarte-toi de sa ligne.")
+		"crabe":
+			attaque_de_betes("crabe", 1, p + Vector2(2, 0), "Le rocher sous ton pied bouge. Ce n'est pas un rocher : c'est un crabe-rocher, et il n'aime pas qu'on lui marche dessus. Sa carapace est dure ; son ventre, beaucoup moins.")
 
 
 func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) -> void:
@@ -843,12 +910,15 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 	joueur.set_process(true)
 	var texte := ""
 	var action := "combat_" + resultat
-	var cles := ["loups"] if contexte.has("loups") else ([contexte.cible.id] if contexte.has("cible") else [])
+	var cles := ["loups"] if contexte.has("loups") else ([contexte.betes] if contexte.has("betes") else ([contexte.cible.id] if contexte.has("cible") else []))
 	var tues := ennemis.filter(func(c): return c.mort).map(func(c): return c.nom)
 	match resultat:
 		"victoire":
 			if contexte.has("loups"):
 				texte = "La meute est dispersée. Tu as les mains qui tremblent."
+			elif contexte.has("betes"):
+				texte = {"loup": "Le loup ne bouge plus, ou il a fui dans les fougères.", "rat": "Le dernier rat couine et file dans un trou. La cave est à toi.",
+					"crabe": "Retourné sur le dos, le crabe agite ses pattes une dernière fois.", "sanglier": "Le sanglier s'effondre dans les ronces. De quoi manger pour des jours."}.get(contexte.betes, "Les bêtes sont parties.")
 			elif contexte.has("cible"):
 				texte = "%s est au sol." % contexte.cible.donnees.nom
 				if tues:
@@ -858,6 +928,8 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 		"defaite":
 			if contexte.has("loups"):
 				texte = "Le noir. Puis l'odeur des herbes : Pierrick t'a trouvé et porté chez Agnès. « T'as de la chance que j'aie entendu les loups. »"
+			elif contexte.has("betes"):
+				texte = "Le noir. Tu te réveilles chez Agnès, qui recoud en grommelant : « Battu par une bête. Ça arrive aux meilleurs, et surtout aux autres. »"
 			else:
 				texte = "Tu te réveilles plus tard, chez Agnès, le visage en sang." if contexte.mode == "bagarre" else "Tu te réveilles plus tard, chez Agnès, le visage en sang et la bourse plus légère."
 			Horloge.avancer(180.0)
@@ -901,20 +973,22 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 		if niveaux:
 			lignes.append("Niveau %d ! %d points à répartir (touche C)." % [fiche.niveau, fiche.points])
 	# le butin
-	if resultat == "victoire" and contexte.has("loups"):
-		var peaux := 0
-		var crocs := 0
+	if resultat == "victoire" and contexte.has("betes"):
+		var pris := {}
 		for e in ennemis:
 			if e.a_terre or e.mort:
-				peaux += 1
-				if randf() < 0.5:
-					crocs += 1
-		if peaux:
-			fiche.ajouter("OBJ407", peaux)
-			lignes.append("Tu prends %d peau(x) de loup." % peaux)
-		if crocs:
-			fiche.ajouter("BRV002", crocs)
-			lignes.append("Et %d croc(s)." % crocs)
+				for b in BUTIN.get(contexte.betes, []):
+					if randf() < b[1]:
+						pris[b[0]] = pris.get(b[0], 0) + 1
+		for id in pris:
+			fiche.ajouter(id, pris[id])
+		if pris:
+			lignes.append("Tu prends : %s." % ", ".join(pris.keys().map(func(id): return "%s ×%d" % [Objets.get_(id).nom.to_lower(), pris[id]])))
+		if contexte.has("paie"):
+			fiche.bourse += contexte.paie
+			lignes.append("%s te paie %s." % [contexte.get("payeur", "On"), Objets.texte_prix(contexte.paie)])
+			if contexte.has("payeur_id"):
+				relations[contexte.payeur_id] = clampi(relations.get(contexte.payeur_id, 0) + 5, -100, 100)
 	elif resultat == "victoire" and bagarre:
 		lignes.append("Le perdant paie la tournée : +6 cuivre.")
 		fiche.bourse += 6
@@ -936,7 +1010,7 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 		var paye := mini(6, fiche.bourse)
 		fiche.bourse -= paye
 		lignes.append("Tu paies la tournée : %s." % Objets.texte_prix(paye))
-	elif resultat == "defaite" and not contexte.has("loups") and fiche.bourse > 0:
+	elif resultat == "defaite" and not contexte.has("betes") and fiche.bourse > 0:
 		var perdu := ceili(fiche.bourse / 2.0)
 		fiche.bourse -= perdu
 		lignes.append("On t'a pris %s." % Objets.texte_prix(perdu))

@@ -48,3 +48,6 @@ BRV014;Lunettes;bijou;tete;0;0;;0;0;0;Per +1;0;—;2 or;—;Des verres plus clai
 BRV015;Téléphone éteint;outil;—;0;0;;0;0;0;—;0;—;2 or;—;Une plaque noire et lisse qui ne s'allume plus. Un objet de sorcier, diront certains.
 BRV016;Photo;outil;—;0;0;;0;0;0;—;0;—;invendable;—;Des visages d'avant, figés plus nets qu'aucun peintre ne saurait le faire.
 BRV017;Bijou de l'autre monde;bijou;cou;0;0;;0;0;0;—;0;—;1 or 10 argent;—;Un bijou d'un travail trop fin pour ce monde.
+BRV020;Carapace de crabe-rocher;materiau;—;0;0;;0;0;0;—;0;—;1 argent;—;Dure comme la pierre. Bram en fait des boucliers légers.
+BRV021;Viande de sanglier;consommable;—;0;0;;0;0;0;—;20;—;4 cuivre;BRU011;Un bon morceau, à griller. Rosalie en achète pour sa salle.
+BRV022;Défenses de sanglier;materiau;—;0;0;;0;0;0;—;0;—;1 argent;—;Deux crocs recourbés, jaunis. Un trophée, ou un manche de couteau.

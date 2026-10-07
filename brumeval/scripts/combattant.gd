@@ -14,6 +14,9 @@ const ARMES := {
 	"arc": {"nom": "arc de chasse", "degats": 8, "portee": 6, "stat": "Agi", "objet": "OBJ072"},
 	"baton": {"nom": "bâton", "degats": 4, "portee": 1, "stat": "For"},
 	"crocs": {"nom": "crocs", "degats": 4, "portee": 1, "stat": "Agi"},
+	"dents": {"nom": "dents", "degats": 3, "portee": 1, "stat": "Agi"},
+	"pinces": {"nom": "pinces", "degats": 8, "portee": 1, "stat": "For"},
+	"defenses": {"nom": "défenses", "degats": 7, "portee": 1, "stat": "For"},
 }
 
 ## Les compétences du prototype. mult × stat s'ajoute aux dégâts de l'arme.
@@ -25,6 +28,7 @@ const COMPETENCES := {
 	"coup_bouclier": {"nom": "Coup de bouclier", "mult": 0.6, "stat": "For", "endurance": 8, "etat": "etourdi", "resiste": "Rob"},
 	"morsure": {"nom": "Morsure", "mult": 1.2, "stat": "Agi", "endurance": 6, "etat": "saignement", "resiste": "Vit"},
 	"soin": {"nom": "Soin", "soin": 2.0, "stat": "Sag", "mana": 8, "portee": 3},
+	"charge": {"nom": "Charge", "mult": 1.3, "stat": "For", "endurance": 8, "etat": "renverse", "resiste": "Rob"},
 }
 
 var id := ""
@@ -57,6 +61,7 @@ var stable := false
 var mort := false
 var sorti := false         # a fui ou s'est rendu
 var tours_saignement := 3
+var ventre_mou := false      # crabe-rocher : de flanc ou de dos, la carapace ne protège plus
 var bonus_toucher := 0       # Soldat : +5
 var bonus_distance := 0      # Œil de tireur +10, Mauvaise vue −10
 var increvable := false      # une fois : reste debout à 1 PV
@@ -147,18 +152,39 @@ static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 	return c
 
 
-static func loup(i: int, n: Node3D) -> Combattant:
+## Les bêtes de la côte (monde/bestiaire.md). armure : défense en plus de la Robustesse.
+const BETES := {
+	"loup": {"nom": "Loup gris", "niveau": 2, "arme": "crocs", "competences": ["morsure"], "planche": "res://sprites/loup_planche.png",
+		"stats": {"For": 6, "Agi": 9, "End": 7, "Vit": 3, "Rob": 4, "Int": 1, "Sag": 2, "Per": 9, "Vol": 3}},
+	"rat": {"nom": "Rat géant", "niveau": 1, "arme": "dents", "competences": [], "planche": "res://sprites/rat_planche.png",
+		"stats": {"For": 3, "Agi": 7, "End": 4, "Vit": 1, "Rob": 2, "Int": 1, "Sag": 1, "Per": 6, "Vol": 2}},
+	"crabe": {"nom": "Crabe-rocher", "niveau": 2, "arme": "pinces", "competences": [], "armure": 10, "ventre_mou": true,
+		"planche": "res://sprites/crabe_planche.png",
+		"stats": {"For": 6, "Agi": 3, "End": 6, "Vit": 5, "Rob": 12, "Int": 1, "Sag": 1, "Per": 5, "Vol": 4}},
+	"sanglier": {"nom": "Sanglier des ronces", "niveau": 3, "arme": "defenses", "competences": ["charge"], "planche": "res://sprites/sanglier_planche.png",
+		"stats": {"For": 12, "Agi": 6, "End": 8, "Vit": 7, "Rob": 7, "Int": 1, "Sag": 2, "Per": 5, "Vol": 6}},
+}
+
+
+static func bete(type: String, i: int, n: Node3D) -> Combattant:
+	var b: Dictionary = BETES[type]
 	var c := Combattant.new()
-	c.id = "loup%d" % i
-	c.nom = "Loup gris %d" % i
+	c.id = "%s%d" % [type, i]
+	c.nom = b.nom + (" %d" % i if i > 0 else "")
 	c.est_bete = true
 	c.noeud = n
-	c.niveau = 2
-	c.stats = {"For": 6, "Agi": 9, "End": 7, "Vit": 3, "Rob": 4, "Int": 1, "Sag": 2, "Per": 9, "Vol": 3}
-	c.arme = ARMES.crocs
-	c.competences = ["morsure"]
+	c.niveau = b.niveau
+	c.stats = b.stats.duplicate()
+	c.arme = ARMES[b.arme]
+	c.competences = b.competences.duplicate()
+	c.def_phys = b.get("armure", 0)
+	c.ventre_mou = b.get("ventre_mou", false)
 	c._calculer()
 	return c
+
+
+static func loup(i: int, n: Node3D) -> Combattant:
+	return bete("loup", i, n)
 
 
 func en_jeu() -> bool:

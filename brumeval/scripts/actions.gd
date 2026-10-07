@@ -15,7 +15,8 @@
 #                   (« OBJ327 1 » : un pain de Mara). Sans ça, l'action est refusée.
 #   donne           ce que ça rapporte, séparé par des virgules : « cuivre 6 », « BRV003 2 »
 #                   (un objet de data/objets.csv), « repos » (tous les PV),
-#                   « boutique » / « vente » (ouvre le marchand), « lame_sans_nom »
+#                   « boutique » / « vente » (ouvre le marchand), « lame_sans_nom »,
+#                   « chasse_rats » (les rats géants de la cave, une fois par jour, payé si tu gagnes)
 #   description     le texte affiché ; {nom} {activite} {parole} {lieu} sont remplacés
 #
 # Règles fixes (dans le code, pas dans le fichier) pour les actions intimes :
@@ -103,6 +104,15 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	var donne := str(l.get("donne", ""))
 	if donne in ["boutique", "vente"]:
 		monde.fenetres.marchand(pnj, donne == "vente")
+		return
+	if donne == "chasse_rats":
+		if monde.fiche.drapeaux.get("rats_jour", 0) == Horloge.jour():
+			Illustrations.montrer(l.id + "_refus", cles, "Rosalie secoue la tête : « Tu les as déjà chassés aujourd'hui. Ils reviendront demain, ils reviennent toujours. »")
+			return
+		monde.fiche.drapeaux["rats_jour"] = Horloge.jour()
+		Horloge.avancer(float(l.duree_min))
+		monde.attaque_de_betes("rat", 2 + randi() % 2, monde.joueur.pos2d() + Vector2(0, 4), _remplacer(texte, pnj, lieu),
+			{"paie": 12, "payeur": "Rosalie", "payeur_id": "BRU011"})
 		return
 	if pnj != null:
 		var effet := int(l.effet_affection)

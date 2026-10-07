@@ -221,6 +221,52 @@ func _ready() -> void:
 			ok(f.pv >= 1, "vaincu, mais vivant (%d PV)" % f.pv)
 	Illustrations.fermer()
 	await get_tree().process_frame
+	print("== Bêtes à ta taille")
+	var rat := Combattant.bete("rat", 1, monde.joueur)
+	ok(rat.niveau == 1 and rat.pv_max < 40, "un rat géant : niveau 1, %d PV" % rat.pv_max)
+	var crabe := Combattant.bete("crabe", 0, monde.joueur)
+	ok(crabe.ventre_mou and crabe.def_phys > 20, "le crabe-rocher : carapace %d, ventre mou" % crabe.def_phys)
+	f = Fiche.new()
+	monde.fiche = f
+	f.ajouter("OBJ002")
+	f.equiper("OBJ002")
+	var tav: Vector2 = monde.lieux.taverne.pos + Vector2(0, 6)
+	monde.joueur.position = Vector3(tav.x, monde.hauteur(tav.x, tav.y), tav.y)
+	var rats: Dictionary = {}
+	for l in monde.actions.disponibles(null, "taverne"):
+		if l.id == "chasser_rats":
+			rats = l
+	ok(not rats.is_empty(), "on peut chasser les rats de la cave de Rosalie")
+	monde.actions.executer(rats, null, "taverne")
+	await get_tree().process_frame
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "les rats attaquent")
+	if monde.combat:
+		var r4 = await monde.combat.fini
+		await get_tree().process_frame
+		ok(r4 != "victoire" or f.bourse >= 12, "chasse aux rats : %s, bourse %s" % [r4, Objets.texte_prix(f.bourse)])
+		Illustrations.fermer()
+	monde.actions.executer(rats, null, "taverne")
+	ok(Illustrations._texte.text.contains("déjà"), "une fois par jour")
+	Illustrations.fermer()
+	var bois_p: Vector2 = monde.lieux.reveil.pos
+	monde.joueur.position = Vector3(bois_p.x, monde.hauteur(bois_p.x, bois_p.y), bois_p.y)
+	monde._prochaine_rencontre.clear()
+	var vu := false
+	for i in 200:
+		monde._t_rencontres = 10.0
+		monde._surveiller_rencontres(0.0)
+		if Illustrations.ouvert:
+			vu = true
+			break
+	ok(vu, "une bête finit par surgir dans le bois (%s)" % Illustrations._texte.text.left(40))
+	Illustrations.fermer()
+	await get_tree().process_frame
+	if monde.combat:
+		await monde.combat.fini
+		await get_tree().process_frame
+		Illustrations.fermer()
 	print("== Agression")
 	var bram: Node = _pnj("BRU002")
 	monde.relations["BRU002"] = -90

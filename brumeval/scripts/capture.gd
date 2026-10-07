@@ -22,7 +22,9 @@ func _ready() -> void:
 		await get_tree().process_frame
 	if args.has("combat"):
 		# --combat=loups : la meute près de sa tanière ; --combat=bagarre : Lucas au port
-		if args.combat == "loups":
+		if Combattant.BETES.has(args.combat):
+			monde.attaque_de_betes(args.combat, 2 if args.combat == "rat" else 1, monde.joueur.pos2d() + Vector2(1, 4), "")
+		elif args.combat == "loups":
 			var p: Vector2 = monde.lieux.loups.pos + Vector2(0, 14)
 			monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
 			monde._dernier_jour_loups = 0
