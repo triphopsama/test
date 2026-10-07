@@ -188,6 +188,33 @@ et leurs emplois du temps (plan : [monde/cartes/pierrefane.md](../monde/cartes/p
   `data/<carte>/pnj.csv` et `emplois.csv`, et une ligne dans `CARTES` (scripts/monde.gd).
   Une action réservée à une carte : `pierrefane:port` dans la colonne lieux.
 
+## Les amours des habitants
+
+Ils vivent leur vie sans toi (scripts/liens.gd), à toute heure, même dans la ville où tu n'es pas :
+deux qui se plaisent passent la nuit ensemble ; une liaison devient un couple, ou s'éteint ; un couple
+s'ouvre, se sépare, se retrouve ; une liaison secrète finit par se découvrir (pardon et couple ouvert,
+ou la porte qui claque, selon la jalousie et ce que chacun partage). Seulement entre adultes qui ont
+un profil, de la même ville, présents (pas « en route »), qui s'attirent, et jamais dans une famille.
+
+Ce que tu en vois : l'image si tu es là, sinon les **ragots** (taverne, auberge, lavoir, place).
+Ce que tu peux en faire :
+
+| Action | Ce que ça fait |
+| --- | --- |
+| Lui demander où il en est | ses amours (affection 30 ; un secret à 50) |
+| Lui présenter quelqu'un | Sag + Per : ça les rapproche, parfois tout de suite |
+| Lui dire qu'on le trompe | s'il l'est, et que tu le sais : il te remercie, les amants t'en veulent (-20) |
+| Couvrir ses amours | un alibi : +10 avec les deux, le secret tient mieux |
+| Faire payer ton silence | de l'argent (Vol + Int contre lui) ; raté, il avoue tout et ça se sait |
+| Le consoler | après une rupture (+8, une fois par jour) |
+| Les réconcilier | Sag + Int : ils se retrouvent (+10) |
+| Semer le doute | Int + Agi contre son flair : ils se séparent, ou ils comprennent que c'est toi (-25) |
+| Leur proposer une nuit à trois | un couple ouvert, l'autre à côté, chacun doit le vouloir |
+
+Et toi : un couple qui t'aime bien (affection 40, ouvert, qui partage) peut t'inviter à le suivre ;
+tu peux décliner sans rien perdre. Si ton couple te trompe, il vient te le dire : pardonner, rompre,
+partager (plus de secrets, et la porte ouverte à trois), ou t'expliquer avec l'autre à mains nues.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).
@@ -207,7 +234,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 - Le corps et le profil intime à la création, les évolutions de classe aux niveaux 25, 50 et 75, la maîtrise des compétences (1 à 10) et les fusions, les sorts de terre, de foudre, d'ombre, de nature, de mort, de sang et d'esprit, le terrain qui brûle ou gèle, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
-- La grotte, Pierrefane et le reste du monde.
+- La grotte (une autre session s’en charge) et le reste du monde au-delà de Brumeval et Pierrefane.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
 - Les sprites sont les essais en 16 × 24 ; les bâtiments sont des volumes simples.
 

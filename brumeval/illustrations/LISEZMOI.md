@@ -50,3 +50,8 @@ Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU0
 | `vesperine_crique/`, `vesperine_libre/`, `vesperine_capturee/` | la nuit de Vesperine (son id : `VES019`) |
 | `nourrir_pain/`, `nourrir_poisson/`, `guider/` | la nourrir, la guider chez Agnès |
 | `offrande_pierre/`, `offrande_pain/`, `offrande_mures/`, `fee_benir/`, `fee_mepris/`, `brume_egare/` | les fées (ids `FEE001` Brumelle, `FEE002` Lirelle, `FEE003` Mousse) |
+| `voyager/`, `nuit_margo/`, `manger/` | Pierrefane : le sentier côtier, Margo (`PIE004`), la soupe du Mouillage |
+| `lien_liaison/`, `lien_couple/`, `lien_fin/`, `lien_ouvert/`, `lien_rupture/`, `lien_reconciliation/`, `lien_infidelite/` | les amours des habitants entre eux, quand tu es là (`BRU008+BRU012.png`, puis chacun) |
+| `lien_trahison/`, `lien_pardon/`, `lien_ouvert/`, `lien_rupture/` | ton couple t'a trompé·e, et ce que tu en fais |
+| `lien_invitation/` | un couple ouvert t'invite à les suivre |
+| `ragots/`, `confidences/`, `entremetteur/`, `denoncer/`, `couvrir/`, `chantage/`, `consoler/`, `reconcilier/`, `zizanie/` | ce que tu fais de leurs amours |

@@ -17,6 +17,10 @@ func ok(cond: bool, quoi: String) -> void:
 func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
+	Liens.hasard = false
+	monde.liens.clear()
+	monde.journal_liens.clear()
+	Liens.installer(monde)
 	if monde.carte == "pierrefane":
 		_pierrefane()
 		monde.fiche.drapeaux.erase("carte")
@@ -197,6 +201,7 @@ func _ready() -> void:
 	await _vesperine()
 	_fees()
 	await _domptage()
+	_liens()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -1023,3 +1028,89 @@ func _pierrefane() -> void:
 	monde.relations["PIE012"] = 0
 	ok(Defis.de(monde, thorga).any(func(d): return d.id == "thorga_bras"), "Thorga te défie au bras de fer")
 	Horloge.avancer(-float(Horloge._decalage) / 60.0)
+
+
+func _liens() -> void:
+	print("== Les amours des habitants entre eux")
+	var f := Fiche.new()
+	f.sexe = "homme"
+	f.stats.Sag = 30
+	f.stats.Int = 30
+	f.stats.Agi = 30
+	f.stats.Per = 30
+	monde.fiche = f
+	monde.liens.clear()
+	monde.journal_liens.clear()
+	Liens.installer(monde)
+	ok(Liens.couple_de(monde, "BRU009") == "BRU010" and Intime.profil("BRU010").couple == "BRU009", "Gaëlle et Félix en couple au départ")
+	ok(Liens.couple_de(monde, "PIE013") == "PIE014", "Ondine et Pâris aussi, à Pierrefane")
+	ok(not Liens.compatibles(monde, "BRU001", "BRU005"), "jamais avec un enfant (Tim)")
+	ok(not Liens.compatibles(monde, "BRU013", "PIE004"), "pas d'une ville à l'autre")
+	ok(not Liens.compatibles(monde, "BRU009", "BRU012"), "ni avec qui est parti au loin (Gaëlle)")
+	var t := Liens.appliquer_evenement(monde, "liaison", "BRU008", "BRU012")
+	var l := Liens.entre(monde, "BRU008", "BRU012")
+	ok(l.etat == "liaison" and l.secret and "BRU007" in l.trahis, "Clémence et Lucas : une liaison secrète, Aldric trompé (%s)" % t)
+	var felix := _pnj("BRU007")
+	ok(not Liens.dispo(monde, "denoncer", felix), "tu ne peux pas dénoncer ce que tu ne sais pas")
+	l.connu = true
+	ok(Liens.dispo(monde, "denoncer", felix), "... mais une fois que tu le sais, si")
+	ok(Liens.dispo(monde, "couvrir", _pnj("BRU012")) and Liens.dispo(monde, "chantage", _pnj("BRU012")), "couvrir ou faire chanter Lucas")
+	t = Liens.agir(monde, "denoncer", felix)
+	ok(Liens.entre(monde, "BRU008", "BRU007").etat == "rompu" and Intime.profil("BRU008").couple == "", "Aldric ne pardonne pas : rupture (%s)" % t.left(80))
+	ok(Liens.dispo(monde, "consoler", felix) and Liens.dispo(monde, "reconcilier", felix), "consoler Aldric, ou les réconcilier")
+	t = Liens.agir(monde, "consoler", felix)
+	ok(monde.relations["BRU007"] >= 8, "le consoler : " + t)
+	var essais := 0
+	while Liens.entre(monde, "BRU008", "BRU007").etat != "couple" and essais < 10:
+		Liens.agir(monde, "reconcilier", felix)
+		essais += 1
+	ok(Liens.entre(monde, "BRU008", "BRU007").etat == "couple", "réconciliés (%d essai·s)" % essais)
+	ok(Liens.ragots(monde).contains("Clémence"), "les ragots en parlent")
+	monde.relations["BRU013"] = 0
+	ok(Liens.confidences(monde, _pnj("BRU013")).contains("affection 30"), "on ne se confie pas à un inconnu")
+	# une invitation : Élise et Silas, ouverts, qui t'aiment bien
+	Liens.appliquer_evenement(monde, "liaison", "BRU003", "BRU013")
+	var elise := _pnj("BRU013")
+	var silas := _pnj("BRU003")
+	for n in [elise, silas]:
+		n.visible = true
+		n.mort = false
+		n.suit = false
+		monde.relations[n.id] = 60
+		monde.desirs[n.id] = 90
+	elise.position = monde.joueur.position + Vector3(2, 0, 0)
+	silas.position = monde.joueur.position + Vector3(-2, 0, 0)
+	var paire: Array = []
+	if not monde.enfant_proche(monde.joueur.pos2d()):
+		paire = Liens.invitation_possible(monde)
+		ok(paire.size() == 2, "Élise et Silas t'invitent à les suivre")
+		ok(Liens.invitation_possible(monde).is_empty(), "une fois par jour")
+	ok(Liens.dispo(monde, "proposer_trois", elise), "ou c'est toi qui proposes")
+	ok(not Liens.dispo(monde, "proposer_trois", _pnj("BRU019")), "pas à Isaure (partage 5)")
+	# ton couple te trompe
+	f.partenaires["BRU014"] = "couple"
+	Liens.appliquer_evenement(monde, "liaison", "BRU014", "BRU001")
+	ok(f.drapeaux.get("trahison_BRU014", "") == "BRU001", "Corentin te trompe avec Mara : il viendra te le dire")
+	ok(_ids(monde.actions.disponibles(null, "taverne")).has("ragots"), "les ragots, à la taverne")
+	ok(_ids(monde.actions.disponibles(felix, "place")).has("confidences"), "lui demander où il en est")
+	Liens.hasard = true
+	for id in Intime.profils():
+		monde.desirs[id] = 70
+	Liens.passer_temps(monde, 300)
+	Liens.hasard = false
+	ok(monde.journal_liens.size() <= Liens.JOURNAL_MAX and monde.journal_liens.size() > 3, "300 heures de vie : %d nouvelles" % monde.journal_liens.size())
+	for k in monde.liens:
+		var x = monde.liens[k]
+		if x is Dictionary and x.etat in ["liaison", "couple"] and Liens.present(monde, x.a) and Liens.present(monde, x.b):
+			if not Liens.compatibles(monde, x.a, x.b):
+				ok(false, "un lien impossible : " + k)
+	print("  " + Liens.ragots(monde).replace("\n", "\n  "))
+	Illustrations.fermer()
+	monde.fenetres.fermer()
+	monde.liens.clear()
+	monde.journal_liens.clear()
+	Liens.installer(monde)
+	monde.relations.clear()
+	monde.desirs.clear()
+	monde.sauver_etat()
+	monde.fiche = Fiche.new()

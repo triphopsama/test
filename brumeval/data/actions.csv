@@ -71,3 +71,13 @@ travailler_nuit;Travailler la nuit (courtisan·e libre);lieu;pierrefane:port,aub
 nuit_margo;Monter avec Margo (2 argent);pnj;lanternes;PIE004;1;0;-100;0;2 argent;nuit_payee;;
 manger;Manger la soupe de poisson (3 cuivre);lieu;auberge;*;0;30;-100;0;3 cuivre;;;Ondine pose un bol fumant : « Le poisson de Pâris, quand il pêche au lieu de jouer. » Pâris, à la table d'à côté, fait semblant de ne pas entendre.
 pecher;Pêcher;lieu;pierrefane:port;*;0;60;0;0;;BRV003 2;;Une heure au bout du quai de Pierrefane, entre les caisses du Goéland gris. Kael te regarde faire sans rien dire, puis te montre où mordent les bars.
+ragots;Écouter les ragots;lieu;taverne,auberge,lavoir,place;*;0;30;-100;0;;ragots;;
+confidences;Lui demander où il en est (amours);pnj;*;*;0;20;-100;0;;confidences;;
+entremetteur;Lui présenter quelqu'un;pnj;*;*;0;20;10;0;;entremetteur;;
+denoncer;Lui dire qu'on le trompe;pnj;*;*;0;15;-100;0;;denoncer;;
+couvrir;Couvrir ses amours (un alibi);pnj;*;*;0;10;-100;0;;couvrir;;
+chantage;Faire payer ton silence;pnj;*;*;0;10;-100;0;;chantage;;
+consoler;Le consoler;pnj;*;*;0;30;-100;0;;consoler;;
+reconcilier;Les réconcilier;pnj;*;*;0;60;20;0;;reconcilier;;
+zizanie;Semer le doute dans son couple;pnj;*;*;0;15;-100;0;;zizanie;;
+proposer_trois;Leur proposer une nuit à trois;pnj;*;*;1;0;40;0;;proposer_trois;;

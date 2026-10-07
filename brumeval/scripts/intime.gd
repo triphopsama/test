@@ -62,6 +62,7 @@ static func profils() -> Dictionary:
 			l.bruit = int(l.get("bruit", "30"))
 			l.fantasme = str(l.get("fantasme", ""))
 			l.ages = str(l.get("ages", ""))
+			l.couple_depart = str(l.get("couple", ""))   # liens.gd change « couple » au fil des jours
 			_profils[l.id] = l
 	return _profils
 
@@ -203,6 +204,8 @@ static func partenaire_pour(m: Node, n: Node) -> Node:
 		var lien := _lien(n, o)
 		if lien == "famille":
 			continue
+		if Liens.entre(m, n.id, o.id).get("etat", "") in ["liaison", "couple"]:
+			return o   # leurs amours d'aujourd'hui (liens.gd)
 		if (p.couple != "" and p.couple != o.id and p.partage < 60) or (q.couple != "" and q.couple != n.id and q.partage < 60):
 			continue
 		if lien == "proche":

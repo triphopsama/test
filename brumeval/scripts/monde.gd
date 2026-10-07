@@ -27,6 +27,8 @@ var pnj_donnees := {}      # id -> ligne de pnj.csv
 var pnjs: Array = []
 var relations := {}        # id -> affection du PNJ envers le joueur
 var desirs := {}           # id -> désir du PNJ, 0 à 100 (intime.gd)
+var liens := {}            # "A|B" -> liaison, couple, rupture entre deux PNJ (liens.gd)
+var journal_liens: Array = []   # ce qui s'est passé entre eux : les ragots
 var betes_suivantes: Array = []  # les nœuds des bêtes apprivoisées qui te suivent
 var joueur: Node3D
 var camera: Camera3D
@@ -88,6 +90,7 @@ func _ready() -> void:
 	_creer_joueur()
 	_creer_pnjs()
 	Compagnons.restaurer(self)
+	Liens.installer(self)
 	if carte == "brumeval":
 		Vesperine.installer(self)
 	Fees.installer(self)
@@ -527,6 +530,7 @@ func _process(delta: float) -> void:
 	_surveiller_desirs(delta)
 	_surveiller_equipe(delta)
 	_surveiller_defis(delta)
+	_surveiller_liens(delta)
 	Vesperine.surveiller(self)
 	_surveiller_hostiles(delta)
 	_regenerer()
@@ -604,6 +608,7 @@ func _regenerer() -> void:
 	var heures := floori((t - _derniere_regen) / 3600.0)
 	_derniere_regen += heures * 3600.0
 	Intime.passer_temps(self, heures)
+	Liens.passer_temps(self, heures)
 	Defis.expirer(self)
 	if fiche.pv < fiche.pv_max() or fiche.mana_actuelle() < fiche.mana_max():
 		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
@@ -897,6 +902,8 @@ func _charger_etat() -> void:
 	morts = cfg.get_value("monde", "morts", {})
 	desirs = cfg.get_value("monde", "desirs", {})
 	_dernier_jour_loups = cfg.get_value("monde", "loups", 0)
+	liens = cfg.get_value("monde", "liens", {})
+	journal_liens = cfg.get_value("monde", "journal_liens", [])
 
 
 func sauver_etat() -> void:
@@ -905,6 +912,8 @@ func sauver_etat() -> void:
 	cfg.set_value("monde", "morts", morts)
 	cfg.set_value("monde", "desirs", desirs)
 	cfg.set_value("monde", "loups", _dernier_jour_loups)
+	cfg.set_value("monde", "liens", liens)
+	cfg.set_value("monde", "journal_liens", journal_liens)
 	cfg.save(ETAT)
 
 
@@ -1058,6 +1067,26 @@ func scene_intime(pnjs: Array, lieu: String, defi := {}) -> void:
 	if not defi.is_empty():
 		await Illustrations.ferme
 		Defis.resoudre(self, pnjs[0], defi.defi, int(defi.get("compte", 0)) >= int(defi.fois))
+
+
+var _t_liens := 0.0
+
+
+## Toutes les 10 secondes : ton couple qui t'a trompé·e vient te le dire ; un couple qui t'aime bien t'invite.
+func _surveiller_liens(delta: float) -> void:
+	_t_liens += delta
+	if _t_liens < 10.0:
+		return
+	_t_liens = 0.0
+	if combat != null or Illustrations.ouvert or fenetres.ouvert != "" or get_tree().paused or combat_auto:
+		return
+	for n in pnjs:
+		if fiche.drapeaux.has("trahison_" + n.id) and n.visible and not n.mort and n.pos2d().distance_to(joueur.pos2d()) < 8.0:
+			Liens.trahison(self, n)
+			return
+	var paire := Liens.invitation_possible(self)
+	if not paire.is_empty():
+		Liens.inviter(self, paire[0], paire[1])
 
 
 var _t_defis := 0.0

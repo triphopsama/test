@@ -89,6 +89,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id in ["laisser", "habiller"] and (pnj == null or not pnj.suit):
 			continue
+		if str(l.donne) in Liens.ACTIONS and not Liens.dispo(monde, str(l.donne), pnj):
+			continue
 		if str(l.get("competence", "")) != "" and _competence_requise(l) == "":
 			continue
 		if l.id in ["vol_tire", "benir"] and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
@@ -187,6 +189,12 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 			+ (" Ton équipe marche avec toi." if qui > 0 else ""))
 		await Illustrations.ferme
 		monde.voyager(vers)
+		return
+	if donne in Liens.ACTIONS:
+		Horloge.avancer(float(l.duree_min))
+		var tl := Liens.agir(monde, donne, pnj)
+		if tl != "":
+			Illustrations.montrer(l.id, cles, _remplacer(tl, pnj, lieu))
 		return
 	if donne == "relacher":
 		var options := []
