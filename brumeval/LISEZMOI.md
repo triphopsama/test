@@ -17,7 +17,7 @@ Le village de départ en 3D façon HD-2D, en temps réel. Fait avec Godot 4.3 (m
 | Ctrl | Voyage rapide ×8 (pour tester) |
 | E | Agir : parler à quelqu'un, ou agir sur place |
 | I | Le sac : porter, retirer, manger |
-| C | Le personnage : caractéristiques, niveau, points à répartir |
+| C | Le personnage : caractéristiques, niveau, points à répartir, classe, métier, compétences |
 | 1 à 9 | Choisir une action dans le menu |
 | Échap | Fermer le menu, arrêter une scène |
 | Tab | Plan du village, avec ta position |
@@ -62,6 +62,19 @@ Les choix sont dans `scripts/creation_donnees.gd`, modifiables.
 - **Les niveaux** : 50 × niveau d'expérience pour passer au suivant, 4 points à répartir à chaque niveau (touche C). Les compétences viennent avec les caractéristiques : Frappe lourde à For 10, Coup sournois à Agi 10 avec une dague, Tir précis à Per 10 avec un arc.
 - Tout est dans `data/objets.csv`, modifiable au tableur (colonnes expliquées en haut de `scripts/objets.gd`). La fiche du joueur est sauvée dans `user://joueur.cfg` : supprime-la pour recommencer à zéro.
 
+## Classes et métiers
+
+D'après `monde/classes_metiers.md`. Un personnage a **une classe et un métier** à la fois ; les PNJ suivent les mêmes règles.
+
+- **La classe s'éveille au combat.** Après ton premier vrai combat (pas une bagarre), le jeu te propose 3 classes selon ce que tu y as fait : frapper à l'épée → Guerrier, aux poings et en saisissant → Lutteur, à la dague et dans le dos → Voleur, à l'arc → Archer, encaisser derrière un bouclier → Garde, chasser les bêtes → Chasseur de monstres, fuir et esquiver → Éclaireur… Tu peux refuser et attendre une meilleure offre : elle revient après le combat suivant, et tout ce que tu fais s'additionne.
+- **13 classes** sans magie : Guerrier, Lutteur, Garde, Lancier, Duelliste, Moine, Mercenaire, Archer, Lanceur, Voleur, Éclaireur, Chasseur de monstres, Rôdeur. Les classes de magie et de foi viendront avec la magie.
+- **Le niveau de classe** monte avec la même expérience que le personnage. Chaque classe apprend 3 compétences : deux au niveau 1, la troisième au niveau 3 (au niveau 5 pour Tir dans l'œil et Pluie de lames) ; une compétence ne sert que si tu as les caractéristiques (et l'arme) qu'il faut, et tu la gardes si tu changes de classe. À chaque niveau du personnage, 2 points vont d'office aux caractéristiques favorites de ta classe (★ sur la fiche), 2 restent libres.
+- **Les compétences en combat** (chiffres repris de `monde/donnees/competences`) : Parade, Cri de guerre, Coup de tête, Projection, Lever le bouclier, Provocation, Allonge, Mur de piques, Pas de côté, Feinte, Riposte, Poings de fer, Souffle intérieur, Esquive parfaite, Toutes armes, Pillage, Dernier debout, Volée, Tir dans l'œil, Couteaux de lancer, Javelot, Pluie de lames, Camouflage, Course longue, Point faible, Trophée, Soin des bois. Les passives jouent toutes seules ; les autres sont dans le menu de combat.
+- **Hors combat** : le Voleur peut « Voler à la tire » (sur un adulte, une fois par jour et par personne). La réussite dépend de ton Agi et du nombre de gens qui regardent. Pris, la victime t'en veut (−30) et chaque témoin aussi (−15). Crochetage, Pistage et Piège attendent les intérieurs et l'exploration.
+- **Le métier s'apprend en travaillant.** « Travailler une heure » à la forge, au fournil, au moulin, à l'atelier, « Pêcher » au port ou « Cueillir » : une journée (8 h) et te voilà apprenti forgeron, boulanger, meunier, couturier, pêcheur ou herboriste. Si le maître est là (Bram, Mara, Élise, Isaure, Joss, Agnès), tu apprends deux fois plus vite. Une journée dans un autre métier te propose d'en changer (le niveau repart de 1). Apprenti, puis compagnon au niveau 10, maître au niveau 25.
+- **Ce que le métier rapporte** : forgeron, les armes et armures de métal se revendent 20 % plus cher ; couturier, le cuir, le tissu et les peaux ; boulanger, un pain toutes les deux heures au fournil ; meunier, 2 cuivre de plus par heure ; pêcheur, un poisson de plus ; herboriste, une plante de plus et des remèdes 20 % plus efficaces. Et 1 cuivre de plus par heure tous les 5 niveaux de métier.
+- Tout est dans `data/classes.csv` et `data/metiers.csv`, modifiables au tableur (colonnes expliquées en haut de `scripts/classes.gd`) ; les compétences sont dans `scripts/combattant.gd`.
+
 ## Écrire les actions
 
 Tout est dans `data/actions.csv` (s'ouvre avec un tableur ou un éditeur de texte, séparateur `;`). Une ligne par action ; une ligne avec un id de PNJ précis remplace la ligne générale pour ce PNJ. Les colonnes sont expliquées en haut de `scripts/actions.gd`. Les colonnes `prix` (« 1 argent », ou un objet : « OBJ327 1 ») et `donne` (« cuivre 6 », « BRV003 2 », « repos ») font payer et rapporter une action.
@@ -75,7 +88,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Ce qui n'est pas encore là
 
-- Le corps et le profil intime à la création, les classes et métiers, la magie, la maîtrise des armes et les titres.
+- Le corps et le profil intime à la création, la magie (et les classes de magie et de foi), les évolutions de classe aux niveaux 25, 50 et 75, les PNJ qui enseignent une compétence, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
 - La grotte, Pierrefane et le reste du monde.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
@@ -89,10 +102,11 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 | `data/pnj.csv` | Les fiches des PNJ (`monde/donnees/pnj/brumeval.csv`) |
 | `data/emplois.csv` | La colonne emploi du temps des PNJ, transformée par `outils/emplois.py` (heure → lieu) |
 | `data/actions.csv` | Écrit à la main, à compléter |
+| `data/classes.csv`, `metiers.csv` | `monde/classes_metiers.md`, compétences reprises de `monde/donnees/competences` |
 | `images/plan.png` | Le plan, généré par `outils/image.py` |
 
 ## Vérifier que tout marche
 
-`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, et trois combats joués tout seuls (bagarre, loups, agression).
+`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, et trois combats joués tout seuls (bagarre, loups, agression).
 
-`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.
+`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso`, `classe` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.

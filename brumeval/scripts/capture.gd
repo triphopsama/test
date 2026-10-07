@@ -52,7 +52,7 @@ func _ready() -> void:
 		for i in 10:
 			await get_tree().process_frame
 	if args.has("fenetre"):
-		# --fenetre=sac | perso | bram : un sac d'exemple pour voir les fenêtres
+		# --fenetre=sac | perso | classe | bram : un sac d'exemple pour voir les fenêtres
 		var f := Fiche.new()
 		monde.fiche = f
 		f.bourse = 87
@@ -60,10 +60,18 @@ func _ready() -> void:
 			f.ajouter(id, 2 if id == "OBJ327" else 1)
 		f.equiper("OBJ002")
 		f.equiper("OBJ208")
+		f.prendre_classe("voleur")
+		f.prendre_metier("forgeron")
 		f.gagner_xp(60)
+		f.annonces.clear()
 		match args.fenetre:
 			"sac": monde.fenetres.sac()
 			"perso": monde.fenetres.personnage()
+			"classe":
+				f.classe = ""
+				f.style = {"dague": 3, "dos": 2, "arme_for": 1, "esquive": 1}
+				monde.fenetres.offre_classe()
+				monde.fenetres._liste.get_child(0).grab_focus()
 			_: monde.fenetres.marchand(monde._pnj_par_id("BRU002"), false)
 		for i in 10:
 			await get_tree().process_frame

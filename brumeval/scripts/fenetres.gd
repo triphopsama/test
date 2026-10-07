@@ -3,7 +3,7 @@
 extends CanvasLayer
 
 var monde: Node3D
-var ouvert := ""                  # "", "sac", "perso", "marchand"
+var ouvert := ""                  # "", "sac", "perso", "marchand", "offre"
 var _panneau: PanelContainer
 var _titre: Label
 var _entete: Label
@@ -193,25 +193,126 @@ func personnage() -> void:
 		_ouvrir("perso")
 	var f: Fiche = monde.fiche
 	var t := f.stats_totales()
-	_titre.text = "Toi · niveau %d" % f.niveau
-	var comps: Array = f.competences().map(func(k): return Combattant.COMPETENCES[k].nom)
-	_entete.text = "Expérience : %d / %d · PV %d/%d · points à répartir : %d\nCompétences : %s" % [
-		f.xp, f.xp_suivant(), f.pv, f.pv_max(), f.points, ", ".join(comps) if comps else "aucune"]
+	_titre.text = "%s · niveau %d" % [f.nom if f.nom != "" else "Toi", f.niveau]
+	var classe := "aucune, elle s'éveillera après ton premier vrai combat"
+	if f.classe != "":
+		classe = "%s niveau %d (%d / %d)" % [Classes.classe(f.classe).nom, f.niveau_classe, f.xp_classe, f.xp_classe_suivant()]
+	var metier := "aucun : travaille une journée quelque part pour en apprendre un"
+	if f.metier != "":
+		metier = "%s, niveau %d (%d / %d h)" % [f.titre_metier(), f.niveau_metier, int(f.xp_metier), int(f.xp_metier_suivant())]
+	_entete.text = "Expérience : %d / %d · PV %d/%d · points à répartir : %d\nClasse : %s\nMétier : %s" % [
+		f.xp, f.xp_suivant(), f.pv, f.pv_max(), f.points, classe, metier]
 	_vider()
-	_detail.text = "Frappe lourde à For 10 ; Coup sournois à Agi 10 avec une dague ; Tir précis à Per 10 avec un arc."
+	_detail.text = "Survole une ligne pour le détail."
 	const NOMS := {"For": "Force", "Agi": "Agilité", "End": "Endurance", "Vit": "Vitalité", "Rob": "Robustesse",
 		"Int": "Intelligence", "Sag": "Sagesse", "Per": "Perception", "Vol": "Volonté"}
 	const ROLES := {"For": "dégâts des armes lourdes, porter", "Agi": "ordre des tours, déplacement, esquive, dagues et arcs",
 		"End": "endurance pour les compétences", "Vit": "points de vie", "Rob": "défense, bouclier",
 		"Int": "sorts, fabrication", "Sag": "mana, soins", "Per": "toucher, critiques", "Vol": "résister à la magie"}
+	var fav: Array = Classes.classe(f.classe).get("favorites", [])
 	for s in Combattant.STATS:
 		var bonus: int = t[s] - f.stats[s]
 		var texte := "%s : %d" % [NOMS[s], t[s]]
 		if bonus != 0:
 			texte += " (%d %+d)" % [f.stats[s], bonus]
+		if s in fav:
+			texte += "  ★"
 		if f.points > 0:
 			texte += "   [+1]"
-		_ligne(texte, _monter.bind(s), ROLES[s], f.points > 0)
+		_ligne(texte, _monter.bind(s), ROLES[s] + (" · favorite de ta classe : elle monte d'office à chaque niveau" if s in fav else ""), f.points > 0)
+	# les compétences : celles qu'on peut utiliser, celles qui attendent des caractéristiques
+	var actives := f.competences()
+	for k in f.competences(true):
+		var c: Dictionary = Combattant.COMPETENCES[k]
+		var etat := "" if k in actives else "  (pas encore : " + _manque(c, t) + ")"
+		_ligne("Compétence · %s%s" % [c.nom, etat], func(): pass, _detail_comp(k))
+	if f.classe != "":
+		var cl := Classes.classe(f.classe)
+		for p in cl.competences:
+			if not p[0] in f.apprises:
+				_ligne("À venir · %s (niveau de classe %d)" % [Combattant.COMPETENCES[p[0]].nom, p[1]], func(): pass, _detail_comp(p[0]))
+		_ligne("Évolutions · %s" % cl.evolutions, func(): pass, "Aux niveaux de classe 25, 50 et 75, selon la façon dont tu te bats (pas encore en jeu).")
+	if f.metier != "":
+		var m := Classes.metier(f.metier)
+		for p in m.competences:
+			_ligne("Métier · %s%s" % [p[0], "" if f.niveau_metier >= p[1] else " (niveau %d)" % p[1]], func(): pass, m.description)
+
+
+func _manque(c: Dictionary, t: Dictionary) -> String:
+	var r := []
+	for st in c.get("cond", {}):
+		if t[st] < c.cond[st]:
+			r.append("%s %d" % [st, c.cond[st]])
+	if c.has("arme"):
+		r.append({"dague": "une dague", "arc": "un arc", "lance": "une lance", "bouclier": "un bouclier"}.get(c.arme, c.arme))
+	return ", ".join(r)
+
+
+func _detail_comp(k: String) -> String:
+	var c: Dictionary = Combattant.COMPETENCES[k]
+	var cout := []
+	for r in ["endurance", "mana"]:
+		if c.has(r):
+			cout.append("%d %s" % [c[r], r])
+	var cond := []
+	for st in c.get("cond", {}):
+		cond.append("%s %d" % [st, c.cond[st]])
+	if c.has("arme"):
+		cond.append(c.arme)
+	return "%s%s%s" % [c.get("desc", c.nom), ("  Coût : " + ", ".join(cout) + ".") if cout else "", ("  Il faut : " + ", ".join(cond) + ".") if cond else ""]
+
+
+func _detail_classe(id: String) -> String:
+	var c := Classes.classe(id)
+	var comps: Array = c.competences.map(func(p): return "%s (niv. %d)" % [Combattant.COMPETENCES[p[0]].nom, p[1]])
+	return "%s\nFavorites : %s · Compétences : %s\nÉvolutions : %s" % [c.description, ", ".join(c.favorites), ", ".join(comps), c.evolutions]
+
+
+# ---------------------------------------------------------------- classes et métiers
+
+## Après un vrai combat, sans classe : trois classes selon ce que tu as fait.
+func offre_classe() -> void:
+	var ids := Classes.offre(monde.fiche.style)
+	if ids.is_empty():
+		return
+	_ouvrir("offre")
+	_titre.text = "Une classe s'éveille"
+	_entete.text = "Ce combat t'a appris quelque chose sur toi-même. Tu peux prendre une de ces classes, ou attendre une meilleure offre."
+	_vider()
+	for id in ids:
+		var c := Classes.classe(id)
+		_ligne("%s · %s" % [c.nom, c.famille], _prendre_classe.bind(id), _detail_classe(id))
+	_ligne("Attendre une meilleure offre", fermer, "On te reproposera après un prochain vrai combat, selon ce que tu y feras.")
+
+
+func _prendre_classe(id: String) -> void:
+	var f: Fiche = monde.fiche
+	f.prendre_classe(id)
+	var annonces := " ".join(f.annonces)
+	f.annonces.clear()
+	f.sauver()
+	personnage()
+	_message.text = "Te voilà %s. %s" % [Classes.classe(id).nom.to_lower(), annonces]
+
+
+## Une journée de travail dans un autre métier que le tien : on propose de changer.
+func offre_metier(id: String) -> void:
+	var f: Fiche = monde.fiche
+	var m := Classes.metier(id)
+	_ouvrir("offre")
+	_titre.text = "Changer de métier ?"
+	_entete.text = "Tu pourrais devenir %s. Tu es %s : en changeant, ton niveau de métier repart de 1." % [
+		Classes.titre_metier(m.nom, 1).to_lower(), f.titre_metier().to_lower()]
+	_vider()
+	_ligne("Devenir %s" % Classes.titre_metier(m.nom, 1).to_lower(), _prendre_metier.bind(id), m.description)
+	_ligne("Rester %s" % f.titre_metier().to_lower(), fermer, Classes.metier(f.metier).description)
+
+
+func _prendre_metier(id: String) -> void:
+	monde.fiche.prendre_metier(id)
+	monde.fiche.sauver()
+	personnage()
+	_message.text = "Te voilà %s." % monde.fiche.titre_metier().to_lower()
 
 
 func _monter(s: String) -> void:
@@ -245,6 +346,14 @@ func prix_vente(id: String) -> int:
 	var p := Objets.prix(id) / 2.0
 	if monde.fiche.vie == "commercant":
 		p *= 1.1
+	# le métier : un forgeron sait ce que vaut une lame, un couturier un cuir
+	var o := Objets.get_(id)
+	var n := str(o.get("nom", "")).to_lower()
+	var metal := ["maille", "fer", "acier", "plate"].any(func(m): return n.contains(m))
+	if o.get("type", "") in ["arme", "bouclier"] or (o.get("type", "") == "armure" and metal):
+		p *= 1.0 + monde.fiche.bonus_metier("vente_armes") / 100.0
+	elif (o.get("type", "") == "armure" and not metal) or n.begins_with("peau"):
+		p *= 1.0 + monde.fiche.bonus_metier("vente_tissus") / 100.0
 	return maxi(1, int(p))
 
 

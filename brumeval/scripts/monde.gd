@@ -27,6 +27,7 @@ var _dernier_jour_loups := 0
 var _loups: Array = []
 var _t_hostiles := 0.0
 var combat_auto := false        # test : l'IA joue aussi ton camp
+var _proposer_classe := false   # après un vrai combat, sans classe : on t'en propose
 var _dernier_jour_silas := 0
 var fiche: Fiche                 # le joueur : caractéristiques, niveau, sac, bourse
 var fenetres: CanvasLayer        # sac (I), personnage (C), marchands
@@ -946,6 +947,11 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 	sauver_etat()
 	if texte != "":
 		Illustrations.montrer(action, cles, texte)
+	if _proposer_classe:
+		_proposer_classe = false
+		if Illustrations.ouvert:
+			await Illustrations.ferme
+		fenetres.offre_classe()
 
 
 ## Ce que le combat laisse : PV, expérience, butin, argent. Renvoie le texte à ajouter.
@@ -967,18 +973,26 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 			xp *= 0.5
 		if resultat != "victoire":
 			xp *= 0.25
+		if moi.a_comp("trophee") and (contexte.has("betes") or contexte.has("loups")):
+			xp *= 1.25
 		var gain := maxi(1, roundi(xp))
 		var niveaux := fiche.gagner_xp(gain)
 		lignes.append("+%d expérience%s." % [gain, "" if resultat == "victoire" else " (on apprend en prenant des coups)"])
 		if niveaux:
 			lignes.append("Niveau %d ! %d points à répartir (touche C)." % [fiche.niveau, fiche.points])
+	# ce que tu as fait dans ce combat dit quelle classe s'éveille en toi (classes_metiers.md)
+	fiche.noter_style(moi.style)
+	lignes.append_array(fiche.annonces)
+	fiche.annonces.clear()
+	if fiche.classe == "" and not bagarre and not combat_auto and not Classes.offre(fiche.style).is_empty():
+		_proposer_classe = true
 	# le butin
 	if resultat == "victoire" and contexte.has("betes"):
 		var pris := {}
 		for e in ennemis:
 			if e.a_terre or e.mort:
 				for b in BUTIN.get(contexte.betes, []):
-					if randf() < b[1]:
+					if randf() < b[1] + (0.25 if moi.a_comp("pillage") else 0.0):
 						pris[b[0]] = pris.get(b[0], 0) + 1
 		for id in pris:
 			fiche.ajouter(id, pris[id])
@@ -997,7 +1011,7 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 		for e in ennemis:
 			if not (e.a_terre or e.mort) or e.est_bete:
 				continue
-			cuivre += randi_range(4, 24) * (2 if fiche.a("trouvaille") else 1)
+			cuivre += roundi(randi_range(4, 24) * (2 if fiche.a("trouvaille") else 1) * (1.5 if moi.a_comp("pillage") else 1.0))
 			if e.arme.has("objet"):
 				fiche.ajouter(e.arme.objet)
 				lignes.append("Tu prends %s de %s." % [Objets.get_(e.arme.objet).nom.to_lower(), e.nom])

@@ -81,11 +81,12 @@ func _process(_delta: float) -> void:
 	var bm: Array = Horloge.basses_mers()
 	var maree := "basse : rochers praticables" if Horloge.maree_basse() else "haute"
 	var f: Fiche = monde.fiche
-	_infos.text = "Jour %d · %s%s\nMarée %s (basse mer à %s et %s)\n%s\nPV %d/%d · niveau %d%s · bourse : %s" % [
+	_infos.text = "Jour %d · %s%s\nMarée %s (basse mer à %s et %s)\n%s\nPV %d/%d · niveau %d%s%s · bourse : %s" % [
 		Horloge.jour(), Horloge.texte_heure(), acc, maree,
 		Horloge.texte_heure(bm[0]), Horloge.texte_heure(fposmod(bm[1], 24.0)),
 		monde.lieux[lieu].nom if lieu != "" else "Dans la nature",
-		f.pv, f.pv_max(), f.niveau, " (%d points à répartir)" % f.points if f.points > 0 else "", Objets.texte_prix(f.bourse)]
+		f.pv, f.pv_max(), f.niveau, " (%d points à répartir)" % f.points if f.points > 0 else "",
+		(" · %s %d" % [Classes.classe(f.classe).nom, f.niveau_classe]) if f.classe != "" else "", Objets.texte_prix(f.bourse)]
 	# qui ou quoi est à portée
 	_cible_pnj = null
 	var dmin := 3.0

@@ -16,7 +16,11 @@
 #   donne           ce que ça rapporte, séparé par des virgules : « cuivre 6 », « BRV003 2 »
 #                   (un objet de data/objets.csv), « repos » (tous les PV),
 #                   « boutique » / « vente » (ouvre le marchand), « lame_sans_nom »,
-#                   « chasse_rats » (les rats géants de la cave, une fois par jour, payé si tu gagnes)
+#                   « chasse_rats » (les rats géants de la cave, une fois par jour, payé si tu gagnes),
+#                   « vol_tire » (le Voleur fait les poches : réussir dépend de l'Agi et des témoins)
+#
+# Travailler, pêcher, cueillir font avancer le métier lié au lieu (data/metiers.csv) :
+# une journée (8 h) pour devenir apprenti, deux fois plus vite si le maître est là.
 #   description     le texte affiché ; {nom} {activite} {parole} {lieu} sont remplacés
 #
 # Règles fixes (dans le code, pas dans le fichier) pour les actions intimes :
@@ -62,6 +66,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 		if l.intime == "1" and not intime_possible(pnj):
 			continue
 		if l.id in COMBATS and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
+			continue
+		if l.id == "vol_tire" and (not "vol_tire" in monde.fiche.competences() or pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if not choix.has(l.id) or precise:
 			choix[l.id] = l
@@ -114,6 +120,10 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		monde.attaque_de_betes("rat", 2 + randi() % 2, monde.joueur.pos2d() + Vector2(0, 4), _remplacer(texte, pnj, lieu),
 			{"paie": 12, "payeur": "Rosalie", "payeur_id": "BRU011"})
 		return
+	if donne == "vol_tire":
+		Horloge.avancer(float(l.duree_min))
+		Illustrations.montrer(l.id, cles, _remplacer(_vol_tire(pnj, texte), pnj, lieu))
+		return
 	if pnj != null:
 		var effet := int(l.effet_affection)
 		if effet > 0 and monde.fiche.a("charisme"):
@@ -121,6 +131,14 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + effet, -100, 100)
 		monde.sauver_etat()
 	var gains := _donner(donne)
+	var proposer := ""
+	var id_metier := Classes.metier_pour(l.id, lieu)
+	if id_metier != "":
+		var t := _metier(id_metier, float(l.duree_min) / 60.0, l.id)
+		if t == "propose":
+			proposer = id_metier
+		elif t != "":
+			gains = (gains + " " + t).strip_edges()
 	if gains != "":
 		texte += "\n\n" + gains
 	if texte.strip_edges() == "":
@@ -130,6 +148,9 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	texte = _remplacer(texte, pnj, lieu)
 	Horloge.avancer(float(l.duree_min))
 	Illustrations.montrer(l.id, cles, texte)
+	if proposer != "":
+		await Illustrations.ferme
+		monde.fenetres.offre_metier(proposer)
 	if COMBATS.has(l.id):
 		await Illustrations.ferme
 		monde.combat_contre_pnj(pnj, COMBATS[l.id])
@@ -187,6 +208,65 @@ func _donner(donne: String) -> String:
 			r.append("+%s." % Objets.texte_prix(c))
 	f.sauver()
 	return " ".join(r)
+
+
+## Le travail fait monter le métier ; le métier rapporte un peu plus. Renvoie le texte,
+## ou "propose" si on pourrait changer de métier.
+func _metier(id: String, h: float, action: String) -> String:
+	var f: Fiche = monde.fiche
+	var m := Classes.metier(id)
+	var maitre: Node = monde._pnj_par_id(m.maitre)
+	var avec_maitre: bool = maitre != null and maitre.visible and not maitre.mort and maitre.pos2d().distance_to(monde.joueur.pos2d()) < 30.0
+	var r := []
+	if id == f.metier:
+		var paie := f.bonus_metier("paie") + int(f.niveau_metier / 5.0)
+		if action == "travailler" and paie > 0:
+			f.bourse += paie
+			r.append("+%d cuivre de métier." % paie)
+		if f.bonus_metier("pain") > 0:
+			f.drapeaux["heures_pain"] = f.drapeaux.get("heures_pain", 0) + 1
+			if f.drapeaux.heures_pain >= f.bonus_metier("pain"):
+				f.drapeaux.heures_pain = 0
+				f.ajouter("OBJ327")
+				r.append("Un pain pour toi.")
+		for b in [["poisson", "BRV003"], ["plante", "BRV004"]]:
+			if f.bonus_metier(b[0]) > 0:
+				f.ajouter(b[1], f.bonus_metier(b[0]))
+				r.append("+%d %s (métier)." % [f.bonus_metier(b[0]), Objets.get_(b[1]).nom.to_lower()])
+	var t := f.travailler(id, h, avec_maitre)
+	if t == "propose":
+		f.sauver()
+		return t
+	if avec_maitre:
+		r.append("%s te montre les gestes : tu apprends deux fois plus vite." % maitre.donnees.nom.get_slice(" ", 0))
+	if t != "":
+		r.append(t)
+	f.sauver()
+	return " ".join(r)
+
+
+## Vol à la tire : Agi contre les regards. Une fois par jour et par personne.
+func _vol_tire(pnj: Node, texte: String) -> String:
+	var f: Fiche = monde.fiche
+	var cle: String = "vol_" + pnj.id
+	if f.drapeaux.get(cle, -1) == Horloge.jour():
+		return "{nom} garde la main sur sa bourse aujourd'hui. Pas deux fois le même jour."
+	f.drapeaux[cle] = Horloge.jour()
+	var regards: Array = monde.temoins(15.0).filter(func(n): return n != pnj)
+	var chance := clampi(40 + (f.stats_totales().Agi - 8) * 5 - regards.size() * 10, 10, 90)
+	if randi_range(1, 100) <= chance:
+		var c := randi_range(2, 12) * (2 if f.a("trouvaille") else 1)
+		f.bourse += c
+		f.sauver()
+		return "%s\n\n+%s. Personne n'a rien vu (%d %%)." % [texte, Objets.texte_prix(c), chance]
+	# pris la main dans le sac : la victime et ceux qui ont vu s'en souviendront
+	monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) - 30, -100, 100)
+	for n in regards:
+		monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 15, -100, 100)
+	monde.sauver_etat()
+	var vus: Array = regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))
+	return "{nom} attrape ton poignet : « Au voleur ! »%s (%d %%)" % [
+		(" %s %s vu." % [", ".join(vus), "l'ont" if vus.size() > 1 else "l'a"]) if vus else " Heureusement, personne d'autre n'a vu.", chance]
 
 
 ## creation_personnage.md : « on la trouve dans le bois de Ronceval, ou non ».

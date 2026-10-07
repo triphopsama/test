@@ -23,3 +23,4 @@ cueillir;Cueillir des plantes;lieu;reveil,fontaine,chene,agnes;*;0;20;0;0;;BRV00
 regarder_mer;Regarder la mer;lieu;crique,guet,bouche,plage;*;0;5;0;0;;;Au large, rien. Ou peut-être une lanterne, qui s'éteint dès que tu la fixes.
 fouiller_fourres;Fouiller les fourrés;lieu;reveil;*;0;15;0;0;;lame_sans_nom;Tu écartes les ronces autour de la clairière où tu t'es réveillé. Des feuilles, des épines, un vieux nid.
 chasser_rats;Chasser les rats de la cave (1 argent);lieu;taverne;*;0;30;0;0;;chasse_rats;"Rosalie te tend une lanterne et un gourdin : « Des rats gros comme des chats, dans ma cave. Débarrasse-m'en et t'auras une pièce d'argent. » En bas, ça couine, et des yeux rouges s'allument entre les tonneaux."
+vol_tire;Voler à la tire;pnj;*;*;0;5;-100;0;;vol_tire;Tu frôles {nom} en passant. Tes doigts trouvent la bourse avant tes yeux.

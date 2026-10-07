@@ -151,7 +151,7 @@ func _ready() -> void:
 	ok(monde.fenetres._liste.get_child_count() >= 5, "le sac s'affiche")
 	monde.fenetres.fermer()
 	monde.fenetres.personnage()
-	ok(monde.fenetres._liste.get_child_count() == 9, "la fiche montre les 9 caractéristiques")
+	ok(monde.fenetres._liste.get_child_count() >= 9, "la fiche montre les 9 caractéristiques")
 	monde.fenetres.fermer()
 	print("== Création de personnage")
 	var ch := {"peuple": "nain", "lignee": "profondeurs", "age": 45, "astre": "rouge", "vie": "sportif",
@@ -183,6 +183,7 @@ func _ready() -> void:
 	ecran._terminer()
 	var fh: Fiche = recu[0] if recu else null
 	ok(fh != null and fh.drapeaux.has("cree") and int(fh.stats.For) >= 1, "l'écran rend une fiche : %s, %s" % [fh.nom if fh else "?", fh.peuple if fh else "?"])
+	await _classes_metiers(mara, tim)
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -293,6 +294,126 @@ func _ready() -> void:
 	sauvee.sauver()
 	print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
 	get_tree().quit(erreurs)
+
+
+func _classes_metiers(mara: Node, tim: Node) -> void:
+	print("== Classes et métiers")
+	ok(Classes.classes().size() == 13 and Classes.metiers().size() == 6, "13 classes et 6 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
+	for id in Classes.classes():
+		for p in Classes.classe(id).competences:
+			ok(Combattant.COMPETENCES.has(p[0]), "%s : la compétence %s existe" % [id, p[0]])
+	ok(Classes.par_nom("Voleuse") == "voleur" and Classes.par_nom("Garde") == "garde" and Classes.par_nom("Prêtresse de combat") == "", "les classes des PNJ se retrouvent")
+	ok(Classes.offre({"arc": 4, "distance": 4})[0] == "archer", "tirer à l'arc : on te propose Archer")
+	ok(Classes.offre({"poings": 3, "prise": 3})[0] == "lutteur", "se battre à mains nues et saisir : Lutteur")
+	ok(Classes.offre({"betes": 3, "frappe": 2})[0] == "chasseur_monstres", "chasser les bêtes : Chasseur de monstres")
+	ok(Classes.offre({}).is_empty(), "rien fait, rien proposé")
+	var f := Fiche.new()
+	monde.fiche = f
+	f.prendre_classe("guerrier")
+	ok(f.niveau_classe == 1 and "parade" in f.apprises and not "cri_guerre" in f.apprises, "Guerrier niveau 1 : Parade, pas encore Cri de guerre")
+	ok("parade" in Combattant.joueur(monde.joueur, f).competences, "la Parade sert en combat")
+	var total := 0
+	for st in f.stats:
+		total += f.stats[st]
+	f.gagner_xp(50)
+	var total2 := 0
+	for st in f.stats:
+		total2 += f.stats[st]
+	ok(f.niveau == 2 and f.points == 2 and total2 == total + 2, "un niveau avec une classe : 2 points d'office, 2 libres")
+	ok(f.niveau_classe == 2, "la classe monte aussi (niveau %d)" % f.niveau_classe)
+	f.gagner_xp(100)
+	ok(f.niveau_classe >= 3 and "cri_guerre" in f.apprises, "niveau de classe 3 : Cri de guerre appris")
+	f.stats.Vol = 7
+	ok(not "cri_guerre" in f.competences() and "cri_guerre" in f.competences(true), "Cri de guerre attend Vol 8")
+	f.stats.Vol = 8
+	ok("cri_guerre" in f.competences(), "à Vol 8, on s'en sert")
+	f.prendre_classe("lancier")
+	ok(f.niveau_classe == 1 and "parade" in f.apprises and "allonge" in f.apprises, "changer de classe : niveau 1, on garde ses compétences")
+	f.annonces.clear()
+	# les PNJ suivent les mêmes règles
+	var bram_c := Combattant.depuis_pnj(_pnj("BRU002").donnees, _pnj("BRU002"))
+	ok("parade" in bram_c.competences and "cri_guerre" in bram_c.competences, "Bram, guerrier niveau 12 : Parade et Cri de guerre")
+	var corentin := Combattant.depuis_pnj(_pnj("BRU014").donnees, _pnj("BRU014"))
+	ok("bouclier_leve" in corentin.competences and "coup_bouclier" in corentin.competences and not "provocation" in corentin.competences,
+		"Corentin, garde : le bouclier, mais pas la Provocation (Vol 6, il faut 8)")
+	# les métiers
+	ok(Classes.metier_pour("travailler", "forge") == "forgeron" and Classes.metier_pour("pecher", "port") == "pecheur", "travailler à la forge : forgeron ; pêcher : pêcheur")
+	ok(f.travailler("forgeron", 3.0, false).contains("5 h"), "3 h à la forge : encore 5 h")
+	ok(f.travailler("forgeron", 3.0, true).contains("apprenti") and f.metier == "forgeron", "avec Bram, ça va deux fois plus vite : apprenti forgeron")
+	ok(f.travailler("boulanger", 8.0, false) == "propose", "une journée au fournil : on propose de changer")
+	var prix_avant: int = monde.fenetres.prix_vente("OBJ002")
+	f.metier = ""
+	ok(prix_avant > monde.fenetres.prix_vente("OBJ002"), "un forgeron revend mieux une dague (%d)" % prix_avant)
+	f.prendre_metier("boulanger")
+	var four: Dictionary = {}
+	for l in monde.actions.disponibles(null, "boulangerie"):
+		if l.id == "travailler":
+			four = l
+	for i in 2:
+		monde.actions.executer(four, null, "boulangerie")
+		Illustrations.fermer()
+	ok(f.nombre("OBJ327") >= 1, "boulanger : un pain toutes les deux heures")
+	monde.fenetres.offre_metier("forgeron")
+	ok(monde.fenetres._liste.get_child_count() == 2, "la fenêtre propose de changer de métier")
+	monde.fenetres._prendre_metier("forgeron")
+	ok(f.metier == "forgeron" and f.niveau_metier == 1, "on change : forgeron niveau 1")
+	monde.fenetres.fermer()
+	# l'offre de classe
+	f.classe = ""
+	f.style = {"dague": 3, "dos": 2}
+	monde.fenetres.offre_classe()
+	ok(monde.fenetres._liste.get_child_count() >= 2, "la fenêtre propose des classes")
+	monde.fenetres._prendre_classe("voleur")
+	ok(f.classe == "voleur" and "vol_tire" in f.apprises, "on devient voleur")
+	monde.fenetres.personnage()
+	ok(monde.fenetres._liste.get_child_count() > 9, "la fiche montre aussi les compétences")
+	monde.fenetres.fermer()
+	# vol à la tire : la victime et les témoins s'en souviennent
+	f.stats.Agi = 10
+	ok(_ids(monde.actions.disponibles(mara, "boulangerie")).has("vol_tire"), "un voleur peut faire les poches de Mara")
+	ok(not _ids(monde.actions.disponibles(tim, "place")).has("vol_tire"), "pas celles d'un enfant")
+	var vol: Dictionary = {}
+	for l in monde.actions.disponibles(mara, "boulangerie"):
+		if l.id == "vol_tire":
+			vol = l
+	monde.relations["BRU001"] = 0
+	f.bourse = 0
+	monde.actions.executer(vol, mara, "boulangerie")
+	ok(f.bourse > 0 or monde.relations["BRU001"] == -30, "réussi (%s) ou pris la main dans le sac (affection %d)" % [Objets.texte_prix(f.bourse), monde.relations["BRU001"]])
+	Illustrations.fermer()
+	monde.actions.executer(vol, mara, "boulangerie")
+	ok(Illustrations._texte.text.contains("Pas deux fois"), "une fois par jour")
+	Illustrations.fermer()
+	monde.relations["BRU001"] = 0
+	# un combat de lancier : les compétences de zone, de soi et le style
+	f = Fiche.new()
+	monde.fiche = f
+	f.stats = {"For": 10, "Agi": 10, "End": 9, "Vit": 7, "Rob": 9, "Int": 7, "Sag": 7, "Per": 9, "Vol": 10}
+	f.ajouter("OBJ067")
+	f.equiper("OBJ067")
+	f.prendre_classe("lancier")
+	f.niveau_classe = 3
+	f._apprendre_classe()
+	f.pv = f.pv_max()
+	var cj := Combattant.joueur(monde.joueur, f)
+	ok("allonge" in cj.competences and "mur_piques" in cj.competences and "charge" in cj.competences, "avec un trident : Allonge, Charge, Mur de piques")
+	monde.combat_auto = true
+	var p: Vector2 = monde.lieux.landes.pos
+	monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
+	monde.attaque_de_betes("rat", 2, p + Vector2(0, 4), "Des rats !")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "les rats attaquent le lancier")
+	if monde.combat:
+		var moi: Combattant = monde.combat.combattants.filter(func(c): return c.est_joueur)[0]
+		monde.combat._attaquer(moi, moi, "mur_piques")
+		ok(moi.etats.has("piques"), "Mur de piques : en garde")
+		var r = await monde.combat.fini
+		await get_tree().process_frame
+		Illustrations.fermer()
+		ok(f.style.has("lance") or f.style.has("bouge"), "le combat a noté ton style : %s (%s)" % [f.style, r])
+	monde.combat_auto = false
+	monde.fiche = Fiche.new()
 
 
 func _pnj(id: String) -> Node:
