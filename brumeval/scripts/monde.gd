@@ -28,6 +28,9 @@ var _loups: Array = []
 var _t_hostiles := 0.0
 var combat_auto := false        # test : l'IA joue aussi ton camp
 var _dernier_jour_silas := 0
+var fiche: Fiche                 # le joueur : caractéristiques, niveau, sac, bourse
+var fenetres: CanvasLayer        # sac (I), personnage (C), marchands
+var _derniere_regen := -1.0
 
 var _lp := PackedVector2Array()
 var _lh := PackedFloat32Array()
@@ -45,6 +48,7 @@ func _ready() -> void:
 	_bruit.frequency = 0.02
 	_charger()
 	_charger_etat()
+	fiche = Fiche.charger()
 	_construire_environnement()
 	_construire_terrain()
 	_construire_chemins()
@@ -57,6 +61,9 @@ func _ready() -> void:
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
+	fenetres = preload("res://scripts/fenetres.gd").new()
+	fenetres.monde = self
+	add_child(fenetres)
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--capture="):
 			var cap := preload("res://scripts/capture.gd").new()
@@ -458,6 +465,21 @@ func _process(delta: float) -> void:
 	_suivre_camera(delta)
 	_surveiller_loups()
 	_surveiller_hostiles(delta)
+	_regenerer()
+
+
+## Hors combat, on reprend 10 % de ses PV par heure du monde.
+func _regenerer() -> void:
+	var t: float = Horloge.maintenant()
+	if _derniere_regen < 0.0 or t < _derniere_regen:
+		_derniere_regen = t
+	if combat != null or t - _derniere_regen < 3600.0:
+		return
+	var heures := floori((t - _derniere_regen) / 3600.0)
+	_derniere_regen += heures * 3600.0
+	if fiche.pv < fiche.pv_max():
+		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
+		fiche.sauver()
 
 
 func _suivre_camera(delta: float) -> void:
@@ -699,7 +721,7 @@ func combat_contre_pnj(cible: Node, mode: String) -> void:
 	else:
 		relations[cible.id] = clampi(relations.get(cible.id, 0) - 5, -100, 100)
 	sauver_etat()
-	_lancer([Combattant.joueur(joueur)], ennemis, mode, {"cible": cible})
+	_lancer([Combattant.joueur(joueur, fiche)], ennemis, mode, {"cible": cible})
 
 
 func _surveiller_loups() -> void:
@@ -722,7 +744,7 @@ func _surveiller_loups() -> void:
 		ennemis.append(Combattant.loup(i + 1, n))
 	Illustrations.montrer("loups", ["loups"], "Des grognements dans les fourrés. Des yeux jaunes, bas, qui s'approchent. La meute t'a senti.")
 	await Illustrations.ferme
-	_lancer([Combattant.joueur(joueur)], ennemis, "mortel", {"loups": true})
+	_lancer([Combattant.joueur(joueur, fiche)], ennemis, "mortel", {"loups": true})
 
 
 func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) -> void:
@@ -730,7 +752,8 @@ func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) 
 	combat.auto = combat_auto
 	add_child(combat)
 	joueur.set_process(false)
-	combat.fini.connect(_fin_combat.bind(contexte, ennemis))
+	contexte.mode = mode
+	combat.fini.connect(_fin_combat.bind(contexte, allies, ennemis))
 	combat.commencer(self, allies, ennemis, joueur.pos2d(), mode)
 
 
@@ -745,7 +768,7 @@ func tuer(c: Combattant) -> void:
 	sauver_etat()
 
 
-func _fin_combat(resultat: String, contexte: Dictionary, ennemis: Array) -> void:
+func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis: Array) -> void:
 	combat = null
 	joueur.set_process(true)
 	var texte := ""
@@ -755,7 +778,7 @@ func _fin_combat(resultat: String, contexte: Dictionary, ennemis: Array) -> void
 	match resultat:
 		"victoire":
 			if contexte.has("loups"):
-				texte = "La meute est dispersée. Tu as les mains qui tremblent, et une peau de loup à vendre."
+				texte = "La meute est dispersée. Tu as les mains qui tremblent."
 			elif contexte.has("cible"):
 				texte = "%s est au sol." % contexte.cible.donnees.nom
 				if tues:
@@ -766,7 +789,7 @@ func _fin_combat(resultat: String, contexte: Dictionary, ennemis: Array) -> void
 			if contexte.has("loups"):
 				texte = "Le noir. Puis l'odeur des herbes : Pierrick t'a trouvé et porté chez Agnès. « T'as de la chance que j'aie entendu les loups. »"
 			else:
-				texte = "Tu te réveilles plus tard, chez Agnès, le visage en sang et la bourse vide."
+				texte = "Tu te réveilles plus tard, chez Agnès, le visage en sang." if contexte.mode == "bagarre" else "Tu te réveilles plus tard, chez Agnès, le visage en sang et la bourse plus légère."
 			Horloge.avancer(180.0)
 			var p: Vector2 = lieux.agnes.pos + Vector2(0, 4)
 			joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
@@ -774,14 +797,85 @@ func _fin_combat(resultat: String, contexte: Dictionary, ennemis: Array) -> void
 			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."
 		"reddition":
 			texte = "Tu lèves les mains. On te laisse partir, cette fois, avec un dernier coup pour la route."
-	if contexte.has("cible") and contexte.get("mode", "") == "" and resultat == "victoire" and combat == null:
-		pass
+	texte += _apres_combat(resultat, contexte, allies, ennemis)
 	for n in _loups:
 		n.queue_free()
 	_loups.clear()
 	sauver_etat()
 	if texte != "":
 		Illustrations.montrer(action, cles, texte)
+
+
+## Ce que le combat laisse : PV, expérience, butin, argent. Renvoie le texte à ajouter.
+func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis: Array) -> String:
+	var lignes := []
+	var moi: Combattant = allies[0]
+	fiche.pv = maxi(1, moi.pv) if not (moi.a_terre or moi.mort) else maxi(1, fiche.pv_max() / 4)
+	var bagarre: bool = contexte.mode == "bagarre"
+	# l'expérience : vaincre plus fort que soi rapporte beaucoup, écraser plus faible presque rien
+	# perdre apprend aussi quelque chose : un quart de l'expérience
+	if resultat in ["victoire", "defaite", "reddition"]:
+		var xp := 0.0
+		for e in ennemis:
+			if e.sorti and not e.a_terre:
+				xp += 0.5 * _xp_contre(e)
+			else:
+				xp += _xp_contre(e)
+		if bagarre:
+			xp *= 0.5
+		if resultat != "victoire":
+			xp *= 0.25
+		var gain := maxi(1, roundi(xp))
+		var niveaux := fiche.gagner_xp(gain)
+		lignes.append("+%d expérience%s." % [gain, "" if resultat == "victoire" else " (on apprend en prenant des coups)"])
+		if niveaux:
+			lignes.append("Niveau %d ! %d points à répartir (touche C)." % [fiche.niveau, fiche.points])
+	# le butin
+	if resultat == "victoire" and contexte.has("loups"):
+		var peaux := 0
+		var crocs := 0
+		for e in ennemis:
+			if e.a_terre or e.mort:
+				peaux += 1
+				if randf() < 0.5:
+					crocs += 1
+		if peaux:
+			fiche.ajouter("OBJ407", peaux)
+			lignes.append("Tu prends %d peau(x) de loup." % peaux)
+		if crocs:
+			fiche.ajouter("BRV002", crocs)
+			lignes.append("Et %d croc(s)." % crocs)
+	elif resultat == "victoire" and bagarre:
+		lignes.append("Le perdant paie la tournée : +6 cuivre.")
+		fiche.bourse += 6
+	elif resultat == "victoire":
+		var cuivre := 0
+		for e in ennemis:
+			if not (e.a_terre or e.mort) or e.est_bete:
+				continue
+			cuivre += randi_range(4, 24)
+			if e.arme.has("objet"):
+				fiche.ajouter(e.arme.objet)
+				lignes.append("Tu prends %s de %s." % [Objets.get_(e.arme.objet).nom.to_lower(), e.nom])
+			if not e.mort:
+				relations[e.id] = clampi(relations.get(e.id, 0) - 10, -100, 100)
+		if cuivre:
+			fiche.bourse += cuivre
+			lignes.append("Tu fouilles les poches : %s." % Objets.texte_prix(cuivre))
+	elif resultat == "defaite" and bagarre and fiche.bourse > 0:
+		var paye := mini(6, fiche.bourse)
+		fiche.bourse -= paye
+		lignes.append("Tu paies la tournée : %s." % Objets.texte_prix(paye))
+	elif resultat == "defaite" and not contexte.has("loups") and fiche.bourse > 0:
+		var perdu := ceili(fiche.bourse / 2.0)
+		fiche.bourse -= perdu
+		lignes.append("On t'a pris %s." % Objets.texte_prix(perdu))
+	fiche.sauver()
+	return "" if lignes.is_empty() else "\n\n" + " ".join(lignes)
+
+
+func _xp_contre(e: Combattant) -> float:
+	return 10.0 * e.niveau * clampf(float(e.niveau) / fiche.niveau, 0.2, 3.0)
 
 
 # ---------------------------------------------------------------- les PNJ qui t'en veulent
@@ -850,7 +944,7 @@ func agression_par(n: Node) -> void:
 		phrase = "« Silas te passe le bonjour. »"
 	Illustrations.montrer("agression", [n.id], "%s fonce sur toi. %s" % [n.donnees.nom, phrase])
 	await Illustrations.ferme
-	_lancer([Combattant.joueur(joueur)], ennemis, mode, {"cible": n, "agresseur": true})
+	_lancer([Combattant.joueur(joueur, fiche)], ennemis, mode, {"cible": n, "agresseur": true})
 
 
 func marquer_mort(c: Combattant) -> void:

@@ -89,6 +89,76 @@ func _ready() -> void:
 	ok(bouges > 0, "des PNJ se déplacent (%d)" % bouges)
 	Horloge.acceleration = 1.0
 	Horloge.avancer(-float(Horloge._decalage) / 60.0)   # on remet l'horloge à l'heure
+	print("== Objets, sac, expérience")
+	var sauvee: Fiche = monde.fiche
+	var f := Fiche.new()
+	monde.fiche = f
+	ok(Objets.tous().size() >= 40, "objets lus (%d)" % Objets.tous().size())
+	ok(Objets.cuivre_de("3 argent 6 cuivre") == 42 and Objets.cuivre_de("2 or") == 480, "les prix se lisent (1 or = 20 argent = 240 cuivre)")
+	ok(Objets.texte_prix(42) == "3 argent 6 cuivre", "les prix s'écrivent")
+	ok(f.equipe("OBJ222") and f.equipe("OBJ511") and f.bourse == 0, "au réveil : les vêtements d'ailleurs, l'anneau, pas un sou")
+	ok(f.desequiper("OBJ511") != "", "l'anneau ne s'enlève pas")
+	ok(Combattant.joueur(monde.joueur, f).arme.nom == "poings", "sans arme, on se bat aux poings")
+	f.ajouter("OBJ157")
+	ok(f.equiper("OBJ157").contains("End 8"), "la cotte de mailles demande End 8")
+	f.ajouter("OBJ012")
+	ok(f.equiper("OBJ012").contains("For 10"), "l'épée longue demande For 10")
+	f.ajouter("OBJ208")
+	ok(f.equiper("OBJ208") == "", "on prend la rondache")
+	f.ajouter("OBJ072")
+	ok(f.equiper("OBJ072") == "" and not f.equipement.has("main_gauche"), "l'arc à deux mains fait poser le bouclier")
+	var c_arc := Combattant.joueur(monde.joueur, f)
+	ok(c_arc.arme.portee == 5 and c_arc.stats.Per >= 10, "l'arc tire à 5 cases et donne Per +2 (%d)" % c_arc.stats.Per)
+	ok("tir_precis" in c_arc.competences, "Per 10 avec un arc : Tir précis")
+	f.ajouter("OBJ002")
+	f.equiper("OBJ002")
+	f.equiper("OBJ208")
+	var c_dague := Combattant.joueur(monde.joueur, f)
+	ok(c_dague.arme.degats == 5 and c_dague.bouclier == 12 and c_dague.def_phys >= 1 + c_dague.stats.Rob, "dague, rondache et vêtements comptent en combat")
+	ok(f.gagner_xp(60) == 1 and f.niveau == 2 and f.points == 4, "60 expérience : niveau 2, 4 points")
+	ok(f.depenser_point("For") and f.stats.For == 8, "un point en Force")
+	f.pv = 10
+	f.ajouter("OBJ327")
+	ok(f.utiliser("OBJ327").contains("+15") and f.pv == 25, "le pain de Mara rend 15 PV")
+	# gagner sa vie, payer
+	var forge: Dictionary = {}
+	for l in monde.actions.disponibles(null, "forge"):
+		if l.id == "travailler":
+			forge = l
+	monde.actions.executer(forge, null, "forge")
+	ok(f.bourse == 6, "une heure de travail : 6 cuivre (%d)" % f.bourse)
+	Illustrations.fermer()
+	for l in monde.actions.disponibles(null, "taverne"):
+		if l.id == "dormir":
+			monde.actions.executer(l, null, "taverne")
+	ok(Illustrations._texte.text.contains("Ça coûte") and f.bourse == 6, "pas de lit sans 1 argent")
+	Illustrations.fermer()
+	# Bram vend des armes
+	var bram_m: Node = _pnj("BRU002")
+	monde.relations["BRU002"] = 0
+	ok(_ids(monde.actions.disponibles(bram_m, "forge")).has("acheter"), "on peut acheter chez Bram")
+	f.bourse = 50
+	monde.fenetres.marchand(bram_m, false)
+	ok(monde.fenetres._liste.get_child_count() >= 6, "Bram a des armes et des mailles (%d)" % monde.fenetres._liste.get_child_count())
+	monde.fenetres._acheter("OBJ002")
+	ok(f.bourse == 14 and f.nombre("OBJ002") == 2, "une dague pour 3 argent")
+	monde.fenetres.fermer()
+	monde.fenetres.marchand(bram_m, true)
+	monde.fenetres._vendre("OBJ002")
+	ok(f.bourse == 32, "revendue la moitié (%d)" % f.bourse)
+	monde.fenetres.fermer()
+	monde.fenetres.sac()
+	ok(monde.fenetres._liste.get_child_count() >= 5, "le sac s'affiche")
+	monde.fenetres.fermer()
+	monde.fenetres.personnage()
+	ok(monde.fenetres._liste.get_child_count() == 9, "la fiche montre les 9 caractéristiques")
+	monde.fenetres.fermer()
+	# pour les combats : une dague, de quoi se soigner
+	f = Fiche.new()
+	monde.fiche = f
+	f.ajouter("OBJ002")
+	f.equiper("OBJ002")
+	f.ajouter("BRV001", 2)
 	print("== Combat")
 	monde.combat_auto = true
 	ok(not _ids(monde.actions.disponibles(tim, "place")).has("attaquer"), "on ne peut pas attaquer Tim (enfant)")
@@ -113,6 +183,11 @@ func _ready() -> void:
 	if monde.combat:
 		var r2 = await monde.combat.fini
 		ok(r2 in ["victoire", "defaite", "fuite", "reddition"], "le combat contre les loups se termine : " + str(r2))
+		await get_tree().process_frame
+		if r2 == "victoire":
+			ok(f.nombre("OBJ407") > 0 and (f.xp > 0 or f.niveau > 1), "peaux de loup et expérience")
+		else:
+			ok(f.pv >= 1, "vaincu, mais vivant (%d PV)" % f.pv)
 	Illustrations.fermer()
 	await get_tree().process_frame
 	print("== Agression")
@@ -137,6 +212,8 @@ func _ready() -> void:
 	monde.relations["BRU002"] = 0
 	monde.morts.clear()
 	monde.sauver_etat()
+	monde.fiche = sauvee
+	sauvee.sauver()
 	print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
 	get_tree().quit(erreurs)
 

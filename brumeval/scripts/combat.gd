@@ -50,7 +50,7 @@ func commencer(m: Node3D, allies: Array, ennemis: Array, centre: Vector2, mode_c
 		combattants.append(c)
 	if mode == "bagarre":
 		for c in combattants:
-			c.arme = Combattant.ARMES.poings if c.arme.portee > 1 or c.arme.degats > 5 else c.arme
+			c.arme = c.arme if c.arme == Combattant.ARMES.lutte else Combattant.ARMES.poings
 			c.competences = c.competences.filter(func(k): return k == "prise")
 	_origine = Vector2(floor(centre.x) - TAILLE / 2, floor(centre.y) - TAILLE / 2)
 	for j in TAILLE:
@@ -155,7 +155,7 @@ func _construire_ui() -> void:
 	add_child(_ui)
 	# à gauche : les combattants, puis le menu juste en dessous
 	var colonne := VBoxContainer.new()
-	colonne.position = Vector2(16, 130)
+	colonne.position = Vector2(16, 150)
 	colonne.add_theme_constant_override("separation", 10)
 	_ui.add_child(colonne)
 	_info = Label.new()
@@ -562,6 +562,8 @@ func _menu_joueur(u: Combattant) -> void:
 		_bouton("Bandage (stabiliser)", _choisir_cible.bind(u, "bandage"), not _a_agi)
 	if mode != "bagarre" and not _cibles(u, "achever").is_empty():
 		_bouton("Achever", _choisir_cible.bind(u, "achever"), not _a_agi)
+	if u.est_joueur and monde.fiche and not monde.fiche.soins().is_empty():
+		_bouton("Manger ou se soigner (sac)", _menu_soins.bind(u), not _a_agi)
 	if u.case.x == 0 or u.case.y == 0 or u.case.x == TAILLE - 1 or u.case.y == TAILLE - 1:
 		_bouton("Fuir", _fuir.bind(u))
 	_bouton("Se rendre", _se_rendre.bind(u))
@@ -582,6 +584,23 @@ func _choisir_cible(u: Combattant, cle: String) -> void:
 		_choix_cases[c.case] = c
 	_etat = "cible"
 	_surligner(_choix_cases.keys(), Color(1.0, 0.3, 0.25, 0.55))
+
+
+## Les objets qui soignent, pris dans le sac. Ça prend l'action du tour.
+func _menu_soins(u: Combattant) -> void:
+	_vider_menu()
+	for id in monde.fiche.soins():
+		_bouton("%s ×%d" % [Objets.resume(id), monde.fiche.nombre(id)], _utiliser.bind(u, id))
+	_bouton("Retour", func(): _action_joueur.emit("ok"))
+
+
+func _utiliser(u: Combattant, id: String) -> void:
+	monde.fiche.pv = u.pv
+	var t: String = monde.fiche.utiliser(id)
+	u.pv = mini(u.pv_max, monde.fiche.pv)
+	_ecrire("Toi : " + t)
+	_a_agi = true
+	_action_joueur.emit("ok")
 
 
 func _fuir(u: Combattant) -> void:

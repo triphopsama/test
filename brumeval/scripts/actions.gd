@@ -11,6 +11,11 @@
 #   duree_min       minutes qui passent pendant l'action
 #   affection_min   affection du PNJ envers toi pour qu'il accepte
 #   effet_affection gain ou perte d'affection
+#   prix            ce que ça coûte : « 1 argent », « 3 cuivre », ou un objet du sac
+#                   (« OBJ327 1 » : un pain de Mara). Sans ça, l'action est refusée.
+#   donne           ce que ça rapporte, séparé par des virgules : « cuivre 6 », « BRV003 2 »
+#                   (un objet de data/objets.csv), « repos » (tous les PV),
+#                   « boutique » / « vente » (ouvre le marchand), « lame_sans_nom »
 #   description     le texte affiché ; {nom} {activite} {parole} {lieu} sont remplacés
 #
 # Règles fixes (dans le code, pas dans le fichier) pour les actions intimes :
@@ -90,7 +95,21 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		if aff < int(l.affection_min):
 			_refus(l, pnj, cles)
 			return
-		monde.relations[pnj.id] = clampi(aff + int(l.effet_affection), -100, 100)
+	var manque := _manque(str(l.get("prix", "")))
+	if manque != "":
+		Illustrations.montrer(l.id + "_refus", cles, manque)
+		return
+	_payer(str(l.get("prix", "")))
+	var donne := str(l.get("donne", ""))
+	if donne in ["boutique", "vente"]:
+		monde.fenetres.marchand(pnj, donne == "vente")
+		return
+	if pnj != null:
+		monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + int(l.effet_affection), -100, 100)
+		monde.sauver_etat()
+	var gains := _donner(donne)
+	if gains != "":
+		texte += "\n\n" + gains
 	if texte.strip_edges() == "":
 		texte = "%s (texte à écrire dans data/actions.csv)" % l.nom
 	if l.intime == "1":
@@ -101,6 +120,72 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if COMBATS.has(l.id):
 		await Illustrations.ferme
 		monde.combat_contre_pnj(pnj, COMBATS[l.id])
+
+
+## Ce qui manque pour payer (texte), ou "".
+func _manque(prix: String) -> String:
+	for morceau in prix.split(",", false):
+		var m := morceau.strip_edges()
+		var id := m.split(" ")[0]
+		if Objets.existe(id):
+			var n := int(m.split(" ")[1]) if m.split(" ").size() > 1 else 1
+			if monde.fiche.nombre(id) < n:
+				return "Il te faudrait %s, et tu n'en as pas." % Objets.get_(id).nom.to_lower()
+		elif Objets.cuivre_de(m) > monde.fiche.bourse:
+			return "Ça coûte %s, et tu n'as que %s." % [Objets.texte_prix(Objets.cuivre_de(m)), Objets.texte_prix(monde.fiche.bourse)]
+	return ""
+
+
+func _payer(prix: String) -> void:
+	for morceau in prix.split(",", false):
+		var m := morceau.strip_edges()
+		var id := m.split(" ")[0]
+		if Objets.existe(id):
+			monde.fiche.retirer(id, int(m.split(" ")[1]) if m.split(" ").size() > 1 else 1)
+		elif Objets.cuivre_de(m) > 0:
+			monde.fiche.bourse -= Objets.cuivre_de(m)
+	monde.fiche.sauver()
+
+
+## Ajoute au sac ce que l'action rapporte ; renvoie le texte du gain.
+func _donner(donne: String) -> String:
+	var r := []
+	var f: Fiche = monde.fiche
+	for morceau in donne.split(",", false):
+		var m := morceau.strip_edges().split(" ", false)
+		if m.is_empty():
+			continue
+		var n := int(m[1]) if m.size() > 1 else 1
+		if m[0] == "repos":
+			f.pv = f.pv_max()
+			r.append("Tu te sens reposé : %d/%d PV." % [f.pv, f.pv_max()])
+		elif m[0] == "lame_sans_nom":
+			r.append(_lame_sans_nom())
+		elif Objets.existe(m[0]):
+			f.ajouter(m[0], n)
+			r.append("+%d %s." % [n, Objets.get_(m[0]).nom.to_lower()])
+		elif m[0] in ["cuivre", "argent", "or"]:
+			var c := Objets.cuivre_de("%d %s" % [n, m[0]])
+			f.bourse += c
+			r.append("+%s." % Objets.texte_prix(c))
+	f.sauver()
+	return " ".join(r)
+
+
+## creation_personnage.md : « on la trouve dans le bois de Ronceval, ou non ».
+## Une chance sur trois par jour de fouille, et une seule lame.
+func _lame_sans_nom() -> String:
+	var f: Fiche = monde.fiche
+	if f.drapeaux.has("lame_sans_nom"):
+		return "Plus rien d'intéressant ici."
+	if f.drapeaux.get("fouille_jour", 0) == Horloge.jour():
+		return "Tu as déjà tout retourné aujourd'hui."
+	f.drapeaux["fouille_jour"] = Horloge.jour()
+	if randi() % 3 != 0:
+		return "Rien. Peut-être qu'en revenant un autre jour…"
+	f.drapeaux["lame_sans_nom"] = true
+	f.ajouter("OBJ510")
+	return "Sous les ronces, ta main tombe sur une poignée froide : une épée banale, sans poinçon, sans une trace de rouille. Tu gagnes la Lame sans nom (sac : touche I)."
 
 
 func _refus(l: Dictionary, pnj: Node, cles: Array) -> void:

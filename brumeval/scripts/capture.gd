@@ -37,6 +37,22 @@ func _ready() -> void:
 		Illustrations.fermer()
 		for i in 120:
 			await get_tree().process_frame
+	if args.has("fenetre"):
+		# --fenetre=sac | perso | bram : un sac d'exemple pour voir les fenêtres
+		var f := Fiche.new()
+		monde.fiche = f
+		f.bourse = 87
+		for id in ["OBJ002", "OBJ208", "OBJ327", "OBJ407", "BRV001"]:
+			f.ajouter(id, 2 if id == "OBJ327" else 1)
+		f.equiper("OBJ002")
+		f.equiper("OBJ208")
+		f.gagner_xp(60)
+		match args.fenetre:
+			"sac": monde.fenetres.sac()
+			"perso": monde.fenetres.personnage()
+			_: monde.fenetres.marchand(monde._pnj_par_id("BRU002"), false)
+		for i in 10:
+			await get_tree().process_frame
 	get_viewport().get_texture().get_image().save_png(args.capture)
 	Horloge.avancer(-Horloge._decalage / 60.0)
 	get_tree().quit()

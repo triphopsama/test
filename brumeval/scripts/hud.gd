@@ -68,7 +68,7 @@ func _label(pos: Vector2, taille: int) -> Label:
 	return l
 
 
-const AIDE := "ZQSD / flèches : marcher · Maj : courir · E : agir · Tab : plan · T : accélérer le temps · molette : zoom"
+const AIDE := "ZQSD / flèches : marcher · Maj : courir · E : agir · I : sac · C : personnage · Tab : plan · T : accélérer le temps · molette : zoom"
 const AIDE_COMBAT := "1-9 : choisir une action · clic : choisir une case · Échap : revenir au menu · molette : zoom"
 
 
@@ -80,10 +80,12 @@ func _process(_delta: float) -> void:
 	var acc := "" if Horloge.acceleration == 1.0 else "  (temps ×%d)" % int(Horloge.acceleration)
 	var bm: Array = Horloge.basses_mers()
 	var maree := "basse : rochers praticables" if Horloge.maree_basse() else "haute"
-	_infos.text = "Jour %d · %s%s\nMarée %s (basse mer à %s et %s)\n%s" % [
+	var f: Fiche = monde.fiche
+	_infos.text = "Jour %d · %s%s\nMarée %s (basse mer à %s et %s)\n%s\nPV %d/%d · niveau %d%s · bourse : %s" % [
 		Horloge.jour(), Horloge.texte_heure(), acc, maree,
 		Horloge.texte_heure(bm[0]), Horloge.texte_heure(fposmod(bm[1], 24.0)),
-		monde.lieux[lieu].nom if lieu != "" else "Dans la nature"]
+		monde.lieux[lieu].nom if lieu != "" else "Dans la nature",
+		f.pv, f.pv_max(), f.niveau, " (%d points à répartir)" % f.points if f.points > 0 else "", Objets.texte_prix(f.bourse)]
 	# qui ou quoi est à portée
 	_cible_pnj = null
 	var dmin := 3.0
@@ -92,7 +94,7 @@ func _process(_delta: float) -> void:
 			dmin = n.pos2d().distance_to(p)
 			_cible_pnj = n
 	_cible_lieu = monde.lieu_proche(p, 15.0)
-	if _menu.visible or Illustrations.ouvert or monde.combat != null:
+	if _menu.visible or Illustrations.ouvert or monde.combat != null or monde.fenetres.ouvert != "":
 		_invite.text = ""
 	elif _cible_pnj:
 		_invite.text = "E : %s (%s)" % [_cible_pnj.donnees.nom, _cible_pnj.activite]
@@ -108,7 +110,7 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if Illustrations.ouvert or monde.combat != null or not (event is InputEventKey) or not event.pressed or event.echo:
+	if Illustrations.ouvert or monde.combat != null or monde.fenetres.ouvert != "" or not (event is InputEventKey) or not event.pressed or event.echo:
 		return
 	var k: Key = event.physical_keycode
 	if _menu.visible:

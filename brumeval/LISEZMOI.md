@@ -16,6 +16,8 @@ Le village de départ en 3D façon HD-2D, en temps réel. Fait avec Godot 4.3 (m
 | Maj | Courir (4 m/s) |
 | Ctrl | Voyage rapide ×8 (pour tester) |
 | E | Agir : parler à quelqu'un, ou agir sur place |
+| I | Le sac : porter, retirer, manger |
+| C | Le personnage : caractéristiques, niveau, points à répartir |
 | 1 à 9 | Choisir une action dans le menu |
 | Échap | Fermer le menu, arrêter une scène |
 | Tab | Plan du village, avec ta position |
@@ -36,11 +38,22 @@ En combat : 1 à 9 choisit l'action (se déplacer, attaquer, compétence, bander
   - **Attaquer pour de vrai** : un combat à mort. La cible et les témoins t'en veulent, et Corentin s'en mêle s'il est là, de jour. Jamais contre un enfant.
   - **Les loups** : près de leur tanière, dans le bois, une meute surgit une fois par jour.
   - **Les PNJ qui te détestent** (affection −40 ou moins) peuvent venir t'agresser d'eux-mêmes, plus ou moins selon leur colère, leur courage et leur prudence. À −70, c'est pour te tuer. Si tu t'es fait un ennemi de Silas, il envoie Garec et Mouche la nuit.
+  - Après un combat : de l'expérience (beaucoup contre plus fort que toi, presque rien contre plus faible, la moitié en bagarre, un quart si tu perds), le butin (peaux et crocs de loup, l'arme et la bourse de ceux que tu as mis à terre ; ils t'en voudront) et la tournée de la bagarre. Si tu perds un vrai combat, on te prend la moitié de ta bourse.
   - Perdre n'est pas la fin : tu te réveilles trois heures plus tard chez Agnès. Les morts restent morts (sauvés dans `user://etat.cfg`).
+
+## Les objets, l'argent, l'expérience
+
+- **Au réveil**, tu n'as que les vêtements d'un autre monde et l'anneau qui ne s'enlève pas. Pas un sou. La **Lame sans nom** se cache peut-être dans les fourrés de la clairière (« Fouiller les fourrés », une chance sur trois par jour).
+- **Gagner sa vie** : travailler une heure (6 cuivre), pêcher (des maquereaux), cueillir (sauge et consoude pour Agnès), revendre les peaux de loup.
+- **Les marchands** (« Acheter » et « Vendre » en parlant avec eux) : Bram (armes, mailles, boucliers), Isaure (cuir, chemises), Silas (dagues, cordes, lanterne), Mara (pain), Agnès (onguent, tisane), Rosalie (soupe), Joss (hareng, trident, vareuse), Pierrick (arc, collier de crocs), Ysolde (amulette), Basile (chapeau de paille). Ils rachètent tout à moitié prix ; un ami (affection 50) fait 10 % de remise. 1 or = 20 argent, 1 argent = 12 cuivre.
+- **L'équipement** compte en combat : dégâts et portée de l'arme, défense de l'armure, blocage du bouclier, bonus de caractéristiques. Chaque objet demande des caractéristiques minimales (la cotte de mailles : End 8). Un arc ou un trident se tient à deux mains.
+- **Les PV** restent d'un combat à l'autre. Ils remontent de 10 % par heure, d'un coup en dormant à la taverne, ou en mangeant (aussi en plein combat : « Manger ou se soigner »).
+- **Les niveaux** : 50 × niveau d'expérience pour passer au suivant, 4 points à répartir à chaque niveau (touche C). Les compétences viennent avec les caractéristiques : Frappe lourde à For 10, Coup sournois à Agi 10 avec une dague, Tir précis à Per 10 avec un arc.
+- Tout est dans `data/objets.csv`, modifiable au tableur (colonnes expliquées en haut de `scripts/objets.gd`). La fiche du joueur est sauvée dans `user://joueur.cfg` : supprime-la pour recommencer à zéro.
 
 ## Écrire les actions
 
-Tout est dans `data/actions.csv` (s'ouvre avec un tableur ou un éditeur de texte, séparateur `;`). Une ligne par action ; une ligne avec un id de PNJ précis remplace la ligne générale pour ce PNJ. Les colonnes sont expliquées en haut de `scripts/actions.gd`.
+Tout est dans `data/actions.csv` (s'ouvre avec un tableur ou un éditeur de texte, séparateur `;`). Une ligne par action ; une ligne avec un id de PNJ précis remplace la ligne générale pour ce PNJ. Les colonnes sont expliquées en haut de `scripts/actions.gd`. Les colonnes `prix` (« 1 argent », ou un objet : « OBJ327 1 ») et `donne` (« cuivre 6 », « BRV003 2 », « repos ») font payer et rapporter une action.
 
 Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'écrire. Le code garde les règles du jeu, quoi qu'il y ait dans le fichier :
 - jamais avec un PNJ de moins de 18 ans ou sans profil intime ;
@@ -51,7 +64,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Ce qui n'est pas encore là
 
-- La création de personnage, l'expérience, l'inventaire, les armes et l'argent (tu te bats à mains nues pour l'instant).
+- La création de personnage, les classes et métiers, la magie, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
 - La grotte, Pierrefane et le reste du monde.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
@@ -69,6 +82,6 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Vérifier que tout marche
 
-`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, et trois combats joués tout seuls (bagarre, loups, agression).
+`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, et trois combats joués tout seuls (bagarre, loups, agression).
 
-`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat.
+`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso` ou `bram` une image des fenêtres.

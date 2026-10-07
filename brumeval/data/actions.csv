@@ -1,21 +1,24 @@
-id;nom;cible;lieux;pnj;intime;duree_min;affection_min;effet_affection;description
-saluer;Saluer;pnj;*;*;0;1;-100;1;Tu salues {nom}. Un signe de tête en retour, sans plus.
-parler;Parler;pnj;*;*;0;10;-100;2;Tu parles avec {nom}, qui est là pour : {activite}. « {parole} »
-offrir_manger;Offrir à manger;pnj;*;*;0;5;-100;5;Tu tends un morceau de pain à {nom}, qui le prend avec un regard surpris.
-insulter;Insulter;pnj;*;*;0;1;-100;-10;Tu insultes {nom} devant tout le monde. Ça ne s'oubliera pas.
-attaquer;Attaquer pour de vrai;pnj;*;*;0;1;-100;0;Tu sors les poings pour faire mal. {nom} comprend tout de suite que ce n'est pas un jeu. Les témoins aussi.
-bagarre;Provoquer en bagarre;pnj;*;*;0;5;-100;0;Tu cherches {nom} : « T'as un problème ? Viens le régler dehors. » Une bagarre à mains nues : personne ne meurt, le perdant paie la tournée.
-demander_travail;Demander du travail;pnj;*;BRU001,BRU013,BRU019,BRU004;0;5;-20;2;{nom} te jauge de haut en bas : « Reviens à l'aube. On verra ce que t'as dans les bras. »
-demander_travail;Demander du travail;pnj;*;BRU002;0;5;-20;2;Bram, sans lever les yeux de l'enclume : « T'as des mains de demoiselle. Pose ça avant de te couper un truc qui te manquera. »
-seduire;Séduire;pnj;*;*;1;10;30;2;
-embrasser;Embrasser;pnj;*;*;1;2;40;3;
-passer_la_nuit;Passer la nuit ensemble;pnj;*;*;1;480;60;10;
-dormir;Dormir (1 pièce d'argent);lieu;taverne;*;0;360;0;0;"Rosalie te donne une clé : « Ici on paie avant de dormir, mon grand. » La chambre sent le sel et la bière. Les cloisons sont fines ; tu t'endors au bruit de la salle."
-se_laver;Se laver;lieu;plage,lavoir;*;0;15;0;0;L'eau est froide à te couper le souffle. Si quelqu'un passe, tout le village saura demain à quoi tu ressembles.
-pecher;Pêcher;lieu;port;*;0;60;0;0;Une heure au bout du quai, une ligne prêtée par Joss. Deux maquereaux et une crampe.
-prier;Prier;lieu;chapelle;*;0;15;0;0;Sous le vitrail brisé, les Sept Astres te regardent sans rien promettre.
-travailler;Travailler une heure;lieu;boulangerie,forge,moulin,atelier;*;0;60;0;0;Une heure de travail. Les mains te brûlent, mais on te regarde un peu autrement.
-fouiller;Fouiller la maison;lieu;falaise;*;0;10;0;0;Des meubles pourris, des cartes marines moisies. Dehors, derrière un buisson, un puits couvert de planches.
-descendre_puits;Descendre dans le puits;lieu;puits;*;0;1;0;0;Une pierre jetée met longtemps à tomber. Un courant d'air froid remonte. (La grotte n'est pas encore dans le prototype.)
-cueillir;Cueillir des plantes;lieu;reveil,fontaine,chene,agnes;*;0;20;0;0;Sauge, consoude, et une plante que tu ne connais pas. Agnès saurait.
-regarder_mer;Regarder la mer;lieu;crique,guet,bouche,plage;*;0;5;0;0;Au large, rien. Ou peut-être une lanterne, qui s'éteint dès que tu la fixes.
+id;nom;cible;lieux;pnj;intime;duree_min;affection_min;effet_affection;prix;donne;description
+saluer;Saluer;pnj;*;*;0;1;-100;1;;;Tu salues {nom}. Un signe de tête en retour, sans plus.
+parler;Parler;pnj;*;*;0;10;-100;2;;;Tu parles avec {nom}, qui est là pour : {activite}. « {parole} »
+offrir_manger;Offrir à manger;pnj;*;*;0;5;-100;5;OBJ327 1;;Tu tends un morceau de pain à {nom}, qui le prend avec un regard surpris.
+insulter;Insulter;pnj;*;*;0;1;-100;-10;;;Tu insultes {nom} devant tout le monde. Ça ne s'oubliera pas.
+attaquer;Attaquer pour de vrai;pnj;*;*;0;1;-100;0;;;Tu sors les poings pour faire mal. {nom} comprend tout de suite que ce n'est pas un jeu. Les témoins aussi.
+bagarre;Provoquer en bagarre;pnj;*;*;0;5;-100;0;;;Tu cherches {nom} : « T'as un problème ? Viens le régler dehors. » Une bagarre à mains nues : personne ne meurt, le perdant paie la tournée.
+demander_travail;Demander du travail;pnj;*;BRU001,BRU013,BRU019,BRU004;0;5;-20;2;;;{nom} te jauge de haut en bas : « Reviens à l'aube. On verra ce que t'as dans les bras. »
+demander_travail;Demander du travail;pnj;*;BRU002;0;5;-20;2;;;Bram, sans lever les yeux de l'enclume : « T'as des mains de demoiselle. Pose ça avant de te couper un truc qui te manquera. »
+acheter;Acheter;pnj;*;BRU001,BRU002,BRU003,BRU004,BRU006,BRU011,BRU015,BRU018,BRU019,BRU020;0;5;-30;0;;boutique;{nom} te montre ce qu'il y a à vendre.
+vendre;Vendre;pnj;*;BRU001,BRU002,BRU003,BRU004,BRU006,BRU011,BRU015,BRU018,BRU019,BRU020;0;5;-30;0;;vente;{nom} regarde ce que tu as dans ton sac.
+seduire;Séduire;pnj;*;*;1;10;30;2;;;
+embrasser;Embrasser;pnj;*;*;1;2;40;3;;;
+passer_la_nuit;Passer la nuit ensemble;pnj;*;*;1;480;60;10;;;
+dormir;Dormir (1 pièce d'argent);lieu;taverne;*;0;360;0;0;1 argent;repos;"Rosalie te donne une clé : « Ici on paie avant de dormir, mon grand. » La chambre sent le sel et la bière. Les cloisons sont fines ; tu t'endors au bruit de la salle."
+se_laver;Se laver;lieu;plage,lavoir;*;0;15;0;0;;;L'eau est froide à te couper le souffle. Si quelqu'un passe, tout le village saura demain à quoi tu ressembles.
+pecher;Pêcher;lieu;port;*;0;60;0;0;;BRV003 2;Une heure au bout du quai, une ligne prêtée par Joss. Deux maquereaux et une crampe.
+prier;Prier;lieu;chapelle;*;0;15;0;0;;;Sous le vitrail brisé, les Sept Astres te regardent sans rien promettre.
+travailler;Travailler une heure;lieu;boulangerie,forge,moulin,atelier;*;0;60;0;0;;cuivre 6;Une heure de travail. Les mains te brûlent, mais on te regarde un peu autrement.
+fouiller;Fouiller la maison;lieu;falaise;*;0;10;0;0;;;Des meubles pourris, des cartes marines moisies. Dehors, derrière un buisson, un puits couvert de planches.
+descendre_puits;Descendre dans le puits;lieu;puits;*;0;1;0;0;;;Une pierre jetée met longtemps à tomber. Un courant d'air froid remonte. (La grotte n'est pas encore dans le prototype.)
+cueillir;Cueillir des plantes;lieu;reveil,fontaine,chene,agnes;*;0;20;0;0;;BRV004 1;Sauge, consoude, et une plante que tu ne connais pas. Agnès saurait.
+regarder_mer;Regarder la mer;lieu;crique,guet,bouche,plage;*;0;5;0;0;;;Au large, rien. Ou peut-être une lanterne, qui s'éteint dès que tu la fixes.
+fouiller_fourres;Fouiller les fourrés;lieu;reveil;*;0;15;0;0;;lame_sans_nom;Tu écartes les ronces autour de la clairière où tu t'es réveillé. Des feuilles, des épines, un vieux nid.

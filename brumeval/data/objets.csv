@@ -1,0 +1,42 @@
+id;nom;type;emplacement;degats;portee;stat;crit;defense;bouclier;bonus;soin;conditions;prix;vendeurs;description
+OBJ001;Dague rouillée;arme;main;4;1;Agi;10;0;0;Agi +1, Per -1;0;Agi 6;11 cuivre;—;Lame courte qui se cache dans une botte ou une manche. Celle-ci a connu des jours meilleurs.
+OBJ002;Dague;arme;main;5;1;Agi;10;0;0;Agi +2;0;Agi 6;3 argent;BRU002,BRU003;Lame courte qui se cache dans une botte ou une manche.
+OBJ006;Épée courte rouillée;arme;main;6;1;For;0;0;0;Agi +1, Per -1;0;For 6;3 argent;—;L'arme des gardes et des voyageurs prudents. Celle-ci a connu des jours meilleurs.
+OBJ007;Épée courte;arme;main;8;1;For;0;0;0;Agi +2;0;For 6;10 argent;BRU002;L'arme des gardes et des voyageurs prudents.
+OBJ011;Épée longue rouillée;arme;main;8;1;For;0;0;0;For +1, Agi -1;0;For 10;4 argent 6 cuivre;—;Lame droite à une main, l'arme de base du guerrier. Celle-ci a connu des jours meilleurs.
+OBJ012;Épée longue;arme;main;10;1;For;0;0;0;For +2;0;For 10;15 argent;BRU002;Lame droite à une main, équilibrée, l'arme de base du guerrier.
+OBJ031;Hachette rouillée;arme;main;6;1;For;0;0;0;For +1, Agi -1;0;For 6;1 argent 2 cuivre;BRU002;Outil de bûcheron autant qu'arme, on la trouve dans chaque ferme. Celle-ci a connu des jours meilleurs.
+OBJ067;Trident de pêcheur;arme;deux_mains;7;1;Agi;0;0;0;Agi +2;0;Agi 8;8 argent;BRU006;Fourche à trois dents pour le poisson, et pour ce qui sort de l'eau la nuit.
+OBJ072;Arc court;arme;deux_mains;7;5;Agi;0;0;0;Per +2;0;Per 8;7 argent 6 cuivre;BRU020;Arc de chasse en orme, rapide à tendre. Tire à cinq cases.
+OBJ510;Lame sans nom;arme;main;7;1;For;0;0;0;For +1;0;—;invendable;—;Une épée banale, sans poinçon. Elle ne rouille pas. Personne ne sait qui l'a laissée là.
+OBJ222;Vêtements d'un autre monde;armure;torse;0;0;;0;1;0;Per +1;0;—;invendable;—;Une étoffe que personne ici ne sait tisser, des coutures trop régulières, des fermetures inconnues.
+OBJ223;Chemise de lin;armure;torse;0;0;;0;1;0;—;0;—;1 argent 6 cuivre;BRU019;Simple, propre, elle sèche vite au vent de la côte.
+OBJ225;Vareuse cirée de pêcheur;armure;torse;0;0;;0;2;0;End +1;0;—;1 argent 6 cuivre;BRU006;Toile enduite de cire et d'huile de poisson. Elle sent le hareng, pour toujours.
+OBJ226;Tablier de forgeron;armure;torse;0;0;;0;3;0;Rob +1;0;—;1 argent 6 cuivre;BRU002;Cuir épais roussi par les étincelles.
+OBJ132;Plastron de cuir usé;armure;torse;0;0;;0;3;0;Agi +1;0;—;3 argent;BRU003;Cuir tanné et bouilli, léger et silencieux. Rapiécé, taché, mais mieux que rien.
+OBJ136;Casque de cuir;armure;tete;0;0;;0;2;0;Agi +1;0;—;4 argent;BRU019;Cuir tanné et bouilli, léger et silencieux.
+OBJ137;Plastron de cuir;armure;torse;0;0;;0;6;0;Agi +1;0;—;10 argent;BRU019;Cuir tanné et bouilli, léger et silencieux.
+OBJ138;Gants de cuir;armure;mains;0;0;;0;1;0;Agi +1;0;—;3 argent;BRU019;Cuir tanné et bouilli, léger et silencieux.
+OBJ139;Jambières de cuir;armure;jambes;0;0;;0;3;0;Agi +1;0;—;5 argent;BRU019;Cuir tanné et bouilli, léger et silencieux.
+OBJ140;Bottes de cuir;armure;pieds;0;0;;0;2;0;Agi +1;0;—;3 argent 6 cuivre;BRU019;Cuir tanné et bouilli, léger et silencieux.
+OBJ156;Camail;armure;tete;0;0;;0;4;0;Rob +1;0;End 8;16 argent;BRU002;Anneaux de fer rivetés, ils arrêtent les lames mais pas les masses.
+OBJ157;Cotte de mailles;armure;torse;0;0;;0;12;0;Rob +1, Agi -1;0;End 8;2 or;BRU002;Anneaux de fer rivetés, ils arrêtent les lames mais pas les masses.
+OBJ237;Chapeau de paille;armure;tete;0;0;;0;0;0;—;0;—;4 cuivre;BRU018;Large bord, ruban rouge, il s'envole au premier coup de vent.
+OBJ207;Rondache de bois vermoulue;bouclier;main_gauche;0;0;;0;0;8;Rob +1, Agi -1;0;—;1 argent;—;Petit bouclier rond en planches, le cuir du dessus est parti.
+OBJ208;Rondache de bois;bouclier;main_gauche;0;0;;0;0;12;Rob +2;0;—;3 argent;BRU002;Bouclier rond en tilleul cerclé de fer, léger.
+OBJ212;Bouclier en carapace de crabe-rocher;bouclier;main_gauche;0;0;;0;0;18;Rob +3, End +1;0;Rob 6;9 argent;BRU002;Léger et dur comme la pierre, il sent encore un peu la marée.
+OBJ511;Anneau du voyageur d'ailleurs;bijou;anneau;0;0;;0;0;0;Per +1;0;—;invendable;—;Un anneau qu'on n'a pas mis soi-même. Il ne s'enlève pas.
+OBJ278;Bracelet de cuivre;bijou;anneau;0;0;;0;0;0;Vit +1;0;—;6 cuivre;BRU003;Bijou de foire, il verdit la peau.
+OBJ281;Amulette des Sept Astres;bijou;cou;0;0;;0;0;0;Sag +1;0;—;12 argent;BRU004;Sept perles de verre sur un fil de laine bleue, bénies par Ysolde.
+OBJ284;Collier de crocs de loup;bijou;cou;0;0;;0;0;0;For +1, Vol +1;0;—;2 argent;BRU020;Crocs percés sur un lacet de cuir, trophée de chasse de la côte.
+OBJ327;Pain de Mara;consommable;—;0;0;;0;0;0;—;15;—;3 cuivre;BRU001;Miche ronde à la croûte épaisse. 2 cuivres avant la pénurie, 3 aujourd'hui.
+OBJ328;Soupe de poisson du Hareng Rieur;consommable;—;0;0;;0;0;0;—;10;—;1 cuivre;BRU011;Un bol, un quignon, et les rumeurs du port en prime.
+OBJ330;Hareng fumé;consommable;—;0;0;;0;0;0;—;5;—;1 cuivre;BRU006,BRU011;Ration de marin, salée à faire boire.
+OBJ319;Tisane de camomille d'Agnès;consommable;—;0;0;;0;0;0;—;5;—;2 cuivre;BRU015;Fleurs séchées dans un sachet de lin, avec un chat qui dort dessus.
+BRV001;Onguent de consoude;consommable;—;0;0;;0;0;0;—;30;—;6 cuivre;BRU015;Le pot de grès d'Agnès. Ça pique, ça sent la cave, et ça referme les plaies. Se prend aussi en combat.
+BRV003;Maquereau frais;consommable;—;0;0;;0;0;0;—;3;—;1 cuivre;—;Pêché au bout du quai. Meilleur grillé.
+BRV004;Sauge et consoude;materiau;—;0;0;;0;0;0;—;0;—;2 cuivre;—;Une poignée de plantes cueillies au bord du chemin. Agnès en fait des onguents.
+OBJ407;Peau de loup gris;materiau;—;0;0;;0;0;0;—;0;—;9 cuivre;—;Fourrure grise et épaisse. Pierrick et Isaure en achètent.
+BRV002;Croc de loup;materiau;—;0;0;;0;0;0;—;0;—;3 cuivre;—;Un croc jaune, long comme un doigt.
+OBJ462;Corde de chanvre (15 m);outil;—;0;0;;0;0;0;—;0;—;6 cuivre;BRU003,BRU006;Chanvre tressé, goudronné aux deux bouts.
+OBJ464;Lanterne sourde;outil;—;0;0;;0;0;0;—;0;—;1 argent 6 cuivre;BRU003;Lanterne à volet, celle des contrebandiers.

@@ -7,11 +7,11 @@ const STATS := ["For", "Agi", "End", "Vit", "Rob", "Int", "Sag", "Per", "Vol"]
 const ARMES := {
 	"poings": {"nom": "poings", "degats": 2, "portee": 1, "stat": "For"},
 	"lutte": {"nom": "poings de lutteur", "degats": 5, "portee": 1, "stat": "For"},
-	"dague": {"nom": "lame cachée", "degats": 5, "portee": 1, "stat": "Agi", "crit": 10},
+	"dague": {"nom": "lame cachée", "degats": 5, "portee": 1, "stat": "Agi", "crit": 10, "objet": "OBJ002"},
 	"marteau": {"nom": "marteau de forge", "degats": 12, "portee": 1, "stat": "For"},
-	"epee": {"nom": "épée courte", "degats": 8, "portee": 1, "stat": "For"},
+	"epee": {"nom": "épée courte", "degats": 8, "portee": 1, "stat": "For", "objet": "OBJ007"},
 	"masse": {"nom": "masse", "degats": 7, "portee": 1, "stat": "For"},
-	"arc": {"nom": "arc de chasse", "degats": 8, "portee": 6, "stat": "Agi"},
+	"arc": {"nom": "arc de chasse", "degats": 8, "portee": 6, "stat": "Agi", "objet": "OBJ072"},
 	"baton": {"nom": "bâton", "degats": 4, "portee": 1, "stat": "For"},
 	"crocs": {"nom": "crocs", "degats": 4, "portee": 1, "stat": "Agi"},
 }
@@ -109,15 +109,26 @@ static func depuis_pnj(d: Dictionary, n: Node3D) -> Combattant:
 	return c
 
 
-static func joueur(n: Node3D) -> Combattant:
+## Le joueur, tiré de sa fiche : caractéristiques avec les bonus portés, arme, armure, bouclier, PV actuels.
+static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 	var c := Combattant.new()
 	c.id = "joueur"
 	c.nom = "Toi"
 	c.est_joueur = true
 	c.noeud = n
-	for s in STATS:
-		c.stats[s] = 7
+	if f == null:
+		f = Fiche.new()
+	c.stats = f.stats_totales()
+	c.niveau = f.niveau
+	for e in f.equipement:
+		var o := Objets.get_(f.equipement[e])
+		c.def_phys += int(o.get("defense", "0"))
+		c.bouclier += int(o.get("bouclier", "0"))
+		if o.get("type", "") == "arme":
+			c.arme = {"nom": o.nom, "degats": int(o.degats), "portee": int(o.portee), "stat": o.stat, "crit": int(o.crit), "objet": o.id}
+	c.competences = f.competences()
 	c._calculer()
+	c.pv = clampi(f.pv, 1, c.pv_max)
 	return c
 
 
