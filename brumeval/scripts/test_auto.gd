@@ -188,6 +188,7 @@ func _ready() -> void:
 	await _defis()
 	await _vesperine()
 	_fees()
+	await _domptage()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -302,7 +303,7 @@ func _ready() -> void:
 
 func _classes_metiers(mara: Node, tim: Node) -> void:
 	print("== Classes et métiers")
-	ok(Classes.classes().size() == 19 and Classes.metiers().size() == 7, "19 classes et 7 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
+	ok(Classes.classes().size() == 20 and Classes.metiers().size() == 7, "20 classes et 7 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
 	for id in Classes.classes():
 		for p in Classes.classe(id).competences:
 			ok(Combattant.COMPETENCES.has(p[0]), "%s : la compétence %s existe" % [id, p[0]])
@@ -914,6 +915,41 @@ func _fees() -> void:
 	ok(Intime.profil("FEE002").partage == 100 and monde._pnj_par_id("FEE003") != null, "ses sœurs Lirelle et Mousse, qui adorent les nuits à plusieurs")
 	monde.relations[Fees.ID] = 0
 	monde.sauver_etat()
+	monde.fiche = Fiche.new()
+
+
+func _domptage() -> void:
+	print("== Domptage")
+	var f := Fiche.new()
+	monde.fiche = f
+	f.stats.Vol = 30
+	f.apprises = ["apprivoiser", "ordre_meute"]
+	monde.combat_auto = true
+	var p: Vector2 = monde.lieux.chene.pos
+	monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
+	monde.attaque_de_betes("loup", 1, p + Vector2(0, 2), "Un loup !")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "un loup attaque")
+	if monde.combat:
+		var moi: Combattant = monde.combat.combattants.filter(func(x): return x.est_joueur)[0]
+		var loup: Combattant = monde.combat.combattants.filter(func(x): return x.est_bete)[0]
+		ok(monde.combat._cibles(moi, "apprivoiser").is_empty(), "un loup en pleine forme ne se laisse pas apprivoiser")
+		loup.pv = 3
+		loup.case = moi.case + Vector2i(1, 0)
+		monde.combat._attaquer(moi, loup, "apprivoiser")
+		ok(loup.apprivoise and loup.sorti, "affaibli, à côté de toi, Vol 30 : il cède")
+		monde.combat._verifier_fin()
+		var r = await monde.combat.fini
+		await get_tree().process_frame
+		Illustrations.fermer()
+		ok(f.betes.size() == 1 and monde.betes_suivantes.size() == 1, "il te suit (%s)" % r)
+		var allies := Compagnons.allies(monde)
+		ok(allies.size() == 1 and allies[0].est_bete and allies[0].arme.degats == Combattant.ARMES.crocs.degats + 2, "il se bat avec toi, Ordre de meute : +2 dégâts")
+		ok(Intime.profil(allies[0].id).is_empty(), "et rien d'intime avec une bête : aucun profil")
+	monde.combat_auto = false
+	f.betes.clear()
+	Compagnons.installer_betes(monde)
 	monde.fiche = Fiche.new()
 
 

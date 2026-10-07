@@ -63,3 +63,4 @@ offrande_pain;Lui offrir du pain;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;OBJ327 1;
 offrande_mures;Lui offrir des mûres;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;BRV054 1;fee_offrande;;Elle croque une mûre, et ses lèvres deviennent violettes. Elle rit.
 fee_benir;Lui demander la bénédiction de la Brume;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;;fee_benir;;
 fee_mepris;Te moquer de la « fée »;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;;fee_mepris;;
+relacher;Relâcher une bête;lieu;*;*;0;5;0;0;;relacher;;

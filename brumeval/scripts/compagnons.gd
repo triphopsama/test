@@ -22,6 +22,30 @@ const ACCESSOIRES := {
 }
 
 
+## Les places de l'équipe : 4 (5 avec Lien de meute pour une bête).
+static func places(m: Node) -> int:
+	return MAX + (1 if "lien_meute" in m.fiche.competences() and not m.fiche.betes.is_empty() else 0)
+
+
+static func occupees(m: Node) -> int:
+	return m.fiche.equipiers.size() + m.fiche.betes.size()
+
+
+## Les bêtes apprivoisées marchent derrière toi (à appeler au chargement et quand ça change).
+static func installer_betes(m: Node) -> void:
+	for n in m.betes_suivantes:
+		n.queue_free()
+	m.betes_suivantes.clear()
+	for b in m.fiche.betes:
+		var n := preload("res://scripts/bete.gd").new()
+		n.planche = Combattant.BETES[b.type].planche
+		n.suit = true
+		var p: Vector2 = m.joueur.pos2d() + Vector2(randf_range(-3, 3), 3)
+		n.position = Vector3(p.x, m.hauteur(p.x, p.y), p.y)
+		m.add_child(n)
+		m.betes_suivantes.append(n)
+
+
 static func dans_equipe(m: Node, id: String) -> bool:
 	return id in m.fiche.equipiers
 
@@ -32,7 +56,7 @@ static func peut_suivre(m: Node, n: Node) -> String:
 	var f: Fiche = m.fiche
 	if int(n.donnees.get("age", "0")) < 18:
 		return "%s est un enfant : sa place est chez lui." % nom
-	if f.equipiers.size() >= MAX:
+	if occupees(m) >= MAX:
 		return "Ton équipe est au complet (%d). Laisse quelqu'un rentrer chez lui d'abord." % MAX
 	var aff: int = m.relations.get(n.id, 0)
 	var lie: bool = f.partenaires.has(n.id) or f.pactes.has(n.id)
@@ -68,6 +92,20 @@ static func allies(m: Node, sauf: String = "") -> Array:
 	for n in m.pnjs:
 		if n.suit and n.id != sauf and not n.mort:
 			r.append(Combattant.depuis_pnj(n.donnees, n))
+	var meute: bool = "ordre_meute" in m.fiche.competences()
+	for i in m.fiche.betes.size():
+		var b: Dictionary = m.fiche.betes[i]
+		var noeud: Node = m.betes_suivantes[i] if i < m.betes_suivantes.size() else null
+		if noeud == null:
+			continue
+		var c := Combattant.bete(b.type, 0, noeud)
+		c.id = "bete_%d" % i
+		c.nom = b.nom
+		if meute:
+			c.arme = c.arme.duplicate()
+			c.arme.degats += 2
+			c.bonus_toucher += 10
+		r.append(c)
 	return r
 
 

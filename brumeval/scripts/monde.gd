@@ -17,6 +17,7 @@ var pnj_donnees := {}      # id -> ligne de pnj.csv
 var pnjs: Array = []
 var relations := {}        # id -> affection du PNJ envers le joueur
 var desirs := {}           # id -> désir du PNJ, 0 à 100 (intime.gd)
+var betes_suivantes: Array = []  # les nœuds des bêtes apprivoisées qui te suivent
 var joueur: Node3D
 var camera: Camera3D
 var hud: CanvasLayer
@@ -72,6 +73,7 @@ func _ready() -> void:
 	Compagnons.restaurer(self)
 	Vesperine.installer(self)
 	Fees.installer(self)
+	Compagnons.installer_betes(self)
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
@@ -800,12 +802,18 @@ const MAITRES_INTIMES := {"BRU003": ["seduction", "jeu_pouvoir", "discretion"], 
 	"BRU017": ["lecture_envies"], "BRU015": ["massage"], "BRU022": ["discretion"]}
 
 
+## Ce que certains PNJ enseignent en plus de leur classe (affection 30).
+const MAITRES := {"BRU020": ["apprivoiser", "ordre_meute"], "BRU018": ["apprivoiser"]}
+
+
 func lecons_de(n: Node) -> Array:
 	if n == null or int(n.donnees.get("age", "0")) < 18:
 		return []
 	var intimes: Array = []
+	if relations.get(n.id, 0) >= 30:
+		intimes = MAITRES.get(n.id, []).filter(func(k): return not k in fiche.apprises)
 	if actions.intime_possible(n) and relations.get(n.id, 0) >= 30:
-		intimes = MAITRES_INTIMES.get(n.id, []).filter(func(k): return not k in fiche.apprises)
+		intimes += MAITRES_INTIMES.get(n.id, []).filter(func(k): return not k in fiche.apprises)
 	var c := Combattant.depuis_pnj(n.donnees, n)
 	var connues: Array = fiche.competences(true)
 	var r := []
@@ -1152,6 +1160,7 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 	for n in _loups:
 		n.queue_free()
 	_loups.clear()
+	Compagnons.installer_betes(self)
 	sauver_etat()
 	if texte != "":
 		Illustrations.montrer(action, cles, texte)
@@ -1208,6 +1217,14 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 		lignes.append("+%d expérience%s." % [gain, "" if resultat == "victoire" else " (on apprend en prenant des coups)"])
 		if niveaux:
 			lignes.append("Niveau %d ! %d points à répartir (touche C)." % [fiche.niveau, fiche.points])
+	# les bêtes apprivoisées te rejoignent, s'il y a de la place
+	for e in ennemis:
+		if e.apprivoise:
+			if Compagnons.occupees(self) < Compagnons.places(self):
+				fiche.betes.append({"type": e.type_bete, "nom": Combattant.BETES[e.type_bete].nom})
+				lignes.append("%s te suit désormais." % Combattant.BETES[e.type_bete].nom)
+			else:
+				lignes.append("%s voudrait te suivre, mais ton équipe est au complet : elle retourne au bois." % e.nom)
 	# ce que tu as fait dans ce combat dit quelle classe s'éveille en toi (classes_metiers.md)
 	fiche.noter_style(moi.style)
 	lignes.append_array(fiche.annonces)

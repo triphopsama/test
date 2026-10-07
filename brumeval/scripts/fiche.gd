@@ -42,6 +42,7 @@ var nuits := {}                   # id -> nuits passées ensemble
 var equipiers: Array = []         # ceux qui te suivent (4 au plus, compagnons.gd)
 var tenues := {}                  # id -> {nu, objets} : ce que porte un compagnon
 var defis_actifs := {}            # id du défi -> jour où il a été accepté (defis.gd)
+var betes: Array = []             # bêtes apprivoisées qui te suivent : {type, nom}
 ## Le corps (réglable dans la fiche, C) : ce que les PNJ voient, et ce qu'ils préfèrent.
 var corps := {"taille": "moyenne", "silhouette": "moyenne", "sexe": "moyen", "poitrine": "moyenne", "sensibilite": 50}
 const CORPS := {"taille": ["petite", "moyenne", "grande"], "silhouette": ["mince", "moyenne", "athletique", "musclee", "ronde"],
@@ -67,7 +68,7 @@ var affinites := {}               # élément -> 0..100, cachées par défaut
 var options := {"chiffres": "complet", "adulte": true, "mort_definitive": false}
 
 const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "mana", "bourse", "sac", "equipement", "drapeaux",
-	"desir", "partenaires", "pactes", "gouts_connus", "nuits", "equipiers", "tenues", "defis_actifs", "corps",
+	"desir", "partenaires", "pactes", "gouts_connus", "nuits", "equipiers", "tenues", "defis_actifs", "corps", "betes",
 	"classe", "niveau_classe", "xp_classe", "apprises", "style", "metier", "niveau_metier", "xp_metier", "heures",
 	"nom", "peuple", "lignee", "sexe", "pronoms", "age", "astre", "vie", "traits", "archetype", "caractere",
 	"valeurs", "passions", "tenue", "objet_ailleurs", "affinites", "options"]

@@ -165,6 +165,13 @@ D'après les vieilles croyances (`univers.md` : la Brume guide ceux qu'elle aime
 - Faveur 30 : **la bénédiction de la Brume** pour la journée (un coup raté se rejoue en combat). Faveur 50 : dans le bois, **la Brume t'écarte des bêtes**. Faveur 70 : **elles peuvent choisir de te suivre** (un pacte, pas une capture : on ne dompte pas un être qui pense). Faveur −30 : **la Brume t'égare** dans le bois.
 - Ce sont des adultes libres : l'intime suit les mêmes règles qu'avec tout le monde. Elles adorent le dehors, le bain, le jeu, l'audace et les nuits à plusieurs (partage 100, aucune jalousie).
 
+## Le domptage des bêtes
+
+- **Apprivoiser** (Vol 10) : en combat, une bête à moins d'un quart de sa vie, collée à toi ; Vol contre Vol. Elle cède, quitte le combat et **te suit** ensuite (elle compte dans ton équipe de 4). Elle se bat avec toi.
+- **La classe Dompteur** s'éveille si tu apprivoises : Apprivoiser, Ordre de meute (tes bêtes : +2 dégâts, +10 % pour toucher), Lien de meute (une place de plus pour une bête). Pierrick et Basile enseignent à apprivoiser s'ils t'apprécient (affection 30).
+- « Relâcher une bête » : elle retourne au bois.
+- On n'apprivoise que des bêtes, jamais un être qui pense (les fées se gagnent, elles ne se domptent pas), et rien d'intime avec une bête.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

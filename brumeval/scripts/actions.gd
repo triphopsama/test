@@ -77,6 +77,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id == "defis" and (pnj == null or (Defis.de(monde, pnj).is_empty() and not monde.fiche.defis_actifs.keys().any(func(id): return Defis.tous()[id].pnj == pnj.id))):
 			continue
+		if l.id == "relacher" and monde.fiche.betes.is_empty():
+			continue
 		if l.id == "guider" and not (Horloge.jour() == 1 and Vesperine.etat(monde) in ["", "a_la_crique"]):
 			continue
 		if l.id == "suivre" and (pnj == null or pnj.suit or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
@@ -170,6 +172,13 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne in ["v_nourrir", "v_guider"]:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))
+		return
+	if donne == "relacher":
+		var options := []
+		for i in monde.fiche.betes.size():
+			options.append(["Relâcher %s" % monde.fiche.betes[i].nom, _relacher.bind(i), "Elle retourne au bois, sans rancune."])
+		options.append(["Garder tout le monde", func(): pass, ""])
+		monde.fenetres.choix("Relâcher une bête", "Laquelle ?", options)
 		return
 	if donne == "defis":
 		monde.fenetres.defis(pnj)
@@ -605,6 +614,14 @@ Basse mer à %s, puis à %s. Les poissons monteront avec le flot : pêche dans l
 			r = "Tu traces le signe de la Pâle sur le front de {nom}. %s" % ("Ses yeux brillent : « Que les Astres te le rendent. »" if pieux else "{nom} hausse les épaules, mais ne dit pas non.")
 	f.sauver()
 	return r
+
+
+func _relacher(i: int) -> void:
+	var b: Dictionary = monde.fiche.betes[i]
+	monde.fiche.betes.remove_at(i)
+	monde.fiche.sauver()
+	Compagnons.installer_betes(monde)
+	Illustrations.montrer("relacher", [b.type], "%s te regarde une dernière fois, puis disparaît sous les arbres." % b.nom)
 
 
 ## Vol à la tire : Agi contre les regards. Une fois par jour et par personne.

@@ -401,6 +401,8 @@ func _cibles(u: Combattant, cle: String) -> Array:
 	var type: String = comp.get("type", "attaque")
 	if type in ["soi", "allies"] or comp.has("zone_soi"):
 		return [u]
+	if type == "apprivoiser":
+		return combattants.filter(func(c): return c.est_bete and c.camp != u.camp and c.en_jeu() and c.pv < c.pv_max * 0.25 and _distance(c.case, u.case) <= 1)
 	if type == "purifier":
 		return combattants.filter(func(c): return _a_purifier(u, c, int(comp.portee)))
 	var portee: int = comp.get("portee", u.arme.portee)
@@ -543,6 +545,16 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 				_ecrire("%s provoque %s, qui ne voit plus que lui." % [att.nom, cible.nom])
 			else:
 				_ecrire("%s provoque %s, qui ne s'en laisse pas conter." % [att.nom, cible.nom])
+			return
+		"apprivoiser":
+			var chance := clampi(30 + (att.stats.Vol - cible.stats.Vol) * 4, 5, 90)
+			if randi_range(1, 100) <= chance:
+				cible.apprivoise = true
+				cible.sorti = true
+				_noter(att, "apprivoiser")
+				_ecrire("%s tend la main vers %s, sans peur. La bête baisse la tête : elle est à toi (%d %%)." % [att.nom, cible.nom, chance])
+			else:
+				_ecrire("%s tend la main ; %s gronde et recule (%d %%)." % [att.nom, cible.nom, chance])
 			return
 		"maudire":
 			_noter(att, "maudire")

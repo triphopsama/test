@@ -158,6 +158,14 @@ const COMPETENCES := {
 		"desc": "Une rune sur toi et les alliés collés à toi : +10 de défense pendant 3 tours."},
 	"lien_objet": {"nom": "Lien d'objet", "type": "hors_combat", "cond": {"Sag": 10}, "desc": "Lier un objet à soi : il revient à ta main (plus tard)."},
 
+	# Dompteur
+	"apprivoiser": {"nom": "Apprivoiser", "type": "apprivoiser", "endurance": 6, "portee": 1, "stat": "Vol", "cond": {"Vol": 10},
+		"desc": "Une bête à moins d'un quart de sa vie, à côté de toi : Vol contre Vol, elle cède et te suit (ton équipe : 4 au plus)."},
+	"ordre_meute": {"nom": "Ordre de meute", "type": "passif", "cond": {"Vol": 8},
+		"desc": "Tes bêtes apprivoisées frappent plus fort (+2 dégâts) et plus juste (+10 % pour toucher)."},
+	"lien_meute": {"nom": "Lien de meute", "type": "passif", "cond": {"Sag": 10},
+		"desc": "Une bête de plus dans ton équipe (5 au lieu de 4)."},
+
 	# ---- l'intime (univers.md, « Désir et sexualité ») : entre adultes consentants
 	"seduction": {"nom": "Séduction", "type": "hors_combat", "cond": {"Vol": 10, "Per": 8},
 		"desc": "On te dit oui plus facilement (-10 d'affection demandée) et le plaisir monte plus vite. Silas, Élise l'enseignent."},
@@ -229,6 +237,8 @@ var noeud: Node3D
 var style := {}              # ce que le joueur a fait pendant le combat (pour lui proposer une classe)
 var utilise := {}            # compétences une fois par combat déjà servies
 var provoque_par: Combattant = null
+var apprivoise := false      # une bête qui a cédé : elle rejoint le joueur après le combat
+var type_bete := ""
 var affinites := {}          # élément -> 0..100
 var elements := {}           # bêtes : élément -> facteur de dégâts reçus (bestiaire)
 
@@ -441,6 +451,7 @@ static func bete(type: String, i: int, n: Node3D) -> Combattant:
 	c.def_phys = b.get("armure", 0)
 	c.ventre_mou = b.get("ventre_mou", false)
 	c.elements = b.get("elements", {})
+	c.type_bete = type
 	c._calculer()
 	return c
 
