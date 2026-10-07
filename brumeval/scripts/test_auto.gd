@@ -18,7 +18,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	print("== Données")
-	ok(monde.lieux.size() == 28, "28 lieux (%d)" % monde.lieux.size())
+	ok(monde.lieux.size() == 33, "33 lieux, avec le bois profond (%d)" % monde.lieux.size())
 	ok(monde.pnjs.filter(func(n): return n.id != Vesperine.ID).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
 	ok(monde.actions.lignes.size() >= 10, "actions lues (%d)" % monde.actions.lignes.size())
 	ok(monde.praticable(monde.lieux.reveil.pos), "on peut marcher à la clairière du réveil")

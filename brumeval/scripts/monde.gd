@@ -2,7 +2,7 @@
 # 1 unité = 1 mètre. x vers l'est, z vers le sud, y vers le haut.
 extends Node3D
 
-const TAILLE := Vector2(1720, 1180)
+const TAILLE := Vector2(2400, 1180)
 const PAS := 8.0
 const ENFANT_MAX := 17
 
@@ -380,9 +380,9 @@ func _construire_arbres() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 7
 	var essais := 0
-	while positions.size() < 2200 and essais < 20000:
+	while positions.size() < 3600 and essais < 40000:
 		essais += 1
-		var p := Vector2(rng.randf_range(960, 1720), rng.randf_range(0, 620))
+		var p := Vector2(rng.randf_range(960, TAILLE.x), rng.randf_range(0, 860))
 		if not Geometry2D.is_point_in_polygon(p, bois):
 			continue
 		var proche := false
@@ -1050,7 +1050,7 @@ func _surveiller_rencontres(delta: float) -> void:
 	var choix := ""
 	if dans_bois and loin_taniere and randf() < 1.0 / 20.0:
 		choix = "loup"
-	elif (dans_bois or dans_landes) and randf() < 1.0 / 35.0:
+	elif (dans_bois or dans_landes) and randf() < (1.0 / 10.0 if lieux.has("roncier") and p.distance_to(lieux.roncier.pos) < 60.0 else 1.0 / 35.0):
 		choix = "sanglier"
 	elif greve and Horloge.maree_basse() and randf() < 1.0 / 8.0:
 		choix = "crabe"

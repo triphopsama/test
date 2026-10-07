@@ -21,7 +21,7 @@ const NOMS_EMPLACEMENTS := {"main": "main", "main_gauche": "main gauche", "tete"
 
 ## Les parchemins (type « parchemin ») et la compétence qu'ils apprennent (Combattant.COMPETENCES).
 ## Leur colonne conditions dit ce qu'il faut pour les comprendre.
-const PARCHEMINS := {"BRV030": "flamme", "BRV031": "eclat_glace", "BRV032": "vague"}
+const PARCHEMINS := {"BRV030": "flamme", "BRV031": "eclat_glace", "BRV032": "vague", "BRV052": "bourrasque"}
 ## La pierre d'affinité : elle donne les vrais chiffres des affinités.
 const PIERRE_AFFINITE := "BRV033"
 

@@ -31,6 +31,12 @@ LIEUX = [
 ("plage","Plage","côte",312,808,0,"—","toujours","libre","L'embouchure du ruisseau ; galets pour les ricochets de Tim","Sable (déplacement −1), eau peu profonde puis profonde"),
 ("chapelle","Chapelle des Sept Astres","sacré",470,885,14,"Ysolde (sacristie)","6 h – 21 h ; toit la nuit","la sacristie fermée à clé","Le carnet d'Ysolde sur Silas ; le vitrail brisé","Lieu sacré (lumière ×1,2), butte (hauteur +2), échafaudage (hauteur +4)"),
 ("sentier","Sentier côtier (vers Pierrefane)","route",520,1140,10,"—","toujours","libre","Pierrefane à 16 km, 3 h de marche","Lande, vent, falaises basses"),
+# le bois de Ronceval, plus loin vers l'est
+("clairiere","Clairière aux cerfs","bois",1880,360,40,"Cerfs, au lever et au coucher du soleil","toujours","libre","Des bois de cerf tombés ; la piste des chasseurs","Herbe haute, souches (couvert)"),
+("ruines","Ruines de l'ermitage","bois",2120,180,52,"—","toujours","libre","Un autel des Sept Astres effondré ; une niche murée","Murs bas (couvert), dalles (hauteur +1)"),
+("source","Source chaude des Fées","bois",2000,580,30,"—","toujours","libre","Une eau tiède qui fume à l'aube ; on dit qu'elle guérit","Eau peu profonde et chaude, rochers moussus"),
+("roncier","Le Grand Roncier","bois",1700,700,24,"Sangliers","toujours","ronces","La bauge des sangliers ; des mûres en fin d'été","Ronces (déplacement -1), fourrés (couvert)"),
+("etang","Étang noir","bois",2250,450,36,"—","toujours","libre","On dit qu'un noyé y attend les imprudents","Eau profonde, roseaux (couvert)"),
 ]
 
 # Chemins : (a, b, facteur de détour, condition)
@@ -49,6 +55,8 @@ CHEMINS = [
 ("falaise","puits",1.0,""),("falaise","crique",1.4,"sentier raide, nuit : Agilité 8 en courant"),
 ("port","guet",1.25,"sentier de chèvres"),
 ("crique","bouche",1.3,"marée basse seulement"),("crique","port",1.3,"par les rochers, marée basse seulement"),
+("chene","clairiere",1.25,""),("loups","ruines",1.3,""),("clairiere","ruines",1.25,""),("clairiere","source",1.2,""),
+("source","etang",1.25,""),("ruines","etang",1.3,""),("source","roncier",1.25,""),("roncier","fontaine",1.3,"à travers les ronces"),
 ]
 
 MARCHE=1.5   # m/s
@@ -78,7 +86,7 @@ def dist(a,b,maree_basse=False):
 def minutes(m,v): return m/v/60
 
 # Zones (polygones en mètres)
-COTE=[(250,0),(245,90),(215,150),(185,175),(175,215),(225,240),(240,265),(225,300),(170,330),(115,360),(105,400),(140,435),(215,460),(235,520),(205,560),(190,610),(195,680),(230,740),(265,790),(285,840),(320,900),(360,980),(400,1060),(430,1180),(1720,1180),(1720,0)]
+COTE=[(250,0),(245,90),(215,150),(185,175),(175,215),(225,240),(240,265),(225,300),(170,330),(115,360),(105,400),(140,435),(215,460),(235,520),(205,560),(190,610),(195,680),(230,740),(265,790),(285,840),(320,900),(360,980),(400,1060),(430,1180),(2400,1180),(2400,0)]
 LANDES=[(260,60),(800,40),(900,250),(700,420),(480,470),(300,430),(260,300)]
-BOIS=[(1000,0),(1720,0),(1720,560),(1300,600),(1080,480),(980,260)]
+BOIS=[(1000,0),(2400,0),(2400,800),(1900,840),(1600,780),(1300,600),(1080,480),(980,260)]
 RUISSEAU=[(1250,430),(1100,450),(950,455),(790,545),(700,640),(620,705),(560,780),(420,805),(312,808)]

@@ -60,3 +60,9 @@ BRV041;Cagoule de cuir;accessoire;—;0;0;;0;0;0;—;0;—;8 argent;BRU003;Ne la
 BRV042;Bâillon;accessoire;—;0;0;;0;0;0;—;0;—;4 argent;BRU003;Une boule de cuir et deux lanières. Le compagnon ne parle plus : il garde un geste pour dire stop.
 BRV043;Cordes de bondage;accessoire;—;0;0;;0;0;0;—;0;—;5 argent;BRU003;Du chanvre doux, des nœuds qui tiennent. Les nœuds de marin de Joss feraient l'affaire aussi.
 BRV044;Plug;accessoire;—;0;0;;0;0;0;—;0;—;5 argent;BRU003;Ça ne se voit pas. Mais le compagnon le sait, toi aussi, et ça se lit sur son visage.
+BRV050;Viande de cerf;consommable;—;0;0;;0;0;0;—;25;—;8 cuivre;—;Rôtie au feu de camp, elle tient au corps toute une journée.
+BRV051;Peau de cerf;materiau;—;0;0;;0;0;0;—;0;—;1 argent;—;Souple et fine. Isaure en ferait des gants.
+BRV052;Parchemin de Bourrasque;parchemin;—;0;0;;0;0;0;—;0;Int 8;1 argent;—;Trouvé dans la niche murée de l'ermitage. Les signes semblent bouger avec le vent. Il faut Int 8.
+BRV053;Brochet de l'Étang noir;consommable;—;0;0;;0;0;0;—;12;—;4 cuivre;—;Des dents comme des aiguilles. Joss dit qu'il ne faut pas manger ce qui vient de l'Étang noir. Joss dit beaucoup de choses.
+BRV054;Mûres;consommable;—;0;0;;0;0;0;—;6;—;1 cuivre;—;Les doigts violets et les bras griffés, mais ça valait la peine.
+BRV055;Bois de cerf;materiau;—;0;0;;0;0;0;—;0;—;6 cuivre;—;Bram en fait des manches de couteau.

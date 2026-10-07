@@ -1,7 +1,7 @@
 import sys, math, random
 from PIL import Image, ImageDraw, ImageFont
 from data import *
-S=0.8; W,H=int(1720*S),int(1180*S)
+S=0.8; W,H=int(max(x for x,y in COTE)*S),int(max(y for x,y in COTE)*S)
 img=Image.new("RGB",(W,H),(64,112,160)); dr=ImageDraw.Draw(img)
 F="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"; FB="/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 f=ImageFont.truetype(F,12); fb=ImageFont.truetype(FB,13); ft=ImageFont.truetype(FB,22); fs=ImageFont.truetype(F,11)
@@ -13,8 +13,8 @@ dr.polygon([P(*p) for p in LANDES],fill=(150,140,110))
 # bois
 dr.polygon([P(*p) for p in BOIS],fill=(52,96,58))
 random.seed(3)
-for i in range(700):
-    x=random.uniform(980,1720); y=random.uniform(0,600)
+for i in range(1100):
+    x=random.uniform(980,max(x for x,y in COTE)); y=random.uniform(0,860)
     if dr.im.getpixel(P(x,y))==(52,96,58): dr.ellipse([P(x-7,y-7),P(x+7,y+7)],fill=(40,78,46))
 # falaises (trait épais le long de la côte nord)
 dr.line([P(*p) for p in cote[:14]],fill=(110,100,90),width=6)
@@ -49,7 +49,7 @@ for i,l in enumerate(LIEUX,1):
 # étiquettes courtes
 def lab(id,txt,dx=10,dy=-6,font=f):
     x,y=P(L[id][3],L[id][4]); dr.text((x+dx,y+dy),txt,font=font,fill=(15,15,15),stroke_width=2,stroke_fill=(245,240,225))
-for id,txt,dx,dy in [("reveil","Réveil",10,-6),("chene","Vieux chêne",10,-6),("loups","Loups",-50,-6),("cabane","Cabane",10,-6),("agnes","Agnès",10,-6),("fontaine","Vieille Fontaine",10,-2),("ferme","Ferme",10,-6),("moulin","Moulin",10,-6),("lavoir","Lavoir",10,-4),("landes","Landes du Haut",10,-6),("falaise","Maison de la falaise",10,-12),("puits","Puits",10,0),("bouche","Bouche de mer",-95,-16),("crique","Crique",10,-4),("guet","Pointe du Guet",-110,8),("port","Port",-40,-4),("comptoir","Comptoir",8,-16),("joss","Joss",-40,0),("taverne","Taverne",-58,6),("place","Place",8,-4),("garde","Garde",9,-14),("mairie","Mairie",8,-6),("boulangerie","Boulangerie",-82,0),("forge","Forge",-8,8),("atelier","Couture",8,0),("plage","Plage",-50,4),("chapelle","Chapelle",10,-6),("sentier","→ Pierrefane (16 km, 3 h)",10,-12)]:
+for id,txt,dx,dy in [("reveil","Réveil",10,-6),("chene","Vieux chêne",10,-6),("loups","Loups",-50,-6),("cabane","Cabane",10,-6),("agnes","Agnès",10,-6),("fontaine","Vieille Fontaine",10,-2),("ferme","Ferme",10,-6),("moulin","Moulin",10,-6),("lavoir","Lavoir",10,-4),("landes","Landes du Haut",10,-6),("falaise","Maison de la falaise",10,-12),("puits","Puits",10,0),("bouche","Bouche de mer",-95,-16),("crique","Crique",10,-4),("guet","Pointe du Guet",-110,8),("port","Port",-40,-4),("comptoir","Comptoir",8,-16),("joss","Joss",-40,0),("taverne","Taverne",-58,6),("place","Place",8,-4),("garde","Garde",9,-14),("mairie","Mairie",8,-6),("boulangerie","Boulangerie",-82,0),("forge","Forge",-8,8),("atelier","Couture",8,0),("plage","Plage",-50,4),("chapelle","Chapelle",10,-6),("sentier","→ Pierrefane (16 km, 3 h)",10,-12),("clairiere","Clairière aux cerfs",10,-6),("ruines","Ruines de l'ermitage",10,-6),("source","Source chaude",10,-6),("roncier","Grand Roncier",10,-6),("etang","Étang noir",10,-6)]:
     lab(id,txt,dx,dy)
 dr.text((20,14),"Brumeval",font=ft,fill=(255,255,255),stroke_width=2,stroke_fill=(30,40,60))
 dr.text((20,42),"MER",font=fb,fill=(220,235,255))

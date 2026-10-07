@@ -52,3 +52,9 @@ nourrir_pain;Lui donner du pain;pnj;*;VES019;0;10;-100;0;OBJ327 1;v_nourrir;;
 nourrir_poisson;Lui donner un poisson;pnj;*;VES019;0;10;-100;0;BRV003 1;v_nourrir;;
 guider;La guider chez Agnès, loin des lumières;pnj;*;VES019;0;10;-100;0;;v_guider;;
 moment_risque;Un moment ici avec {nom}, au risque d'être vus;pnj;*;*;1;45;-100;0;;risque;;
+chasser_cerf;Chasser le cerf;lieu;clairiere;*;0;90;0;0;;chasse_cerf;;Tu attends à l'affût, sous le vent, que les cerfs sortent du bois.
+fouiller_ruines;Fouiller les ruines de l'ermitage;lieu;ruines;*;0;30;0;0;;ruines;;Tu soulèves les dalles, tu sondes les murs.
+prier_autel;Prier à l'autel effondré;lieu;ruines;*;0;20;0;0;;autel;;Tu t'agenouilles devant les Sept Astres gravés dans la pierre.
+bain_source;Se baigner dans la source chaude;lieu;source;*;0;40;0;0;;bain;;L'eau tiède te prend jusqu'aux épaules. La fatigue s'en va avec la vapeur.
+pecher_etang;Pêcher à l'Étang noir;lieu;etang;*;0;60;0;0;;BRV053 1;;L'eau est noire et immobile. Quelque chose mord, et tire fort.
+cueillir_mures;Cueillir des mûres;lieu;roncier;*;0;30;0;0;;BRV054 2;;Les ronces griffent, les mûres tachent.

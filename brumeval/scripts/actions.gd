@@ -340,7 +340,7 @@ func _metier(id: String, h: float, action: String) -> String:
 
 
 ## Les lieux exposés où l'on peut se risquer (la taverne : seulement la nuit, après la fermeture).
-const LIEUX_RISQUES := ["crique", "ferme", "lavoir", "plage", "chene", "taverne", "falaise", "guet"]
+const LIEUX_RISQUES := ["crique", "ferme", "lavoir", "plage", "chene", "taverne", "falaise", "guet", "source", "clairiere", "etang"]
 
 const INTIMES := ["risque", "seduire", "embrasser", "nuit", "gouts", "masser", "couple", "rompre", "pacte_maitre", "pacte_esclave",
 	"rompre_pacte", "danser", "courtisan"]
@@ -427,7 +427,7 @@ func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String
 	return [r, false]
 
 
-const HORS_COMBAT := ["crochetage", "pistage", "piege", "plongee", "maree", "soin_magie", "feu_camp", "benir"]
+const HORS_COMBAT := ["chasse_cerf", "ruines", "autel", "bain", "crochetage", "pistage", "piege", "plongee", "maree", "soin_magie", "feu_camp", "benir"]
 
 
 ## La compétence (parmi celles demandées) que le joueur sait utiliser, "" sinon.
@@ -454,6 +454,40 @@ func _hors_combat(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: S
 	var t := f.stats_totales()
 	var r := ""
 	match quoi:
+		"chasse_cerf":
+			if not _une_fois("cerf"):
+				return "Les cerfs ont senti ta présence ce matin. Ils ne reviendront pas aujourd'hui."
+			var arc: bool = Combattant.categorie_arme(Combattant.joueur(monde.joueur, f).arme) == "arc"
+			var chance := clampi(25 + (t.Per - 8) * 4 + (t.Agi - 8) * 2 + (25 if arc else 0) + (10 if "pistage" in f.competences() else 0), 5, 90)
+			if randi_range(1, 100) > chance:
+				return "%s\n\nUne branche craque sous ton pied. Les cerfs bondissent et disparaissent (%d %%)." % [texte, chance]
+			f.ajouter("BRV050", 2)
+			f.ajouter("BRV051")
+			if randf() < 0.4:
+				f.ajouter("BRV055")
+			r = "%s\n\nTon %s le touche. Viande de cerf ×2, une peau%s (%d %%)." % [texte, "trait" if arc else "coup", ", des bois" if f.nombre("BRV055") > 0 else "", chance]
+		"ruines":
+			if not _une_fois("ruines"):
+				return "Tu as déjà retourné toutes les pierres aujourd'hui."
+			if not f.drapeaux.has("parchemin_ermitage") and randf() < 0.3:
+				f.drapeaux["parchemin_ermitage"] = true
+				f.ajouter("BRV052")
+				r = "%s\n\nDerrière une pierre descellée de la niche : un parchemin roulé, intact. Les signes bougent comme le vent (Parchemin de Bourrasque)." % texte
+			else:
+				var c := randi_range(0, 10)
+				f.bourse += c
+				r = "%s\n\n%s" % [texte, ("Quelques pièces anciennes : %s." % Objets.texte_prix(c)) if c > 0 else "Rien, sinon des os d'oiseau et le silence."]
+		"autel":
+			if not _une_fois("autel"):
+				return "Tu as déjà prié ici aujourd'hui. Les Astres ont entendu."
+			f.mana = f.mana_max()
+			f.affinites["lumière"] = mini(100, f.affinite("lumière") + 1)
+			r = "%s Une chaleur douce te traverse. Ta mana revient tout entière." % texte
+		"bain":
+			var avant := f.pv
+			f.pv = mini(f.pv_max(), f.pv + f.pv_max() / 2)
+			f.desir = mini(100, f.desir + 10)
+			r = "%s +%d PV (%d/%d)." % [texte, f.pv - avant, f.pv, f.pv_max()]
 		"crochetage":
 			if not _une_fois("crochet_" + lieu):
 				return "Tu as déjà forcé cette serrure aujourd'hui. Mieux vaut ne pas tenter le sort."

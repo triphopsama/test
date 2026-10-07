@@ -148,6 +148,16 @@ D'après `monde/demons/vesperine.md` et la chronique du jour 1 avec le joueur (`
 - **À la crique, si tu y es à 23 h 20** : intervenir en parlant (Int + Per), faire diversion (Agi), te battre contre Silas (niveau 18), ou regarder caché. Lucas, qui refuse d'y toucher, t'en sait gré si tu la sauves.
 - **Libre**, elle vit cachée (chez Agnès, la falaise, le bois, la pointe du Guet le soir). Tant qu'elle a faim et peur, rien d'intime. Nourrie et en sécurité, c'est une adulte libre : succube, libido 95, elle aime l'audace et les jeux de pouvoir. Son défi : **« cinq fois cette nuit »** ; relevé, elle te propose un pacte où tu mènes.
 
+## Le bois de Ronceval, plus loin
+
+La carte s'étend vers l'est (2 400 m) : le bois profond, avec cinq lieux de plus.
+- **Clairière aux cerfs** : « Chasser le cerf » (une fois par jour ; Per et Agi, mieux avec un arc et le Pistage) : viande, peau, parfois des bois.
+- **Ruines de l'ermitage** : les fouiller (une fois par jour ; un parchemin de Bourrasque y attend peut-être), prier à l'autel effondré (toute ta mana, et la lumière te parle un peu plus).
+- **Source chaude des Fées** : s'y baigner rend la moitié des PV.
+- **Grand Roncier** : des mûres, et la bauge des sangliers (on les croise trois fois plus souvent).
+- **Étang noir** : un brochet, et une légende de noyé.
+- La source, la clairière et l'étang sont aussi des lieux pour un moment risqué à deux.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).
