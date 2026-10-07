@@ -226,11 +226,11 @@ func _maj_ordre() -> void:
 				simu[c] += _vitesse(c) * temps
 		simu[prochain] = 0.0
 		noms.append(prochain.nom)
-	_ordre.text = "Ordre : " + " → ".join(noms)
+	_ordre.text = "Ordre : " + " > ".join(noms)
 	var lignes := []
 	for c in combattants:
 		var niv := " (niv %d)" % c.niveau if monde.fiche and monde.fiche.vie == "joueur" and not c.est_joueur else ""
-		lignes.append("%s%s%s : %s" % ["▶ " if c == actif else "", c.nom, niv, c.etat_texte()])
+		lignes.append("%s%s%s : %s" % ["> " if c == actif else "", c.nom, niv, c.etat_texte()])
 	_info.text = "\n".join(lignes)
 
 

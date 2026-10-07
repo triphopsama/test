@@ -73,8 +73,8 @@ func _ready() -> void:
 		for i in ETAPES.size():
 			_hasard(i)
 		_afficher())
-	_bouton_simple(bas, "← Étape précédente", func(): etape = maxi(0, etape - 1); _afficher())
-	_bouton_simple(bas, "Étape suivante →", func(): etape = mini(ETAPES.size() - 1, etape + 1); _afficher())
+	_bouton_simple(bas, "< Étape précédente", func(): etape = maxi(0, etape - 1); _afficher())
+	_bouton_simple(bas, "Étape suivante >", func(): etape = mini(ETAPES.size() - 1, etape + 1); _afficher())
 	var vide := Control.new()
 	vide.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bas.add_child(vide)
@@ -216,7 +216,7 @@ func _etape_identite() -> void:
 	curseur.value_changed.connect(func(v): c.age = int(v))
 	curseur.drag_ended.connect(func(_x): _afficher())
 	_contenu.add_child(curseur)
-	_texte("Jeune (25 ans ou moins) : Agi +1. Mûr (40 ans et plus) : Vol +1. Âgé (60 ans et plus) : Sag +1, End −1. Pour les elfes et les démons, ce n'est que l'apparence.", true)
+	_texte("Jeune (25 ans ou moins) : Agi +1. Mûr (40 ans et plus) : Vol +1. Âgé (60 ans et plus) : Sag +1, End -1. Pour les elfes et les démons, ce n'est que l'apparence.", true)
 	_texte("\nAstre de naissance (les prêtres et les superstitieux y réagissent)")
 	var opts := []
 	for k in CreationDonnees.ASTRES:
@@ -249,7 +249,7 @@ func _etape_stats() -> void:
 		l.custom_minimum_size = Vector2(250, 0)
 		grille.add_child(l)
 		var moins := Button.new()
-		moins.text = " − "
+		moins.text = " - "
 		moins.disabled = r <= -2
 		moins.pressed.connect(func(): c.repartition[s] = r - 1; _afficher())
 		grille.add_child(moins)
@@ -263,7 +263,7 @@ func _etape_stats() -> void:
 
 
 func _etape_caractere() -> void:
-	_texte("Un archétype pour aller vite. Les traits vont de −100 à +100, comme pour les PNJ, et changeront avec ta vie.")
+	_texte("Un archétype pour aller vite. Les traits vont de -100 à +100, comme pour les PNJ, et changeront avec ta vie.")
 	var opts := []
 	for k in CreationDonnees.ARCHETYPES:
 		var t: Dictionary = CreationDonnees.ARCHETYPES[k].traits
@@ -304,7 +304,7 @@ func _etape_traits() -> void:
 			if (t.cout > 0) != (titre == "Avantages"):
 				continue
 			var b := Button.new()
-			b.text = "%s (%s%d) : %s" % [t.nom, "−" if t.cout > 0 else "+", absi(t.cout), t.texte]
+			b.text = "%s (%s%d) : %s" % [t.nom, "-" if t.cout > 0 else "+", absi(t.cout), t.texte]
 			b.toggle_mode = true
 			b.button_pressed = k in c.traits
 			b.alignment = HORIZONTAL_ALIGNMENT_LEFT

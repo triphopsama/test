@@ -170,7 +170,7 @@ const COMPETENCES := {
 	"jeu_pouvoir": {"nom": "Jeu de pouvoir", "type": "hors_combat", "cond": {"Vol": 12},
 		"desc": "Domination ou soumission consentie, avec un mot d'arrêt toujours respecté. Silas l'enseigne ; un pacte en tient lieu."},
 	"discretion": {"nom": "Discrétion", "type": "hors_combat", "cond": {"Int": 8},
-		"desc": "Tes nuits s'ébruitent moins (25 % → 10 %). Silas, Mouche l'enseignent."},
+		"desc": "Tes nuits s'ébruitent moins (de 25 % à 10 %). Silas, Mouche l'enseignent."},
 	"art_aimer": {"nom": "Art d'aimer", "type": "hors_combat",
 		"desc": "Vient avec la première nuit ; monte d'un niveau toutes les trois nuits (jusqu'à 10) : +3 % de plaisir par niveau."},
 }

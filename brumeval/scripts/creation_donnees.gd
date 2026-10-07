@@ -28,7 +28,7 @@ const LIGNEES := {
 	"nain": {
 		"forge": {"nom": "Clan de la Forge", "stats": {}, "texte": "Métiers de forge +20 % d'expérience (plus tard)."},
 		"profondeurs": {"nom": "Clan des Profondeurs", "stats": {"End": 1}, "texte": "End +1, Sentir la roche (plus tard)."},
-		"marchand": {"nom": "Clan Marchand", "stats": {}, "texte": "Estimation ; prix −5 % chez les nains (Rosalie)."},
+		"marchand": {"nom": "Clan Marchand", "stats": {}, "texte": "Estimation ; prix -5 % chez les nains (Rosalie)."},
 	},
 	"homme_bete": {
 		"chat": {"nom": "Chat", "stats": {"Agi": 2, "Per": 1}, "texte": "Oreilles, queue, yeux fendus ; retombe toujours sur ses pieds."},
@@ -122,8 +122,8 @@ const TRAITS := {
 	"chanceux": {"nom": "Chanceux", "cout": 2, "texte": "Une fois par combat, un coup raté est rejoué."},
 	"trouvaille": {"nom": "Trouvaille", "cout": 1, "texte": "Butin un peu meilleur : plus de cuivre dans les poches."},
 	"tireur": {"nom": "Œil de tireur", "cout": 2, "texte": "Toucher à distance +10 %."},
-	"fragile": {"nom": "Fragile", "cout": -2, "texte": "PV −15 %."},
-	"mauvaise_vue": {"nom": "Mauvaise vue", "cout": -1, "texte": "Toucher à distance −10 %, sauf avec des lunettes."},
+	"fragile": {"nom": "Fragile", "cout": -2, "texte": "PV -15 %."},
+	"mauvaise_vue": {"nom": "Mauvaise vue", "cout": -1, "texte": "Toucher à distance -10 %, sauf avec des lunettes."},
 	"maladroit": {"nom": "Maladroit", "cout": -1, "texte": "Les jets ratés de fabrication cassent parfois l'outil (plus tard)."},
 	"phobie_noir": {"nom": "Phobie du noir", "cout": -2, "texte": "Malus et risque de panique dans le noir (plus tard)."},
 	"phobie_eau": {"nom": "Phobie de l'eau", "cout": -2, "texte": "Malus et risque de panique près de l'eau (plus tard)."},
@@ -132,8 +132,8 @@ const TRAITS := {
 	"grande_gueule": {"nom": "Grande gueule", "cout": -1, "texte": "Répète parfois des secrets (plus tard)."},
 	"sang_chaud": {"nom": "Sang chaud", "cout": -1, "texte": "Une insulte te pousse à la bagarre (plus tard)."},
 	"coeur": {"nom": "Cœur d'artichaut", "cout": -1, "texte": "Tombe amoureux vite (plus tard)."},
-	"louche": {"nom": "Air louche", "cout": -1, "texte": "Corentin, le garde, se méfie de toi (−15)."},
-	"ferme_magie": {"nom": "Fermé à la magie", "cout": -3, "texte": "Mana −40 %, mais Volonté +2."},
+	"louche": {"nom": "Air louche", "cout": -1, "texte": "Corentin, le garde, se méfie de toi (-15)."},
+	"ferme_magie": {"nom": "Fermé à la magie", "cout": -3, "texte": "Mana -40 %, mais Volonté +2."},
 	"malchanceux": {"nom": "Malchanceux", "cout": -2, "texte": "Une fois par combat, un coup réussi est rejoué."},
 	"ennemi": {"nom": "Ennemi", "cout": -2, "texte": "Quelqu'un du village t'en veut sans raison claire (choisi par le jeu)."},
 }
@@ -190,7 +190,7 @@ const PRENOMS := {
 
 # ---------------------------------------------------------------- calculs
 
-## Bonus d'âge apparent : jeune Agi +1, mûr Vol +1, âgé Sag +1 et End −1 (pas pour les elfes et les démons).
+## Bonus d'âge apparent : jeune Agi +1, mûr Vol +1, âgé Sag +1 et End -1 (pas pour les elfes et les démons).
 static func bonus_age(c: Dictionary) -> Dictionary:
 	if c.get("peuple", "") in ["elfe", "demon"]:
 		return {}
