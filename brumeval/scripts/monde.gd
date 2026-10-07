@@ -20,6 +20,14 @@ var joueur: Node3D
 var camera: Camera3D
 var hud: CanvasLayer
 var actions: RefCounted
+var focus: Node3D                # ce que suit la caméra
+var combat: Node3D = null
+var morts := {}                  # id -> true
+var _dernier_jour_loups := 0
+var _loups: Array = []
+var _t_hostiles := 0.0
+var combat_auto := false        # test : l'IA joue aussi ton camp
+var _dernier_jour_silas := 0
 
 var _lp := PackedVector2Array()
 var _lh := PackedFloat32Array()
@@ -36,6 +44,7 @@ func _ready() -> void:
 	randomize()
 	_bruit.frequency = 0.02
 	_charger()
+	_charger_etat()
 	_construire_environnement()
 	_construire_terrain()
 	_construire_chemins()
@@ -447,14 +456,17 @@ func _process(delta: float) -> void:
 	for l in _lumieres:
 		l.visible = nuit
 	_suivre_camera(delta)
+	_surveiller_loups()
+	_surveiller_hostiles(delta)
 
 
 func _suivre_camera(delta: float) -> void:
 	if joueur == null:
 		return
-	var cible := joueur.position + Vector3(0, 10.0, 14.0) * _zoom
+	var suivi: Node3D = focus if focus != null and is_instance_valid(focus) else joueur
+	var cible := suivi.position + Vector3(0, 10.0, 14.0) * _zoom
 	camera.position = camera.position.lerp(cible, clampf(delta * 5.0, 0.0, 1.0))
-	camera.look_at(joueur.position + Vector3(0, 1.0, 0))
+	camera.look_at(suivi.position + Vector3(0, 1.0, 0))
 	var attr := camera.attributes as CameraAttributesPractical
 	attr.dof_blur_far_distance = 22.0 * _zoom + 12.0
 
@@ -492,6 +504,7 @@ func _creer_pnjs() -> void:
 		n.id = id
 		n.donnees = pnj_donnees[id]
 		n.emploi = emplois[id]
+		n.mort = morts.has(id)
 		add_child(n)
 		pnjs.append(n)
 
@@ -631,3 +644,218 @@ func _construire_decor() -> void:
 		add_child(pr)
 		batiments.append(Rect2(p - t / 2.0, t))
 		poses += 1
+
+
+# ---------------------------------------------------------------- état sauvegardé
+
+const ETAT := "user://etat.cfg"
+
+
+func _charger_etat() -> void:
+	var cfg := ConfigFile.new()
+	if cfg.load(ETAT) != OK:
+		return
+	for id in cfg.get_value("monde", "relations", {}):
+		relations[id] = cfg.get_value("monde", "relations")[id]
+	morts = cfg.get_value("monde", "morts", {})
+	_dernier_jour_loups = cfg.get_value("monde", "loups", 0)
+
+
+func sauver_etat() -> void:
+	var cfg := ConfigFile.new()
+	cfg.set_value("monde", "relations", relations)
+	cfg.set_value("monde", "morts", morts)
+	cfg.set_value("monde", "loups", _dernier_jour_loups)
+	cfg.save(ETAT)
+
+
+## Ceux qui voient la scène : PNJ visibles à moins de d mètres du joueur.
+func temoins(d: float = 30.0) -> Array:
+	return pnjs.filter(func(n): return n.visible and not n.mort and n.pos2d().distance_to(joueur.pos2d()) < d)
+
+
+# ---------------------------------------------------------------- combats
+
+func _pnj_par_id(id: String) -> Node:
+	for n in pnjs:
+		if n.id == id:
+			return n
+	return null
+
+
+## Le joueur s'en prend à un PNJ : "bagarre" (à mains nues) ou "mortel".
+func combat_contre_pnj(cible: Node, mode: String) -> void:
+	var ennemis := [Combattant.depuis_pnj(cible.donnees, cible)]
+	if mode == "mortel":
+		relations[cible.id] = clampi(relations.get(cible.id, 0) - 40, -100, 100)
+		for t in temoins():
+			if t != cible:
+				relations[t.id] = clampi(relations.get(t.id, 0) - 15, -100, 100)
+		# le garde intervient, sauf la nuit (il a peur du noir)
+		var garde := _pnj_par_id("BRU014")
+		var h: float = Horloge.heure()
+		if garde and garde != cible and garde.visible and garde.pos2d().distance_to(joueur.pos2d()) < 40.0 and h > 6.0 and h < 21.0:
+			ennemis.append(Combattant.depuis_pnj(garde.donnees, garde))
+	else:
+		relations[cible.id] = clampi(relations.get(cible.id, 0) - 5, -100, 100)
+	sauver_etat()
+	_lancer([Combattant.joueur(joueur)], ennemis, mode, {"cible": cible})
+
+
+func _surveiller_loups() -> void:
+	if combat != null or Illustrations.ouvert or joueur == null:
+		return
+	if Horloge.jour() == _dernier_jour_loups:
+		return
+	if joueur.pos2d().distance_to(lieux.loups.pos) > 28.0:
+		return
+	_dernier_jour_loups = Horloge.jour()
+	sauver_etat()
+	var ennemis := []
+	for i in 2 + randi() % 2:
+		var n := preload("res://scripts/bete.gd").new()
+		n.planche = "res://sprites/loup_planche.png"
+		var p: Vector2 = lieux.loups.pos + Vector2(randf_range(-6, 6), randf_range(4, 10))
+		n.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
+		add_child(n)
+		_loups.append(n)
+		ennemis.append(Combattant.loup(i + 1, n))
+	Illustrations.montrer("loups", ["loups"], "Des grognements dans les fourrés. Des yeux jaunes, bas, qui s'approchent. La meute t'a senti.")
+	await Illustrations.ferme
+	_lancer([Combattant.joueur(joueur)], ennemis, "mortel", {"loups": true})
+
+
+func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) -> void:
+	combat = preload("res://scripts/combat.gd").new()
+	combat.auto = combat_auto
+	add_child(combat)
+	joueur.set_process(false)
+	combat.fini.connect(_fin_combat.bind(contexte, ennemis))
+	combat.commencer(self, allies, ennemis, joueur.pos2d(), mode)
+
+
+func tuer(c: Combattant) -> void:
+	var n := _pnj_par_id(c.id)
+	if n == null:
+		return
+	morts[c.id] = true
+	n.mort = true
+	for t in temoins(40.0):
+		relations[t.id] = clampi(relations.get(t.id, 0) - 30, -100, 100)
+	sauver_etat()
+
+
+func _fin_combat(resultat: String, contexte: Dictionary, ennemis: Array) -> void:
+	combat = null
+	joueur.set_process(true)
+	var texte := ""
+	var action := "combat_" + resultat
+	var cles := ["loups"] if contexte.has("loups") else ([contexte.cible.id] if contexte.has("cible") else [])
+	var tues := ennemis.filter(func(c): return c.mort).map(func(c): return c.nom)
+	match resultat:
+		"victoire":
+			if contexte.has("loups"):
+				texte = "La meute est dispersée. Tu as les mains qui tremblent, et une peau de loup à vendre."
+			elif contexte.has("cible"):
+				texte = "%s est au sol." % contexte.cible.donnees.nom
+				if tues:
+					texte += " Tu as tué : %s. Le village le saura avant ce soir." % ", ".join(tues)
+				else:
+					texte += " Personne n'est mort. Ça se racontera quand même."
+		"defaite":
+			if contexte.has("loups"):
+				texte = "Le noir. Puis l'odeur des herbes : Pierrick t'a trouvé et porté chez Agnès. « T'as de la chance que j'aie entendu les loups. »"
+			else:
+				texte = "Tu te réveilles plus tard, chez Agnès, le visage en sang et la bourse vide."
+			Horloge.avancer(180.0)
+			var p: Vector2 = lieux.agnes.pos + Vector2(0, 4)
+			joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
+		"fuite":
+			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."
+		"reddition":
+			texte = "Tu lèves les mains. On te laisse partir, cette fois, avec un dernier coup pour la route."
+	if contexte.has("cible") and contexte.get("mode", "") == "" and resultat == "victoire" and combat == null:
+		pass
+	for n in _loups:
+		n.queue_free()
+	_loups.clear()
+	sauver_etat()
+	if texte != "":
+		Illustrations.montrer(action, cles, texte)
+
+
+# ---------------------------------------------------------------- les PNJ qui t'en veulent
+
+## Toutes les 5 secondes : un PNJ adulte qui te déteste et te voit peut venir t'agresser,
+## selon sa colère, son courage et sa prudence. Silas, lui, envoie ses hommes la nuit.
+func _surveiller_hostiles(delta: float) -> void:
+	_t_hostiles += delta
+	if _t_hostiles < 5.0:
+		return
+	_t_hostiles = 0.0
+	if combat != null or Illustrations.ouvert or joueur == null:
+		return
+	var maintenant: float = Horloge.maintenant()
+	for n in pnjs:
+		if n.mort or n.hostile or not n.visible or int(n.donnees.age) < 18:
+			continue
+		if maintenant < n.prochaine_agression:
+			continue
+		var aff: int = relations.get(n.id, 0)
+		if aff > -40 or n.pos2d().distance_to(joueur.pos2d()) > 25.0:
+			continue
+		var p := clampf((-aff - 30) / 70.0, 0.0, 1.0)
+		p *= (n.trait_("colerique") + 100) / 200.0
+		p *= (n.trait_("courageux") + 100) / 200.0
+		p *= (100 - n.trait_("prudent")) / 200.0 + 0.25
+		p *= 0.6
+		n.prochaine_agression = maintenant + 600.0
+		if randf() < p:
+			n.prochaine_agression = maintenant + 7200.0
+			n.hostile = true
+			return
+	_silas_envoie_ses_hommes()
+
+
+func _silas_envoie_ses_hommes() -> void:
+	var h: float = Horloge.heure()
+	if relations.get("BRU003", 0) > -60 or Horloge.jour() == _dernier_jour_silas or (h > 5.0 and h < 21.0):
+		return
+	var envoyes := 0
+	for id in ["BRU021", "BRU022"]:
+		var n := _pnj_par_id(id)
+		if n and not n.mort:
+			var p: Vector2 = joueur.pos2d() + Vector2(randf_range(-20, 20), 22.0)
+			if praticable(p):
+				n.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
+			n.hostile = true
+			envoyes += 1
+	if envoyes > 0:
+		_dernier_jour_silas = Horloge.jour()
+
+
+## Un PNJ hostile t'a rejoint : il attaque, avec ceux qui foncent aussi sur toi.
+func agression_par(n: Node) -> void:
+	if combat != null:
+		return
+	var aff: int = relations.get(n.id, 0)
+	var mode := "mortel" if aff <= -70 or n.id in ["BRU021", "BRU022"] else "bagarre"
+	var ennemis := [Combattant.depuis_pnj(n.donnees, n)]
+	for autre in pnjs:
+		if autre != n and autre.hostile and autre.pos2d().distance_to(joueur.pos2d()) < 30.0:
+			autre.hostile = false
+			ennemis.append(Combattant.depuis_pnj(autre.donnees, autre))
+	var phrase := "« Cette fois, je vais te crever. »" if mode == "mortel" else "« T'as cru que j'allais oublier ? Viens là, que je t'arrange la gueule. »"
+	if n.id in ["BRU021", "BRU022"]:
+		phrase = "« Silas te passe le bonjour. »"
+	Illustrations.montrer("agression", [n.id], "%s fonce sur toi. %s" % [n.donnees.nom, phrase])
+	await Illustrations.ferme
+	_lancer([Combattant.joueur(joueur)], ennemis, mode, {"cible": n, "agresseur": true})
+
+
+func marquer_mort(c: Combattant) -> void:
+	var n := _pnj_par_id(c.id)
+	if n:
+		morts[c.id] = true
+		n.mort = true
+		sauver_etat()

@@ -28,7 +28,6 @@ func _ready() -> void:
 	_aide.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
 	_aide.offset_top = -30
 	_aide.offset_left = 16
-	_aide.text = "ZQSD / flèches : marcher · Maj : courir · E : agir · Tab : plan · T : accélérer le temps · molette : zoom"
 	_aide.modulate = Color(1, 1, 1, 0.7)
 
 	_menu = PanelContainer.new()
@@ -69,7 +68,12 @@ func _label(pos: Vector2, taille: int) -> Label:
 	return l
 
 
+const AIDE := "ZQSD / flèches : marcher · Maj : courir · E : agir · Tab : plan · T : accélérer le temps · molette : zoom"
+const AIDE_COMBAT := "1-9 : choisir une action · clic : choisir une case · Échap : revenir au menu · molette : zoom"
+
+
 func _process(_delta: float) -> void:
+	_aide.text = AIDE_COMBAT if monde.combat != null else AIDE
 	var j: Node3D = monde.joueur
 	var p: Vector2 = j.pos2d()
 	var lieu: String = monde.lieu_proche(p, 40.0)
@@ -88,7 +92,7 @@ func _process(_delta: float) -> void:
 			dmin = n.pos2d().distance_to(p)
 			_cible_pnj = n
 	_cible_lieu = monde.lieu_proche(p, 15.0)
-	if _menu.visible or Illustrations.ouvert:
+	if _menu.visible or Illustrations.ouvert or monde.combat != null:
 		_invite.text = ""
 	elif _cible_pnj:
 		_invite.text = "E : %s (%s)" % [_cible_pnj.donnees.nom, _cible_pnj.activite]
@@ -104,7 +108,7 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if Illustrations.ouvert or not (event is InputEventKey) or not event.pressed or event.echo:
+	if Illustrations.ouvert or monde.combat != null or not (event is InputEventKey) or not event.pressed or event.echo:
 		return
 	var k: Key = event.physical_keycode
 	if _menu.visible:

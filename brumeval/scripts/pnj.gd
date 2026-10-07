@@ -19,6 +19,9 @@ var activite := ""
 var lieu_cible := ""
 var lieu_actuel := ""
 var maison := ""
+var mort := false
+var hostile := false             # fonce sur le joueur pour l'agresser
+var prochaine_agression := 0.0   # heure du monde (secondes) avant laquelle il ne recommence pas
 var sprite: Sprite3D
 var _chemin := PackedVector2Array()
 var _ligne := 0
@@ -86,7 +89,33 @@ func au_repos() -> bool:
 	return false
 
 
+## Valeur d'un trait (-100 à +100) : « colerique +70 » → 70.
+func trait_(nom: String) -> int:
+	for t in str(donnees.get("traits", "")).split(","):
+		var morceaux := t.strip_edges().split(" ")
+		if morceaux.size() >= 2 and morceaux[0] == nom:
+			return int(morceaux[1])
+	return 0
+
+
 func _process(delta: float) -> void:
+	if mort:
+		visible = false
+		return
+	if hostile:
+		visible = true
+		var cible: Vector2 = monde.joueur.pos2d()
+		var d := cible - pos2d()
+		if d.length() < 1.8:
+			hostile = false
+			monde.agression_par(self)
+			return
+		_ligne = Personnage.ligne_de(d)
+		_poser(pos2d() + d.normalized() * minf(3.5 * delta, d.length()))
+		_t += delta * 10.0
+		sprite.frame = _ligne * 4 + int(_t) % 4
+		_chemin.clear()
+		return
 	var e := _entree_courante()
 	activite = e[2]
 	if e[1] != lieu_cible:

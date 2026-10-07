@@ -3,6 +3,8 @@ saluer;Saluer;pnj;*;*;0;1;-100;1;Tu salues {nom}. Un signe de tête en retour, s
 parler;Parler;pnj;*;*;0;10;-100;2;Tu parles avec {nom}, qui est là pour : {activite}. « {parole} »
 offrir_manger;Offrir à manger;pnj;*;*;0;5;-100;5;Tu tends un morceau de pain à {nom}, qui le prend avec un regard surpris.
 insulter;Insulter;pnj;*;*;0;1;-100;-10;Tu insultes {nom} devant tout le monde. Ça ne s'oubliera pas.
+attaquer;Attaquer pour de vrai;pnj;*;*;0;1;-100;0;Tu sors les poings pour faire mal. {nom} comprend tout de suite que ce n'est pas un jeu. Les témoins aussi.
+bagarre;Provoquer en bagarre;pnj;*;*;0;5;-100;0;Tu cherches {nom} : « T'as un problème ? Viens le régler dehors. » Une bagarre à mains nues : personne ne meurt, le perdant paie la tournée.
 demander_travail;Demander du travail;pnj;*;BRU001,BRU013,BRU019,BRU004;0;5;-20;2;{nom} te jauge de haut en bas : « Reviens à l'aube. On verra ce que t'as dans les bras. »
 demander_travail;Demander du travail;pnj;*;BRU002;0;5;-20;2;Bram, sans lever les yeux de l'enclume : « T'as des mains de demoiselle. Pose ça avant de te couper un truc qui te manquera. »
 seduire;Séduire;pnj;*;*;1;10;30;2;

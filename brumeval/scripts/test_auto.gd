@@ -89,6 +89,54 @@ func _ready() -> void:
 	ok(bouges > 0, "des PNJ se déplacent (%d)" % bouges)
 	Horloge.acceleration = 1.0
 	Horloge.avancer(-float(Horloge._decalage) / 60.0)   # on remet l'horloge à l'heure
+	print("== Combat")
+	monde.combat_auto = true
+	ok(not _ids(monde.actions.disponibles(tim, "place")).has("attaquer"), "on ne peut pas attaquer Tim (enfant)")
+	ok(_ids(monde.actions.disponibles(_pnj("BRU012"), "port")).has("bagarre"), "on peut provoquer Lucas en bagarre")
+	var lucas: Node = _pnj("BRU012")
+	lucas.visible = true
+	monde.joueur.position = lucas.position + Vector3(2, 0, 0)
+	monde.combat_contre_pnj(lucas, "bagarre")
+	var r1 = await monde.combat.fini
+	ok(r1 in ["victoire", "defaite", "fuite", "reddition"], "la bagarre contre Lucas se termine : " + str(r1))
+	ok(not lucas.mort, "personne ne meurt dans une bagarre")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	var p: Vector2 = monde.lieux.loups.pos + Vector2(0, 10)
+	monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
+	monde._dernier_jour_loups = 0
+	monde._surveiller_loups()
+	ok(Illustrations.ouvert, "les loups surgissent près de leur tanière")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "le combat contre les loups commence")
+	if monde.combat:
+		var r2 = await monde.combat.fini
+		ok(r2 in ["victoire", "defaite", "fuite", "reddition"], "le combat contre les loups se termine : " + str(r2))
+	Illustrations.fermer()
+	await get_tree().process_frame
+	print("== Agression")
+	var bram: Node = _pnj("BRU002")
+	monde.relations["BRU002"] = -90
+	bram.visible = true
+	bram.mort = false
+	bram.hostile = true
+	monde.joueur.position = bram.position + Vector3(5, 0, 0)
+	for i in 50:
+		await get_tree().create_timer(0.1).timeout
+		if Illustrations.ouvert:
+			break
+	ok(Illustrations.ouvert and Illustrations._texte.text.contains("Bram"), "Bram, qui te déteste, vient t'agresser (%s)" % Illustrations._texte.text.left(60))
+	Illustrations.fermer()
+	await get_tree().process_frame
+	if monde.combat:
+		var r3 = await monde.combat.fini
+		ok(true, "l'agression de Bram se termine : " + str(r3))
+	Illustrations.fermer()
+	ok(not monde.temoins(9999.0).is_empty(), "le village vit toujours")
+	monde.relations["BRU002"] = 0
+	monde.morts.clear()
+	monde.sauver_etat()
 	print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
 	get_tree().quit(erreurs)
 

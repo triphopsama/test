@@ -22,6 +22,8 @@
 extends RefCounted
 
 const AGE_ADULTE := 18
+## Actions qui lancent un combat (jamais contre un enfant).
+const COMBATS := {"bagarre": "bagarre", "attaquer": "mortel"}
 const CAPTIF := ["captif", "captive", "esclave", "sous contrat", "contrat de dette"]
 
 var monde: Node3D
@@ -52,6 +54,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 				continue
 			precise = true
 		if l.intime == "1" and not intime_possible(pnj):
+			continue
+		if l.id in COMBATS and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if not choix.has(l.id) or precise:
 			choix[l.id] = l
@@ -94,6 +98,9 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	texte = _remplacer(texte, pnj, lieu)
 	Horloge.avancer(float(l.duree_min))
 	Illustrations.montrer(l.id, cles, texte)
+	if COMBATS.has(l.id):
+		await Illustrations.ferme
+		monde.combat_contre_pnj(pnj, COMBATS[l.id])
 
 
 func _refus(l: Dictionary, pnj: Node, cles: Array) -> void:
