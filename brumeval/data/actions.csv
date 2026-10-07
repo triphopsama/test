@@ -43,3 +43,6 @@ pacte_esclave;Proposer à {nom} un pacte : toi à son service;pnj;*;*;1;30;-100;
 rompre_pacte;Mettre fin au pacte avec {nom};pnj;*;*;1;5;-100;0;;rompre_pacte;;
 danser;Danser à la taverne;lieu;taverne;*;1;60;-100;0;;danser;danse_lascive;
 travailler_nuit;Travailler la nuit (courtisan·e);lieu;taverne;*;1;60;-100;0;;courtisan;;
+suivre;Proposer à {nom} de te suivre;pnj;*;*;0;5;-100;0;;suivre;;
+laisser;Dire à {nom} de rentrer chez lui;pnj;*;*;0;2;-100;0;;laisser;;
+habiller;Habiller ou déshabiller {nom};pnj;*;*;1;10;-100;0;;habiller;;

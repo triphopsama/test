@@ -5,7 +5,7 @@ extends CanvasLayer
 signal ferme
 
 var monde: Node3D
-var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon", "vaincus", "choix"
+var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon", "vaincus", "choix", "tenue"
 var _panneau: PanelContainer
 var _titre: Label
 var _entete: Label
@@ -340,6 +340,40 @@ func _apprendre(pnj: Node, k: String) -> void:
 	monde.sauver_etat()
 	lecons(pnj)
 	_message.text = "Deux heures avec %s. Tu sais maintenant : %s." % [pnj.donnees.nom.get_slice(" ", 0), Combattant.COMPETENCES[k].nom]
+
+
+# ---------------------------------------------------------------- la tenue d'un compagnon
+
+func tenue_compagnon(n: Node) -> void:
+	_marchand = n
+	if ouvert != "tenue":
+		_ouvrir("tenue")
+	var nom: String = n.donnees.nom.get_slice(" ", 0)
+	var t := Compagnons.tenue(monde, n.id)
+	var d := Compagnons.description(monde, n.id)
+	_titre.text = "La tenue de %s" % nom
+	_entete.text = "%s porte : %s. Tout se demande, et un refus reste un refus. Mot d'arrêt : « %s »." % [nom, d if d != "" else "ses vêtements", Intime.MOT_D_ARRET]
+	_vider()
+	if t.nu:
+		_ligne("Lui rendre ses vêtements", _habiller.bind(n, "nu", false), "")
+	else:
+		_ligne("Lui demander de se déshabiller", _habiller.bind(n, "nu", true), "Nu·e dehors : il faut un pacte où tu mènes, et qu'il aime le risque ou soit peu pudique. Les passants réagiront.")
+	for id in Compagnons.ACCESSOIRES:
+		if id in t.objets:
+			_ligne("Retirer : %s" % Objets.get_(id).nom, _habiller.bind(n, id, false), Objets.get_(id).description)
+		elif monde.fiche.nombre(id) > 0:
+			_ligne("Mettre : %s" % Objets.get_(id).nom, _habiller.bind(n, id, true), Objets.get_(id).description)
+	if _liste.get_child_count() == 1:
+		_detail.text = "Silas vend des accessoires (collier, cagoule, bâillon, cordes, plug)."
+
+
+func _habiller(n: Node, quoi: String, mettre: bool) -> void:
+	var r := Compagnons.habiller(monde, n, quoi, mettre)
+	tenue_compagnon(n)
+	_message.text = r if r != "" else "C'est fait."
+	if r == "" and mettre:
+		var nom := "nu" if quoi == "nu" else quoi
+		Illustrations.montrer("habiller_" + nom, [n.id, "defaut"], "%s : %s." % [n.donnees.nom.get_slice(" ", 0), Compagnons.description(monde, n.id)])
 
 
 # ---------------------------------------------------------------- un choix

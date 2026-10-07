@@ -124,6 +124,13 @@ D'après `univers.md` (« Désir et sexualité »). Désactivable à la créatio
 - **Actions** : séduire, embrasser, passer la nuit, lui demander ce qu'il aime, masser, proposer d'être ensemble, rompre, pacte (maître ou à son service), y mettre fin, danser à la taverne le soir, travailler la nuit comme courtisan·e (métier : libre et payé, la paie monte avec l'Art d'aimer).
 - **Les textes** restent suggérés : la colonne `description` de `data/actions.csv` et la colonne `texte` de `data/gestes.csv` sont à toi, ton texte remplace le texte par défaut.
 
+## L'équipe et les tenues
+
+- **4 compagnons au plus** te suivent (« Proposer de te suivre » : affection 50 avec un couple ou un pacte, 70 sinon ; jamais un enfant). Ils marchent derrière toi et **se battent avec toi** (pas en bagarre). « Dire de rentrer chez lui » : il retourne à son emploi du temps (une maison à toi viendra avec le logement).
+- **Habiller ou déshabiller un compagnon** (« Habiller… ») : les accessoires de Silas (collier et laisse, cagoule, bâillon, cordes, plug) et la nudité. Seulement avec un pacte où tu mènes, et s'il aime ça (jeux de pouvoir 40, ou aime être dominé) ; ce qui se voit demande en plus qu'il aime le risque ou l'audace, ou soit peu pudique. Le plug ne se voit pas, mais c'est dit (barre d'infos).
+- **Les passants réagissent** une fois par jour chacun : les prudes et les pieux s'indignent (−5), les autres sont gênés (−2), les audacieux ne détournent pas les yeux (+2, désir). Corentin verbalise la nudité (amende, on rhabille). Un compagnon qui n'aime pas être vu accumule du malaise : trop de regards outrés et c'est le mot d'arrêt (−10, on le couvre).
+- **Un enfant à portée : tu le couvres aussitôt**, toujours.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

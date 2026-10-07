@@ -75,6 +75,10 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id == "lecon" and monde.lecons_de(pnj).is_empty():
 			continue
+		if l.id == "suivre" and (pnj == null or pnj.suit or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
+			continue
+		if l.id in ["laisser", "habiller"] and (pnj == null or not pnj.suit):
+			continue
 		if str(l.get("competence", "")) != "" and _competence_requise(l) == "":
 			continue
 		if l.id in ["vol_tire", "benir"] and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
@@ -151,6 +155,21 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		return
 	if donne == "lecon":
 		monde.fenetres.lecons(pnj)
+		return
+	if donne == "habiller":
+		monde.fenetres.tenue_compagnon(pnj)
+		return
+	if donne in ["suivre", "laisser"]:
+		var t := ""
+		if donne == "laisser":
+			Compagnons.laisser(monde, pnj)
+			t = "{nom} rentre chez lui. Tu sais où le trouver."
+		else:
+			t = Compagnons.peut_suivre(monde, pnj)
+			if t == "":
+				Compagnons.prendre(monde, pnj)
+				t = "{nom} prend ses affaires et te suit. (Équipe : %d / %d)" % [monde.fiche.equipiers.size(), Compagnons.MAX]
+		Illustrations.montrer(l.id, cles, _remplacer(t, pnj, lieu))
 		return
 	if donne == "chasse_rats":
 		if monde.fiche.drapeaux.get("rats_jour", 0) == Horloge.jour():

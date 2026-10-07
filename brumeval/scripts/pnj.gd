@@ -21,6 +21,7 @@ var lieu_actuel := ""
 var maison := ""
 var mort := false
 var hostile := false             # fonce sur le joueur pour l'agresser
+var suit := false                # compagnon : te suit au lieu de son emploi du temps
 var prochaine_agression := 0.0   # heure du monde (secondes) avant laquelle il ne recommence pas
 var sprite: Sprite3D
 var _chemin := PackedVector2Array()
@@ -114,6 +115,20 @@ func _process(delta: float) -> void:
 		_poser(pos2d() + d.normalized() * minf(3.5 * delta, d.length()))
 		_t += delta * 10.0
 		sprite.frame = _ligne * 4 + int(_t) % 4
+		_chemin.clear()
+		return
+	if suit:
+		visible = true
+		var but: Vector2 = monde.joueur.pos2d()
+		var ecart := but - pos2d()
+		if ecart.length() > 2.2:
+			_ligne = Personnage.ligne_de(ecart)
+			_poser(pos2d() + ecart.normalized() * minf(4.5 * delta, ecart.length() - 2.0))
+			_t += delta * 6.0
+			sprite.frame = _ligne * 4 + int(_t) % 4
+		else:
+			sprite.frame = _ligne * 4
+		lieu_actuel = monde.lieu_proche(pos2d(), INF)
 		_chemin.clear()
 		return
 	var e := _entree_courante()

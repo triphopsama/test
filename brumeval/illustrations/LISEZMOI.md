@@ -43,3 +43,5 @@ Chaque action a son dossier (son `id` dans `data/actions.csv`), et un dossier `<
 | `travailler_nuit/`, `danser/` | le métier de nuit, la danse à la taverne |
 
 Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU022`), puis chacun, puis le lieu, puis `defaut`.
+| `suivre/`, `laisser/` | un compagnon te rejoint, ou rentre chez lui |
+| `habiller_nu/`, `habiller_BRV040/` … `habiller_BRV044/` | tu habilles ou déshabilles un compagnon (ids des accessoires dans `data/objets.csv`) |

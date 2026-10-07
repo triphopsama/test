@@ -4,6 +4,8 @@ extends CanvasLayer
 var monde: Node3D
 var _infos: Label
 var _invite: Label
+var _annonce: Label
+var _t_annonce := 0.0
 var _aide: Label
 var _menu: PanelContainer
 var _liste: VBoxContainer
@@ -18,6 +20,9 @@ var _choix: Array = []
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_infos = _label(Vector2(16, 12), 18)
+	_annonce = _label(Vector2(16, 520), 16)
+	_annonce.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_annonce.size = Vector2(760, 0)
 	_invite = _label(Vector2(0, 0), 20)
 	_invite.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_invite.offset_top = -90
@@ -87,6 +92,12 @@ func _process(_delta: float) -> void:
 		monde.lieux[lieu].nom if lieu != "" else "Dans la nature",
 		f.pv, f.pv_max(), f.niveau, " (%d points à répartir)" % f.points if f.points > 0 else "",
 		(" · %s %d" % [Classes.classe(f.classe).nom, f.niveau_classe]) if f.classe != "" else "", Objets.texte_prix(f.bourse)]
+	if not f.equipiers.is_empty():
+		_infos.text += "\nÉquipe : " + ", ".join(f.equipiers.map(func(id): return _membre(id)))
+	if _t_annonce > 0.0:
+		_t_annonce -= get_process_delta_time()
+		if _t_annonce <= 0.0:
+			_annonce.text = ""
 	# qui ou quoi est à portée
 	_cible_pnj = null
 	var dmin := 3.0
@@ -108,6 +119,18 @@ func _process(_delta: float) -> void:
 		var echelle := minf(_plan.size.x / tex_taille.x, _plan.size.y / tex_taille.y)
 		var origine := (_plan.size - tex_taille * echelle) / 2.0
 		_point.position = origine + p * 0.8 * echelle - Vector2(5, 5)
+
+
+func _membre(id: String) -> String:
+	var n: Node = monde._pnj_par_id(id)
+	var d := Compagnons.description(monde, id)
+	return (n.donnees.nom.get_slice(" ", 0) if n else id) + (" (%s)" % d if d != "" else "")
+
+
+## Un message qui s'affiche quelques secondes (les passants qui réagissent…).
+func annoncer(texte: String) -> void:
+	_annonce.text = texte
+	_t_annonce = 8.0
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

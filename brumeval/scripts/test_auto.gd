@@ -664,6 +664,53 @@ func _intime() -> void:
 	ok(Illustrations.ouvert, "tu pars : on voit ce qui s'ensuit")
 	Illustrations.fermer()
 	ok(Intime.desir(monde, "BRU002") == 0, "il s'est soulagé : son désir retombe")
+	# l'équipe : 4 au plus, elle te suit
+	print("== Équipe")
+	monde.relations["BRU002"] = 40
+	ok(Compagnons.peut_suivre(monde, bram).contains("pas assez"), "Bram (affection 40) ne te suit pas encore")
+	monde.relations["BRU002"] = 75
+	ok(Compagnons.peut_suivre(monde, bram) == "", "affection 75 : il te suit")
+	Compagnons.prendre(monde, bram)
+	ok(bram.suit and "BRU002" in f.equipiers, "Bram est dans l'équipe")
+	ok(Compagnons.peut_suivre(monde, _pnj("BRU005")).contains("enfant"), "un enfant ne te suit pas")
+	f.equipiers.append_array(["X1", "X2", "X3"])
+	monde.relations["BRU012"] = 90
+	ok(Compagnons.peut_suivre(monde, lucas).contains("complet"), "4 au plus")
+	for x in ["X1", "X2", "X3"]:
+		f.equipiers.erase(x)
+	ok(Compagnons.allies(monde).size() == 1, "l'équipe se bat avec toi")
+	# la tenue : un pacte où tu mènes, et un profil qui s'y prête
+	ok(Compagnons.habiller(monde, bram, "nu", true).contains("pacte"), "sans pacte, pas question")
+	monde.relations["BRU022"] = 90
+	var mouche: Node = _pnj("BRU022")
+	mouche.visible = true
+	f.pactes["BRU022"] = "maitre"
+	Intime.profil("BRU022").bdsm = 50
+	ok(Compagnons.peut_suivre(monde, mouche) == "", "Mouche, avec qui tu as un pacte, te suit")
+	Compagnons.prendre(monde, mouche)
+	f.ajouter("BRV041")
+	f.ajouter("BRV044")
+	for n in monde.pnjs:
+		if int(n.donnees.get("age", "0")) < 18:
+			n.position = Vector3(9999, 0, 9999)
+	ok(Compagnons.habiller(monde, mouche, "BRV041", true) == "" and Compagnons.habiller(monde, mouche, "nu", true) == "", "Mouche aime le risque : cagoule et nu·e")
+	ok(Compagnons.habiller(monde, mouche, "BRV044", true) == "" and Compagnons.description(monde, "BRU022").contains("ne se voit pas"), "le plug : ça ne se voit pas, mais c'est dit")
+	var corentin: Node = _pnj("BRU014")
+	corentin.visible = true
+	corentin.position = monde.joueur.position + Vector3(4, 0, 0)
+	monde.relations["BRU014"] = 0
+	f.bourse = 100
+	var lignes2 := Compagnons.reactions(monde)
+	ok("\n".join(lignes2).contains("Corentin") and not Compagnons.tenue(monde, "BRU022").nu, "Corentin verbalise : on rhabille Mouche (%s)" % "\n".join(lignes2).left(80))
+	Compagnons.habiller(monde, mouche, "nu", true)
+	var tim: Node = _pnj("BRU005")
+	tim.visible = true
+	tim.position = mouche.position + Vector3(3, 0, 0)
+	ok(Compagnons.couvrir_si_enfant(monde).contains("enfant") and Compagnons.choc(monde, "BRU022") == 0, "un enfant approche : on couvre tout, aussitôt")
+	Compagnons.laisser(monde, mouche)
+	Compagnons.laisser(monde, bram)
+	ok(f.equipiers.is_empty() and not mouche.suit and f.nombre("BRV041") == 1, "ils rentrent chez eux, les accessoires reviennent dans ton sac")
+	Intime.profil("BRU022").bdsm = 0
 	for n in caches:
 		n.visible = true
 	Horloge.avancer(-float(Horloge._decalage) / 60.0)   # la nuit a fait avancer l'horloge

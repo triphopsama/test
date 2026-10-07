@@ -39,6 +39,8 @@ var partenaires := {}             # id -> "couple" (plusieurs : un harem)
 var pactes := {}                  # id -> "maitre" ou "esclave" : ton rôle dans un jeu convenu, révocable
 var gouts_connus := {}            # id -> étiquettes découvertes (« non_x » : ses limites)
 var nuits := {}                   # id -> nuits passées ensemble
+var equipiers: Array = []         # ceux qui te suivent (4 au plus, compagnons.gd)
+var tenues := {}                  # id -> {nu, objets} : ce que porte un compagnon
 
 # ce qu'on choisit à la création (creation_personnage.md)
 var nom := "Toi"
@@ -60,7 +62,7 @@ var affinites := {}               # élément -> 0..100, cachées par défaut
 var options := {"chiffres": "complet", "adulte": true, "mort_definitive": false}
 
 const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "mana", "bourse", "sac", "equipement", "drapeaux",
-	"desir", "partenaires", "pactes", "gouts_connus", "nuits",
+	"desir", "partenaires", "pactes", "gouts_connus", "nuits", "equipiers", "tenues",
 	"classe", "niveau_classe", "xp_classe", "apprises", "style", "metier", "niveau_metier", "xp_metier", "heures",
 	"nom", "peuple", "lignee", "sexe", "pronoms", "age", "astre", "vie", "traits", "archetype", "caractere",
 	"valeurs", "passions", "tenue", "objet_ailleurs", "affinites", "options"]

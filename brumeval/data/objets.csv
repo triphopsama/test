@@ -55,3 +55,8 @@ BRV030;Parchemin de Flamme;parchemin;—;0;0;;0;0;0;—;0;—;6 argent;BRU003;Un
 BRV031;Parchemin d'Éclat de glace;parchemin;—;0;0;;0;0;0;—;0;Int 10;1 or 4 argent;BRU003;Volé à un étudiant de Lorvane, dit Silas. Le papier est froid. Il faut Int 10 pour en comprendre les signes.
 BRV032;Parchemin de Vague;parchemin;—;0;0;;0;0;0;—;0;Sag 10;8 argent;BRU006;Joss le tient de sa fille, qui « savait parler à la mer ». Il faut Sag 10.
 BRV033;Pierre d'affinité;outil;—;0;0;;0;0;0;—;0;—;2 or;BRU003;Une pierre de l'Académie de Lorvane, tiède dans la main. Tenue un moment, elle dit à quel point chaque élément te parle (I : utiliser).
+BRV040;Collier et laisse de cuir;accessoire;—;0;0;;0;0;0;—;0;—;6 argent;BRU003;Un collier large, une laisse tressée. Pour un compagnon qui le veut (pacte, maître). Ça se voit.
+BRV041;Cagoule de cuir;accessoire;—;0;0;;0;0;0;—;0;—;8 argent;BRU003;Ne laisse voir que la bouche. Ça se voit, et ça se remarque.
+BRV042;Bâillon;accessoire;—;0;0;;0;0;0;—;0;—;4 argent;BRU003;Une boule de cuir et deux lanières. Le compagnon ne parle plus : il garde un geste pour dire stop.
+BRV043;Cordes de bondage;accessoire;—;0;0;;0;0;0;—;0;—;5 argent;BRU003;Du chanvre doux, des nœuds qui tiennent. Les nœuds de marin de Joss feraient l'affaire aussi.
+BRV044;Plug;accessoire;—;0;0;;0;0;0;—;0;—;5 argent;BRU003;Ça ne se voit pas. Mais le compagnon le sait, toi aussi, et ça se lit sur son visage.

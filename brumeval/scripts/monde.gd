@@ -69,6 +69,7 @@ func _ready() -> void:
 	actions = preload("res://scripts/actions.gd").new(self)
 	_creer_joueur()
 	_creer_pnjs()
+	Compagnons.restaurer(self)
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
@@ -485,6 +486,7 @@ func _process(delta: float) -> void:
 	_surveiller_loups()
 	_surveiller_rencontres(delta)
 	_surveiller_desirs(delta)
+	_surveiller_equipe(delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -894,6 +896,24 @@ func _partir_sans_bruit(groupe: Array) -> void:
 		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Tu recules sans un bruit. Personne ne saura.")
 
 
+var _t_equipe := 0.0
+
+
+## Toutes les 4 secondes : un enfant près d'un compagnon dévêtu, on le couvre ; sinon les passants réagissent.
+func _surveiller_equipe(delta: float) -> void:
+	_t_equipe += delta
+	if _t_equipe < 4.0 or fiche.equipiers.is_empty() or combat != null or get_tree().paused:
+		return
+	_t_equipe = 0.0
+	var t := Compagnons.couvrir_si_enfant(self)
+	if t != "":
+		hud.annoncer(t)
+		return
+	var lignes := Compagnons.reactions(self)
+	if not lignes.is_empty():
+		hud.annoncer("\n".join(lignes))
+
+
 ## Une nuit avec un ou plusieurs PNJ : la fenêtre de scène.
 func scene_intime(pnjs: Array, lieu: String) -> void:
 	var s = preload("res://scripts/scene_intime.gd").new()
@@ -913,6 +933,8 @@ func _pnj_par_id(id: String) -> Node:
 
 ## Le joueur s'en prend à un PNJ : "bagarre" (à mains nues) ou "mortel".
 func combat_contre_pnj(cible: Node, mode: String) -> void:
+	if cible.suit:
+		Compagnons.laisser(self, cible)   # on ne frappe pas son équipe en la gardant
 	var ennemis := [Combattant.depuis_pnj(cible.donnees, cible)]
 	if mode == "mortel":
 		relations[cible.id] = clampi(relations.get(cible.id, 0) - 40, -100, 100)
@@ -922,7 +944,7 @@ func combat_contre_pnj(cible: Node, mode: String) -> void:
 		# le garde intervient, sauf la nuit (il a peur du noir)
 		var garde := _pnj_par_id("BRU014")
 		var h: float = Horloge.heure()
-		if garde and garde != cible and garde.visible and garde.pos2d().distance_to(joueur.pos2d()) < 40.0 and h > 6.0 and h < 21.0:
+		if garde and garde != cible and not garde.suit and garde.visible and garde.pos2d().distance_to(joueur.pos2d()) < 40.0 and h > 6.0 and h < 21.0:
 			ennemis.append(Combattant.depuis_pnj(garde.donnees, garde))
 	else:
 		relations[cible.id] = clampi(relations.get(cible.id, 0) - 5, -100, 100)
@@ -1016,6 +1038,8 @@ func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) 
 	add_child(combat)
 	joueur.set_process(false)
 	contexte.mode = mode
+	if mode != "bagarre":
+		allies = allies + Compagnons.allies(self, contexte.cible.id if contexte.has("cible") else "")
 	combat.fini.connect(_fin_combat.bind(contexte, allies, ennemis))
 	combat.commencer(self, allies, ennemis, joueur.pos2d(), mode)
 
