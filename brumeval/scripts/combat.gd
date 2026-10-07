@@ -987,9 +987,9 @@ func _tour_ia(u: Combattant) -> void:
 			await get_tree().create_timer(0.3 if not auto else 0.01).timeout
 			_fin_tour(u, 20.0)
 			return
-	# un allié à terre à côté : bandage
+	# un allié à terre à côté : bandage (pas les bêtes)
 	var a_bander := _cibles(u, "bandage")
-	if not a_bander.is_empty():
+	if not a_bander.is_empty() and not u.est_bete:
 		await _agir(u, a_bander[0], "bandage")
 		_fin_tour(u, 20.0)
 		return

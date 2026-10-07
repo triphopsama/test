@@ -215,6 +215,15 @@ Et toi : un couple qui t'aime bien (affection 40, ouvert, qui partage) peut t'in
 tu peux décliner sans rien perdre. Si ton couple te trompe, il vient te le dire : pardonner, rompre,
 partager (plus de secrets, et la porte ouverte à trois), ou t'expliquer avec l'autre à mains nues.
 
+## La grotte de Brumeval
+
+Le premier donjon (`monde/donjons/grotte_de_brumeval.md`, code dans `scripts/grotte.gd`), conseillé du niveau 5 au niveau 10. Il faut une lanterne pour y voir loin (il y en a une au fond du puits).
+
+- **Y entrer** : par le puits du jardin Marbre, avec une corde (Joss et Silas en vendent ; Pierrick t'arrête s'il ne t'aime pas assez), ou à marée basse par la Bouche de mer sous la falaise, si on t'en a parlé (Agnès, Joss, Pierrick).
+- **Les huit salles** : le fond du puits (4 rats), la galerie et la **porte des astres** (l'ordre de la comptine que chantent Joss, Tim et Ysolde, ou For 14, ou crochetage), la **salle inondée** qui suit la vraie marée (à pied et contre des crabes et un slime à marée basse, à la nage à marée haute), le **campement de Gaspard** (le journal et le coffre à quatre astres), le **gouffre** (brûler les toiles, se balancer à la corde, ou tomber dans le nid), la **chambre de Léa**, la **veine d'étoile** et sa Bête aveugle (l'attirer sous les stalactites, la contourner en silence, ou l'affronter), la **Bouche de mer** et la barque noire.
+- **Au village, après** : rendre Léa (ou seulement son carnet, son alliance) à Pierrick, le fer d'étoile à Bram, les bijoux et le journal à Ysolde, le journal à Aldric (pour qu'il le brûle, ou pour le faire chanter), l'eau-de-vie et le secret de la grotte à Silas, la soie à Isaure.
+- **Équilibre** (`godot --headless -- --equilibre --grotte`, épée courte et rondache) : au niveau 5, on gagne contre les rats et la moitié du temps dans la salle inondée et au gouffre ; la Bête aveugle se bat de front vers le niveau 7, ou dès le niveau 5 avec les stalactites ; tomber dans le nid se paie cher avant le niveau 9.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).
@@ -235,6 +244,8 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 - Le corps et le profil intime à la création, les évolutions de classe aux niveaux 25, 50 et 75, la maîtrise des compétences (1 à 10) et les fusions, les sorts de terre, de foudre, d'ombre, de nature, de mort, de sang et d'esprit, le terrain qui brûle ou gèle, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
 - La grotte (une autre session s’en charge) et le reste du monde au-delà de Brumeval et Pierrefane.
+
+- Pierrefane et le reste du monde. Dans la grotte : suivre en douce avec Tim et Nina, boucher ou surveiller la Bouche de mer.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
 - Les sprites sont les essais en 16 × 24 ; les bâtiments sont des volumes simples.
 
@@ -251,8 +262,8 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Vérifier que tout marche
 
-`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, la magie, les leçons et les compétences hors combat, et des combats joués tout seuls (bagarre, loups, agression).
+`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, la magie, les leçons et les compétences hors combat, la grotte, et des combats joués tout seuls (bagarre, loups, agression).
 
 `godot --headless -- --autotest --carte=pierrefane` teste Pierrefane (et `--carte=pierrefane` marche aussi avec `--capture`).
 
-`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso`, `classe` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.
+`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso`, `classe` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3 ; `--grotte=veine` (ou `puits`, `galerie`, `inondee`, `camp`, `gouffre`, `lea`, `bouche`) une salle de la grotte.

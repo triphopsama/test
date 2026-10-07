@@ -28,7 +28,8 @@ func _ready() -> void:
 		get_tree().quit(erreurs)
 		return
 	print("== Données")
-	ok(monde.lieux.size() == 33, "33 lieux, avec le bois profond (%d)" % monde.lieux.size())
+	var hors_grotte: int = monde.lieux.keys().filter(func(k): return not k.begins_with("g_")).size()
+	ok(hors_grotte == 33, "33 lieux, avec le bois profond (%d)" % hors_grotte)
 	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
 	ok(monde.actions.lignes.size() >= 10, "actions lues (%d)" % monde.actions.lignes.size())
 	ok(monde.praticable(monde.lieux.reveil.pos), "on peut marcher à la clairière du réveil")
@@ -286,6 +287,7 @@ func _ready() -> void:
 		await monde.combat.fini
 		await get_tree().process_frame
 		Illustrations.fermer()
+	await _grotte()
 	print("== Agression")
 	var bram: Node = _pnj("BRU002")
 	monde.relations["BRU002"] = -90
@@ -1114,3 +1116,132 @@ func _liens() -> void:
 	monde.desirs.clear()
 	monde.sauver_etat()
 	monde.fiche = Fiche.new()
+
+
+func _grotte() -> void:
+	print("== La grotte")
+	var relations_avant: Dictionary = monde.relations.duplicate()
+	var f := Fiche.new()
+	monde.fiche = f
+	for k in f.stats:
+		f.stats[k] = 14
+	f.niveau = 8
+	f.pv = f.pv_max()
+	f.ajouter("OBJ007")
+	f.equiper("OBJ007")
+	ok(monde.lieux.has("g_puits") and monde.lieux.has("g_veine"), "les salles de la grotte sont des lieux")
+	ok(monde.praticable(monde.lieux.g_puits.pos), "on marche au fond du puits")
+	ok(not monde.praticable(Grotte.monde_de(Vector2(57, 8))), "la porte des astres est fermée")
+	ok(not monde.praticable(Grotte.monde_de(Vector2(40, 49))), "on ne marche pas dans le vide du gouffre")
+	monde.relations["BRU020"] = 30
+	var puits: Vector2 = monde.lieux.puits.pos
+	monde.joueur.position = Vector3(puits.x, monde.hauteur(puits.x, puits.y), puits.y)
+	monde.actions.executer(_action("descendre_puits", null, "puits"), null, "puits")
+	await get_tree().process_frame
+	ok(Illustrations._texte.text.contains("corde") and not Grotte.contient(monde.joueur.pos2d()), "sans corde, on ne descend pas")
+	Illustrations.fermer()
+	f.ajouter("OBJ462")
+	monde.actions.executer(_action("descendre_puits", null, "puits"), null, "puits")
+	for i in 3:
+		await get_tree().process_frame
+	ok(Grotte.contient(monde.joueur.pos2d()) and f.drapeaux.get("g_corde", false), "avec une corde, on descend (et elle reste en place)")
+	Illustrations.fermer()
+	for i in 5:
+		await get_tree().process_frame
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "les rats du fond du puits attaquent")
+	var auto_avant: bool = monde.combat_auto
+	monde.combat_auto = true
+	if monde.combat:
+		var r = await monde.combat.fini
+		await get_tree().process_frame
+		ok(r != "victoire" or f.drapeaux.get("g_rats", false), "les rats : %s" % r)
+		Illustrations.fermer()
+	monde.combat_auto = auto_avant
+	f.drapeaux["g_rats"] = true
+	f.pv = f.pv_max()
+	ok(not _action("fouiller_puits", null, "g_puits").is_empty(), "on peut fouiller le fond du puits")
+	monde.actions.executer(_action("fouiller_puits", null, "g_puits"), null, "g_puits")
+	ok(f.nombre("OBJ464") == 1 and f.nombre("OBJ462") == 1, "une corde et une lanterne")
+	Illustrations.fermer()
+	# la porte des astres : le mauvais ordre ramène au puits, le bon ouvre
+	Grotte._sequence = []
+	for a in ["rouge", "soleil", "mer", "berger", "pale", "lune", "derniere"]:
+		Grotte._plaque(monde, a)
+	monde.fenetres.fermer()
+	ok(not f.drapeaux.get("g_porte", false) and Grotte.salle_de(monde.joueur.pos2d()) == "puits", "mauvais ordre : la trappe, retour au puits")
+	Illustrations.fermer()
+	Grotte._sequence = []
+	for a in Grotte.ORDRE_PORTE:
+		Grotte._plaque(monde, a)
+	monde.fenetres.fermer()
+	ok(f.drapeaux.get("g_porte", false) and monde.praticable(Grotte.monde_de(Vector2(57, 8))), "l'ordre de la comptine ouvre la porte")
+	Illustrations.fermer()
+	monde.actions.executer(_action("comptine_joss", _pnj("BRU006"), ""), _pnj("BRU006"), "")
+	ok(f.drapeaux.get("comptine", false) and Illustrations._texte.text.contains("Dernière"), "Joss chante la comptine des marins")
+	Illustrations.fermer()
+	# le campement : le journal donne la combinaison du coffre
+	Grotte._placer(monde, "camp")
+	for i in 3:
+		await get_tree().process_frame
+	Illustrations.fermer()
+	monde.actions.executer(_action("journal_gaspard", null, "g_camp"), null, "g_camp")
+	ok(f.nombre("BRV063") == 1 and Illustrations._texte.text.contains("Montval"), "le journal de Gaspard accuse les Montval")
+	Illustrations.fermer()
+	Grotte._sequence = []
+	for a in Grotte.ORDRE_COFFRE:
+		Grotte._roue(monde, a)
+	monde.fenetres.fermer()
+	ok(f.nombre("BRV062") == 1 and f.nombre("BRV061") == 1 and f.bourse >= 480, "le coffre : la carte de l'île, les bijoux, 2 or")
+	Illustrations.fermer()
+	# la salle inondée à la nage
+	Grotte._placer(monde, "inondee")
+	Grotte._nager(monde)
+	ok(monde.lieu_proche(monde.joueur.pos2d()) == "g_inondee_sud", "à la nage, on passe de l'autre côté")
+	Illustrations.fermer()
+	# le gouffre à la corde (For 14, Per 14)
+	Grotte._placer(monde, "gouffre")
+	for i in 3:
+		await get_tree().process_frame
+	Illustrations.fermer()
+	Grotte._balancer(monde, false)
+	ok(f.drapeaux.get("g_gouffre_passe", false) and monde.lieu_proche(monde.joueur.pos2d()) == "g_gouffre_sud", "la corde sur la stalactite : de l'autre côté du gouffre")
+	Illustrations.fermer()
+	# Léa, et ce qu'on en dit à Pierrick
+	Grotte._prendre_lea(monde, ["BRV067", "BRV068", "BRV069"])
+	Illustrations.fermer()
+	var pierrick := _pnj("BRU020")
+	ok(not _action("parler_lea", pierrick, "").is_empty(), "on peut parler de Léa à Pierrick")
+	var avant: int = monde.relations.get("BRU020", 0)
+	Grotte._rendre_lea(monde, "restes")
+	ok(monde.relations.BRU020 >= avant + 40 and f.drapeaux.get("pierrick_deuil", false) and f.nombre("BRV069") == 0, "rendre Léa à Pierrick (+%d)" % (monde.relations.BRU020 - avant))
+	Illustrations.fermer()
+	# la Bête aveugle : on la contourne en silence (Agi 14)
+	Grotte._contourner(monde)
+	ok(f.nombre("BRV070") == 1, "contournée en silence : un éclat de fer d'étoile")
+	Illustrations.fermer()
+	var b := Grotte._creer_bete(monde, "bete", 0, monde.joueur.pos2d())
+	ok(b.niveau == 10 and b.pv_max > 150, "la Bête aveugle : niveau 10, %d PV" % b.pv_max)
+	monde._loups.pop_back().queue_free()
+	ok(not _action("fer_etoile_bram", _pnj("BRU002"), "").is_empty(), "on peut montrer le fer d'étoile à Bram")
+	Grotte._fer(monde, "donner")
+	ok(f.drapeaux.get("bram_fer_etoile", false), "Bram forgera l'épée de sa vie")
+	Illustrations.fermer()
+	ok(Grotte.fin_combat(monde, "defaite", {"grotte": "bete"}, [], "").contains("Agnès"), "vaincu dans la grotte : on se réveille chez Agnès")
+	# la Bouche de mer, et la sortie
+	Grotte._placer(monde, "bouche")
+	for i in 3:
+		await get_tree().process_frame
+	ok(f.drapeaux.get("barque_noire", false), "la barque noire, à la Bouche de mer")
+	Illustrations.fermer()
+	monde.actions.executer(_action("sortir_mer", null, "g_bouche"), null, "g_bouche")
+	ok(Grotte.contient(monde.joueur.pos2d()) != Horloge.maree_basse(), "on ne sort par la mer qu'à marée basse")
+	Illustrations.fermer()
+	var p: Vector2 = monde.lieux.place.pos
+	monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
+	for i in 3:
+		await get_tree().process_frame
+	ok(monde._env.background_mode == Environment.BG_SKY, "dehors, le ciel revient")
+	monde.relations = relations_avant
+	monde.sauver_etat()

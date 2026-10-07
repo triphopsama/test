@@ -66,3 +66,14 @@ BRV052;Parchemin de Bourrasque;parchemin;—;0;0;;0;0;0;—;0;Int 8;1 argent;—
 BRV053;Brochet de l'Étang noir;consommable;—;0;0;;0;0;0;—;12;—;4 cuivre;—;Des dents comme des aiguilles. Joss dit qu'il ne faut pas manger ce qui vient de l'Étang noir. Joss dit beaucoup de choses.
 BRV054;Mûres;consommable;—;0;0;;0;0;0;—;6;—;1 cuivre;—;Les doigts violets et les bras griffés, mais ça valait la peine.
 BRV055;Bois de cerf;materiau;—;0;0;;0;0;0;—;0;—;6 cuivre;—;Bram en fait des manches de couteau.
+BRV060;Eau-de-vie des Marbre;materiau;—;0;0;;0;0;0;—;0;—;1 argent 6 cuivre;BRU011;Un tonnelet de quarante ans d'âge, encore plein. Silas paierait pour savoir d'où il sort.
+BRV061;Bijoux de famille des Marbre;bijou;—;0;0;;0;0;0;—;0;—;1 or;—;Une broche aux sept astres, deux bagues, un médaillon gravé « G. et M. ». Ysolde voudrait les revoir.
+BRV062;Carte marine de Gaspard;outil;—;0;0;;0;0;0;—;0;—;5 argent;—;La côte, les courants, et loin à l'ouest une grande île dessinée à la main : « Elle n'est sur aucune carte. On y voyait des lumières. »
+BRV063;Journal de Gaspard Marbre;outil;—;0;0;;0;0;0;—;0;—;invendable;—;La fin des Marbre, écrite à la main : la descente des soldats, et le nom de celui qui les a dénoncés. Montval.
+BRV064;Soie d'araignée des cavernes;materiau;—;0;0;;0;0;0;—;0;—;8 argent;BRU019;Plus solide que l'acier, plus fine qu'un cheveu. Isaure la paierait très cher.
+BRV065;Gelée de slime;materiau;—;0;0;;0;0;0;—;0;—;1 argent;BRU015;Tiède, un peu acide. Agnès s'en sert pour ses onguents.
+BRV066;Venin d'araignée;materiau;—;0;0;;0;0;0;—;0;—;6 cuivre;BRU015;Une poche de venin, à manier avec des gants.
+BRV067;Restes de Léa;outil;—;0;0;;0;0;0;—;0;—;invendable;—;Enveloppés dans ta cape, avec sa lanterne vide. Ils pèsent moins que tu ne l'aurais cru.
+BRV068;Carnet de Léa;outil;—;0;0;;0;0;0;—;0;—;invendable;—;Elle cherchait le fer d'étoile. Elle l'a trouvé. Les dernières pages sont pour Pierrick.
+BRV069;Alliance de Léa;bijou;—;0;0;;0;0;0;—;0;—;1 or;—;Un anneau d'argent, gravé à l'intérieur : « P. pour toujours ».
+BRV070;Fer d'étoile;materiau;—;0;0;;0;0;0;—;0;—;5 or;BRU002;Un éclat de métal bleuté qui luit dans le noir. Il est tombé du ciel il y a des siècles. Bram en rêve depuis toujours.

@@ -1,4 +1,4 @@
-# Capture d'écran pour vérifier le rendu : godot -- --capture=chemin.png --heure=11 --lieu=place
+# Capture d'écran pour vérifier le rendu : godot -- --capture=chemin.png --heure=11 --lieu=place (ou --grotte=veine)
 extends Node
 
 var monde: Node3D
@@ -18,6 +18,19 @@ func _ready() -> void:
 		monde.camera.position = monde.joueur.position + Vector3(0, 10, 14)
 	if args.has("zoom"):
 		monde._zoom = float(args.zoom)
+	if args.has("grotte"):
+		# --grotte=puits | galerie | inondee | camp | gouffre | lea | veine | bouche : une salle de la grotte,
+		# avec un personnage neuf (la salle déclenche ce qu'elle déclenche : combat, Bête aveugle…)
+		monde.fiche = Fiche.new()
+		monde.fiche.ajouter("OBJ464")
+		var g: Vector2 = monde.lieux["g_" + args.grotte].pos
+		monde.joueur.position = Vector3(g.x, Grotte.SOL, g.y)
+		monde.camera.position = monde.joueur.position + Vector3(0, 10, 14)
+		for i in 60:
+			await get_tree().process_frame
+		Illustrations.fermer()
+		for i in 150:
+			await get_tree().process_frame
 	for i in 90:
 		await get_tree().process_frame
 	if args.has("combat"):

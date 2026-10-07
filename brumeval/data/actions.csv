@@ -18,7 +18,7 @@ pecher;Pêcher;lieu;port;*;0;60;0;0;;BRV003 2;;Une heure au bout du quai, une li
 prier;Prier;lieu;chapelle;*;0;15;0;0;;;;Sous le vitrail brisé, les Sept Astres te regardent sans rien promettre.
 travailler;Travailler une heure;lieu;boulangerie,forge,moulin,atelier;*;0;60;0;0;;cuivre 6;;Une heure de travail. Les mains te brûlent, mais on te regarde un peu autrement.
 fouiller;Fouiller la maison;lieu;falaise;*;0;10;0;0;;;;Des meubles pourris, des cartes marines moisies. Dehors, derrière un buisson, un puits couvert de planches.
-descendre_puits;Descendre dans le puits;lieu;puits;*;0;1;0;0;;;;Une pierre jetée met longtemps à tomber. Un courant d'air froid remonte. (La grotte n'est pas encore dans le prototype.)
+descendre_puits;Descendre dans le puits (corde);lieu;brumeval:puits;*;0;5;0;0;;grotte_descendre;;Une pierre jetée met longtemps à tomber. Un courant d'air froid remonte.
 cueillir;Cueillir des plantes;lieu;reveil,fontaine,chene,agnes;*;0;20;0;0;;BRV004 1;;Sauge, consoude, et une plante que tu ne connais pas. Agnès saurait.
 regarder_mer;Regarder la mer;lieu;crique,guet,bouche,plage;*;0;5;0;0;;;;Au large, rien. Ou peut-être une lanterne, qui s'éteint dès que tu la fixes.
 fouiller_fourres;Fouiller les fourrés;lieu;reveil;*;0;15;0;0;;lame_sans_nom;;Tu écartes les ronces autour de la clairière où tu t'es réveillé. Des feuilles, des épines, un vieux nid.
@@ -81,3 +81,27 @@ consoler;Le consoler;pnj;*;*;0;30;-100;0;;consoler;;
 reconcilier;Les réconcilier;pnj;*;*;0;60;20;0;;reconcilier;;
 zizanie;Semer le doute dans son couple;pnj;*;*;0;15;-100;0;;zizanie;;
 proposer_trois;Leur proposer une nuit à trois;pnj;*;*;1;0;40;0;;proposer_trois;;
+entrer_bouche;Entrer sous la falaise (marée basse);lieu;brumeval:bouche,brumeval:crique;*;0;10;0;0;;grotte_bouche;;Les rochers, la falaise, une bouche noire au ras de l'eau.
+remonter_puits;Remonter à la corde;lieu;g_puits;*;0;5;0;0;;grotte_remonter;;La corde pend dans le rond de jour.
+fouiller_puits;Fouiller le fond du puits;lieu;g_puits;*;0;10;0;0;;grotte_fouiller_puits;;Des os, de la paille pourrie, et quelque chose contre la paroi.
+porte_astres;Examiner la porte des astres;lieu;g_porte,g_galerie;*;0;5;0;0;;grotte_porte;;Sept plaques au sol, une porte de chêne.
+nager_inondee;Traverser à la nage (apnée, End 10);lieu;g_inondee,g_inondee_sud;*;0;2;0;0;;grotte_nager;;L'eau noire et froide.
+tonneaux_marbre;Fouiller les tonneaux;lieu;g_inondee,g_inondee_sud;*;0;10;0;0;;grotte_tonneaux;;Des tonneaux cerclés de fer, marqués d'un M.
+journal_gaspard;Lire le journal sur la table;lieu;g_camp;*;0;20;0;0;;grotte_journal;;Un journal relié de cuir.
+coffre_gaspard;Ouvrir le coffre de Gaspard;lieu;g_camp;*;0;5;0;0;;grotte_coffre;;Un coffre à quatre symboles d'astres.
+traverser_gouffre;Traverser le gouffre;lieu;g_gouffre,g_gouffre_sud;*;0;5;0;0;;grotte_gouffre;;Vingt mètres de vide.
+lea;S'approcher de Léa;lieu;g_lea;*;0;5;0;0;;grotte_lea;;Un squelette, une lanterne vide, un carnet.
+veine_etoile;S'approcher de la veine;lieu;g_veine;*;0;1;0;0;;grotte_veine;;La veine bleue luit au plafond.
+detacher_fer;Détacher du fer d'étoile;lieu;g_veine;*;0;30;0;0;;grotte_fer;;Le métal bleu, à portée de main maintenant.
+barque_noire;Examiner la barque noire;lieu;g_bouche;*;0;5;0;0;;grotte_barque;;Une barque noire, sans marque.
+sortir_mer;Sortir par la mer (marée basse);lieu;g_bouche;*;0;5;0;0;;grotte_sortir_mer;;Le jour, au ras de l'eau.
+comptine_joss;Écouter la comptine des marins;pnj;*;BRU006;0;10;0;2;;grotte_comptine;;
+comptine_enfants;Demander la comptine des astres;pnj;*;BRU005,BRU004;0;5;0;1;;grotte_comptine;;
+rumeur_falaise;Demander ce qu'il y a sous la falaise;pnj;*;BRU015,BRU006,BRU020;0;5;20;0;;grotte_rumeur;;
+parler_lea;Parler de Léa;pnj;*;BRU020;0;10;0;0;;grotte_pierrick;;
+fer_etoile_bram;Montrer le fer d'étoile;pnj;*;BRU002;0;10;0;0;;grotte_bram;;
+marbre_ysolde;Parler des Marbre;pnj;*;BRU004;0;15;0;0;;grotte_ysolde;;
+journal_aldric;Montrer le journal de Gaspard;pnj;*;BRU007;0;10;0;0;;grotte_aldric;;
+grotte_silas;Parler affaires (la grotte);pnj;*;BRU003;0;10;0;0;;grotte_silas;;
+soie_isaure;Vendre la soie d'araignée (1 or pièce);pnj;*;BRU019;0;10;0;0;;grotte_isaure;;
+souvenir_ysolde;Lui demander un souvenir de sa famille;pnj;*;BRU004;0;15;50;2;;grotte_souvenir;;

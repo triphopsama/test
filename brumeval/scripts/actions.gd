@@ -75,6 +75,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.intime == "1" and not _intime_dispo(str(l.donne), pnj):
 			continue
+		if str(l.donne).begins_with("grotte") and not Grotte.dispo(monde, str(l.donne)):
+			continue
 		if l.id in COMBATS and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if l.id == "lecon" and monde.lecons_de(pnj).is_empty():
@@ -167,6 +169,10 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		return
 	_payer(str(l.get("prix", "")))
 	var donne := str(l.get("donne", ""))
+	if donne.begins_with("grotte"):
+		Horloge.avancer(float(l.duree_min))
+		Grotte.action(monde, donne, l, pnj)
+		return
 	if donne in ["boutique", "vente"]:
 		monde.fenetres.marchand(pnj, donne == "vente")
 		return

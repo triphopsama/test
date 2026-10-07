@@ -95,6 +95,7 @@ func _ready() -> void:
 		Vesperine.installer(self)
 	Fees.installer(self)
 	Compagnons.installer_betes(self)
+	Grotte.construire(self)
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
@@ -171,6 +172,8 @@ func dans_zone(p: Vector2, zone: PackedVector2Array) -> bool:
 
 ## Hauteur du sol en un point (mètres). La mer est à -4.
 func hauteur(x: float, z: float) -> float:
+	if Grotte.contient(Vector2(x, z)):
+		return Grotte.hauteur(x, z)
 	var p := Vector2(clampf(x, 0.0, TAILLE.x), clampf(z, 0.0, TAILLE.y))
 	if not sur_terre(p):
 		return -4.0
@@ -201,6 +204,8 @@ func distance_cote(p: Vector2) -> float:
 
 ## Vrai si on peut marcher en ce point (sur terre, hors des murs).
 func praticable(p: Vector2) -> bool:
+	if Grotte.contient(p):
+		return Grotte.praticable(p)
 	if p.x < 0.0 or p.y < 0.0 or p.x > TAILLE.x or p.y > TAILLE.y:
 		return false
 	if not sur_terre(p):
@@ -532,6 +537,7 @@ func _process(delta: float) -> void:
 	_surveiller_defis(delta)
 	_surveiller_liens(delta)
 	Vesperine.surveiller(self)
+	Grotte.surveiller(self, delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -1303,6 +1309,8 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."
 		"reddition":
 			texte = "Tu lèves les mains. On te laisse partir, cette fois, avec un dernier coup pour la route."
+	if contexte.has("grotte"):
+		texte = Grotte.fin_combat(self, resultat, contexte, ennemis, texte)
 	if contexte.has("entrainement"):
 		texte = "L'entraînement est fini. %s" % ("Tu l'as mis au tapis." if resultat == "victoire" else "Tu as mordu la poussière, mais tu as appris.")
 	texte += _apres_combat(resultat, contexte, allies, ennemis)

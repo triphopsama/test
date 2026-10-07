@@ -1,5 +1,5 @@
 # Fabrique les planches 16×24 des petites bêtes (4 colonnes × 4 lignes : bas, gauche, droite, haut).
-# python3 outils/betes.py  →  sprites/{rat,crabe,sanglier}_planche.png
+# python3 outils/betes.py  →  sprites/{rat,crabe,sanglier,araignee,slime,bete_aveugle}_planche.png
 from PIL import Image
 
 def planche(dessiner):
@@ -86,6 +86,56 @@ def sanglier(px, sens, f):
             px[5, 13] = oeil; px[10, 13] = oeil
         rect(px, 4, 20, 5, 22 - pas, sombre); rect(px, 10, 20, 11, 22 - (1 - pas), sombre)
 
-for nom, f in [("rat", rat), ("crabe", crabe), ("sanglier", sanglier)]:
+def miroir(px):
+    for y in range(24):
+        ligne = [px[x, y] for x in range(16)]
+        for x in range(16):
+            px[x, y] = ligne[15 - x]
+
+def araignee(px, sens, f):
+    corps, sombre, oeil, poil = (60, 55, 70, 255), (35, 30, 40, 255), (220, 40, 40, 255), (110, 100, 120, 255)
+    pas = f % 2
+    rect(px, 5, 15, 10, 19, corps)            # abdomen
+    rect(px, 6, 14, 9, 14, poil)
+    if sens != "haut":
+        rect(px, 6, 19, 9, 21, sombre)        # tête
+        px[6, 20] = oeil; px[9, 20] = oeil; px[7, 19] = oeil; px[8, 19] = oeil
+    for i, y in enumerate((15, 17, 19, 21)):
+        dy = pas if i % 2 == 0 else 1 - pas
+        rect(px, 1, y - dy, 4, y - dy, sombre); rect(px, 0, y - dy + 1, 0, y + 1, sombre)
+        rect(px, 11, y - (1 - dy), 14, y - (1 - dy), sombre); rect(px, 15, y - (1 - dy) + 1, 15, y + 1, sombre)
+
+def slime(px, sens, f):
+    gel, clair, noyau = (90, 170, 120, 200), (170, 230, 190, 220), (40, 90, 60, 255)
+    gonfle = (0, 1, 2, 1)[f]
+    rect(px, 3 - gonfle // 2, 17 + gonfle, 12 + gonfle // 2, 22, gel)
+    rect(px, 4, 15 + gonfle, 11, 17 + gonfle, gel)
+    rect(px, 5, 16 + gonfle, 6, 17 + gonfle, clair)
+    rect(px, 8, 19, 9, 20, noyau)
+    px[10, 21] = (150, 150, 160, 255)         # une boucle de métal à moitié digérée
+
+def bete_aveugle(px, sens, f):
+    peau, sombre, bouche, pli = (205, 190, 180, 255), (140, 120, 115, 255), (90, 30, 40, 255), (170, 150, 145, 255)
+    pas = f % 2
+    if sens in ("gauche", "droite"):
+        rect(px, 1, 12, 13, 20, peau)
+        for x in (3, 6, 9, 12):
+            rect(px, x, 12, x, 20, pli)
+        rect(px, 13, 14, 15, 19, peau); rect(px, 14, 16, 15, 18, bouche)
+        for i, lx in enumerate((2, 5, 8, 11)):
+            rect(px, lx, 21, lx, 23 - (pas if i % 2 else 1 - pas), sombre)
+        if sens == "gauche":
+            miroir(px)
+    else:
+        rect(px, 3, 9, 12, 21, peau)
+        for y in (11, 14, 17):
+            rect(px, 3, y, 12, y, pli)
+        if sens == "bas":
+            rect(px, 5, 18, 10, 21, bouche)
+            for x in (5, 7, 9):
+                px[x, 18] = (240, 235, 225, 255)
+        rect(px, 1, 20 - pas, 2, 22, sombre); rect(px, 13, 20 - (1 - pas), 14, 22, sombre)
+
+for nom, f in [("rat", rat), ("crabe", crabe), ("sanglier", sanglier), ("araignee", araignee), ("slime", slime), ("bete_aveugle", bete_aveugle)]:
     planche(f).save(f"sprites/{nom}_planche.png")
     print("sprites/%s_planche.png" % nom)
