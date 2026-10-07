@@ -64,6 +64,10 @@ func _ready() -> void:
 	fenetres = preload("res://scripts/fenetres.gd").new()
 	fenetres.monde = self
 	add_child(fenetres)
+	var args := Array(OS.get_cmdline_user_args())
+	var outil: bool = "--autotest" in args or args.any(func(a): return a.begins_with("--capture="))
+	if not outil and ("--nouveau" in args or not fiche.drapeaux.has("cree")):
+		_creation()
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--capture="):
 			var cap := preload("res://scripts/capture.gd").new()
@@ -468,6 +472,68 @@ func _process(delta: float) -> void:
 	_regenerer()
 
 
+## L'écran de création, puis le réveil dans le bois de Ronceval.
+func _creation() -> void:
+	var ecran := preload("res://scripts/creation.gd").new()
+	add_child(ecran)
+	get_tree().paused = true
+	var f: Fiche = await ecran.fini
+	get_tree().paused = false
+	fiche = f
+	nouvelle_vie()
+	var texte := "Tu ouvres les yeux. Des fougères, une odeur de mousse et de sel, un ciel blanc entre les branches. Le bois de Ronceval, mais ce nom-là, tu ne le connais pas encore."
+	match fiche.tenue:
+		"nu":
+			texte += " Et tu es nu%s comme au premier jour. Le vent du large te le fait savoir." % fiche.accord("", "e", "")
+		"haillons":
+			texte += " Tu portes des loques qui ne sont pas à toi."
+		"ailleurs":
+			texte += " Tu portes encore tes vêtements de là-bas."
+	texte += " À ton doigt, un anneau que tu n'as jamais mis."
+	if fiche.objet_ailleurs != "":
+		texte += " Dans ta poche : %s." % Objets.get_(fiche.objet_ailleurs).nom.to_lower()
+	texte += "\n\nAu loin, une cloche. Un village, peut-être. (I : sac · C : personnage)"
+	Illustrations.montrer("reveil", ["reveil"], texte)
+
+
+## Une nouvelle vie : le monde oublie l'ancien personnage, et accueille le nouveau selon qui il est.
+func nouvelle_vie() -> void:
+	relations.clear()
+	morts.clear()
+	for n in pnjs:
+		n.mort = false
+		n.hostile = false
+	var p: Vector2 = lieux.reveil.pos
+	joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
+	var r := {}
+	match fiche.peuple:
+		"nain":
+			r["BRU011"] = 20                       # Rosalie te traite en cousin
+		"elfe":
+			r["BRU020"] = 10                       # Pierrick, demi-elfe
+		"demi_sang":
+			r["BRU020"] = 15                       # Pierrick se reconnaît en toi
+	if fiche.peuple == "homme_bete" and fiche.lignee == "renard":
+		r["BRU016"] = 15                           # Nina, renarde elle aussi
+	for n in pnjs:
+		if fiche.a("beaute") and int(n.donnees.age) >= 18:
+			r[n.id] = r.get(n.id, 0) + 5
+	if fiche.a("ami_enfants"):
+		for id in ["BRU005", "BRU016"]:
+			r[id] = r.get(id, 0) + 15
+	if fiche.a("louche"):
+		r["BRU014"] = r.get("BRU014", 0) - 15      # Corentin te surveille
+	if fiche.a("ennemi"):
+		var adultes := pnjs.filter(func(n): return int(n.donnees.age) >= 18)
+		var e: Node = adultes.pick_random()
+		r[e.id] = r.get(e.id, 0) - 45
+		fiche.drapeaux["ennemi"] = e.id
+	for id in r:
+		relations[id] = r[id]
+	sauver_etat()
+	fiche.sauver()
+
+
 ## Hors combat, on reprend 10 % de ses PV par heure du monde.
 func _regenerer() -> void:
 	var t: float = Horloge.maintenant()
@@ -732,6 +798,10 @@ func _surveiller_loups() -> void:
 	if joueur.pos2d().distance_to(lieux.loups.pos) > 28.0:
 		return
 	_dernier_jour_loups = Horloge.jour()
+	if fiche.a("ami_betes"):
+		sauver_etat()
+		Illustrations.montrer("loups_passent", ["loups"], "Des yeux jaunes dans les fourrés. La meute te regarde longtemps, renifle l'air, puis s'écarte. Les bêtes n'attaquent pas d'abord ceux qui sont des leurs.")
+		return
 	sauver_etat()
 	var ennemis := []
 	for i in 2 + randi() % 2:
@@ -853,7 +923,7 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 		for e in ennemis:
 			if not (e.a_terre or e.mort) or e.est_bete:
 				continue
-			cuivre += randi_range(4, 24)
+			cuivre += randi_range(4, 24) * (2 if fiche.a("trouvaille") else 1)
 			if e.arme.has("objet"):
 				fiche.ajouter(e.arme.objet)
 				lignes.append("Tu prends %s de %s." % [Objets.get_(e.arme.objet).nom.to_lower(), e.nom])

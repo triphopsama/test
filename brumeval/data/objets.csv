@@ -40,3 +40,11 @@ OBJ407;Peau de loup gris;materiau;—;0;0;;0;0;0;—;0;—;9 cuivre;—;Fourrure
 BRV002;Croc de loup;materiau;—;0;0;;0;0;0;—;0;—;3 cuivre;—;Un croc jaune, long comme un doigt.
 OBJ462;Corde de chanvre (15 m);outil;—;0;0;;0;0;0;—;0;—;6 cuivre;BRU003,BRU006;Chanvre tressé, goudronné aux deux bouts.
 OBJ464;Lanterne sourde;outil;—;0;0;;0;0;0;—;0;—;1 argent 6 cuivre;BRU003;Lanterne à volet, celle des contrebandiers.
+BRV010;Haillons;armure;torse;0;0;;0;0;0;—;0;—;1 cuivre;—;Des loques qui ont été une chemise. On te fait l'aumône, ou on te chasse.
+BRV011;Montre de l'autre monde;outil;—;0;0;;0;0;0;—;0;—;3 or;—;Une aiguille qui avance toute seule, sans eau ni sable. Silas en ferait des folies. Les voleurs aussi.
+BRV012;Briquet de l'autre monde;outil;—;0;0;;0;0;0;—;0;—;1 or;—;Un pouce, une flamme. Ici, ça ressemble beaucoup à de la magie.
+BRV013;Couteau suisse;arme;main;3;1;Agi;5;0;0;—;0;—;1 or;—;Une lame courte, des ciseaux minuscules, un tire-bouchon. Mieux que les poings.
+BRV014;Lunettes;bijou;tete;0;0;;0;0;0;Per +1;0;—;2 or;—;Des verres plus clairs que ceux des verriers de la Guilde. Corrigent la Mauvaise vue.
+BRV015;Téléphone éteint;outil;—;0;0;;0;0;0;—;0;—;2 or;—;Une plaque noire et lisse qui ne s'allume plus. Un objet de sorcier, diront certains.
+BRV016;Photo;outil;—;0;0;;0;0;0;—;0;—;invendable;—;Des visages d'avant, figés plus nets qu'aucun peintre ne saurait le faire.
+BRV017;Bijou de l'autre monde;bijou;cou;0;0;;0;0;0;—;0;—;1 or 10 argent;—;Un bijou d'un travail trop fin pour ce monde.

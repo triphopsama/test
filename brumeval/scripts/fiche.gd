@@ -23,6 +23,29 @@ var sac := {}                     # id -> nombre
 var equipement := {}              # emplacement -> id
 var drapeaux := {}                # choses faites une fois (lame trouvée…)
 
+# ce qu'on choisit à la création (creation_personnage.md)
+var nom := "Toi"
+var peuple := "humain"
+var lignee := ""
+var sexe := "Homme"
+var pronoms := "il"
+var age := 25
+var astre := ""
+var vie := ""                     # vie d'avant
+var traits: Array = []            # avantages et défauts
+var archetype := "neutre"
+var caractere := {}               # trait -> -100..100
+var valeurs: Array = []
+var passions: Array = []
+var tenue := "ailleurs"
+var objet_ailleurs := ""
+var affinites := {}               # élément -> 0..100, cachées par défaut
+var options := {"chiffres": "complet", "adulte": true, "mort_definitive": false}
+
+const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "bourse", "sac", "equipement", "drapeaux",
+	"nom", "peuple", "lignee", "sexe", "pronoms", "age", "astre", "vie", "traits", "archetype", "caractere",
+	"valeurs", "passions", "tenue", "objet_ailleurs", "affinites", "options"]
+
 
 func _init() -> void:
 	for s in Combattant.STATS:
@@ -46,7 +69,13 @@ func stats_totales() -> Dictionary:
 
 
 func pv_max() -> int:
-	return 20 + stats_totales().Vit * 8 + niveau * 4
+	var m := 1.0 + (0.15 if a("robuste") else 0.0) - (0.15 if a("fragile") else 0.0)
+	return roundi((20 + stats_totales().Vit * 8 + niveau * 4) * m)
+
+
+## Le joueur a-t-il cet avantage ou ce défaut ?
+func a(trait_id: String) -> bool:
+	return trait_id in traits
 
 
 func xp_suivant() -> int:
@@ -55,6 +84,8 @@ func xp_suivant() -> int:
 
 ## Ajoute de l'expérience ; renvoie le nombre de niveaux gagnés.
 func gagner_xp(n: int) -> int:
+	if a("apprend_vite"):
+		n = roundi(n * 1.25)
 	xp += n
 	var gagnes := 0
 	while xp >= xp_suivant():
@@ -156,7 +187,7 @@ func utiliser(id: String) -> String:
 	if o.is_empty() or o.type != "consommable" or not retirer(id):
 		return ""
 	var avant := pv
-	pv = mini(pv_max(), pv + int(o.soin))
+	pv = mini(pv_max(), pv + roundi(int(o.soin) * (1.5 if vie == "cuisinier" else 1.0)))
 	return "%s : +%d PV (%d/%d)." % [o.nom, pv - avant, pv, pv_max()]
 
 
@@ -169,7 +200,7 @@ func soins() -> Array:
 
 func sauver() -> void:
 	var cfg := ConfigFile.new()
-	for k in ["stats", "niveau", "xp", "points", "pv", "bourse", "sac", "equipement", "drapeaux"]:
+	for k in CHAMPS:
 		cfg.set_value("joueur", k, get(k))
 	cfg.save(FICHIER)
 
@@ -178,8 +209,38 @@ static func charger() -> Fiche:
 	var f := Fiche.new()
 	var cfg := ConfigFile.new()
 	if cfg.load(FICHIER) == OK:
-		for k in ["stats", "niveau", "xp", "points", "pv", "bourse", "sac", "equipement", "drapeaux"]:
+		for k in CHAMPS:
 			if cfg.has_section_key("joueur", k):
 				f.set(k, cfg.get_value("joueur", k))
 	f.pv = clampi(f.pv, 1, f.pv_max())
 	return f
+
+
+## Le personnage tel qu'on l'a créé. c : les choix de l'écran de création.
+static func depuis_creation(c: Dictionary) -> Fiche:
+	var f := Fiche.new()
+	f.sac.clear()
+	f.equipement.clear()
+	for k in c:
+		if k in CHAMPS and k != "stats":
+			f.set(k, c[k])
+	f.stats = CreationDonnees.stats_finales(c)
+	if f.a("ferme_magie"):
+		f.stats.Vol += 2
+	var tenue_obj: String = CreationDonnees.TENUES[f.tenue].objet
+	for id in [tenue_obj, "OBJ511", f.objet_ailleurs]:
+		if id != "":
+			f.ajouter(id)
+			if Objets.emplacement(id) != "" and id != "BRV013" and id != "BRV017":
+				f.equiper(id)
+	f.drapeaux["cree"] = true
+	f.pv = f.pv_max()
+	return f
+
+
+## Le pronom sujet et l'accord : « Il est », « Elle est », « Iel est ».
+func accord(m: String, f_: String, n: String = "") -> String:
+	match pronoms:
+		"elle": return f_
+		"iel": return n if n != "" else m
+	return m

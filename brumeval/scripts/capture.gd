@@ -37,6 +37,18 @@ func _ready() -> void:
 		Illustrations.fermer()
 		for i in 120:
 			await get_tree().process_frame
+	if args.has("creation"):
+		# --creation=3 : l'écran de création, à l'étape 3
+		var ecran := preload("res://scripts/creation.gd").new()
+		monde.add_child(ecran)
+		await get_tree().process_frame
+		ecran.c.nom = "Brindille"
+		ecran.c.peuple = "homme_bete"
+		ecran.c.lignee = "renard"
+		ecran.etape = int(args.creation) - 1
+		ecran._afficher()
+		for i in 10:
+			await get_tree().process_frame
 	if args.has("fenetre"):
 		# --fenetre=sac | perso | bram : un sac d'exemple pour voir les fenêtres
 		var f := Fiche.new()

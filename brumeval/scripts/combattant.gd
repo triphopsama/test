@@ -57,6 +57,10 @@ var stable := false
 var mort := false
 var sorti := false         # a fui ou s'est rendu
 var tours_saignement := 3
+var bonus_toucher := 0       # Soldat : +5
+var bonus_distance := 0      # Œil de tireur +10, Mauvaise vue −10
+var increvable := false      # une fois : reste debout à 1 PV
+var chance := 0              # +1 Chanceux (rejoue un raté), −1 Malchanceux (rejoue un réussi), une fois
 var noeud: Node3D
 
 
@@ -128,7 +132,18 @@ static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 			c.arme = {"nom": o.nom, "degats": int(o.degats), "portee": int(o.portee), "stat": o.stat, "crit": int(o.crit), "objet": o.id}
 	c.competences = f.competences()
 	c._calculer()
+	c.pv_max = f.pv_max()
 	c.pv = clampi(f.pv, 1, c.pv_max)
+	if f.a("rapide"):
+		c.vitesse += 3
+	if f.a("ferme_magie"):
+		c.mana_max = int(c.mana_max * 0.6)
+		c.mana = c.mana_max
+	c.bonus_toucher = 5 if f.vie == "soldat" else 0
+	c.bonus_distance = (10 if f.a("tireur") else 0) - (10 if f.a("mauvaise_vue") and not f.equipe("BRV014") else 0)
+	c.increvable = f.a("increvable")
+	c.chance = (1 if f.a("chanceux") else 0) - (1 if f.a("malchanceux") else 0)
+	c.nom = f.nom if f.nom != "" else "Toi"
 	return c
 
 

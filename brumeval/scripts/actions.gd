@@ -69,7 +69,7 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 
 ## Les garde-fous des actions intimes. Faux = l'action n'apparaît même pas.
 func intime_possible(pnj: Node) -> bool:
-	if pnj == null:
+	if pnj == null or not monde.fiche.options.get("adulte", true):
 		return false
 	var d: Dictionary = pnj.donnees
 	if int(d.get("age", "0")) < AGE_ADULTE:
@@ -105,7 +105,10 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		monde.fenetres.marchand(pnj, donne == "vente")
 		return
 	if pnj != null:
-		monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + int(l.effet_affection), -100, 100)
+		var effet := int(l.effet_affection)
+		if effet > 0 and monde.fiche.a("charisme"):
+			effet += 1
+		monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + effet, -100, 100)
 		monde.sauver_etat()
 	var gains := _donner(donne)
 	if gains != "":
@@ -162,9 +165,13 @@ func _donner(donne: String) -> String:
 		elif m[0] == "lame_sans_nom":
 			r.append(_lame_sans_nom())
 		elif Objets.existe(m[0]):
+			if m[0] == "BRV004" and f.vie == "agriculteur":
+				n *= 2
 			f.ajouter(m[0], n)
 			r.append("+%d %s." % [n, Objets.get_(m[0]).nom.to_lower()])
 		elif m[0] in ["cuivre", "argent", "or"]:
+			if m[0] == "cuivre" and f.vie == "ouvrier":
+				n += 2
 			var c := Objets.cuivre_de("%d %s" % [n, m[0]])
 			f.bourse += c
 			r.append("+%s." % Objets.texte_prix(c))

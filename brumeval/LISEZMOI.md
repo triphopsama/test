@@ -41,9 +41,17 @@ En combat : 1 à 9 choisit l'action (se déplacer, attaquer, compétence, bander
   - Après un combat : de l'expérience (beaucoup contre plus fort que toi, presque rien contre plus faible, la moitié en bagarre, un quart si tu perds), le butin (peaux et crocs de loup, l'arme et la bourse de ceux que tu as mis à terre ; ils t'en voudront) et la tournée de la bagarre. Si tu perds un vrai combat, on te prend la moitié de ta bourse.
   - Perdre n'est pas la fin : tu te réveilles trois heures plus tard chez Agnès. Les morts restent morts (sauvés dans `user://etat.cfg`).
 
+## La création de personnage
+
+Au premier lancement (ou avec `godot -- --nouveau`), un écran en 9 étapes, d'après `monde/creation_personnage.md` : peuple et lignée (6 peuples, clans, 14 animaux, lignées démones), identité (sexe, pronoms, âge apparent, astre de naissance), caractéristiques (5 partout, 20 points, préréglages), caractère (archétypes), valeurs et passions, vie d'avant, avantages et défauts, tenue et objet de l'autre monde au réveil, nom et options. Chaque étape a son « au hasard », et « Tout au hasard » fait un personnage en un clic.
+
+Ce qui compte déjà en jeu : les caractéristiques, les PV, la vitesse ; l'accueil des PNJ (Rosalie et les nains, Pierrick et les elfes ou demi-sangs, Nina et les renards, Beauté frappante, Ami des enfants, Air louche, Ennemi) ; une vingtaine d'avantages, de défauts et de vies d'avant (Robuste, Rapide, Increvable, Chanceux, Œil de tireur, Ami des bêtes, Apprend vite, Commerçant, Cuisinier, Ouvrier, Soldat, Joueur de jeux vidéo…) ; le contenu adulte désactivable. Le reste (corps, profil intime, affinités, phobies…) est gardé dans la fiche, marqué « plus tard ». Une nouvelle création remet le village à zéro (affections, morts).
+
+Les choix sont dans `scripts/creation_donnees.gd`, modifiables.
+
 ## Les objets, l'argent, l'expérience
 
-- **Au réveil**, tu n'as que les vêtements d'un autre monde et l'anneau qui ne s'enlève pas. Pas un sou. La **Lame sans nom** se cache peut-être dans les fourrés de la clairière (« Fouiller les fourrés », une chance sur trois par jour).
+- **Au réveil**, tu n'as que ta tenue (vêtements d'ailleurs, simples, haillons, ou rien), l'anneau qui ne s'enlève pas et peut-être un objet de l'autre monde (une montre se vend 1 or 10 argent chez Silas). Pas un sou. La **Lame sans nom** se cache peut-être dans les fourrés de la clairière (« Fouiller les fourrés », une chance sur trois par jour).
 - **Gagner sa vie** : travailler une heure (6 cuivre), pêcher (des maquereaux), cueillir (sauge et consoude pour Agnès), revendre les peaux de loup.
 - **Les marchands** (« Acheter » et « Vendre » en parlant avec eux) : Bram (armes, mailles, boucliers), Isaure (cuir, chemises), Silas (dagues, cordes, lanterne), Mara (pain), Agnès (onguent, tisane), Rosalie (soupe), Joss (hareng, trident, vareuse), Pierrick (arc, collier de crocs), Ysolde (amulette), Basile (chapeau de paille). Ils rachètent tout à moitié prix ; un ami (affection 50) fait 10 % de remise. 1 or = 20 argent, 1 argent = 12 cuivre.
 - **L'équipement** compte en combat : dégâts et portée de l'arme, défense de l'armure, blocage du bouclier, bonus de caractéristiques. Chaque objet demande des caractéristiques minimales (la cotte de mailles : End 8). Un arc ou un trident se tient à deux mains.
@@ -64,7 +72,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Ce qui n'est pas encore là
 
-- La création de personnage, les classes et métiers, la magie, la maîtrise des armes et les titres.
+- Le corps et le profil intime à la création, les classes et métiers, la magie, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
 - La grotte, Pierrefane et le reste du monde.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
@@ -84,4 +92,4 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 `godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, et trois combats joués tout seuls (bagarre, loups, agression).
 
-`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso` ou `bram` une image des fenêtres.
+`godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.

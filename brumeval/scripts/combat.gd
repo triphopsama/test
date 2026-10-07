@@ -222,7 +222,8 @@ func _maj_ordre() -> void:
 	_ordre.text = "Ordre : " + " → ".join(noms)
 	var lignes := []
 	for c in combattants:
-		lignes.append("%s%s : %s" % ["▶ " if c == actif else "", c.nom, c.etat_texte()])
+		var niv := " (niv %d)" % c.niveau if monde.fiche and monde.fiche.vie == "joueur" and not c.est_joueur else ""
+		lignes.append("%s%s%s : %s" % ["▶ " if c == actif else "", c.nom, niv, c.etat_texte()])
 	_info.text = "\n".join(lignes)
 
 
@@ -453,13 +454,23 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 	var chance: int = 85 + (att.stats.Per - cible.stats.Agi) * 2 + int(comp.get("toucher", 0))
 	chance += {"face": 0, "flanc": 15, "dos": 30}[cote]
 	chance += clampi(ecart_h * 5, -20, 20)
+	chance += att.bonus_toucher + (att.bonus_distance if _distance(att.case, cible.case) > 1 else 0)
 	if att.endurance <= 0:
 		chance -= 20
 	if cible.etats.has("renverse") or cible.etats.has("etourdi"):
 		chance = 100
 	chance = clampi(chance, 5, 99) if chance < 100 else 100
 	var titre := "%s utilise %s sur %s" % [att.nom, comp.nom, cible.nom] if cle != "" else "%s frappe %s (%s)" % [att.nom, cible.nom, att.arme.nom]
-	if randi_range(1, 100) > chance:
+	var touche := randi_range(1, 100) <= chance
+	if not touche and att.chance > 0:
+		att.chance = 0
+		_ecrire("%s : raté… la chance s'en mêle, on rejoue." % titre)
+		touche = randi_range(1, 100) <= chance
+	elif touche and att.chance < 0:
+		att.chance = 0
+		_ecrire("%s : touché… la malchance s'en mêle, on rejoue." % titre)
+		touche = randi_range(1, 100) <= chance
+	if not touche:
 		_ecrire("%s : raté (%d %%)." % [titre, chance])
 		return
 	var brut: float = att.arme.degats + comp.mult * att.stats[comp.stat]
@@ -494,6 +505,10 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 
 func _degats(c: Combattant, n: int, cause: String, crit := false) -> void:
 	c.pv -= n
+	if c.pv <= 0 and c.increvable:
+		c.increvable = false
+		c.pv = 1
+		_ecrire("%s devrait tomber, mais reste debout à 1 PV." % c.nom)
 	if cause != "":
 		_ecrire("%s perd %d PV (%s)." % [c.nom, n, cause])
 	if c.pv <= 0:

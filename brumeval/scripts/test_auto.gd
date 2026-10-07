@@ -153,6 +153,37 @@ func _ready() -> void:
 	monde.fenetres.personnage()
 	ok(monde.fenetres._liste.get_child_count() == 9, "la fiche montre les 9 caractéristiques")
 	monde.fenetres.fermer()
+	print("== Création de personnage")
+	var ch := {"peuple": "nain", "lignee": "profondeurs", "age": 45, "astre": "rouge", "vie": "sportif",
+		"repartition": {"For": 7, "Rob": 5, "Vit": 5, "Int": -2, "Sag": 3}, "traits": ["robuste", "fragile"], "tenue": "nu",
+		"objet_ailleurs": "BRV011", "nom": "Durgrim", "sexe": "Homme", "pronoms": "il", "archetype": "brute",
+		"options": {"chiffres": "complet", "adulte": false, "mort_definitive": false}}
+	ok(CreationDonnees.budget(ch) == 22 and CreationDonnees.depenses(ch) == 20, "baisser Int à 3 rend 2 points (budget %d)" % CreationDonnees.budget(ch))
+	var st := CreationDonnees.stats_finales(ch)
+	ok(st.For == 14 and st.Rob == 12 and st.End == 8 and st.Agi == 5 and st.Vol == 6, "nain, profondeurs, mûr, Rouge, sportif : For %d Rob %d End %d Agi %d Vol %d" % [st.For, st.Rob, st.End, st.Agi, st.Vol])
+	ok(CreationDonnees.solde_traits(ch) == 0, "Robuste et Fragile s'annulent")
+	var fn := Fiche.depuis_creation(ch)
+	ok(fn.nom == "Durgrim" and fn.drapeaux.has("cree") and fn.equipement.size() == 1 and fn.nombre("BRV011") == 1, "nu, l'anneau au doigt, la montre en poche")
+	ok(Combattant.joueur(monde.joueur, fn).nom == "Durgrim", "le combat t'appelle par ton nom")
+	monde.fiche = fn
+	ok(not monde.actions.intime_possible(mara), "contenu adulte désactivé : aucune action intime")
+	monde.nouvelle_vie()
+	ok(monde.relations.get("BRU011", 0) == 20, "Rosalie accueille un nain en cousin")
+	var ecran := preload("res://scripts/creation.gd").new()
+	add_child(ecran)
+	await get_tree().process_frame
+	for i in ecran.ETAPES.size():
+		ecran._hasard(i)
+		ecran.etape = i
+		ecran._afficher()
+	await get_tree().process_frame
+	ok(ecran._probleme() == "", "tout au hasard donne un personnage valide (%s)" % ecran._probleme())
+	var recu := []
+	ecran.fini.connect(func(x): recu.append(x))
+	ecran._terminer()
+	var fh: Fiche = recu[0] if recu else null
+	ok(fh != null and fh.drapeaux.has("cree") and int(fh.stats.For) >= 1, "l'écran rend une fiche : %s, %s" % [fh.nom if fh else "?", fh.peuple if fh else "?"])
+	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
 	monde.fiche = f

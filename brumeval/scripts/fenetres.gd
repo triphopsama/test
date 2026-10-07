@@ -234,11 +234,18 @@ func prix_achat(id: String) -> int:
 	var p := Objets.prix(id)
 	if _marchand and monde.relations.get(_marchand.id, 0) >= 50:
 		p = int(p * 0.9)            # un ami fait un geste
+	if monde.fiche.vie == "commercant":
+		p = int(p * 0.95)           # marchandage
+	if _marchand and _marchand.id == "BRU011" and monde.fiche.lignee == "marchand":
+		p = int(p * 0.95)           # Clan Marchand : entre nains
 	return maxi(1, p)
 
 
 func prix_vente(id: String) -> int:
-	return maxi(1, Objets.prix(id) / 2)
+	var p := Objets.prix(id) / 2.0
+	if monde.fiche.vie == "commercant":
+		p *= 1.1
+	return maxi(1, int(p))
 
 
 func _afficher_marchand() -> void:
