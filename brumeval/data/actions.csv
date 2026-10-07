@@ -9,9 +9,9 @@ demander_travail;Demander du travail;pnj;*;BRU001,BRU013,BRU019,BRU004;0;5;-20;2
 demander_travail;Demander du travail;pnj;*;BRU002;0;5;-20;2;;;;Bram, sans lever les yeux de l'enclume : « T'as des mains de demoiselle. Pose ça avant de te couper un truc qui te manquera. »
 acheter;Acheter;pnj;*;BRU001,BRU002,BRU003,BRU004,BRU006,BRU011,BRU015,BRU018,BRU019,BRU020;0;5;-30;0;;boutique;;{nom} te montre ce qu'il y a à vendre.
 vendre;Vendre;pnj;*;BRU001,BRU002,BRU003,BRU004,BRU006,BRU011,BRU015,BRU018,BRU019,BRU020;0;5;-30;0;;vente;;{nom} regarde ce que tu as dans ton sac.
-seduire;Séduire;pnj;*;*;1;10;30;2;;;;
-embrasser;Embrasser;pnj;*;*;1;2;40;3;;;;
-passer_la_nuit;Passer la nuit ensemble;pnj;*;*;1;480;60;10;;;;
+seduire;Séduire;pnj;*;*;1;10;-100;0;;seduire;;
+embrasser;Embrasser;pnj;*;*;1;2;-100;0;;embrasser;;
+passer_la_nuit;Passer la nuit ensemble;pnj;*;*;1;480;-100;0;;nuit;;
 dormir;Dormir (1 pièce d'argent);lieu;taverne;*;0;360;0;0;1 argent;repos;;"Rosalie te donne une clé : « Ici on paie avant de dormir, mon grand. » La chambre sent le sel et la bière. Les cloisons sont fines ; tu t'endors au bruit de la salle."
 se_laver;Se laver;lieu;plage,lavoir;*;0;15;0;0;;;;L'eau est froide à te couper le souffle. Si quelqu'un passe, tout le village saura demain à quoi tu ressembles.
 pecher;Pêcher;lieu;port;*;0;60;0;0;;BRV003 2;;Une heure au bout du quai, une ligne prêtée par Joss. Deux maquereaux et une crampe.
@@ -34,3 +34,12 @@ soigner_soi;Soigner tes blessures (sort);lieu;*;*;0;10;0;0;;soin_magie;soin_lege
 soigner;Soigner {nom} (sort);pnj;*;*;0;10;-50;0;;soin_magie;soin_leger|soin_bois;
 feu_camp;Faire un feu de camp (Flamme);lieu;reveil,chene,cabane,landes,plage,crique;*;0;60;0;0;;feu_camp;flamme;Une flamme dans la paume, des branches sèches. Le feu prend, et la nuit recule.
 benir;Bénir {nom};pnj;*;*;0;5;-20;0;;benir;benediction;
+demander_gouts;Lui demander ce qu'il aime;pnj;*;*;1;15;-100;0;;gouts;;
+masser;Masser {nom};pnj;*;*;1;30;-100;0;;masser;massage;
+proposer_couple;Proposer à {nom} d'être ensemble;pnj;*;*;1;10;-100;0;;couple;;
+rompre;Rompre avec {nom};pnj;*;*;1;10;-100;0;;rompre;;
+pacte_maitre;Proposer à {nom} un pacte : toi le maître;pnj;*;*;1;30;-100;0;;pacte_maitre;;
+pacte_esclave;Proposer à {nom} un pacte : toi à son service;pnj;*;*;1;30;-100;0;;pacte_esclave;;
+rompre_pacte;Mettre fin au pacte avec {nom};pnj;*;*;1;5;-100;0;;rompre_pacte;;
+danser;Danser à la taverne;lieu;taverne;*;1;60;-100;0;;danser;danse_lascive;
+travailler_nuit;Travailler la nuit (courtisan·e);lieu;taverne;*;1;60;-100;0;;courtisan;;

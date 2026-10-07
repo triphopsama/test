@@ -67,7 +67,9 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			if not _liste(l.pnj).has(pnj.id):
 				continue
 			precise = true
-		if l.intime == "1" and not intime_possible(pnj):
+		if l.intime == "1" and not (intime_possible(pnj) if pnj != null else intime_lieu_possible()):
+			continue
+		if l.intime == "1" and not _intime_dispo(str(l.donne), pnj):
 			continue
 		if l.id in COMBATS and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
@@ -80,6 +82,34 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 		if not choix.has(l.id) or precise:
 			choix[l.id] = l
 	return choix.values()
+
+
+## Une action intime sur place (danser, travailler la nuit) : contenu adulte activé, aucun enfant à portée.
+func intime_lieu_possible() -> bool:
+	return monde.fiche.options.get("adulte", true) and not monde.enfant_proche(monde.joueur.pos2d())
+
+
+func _de_nuit() -> bool:
+	var h: float = Horloge.heure()
+	return h >= 20.0 or h < 3.0
+
+
+## Ce qui a du sens selon où tu en es avec ce PNJ (couple, pacte) et l'heure.
+func _intime_dispo(donne: String, pnj: Node) -> bool:
+	var f: Fiche = monde.fiche
+	var id: String = pnj.id if pnj else ""
+	match donne:
+		"couple":
+			return f.partenaires.get(id, "") != "couple"
+		"rompre":
+			return f.partenaires.get(id, "") == "couple"
+		"pacte_maitre", "pacte_esclave":
+			return not f.pactes.has(id)
+		"rompre_pacte":
+			return f.pactes.has(id)
+		"danser", "courtisan":
+			return _de_nuit()
+	return true
 
 
 ## Les garde-fous des actions intimes. Faux = l'action n'apparaît même pas.
@@ -134,6 +164,13 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne == "vol_tire":
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, _remplacer(_vol_tire(pnj, texte), pnj, lieu))
+		return
+	if donne in INTIMES:
+		var res := _intime(donne, l, pnj, lieu, texte)
+		if res[0] == "":
+			return   # la scène prend le relais
+		Horloge.avancer(float(l.duree_min))
+		Illustrations.montrer(l.id + ("_refus" if res[1] else ""), cles, _remplacer(res[0], pnj, lieu))
 		return
 	if donne in HORS_COMBAT:
 		var t := _hors_combat(donne, l, pnj, lieu, texte)
@@ -242,7 +279,7 @@ func _metier(id: String, h: float, action: String) -> String:
 	var r := []
 	if id == f.metier:
 		var paie := f.bonus_metier("paie") + int(f.niveau_metier / 5.0)
-		if action == "travailler" and paie > 0:
+		if action in ["travailler", "travailler_nuit"] and paie > 0:
 			f.bourse += paie
 			r.append("+%d cuivre de métier." % paie)
 		if f.bonus_metier("pain") > 0:
@@ -265,6 +302,88 @@ func _metier(id: String, h: float, action: String) -> String:
 		r.append(t)
 	f.sauver()
 	return " ".join(r)
+
+
+const INTIMES := ["seduire", "embrasser", "nuit", "gouts", "masser", "couple", "rompre", "pacte_maitre", "pacte_esclave",
+	"rompre_pacte", "danser", "courtisan"]
+
+
+## L'intime (intime.gd). Renvoie [texte, refusé ?] ; ["", false] si la scène de nuit s'ouvre.
+## texte : la description de data/actions.csv (à toi de l'écrire) ; sinon un texte suggéré.
+func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String) -> Array:
+	var f: Fiche = monde.fiche
+	var demande := {"seduire": "seduire", "embrasser": "embrasser", "nuit": "nuit", "gouts": "seduire", "masser": "embrasser", "couple": "couple"}
+	if demande.has(quoi):
+		var raison := Intime.consentement(monde, pnj, demande[quoi])
+		if raison != "":
+			return [raison, true]
+	var id: String = pnj.id if pnj else ""
+	var r := ""
+	match quoi:
+		"seduire":
+			monde.desirs[id] = mini(100, Intime.desir(monde, id) + 15)
+			monde.relations[id] = mini(100, monde.relations.get(id, 0) + 2)
+			f.desir = mini(100, f.desir + 5)
+			r = texte if texte != "" else "Un regard qui dure, un sourire qui en dit plus. {nom} ne détourne pas les yeux."
+		"embrasser":
+			monde.desirs[id] = mini(100, Intime.desir(monde, id) + 10)
+			monde.relations[id] = mini(100, monde.relations.get(id, 0) + 3)
+			f.desir = mini(100, f.desir + 10)
+			r = texte if texte != "" else "Un baiser. Puis un autre. Le monde autour peut attendre."
+		"nuit":
+			monde.scene_intime([pnj], lieu)
+			return ["", false]
+		"gouts":
+			r = Intime._reveler(monde, pnj, Intime.profil(id), "lecture_envies" in f.competences())
+		"masser":
+			if not _une_fois("massage_" + id):
+				return ["{nom} sourit : « Demain. Mes épaules s'en souviennent encore. »", true]
+			var aime: bool = "massage" in Intime.profil(id).aime
+			monde.relations[id] = mini(100, monde.relations.get(id, 0) + (8 if aime else 4))
+			monde.desirs[id] = mini(100, Intime.desir(monde, id) + 10)
+			r = texte if texte != "" else ("Tes mains sur ses épaules, sa nuque. {nom} ferme les yeux." + (" Exactement ce qu'il fallait." if aime else ""))
+		"couple":
+			r = Intime.devenir_couple(monde, pnj)
+		"rompre":
+			f.partenaires.erase(id)
+			var perte := 35 if Intime.profil(id).jalousie >= 70 else 20
+			monde.relations[id] = clampi(monde.relations.get(id, 0) - perte, -100, 100)
+			r = "Tu le dis comme tu peux. {nom} encaisse (−%d)." % perte
+		"pacte_maitre", "pacte_esclave":
+			var role := "maitre" if quoi == "pacte_maitre" else "esclave"
+			r = Intime.pacte(monde, pnj, role)
+			if not f.pactes.has(id):
+				return [r, true]
+		"rompre_pacte":
+			f.pactes.erase(id)
+			monde.relations[id] = clampi(monde.relations.get(id, 0) - 5, -100, 100)
+			r = "Le jeu s'arrête là, d'un commun accord. Rien d'autre ne change entre vous."
+		"danser":
+			if not _une_fois("danse"):
+				return ["Tu as déjà dansé ce soir. Les jambes ne suivent plus.", true]
+			var regards: Array = monde.temoins(15.0).filter(func(n): return int(n.donnees.get("age", "0")) >= 18)
+			var c := randi_range(4, 12) + regards.size() * 2
+			f.bourse += c
+			for n in regards:
+				if Intime.profils().has(n.id):
+					monde.desirs[n.id] = mini(100, Intime.desir(monde, n.id) + 15)
+					if Intime.profil(n.id).pudeur >= 70:
+						monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 2, -100, 100)
+			r = (texte if texte != "" else "La musique, les regards, la chaleur de la salle. Tu danses, et la taverne se tait.") + " +%s de pourboires." % Objets.texte_prix(c)
+		"courtisan":
+			var c := 10 + 3 * Intime.maitrise_art(f) + (4 if "seduction" in f.competences() else 0)
+			f.bourse += c
+			f.drapeaux["art_xp"] = int(f.drapeaux.get("art_xp", 0)) + 1
+			r = (texte if texte != "" else "Une heure avec un marin de passage, qui paie ce qui était convenu.") + " +%s." % Objets.texte_prix(c)
+			var t := _metier("courtisan", 1.0, "travailler_nuit")
+			if t != "" and t != "propose":
+				r += " " + t
+			var bruit := Intime.rumeur(monde, [], "ton métier de nuit")
+			if bruit != "":
+				r += "\n\n" + bruit
+	monde.sauver_etat()
+	f.sauver()
+	return [r, false]
 
 
 const HORS_COMBAT := ["crochetage", "pistage", "piege", "plongee", "maree", "soin_magie", "feu_camp", "benir"]

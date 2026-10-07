@@ -108,6 +108,26 @@ Elles deviennent des actions dans le village (colonne `competence` de `data/acti
 
 Chacune une fois par jour (par lieu ou par personne).
 
+## L'intime (entre adultes consentants)
+
+D'après `univers.md` (« Désir et sexualité »). Désactivable à la création (contenu adulte). Les règles fixes, quoi qu'il y ait dans les fichiers : adultes seulement, jamais si un enfant est à portée, jamais avec un captif ou sous la contrainte, un non est un non, le mot d'arrêt (« Brume ») arrête tout.
+
+- **Profils** (`data/intime.csv`, tiré des fiches par `outils/intime.py`, à régler à la main) : qui l'attire, ce qu'il cherche, **libido**, axe dominant/soumis, pudeur, expérience, intérêt pour les jeux de pouvoir, partage (harem, à plusieurs), **jalousie**, couple, ce qu'il **aime**, ses **talents**, ses **limites**. Mets `fige` à 1 pour que l'outil ne réécrive plus une ligne. Un PNJ « soumis à tout » : axe −90, bdsm 90, aime `etre_domine`.
+- **Le désir** (0 à 100) monte chaque heure selon la libido, et retombe quand il est comblé. Le tien aussi.
+- **Le consentement** dépend de l'affection, du désir, de l'attirance (ton sexe), de ce qu'il cherche (qui cherche l'amour ne passe pas la nuit sans être ensemble), de son couple, de la pudeur devant témoins. Séduire, embrasser, passer la nuit, être ensemble, un pacte : chacun son seuil.
+- **La nuit** ouvre une fenêtre : ton image ou animation en haut, les jauges de chacun (Plaisir, Désir, Malaise, Intensité pour les jeux de pouvoir), une vingtaine de gestes (`data/gestes.csv`), inviter quelqu'un qui le veut aussi à se joindre, et « Arrêter ». Un geste qu'il aime fait monter le plaisir, un geste qu'il refuse le malaise : trop de malaise ou d'intensité, et c'est le mot d'arrêt. Après : rester dormir, partir avant l'aube, ou promettre d'être ensemble.
+- **Harem** : plusieurs couples à la fois ; chaque nouveau couple coûte de l'affection aux jaloux, et certains refusent de partager.
+- **Pacte maître/esclave** : un jeu convenu entre adultes (toi le maître, ou toi à son service), seulement si son profil s'y prête et que la confiance est haute, révocable à tout moment ; il ouvre les jeux de pouvoir de la scène.
+- **Jalousie et rumeurs** : des témoins, ou un secret qui fuit (25 %, 10 % avec Discrétion) ; le conjoint trompé (−40), tes partenaires jaloux, les prudes du village.
+- **Le désir à son comble** : un PNJ près de toi se soulage seul, ou avec quelqu'un qu'il attire et qui en a envie (ceux qui se rapprochent d'abord, jamais en famille, pas de tromperie s'il ne partage pas). Tu le surprends : une image, puis « Te montrer » (selon sa pudeur, une invitation ou la honte, puis tu lui parles) ou « Partir sans bruit ».
+- **Compétences** : Séduction, Lecture des envies, Massage, Danse lascive, Jeu de pouvoir, Discrétion (leçons de Silas, Élise, Théo, Agnès, Mouche, s'ils t'apprécient), Art d'aimer (vient avec la première nuit, monte avec les suivantes).
+- **Actions** : séduire, embrasser, passer la nuit, lui demander ce qu'il aime, masser, proposer d'être ensemble, rompre, pacte (maître ou à son service), y mettre fin, danser à la taverne le soir, travailler la nuit comme courtisan·e (métier : libre et payé, la paie monte avec l'Art d'aimer).
+- **Les textes** restent suggérés : la colonne `description` de `data/actions.csv` et la colonne `texte` de `data/gestes.csv` sont à toi, ton texte remplace le texte par défaut.
+
+## Le sort des vaincus
+
+Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).
+
 ## Écrire les actions
 
 Tout est dans `data/actions.csv` (s'ouvre avec un tableur ou un éditeur de texte, séparateur `;`). Une ligne par action ; une ligne avec un id de PNJ précis remplace la ligne générale pour ce PNJ. Les colonnes sont expliquées en haut de `scripts/actions.gd`. Les colonnes `prix` (« 1 argent », ou un objet : « OBJ327 1 ») et `donne` (« cuivre 6 », « BRV003 2 », « repos ») font payer et rapporter une action.

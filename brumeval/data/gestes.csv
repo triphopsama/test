@@ -1,0 +1,21 @@
+id;nom;tags;qui;intensite;competence;groupe;texte
+mots_doux;Murmurer des mots doux;mots_doux,conversation;joueur;0;;0;
+rire;Parler, rire ensemble;conversation,rire;ensemble;0;;0;
+embrasser;Embrasser;baisers;ensemble;0;;0;
+caresser;Caresser;tendresse;joueur;0;;0;
+masser;Masser;massage,tendresse;joueur;0;massage;0;
+deshabiller;Se déshabiller l'un l'autre;audace;ensemble;0;;0;
+bouche_donner;Le combler avec la bouche;oral;joueur;0;;0;
+bouche_recevoir;Se laisser combler par sa bouche;oral;partenaire;0;;0;
+amour_tendre;Faire l'amour, tendrement;tendresse,lenteur;ensemble;0;;0;
+amour_passion;Faire l'amour, passionnément;passion,rapide;ensemble;0;;0;
+lent;Prendre tout son temps;lenteur;ensemble;0;;0;
+mener;Mener;etre_domine;joueur;15;;0;
+se_laisser_mener;Se laisser mener;dominer;partenaire;15;;0;
+jeu_pouvoir;Jeu de pouvoir (mot d'arrêt);pouvoir_fort;joueur;30;jeu_pouvoir;0;
+servir;Se mettre à son service (mot d'arrêt);pouvoir_servi;partenaire;30;jeu_pouvoir;0;
+role;Jouer un rôle;roleplay,jeu;ensemble;0;;0;
+danse;Danser pour l'autre;jeu,audace;joueur;0;danse_lascive;0;
+a_plusieurs;Se perdre à plusieurs;groupe_ok;ensemble;0;;1;
+souffler;Reprendre son souffle;;ensemble;-20;;0;
+demander;Lui demander ce qu'il aime;;ensemble;0;;0;

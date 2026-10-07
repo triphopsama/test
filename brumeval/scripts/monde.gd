@@ -16,6 +16,7 @@ var batiments: Array[Rect2] = []
 var pnj_donnees := {}      # id -> ligne de pnj.csv
 var pnjs: Array = []
 var relations := {}        # id -> affection du PNJ envers le joueur
+var desirs := {}           # id -> désir du PNJ, 0 à 100 (intime.gd)
 var joueur: Node3D
 var camera: Camera3D
 var hud: CanvasLayer
@@ -483,6 +484,7 @@ func _process(delta: float) -> void:
 	_suivre_camera(delta)
 	_surveiller_loups()
 	_surveiller_rencontres(delta)
+	_surveiller_desirs(delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -558,6 +560,7 @@ func _regenerer() -> void:
 		return
 	var heures := floori((t - _derniere_regen) / 3600.0)
 	_derniere_regen += heures * 3600.0
+	Intime.passer_temps(self, heures)
 	if fiche.pv < fiche.pv_max() or fiche.mana_actuelle() < fiche.mana_max():
 		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
 		# la mana revient plus vite que le sang : un quart par heure
@@ -763,6 +766,7 @@ func _charger_etat() -> void:
 	for id in cfg.get_value("monde", "relations", {}):
 		relations[id] = cfg.get_value("monde", "relations")[id]
 	morts = cfg.get_value("monde", "morts", {})
+	desirs = cfg.get_value("monde", "desirs", {})
 	_dernier_jour_loups = cfg.get_value("monde", "loups", 0)
 
 
@@ -770,6 +774,7 @@ func sauver_etat() -> void:
 	var cfg := ConfigFile.new()
 	cfg.set_value("monde", "relations", relations)
 	cfg.set_value("monde", "morts", morts)
+	cfg.set_value("monde", "desirs", desirs)
 	cfg.set_value("monde", "loups", _dernier_jour_loups)
 	cfg.save(ETAT)
 
@@ -783,16 +788,120 @@ func temoins(d: float = 30.0) -> Array:
 
 ## Ce qu'un PNJ peut t'apprendre : les compétences qu'il sait utiliser (sa classe, à son
 ## niveau), que tu n'as pas encore. Les enfants n'enseignent pas.
+## Les compétences de l'intime, et qui les enseigne (s'il t'apprécie : affection 30).
+const MAITRES_INTIMES := {"BRU003": ["seduction", "jeu_pouvoir", "discretion"], "BRU013": ["danse_lascive", "seduction"],
+	"BRU017": ["lecture_envies"], "BRU015": ["massage"], "BRU022": ["discretion"]}
+
+
 func lecons_de(n: Node) -> Array:
 	if n == null or int(n.donnees.get("age", "0")) < 18:
 		return []
+	var intimes: Array = []
+	if actions.intime_possible(n) and relations.get(n.id, 0) >= 30:
+		intimes = MAITRES_INTIMES.get(n.id, []).filter(func(k): return not k in fiche.apprises)
 	var c := Combattant.depuis_pnj(n.donnees, n)
 	var connues: Array = fiche.competences(true)
 	var r := []
 	for k in Classes.competences_jusqua(Classes.par_nom(str(n.donnees.get("classe", ""))), c.niveau):
 		if k in c.competences and not k in connues and not k in r and not k in Fiche.DE_BASE:
 			r.append(k)
-	return r
+	return r + intimes
+
+
+var _t_desirs := 0.0
+
+
+## Toutes les 3 secondes : un PNJ au désir à son comble, près de toi, se soulage (seul, ou avec
+## quelqu'un selon leurs relations) ; tu le surprends. Une fois par jour et par PNJ.
+func _surveiller_desirs(delta: float) -> void:
+	_t_desirs += delta
+	if _t_desirs < 3.0:
+		return
+	_t_desirs = 0.0
+	if combat != null or Illustrations.ouvert or fenetres.ouvert != "" or get_tree().paused or not fiche.options.get("adulte", true):
+		return
+	for n in pnjs:
+		if not n.visible or n.mort or Intime.profil(n.id).is_empty() or Intime.desir(self, n.id) < 100:
+			continue
+		if n.pos2d().distance_to(joueur.pos2d()) > 10.0 or enfant_proche(n.pos2d()) or enfant_proche(joueur.pos2d()):
+			continue
+		var cle := "surpris_%s_%d" % [n.id, Horloge.jour()]
+		if fiche.drapeaux.has(cle):
+			continue
+		fiche.drapeaux[cle] = true
+		surprendre(n)
+		return
+
+
+func surprendre(n: Node) -> void:
+	var autre: Node = Intime.partenaire_pour(self, n)
+	var groupe := [n] if autre == null else [n, autre]
+	var ids: Array = groupe.map(func(x): return x.id)
+	ids.sort()
+	for x in groupe:
+		desirs[x.id] = 0
+	var noms: Array = groupe.map(func(x): return x.donnees.nom.get_slice(" ", 0))
+	var texte := ""
+	if autre == null:
+		texte = "Tu surprends %s, seul·e, qui ne t'a pas vu·e. Le désir a été le plus fort." % noms[0]
+	else:
+		texte = "Tu surprends %s et %s, l'un contre l'autre, qui ne t'ont pas vu·e." % noms
+	for x in groupe:
+		if fiche.partenaires.has(x.id):
+			texte += " %s… ton %s. Ça serre le cœur." % [x.donnees.nom.get_slice(" ", 0), "couple" if fiche.partenaires[x.id] == "couple" else "amant"]
+	var lieu := lieu_proche(n.pos2d(), 40.0)
+	Illustrations.montrer("se_soulager" if autre == null else "surpris_ensemble", ["+".join(ids)] + ids + [lieu], texte)
+	await Illustrations.ferme
+	fenetres.choix("Que fais-tu ?", texte, [
+		["Te montrer", _se_montrer.bind(groupe), "Ils te verront. Selon leur pudeur : un sourire et une invitation, ou la honte et la colère. Puis tu leur parles."],
+		["Partir sans bruit", _partir_sans_bruit.bind(groupe), "Ils ne sauront rien… sauf si on te voit filer (moins avec Discrétion)."]])
+
+
+func _se_montrer(groupe: Array) -> void:
+	var lignes := []
+	for x in groupe:
+		var p := Intime.profil(x.id)
+		var nom: String = x.donnees.nom.get_slice(" ", 0)
+		var aff: int = relations.get(x.id, 0)
+		if "risque" in p.aime or (p.pudeur < 40 and aff >= 20):
+			relations[x.id] = clampi(aff + 3, -100, 100)
+			desirs[x.id] = 60
+			lignes.append("%s ne se cache même pas. Un sourire : « Tu restes ? »" % nom)
+		elif p.pudeur >= 60:
+			relations[x.id] = clampi(aff - 8, -100, 100)
+			lignes.append("%s se rhabille, rouge de honte et de colère (−8)." % nom)
+		else:
+			relations[x.id] = clampi(aff - 3, -100, 100)
+			lignes.append("%s, gêné·e, cherche ses mots (−3)." % nom)
+	sauver_etat()
+	Illustrations.montrer("se_montrer", groupe.map(func(x): return x.id), " ".join(lignes))
+	await Illustrations.ferme
+	# puis tu leur parles : le menu des actions avec le premier
+	var n: Node = groupe[0]
+	joueur.position = n.position + Vector3(1.5, 0, 0)
+	hud._cible_pnj = n
+	hud._ouvrir_menu()
+
+
+func _partir_sans_bruit(groupe: Array) -> void:
+	var vu := randf() < (0.1 if "discretion" in fiche.competences() else 0.2)
+	if vu:
+		for x in groupe:
+			relations[x.id] = clampi(relations.get(x.id, 0) - 5, -100, 100)
+		sauver_etat()
+		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Une latte qui craque. Un regard qui se tourne vers toi au moment où tu files. Ils savent (−5).")
+	else:
+		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Tu recules sans un bruit. Personne ne saura.")
+
+
+## Une nuit avec un ou plusieurs PNJ : la fenêtre de scène.
+func scene_intime(pnjs: Array, lieu: String) -> void:
+	var s = preload("res://scripts/scene_intime.gd").new()
+	add_child(s)
+	s.commencer(self, pnjs, lieu)
+	var texte: String = await s.finie
+	Horloge.avancer(480.0)
+	Illustrations.montrer("passer_la_nuit_fin", pnjs.map(func(n): return n.id) + [lieu], texte)
 
 
 func _pnj_par_id(id: String) -> Node:
@@ -911,6 +1020,16 @@ func _lancer(allies: Array, ennemis: Array, mode: String, contexte: Dictionary) 
 	combat.commencer(self, allies, ennemis, joueur.pos2d(), mode)
 
 
+## Épargner un vaincu : il te doit la vie, et ceux qui l'ont vu aussi s'en souviennent.
+func epargner(c: Combattant) -> void:
+	relations[c.id] = clampi(relations.get(c.id, 0) + 15, -100, 100)
+	for t in temoins(40.0):
+		if t.id != c.id:
+			relations[t.id] = clampi(relations.get(t.id, 0) + 3, -100, 100)
+	fiche.drapeaux["doit_la_vie_" + c.id] = true
+	sauver_etat()
+
+
 func tuer(c: Combattant) -> void:
 	var n := _pnj_par_id(c.id)
 	if n == null:
@@ -963,6 +1082,13 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 	sauver_etat()
 	if texte != "":
 		Illustrations.montrer(action, cles, texte)
+	# les vaincus encore à terre : à toi de décider de leur sort
+	var vaincus := ennemis.filter(func(c): return c.a_terre and not c.mort and not c.est_bete)
+	if resultat == "victoire" and contexte.mode != "bagarre" and not vaincus.is_empty() and not combat_auto:
+		if Illustrations.ouvert:
+			await Illustrations.ferme
+		fenetres.sort_des_vaincus(vaincus)
+		await fenetres.ferme
 	if _proposer_classe:
 		_proposer_classe = false
 		if Illustrations.ouvert:

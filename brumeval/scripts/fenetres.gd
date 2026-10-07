@@ -2,8 +2,10 @@
 # 1 à 9 ou un clic choisit une ligne, Échap ferme. Le monde est en pause pendant ce temps.
 extends CanvasLayer
 
+signal ferme
+
 var monde: Node3D
-var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon"
+var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon", "vaincus", "choix"
 var _panneau: PanelContainer
 var _titre: Label
 var _entete: Label
@@ -98,12 +100,15 @@ func _ouvrir(quoi: String) -> void:
 
 
 func fermer() -> void:
+	var etait := ouvert
 	ouvert = ""
 	_panneau.visible = false
 	_message.text = ""
 	_marchand = null
 	get_tree().paused = false
 	monde.fiche.sauver()
+	if etait != "":
+		ferme.emit()
 
 
 func _vider() -> void:
@@ -335,6 +340,53 @@ func _apprendre(pnj: Node, k: String) -> void:
 	monde.sauver_etat()
 	lecons(pnj)
 	_message.text = "Deux heures avec %s. Tu sais maintenant : %s." % [pnj.donnees.nom.get_slice(" ", 0), Combattant.COMPETENCES[k].nom]
+
+
+# ---------------------------------------------------------------- un choix
+
+## Une question et ses réponses : options = [[texte, appel, détail], …]. Fermer = la dernière.
+func choix(titre: String, texte: String, options: Array) -> void:
+	_ouvrir("choix")
+	_titre.text = titre
+	_entete.text = texte
+	_vider()
+	for o in options:
+		_ligne(o[0], _choisir_option.bind(o[1]), o[2] if o.size() > 2 else "")
+
+
+func _choisir_option(appel: Callable) -> void:
+	fermer()
+	appel.call()
+
+
+# ---------------------------------------------------------------- le sort des vaincus
+
+## Après un vrai combat gagné : ceux qui sont à terre. Fermer la fenêtre, c'est les épargner.
+func sort_des_vaincus(vaincus: Array) -> void:
+	_ouvrir("vaincus")
+	_titre.text = "Le sort des vaincus"
+	_vider()
+	var restants := vaincus.filter(func(c): return not c.mort and not monde.fiche.drapeaux.has("sort_" + c.id + str(Horloge.jour())))
+	if restants.is_empty():
+		fermer()
+		return
+	var c: Combattant = restants[0]
+	_entete.text = "%s est à terre, à ta merci. Le village saura ce que tu as choisi." % c.nom
+	_ligne("Épargner %s" % c.nom, _sort.bind(vaincus, c, "epargner"), "Tu le laisses vivre, et tu poses un bandage. Il te devra la vie (+15), les témoins s'en souviendront (+3).")
+	_ligne("Tuer %s" % c.nom, _sort.bind(vaincus, c, "tuer"), "Tu l'achèves. Les morts restent morts, et ceux qui l'ont vu t'en voudront (−30).")
+
+
+func _sort(vaincus: Array, c: Combattant, choix: String) -> void:
+	monde.fiche.drapeaux["sort_" + c.id + str(Horloge.jour())] = true
+	if choix == "tuer":
+		c.mort = true
+		c.noeud.visible = false
+		monde.tuer(c)
+		_message.text = "%s ne se relèvera pas." % c.nom
+	else:
+		monde.epargner(c)
+		_message.text = "%s respire encore. Il s'en souviendra." % c.nom
+	sort_des_vaincus(vaincus)
 
 
 # ---------------------------------------------------------------- classes et métiers

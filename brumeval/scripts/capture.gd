@@ -51,6 +51,19 @@ func _ready() -> void:
 		ecran._afficher()
 		for i in 10:
 			await get_tree().process_frame
+	if args.has("nuit"):
+		# --nuit=BRU013 : la fenêtre d'une nuit avec ce PNJ, après un baiser
+		var n: Node = monde._pnj_par_id(args.nuit)
+		monde.relations[n.id] = 90
+		monde.desirs[n.id] = 70
+		monde.scene_intime([n], "moulin")
+		for i in 5:
+			await get_tree().process_frame
+		var fen = monde.get_children().filter(func(c): return c.has_method("_geste"))[0]
+		fen._geste("embrasser")
+		fen._geste("amour_tendre")
+		for i in 10:
+			await get_tree().process_frame
 	if args.has("fenetre"):
 		# --fenetre=sac | perso | classe | bram : un sac d'exemple pour voir les fenêtres
 		var f := Fiche.new()

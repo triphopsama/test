@@ -33,6 +33,13 @@ var xp_metier := 0.0              # en heures de travail
 var heures := {}                  # métier -> heures travaillées sans l'avoir (une journée = apprenti)
 var annonces: Array = []          # ce qui vient de se passer (niveau, compétence), pas sauvé
 
+# l'intime (intime.gd)
+var desir := 30                   # ton désir, 0 à 100 : monte avec les heures, retombe quand il est comblé
+var partenaires := {}             # id -> "couple" (plusieurs : un harem)
+var pactes := {}                  # id -> "maitre" ou "esclave" : ton rôle dans un jeu convenu, révocable
+var gouts_connus := {}            # id -> étiquettes découvertes (« non_x » : ses limites)
+var nuits := {}                   # id -> nuits passées ensemble
+
 # ce qu'on choisit à la création (creation_personnage.md)
 var nom := "Toi"
 var peuple := "humain"
@@ -53,6 +60,7 @@ var affinites := {}               # élément -> 0..100, cachées par défaut
 var options := {"chiffres": "complet", "adulte": true, "mort_definitive": false}
 
 const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "mana", "bourse", "sac", "equipement", "drapeaux",
+	"desir", "partenaires", "pactes", "gouts_connus", "nuits",
 	"classe", "niveau_classe", "xp_classe", "apprises", "style", "metier", "niveau_metier", "xp_metier", "heures",
 	"nom", "peuple", "lignee", "sexe", "pronoms", "age", "astre", "vie", "traits", "archetype", "caractere",
 	"valeurs", "passions", "tenue", "objet_ailleurs", "affinites", "options"]

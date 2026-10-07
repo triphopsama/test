@@ -157,6 +157,22 @@ const COMPETENCES := {
 	"rune_garde": {"nom": "Rune de garde", "type": "allies", "magique": true, "element": "terre", "zone": 1, "mana": 8, "etat_allies": "rune", "duree": 3, "cond": {"Int": 12},
 		"desc": "Une rune sur toi et les alliés collés à toi : +10 de défense pendant 3 tours."},
 	"lien_objet": {"nom": "Lien d'objet", "type": "hors_combat", "cond": {"Sag": 10}, "desc": "Lier un objet à soi : il revient à ta main (plus tard)."},
+
+	# ---- l'intime (univers.md, « Désir et sexualité ») : entre adultes consentants
+	"seduction": {"nom": "Séduction", "type": "hors_combat", "cond": {"Vol": 10, "Per": 8},
+		"desc": "On te dit oui plus facilement (−10 d'affection demandée) et le plaisir monte plus vite. Silas, Élise l'enseignent."},
+	"lecture_envies": {"nom": "Lecture des envies", "type": "hors_combat", "cond": {"Per": 12},
+		"desc": "Demander à quelqu'un ce qu'il aime révèle tous ses goûts et toutes ses limites. Théo l'enseigne."},
+	"massage": {"nom": "Massage", "type": "hors_combat", "cond": {"Agi": 8},
+		"desc": "« Masser » quelqu'un : affection et désir montent ; en scène, le geste plaît davantage. Agnès l'enseigne."},
+	"danse_lascive": {"nom": "Danse lascive", "type": "hors_combat", "cond": {"Agi": 12},
+		"desc": "« Danser » à la taverne le soir : des pourboires, et le désir de ceux qui regardent monte. Élise l'enseigne."},
+	"jeu_pouvoir": {"nom": "Jeu de pouvoir", "type": "hors_combat", "cond": {"Vol": 12},
+		"desc": "Domination ou soumission consentie, avec un mot d'arrêt toujours respecté. Silas l'enseigne ; un pacte en tient lieu."},
+	"discretion": {"nom": "Discrétion", "type": "hors_combat", "cond": {"Int": 8},
+		"desc": "Tes nuits s'ébruitent moins (25 % → 10 %). Silas, Mouche l'enseignent."},
+	"art_aimer": {"nom": "Art d'aimer", "type": "hors_combat",
+		"desc": "Vient avec la première nuit ; monte d'un niveau toutes les trois nuits (jusqu'à 10) : +3 % de plaisir par niveau."},
 }
 
 ## Les 12 éléments et leurs opposés (competences.md).

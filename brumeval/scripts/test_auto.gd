@@ -62,12 +62,11 @@ func _ready() -> void:
 			ligne = l
 	var h0: float = Horloge.heure()
 	monde.actions.executer(ligne, mara, "boulangerie")
-	ok(Illustrations.ouvert and Illustrations._texte.text.contains("Non"), "Mara dit non quand l'affection est basse")
+	ok(Illustrations.ouvert and Illustrations._texte.text.contains("Pas encore"), "Mara dit non quand l'affection est basse")
 	Illustrations.fermer()
 	monde.relations["BRU001"] = 50
 	monde.actions.executer(ligne, mara, "boulangerie")
-	ok(Illustrations._texte.text.contains("texte à écrire"), "texte vide : on invite à l'écrire")
-	ok(Illustrations._texte.text.contains("Échap"), "on peut arrêter la scène")
+	ok(Illustrations._texte.text.contains("regard"), "Mara accepte : sans texte écrit dans actions.csv, un texte suggéré")
 	Illustrations.fermer()
 	for l in monde.actions.disponibles(mara, "boulangerie"):
 		if l.id == "parler":
@@ -185,6 +184,7 @@ func _ready() -> void:
 	ok(fh != null and fh.drapeaux.has("cree") and int(fh.stats.For) >= 1, "l'écran rend une fiche : %s, %s" % [fh.nom if fh else "?", fh.peuple if fh else "?"])
 	await _classes_metiers(mara, tim)
 	await _magie(mara)
+	await _intime()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -299,7 +299,7 @@ func _ready() -> void:
 
 func _classes_metiers(mara: Node, tim: Node) -> void:
 	print("== Classes et métiers")
-	ok(Classes.classes().size() == 19 and Classes.metiers().size() == 6, "19 classes et 6 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
+	ok(Classes.classes().size() == 19 and Classes.metiers().size() == 7, "19 classes et 7 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
 	for id in Classes.classes():
 		for p in Classes.classe(id).competences:
 			ok(Combattant.COMPETENCES.has(p[0]), "%s : la compétence %s existe" % [id, p[0]])
@@ -545,6 +545,140 @@ func _magie(mara: Node) -> void:
 		ok(f.mana_actuelle() < f.mana_max(), "la mana dépensée reste dépensée après le combat")
 	monde.combat_auto = false
 	monde.fiche = Fiche.new()
+	Horloge.avancer(-float(Horloge._decalage) / 60.0)
+
+
+func _intime() -> void:
+	print("== Intime (adultes consentants)")
+	var f := Fiche.new()
+	monde.fiche = f
+	ok(Intime.profils().size() == 20 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "20 profils d'adultes, aucun pour Tim et Nina")
+	ok(Intime.gestes().size() >= 15, "%d gestes de scène" % Intime.gestes().size())
+	# personne d'autre autour : pas de témoins
+	var caches := []
+	for n in monde.pnjs:
+		if n.visible:
+			caches.append(n)
+			n.visible = false
+	var elise: Node = _pnj("BRU013")
+	var isaure: Node = _pnj("BRU019")
+	var silas: Node = _pnj("BRU003")
+	var aldric: Node = _pnj("BRU007")
+	for n in [elise, isaure, silas, aldric]:
+		n.visible = true
+	monde.joueur.position = elise.position + Vector3(1, 0, 0)
+	monde.relations["BRU013"] = 10
+	ok(Intime.consentement(monde, elise, "nuit").contains("Pas encore"), "affection 10 : Élise dit pas encore")
+	monde.relations["BRU013"] = 65
+	ok(Intime.consentement(monde, elise, "nuit") == "", "affection 65 : Élise dit oui")
+	monde.relations["BRU007"] = 90
+	ok(Intime.consentement(monde, aldric, "embrasser").contains("attires"), "Aldric aime les femmes : tu ne l'attires pas")
+	f.sexe = "Femme"
+	ok(Intime.consentement(monde, aldric, "embrasser").contains("avec quelqu'un"), "marié à Clémence : il ne trompe pas")
+	f.sexe = "Homme"
+	_seul_avec(isaure, [elise, isaure, silas, aldric])
+	monde.relations["BRU019"] = 70
+	monde.desirs["BRU019"] = 0
+	ok(Intime.consentement(monde, isaure, "nuit").contains("Pas encore"), "Isaure cherche l'amour : pas de nuit sans être ensemble (%s)" % Intime.consentement(monde, isaure, "nuit"))
+	# la scène
+	var sc := Intime.nouvelle_scene(monde, [elise], "moulin")
+	for i in 12:
+		Intime.jouer(monde, sc, "amour_passion")
+		if sc.fini:
+			break
+	ok(sc.barres["BRU013"].comble, "Élise aime le rapide : comblée (%d)" % sc.barres["BRU013"].plaisir)
+	var avant: int = monde.relations["BRU013"]
+	Intime.finir(monde, sc, "partir")
+	ok(monde.relations["BRU013"] > avant and "art_aimer" in f.apprises and f.nuits.get("BRU013", 0) == 1, "une belle nuit : affection en hausse, Art d'aimer appris")
+	ok(Intime.desir(monde, "BRU013") == 0, "comblée : son désir retombe à 0")
+	var sc2 := Intime.nouvelle_scene(monde, [isaure], "atelier")
+	var lignes := []
+	for i in 3:
+		lignes.append_array(Intime.jouer(monde, sc2, "jeu_pouvoir"))
+	ok(sc2.barres["BRU019"].stop and "\n".join(lignes).contains(Intime.MOT_D_ARRET), "un jeu qu'Isaure refuse : le mot d'arrêt, tout s'arrête")
+	Intime.finir(monde, sc2, "partir")
+	Intime.jouer(monde, Intime.nouvelle_scene(monde, [elise], "moulin"), "demander")
+	ok(not f.gouts_connus.get("BRU013", []).is_empty(), "lui demander ce qu'elle aime : une envie révélée (%s)" % str(f.gouts_connus.get("BRU013", [])))
+	# harem et jalousie
+	_seul_avec(isaure, [elise, isaure, silas, aldric])
+	monde.relations["BRU019"] = 90
+	ok(Intime.consentement(monde, isaure, "couple") == "", "Isaure accepte d'être ensemble : %s" % Intime.consentement(monde, isaure, "couple"))
+	Intime.devenir_couple(monde, isaure)
+	monde.relations["BRU013"] = 90
+	var a_isaure: int = monde.relations["BRU019"]
+	var t := Intime.devenir_couple(monde, elise)
+	ok(monde.relations["BRU019"] < a_isaure and t.contains("Isaure"), "un harem : Isaure, jalouse, le vit mal (%s)" % t)
+	ok(Intime.consentement(monde, isaure, "nuit") != "", "Isaure ne partage pas")
+	# le pacte, un jeu convenu
+	_seul_avec(silas, [elise, isaure, silas, aldric])
+	monde.relations["BRU003"] = 90
+	ok(Intime.pacte(monde, silas, "maitre").contains("genoux"), "Silas, dominant, refuse d'être mené")
+	ok(Intime.pacte(monde, silas, "esclave").contains(Intime.MOT_D_ARRET) and f.pactes["BRU003"] == "esclave", "pacte avec Silas : toi à son service, avec un mot d'arrêt")
+	# les rumeurs
+	var mara: Node = _pnj("BRU001")
+	mara.visible = true
+	mara.position = monde.joueur.position + Vector3(3, 0, 0)
+	monde.relations["BRU001"] = 0
+	ok(Intime.rumeur(monde, [elise], "une nuit").contains("Mara"), "Mara a vu : ça se sait")
+	ok(monde.relations["BRU001"] < 0 and monde.relations["BRU019"] < a_isaure, "la prude Mara et la jalouse Isaure t'en veulent")
+	# les actions et la fenêtre
+	ok(_ids(monde.actions.disponibles(elise, "moulin")).has("passer_la_nuit") and _ids(monde.actions.disponibles(elise, "moulin")).has("rompre"), "les actions intimes et « rompre » avec Élise")
+	ok(not _ids(monde.actions.disponibles(elise, "moulin")).has("proposer_couple"), "déjà ensemble : pas de nouvelle proposition")
+	mara.visible = false
+	monde.relations["BRU013"] = 90
+	monde.desirs["BRU013"] = 80
+	monde.scene_intime([elise], "moulin")
+	await get_tree().process_frame
+	var fen = monde.get_children().filter(func(c): return c.has_method("_geste"))
+	ok(not fen.is_empty() and get_tree().paused, "la fenêtre de nuit s'ouvre (le monde attend)")
+	if not fen.is_empty():
+		fen[0]._geste("embrasser")
+		ok(fen[0]._boutons.get_child_count() >= 10, "des gestes à choisir (%d)" % fen[0]._boutons.get_child_count())
+		fen[0]._arreter()
+		fen[0]._finir("rester")
+		await get_tree().process_frame
+		ok(not get_tree().paused or Illustrations.ouvert, "on arrête quand on veut ; le récit s'affiche")
+		Illustrations.fermer()
+	# le désir à son comble : seul, ou avec quelqu'un selon leurs relations
+	var bram: Node = _pnj("BRU002")
+	var lucas: Node = _pnj("BRU012")
+	for n in [bram, isaure, lucas]:
+		n.visible = true
+		n.position = elise.position + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
+	elise.visible = false
+	monde.desirs["BRU002"] = 100
+	monde.desirs["BRU019"] = 80
+	ok(Intime.partenaire_pour(monde, bram) == isaure, "Bram, à son comble, se tourne vers Isaure, qui se rapproche de lui")
+	ok(Intime._lien(bram, lucas) == "famille", "Bram et Lucas : père et fils, jamais")
+	monde.desirs["BRU019"] = 0
+	ok(Intime.partenaire_pour(monde, bram) == null, "Isaure n'en a pas envie : Bram reste seul")
+	monde.desirs["BRU002"] = 100
+	monde.joueur.position = bram.position + Vector3(2, 0, 0)
+	monde.surprendre(bram)
+	await get_tree().process_frame
+	ok(Illustrations.ouvert and Illustrations._texte.text.contains("Bram"), "tu surprends Bram (%s)" % Illustrations._texte.text.left(50))
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.fenetres.ouvert == "choix" and monde.fenetres._liste.get_child_count() == 2, "te montrer ou partir sans bruit")
+	monde.fenetres._choisir_option(monde._partir_sans_bruit.bind([bram]))
+	ok(Illustrations.ouvert, "tu pars : on voit ce qui s'ensuit")
+	Illustrations.fermer()
+	ok(Intime.desir(monde, "BRU002") == 0, "il s'est soulagé : son désir retombe")
+	for n in caches:
+		n.visible = true
+	Horloge.avancer(-float(Horloge._decalage) / 60.0)   # la nuit a fait avancer l'horloge
+	for id in ["BRU001", "BRU003", "BRU007", "BRU013", "BRU019"]:
+		monde.relations[id] = 0
+	monde.desirs.clear()
+	monde.sauver_etat()
+	monde.fiche = Fiche.new()
+
+
+## Seul avec n : les autres de la liste ne sont pas là (pas de témoins).
+func _seul_avec(n: Node, tous: Array) -> void:
+	for x in tous:
+		x.visible = x == n
+	monde.joueur.position = n.position + Vector3(1, 0, 0)
 
 
 func _pnj(id: String) -> Node:

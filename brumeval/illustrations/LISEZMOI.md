@@ -26,3 +26,20 @@ Ordre de recherche : le PNJ, puis le lieu, puis `defaut`.
 Formats : png, jpg, webp ; vidéo en .ogv (Theora : convertis avec `ffmpeg -i video.mp4 -q:v 6 video.ogv`) ; animation en dossier d'images.
 
 Tu peux aussi les mettre dans le dossier utilisateur de Godot (`user://illustrations`, même structure) : ils sont lus sans avoir à rouvrir l'éditeur.
+
+## Les dossiers de l'intime et des événements
+
+Chaque action a son dossier (son `id` dans `data/actions.csv`), et un dossier `<id>_refus` quand on te dit non. En plus :
+
+| Dossier | Quand |
+| --- | --- |
+| `scene_<geste>/` | un geste pendant une nuit (`id` de `data/gestes.csv`), ex. `scene_embrasser/BRU013.png` |
+| `scene_a_plusieurs/` | une nuit à plusieurs : nomme le fichier avec les ids triés, ex. `BRU013+BRU022/` |
+| `passer_la_nuit/` | l'image de fond d'une nuit, quand le geste n'a pas la sienne |
+| `passer_la_nuit_fin/` | le récit du lendemain |
+| `se_soulager/` | tu surprends quelqu'un qui se soulage seul |
+| `surpris_ensemble/` | tu surprends deux PNJ ensemble (`BRU002+BRU019.png`) |
+| `se_montrer/`, `partir_sans_bruit/` | ce que tu choisis ensuite |
+| `travailler_nuit/`, `danser/` | le métier de nuit, la danse à la taverne |
+
+Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU022`), puis chacun, puis le lieu, puis `defaut`.
