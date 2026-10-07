@@ -1,0 +1,633 @@
+# Le village de Brumeval, construit à partir du plan (data/*.csv).
+# 1 unité = 1 mètre. x vers l'est, z vers le sud, y vers le haut.
+extends Node3D
+
+const TAILLE := Vector2(1720, 1180)
+const PAS := 8.0
+const ENFANT_MAX := 17
+
+var lieux := {}            # cle -> {id, nom, type, pos, h, ligne}
+var graphe := {}           # cle -> [{vers, d, maree}]
+var cote := PackedVector2Array()
+var bois := PackedVector2Array()
+var landes := PackedVector2Array()
+var ruisseau := PackedVector2Array()
+var batiments: Array[Rect2] = []
+var pnj_donnees := {}      # id -> ligne de pnj.csv
+var pnjs: Array = []
+var relations := {}        # id -> affection du PNJ envers le joueur
+var joueur: Node3D
+var camera: Camera3D
+var hud: CanvasLayer
+var actions: RefCounted
+
+var _lp := PackedVector2Array()
+var _lh := PackedFloat32Array()
+var _soleil: DirectionalLight3D
+var _lune: DirectionalLight3D
+var _env: Environment
+var _ciel: ProceduralSkyMaterial
+var _lumieres: Array[OmniLight3D] = []
+var _bruit := FastNoiseLite.new()
+var _zoom := 1.6
+
+
+func _ready() -> void:
+	randomize()
+	_bruit.frequency = 0.02
+	_charger()
+	_construire_environnement()
+	_construire_terrain()
+	_construire_chemins()
+	_construire_batiments()
+	_construire_arbres()
+	_construire_decor()
+	actions = preload("res://scripts/actions.gd").new(self)
+	_creer_joueur()
+	_creer_pnjs()
+	hud = preload("res://scripts/hud.gd").new()
+	hud.monde = self
+	add_child(hud)
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--capture="):
+			var cap := preload("res://scripts/capture.gd").new()
+			cap.monde = self
+			add_child(cap)
+	if "--autotest" in OS.get_cmdline_user_args():
+		var t := preload("res://scripts/test_auto.gd").new()
+		t.monde = self
+		add_child(t)
+
+
+# ---------------------------------------------------------------- données
+
+func _charger() -> void:
+	for l in Donnees.lire_csv("res://data/lieux.csv"):
+		var pos := Vector2(float(l.x), float(l.y))
+		lieux[l.cle] = {"id": l.id, "nom": l.nom, "type": l.type, "pos": pos, "h": float(l.hauteur), "ligne": l}
+		graphe[l.cle] = []
+		_lp.append(pos)
+		_lh.append(float(l.hauteur))
+	var par_id := {}
+	for cle in lieux:
+		par_id[lieux[cle].id] = cle
+	for c in Donnees.lire_csv("res://data/chemins.csv"):
+		var a: String = par_id[c.de]
+		var b: String = par_id[c.a]
+		var maree: bool = c.condition.contains("marée basse")
+		graphe[a].append({"vers": b, "d": float(c.distance_m), "maree": maree})
+		graphe[b].append({"vers": a, "d": float(c.distance_m), "maree": maree})
+	var zones := {"cote": cote, "bois": bois, "landes": landes, "ruisseau": ruisseau}
+	for z in Donnees.lire_csv("res://data/zones.csv"):
+		zones[z.zone].append(Vector2(float(z.x), float(z.y)))
+	cote = zones.cote
+	bois = zones.bois
+	landes = zones.landes
+	ruisseau = zones.ruisseau
+	for p in Donnees.lire_csv("res://data/pnj.csv"):
+		pnj_donnees[p.id] = p
+		relations[p.id] = 0
+
+
+# ---------------------------------------------------------------- terrain
+
+## Hauteur du sol en un point (mètres). La mer est à -4.
+func hauteur(x: float, z: float) -> float:
+	var p := Vector2(clampf(x, 0.0, TAILLE.x), clampf(z, 0.0, TAILLE.y))
+	if not sur_terre(p):
+		return -4.0
+	var num := 0.0
+	var den := 0.0
+	for i in _lp.size():
+		var w := 1.0 / (p.distance_squared_to(_lp[i]) + 900.0)
+		num += w * _lh[i]
+		den += w
+	var h := num / den + _bruit.get_noise_2d(p.x, p.y) * 1.2
+	var dc := distance_cote(p)
+	if h < 10.0:
+		h *= clampf(dc / 45.0, 0.0, 1.0)   # plages en pente douce
+	return maxf(h, 0.05)
+
+
+func sur_terre(p: Vector2) -> bool:
+	return Geometry2D.is_point_in_polygon(p, cote)
+
+
+func distance_cote(p: Vector2) -> float:
+	var m := INF
+	for i in cote.size() - 3:   # les deux derniers points ferment la carte
+		var q := Geometry2D.get_closest_point_to_segment(p, cote[i], cote[i + 1])
+		m = minf(m, p.distance_to(q))
+	return m
+
+
+## Vrai si on peut marcher en ce point (sur terre, hors des murs).
+func praticable(p: Vector2) -> bool:
+	if p.x < 0.0 or p.y < 0.0 or p.x > TAILLE.x or p.y > TAILLE.y:
+		return false
+	if not sur_terre(p):
+		return false
+	for r in batiments:
+		if r.has_point(p):
+			return false
+	return true
+
+
+func _couleur_sol(p: Vector2, h: float) -> Color:
+	var n := _bruit.get_noise_2d(p.x * 3.0, p.y * 3.0) * 0.06
+	if not sur_terre(p):
+		return Color(0.45, 0.42, 0.32)
+	if h < 1.6 and distance_cote(p) < 50.0:
+		return Color(0.86, 0.79, 0.6) + Color(n, n, n)
+	if Geometry2D.is_point_in_polygon(p, bois):
+		return Color(0.2, 0.33, 0.17) + Color(n, n, n)
+	if Geometry2D.is_point_in_polygon(p, landes):
+		return Color(0.5, 0.43, 0.38) + Color(n, n * 0.5, n)
+	return Color(0.4, 0.56, 0.26) + Color(n, n, n * 0.5)
+
+
+func _construire_terrain() -> void:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var x0 := -240.0
+	var z0 := -240.0
+	var nx := int((TAILLE.x + 480.0) / PAS) + 1
+	var nz := int((TAILLE.y + 480.0) / PAS) + 1
+	for j in nz:
+		for i in nx:
+			var x := x0 + i * PAS
+			var z := z0 + j * PAS
+			var h := hauteur(x, z)
+			st.set_color(_couleur_sol(Vector2(clampf(x, 0, TAILLE.x), clampf(z, 0, TAILLE.y)), h))
+			st.add_vertex(Vector3(x, h, z))
+	for j in nz - 1:
+		for i in nx - 1:
+			var a := j * nx + i
+			st.add_index(a)
+			st.add_index(a + 1)
+			st.add_index(a + nx)
+			st.add_index(a + 1)
+			st.add_index(a + nx + 1)
+			st.add_index(a + nx)
+	st.generate_normals()
+	var mat := StandardMaterial3D.new()
+	mat.vertex_color_use_as_albedo = true
+	mat.roughness = 1.0
+	st.set_material(mat)
+	var sol := MeshInstance3D.new()
+	sol.mesh = st.commit()
+	sol.name = "Sol"
+	add_child(sol)
+
+	var mer := MeshInstance3D.new()
+	var plan := PlaneMesh.new()
+	plan.size = Vector2(6000, 6000)
+	mer.mesh = plan
+	mer.position = Vector3(TAILLE.x / 2.0, 0.0, TAILLE.y / 2.0)
+	var eau := StandardMaterial3D.new()
+	eau.albedo_color = Color(0.17, 0.36, 0.52, 0.85)
+	eau.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	eau.metallic = 0.0
+	eau.roughness = 0.35
+	mer.material_override = eau
+	mer.name = "Mer"
+	add_child(mer)
+
+
+func _ruban(st: SurfaceTool, a: Vector2, b: Vector2, largeur: float, couleur: Color, dessus: float) -> void:
+	var dir := (b - a).normalized()
+	var cote_v := Vector2(-dir.y, dir.x) * largeur * 0.5
+	var n := maxi(1, int(a.distance_to(b) / 4.0))
+	for k in n:
+		var p1 := a.lerp(b, float(k) / n)
+		var p2 := a.lerp(b, float(k + 1) / n)
+		var q := [p1 - cote_v, p1 + cote_v, p2 + cote_v, p2 - cote_v]
+		var v := []
+		for pt in q:
+			v.append(Vector3(pt.x, hauteur(pt.x, pt.y) + dessus, pt.y))
+		st.set_color(couleur)
+		for idx in [0, 2, 1, 0, 3, 2]:
+			st.set_normal(Vector3.UP)
+			st.add_vertex(v[idx])
+
+
+func _construire_chemins() -> void:
+	var sortes := {"route": Color(0.66, 0.56, 0.4), "rochers": Color(0.5, 0.5, 0.5), "eau": Color(0.22, 0.42, 0.6)}
+	var outils := {}
+	for s in sortes:
+		outils[s] = SurfaceTool.new()
+		outils[s].begin(Mesh.PRIMITIVE_TRIANGLES)
+	var vus := {}
+	for a in graphe:
+		for arete in graphe[a]:
+			var cle := [a, arete.vers]
+			cle.sort()
+			if vus.has(str(cle)):
+				continue
+			vus[str(cle)] = true
+			var st: SurfaceTool = outils["rochers" if arete.maree else "route"]
+			_ruban(st, lieux[a].pos, lieux[arete.vers].pos, 2.4, Color.WHITE, 0.12)
+	for i in ruisseau.size() - 1:
+		_ruban(outils["eau"], ruisseau[i], ruisseau[i + 1], 2.6, Color.WHITE, 0.1)
+	for s in sortes:
+		var mat := _mat(sortes[s])
+		mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+		outils[s].set_material(mat)
+		var m := MeshInstance3D.new()
+		m.mesh = outils[s].commit()
+		m.name = "Chemins_" + s
+		add_child(m)
+
+
+# ---------------------------------------------------------------- bâtiments
+
+func _mat(c: Color) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = c
+	m.roughness = 0.9
+	return m
+
+
+func _boite(taille: Vector3, pos: Vector3, mat: Material) -> MeshInstance3D:
+	var mi := MeshInstance3D.new()
+	var b := BoxMesh.new()
+	b.size = taille
+	mi.mesh = b
+	mi.position = pos
+	mi.material_override = mat
+	add_child(mi)
+	return mi
+
+
+func _construire_batiments() -> void:
+	var tailles := {"maison": Vector2(7, 6), "métier": Vector2(9, 7), "ferme": Vector2(13, 8), "sacré": Vector2(8, 16)}
+	var murs := _mat(Color(0.86, 0.82, 0.72))
+	var pierre := _mat(Color(0.6, 0.58, 0.55))
+	var toit := _mat(Color(0.45, 0.2, 0.15))
+	var ardoise := _mat(Color(0.25, 0.27, 0.32))
+	var bois_m := _mat(Color(0.4, 0.28, 0.18))
+	for cle in lieux:
+		var l: Dictionary = lieux[cle]
+		var p: Vector2 = l.pos
+		var h := hauteur(p.x, p.y)
+		if tailles.has(l.type):
+			var t: Vector2 = tailles[l.type]
+			if cle == "mairie":
+				t = Vector2(12, 9)
+			var centre := Vector2(p.x, p.y - t.y / 2.0 - 2.0)
+			var hc := hauteur(centre.x, centre.y)
+			var haut := 7.0 if l.type == "sacré" else 4.0
+			var m := pierre if l.type in ["sacré", "ferme"] or cle == "falaise" else murs
+			_boite(Vector3(t.x, haut + 3.0, t.y), Vector3(centre.x, hc - 3.0 + (haut + 3.0) / 2.0, centre.y), m)
+			var prisme := MeshInstance3D.new()
+			var pm := PrismMesh.new()
+			pm.size = Vector3(t.x + 1.0, 2.6, t.y + 1.0)
+			prisme.mesh = pm
+			prisme.position = Vector3(centre.x, hc + haut + 1.3, centre.y)
+			prisme.material_override = ardoise if l.type == "sacré" else toit
+			add_child(prisme)
+			if l.type == "sacré":
+				_boite(Vector3(4, 16, 4), Vector3(centre.x, hc + 6.0, centre.y + t.y / 2.0 - 2.0), pierre)
+			if cle == "moulin":
+				var roue := _boite(Vector3(1.0, 6.0, 6.0), Vector3(centre.x + t.x / 2.0 + 0.6, hc + 3.0, centre.y), bois_m)
+				roue.name = "RoueMoulin"
+			batiments.append(Rect2(centre - t / 2.0 + Vector2(0.4, 0.4), t - Vector2(0.8, 0.8)))
+			# lumière aux fenêtres la nuit
+			var lum := OmniLight3D.new()
+			lum.light_color = Color(1.0, 0.72, 0.4)
+			lum.omni_range = 9.0
+			lum.light_energy = 1.4
+			lum.position = Vector3(p.x, h + 2.5, p.y - 1.5)
+			lum.visible = false
+			add_child(lum)
+			_lumieres.append(lum)
+		elif cle in ["place", "puits"]:
+			var puits := MeshInstance3D.new()
+			var cy := CylinderMesh.new()
+			cy.top_radius = 1.0
+			cy.bottom_radius = 1.0
+			cy.height = 1.0
+			puits.mesh = cy
+			puits.position = Vector3(p.x + (6.0 if cle == "place" else 0.0), h + 0.5, p.y)
+			puits.material_override = pierre
+			add_child(puits)
+			batiments.append(Rect2(Vector2(puits.position.x - 1.0, puits.position.z - 1.0), Vector2(2, 2)))
+		elif cle == "port":
+			_boite(Vector3(30, 2.0, 5), Vector3(p.x - 20.0, 0.4, p.y), pierre)
+			for k in 4:
+				_boite(Vector3(1.6, 0.6, 4.5), Vector3(p.x - 12.0 - k * 6.0, 0.25, p.y + 5.0), bois_m)
+		var etiquette := Label3D.new()
+		etiquette.text = l.nom
+		etiquette.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		etiquette.font_size = 48
+		etiquette.pixel_size = 0.012
+		etiquette.outline_size = 10
+		etiquette.position = Vector3(p.x, h + 8.0, p.y - 4.0)
+		etiquette.visibility_range_end = 70.0
+		add_child(etiquette)
+
+
+func _construire_arbres() -> void:
+	var tronc := CylinderMesh.new()
+	tronc.top_radius = 0.25
+	tronc.bottom_radius = 0.4
+	tronc.height = 3.0
+	tronc.material = _mat(Color(0.33, 0.24, 0.16))
+	var feuilles := SphereMesh.new()
+	feuilles.radius = 2.6
+	feuilles.height = 4.2
+	feuilles.radial_segments = 8
+	feuilles.rings = 4
+	feuilles.material = _mat(Color(0.16, 0.3, 0.15))
+	var positions := []
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	var essais := 0
+	while positions.size() < 2200 and essais < 20000:
+		essais += 1
+		var p := Vector2(rng.randf_range(960, 1720), rng.randf_range(0, 620))
+		if not Geometry2D.is_point_in_polygon(p, bois):
+			continue
+		var proche := false
+		for cle in lieux:
+			if p.distance_to(lieux[cle].pos) < 12.0:
+				proche = true
+				break
+		if proche or _pres_chemin(p, 4.0):
+			continue
+		positions.append(p)
+	for partie in [[tronc, 1.5], [feuilles, 4.4]]:
+		var mm := MultiMesh.new()
+		mm.transform_format = MultiMesh.TRANSFORM_3D
+		mm.mesh = partie[0]
+		mm.instance_count = positions.size()
+		for i in positions.size():
+			var p: Vector2 = positions[i]
+			var e := 0.8 + 0.5 * fposmod(p.x * 13.1 + p.y * 7.7, 1.0)
+			var t := Transform3D(Basis().scaled(Vector3(e, e, e)), Vector3(p.x, hauteur(p.x, p.y) + partie[1] * e, p.y))
+			mm.set_instance_transform(i, t)
+		var mmi := MultiMeshInstance3D.new()
+		mmi.multimesh = mm
+		add_child(mmi)
+
+
+func _pres_chemin(p: Vector2, d: float) -> bool:
+	for a in graphe:
+		for arete in graphe[a]:
+			var q := Geometry2D.get_closest_point_to_segment(p, lieux[a].pos, lieux[arete.vers].pos)
+			if p.distance_to(q) < d:
+				return true
+	return false
+
+
+# ---------------------------------------------------------------- lumière et ciel
+
+func _construire_environnement() -> void:
+	_ciel = ProceduralSkyMaterial.new()
+	var sky := Sky.new()
+	sky.sky_material = _ciel
+	_env = Environment.new()
+	_env.background_mode = Environment.BG_SKY
+	_env.sky = sky
+	_env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	_env.ambient_light_color = Color(0.55, 0.6, 0.7)
+	_env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	_env.glow_enabled = true
+	_env.glow_intensity = 0.4
+	_env.glow_bloom = 0.08
+	_env.ssao_enabled = true
+	_env.fog_enabled = true
+	_env.fog_light_color = Color(0.62, 0.66, 0.7)
+	_env.fog_density = 0.0015
+	var we := WorldEnvironment.new()
+	we.environment = _env
+	add_child(we)
+
+	_soleil = DirectionalLight3D.new()
+	_soleil.shadow_enabled = true
+	_soleil.directional_shadow_max_distance = 120.0
+	add_child(_soleil)
+	_lune = DirectionalLight3D.new()
+	_lune.light_color = Color(0.55, 0.65, 0.9)
+	_lune.rotation = Vector3(deg_to_rad(-50), deg_to_rad(30), 0)
+	add_child(_lune)
+
+	camera = Camera3D.new()
+	camera.fov = 32.0
+	camera.far = 900.0
+	var attr := CameraAttributesPractical.new()
+	attr.dof_blur_far_enabled = true
+	attr.dof_blur_far_distance = 40.0
+	attr.dof_blur_far_transition = 30.0
+	attr.dof_blur_near_enabled = true
+	attr.dof_blur_near_distance = 8.0
+	attr.dof_blur_near_transition = 4.0
+	attr.dof_blur_amount = 0.12
+	camera.attributes = attr
+	add_child(camera)
+
+
+func _process(delta: float) -> void:
+	var h: float = Horloge.heure()
+	var elev := sin((h - 6.0) / 12.0 * PI)          # 1 à midi, < 0 la nuit
+	var az := lerpf(100.0, -100.0, clampf((h - 6.0) / 12.0, 0.0, 1.0))
+	_soleil.rotation = Vector3(-deg_to_rad(maxf(elev, 0.05) * 70.0), deg_to_rad(az), 0)
+	_soleil.light_energy = clampf(elev * 1.2, 0.0, 0.8)
+	_soleil.light_color = Color(1.0, 0.75, 0.5).lerp(Color(1.0, 0.97, 0.9), clampf(elev * 2.0, 0.0, 1.0))
+	_soleil.visible = elev > 0.0
+	_lune.light_energy = clampf(-elev * 0.6 + 0.08, 0.0, 0.25)
+	var jour_f := clampf(elev * 2.0 + 0.3, 0.0, 1.0)
+	_ciel.sky_top_color = Color(0.03, 0.04, 0.1).lerp(Color(0.3, 0.5, 0.8), jour_f)
+	_ciel.sky_horizon_color = Color(0.08, 0.08, 0.15).lerp(Color(0.75, 0.75, 0.75), jour_f)
+	_ciel.ground_horizon_color = _ciel.sky_horizon_color
+	_env.ambient_light_energy = lerpf(0.12, 0.45, jour_f)
+	var brume := h >= 5.0 and h < 10.0
+	_env.fog_density = lerpf(_env.fog_density, 0.012 if brume else 0.0015, clampf(delta, 0.0, 1.0))
+	var nuit := h < 6.5 or h > 19.5
+	for l in _lumieres:
+		l.visible = nuit
+	_suivre_camera(delta)
+
+
+func _suivre_camera(delta: float) -> void:
+	if joueur == null:
+		return
+	var cible := joueur.position + Vector3(0, 10.0, 14.0) * _zoom
+	camera.position = camera.position.lerp(cible, clampf(delta * 5.0, 0.0, 1.0))
+	camera.look_at(joueur.position + Vector3(0, 1.0, 0))
+	var attr := camera.attributes as CameraAttributesPractical
+	attr.dof_blur_far_distance = 22.0 * _zoom + 12.0
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_zoom = clampf(_zoom - 0.1, 0.4, 3.0)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_zoom = clampf(_zoom + 0.1, 0.4, 3.0)
+
+
+# ---------------------------------------------------------------- personnages
+
+func _creer_joueur() -> void:
+	joueur = preload("res://scripts/joueur.gd").new()
+	joueur.monde = self
+	var p: Vector2 = lieux.reveil.pos
+	joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
+	add_child(joueur)
+	camera.position = joueur.position + Vector3(0, 10, 14)
+
+
+func _creer_pnjs() -> void:
+	var emplois := {}
+	for e in Donnees.lire_csv("res://data/emplois.csv"):
+		if not emplois.has(e.pnj):
+			emplois[e.pnj] = []
+		emplois[e.pnj].append([float(e.heure), e.lieu, e.activite])
+	for id in emplois:
+		if not pnj_donnees.has(id):
+			continue
+		var n := preload("res://scripts/pnj.gd").new()
+		n.monde = self
+		n.id = id
+		n.donnees = pnj_donnees[id]
+		n.emploi = emplois[id]
+		add_child(n)
+		pnjs.append(n)
+
+
+## Le chemin le plus court entre deux lieux, en points 2D.
+func chemin(depart: String, arrivee: String) -> PackedVector2Array:
+	var maree: bool = Horloge.maree_basse()
+	var dist := {depart: 0.0}
+	var avant := {}
+	var a_voir := [depart]
+	while not a_voir.is_empty():
+		var meilleur: String = a_voir[0]
+		for c in a_voir:
+			if dist[c] < dist[meilleur]:
+				meilleur = c
+		a_voir.erase(meilleur)
+		if meilleur == arrivee:
+			break
+		for arete in graphe[meilleur]:
+			if arete.maree and not maree:
+				continue
+			var d: float = dist[meilleur] + arete.d
+			if d < dist.get(arete.vers, INF):
+				dist[arete.vers] = d
+				avant[arete.vers] = meilleur
+				if not a_voir.has(arete.vers):
+					a_voir.append(arete.vers)
+	var pts := PackedVector2Array()
+	var c := arrivee
+	if not avant.has(c) and c != depart:
+		pts.append(lieux[arrivee].pos)
+		return pts
+	while c != depart:
+		pts.insert(0, lieux[c].pos)
+		c = avant[c]
+	return pts
+
+
+## Le lieu le plus proche d'un point, s'il est à moins de d mètres.
+func lieu_proche(p: Vector2, d: float = 30.0) -> String:
+	var meilleur := ""
+	var dm := d
+	for cle in lieux:
+		var x: float = p.distance_to(lieux[cle].pos)
+		if x < dm:
+			dm = x
+			meilleur = cle
+	return meilleur
+
+
+## Vrai si un enfant est à moins de d mètres du point.
+func enfant_proche(p: Vector2, d: float = 20.0) -> bool:
+	for n in pnjs:
+		if n.visible and int(n.donnees.age) <= ENFANT_MAX and n.pos2d().distance_to(p) < d:
+			return true
+	return false
+
+
+# ---------------------------------------------------------------- décor
+
+## Dalles des places, buissons, rochers, remises et clôtures autour du village.
+func _construire_decor() -> void:
+	var dalle := _mat(Color(0.5, 0.48, 0.45))
+	for cle in ["place", "port"]:
+		var p: Vector2 = lieux[cle].pos
+		var d := MeshInstance3D.new()
+		var cy := CylinderMesh.new()
+		cy.top_radius = 16.0 if cle == "place" else 10.0
+		cy.bottom_radius = cy.top_radius
+		cy.height = 0.6
+		cy.radial_segments = 24
+		d.mesh = cy
+		d.position = Vector3(p.x, hauteur(p.x, p.y) + 0.05, p.y)
+		d.material_override = dalle
+		add_child(d)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 11
+	var buisson := SphereMesh.new()
+	buisson.radius = 1.0
+	buisson.height = 1.3
+	buisson.radial_segments = 8
+	buisson.rings = 4
+	buisson.material = _mat(Color(0.22, 0.38, 0.18))
+	var rocher := SphereMesh.new()
+	rocher.radius = 0.9
+	rocher.height = 1.0
+	rocher.radial_segments = 6
+	rocher.rings = 3
+	rocher.material = _mat(Color(0.5, 0.5, 0.48))
+	var arbre := SphereMesh.new()
+	arbre.radius = 2.8
+	arbre.height = 5.0
+	arbre.radial_segments = 8
+	arbre.rings = 4
+	arbre.material = _mat(Color(0.2, 0.36, 0.16))
+	for modele in [[buisson, 900, 0.5], [rocher, 350, 0.3], [arbre, 260, 4.5]]:
+		var pts := []
+		while pts.size() < modele[1]:
+			var p := Vector2(rng.randf_range(80, 1100), rng.randf_range(40, 1150))
+			if not sur_terre(p) or Geometry2D.is_point_in_polygon(p, bois):
+				continue
+			if modele[0] == rocher and distance_cote(p) > 60.0 and not Geometry2D.is_point_in_polygon(p, landes):
+				continue
+			if _pres_chemin(p, 3.5) or not praticable(p) or lieu_proche(p, 14.0) != "":
+				continue
+			pts.append(p)
+		var mm := MultiMesh.new()
+		mm.transform_format = MultiMesh.TRANSFORM_3D
+		mm.mesh = modele[0]
+		mm.instance_count = pts.size()
+		for i in pts.size():
+			var p: Vector2 = pts[i]
+			var e := rng.randf_range(0.7, 1.4)
+			mm.set_instance_transform(i, Transform3D(Basis().scaled(Vector3(e, e, e)), Vector3(p.x, hauteur(p.x, p.y) + modele[2] * e, p.y)))
+		var mmi := MultiMeshInstance3D.new()
+		mmi.multimesh = mm
+		add_child(mmi)
+	# remises et granges le long des chemins du village (sans habitants)
+	var bois_m := _mat(Color(0.45, 0.32, 0.2))
+	var toit := _mat(Color(0.35, 0.22, 0.15))
+	var poses := 0
+	var essais := 0
+	while poses < 16 and essais < 4000:
+		essais += 1
+		var p := Vector2(rng.randf_range(250, 900), rng.randf_range(450, 900))
+		if not praticable(p) or _pres_chemin(p, 6.0) or not _pres_chemin(p, 14.0) or lieu_proche(p, 25.0) == "" or lieu_proche(p, 16.0) != "":
+			continue
+		var t := Vector2(rng.randf_range(4, 6), rng.randf_range(3, 5))
+		var h := hauteur(p.x, p.y)
+		_boite(Vector3(t.x, 5.0, t.y), Vector3(p.x, h, p.y), bois_m)
+		var pr := MeshInstance3D.new()
+		var pm := PrismMesh.new()
+		pm.size = Vector3(t.x + 0.6, 1.6, t.y + 0.6)
+		pr.mesh = pm
+		pr.position = Vector3(p.x, h + 3.3, p.y)
+		pr.material_override = toit
+		add_child(pr)
+		batiments.append(Rect2(p - t / 2.0, t))
+		poses += 1
