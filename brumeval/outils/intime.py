@@ -13,7 +13,7 @@ RACINE = Path(__file__).resolve().parent.parent
 PNJ = RACINE / "data/pnj.csv"
 SORTIE = RACINE / "data/intime.csv"
 COLONNES = ["id", "nom", "attire", "cherche", "libido", "axe", "pudeur", "experience", "bdsm", "partage",
-            "jalousie", "couple", "aime", "talents", "refuse", "fige"]
+            "jalousie", "couple", "aime", "talents", "refuse", "endurance", "bruit", "fantasme", "prefere", "fige"]
 
 # mots du profil -> étiquettes de goûts (voir scripts/intime.gd pour la liste)
 AIME = [
@@ -83,7 +83,10 @@ def profil(p):
     couple = m.group(1) if m else ""
     return {"id": p["id"], "nom": p["nom"], "attire": ",".join(attire), "cherche": ",".join(cherche), "libido": libido,
             "axe": axe, "pudeur": pudeur, "experience": experience, "bdsm": bdsm, "partage": partage, "jalousie": jalousie,
-            "couple": couple, "aime": ",".join(aime), "talents": "", "refuse": ",".join(refuse), "fige": "0"}
+            "couple": couple, "aime": ",".join(aime), "talents": "", "refuse": ",".join(refuse),
+            "endurance": 1 + libido // 30, "bruit": max(0, 70 - pudeur // 2),
+            "fantasme": next((t for t in ["dominer", "etre_domine", "risque", "roleplay", "jeu", "dehors"] if t in aime), ""),
+            "prefere": "", "fige": "0"}
 
 
 def main():

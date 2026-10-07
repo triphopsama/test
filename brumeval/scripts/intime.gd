@@ -12,11 +12,17 @@
 #   jalousie    0 à 100 : ce que lui coûte de te savoir avec d'autres
 #   couple      id du PNJ avec qui il est (on ne trompe pas sans conséquence)
 #   aime        étiquettes qu'il aime ; talents : ce qu'il fait très bien ; refuse : ses limites
+#   endurance   combien de fois il peut être comblé dans une nuit avant d'être épuisé
+#   bruit       0 à 100 : une nuit bruyante s'entend, et la rumeur part plus facilement
+#   fantasme    une étiquette qu'il n'avoue qu'à qui il aime (affection 70) ; la vivre vaut beaucoup
+#   prefere     ce qu'il aime chez l'autre (le corps : voir Corps dans la fiche, C)
 #   fige        1 : outils/intime.py ne réécrit plus cette ligne
 #
 # Étiquettes : mots_doux, conversation, rire, baisers, tendresse, massage, lenteur, rapide,
 # passion, jeu, roleplay, risque, audace, oral, dominer, etre_domine, nuit_entiere, dehors,
-# cadeaux ; limites : public, brutal, groupe, infidelite, moquerie, engagement, pitie, jalousie.
+# cadeaux, doigts, poitrine, chevaucher, derriere, debout, anal, jouet, bain, mots_crus,
+# cordes, douleur_douce ; limites : public, brutal, groupe, infidelite, moquerie, engagement,
+# pitie, jalousie (ou n'importe quelle étiquette ci-dessus).
 # Tu peux en inventer : un geste de data/gestes.csv qui porte l'étiquette la fait jouer.
 #
 # Les règles fixes (dans le code, quoi qu'il y ait dans les fichiers) :
@@ -29,6 +35,8 @@ extends RefCounted
 
 const SEUILS := {"seduire": 30, "embrasser": 40, "nuit": 60, "groupe": 65, "couple": 70, "pacte": 75}
 const MOT_D_ARRET := "Brume"
+## Les étiquettes qui gênent quand on ne les aime pas.
+const OSE := ["anal", "douleur_douce", "mots_crus", "jouet", "cordes", "derriere"]
 
 static var _profils := {}
 static var _gestes := []
@@ -41,10 +49,13 @@ static func _liste(t: String) -> Array:
 static func profils() -> Dictionary:
 	if _profils.is_empty():
 		for l in Donnees.lire_csv("res://data/intime.csv"):
-			for k in ["attire", "cherche", "aime", "talents", "refuse"]:
-				l[k] = _liste(l[k])
+			for k in ["attire", "cherche", "aime", "talents", "refuse", "prefere"]:
+				l[k] = _liste(l.get(k, ""))
 			for k in ["libido", "axe", "pudeur", "bdsm", "partage", "jalousie"]:
 				l[k] = int(l[k])
+			l.endurance = maxi(1, int(l.get("endurance", "1")))
+			l.bruit = int(l.get("bruit", "30"))
+			l.fantasme = str(l.get("fantasme", ""))
 			_profils[l.id] = l
 	return _profils
 
@@ -188,7 +199,8 @@ static func nouvelle_scene(m: Node, pnjs: Array, lieu: String) -> Dictionary:
 
 static func ajouter(m: Node, s: Dictionary, n: Node) -> void:
 	s.pnjs.append(n)
-	s.barres[n.id] = {"plaisir": 0.0, "desir": float(desir(m, n.id)), "malaise": 0.0, "intensite": 0.0, "comble": false, "stop": false}
+	s.barres[n.id] = {"plaisir": 0.0, "desir": float(desir(m, n.id)), "malaise": 0.0, "intensite": 0.0, "comble": false, "stop": false,
+		"fois": 0, "fantasme": false}
 
 
 static func actifs(s: Dictionary) -> Array:
@@ -263,8 +275,16 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 			mal -= 3.0
 		else:
 			mal += p.pudeur / 25.0
+			# les pratiques osées, quand il ne les aime pas : ça gêne davantage
+			if g.tags.any(func(t): return t in OSE):
+				mal += 15.0
 		if g.competence != "" and g.competence in comps:
 			gain += 8.0
+		if p.fantasme != "" and p.fantasme in g.tags and not deplait:
+			gain += 25.0
+			if not b.fantasme:
+				b.fantasme = true
+				lignes.append("%s frissonne : c'est exactement ce dont il rêvait." % nom)
 		gain *= 0.5 + b.desir / 100.0
 		gain *= 1.0 + 0.03 * maitrise + (0.1 if "seduction" in comps else 0.0)
 		if p.experience == "vierge" and (id_geste.begins_with("amour") or id_geste.begins_with("bouche")):
@@ -287,12 +307,17 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 			lignes.append("%s se raidit : ce n'est pas pour %s." % [nom, nom])
 		elif b.plaisir >= 100.0:
 			var defi: Dictionary = s.get("defi", {})
+			b.fois += 1
 			if defi.get("pnj", "") == n.id:
 				defi.compte = int(defi.get("compte", 0)) + 1
 			if defi.get("pnj", "") == n.id and defi.compte < int(defi.fois):
 				b.plaisir = 0.0
 				b.desir = maxf(b.desir, 50.0)
 				lignes.append("%s est comblé·e (%d/%d)… et en redemande." % [nom, defi.compte, defi.fois])
+			elif defi.get("pnj", "") != n.id and b.fois < p.endurance and b.desir > 30.0:
+				b.plaisir = 0.0
+				b.desir -= 25.0
+				lignes.append("%s est comblé·e (%d)… et en veut encore." % [nom, b.fois])
 			else:
 				b.comble = true
 				lignes.append("%s est comblé·e%s." % [nom, (" (%d/%d)" % [defi.compte, defi.fois]) if defi.get("pnj", "") == n.id else ""])
@@ -308,6 +333,10 @@ static func _reveler(m: Node, n: Node, p: Dictionary, tout: bool) -> String:
 	var f: Fiche = m.fiche
 	var connus: Array = f.gouts_connus.get(n.id, [])
 	var nouveaux := []
+	if p.fantasme != "" and not ("fantasme_" + p.fantasme) in connus and int(m.relations.get(n.id, 0)) >= 70:
+		connus.append("fantasme_" + p.fantasme)
+		f.gouts_connus[n.id] = connus
+		return "%s hésite, puis te l'avoue tout bas : son fantasme, c'est %s." % [n.donnees.nom.get_slice(" ", 0), p.fantasme.replace("_", " ")]
 	for t in p.aime + p.talents:
 		if not t in connus and (tout or nouveaux.is_empty()):
 			nouveaux.append(t)
@@ -338,7 +367,9 @@ static func finir(m: Node, s: Dictionary, apres: String) -> String:
 		var nom: String = n.donnees.nom.get_slice(" ", 0)
 		var d := 2
 		if b.comble:
-			d = 8
+			d = 6 + 2 * b.fois
+		if b.fantasme and not b.stop:
+			d += 5
 		if b.stop:
 			d = -10
 		var tendre: bool = p.cherche.any(func(c): return c in ["amour", "fidélité", "sécurité"]) or "nuit_entiere" in p.aime
@@ -361,7 +392,10 @@ static func finir(m: Node, s: Dictionary, apres: String) -> String:
 		f.apprises.append("art_aimer")
 		lignes.append("Nouvelle compétence : Art d'aimer.")
 	f.drapeaux["art_xp"] = int(f.drapeaux.get("art_xp", 0)) + 1
-	var r := rumeur(m, s.pnjs, "une nuit")
+	var bruit := 0
+	for n in s.pnjs:
+		bruit = maxi(bruit, profil(n.id).bruit)
+	var r := rumeur(m, s.pnjs, "une nuit", bruit)
 	if r != "":
 		lignes.append(r)
 	f.sauver()
@@ -386,10 +420,10 @@ static func devenir_couple(m: Node, n: Node) -> String:
 
 
 ## Les rumeurs : des témoins, ou un secret qui fuit (moins avec Discrétion). Renvoie le texte.
-static func rumeur(m: Node, pnjs: Array, quoi: String) -> String:
+static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 	var f: Fiche = m.fiche
 	var regards: Array = m.temoins(25.0).filter(func(n): return not n in pnjs and int(n.donnees.get("age", "0")) >= 18)
-	var fuite := 0.25 - (0.15 if "discretion" in f.competences() else 0.0)
+	var fuite := 0.25 + bruit / 400.0 - (0.15 if "discretion" in f.competences() else 0.0)
 	if regards.is_empty() and randf() >= fuite:
 		return ""
 	var lignes := ["Ça se sait%s." % ((" : %s %s vu" % [", ".join(regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))), "ont" if regards.size() > 1 else "a"]) if regards else ", sans qu'on sache comment")]

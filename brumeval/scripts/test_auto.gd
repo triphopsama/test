@@ -584,11 +584,13 @@ func _intime() -> void:
 	ok(Intime.consentement(monde, isaure, "nuit").contains("Pas encore"), "Isaure cherche l'amour : pas de nuit sans être ensemble (%s)" % Intime.consentement(monde, isaure, "nuit"))
 	# la scène
 	var sc := Intime.nouvelle_scene(monde, [elise], "moulin")
-	for i in 12:
+	for i in 40:
 		Intime.jouer(monde, sc, "amour_passion")
 		if sc.fini:
 			break
 	ok(sc.barres["BRU013"].comble, "Élise aime le rapide : comblée (%d)" % sc.barres["BRU013"].plaisir)
+	ok(sc.barres["BRU013"].fois == Intime.profil("BRU013").endurance, "Élise, endurance %d : comblée %d fois avant d'être épuisée" % [Intime.profil("BRU013").endurance, sc.barres["BRU013"].fois])
+	ok(Intime.gestes().size() >= 45, "%d gestes" % Intime.gestes().size())
 	var avant: int = monde.relations["BRU013"]
 	Intime.finir(monde, sc, "partir")
 	ok(monde.relations["BRU013"] > avant and "art_aimer" in f.apprises and f.nuits.get("BRU013", 0) == 1, "une belle nuit : affection en hausse, Art d'aimer appris")
@@ -599,6 +601,10 @@ func _intime() -> void:
 		lignes.append_array(Intime.jouer(monde, sc2, "jeu_pouvoir"))
 	ok(sc2.barres["BRU019"].stop and "\n".join(lignes).contains(Intime.MOT_D_ARRET), "un jeu qu'Isaure refuse : le mot d'arrêt, tout s'arrête")
 	Intime.finir(monde, sc2, "partir")
+	monde.relations["BRU013"] = 75
+	ok(Intime._reveler(monde, elise, Intime.profil("BRU013"), false).contains("fantasme"), "elle t'aime (75) : elle avoue son fantasme")
+	var sc3 := Intime.nouvelle_scene(monde, [elise], "moulin")
+	ok("\n".join(Intime.jouer(monde, sc3, "role")).contains("rêvait"), "le vivre : « exactement ce dont il rêvait »")
 	Intime.jouer(monde, Intime.nouvelle_scene(monde, [elise], "moulin"), "demander")
 	ok(not f.gouts_connus.get("BRU013", []).is_empty(), "lui demander ce qu'elle aime : une envie révélée (%s)" % str(f.gouts_connus.get("BRU013", [])))
 	# harem et jalousie
