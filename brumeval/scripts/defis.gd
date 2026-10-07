@@ -10,6 +10,8 @@
 #   recompense, penalite  « affection 15, cuivre 6, objet OBJ002, lecon parade, art 3,
 #                pacte maitre » (pacte : il te propose un pacte où tu mènes, s'il le veut aussi)
 #   texte, texte_victoire, texte_echec   ce qu'il dit
+#   condition    vide, ou « corps sexe_grand|poitrine_genereuse » (ton corps, fiche C),
+#                ou « age max 30 » / « age min 40 » : sinon il ne te le lance pas
 # Images : illustrations/defi_<id>/, defi_<id>_victoire/, defi_<id>_echec/.
 class_name Defis
 extends RefCounted
@@ -37,10 +39,23 @@ static func de(m: Node, n: Node) -> Array:
 			continue
 		if d.type == "intime" and (Intime.profil(n.id).is_empty() or not m.actions.intime_possible(n)):
 			continue
-		if int(m.relations.get(n.id, 0)) < -20:
+		if int(m.relations.get(n.id, 0)) < -20 or not condition_ok(m, str(d.get("condition", ""))):
 			continue
 		r.append(d)
 	return r
+
+
+static func condition_ok(m: Node, c: String) -> bool:
+	var p := c.strip_edges().split(" ", false)
+	if p.size() < 2:
+		return true
+	match p[0]:
+		"corps":
+			var tags := Intime.corps_tags(m.fiche)
+			return Array(p[1].split("|")).any(func(t): return t in tags)
+		"age":
+			return m.fiche.age <= int(p[2]) if p[1] == "max" else m.fiche.age >= int(p[2])
+	return true
 
 
 ## Accepter : selon le type, ça se joue tout de suite, ou ça attend que tu rapportes, ou la nuit s'ouvre.

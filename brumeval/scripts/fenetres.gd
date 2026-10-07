@@ -248,6 +248,12 @@ func personnage() -> void:
 		var m := Classes.metier(f.metier)
 		for p in m.competences:
 			_ligne("Métier · %s%s" % [p[0], "" if f.niveau_metier >= p[1] else " (niveau %d)" % p[1]], func(): pass, m.description)
+	# le corps : ce que les autres voient (et ce qu'ils préfèrent)
+	for k in ["taille", "silhouette", "sexe", "poitrine", "sensibilite"]:
+		if (k == "sexe" and f.sexe.to_lower() == "femme") or (k == "poitrine" and f.sexe.to_lower() == "homme"):
+			continue
+		_ligne("Corps · %s : %s" % [k, str(f.corps.get(k, "")).replace("_", " ")], _changer_corps.bind(k),
+			"Clique pour changer. Certains PNJ ont leurs préférences (colonne prefere de data/intime.csv) ; la sensibilité joue sur ton plaisir.")
 	# la magie : la mana, et ce qu'on sent de ses affinités (les chiffres avec une pierre d'affinité)
 	_ligne("Mana · %d / %d" % [f.mana_actuelle(), f.mana_max()], func(): pass, "Sag × 6 + Int × 2. Revient d'un quart par heure, en entier en dormant.")
 	var lues: bool = f.drapeaux.get("affinites_lues", false)
@@ -256,6 +262,15 @@ func personnage() -> void:
 			_ligne("Affinité · %s : %d" % [e, f.affinite(e)], func(): pass, "Lue à la pierre d'affinité. Au-dessus de 50, tes sorts de %s sont plus forts et coûtent moins ; sous 20, plus faibles." % e)
 		elif f.style.has("magie_" + e):
 			_ligne("Affinité · le %s %s" % [e, f.ressenti(e)], func(): pass, "Ce que tu sens en lançant des sorts de %s. Une pierre d'affinité dirait les vrais chiffres." % e)
+
+
+func _changer_corps(k: String) -> void:
+	var f: Fiche = monde.fiche
+	var choix: Array = Fiche.CORPS[k]
+	var i := choix.find(f.corps.get(k, choix[0]))
+	f.corps[k] = choix[(i + 1) % choix.size()]
+	f.sauver()
+	personnage()
 
 
 func _manque(c: Dictionary, t: Dictionary) -> String:

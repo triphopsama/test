@@ -13,7 +13,7 @@ RACINE = Path(__file__).resolve().parent.parent
 PNJ = RACINE / "data/pnj.csv"
 SORTIE = RACINE / "data/intime.csv"
 COLONNES = ["id", "nom", "attire", "cherche", "libido", "axe", "pudeur", "experience", "bdsm", "partage",
-            "jalousie", "couple", "aime", "talents", "refuse", "endurance", "bruit", "fantasme", "prefere", "fige"]
+            "jalousie", "couple", "aime", "talents", "refuse", "endurance", "bruit", "fantasme", "prefere", "ages", "fige"]
 
 # mots du profil -> étiquettes de goûts (voir scripts/intime.gd pour la liste)
 AIME = [
@@ -86,7 +86,8 @@ def profil(p):
             "couple": couple, "aime": ",".join(aime), "talents": "", "refuse": ",".join(refuse),
             "endurance": 1 + libido // 30, "bruit": max(0, 70 - pudeur // 2),
             "fantasme": next((t for t in ["dominer", "etre_domine", "risque", "roleplay", "jeu", "dehors"] if t in aime), ""),
-            "prefere": "", "fige": "0"}
+            "prefere": ",".join(t for motif, t in [(r"costaud", "musclee"), (r"mains fortes", "musclee"), (r"nains", "petite")] if re.search(motif, tl)),
+            "ages": "", "fige": "0"}
 
 
 def main():

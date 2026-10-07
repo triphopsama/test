@@ -15,7 +15,10 @@
 #   endurance   combien de fois il peut être comblé dans une nuit avant d'être épuisé
 #   bruit       0 à 100 : une nuit bruyante s'entend, et la rumeur part plus facilement
 #   fantasme    une étiquette qu'il n'avoue qu'à qui il aime (affection 70) ; la vivre vaut beaucoup
-#   prefere     ce qu'il aime chez l'autre (le corps : voir Corps dans la fiche, C)
+#   prefere     ce qu'il aime chez l'autre : grande, petite, mince, athletique, musclee, ronde,
+#               sexe_grand, poitrine_genereuse… (le corps du joueur : fiche, C)
+#   ages        plus_jeune (une cougar, un homme mûr qui aime la jeunesse) ou plus_vieux ;
+#               toujours entre majeurs
 #   fige        1 : outils/intime.py ne réécrit plus cette ligne
 #
 # Étiquettes : mots_doux, conversation, rire, baisers, tendresse, massage, lenteur, rapide,
@@ -56,6 +59,7 @@ static func profils() -> Dictionary:
 			l.endurance = maxi(1, int(l.get("endurance", "1")))
 			l.bruit = int(l.get("bruit", "30"))
 			l.fantasme = str(l.get("fantasme", ""))
+			l.ages = str(l.get("ages", ""))
 			_profils[l.id] = l
 	return _profils
 
@@ -89,6 +93,35 @@ static func attire_par(p: Dictionary, f: Fiche) -> bool:
 	return not p.attire.is_empty()
 
 
+## Ce qu'on voit du joueur : « grande », « musclee », « sexe_grand »…
+static func corps_tags(f: Fiche) -> Array:
+	var c: Dictionary = f.corps
+	var r := [str(c.get("taille", "")), str(c.get("silhouette", ""))]
+	if f.sexe.to_lower() == "homme":
+		r.append("sexe_" + str(c.get("sexe", "moyen")))
+	elif f.sexe.to_lower() == "femme":
+		r.append("poitrine_" + str(c.get("poitrine", "moyenne")))
+	else:
+		r.append("sexe_" + str(c.get("sexe", "moyen")))
+		r.append("poitrine_" + str(c.get("poitrine", "moyenne")))
+	return r
+
+
+## Ton corps et ton âge lui plaisent-ils ? +1 (oui), 0, −1 (pas son genre d'âge).
+static func a_son_gout(m: Node, pnj: Node) -> int:
+	var p := profil(pnj.id)
+	var f: Fiche = m.fiche
+	var r := 0
+	if p.prefere.any(func(t): return t in corps_tags(f)):
+		r += 1
+	var age_pnj := int(pnj.donnees.get("age", "30"))
+	if p.ages == "plus_jeune":
+		r += 1 if f.age <= age_pnj - 8 else -1
+	elif p.ages == "plus_vieux":
+		r += 1 if f.age >= age_pnj + 8 else -1
+	return clampi(r, -1, 2)
+
+
 static func desir(m: Node, id: String) -> int:
 	return int(m.desirs.get(id, profil(id).get("libido", 0) / 2))
 
@@ -112,6 +145,8 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 	if p.is_empty() or not m.actions.intime_possible(pnj):
 		return "%s n'est pas de ceux-là, ou pas ici, pas maintenant." % nom
 	var f: Fiche = m.fiche
+	if f.age < 18 or int(pnj.donnees.get("age", "0")) < 18:
+		return "Entre majeurs seulement."
 	if str(pnj.donnees.get("detresse", "0")) == "1":
 		return "%s a faim, a peur, n'a nulle part où aller. Ce n'est pas le moment, et tu le sais." % nom
 	if not attire_par(p, f):
@@ -121,6 +156,7 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 	if "seduction" in f.competences():
 		seuil -= 10
 	seuil -= int(desir(m, pnj.id) / 10.0)
+	seuil -= 8 * a_son_gout(m, pnj)
 	var engage: bool = f.partenaires.get(pnj.id, "") == "couple"
 	if quoi == "nuit" and not engage and p.cherche.any(func(c): return c in ["amour", "fidélité", "sécurité"]):
 		seuil += 15   # on ne se donne pas comme ça quand on cherche l'amour
@@ -286,7 +322,8 @@ static func jouer(m: Node, s: Dictionary, id_geste: String) -> Array:
 				b.fantasme = true
 				lignes.append("%s frissonne : c'est exactement ce dont il rêvait." % nom)
 		gain *= 0.5 + b.desir / 100.0
-		gain *= 1.0 + 0.03 * maitrise + (0.1 if "seduction" in comps else 0.0)
+		gain *= 1.0 + 0.03 * maitrise + (0.1 if "seduction" in comps else 0.0) + 0.1 * a_son_gout(m, n)
+		gain *= 0.8 + f.corps.get("sensibilite", 50) / 250.0 if g.qui == "partenaire" else 1.0
 		if p.experience == "vierge" and (id_geste.begins_with("amour") or id_geste.begins_with("bouche")):
 			mal += 5.0
 			gain *= 0.8

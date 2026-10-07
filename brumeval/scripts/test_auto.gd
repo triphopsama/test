@@ -582,6 +582,15 @@ func _intime() -> void:
 	monde.relations["BRU019"] = 70
 	monde.desirs["BRU019"] = 0
 	ok(Intime.consentement(monde, isaure, "nuit").contains("Pas encore"), "Isaure cherche l'amour : pas de nuit sans être ensemble (%s)" % Intime.consentement(monde, isaure, "nuit"))
+	# l'âge : Élise (38 ans) préfère les plus jeunes
+	f.age = 22
+	ok(Intime.a_son_gout(monde, elise) == 1, "22 ans : Élise, 38 ans, aime ça (cougar)")
+	f.age = 50
+	ok(Intime.a_son_gout(monde, elise) == -1, "50 ans : pas son genre")
+	f.age = 17
+	ok(Intime.consentement(monde, elise, "embrasser").contains("majeurs"), "jamais avant 18 ans")
+	f.age = 25
+	monde.desirs["BRU013"] = 100
 	# la scène
 	var sc := Intime.nouvelle_scene(monde, [elise], "moulin")
 	for i in 40:
@@ -828,7 +837,10 @@ func _vesperine() -> void:
 	f.desir = 20
 	ok(Vesperine.nourrir(monde).contains("dévore") and v.donnees.detresse == "0", "nourrie et en sécurité : la détresse s'efface")
 	ok(Intime.consentement(monde, v, "nuit") == "", "libre et nourrie, elle dit oui si elle le veut")
-	ok(Defis.de(monde, v).any(func(d): return d.id == "vesperine_cinq"), "elle te lance son défi : cinq fois cette nuit")
+	f.corps.sexe = "petit"
+	ok(not Defis.de(monde, v).any(func(d): return d.id == "vesperine_cinq"), "petit : elle ne te met pas au défi")
+	f.corps.sexe = "grand"
+	ok(Defis.de(monde, v).any(func(d): return d.id == "vesperine_cinq"), "bien membré : elle te lance son défi, cinq fois cette nuit")
 	var sc := Intime.nouvelle_scene(monde, [v], "agnes")
 	sc["defi"] = {"defi": "vesperine_cinq", "fois": 5, "pnj": Vesperine.ID}
 	for i in 80:
