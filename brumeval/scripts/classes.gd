@@ -88,6 +88,9 @@ static func metier_pour(action: String, lieu: String) -> String:
 static func par_nom(nom: String) -> String:
 	var n := nom.to_lower()
 	for id in classes():
+		if str(classes()[id].nom).to_lower() == n:
+			return id
+	for id in classes():
 		var racine: String = str(classes()[id].nom).to_lower().left(5)
 		if n.begins_with(racine):
 			return id

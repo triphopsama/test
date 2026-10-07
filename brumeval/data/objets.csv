@@ -51,3 +51,7 @@ BRV017;Bijou de l'autre monde;bijou;cou;0;0;;0;0;0;—;0;—;1 or 10 argent;—;
 BRV020;Carapace de crabe-rocher;materiau;—;0;0;;0;0;0;—;0;—;1 argent;—;Dure comme la pierre. Bram en fait des boucliers légers.
 BRV021;Viande de sanglier;consommable;—;0;0;;0;0;0;—;20;—;4 cuivre;BRU011;Un bon morceau, à griller. Rosalie en achète pour sa salle.
 BRV022;Défenses de sanglier;materiau;—;0;0;;0;0;0;—;0;—;1 argent;—;Deux crocs recourbés, jaunis. Un trophée, ou un manche de couteau.
+BRV030;Parchemin de Flamme;parchemin;—;0;0;;0;0;0;—;0;—;6 argent;BRU003;Un parchemin roussi aux coins. Une seule ligne de signes, qui chauffe sous le doigt. Se lit en deux heures (I : utiliser).
+BRV031;Parchemin d'Éclat de glace;parchemin;—;0;0;;0;0;0;—;0;Int 10;1 or 4 argent;BRU003;Volé à un étudiant de Lorvane, dit Silas. Le papier est froid. Il faut Int 10 pour en comprendre les signes.
+BRV032;Parchemin de Vague;parchemin;—;0;0;;0;0;0;—;0;Sag 10;8 argent;BRU006;Joss le tient de sa fille, qui « savait parler à la mer ». Il faut Sag 10.
+BRV033;Pierre d'affinité;outil;—;0;0;;0;0;0;—;0;—;2 or;BRU003;Une pierre de l'Académie de Lorvane, tiède dans la main. Tenue un moment, elle dit à quel point chaque élément te parle (I : utiliser).

@@ -12,7 +12,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	monde.combat_auto = true
 	var sauvee: Fiche = monde.fiche
-	for kit in ["poings", "dague", "épée courte + rondache"]:
+	for kit in ["poings", "dague", "épée courte + rondache", "Flamme (parchemin)"]:
 		for type in TYPES:
 			var gagnes := 0
 			var pv_restants := 0
@@ -48,4 +48,7 @@ func _perso(kit: String) -> Fiche:
 			for id in ["OBJ007", "OBJ208"]:
 				f.ajouter(id)
 				f.equiper(id)
+		"Flamme (parchemin)":
+			f.ajouter("BRV030")
+			f.lire_parchemin("BRV030")
 	return f

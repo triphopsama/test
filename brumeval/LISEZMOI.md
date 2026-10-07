@@ -75,6 +75,39 @@ D'après `monde/classes_metiers.md`. Un personnage a **une classe et un métier*
 - **Ce que le métier rapporte** : forgeron, les armes et armures de métal se revendent 20 % plus cher ; couturier, le cuir, le tissu et les peaux ; boulanger, un pain toutes les deux heures au fournil ; meunier, 2 cuivre de plus par heure ; pêcheur, un poisson de plus ; herboriste, une plante de plus et des remèdes 20 % plus efficaces. Et 1 cuivre de plus par heure tous les 5 niveaux de métier.
 - Tout est dans `data/classes.csv` et `data/metiers.csv`, modifiables au tableur (colonnes expliquées en haut de `scripts/classes.gd`) ; les compétences sont dans `scripts/combattant.gd`.
 
+## La magie
+
+D'après `monde/competences.md` (affinités) et `monde/combat.md` (dégâts magiques, états).
+
+- **12 éléments** : feu, eau, glace, air, terre, foudre, lumière, ombre, nature, mort, sang, esprit. Ton **affinité** avec chacun (0 à 100) est tirée à la création, souvent avec un pic inattendu, et **tu ne la vois pas** : la fiche (C) dit seulement ce que tu ressens (« le feu vient facilement ») pour les éléments que tu as déjà lancés. La **Pierre d'affinité** (2 or chez Silas) donne les vrais chiffres.
+- **Ce que l'affinité change** : +1 % de puissance par point au-dessus de 50, −1 % sous 20 ; le sort coûte jusqu'à 25 % de mana en moins dans un élément aimé, le double sous 10, et rate alors une fois sur quatre. Chaque sort lancé fait monter son élément (et baisser l'opposé).
+- **Les sorts touchent toujours** : dégâts = multiplicateur × Int (ou Sag) × affinité, réduits par la défense magique (Vol × 2), multipliés par le facteur élémentaire de la cible. Les gens résistent à leurs éléments forts et craignent leurs opposés ; les bêtes ont leurs faiblesses (les rats craignent le feu, le crabe-rocher la foudre et résiste à l'eau).
+- **États** : brûlure (5 % des PV par tour), gel (déplacement −2, vitesse −30 %), trempé (feu ×0,5, foudre ×1,5, éteint les brûlures), aveuglé (−40 % pour toucher), affaibli (dégâts ×0,7), inspiré (+10 % pour toucher). Les contrôles se résistent (Vol, Rob, Per, Vit selon l'état).
+- **La mana** (Sag × 6 + Int × 2) reste dépensée après un combat ; elle revient d'un quart par heure, et entière en dormant.
+- **6 classes de magie et de foi** : Mage élémentaire (Flamme, Bourrasque, Boule de feu, Éclat de glace), Mage de soin (Soin léger, Purification, Soin de groupe), Mage de l'eau et des marées (Vague), Prêtre de combat (Lumière de la Pâle, Bénédiction, Masse sainte), Envoûteur (Malédiction de faiblesse, Mauvais œil), Enchanteur (Arme enflammée, Rune de garde). Elles se proposent comme les autres, d'après les sorts que tu as lancés.
+- **Apprendre un sort sans classe** :
+  - les **parchemins** (I : utiliser, deux heures de lecture) : Flamme (6 argent chez Silas, sans condition), Éclat de glace (1 or 4 argent chez Silas, Int 10), Vague (8 argent chez Joss, Sag 10) ;
+  - les **leçons** : « Demander une leçon » à un PNJ qui t'aime un peu (affection 10). Chacun enseigne ce que sa classe lui a appris et qu'il sait vraiment faire : Agnès les soins, Ysolde la lumière, Bram la parade, Pierrick la volée, Silas le vol à la tire et le crochetage, Lucas les prises, Corentin le bouclier. 3 argent la leçon (6 pour une compétence avancée), moitié prix s'il t'apprécie (40), gratuit s'il t'aime bien (70). Les enfants n'enseignent pas.
+- Équilibre mesuré (`--equilibre`, niveau 1, Flamme seule) : rats 10/10, loup 9/10, crabe 10/10, sanglier 4/10. Mieux qu'aux poings, moins bien qu'une dague.
+
+## Les compétences hors combat
+
+Elles deviennent des actions dans le village (colonne `competence` de `data/actions.csv`) :
+
+| Compétence | Action | Où | Ce que ça fait |
+| --- | --- | --- | --- |
+| Vol à la tire (Agi 8) | Voler à la tire | sur un adulte | Agi contre les regards ; pris, la victime (−30) et les témoins (−15) s'en souviennent |
+| Crochetage (Agi 10) | Crocheter une serrure | maison de la falaise, comptoir de Silas | de l'argent derrière la porte ; les témoins t'en veulent si tu rates |
+| Pistage (Per 8) | Suivre des traces | bois, landes | tu trouves un loup isolé ou un sanglier, et le combat commence |
+| Piège (Int 8) | Poser ou relever des pièges | bois, landes | des collets aujourd'hui, viande ou peau demain |
+| Respiration sous l'eau (Sag 8) | Plonger | crique, port | des pièces perdues, parfois une carapace |
+| Lire la marée (Per 8) | Lire la marée | côte | l'heure des basses mers ; +2 maquereaux si tu pêches dans les trois heures |
+| Flamme | Faire un feu de camp | bois, plage | +25 % PV, une fois par jour, et l'affinité feu monte |
+| Soin léger, Soin des bois | Soigner tes blessures, Soigner quelqu'un | partout | des PV contre de la mana ; soigner quelqu'un le rend plus amical (+4 ; Bram et ses mains, +10) |
+| Bénédiction (Sag 8) | Bénir quelqu'un | partout | +2 d'affection, +6 chez les pieux |
+
+Chacune une fois par jour (par lieu ou par personne).
+
 ## Écrire les actions
 
 Tout est dans `data/actions.csv` (s'ouvre avec un tableur ou un éditeur de texte, séparateur `;`). Une ligne par action ; une ligne avec un id de PNJ précis remplace la ligne générale pour ce PNJ. Les colonnes sont expliquées en haut de `scripts/actions.gd`. Les colonnes `prix` (« 1 argent », ou un objet : « OBJ327 1 ») et `donne` (« cuivre 6 », « BRV003 2 », « repos ») font payer et rapporter une action.
@@ -88,7 +121,7 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 
 ## Ce qui n'est pas encore là
 
-- Le corps et le profil intime à la création, la magie (et les classes de magie et de foi), les évolutions de classe aux niveaux 25, 50 et 75, les PNJ qui enseignent une compétence, la maîtrise des armes et les titres.
+- Le corps et le profil intime à la création, les évolutions de classe aux niveaux 25, 50 et 75, la maîtrise des compétences (1 à 10) et les fusions, les sorts de terre, de foudre, d'ombre, de nature, de mort, de sang et d'esprit, le terrain qui brûle ou gèle, la maîtrise des armes et les titres.
 - Les intérieurs des maisons (on agit devant la porte).
 - La grotte, Pierrefane et le reste du monde.
 - Les emplois du temps sont ceux de la routine actuelle du village (après le jour 11), pas encore la chronique jour par jour.
@@ -101,12 +134,12 @@ Les actions intimes (`intime` = 1) ont la description vide : c'est à toi de l'�
 | `data/lieux.csv`, `chemins.csv`, `zones.csv` | Le plan de Brumeval (`monde/cartes/brumeval.md`), généré par `outils/build.py` |
 | `data/pnj.csv` | Les fiches des PNJ (`monde/donnees/pnj/brumeval.csv`) |
 | `data/emplois.csv` | La colonne emploi du temps des PNJ, transformée par `outils/emplois.py` (heure → lieu) |
-| `data/actions.csv` | Écrit à la main, à compléter |
+| `data/actions.csv` | Écrit à la main, à compléter (colonne `competence` : l'action demande cette compétence) |
 | `data/classes.csv`, `metiers.csv` | `monde/classes_metiers.md`, compétences reprises de `monde/donnees/competences` |
 | `images/plan.png` | Le plan, généré par `outils/image.py` |
 
 ## Vérifier que tout marche
 
-`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, et trois combats joués tout seuls (bagarre, loups, agression).
+`godot --headless -- --autotest` lance un test : données, trajets, PNJ, les garde-fous des actions intimes, les objets, le sac, les marchands et l'expérience, les classes et les métiers, la magie, les leçons et les compétences hors combat, et des combats joués tout seuls (bagarre, loups, agression).
 
 `godot -- --capture=image.png --heure=20 --combat=loups` (ou `--combat=bagarre`) enregistre une image d'un combat ; `--fenetre=sac`, `perso`, `classe` ou `bram` une image des fenêtres ; `--creation=3` l'écran de création à l'étape 3.

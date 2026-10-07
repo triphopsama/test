@@ -256,7 +256,7 @@ static func solde_traits(c: Dictionary) -> int:
 ## Les affinités magiques tirées au hasard selon le peuple, souvent avec un pic inattendu.
 static func affinites_au_hasard(peuple: String) -> Dictionary:
 	var r := {}
-	for e in ["feu", "eau", "air", "terre", "lumière", "ombre", "nature", "sang"]:
+	for e in Combattant.OPPOSES:
 		r[e] = randi_range(5, 35)
 	match peuple:
 		"elfe":

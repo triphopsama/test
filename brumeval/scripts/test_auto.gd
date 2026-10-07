@@ -184,6 +184,7 @@ func _ready() -> void:
 	var fh: Fiche = recu[0] if recu else null
 	ok(fh != null and fh.drapeaux.has("cree") and int(fh.stats.For) >= 1, "l'écran rend une fiche : %s, %s" % [fh.nom if fh else "?", fh.peuple if fh else "?"])
 	await _classes_metiers(mara, tim)
+	await _magie(mara)
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -298,11 +299,11 @@ func _ready() -> void:
 
 func _classes_metiers(mara: Node, tim: Node) -> void:
 	print("== Classes et métiers")
-	ok(Classes.classes().size() == 13 and Classes.metiers().size() == 6, "13 classes et 6 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
+	ok(Classes.classes().size() == 19 and Classes.metiers().size() == 6, "19 classes et 6 métiers lus (%d, %d)" % [Classes.classes().size(), Classes.metiers().size()])
 	for id in Classes.classes():
 		for p in Classes.classe(id).competences:
 			ok(Combattant.COMPETENCES.has(p[0]), "%s : la compétence %s existe" % [id, p[0]])
-	ok(Classes.par_nom("Voleuse") == "voleur" and Classes.par_nom("Garde") == "garde" and Classes.par_nom("Prêtresse de combat") == "", "les classes des PNJ se retrouvent")
+	ok(Classes.par_nom("Voleuse") == "voleur" and Classes.par_nom("Garde") == "garde" and Classes.par_nom("Prêtresse de combat") == "pretre_combat" and Classes.par_nom("Mage de soin") == "mage_soin", "les classes des PNJ se retrouvent")
 	ok(Classes.offre({"arc": 4, "distance": 4})[0] == "archer", "tirer à l'arc : on te propose Archer")
 	ok(Classes.offre({"poings": 3, "prise": 3})[0] == "lutteur", "se battre à mains nues et saisir : Lutteur")
 	ok(Classes.offre({"betes": 3, "frappe": 2})[0] == "chasseur_monstres", "chasser les bêtes : Chasseur de monstres")
@@ -412,6 +413,136 @@ func _classes_metiers(mara: Node, tim: Node) -> void:
 		await get_tree().process_frame
 		Illustrations.fermer()
 		ok(f.style.has("lance") or f.style.has("bouge"), "le combat a noté ton style : %s (%s)" % [f.style, r])
+	monde.combat_auto = false
+	monde.fiche = Fiche.new()
+
+
+func _action(id: String, pnj: Node, lieu: String) -> Dictionary:
+	for l in monde.actions.disponibles(pnj, lieu):
+		if l.id == id:
+			return l
+	return {}
+
+
+func _magie(mara: Node) -> void:
+	print("== Magie")
+	ok(Classes.offre({"magie_feu": 3})[0] == "mage_elementaire" and Classes.offre({"magie_eau": 2})[0] == "mage_eau", "lancer du feu : Mage élémentaire ; de l'eau : Mage des marées")
+	var c := Combattant.new()
+	c.affinites = {"feu": 80}
+	ok(is_equal_approx(c.bonus_affinite("feu"), 1.3) and c.cout_mana(Combattant.COMPETENCES.flamme) == 3, "affinité feu 80 : sorts de feu +30 %, Flamme à 3 mana")
+	c.affinites = {"feu": 5}
+	ok(c.cout_mana(Combattant.COMPETENCES.flamme) == 8, "affinité 5 : le sort coûte double")
+	var rat := Combattant.bete("rat", 0, null)
+	ok(rat.facteur_element("feu") == 1.5, "les rats craignent le feu (bestiaire)")
+	c.affinites = {"eau": 60}
+	ok(is_equal_approx(c.facteur_element("eau"), 0.7) and is_equal_approx(c.facteur_element("feu"), 1.15), "forte en eau : résiste à l'eau, craint le feu")
+	var f := Fiche.new()
+	monde.fiche = f
+	ok(f.mana_max() == f.stats.Sag * 6 + f.stats.Int * 2, "mana : Sag × 6 + Int × 2 (%d)" % f.mana_max())
+	f.ajouter("BRV030")
+	ok(f.lire_parchemin("BRV030").contains("Flamme") and "flamme" in f.apprises and f.nombre("BRV030") == 0, "lire le parchemin de Flamme : sort appris")
+	f.ajouter("BRV031")
+	ok(f.lire_parchemin("BRV031").contains("Int 10") and f.nombre("BRV031") == 1, "Éclat de glace demande Int 10 pour comprendre")
+	ok("flamme" in Combattant.joueur(monde.joueur, f).competences, "Flamme dans le menu de combat")
+	# les leçons
+	var agnes: Node = _pnj("BRU015")
+	ok("soin_leger" in monde.lecons_de(agnes), "Agnès, mage de soin, peut t'apprendre Soin léger (%s)" % str(monde.lecons_de(agnes)))
+	ok(monde.lecons_de(_pnj("BRU005")).is_empty(), "Tim (11 ans) n'enseigne rien")
+	ok(not "provocation" in monde.lecons_de(_pnj("BRU014")), "Corentin n'enseigne pas ce qu'il ne sait pas faire")
+	monde.relations["BRU015"] = 20
+	f.bourse = 100
+	monde.fenetres.lecons(agnes)
+	ok(monde.fenetres._liste.get_child_count() >= 1, "la fenêtre des leçons s'ouvre")
+	monde.fenetres._apprendre(agnes, "soin_leger")
+	ok("soin_leger" in f.apprises and f.bourse == 64, "une leçon : 3 argent (%s)" % Objets.texte_prix(f.bourse))
+	monde.fenetres.fermer()
+	monde.relations["BRU015"] = 0
+	print("== Hors combat")
+	ok(_action("pister", null, "chene").is_empty(), "sans Pistage, pas de traces à suivre")
+	f.apprises.append_array(["pistage", "piege", "respiration_eau", "lire_maree", "crochetage", "benediction"])
+	f.stats.Per = 9
+	f.stats.Agi = 10
+	f.stats.Sag = 8
+	ok(_action("pieges", null, "chene").is_empty(), "Piège demande Int 8 : pas de collets à Int 7")
+	f.stats.Int = 8
+	ok(not _action("pister", null, "chene").is_empty(), "avec Pistage : « Suivre des traces »")
+	var pieges := _action("pieges", null, "chene")
+	monde.actions.executer(pieges, null, "chene")
+	ok(Illustrations._texte.text.contains("collets"), "les collets sont posés")
+	Illustrations.fermer()
+	f.drapeaux["piege_chene"] = Horloge.jour() - 1
+	var avant_sac := f.sac.size()
+	monde.actions.executer(pieges, null, "chene")
+	ok(Illustrations._texte.text.contains("collet"), "le lendemain : on relève (%s)" % Illustrations._texte.text.left(50))
+	Illustrations.fermer()
+	var n_poisson := f.nombre("BRV003")
+	monde.actions.executer(_action("lire_maree", null, "port"), null, "port")
+	ok(Illustrations._texte.text.contains("Basse mer"), "lire la marée donne l'heure des basses mers")
+	Illustrations.fermer()
+	monde.actions.executer(_action("pecher", null, "port"), null, "port")
+	ok(f.nombre("BRV003") == n_poisson + 4, "pêcher après avoir lu la marée : 4 maquereaux")
+	Illustrations.fermer()
+	monde.actions.executer(_action("plonger", null, "crique"), null, "crique")
+	ok(Illustrations._texte.text.contains("pièces"), "plonger : des pièces au fond")
+	Illustrations.fermer()
+	monde.actions.executer(_action("crocheter", null, "falaise"), null, "falaise")
+	ok(Illustrations._texte.text.contains("%"), "crocheter : réussi ou raté, selon l'Agi")
+	Illustrations.fermer()
+	f.pv = 10
+	var mana0 := f.mana_actuelle()
+	monde.actions.executer(_action("soigner_soi", null, "place"), null, "place")
+	ok(f.pv > 10 and f.mana_actuelle() == mana0 - 6, "Soin léger hors combat : PV %d, mana −6" % f.pv)
+	Illustrations.fermer()
+	var bram: Node = _pnj("BRU002")
+	monde.relations["BRU002"] = 0
+	monde.actions.executer(_action("soigner", bram, "forge"), bram, "forge")
+	ok(monde.relations["BRU002"] == 10 and Illustrations._texte.text.contains("tremblent"), "soigner Bram : ses mains, son secret (+10)")
+	Illustrations.fermer()
+	monde.relations["BRU002"] = 0
+	monde.relations["BRU001"] = 0
+	f.mana = -1
+	monde.actions.executer(_action("benir", mara, "boulangerie"), mara, "boulangerie")
+	ok(monde.relations["BRU001"] == 6, "bénir Mara, qui est pieuse : +6 (%d)" % monde.relations["BRU001"])
+	Illustrations.fermer()
+	monde.relations["BRU001"] = 0
+	f.pv = 10
+	monde.actions.executer(_action("feu_camp", null, "chene"), null, "chene")
+	ok(f.pv > 10, "un feu de camp avec Flamme : +PV")
+	Illustrations.fermer()
+	monde.actions.executer(_action("feu_camp", null, "chene"), null, "chene")
+	ok(Illustrations._texte.text.contains("déjà"), "un feu par jour")
+	Illustrations.fermer()
+	# un combat de mage contre des rats
+	f = Fiche.new()
+	monde.fiche = f
+	f.stats.Int = 12
+	f.stats.Sag = 10
+	f.apprises = ["flamme", "eclat_glace", "soin_leger", "purification", "arme_enflammee"]
+	f.affinites = {"feu": 40}
+	monde.combat_auto = true
+	var p: Vector2 = monde.lieux.landes.pos
+	monde.joueur.position = Vector3(p.x, monde.hauteur(p.x, p.y), p.y)
+	monde.attaque_de_betes("rat", 2, p + Vector2(0, 4), "Des rats !")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(monde.combat != null, "les rats attaquent le mage")
+	if monde.combat:
+		var moi: Combattant = monde.combat.combattants.filter(func(x): return x.est_joueur)[0]
+		var r1: Combattant = monde.combat.combattants.filter(func(x): return x.est_bete)[0]
+		var pv_rat := r1.pv
+		monde.combat._attaquer(moi, r1, "eclat_glace")
+		ok(r1.pv < pv_rat, "Éclat de glace touche toujours (%d → %d PV)" % [pv_rat, r1.pv])
+		monde.combat._attaquer(moi, moi, "arme_enflammee")
+		ok(moi.etats.has("arme_feu"), "Arme enflammée : l'arme brûle")
+		moi.etats["gel"] = 3
+		monde.combat._attaquer(moi, moi, "purification")
+		ok(not moi.etats.has("gel"), "Purification chasse le gel")
+		var r = await monde.combat.fini
+		await get_tree().process_frame
+		Illustrations.fermer()
+		ok(f.style.has("magie_feu") or f.style.has("magie_glace"), "le combat note la magie (%s, %s)" % [f.style, r])
+		ok(f.affinite("feu") > 40 or f.affinite("glace") > 20, "lancer des sorts fait monter l'affinité (feu %d, glace %d)" % [f.affinite("feu"), f.affinite("glace")])
+		ok(f.mana_actuelle() < f.mana_max(), "la mana dépensée reste dépensée après le combat")
 	monde.combat_auto = false
 	monde.fiche = Fiche.new()
 

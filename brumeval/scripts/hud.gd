@@ -139,7 +139,7 @@ func _ouvrir_menu() -> void:
 		c.queue_free()
 	for i in _choix.size():
 		var b := Button.new()
-		b.text = "%d. %s" % [i + 1, _choix[i].nom]
+		b.text = "%d. %s" % [i + 1, str(_choix[i].nom).replace("{nom}", _cible_pnj.donnees.nom.get_slice(" ", 0) if _cible_pnj else "")]
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.pressed.connect(_choisir.bind(i))
 		_liste.add_child(b)

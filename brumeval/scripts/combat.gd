@@ -251,7 +251,7 @@ func _bouton(texte: String, appel: Callable, actif_b := true) -> void:
 # ---------------------------------------------------------------- boucle
 
 func _vitesse(c: Combattant) -> float:
-	return c.vitesse * (0.5 if c.etats.has("ralenti") else 1.0)
+	return c.vitesse * (0.5 if c.etats.has("ralenti") else 1.0) * (0.7 if c.etats.has("gel") else 1.0)
 
 
 func _boucle() -> void:
@@ -305,6 +305,11 @@ func _tour(c: Combattant) -> void:
 	if c.etats.has("saignement"):
 		var d := maxi(1, int(c.pv_max * 0.03))
 		_degats(c, d, "saignement")
+		if not c.en_jeu():
+			c.ct = 0.0
+			return
+	if c.etats.has("brulure"):
+		_degats(c, maxi(1, int(c.pv_max * 0.05)), "brûlure")
 		if not c.en_jeu():
 			c.ct = 0.0
 			return
@@ -376,7 +381,7 @@ func _atteignables(u: Combattant) -> Dictionary:
 			var o := _occupant(v)
 			if o != null and o.camp != u.camp and not o.a_terre:
 				continue
-			if cout[c] + 1 > u.deplacement:
+			if cout[c] + 1 > u.deplacement - (2 if u.etats.has("gel") else 0):
 				continue
 			cout[v] = cout[c] + 1
 			res[v] = res[c] + [v]
@@ -394,11 +399,13 @@ func _distance(a: Vector2i, b: Vector2i) -> int:
 func _cibles(u: Combattant, cle: String) -> Array:
 	var comp: Dictionary = Combattant.COMPETENCES.get(cle, {})
 	var type: String = comp.get("type", "attaque")
-	if type in ["soi", "allies"]:
+	if type in ["soi", "allies"] or comp.has("zone_soi"):
 		return [u]
+	if type == "purifier":
+		return combattants.filter(func(c): return _a_purifier(u, c, int(comp.portee)))
 	var portee: int = comp.get("portee", u.arme.portee)
 	var r := []
-	if type == "soin" and u.pv < u.pv_max and comp.has("endurance"):
+	if type == "soin" and u.pv < u.pv_max:
 		r.append(u)   # les herbes, ça marche aussi sur soi
 	for c in combattants:
 		if c.mort or c.sorti:
@@ -422,6 +429,15 @@ func _cibles(u: Combattant, cle: String) -> Array:
 		elif c.camp != u.camp and not c.a_terre:
 			r.append(c)
 	return r
+
+
+func _a_purifier(u: Combattant, c: Combattant, portee: int) -> bool:
+	if c.camp != u.camp or not c.en_jeu() or _distance(c.case, u.case) > portee:
+		return false
+	for e in Combattant.ETATS_NEFASTES:
+		if c.etats.has(e):
+			return true
+	return false
 
 
 # ---------------------------------------------------------------- déplacement
@@ -464,7 +480,14 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 	var comp: Dictionary = Combattant.COMPETENCES.get(cle, {"nom": "attaque", "mult": 1.0, "stat": att.arme.stat})
 	var type: String = comp.get("type", "attaque")
 	att.endurance -= int(comp.get("endurance", 0))
-	att.mana -= int(comp.get("mana", 0))
+	att.mana -= att.cout_mana(comp)
+	if comp.has("element") and comp.get("magique", false):
+		_noter(att, "magie_" + comp.element)
+		# competences.md : sous 10 d'affinité, le sort rate une fois sur quatre
+		if att.affinite(comp.element) < 10 and randi_range(1, 4) == 1:
+			_a_agi = true
+			_ecrire("%s tente %s, mais l'élément se refuse : rien ne vient." % [att.nom, comp.nom])
+			return
 	if cible != att:
 		var d := cible.case - att.case
 		att.orientation = Vector2i(signi(d.x), 0) if absi(d.x) >= absi(d.y) else Vector2i(0, signi(d.y))
@@ -472,10 +495,24 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 	_a_agi = true
 	match type:
 		"soin":
-			var soin := int(comp.soin * att.stats[comp.stat])
-			cible.pv = mini(cible.pv_max, cible.pv + soin)
+			var bonus := att.bonus_affinite(comp.element) if comp.has("element") else 1.0
+			var soin := int(comp.soin * att.stats[comp.stat] * bonus)
+			var soignes := [cible]
+			if comp.has("zone_soi"):
+				soignes = combattants.filter(func(c): return c.camp == att.camp and c.en_jeu() and _distance(c.case, att.case) <= int(comp.zone_soi))
+			for c in soignes:
+				c.pv = mini(c.pv_max, c.pv + soin)
 			_noter(att, "soin")
-			_ecrire("%s soigne %s : +%d PV." % [att.nom, cible.nom if cible != att else "ses plaies", soin])
+			_ecrire("%s soigne %s : +%d PV." % [att.nom, ", ".join(soignes.map(func(c): return c.nom)) if cible != att or soignes.size() > 1 else "ses plaies", soin])
+			return
+		"purifier":
+			var chasses := []
+			for e in Combattant.ETATS_NEFASTES:
+				if cible.etats.has(e):
+					cible.etats.erase(e)
+					chasses.append(Combattant.NOMS_ETATS.get(e, e))
+			_noter(att, "soin")
+			_ecrire("%s purifie %s%s." % [att.nom, cible.nom, (" : plus " + ", ".join(chasses)) if chasses else ""])
 			return
 		"soi":
 			att.etats[comp.etat_soi] = int(comp.get("duree", 99))
@@ -484,6 +521,8 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 				att.mana = mini(att.mana_max, att.mana + int(att.mana_max * 0.1))
 			if cle == "bouclier_leve":
 				_noter(att, "bouclier")
+			if cle == "arme_enflammee":
+				_noter(att, "enchanter")
 			_ecrire("%s : %s." % [att.nom, comp.nom])
 			return
 		"allies":
@@ -492,6 +531,8 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 				if c.camp == att.camp and c.en_jeu() and _distance(c.case, att.case) <= int(comp.zone):
 					c.etats[comp.etat_allies] = int(comp.duree)
 					touches.append(c.nom)
+			if cle == "rune_garde":
+				_noter(att, "enchanter")
 			_ecrire("%s : %s ! (%s)" % [att.nom, comp.nom, ", ".join(touches)])
 			return
 		"provoquer":
@@ -502,6 +543,15 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 				_ecrire("%s provoque %s, qui ne voit plus que lui." % [att.nom, cible.nom])
 			else:
 				_ecrire("%s provoque %s, qui ne s'en laisse pas conter." % [att.nom, cible.nom])
+			return
+		"maudire":
+			_noter(att, "maudire")
+			var resiste: int = 30 + (cible.stats[comp.resiste] - att.stats[comp.stat]) * 3
+			if randi_range(1, 100) > clampi(resiste, 5, 95):
+				cible.etats[comp.etat] = Combattant.DUREES.get(comp.etat, 2)
+				_ecrire("%s : %s est %s." % [comp.nom, cible.nom, Combattant.NOMS_ETATS.get(comp.etat, comp.etat)])
+			else:
+				_ecrire("%s : %s résiste." % [comp.nom, cible.nom])
 			return
 	for i in int(comp.get("coups", 1)):
 		if not cible.en_jeu():
@@ -515,6 +565,52 @@ func _attaquer(att: Combattant, cible: Combattant, cle: String) -> void:
 		_degats(att, maxi(1, roundi(comp.recul * att.stats.For)), "le contrecoup")
 
 
+## Un sort qui frappe : il touche toujours (combat.md, section 5, dégâts magiques).
+func _frapper_sort(att: Combattant, cible: Combattant, comp: Dictionary) -> void:
+	var e: String = comp.element
+	var brut: float = comp.mult * att.stats[comp.stat] * att.bonus_affinite(e)
+	var final := brut * 100.0 / (100.0 + cible.def_mag)
+	var facteur := cible.facteur_element(e)
+	final *= facteur
+	var details := [e]
+	if facteur >= 1.2:
+		details.append("faiblesse")
+	elif facteur <= 0.8:
+		details.append("résiste")
+	if cible.etats.has("mouille"):
+		if e == "foudre":
+			final *= 1.5
+			details.append("trempé")
+		elif e == "feu":
+			final *= 0.5
+			details.append("trempé")
+	var ecart_h: int = _cases[att.case].niveau - _cases[cible.case].niveau
+	final *= clampf(pow(1.05, ecart_h), 0.8, 1.25)
+	if att.etats.has("affaibli"):
+		final *= 0.7
+	if att.etats.has("concentre"):
+		att.etats.erase("concentre")
+		final *= 1.3
+	final *= randf_range(0.9, 1.1)
+	var n := maxi(1, roundi(final))
+	_ecrire("%s lance %s sur %s : %d dégâts (%s)." % [att.nom, comp.nom, cible.nom, n, ", ".join(details)])
+	_noter(cible, "encaisse")
+	_degats(cible, n, "")
+	if comp.has("etat") and cible.en_jeu():
+		var tient := true
+		if comp.has("resiste"):
+			var resiste: int = 30 + (cible.stats[comp.resiste] - att.stats[comp.stat]) * 3
+			tient = randi_range(1, 100) > clampi(resiste, 5, 95)
+		if tient:
+			cible.etats[comp.etat] = Combattant.DUREES.get(comp.etat, 2)
+			if comp.etat == "mouille":
+				cible.etats.erase("brulure")
+			if comp.etat == "brulure" and cible.etats.has("mouille"):
+				cible.etats.erase("brulure")
+			elif cible.etats.has(comp.etat):
+				_ecrire("%s est %s." % [cible.nom, Combattant.NOMS_ETATS.get(comp.etat, comp.etat)])
+
+
 ## Note ce que fait le joueur (pour les classes proposées après le combat).
 func _noter(c: Combattant, tag: String) -> void:
 	if c.est_joueur:
@@ -523,6 +619,9 @@ func _noter(c: Combattant, tag: String) -> void:
 
 ## Un coup : toucher, esquives, dégâts, états.
 func _frapper(att: Combattant, cible: Combattant, comp: Dictionary, cle: String, principal: bool) -> void:
+	if comp.get("magique", false):
+		_frapper_sort(att, cible, comp)
+		return
 	var cote := _cote(att, cible)
 	if principal and att.etats.has("cache"):
 		att.etats.erase("cache")
@@ -544,6 +643,10 @@ func _frapper(att: Combattant, cible: Combattant, comp: Dictionary, cle: String,
 	chance += {"face": 0, "flanc": 15, "dos": 30}[cote]
 	chance += clampi(ecart_h * 5, -20, 20)
 	chance += att.bonus_toucher + (att.bonus_distance if not melee else 0)
+	if att.etats.has("aveugle"):
+		chance -= 40
+	if att.etats.has("inspire"):
+		chance += 10
 	if att.endurance <= 0:
 		chance -= 20
 	if cible.etats.has("renverse") or cible.etats.has("etourdi"):
@@ -584,6 +687,8 @@ func _frapper(att: Combattant, cible: Combattant, comp: Dictionary, cle: String,
 		defense = cible.stats.Rob / 2   # sur le ventre, la carapace ne protège plus
 	if comp.get("vs_betes", false) and cible.est_bete:
 		defense /= 2
+	if cible.etats.has("rune"):
+		defense += 10
 	var final := brut * 100.0 / (100.0 + defense)
 	final *= {"face": 1.0, "flanc": 1.15, "dos": 1.3}[cote]
 	final *= clampf(pow(1.05, ecart_h), 0.8, 1.25)
@@ -592,6 +697,18 @@ func _frapper(att: Combattant, cible: Combattant, comp: Dictionary, cle: String,
 		details.append("de " + cote)
 	if att.etats.has("galvanise"):
 		final *= 1.1
+	if att.etats.has("affaibli"):
+		final *= 0.7
+	# la magie dans l'arme : Arme enflammée, Masse sainte (dégâts d'élément en plus)
+	var elem := ""
+	if att.etats.has("arme_feu"):
+		elem = "feu"
+		final += 0.5 * att.stats.Int * att.bonus_affinite("feu") * 100.0 / (100.0 + cible.def_mag) * cible.facteur_element("feu")
+	elif comp.has("element_bonus"):
+		elem = comp.element_bonus
+		final += 0.3 * att.stats.Sag * att.bonus_affinite(elem) * 100.0 / (100.0 + cible.def_mag) * cible.facteur_element(elem)
+	if elem != "":
+		details.append(elem)
 	if att.etats.has("concentre"):
 		att.etats.erase("concentre")
 		final *= 1.3
@@ -626,8 +743,8 @@ func _frapper(att: Combattant, cible: Combattant, comp: Dictionary, cle: String,
 	if comp.has("etat") and cible.en_jeu():
 		var resiste: int = 30 + (cible.stats[comp.resiste] - att.stats[comp.stat]) * 3
 		if randi_range(1, 100) > clampi(resiste, 5, 95):
-			cible.etats[comp.etat] = 99 if comp.etat == "saignement" else (1 if comp.etat == "etourdi" else 2)
-			_ecrire("%s est %s." % [cible.nom, {"renverse": "renversé", "etourdi": "étourdi", "saignement": "en sang"}[comp.etat]])
+			cible.etats[comp.etat] = Combattant.DUREES.get(comp.etat, 2)
+			_ecrire("%s est %s." % [cible.nom, Combattant.NOMS_ETATS.get(comp.etat, comp.etat)])
 	if melee and cote == "face" and cible.etats.has("piques") and cible.en_jeu() and att.en_jeu():
 		_degats(att, maxi(1, roundi(0.5 * cible.stats.For)), "les piques de " + cible.nom)
 
@@ -702,8 +819,12 @@ func _menu_joueur(u: Combattant) -> void:
 		var comp: Dictionary = Combattant.COMPETENCES[k]
 		if comp.get("type", "") in ["passif", "hors_combat"]:
 			continue
-		var ok: bool = u.endurance >= comp.get("endurance", 0) and u.mana >= comp.get("mana", 0)
-		_bouton(comp.nom, _choisir_cible.bind(u, k), not _a_agi and ok and not _cibles(u, k).is_empty())
+		var cout := ""
+		if u.cout_mana(comp) > 0:
+			cout = " (%d mana)" % u.cout_mana(comp)
+		elif comp.has("endurance"):
+			cout = " (%d end.)" % comp.endurance
+		_bouton(comp.nom + cout, _choisir_cible.bind(u, k), not _a_agi and u.peut_payer(comp) and not _cibles(u, k).is_empty())
 	if not _cibles(u, "bandage").is_empty():
 		_bouton("Bandage (stabiliser)", _choisir_cible.bind(u, "bandage"), not _a_agi)
 	if mode != "bagarre" and not _cibles(u, "achever").is_empty():
@@ -724,7 +845,8 @@ func _choisir_deplacement(u: Combattant) -> void:
 
 
 func _choisir_cible(u: Combattant, cle: String) -> void:
-	if Combattant.COMPETENCES.get(cle, {}).get("type", "") in ["soi", "allies"]:
+	var c_choisie: Dictionary = Combattant.COMPETENCES.get(cle, {})
+	if c_choisie.get("type", "") in ["soi", "allies"] or c_choisie.has("zone_soi"):
 		await _agir(u, u, cle)
 		_action_joueur.emit("ok")
 		return
@@ -843,14 +965,16 @@ func _tour_ia(u: Combattant) -> void:
 			_fin_tour(u, 0.0)
 			return
 	# un soigneur soigne d'abord
-	if "soin" in u.competences and u.mana >= 8:
-		var blesses := combattants.filter(func(c): return c.camp == u.camp and c.en_jeu() and c.pv < c.pv_max * 0.5)
-		for b in blesses:
-			if _distance(u.case, b.case) <= 3:
-				_attaquer(u, b, "soin")
-				await get_tree().create_timer(0.3 if not auto else 0.01).timeout
-				_fin_tour(u, 20.0)
-				return
+	for k in u.competences:
+		var cs: Dictionary = Combattant.COMPETENCES[k]
+		if cs.get("type", "") != "soin" or not u.peut_payer(cs):
+			continue
+		var blesses := _cibles(u, k).filter(func(c): return c.pv < c.pv_max * 0.5)
+		if not blesses.is_empty():
+			_attaquer(u, blesses[0], k)
+			await get_tree().create_timer(0.3 if not auto else 0.01).timeout
+			_fin_tour(u, 20.0)
+			return
 	# un allié à terre à côté : bandage
 	var a_bander := _cibles(u, "bandage")
 	if not a_bander.is_empty():
@@ -862,7 +986,7 @@ func _tour_ia(u: Combattant) -> void:
 		var comp: Dictionary = Combattant.COMPETENCES[k]
 		if comp.get("type", "attaque") != "attaque":
 			continue
-		if u.endurance >= comp.get("endurance", 0) and u.mana >= comp.get("mana", 0) and randf() < 0.5:
+		if u.peut_payer(comp) and randf() < (0.7 if comp.get("magique", false) else 0.5):
 			cle = k
 	# provoqué : il ne voit que celui qui l'a provoqué
 	var force: Combattant = u.provoque_par if u.etats.has("provoque") and u.provoque_par and u.provoque_par.en_jeu() else null

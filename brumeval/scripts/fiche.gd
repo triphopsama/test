@@ -15,6 +15,7 @@ var niveau := 1
 var xp := 0
 var points := 0
 var pv := -1
+var mana := -1                    # -1 : pleine
 var bourse := 0                   # en cuivre
 var sac := {}                     # id -> nombre
 var equipement := {}              # emplacement -> id
@@ -51,7 +52,7 @@ var objet_ailleurs := ""
 var affinites := {}               # élément -> 0..100, cachées par défaut
 var options := {"chiffres": "complet", "adulte": true, "mort_definitive": false}
 
-const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "bourse", "sac", "equipement", "drapeaux",
+const CHAMPS := ["stats", "niveau", "xp", "points", "pv", "mana", "bourse", "sac", "equipement", "drapeaux",
 	"classe", "niveau_classe", "xp_classe", "apprises", "style", "metier", "niveau_metier", "xp_metier", "heures",
 	"nom", "peuple", "lignee", "sexe", "pronoms", "age", "astre", "vie", "traits", "archetype", "caractere",
 	"valeurs", "passions", "tenue", "objet_ailleurs", "affinites", "options"]
@@ -81,6 +82,62 @@ func stats_totales() -> Dictionary:
 func pv_max() -> int:
 	var m := 1.0 + (0.15 if a("robuste") else 0.0) - (0.15 if a("fragile") else 0.0)
 	return roundi((20 + stats_totales().Vit * 8 + niveau * 4) * m)
+
+
+## combat.md : Sag × 6 + Int × 2 ; « Fermé à la magie » n'en garde que 60 %.
+func mana_max() -> int:
+	var t := stats_totales()
+	return roundi((t.Sag * 6 + t.Int * 2) * (0.6 if a("ferme_magie") else 1.0))
+
+
+func mana_actuelle() -> int:
+	return mana_max() if mana < 0 else mini(mana, mana_max())
+
+
+## L'affinité avec un élément (competences.md : 0 à 100, cachée).
+func affinite(e: String) -> int:
+	return int(affinites.get(e, Combattant.AFFINITE_PAR_DEFAUT))
+
+
+## Utiliser un élément fait monter son affinité, lentement, et baisser son opposé.
+## n : nombre de sorts lancés dans cet élément pendant un combat.
+func pratiquer_element(e: String, n: int) -> void:
+	var gain := mini(3, ceili(n / 2.0))
+	affinites[e] = mini(100, affinite(e) + gain)
+	if gain >= 2:
+		for o in Combattant.OPPOSES.get(e, []):
+			affinites[o] = maxi(0, affinite(o) - 1)
+
+
+## Ce qu'on sent de son affinité, sans chiffres (« le feu vient facilement »).
+func ressenti(e: String) -> String:
+	var a := affinite(e)
+	if a >= 60:
+		return "vient facilement, comme s'il t'attendait"
+	if a >= 40:
+		return "te répond bien"
+	if a >= 20:
+		return "répond, sans plus"
+	if a >= 10:
+		return "te résiste"
+	return "se refuse à toi"
+
+
+## Lire un parchemin : deux heures, et la compétence est apprise si on le comprend.
+func lire_parchemin(id: String) -> String:
+	var k: String = Objets.PARCHEMINS.get(id, "")
+	if k == "" or nombre(id) == 0:
+		return ""
+	var t := stats_totales()
+	var cond := Objets.conditions(id)
+	for st in cond:
+		if t[st] < cond[st]:
+			return "Les signes dansent sous tes yeux. Il faut %s %d pour les comprendre (tu as %d)." % [st, cond[st], t[st]]
+	if k in apprises:
+		return "Tu connais déjà ce sort."
+	retirer(id)
+	apprises.append(k)
+	return "Deux heures penché sur le parchemin. Puis, d'un coup, tu comprends : %s." % Combattant.COMPETENCES[k].nom
 
 
 ## Le joueur a-t-il cet avantage ou ce défaut ?

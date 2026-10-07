@@ -17,7 +17,11 @@
 #                   (un objet de data/objets.csv), « repos » (tous les PV),
 #                   « boutique » / « vente » (ouvre le marchand), « lame_sans_nom »,
 #                   « chasse_rats » (les rats géants de la cave, une fois par jour, payé si tu gagnes),
-#                   « vol_tire » (le Voleur fait les poches : réussir dépend de l'Agi et des témoins)
+#                   « vol_tire » (faire les poches : réussir dépend de l'Agi et des témoins),
+#                   « crochetage », « pistage », « piege », « plongee », « maree », « soin_magie »,
+#                   « feu_camp », « benir » : les compétences hors combat (voir _hors_combat)
+#   competence      la compétence qu'il faut avoir pour que l'action apparaisse (Combattant.COMPETENCES),
+#                   ou plusieurs au choix séparées par | ; vide : tout le monde
 #
 # Travailler, pêcher, cueillir font avancer le métier lié au lieu (data/metiers.csv) :
 # une journée (8 h) pour devenir apprenti, deux fois plus vite si le maître est là.
@@ -67,7 +71,11 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id in COMBATS and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
-		if l.id == "vol_tire" and (not "vol_tire" in monde.fiche.competences() or pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
+		if l.id == "lecon" and monde.lecons_de(pnj).is_empty():
+			continue
+		if str(l.get("competence", "")) != "" and _competence_requise(l) == "":
+			continue
+		if l.id in ["vol_tire", "benir"] and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if not choix.has(l.id) or precise:
 			choix[l.id] = l
@@ -111,6 +119,9 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne in ["boutique", "vente"]:
 		monde.fenetres.marchand(pnj, donne == "vente")
 		return
+	if donne == "lecon":
+		monde.fenetres.lecons(pnj)
+		return
 	if donne == "chasse_rats":
 		if monde.fiche.drapeaux.get("rats_jour", 0) == Horloge.jour():
 			Illustrations.montrer(l.id + "_refus", cles, "Rosalie secoue la tête : « Tu les as déjà chassés aujourd'hui. Ils reviendront demain, ils reviennent toujours. »")
@@ -124,6 +135,13 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, _remplacer(_vol_tire(pnj, texte), pnj, lieu))
 		return
+	if donne in HORS_COMBAT:
+		var t := _hors_combat(donne, l, pnj, lieu, texte)
+		if t == "":
+			return   # l'action a lancé autre chose (un combat)
+		Horloge.avancer(float(l.duree_min))
+		Illustrations.montrer(l.id, cles, _remplacer(t, pnj, lieu).strip_edges())
+		return
 	if pnj != null:
 		var effet := int(l.effet_affection)
 		if effet > 0 and monde.fiche.a("charisme"):
@@ -131,6 +149,9 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + effet, -100, 100)
 		monde.sauver_etat()
 	var gains := _donner(donne)
+	if l.id == "pecher" and Horloge.maintenant() - float(monde.fiche.drapeaux.get("maree_lue", -99999.0)) < 3 * 3600.0:
+		monde.fiche.ajouter("BRV003", 2)
+		gains += " +2 maquereaux : tu avais lu la marée."
 	var proposer := ""
 	var id_metier := Classes.metier_pour(l.id, lieu)
 	if id_metier != "":
@@ -192,7 +213,8 @@ func _donner(donne: String) -> String:
 		var n := int(m[1]) if m.size() > 1 else 1
 		if m[0] == "repos":
 			f.pv = f.pv_max()
-			r.append("Tu te sens reposé : %d/%d PV." % [f.pv, f.pv_max()])
+			f.mana = f.mana_max()
+			r.append("Tu te sens reposé : %d/%d PV, %d mana." % [f.pv, f.pv_max(), f.mana])
 		elif m[0] == "lame_sans_nom":
 			r.append(_lame_sans_nom())
 		elif Objets.existe(m[0]):
@@ -245,13 +267,152 @@ func _metier(id: String, h: float, action: String) -> String:
 	return " ".join(r)
 
 
+const HORS_COMBAT := ["crochetage", "pistage", "piege", "plongee", "maree", "soin_magie", "feu_camp", "benir"]
+
+
+## La compétence (parmi celles demandées) que le joueur sait utiliser, "" sinon.
+func _competence_requise(l: Dictionary) -> String:
+	var a: Array = monde.fiche.competences()
+	for k in str(l.get("competence", "")).split("|", false):
+		if k in a:
+			return k
+	return ""
+
+
+## Une fois par jour (par lieu ou par personne) : vrai si c'est encore possible, et le note.
+func _une_fois(cle: String) -> bool:
+	var f: Fiche = monde.fiche
+	if f.drapeaux.get(cle, -1) == Horloge.jour():
+		return false
+	f.drapeaux[cle] = Horloge.jour()
+	return true
+
+
+## Les compétences hors combat. Renvoie le texte à montrer ("" si un combat prend le relais).
+func _hors_combat(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String) -> String:
+	var f: Fiche = monde.fiche
+	var t := f.stats_totales()
+	var r := ""
+	match quoi:
+		"crochetage":
+			if not _une_fois("crochet_" + lieu):
+				return "Tu as déjà forcé cette serrure aujourd'hui. Mieux vaut ne pas tenter le sort."
+			var regards: Array = monde.temoins(20.0)
+			var chance := clampi(30 + (t.Agi - 10) * 6 - regards.size() * 15, 5, 90)
+			if randi_range(1, 100) > chance:
+				for n in regards:
+					monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 15, -100, 100)
+				monde.sauver_etat()
+				var vus: Array = regards.map(func(n): return n.donnees.nom.get_slice(" ", 0))
+				return "Le crochet ripe, la serrure tient bon (%d %%).%s" % [chance,
+					(" Et %s %s vu faire." % [", ".join(vus), "t'ont" if vus.size() > 1 else "t'a"]) if vus else ""]
+			var c := randi_range(4, 20) if lieu == "falaise" else randi_range(12, 30)
+			f.bourse += c
+			r = "%s
+
+Derrière : %s (%d %%)." % [texte, Objets.texte_prix(c), chance]
+			if lieu == "comptoir":
+				r += " L'argent de Silas. S'il l'apprend, il ne pardonnera pas."
+		"pistage":
+			if not _une_fois("pistage_" + lieu):
+				return "Tu as déjà suivi toutes les traces fraîches d'ici aujourd'hui."
+			var chance := clampi(40 + (t.Per - 8) * 6, 10, 95)
+			if randi_range(1, 100) > chance:
+				return "%s
+
+Les traces se mêlent et se perdent dans les fougères (%d %%)." % [texte, chance]
+			var bete := "sanglier" if lieu == "landes" or randf() < 0.35 else "loup"
+			var p: Vector2 = monde.joueur.pos2d() + Vector2(3, 3)
+			monde.attaque_de_betes(bete, 1, p, "%s
+
+Une piste fraîche : %s. Tu le trouves avant qu'il ne te trouve (%d %%)." % [
+				texte, "un sanglier, seul" if bete == "sanglier" else "un loup isolé", chance], {"betes": bete})
+			return ""
+		"piege":
+			var pose: int = f.drapeaux.get("piege_" + lieu, -1)
+			if pose < 0:
+				f.drapeaux["piege_" + lieu] = Horloge.jour()
+				r = "Tu tends deux collets sur les passages de bêtes, bien cachés sous les feuilles. Reviens demain."
+			elif pose == Horloge.jour():
+				r = "Tes collets sont posés. Ils ont besoin d'une nuit."
+			else:
+				f.drapeaux.erase("piege_" + lieu)
+				var chance := clampi(45 + (t.Int - 8) * 5, 10, 90)
+				if randi_range(1, 100) <= chance:
+					var prise := "BRV021" if randf() < 0.4 else "OBJ407"
+					f.ajouter(prise)
+					r = "Un des collets a pris : %s (%d %%)." % [Objets.get_(prise).nom.to_lower(), chance]
+				else:
+					r = "Les collets sont vides, l'un est rongé. Un renard plus malin que toi (%d %%)." % chance
+		"plongee":
+			if not _une_fois("plongee_" + lieu):
+				return "Tu as déjà fouillé le fond ici aujourd'hui. Le froid te rentre dans les os."
+			var c := randi_range(2, 10)
+			f.bourse += c
+			r = "%s
+
+Tu remontes %s de pièces verdies." % [texte, Objets.texte_prix(c)]
+			if randf() < 0.2:
+				f.ajouter("BRV020")
+				r += " Et une vieille carapace de crabe-rocher, vide."
+		"maree":
+			var bm: Array = Horloge.basses_mers()
+			f.drapeaux["maree_lue"] = Horloge.maintenant()
+			r = "%s
+
+Basse mer à %s, puis à %s. Les poissons monteront avec le flot : pêche dans les trois heures, ça mordra." % [
+				texte, Horloge.texte_heure(bm[0]), Horloge.texte_heure(fposmod(bm[1], 24.0))]
+		"soin_magie":
+			var k := _competence_requise(l)
+			var comp: Dictionary = Combattant.COMPETENCES[k]
+			var cout := int(comp.get("mana", 0))
+			if f.mana_actuelle() < cout:
+				return "Pas assez de mana (%d, il en faut %d). Dors, ou attends une heure." % [f.mana_actuelle(), cout]
+			f.mana = f.mana_actuelle() - cout
+			var soin := roundi(comp.soin * t[comp.stat] * (1.0 + maxf(0, f.affinite("lumière") - 50) / 100.0 if comp.has("element") else 1.0))
+			if pnj == null:
+				var avant := f.pv
+				f.pv = mini(f.pv_max(), f.pv + soin)
+				r = "%s : tes plaies se referment, +%d PV (%d/%d)." % [comp.nom, f.pv - avant, f.pv, f.pv_max()]
+			elif not _une_fois("soin_" + pnj.id):
+				r = "Tu as déjà soigné {nom} aujourd'hui. Ses bobos attendront demain."
+			else:
+				var gain := 4
+				r = "%s : tu poses les mains sur {nom}. Les petites douleurs s'en vont, {nom} te regarde autrement." % comp.nom
+				if pnj.id == "BRU002":
+					gain = 10   # ses mains qui tremblent, qu'il cache à tout le monde
+					r = "%s : tu prends les mains de Bram. Elles tremblent. Sous la chaleur du sort, elles se calment un moment. Il retire les siennes, gêné : « T'as rien vu. »" % comp.nom
+				monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + gain, -100, 100)
+				monde.sauver_etat()
+			if cout > 0:
+				r += " (−%d mana)" % cout
+		"feu_camp":
+			if not _une_fois("feu_camp"):
+				return "Tu as déjà fait un feu aujourd'hui. Le bois sec manque."
+			var avant := f.pv
+			f.pv = mini(f.pv_max(), f.pv + maxi(1, f.pv_max() / 4))
+			f.pratiquer_element("feu", 1)
+			r = "%s Tu te réchauffes une heure : +%d PV (%d/%d)." % [texte, f.pv - avant, f.pv, f.pv_max()]
+		"benir":
+			if f.mana_actuelle() < 6:
+				return "Pas assez de mana pour bénir (il en faut 6)."
+			if not _une_fois("benir_" + pnj.id):
+				return "Tu as déjà béni {nom} aujourd'hui."
+			f.mana = f.mana_actuelle() - 6
+			var pieux := str(pnj.donnees.get("traits", "")).contains("pieux +")
+			var gain := 6 if pieux else 2
+			monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + gain, -100, 100)
+			monde.sauver_etat()
+			r = "Tu traces le signe de la Pâle sur le front de {nom}. %s" % ("Ses yeux brillent : « Que les Astres te le rendent. »" if pieux else "{nom} hausse les épaules, mais ne dit pas non.")
+	f.sauver()
+	return r
+
+
 ## Vol à la tire : Agi contre les regards. Une fois par jour et par personne.
 func _vol_tire(pnj: Node, texte: String) -> String:
 	var f: Fiche = monde.fiche
-	var cle: String = "vol_" + pnj.id
-	if f.drapeaux.get(cle, -1) == Horloge.jour():
+	if not _une_fois("vol_" + pnj.id):
 		return "{nom} garde la main sur sa bourse aujourd'hui. Pas deux fois le même jour."
-	f.drapeaux[cle] = Horloge.jour()
 	var regards: Array = monde.temoins(15.0).filter(func(n): return n != pnj)
 	var chance := clampi(40 + (f.stats_totales().Agi - 8) * 5 - regards.size() * 10, 10, 90)
 	if randi_range(1, 100) <= chance:

@@ -558,8 +558,10 @@ func _regenerer() -> void:
 		return
 	var heures := floori((t - _derniere_regen) / 3600.0)
 	_derniere_regen += heures * 3600.0
-	if fiche.pv < fiche.pv_max():
+	if fiche.pv < fiche.pv_max() or fiche.mana_actuelle() < fiche.mana_max():
 		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
+		# la mana revient plus vite que le sang : un quart par heure
+		fiche.mana = mini(fiche.mana_max(), fiche.mana_actuelle() + maxi(1, fiche.mana_max() / 4) * heures)
 		fiche.sauver()
 
 
@@ -779,6 +781,20 @@ func temoins(d: float = 30.0) -> Array:
 
 # ---------------------------------------------------------------- combats
 
+## Ce qu'un PNJ peut t'apprendre : les compétences qu'il sait utiliser (sa classe, à son
+## niveau), que tu n'as pas encore. Les enfants n'enseignent pas.
+func lecons_de(n: Node) -> Array:
+	if n == null or int(n.donnees.get("age", "0")) < 18:
+		return []
+	var c := Combattant.depuis_pnj(n.donnees, n)
+	var connues: Array = fiche.competences(true)
+	var r := []
+	for k in Classes.competences_jusqua(Classes.par_nom(str(n.donnees.get("classe", ""))), c.niveau):
+		if k in c.competences and not k in connues and not k in r and not k in Fiche.DE_BASE:
+			r.append(k)
+	return r
+
+
 func _pnj_par_id(id: String) -> Node:
 	for n in pnjs:
 		if n.id == id:
@@ -959,6 +975,11 @@ func _apres_combat(resultat: String, contexte: Dictionary, allies: Array, ennemi
 	var lignes := []
 	var moi: Combattant = allies[0]
 	fiche.pv = maxi(1, moi.pv) if not (moi.a_terre or moi.mort) else maxi(1, fiche.pv_max() / 4)
+	fiche.mana = moi.mana
+	# lancer un élément le fait monter (competences.md : l'affinité bouge avec la vie)
+	for tag in moi.style:
+		if tag.begins_with("magie_"):
+			fiche.pratiquer_element(tag.trim_prefix("magie_"), moi.style[tag])
 	var bagarre: bool = contexte.mode == "bagarre"
 	# l'expérience : vaincre plus fort que soi rapporte beaucoup, écraser plus faible presque rien
 	# perdre apprend aussi quelque chose : un quart de l'expérience

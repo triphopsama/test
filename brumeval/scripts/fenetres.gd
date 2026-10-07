@@ -3,7 +3,7 @@
 extends CanvasLayer
 
 var monde: Node3D
-var ouvert := ""                  # "", "sac", "perso", "marchand", "offre"
+var ouvert := ""                  # "", "sac", "perso", "marchand", "offre", "lecon"
 var _panneau: PanelContainer
 var _titre: Label
 var _entete: Label
@@ -173,6 +173,13 @@ func _choisir_objet(id: String) -> void:
 	var msg := ""
 	if o.type == "consommable":
 		msg = f.utiliser(id)
+	elif o.type == "parchemin":
+		msg = f.lire_parchemin(id)
+		if msg.begins_with("Deux heures"):
+			Horloge.avancer(120.0)
+	elif id == Objets.PIERRE_AFFINITE:
+		f.drapeaux["affinites_lues"] = true
+		msg = "La pierre tiédit, puis chauffe sous certains doigts plus que d'autres. Tu sais maintenant (C : le personnage)."
 	elif f.equipe(id):
 		msg = f.desequiper(id)
 		if msg == "":
@@ -236,6 +243,14 @@ func personnage() -> void:
 		var m := Classes.metier(f.metier)
 		for p in m.competences:
 			_ligne("Métier · %s%s" % [p[0], "" if f.niveau_metier >= p[1] else " (niveau %d)" % p[1]], func(): pass, m.description)
+	# la magie : la mana, et ce qu'on sent de ses affinités (les chiffres avec une pierre d'affinité)
+	_ligne("Mana · %d / %d" % [f.mana_actuelle(), f.mana_max()], func(): pass, "Sag × 6 + Int × 2. Revient d'un quart par heure, en entier en dormant.")
+	var lues: bool = f.drapeaux.get("affinites_lues", false)
+	for e in Combattant.OPPOSES:
+		if lues:
+			_ligne("Affinité · %s : %d" % [e, f.affinite(e)], func(): pass, "Lue à la pierre d'affinité. Au-dessus de 50, tes sorts de %s sont plus forts et coûtent moins ; sous 20, plus faibles." % e)
+		elif f.style.has("magie_" + e):
+			_ligne("Affinité · le %s %s" % [e, f.ressenti(e)], func(): pass, "Ce que tu sens en lançant des sorts de %s. Une pierre d'affinité dirait les vrais chiffres." % e)
 
 
 func _manque(c: Dictionary, t: Dictionary) -> String:
@@ -266,6 +281,60 @@ func _detail_classe(id: String) -> String:
 	var c := Classes.classe(id)
 	var comps: Array = c.competences.map(func(p): return "%s (niv. %d)" % [Combattant.COMPETENCES[p[0]].nom, p[1]])
 	return "%s\nFavorites : %s · Compétences : %s\nÉvolutions : %s" % [c.description, ", ".join(c.favorites), ", ".join(comps), c.evolutions]
+
+
+# ---------------------------------------------------------------- les leçons
+
+## Ce qu'un PNJ peut t'apprendre, et à quel prix : 3 argent pour une compétence de début
+## de classe, 6 au-delà ; moitié prix s'il t'apprécie (40), rien s'il t'aime bien (70).
+func prix_lecon(pnj: Node, k: String) -> int:
+	var id_classe := Classes.par_nom(str(pnj.donnees.get("classe", "")))
+	var niveau := 1
+	for p in Classes.classe(id_classe).get("competences", []):
+		if p[0] == k:
+			niveau = p[1]
+	var p := 36 if niveau <= 1 else 72
+	var aff: int = monde.relations.get(pnj.id, 0)
+	if aff >= 70:
+		return 0
+	return p / 2 if aff >= 40 else p
+
+
+func lecons(pnj: Node) -> void:
+	_marchand = pnj
+	if ouvert != "lecon":
+		_ouvrir("lecon")
+	var f: Fiche = monde.fiche
+	_titre.text = "Leçons de %s" % pnj.donnees.nom
+	_entete.text = "Ce que %s veut bien t'apprendre. Une leçon dure deux heures. Bourse : %s." % [pnj.donnees.nom.get_slice(" ", 0), Objets.texte_prix(f.bourse)]
+	_vider()
+	var t := f.stats_totales()
+	for k in monde.lecons_de(pnj):
+		var c: Dictionary = Combattant.COMPETENCES[k]
+		var prix := prix_lecon(pnj, k)
+		var manque := ""
+		for st in c.get("cond", {}):
+			if t[st] < c.cond[st]:
+				manque = "il te faut %s %d" % [st, c.cond[st]]
+		var texte := "%s · %s" % [c.nom, "gratuit" if prix == 0 else Objets.texte_prix(prix)]
+		if manque != "":
+			texte += " (%s)" % manque
+		_ligne(texte, _apprendre.bind(pnj, k), _detail_comp(k), manque == "" and f.bourse >= prix)
+	if _liste.get_child_count() == 0:
+		_detail.text = "Tu sais déjà tout ce que %s pourrait t'apprendre." % pnj.donnees.nom.get_slice(" ", 0)
+
+
+func _apprendre(pnj: Node, k: String) -> void:
+	var f: Fiche = monde.fiche
+	var prix := prix_lecon(pnj, k)
+	f.bourse -= prix
+	f.apprises.append(k)
+	monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + 2, -100, 100)
+	Horloge.avancer(120.0)
+	f.sauver()
+	monde.sauver_etat()
+	lecons(pnj)
+	_message.text = "Deux heures avec %s. Tu sais maintenant : %s." % [pnj.donnees.nom.get_slice(" ", 0), Combattant.COMPETENCES[k].nom]
 
 
 # ---------------------------------------------------------------- classes et métiers

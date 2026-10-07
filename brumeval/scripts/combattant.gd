@@ -96,25 +96,79 @@ const COMPETENCES := {
 	"vol_tire": {"nom": "Vol à la tire", "type": "hors_combat", "cond": {"Agi": 8},
 		"desc": "Dans le village : « Voler à la tire » sur quelqu'un. Réussir dépend de ton Agi ; être pris, de ceux qui regardent."},
 	"crochetage": {"nom": "Crochetage", "type": "hors_combat", "cond": {"Agi": 10},
-		"desc": "Ouvrir les serrures (quand les maisons auront des intérieurs)."},
+		"desc": "« Crocheter une serrure » à la maison de la falaise ou au comptoir de Silas, une fois par jour. Agi, et gare aux témoins."},
 	# Éclaireur
 	"camouflage": {"nom": "Camouflage", "type": "soi", "endurance": 4, "etat_soi": "cache", "duree": 2, "cond": {"Agi": 8},
 		"desc": "Disparaître : on ne peut plus te viser de loin, et ton prochain coup compte comme dans le dos."},
 	"course_longue": {"nom": "Course longue", "type": "passif", "cond": {"End": 10},
 		"desc": "+1 case de déplacement."},
 	"pistage": {"nom": "Pistage", "type": "hors_combat", "cond": {"Per": 8},
-		"desc": "Suivre des traces (pas encore en jeu)."},
+		"desc": "« Suivre des traces » dans le bois ou les landes : tu trouves un loup isolé ou un sanglier avant qu'il ne te trouve (Per)."},
 	# Chasseur de monstres
 	"point_faible": {"nom": "Point faible", "mult": 1.2, "stat": "Per", "endurance": 5, "crit": 15, "vs_betes": true, "cond": {"Per": 12},
 		"desc": "Contre une bête : 1,2 × Per, sa défense compte moitié, +15 % de critique."},
 	"trophee": {"nom": "Trophée", "type": "passif",
 		"desc": "+25 % d'expérience contre les bêtes."},
 	"piege": {"nom": "Piège", "type": "hors_combat", "cond": {"Int": 8},
-		"desc": "Poser des pièges (pas encore en jeu)."},
+		"desc": "« Poser ou relever des pièges » dans le bois : des collets aujourd'hui, de la viande ou une peau demain (Int)."},
 	# Rôdeur
 	"soin_bois": {"nom": "Soin des bois", "type": "soin", "soin": 1.0, "stat": "Sag", "endurance": 6, "portee": 1, "cond": {"Sag": 8},
-		"desc": "Des herbes sur la plaie : soigne un allié à côté (ou toi) de 1,0 × Sag."},
+		"desc": "Des herbes sur la plaie : soigne un allié à côté (ou toi) de 1,0 × Sag. Marche aussi hors combat."},
+
+	# ---- la magie (combat.md : les sorts touchent toujours ; dégâts = mult × stat × affinité,
+	# réduits par la défense magique, multipliés par le facteur élémentaire de la cible)
+	# Mage élémentaire
+	"flamme": {"nom": "Flamme", "magique": true, "element": "feu", "mult": 1.0, "stat": "Int", "mana": 4, "portee": 4,
+		"etat": "brulure", "resiste": "Vit", "desc": "Une flamme dans la paume, lancée à 4 cases : 1,0 × Int de feu, peut brûler. Hors combat : « Faire un feu de camp » (+25 % PV, une fois par jour)."},
+	"bourrasque": {"nom": "Bourrasque", "magique": true, "element": "air", "mult": 0.7, "stat": "Int", "mana": 6, "portee": 3, "cond": {"Int": 8},
+		"etat": "renverse", "resiste": "For", "desc": "Un coup de vent : 0,7 × Int d'air à 3 cases, renverse (contre For)."},
+	"boule_feu": {"nom": "Boule de feu", "magique": true, "element": "feu", "mult": 1.3, "stat": "Int", "mana": 10, "portee": 5, "zone": 1, "cond": {"Int": 10},
+		"etat": "brulure", "resiste": "Vit", "desc": "1,3 × Int de feu sur la cible et tout ce qui la touche, peut brûler."},
+	"eclat_glace": {"nom": "Éclat de glace", "magique": true, "element": "glace", "mult": 1.1, "stat": "Int", "mana": 7, "portee": 5, "cond": {"Int": 10},
+		"etat": "gel", "resiste": "Rob", "desc": "1,1 × Int de glace à 5 cases, peut geler (déplacement −2, vitesse −30 %)."},
+	# Mage de soin
+	"soin_leger": {"nom": "Soin léger", "type": "soin", "magique": true, "element": "lumière", "soin": 1.5, "stat": "Sag", "mana": 6, "portee": 3, "cond": {"Sag": 8},
+		"desc": "Soigne un allié à 3 cases (ou toi) de 1,5 × Sag. Hors combat : se soigner, ou soigner quelqu'un (il t'en sait gré)."},
+	"purification": {"nom": "Purification", "type": "purifier", "magique": true, "element": "lumière", "stat": "Sag", "mana": 6, "portee": 3, "cond": {"Sag": 10},
+		"desc": "Chasse brûlure, gel, poison, saignement, aveuglement et malédiction d'un allié à 3 cases."},
+	"soin_groupe": {"nom": "Soin de groupe", "type": "soin", "magique": true, "element": "lumière", "soin": 1.0, "stat": "Sag", "mana": 14, "zone_soi": 2, "cond": {"Sag": 14},
+		"desc": "Soigne tous les alliés à 2 cases de toi (et toi) de 1,0 × Sag."},
+	# Mage de l'eau et des marées
+	"vague": {"nom": "Vague", "magique": true, "element": "eau", "mult": 0.9, "stat": "Int", "mana": 8, "portee": 4, "zone": 1, "cond": {"Sag": 10},
+		"etat": "mouille", "desc": "0,9 × Int d'eau sur la cible et autour : mouillés (feu ×0,5, foudre ×1,5), les brûlures s'éteignent."},
+	"respiration_eau": {"nom": "Respiration sous l'eau", "type": "hors_combat", "cond": {"Sag": 8}, "desc": "« Plonger » à la crique ou au port : des pièces perdues, parfois une carapace."},
+	"lire_maree": {"nom": "Lire la marée", "type": "hors_combat", "cond": {"Per": 8}, "desc": "« Lire la marée » sur la côte : l'heure des basses mers, et une pêche meilleure dans les trois heures."},
+	# Prêtre de combat
+	"lumiere_pale": {"nom": "Lumière de la Pâle", "magique": true, "element": "lumière", "mult": 1.2, "stat": "Sag", "mana": 8, "portee": 4, "cond": {"Sag": 10},
+		"etat": "aveugle", "resiste": "Per", "desc": "1,2 × Sag de lumière à 4 cases, peut aveugler (−40 % pour toucher)."},
+	"benediction": {"nom": "Bénédiction", "type": "allies", "magique": true, "element": "lumière", "zone": 2, "mana": 6, "etat_allies": "inspire", "duree": 3, "cond": {"Sag": 8},
+		"desc": "Les alliés à 2 cases sont inspirés : +10 % pour toucher pendant 3 tours. Hors combat : « Bénir » quelqu'un (les pieux adorent)."},
+	"masse_sainte": {"nom": "Masse sainte", "mult": 1.0, "stat": "For", "endurance": 6, "cond": {"For": 8}, "element_bonus": "lumière",
+		"desc": "Une frappe bénie : 1,0 × For, plus 0,3 × Sag de lumière."},
+	# Envoûteur
+	"malediction": {"nom": "Malédiction de faiblesse", "type": "maudire", "magique": true, "element": "mort", "stat": "Int", "mana": 6, "portee": 4,
+		"etat": "affaibli", "resiste": "Vol", "cond": {"Int": 10}, "desc": "La cible ne fait plus que 70 % de ses dégâts pendant 3 tours (Vol contre Int)."},
+	"mauvais_oeil": {"nom": "Mauvais œil", "type": "maudire", "magique": true, "element": "ombre", "stat": "Vol", "mana": 5, "portee": 4,
+		"etat": "aveugle", "resiste": "Vol", "cond": {"Vol": 10}, "desc": "Un regard qui porte malheur : la cible est aveuglée 2 tours (Vol contre Vol)."},
+	"poupee": {"nom": "Poupée", "type": "hors_combat", "cond": {"Int": 14}, "desc": "Maudire quelqu'un à distance avec une poupée et un cheveu (plus tard)."},
+	# Enchanteur
+	"arme_enflammee": {"nom": "Arme enflammée", "type": "soi", "magique": true, "element": "feu", "mana": 8, "etat_soi": "arme_feu", "duree": 3, "cond": {"Int": 10},
+		"desc": "Ton arme brûle 3 tours : chaque coup ajoute 0,5 × Int de feu."},
+	"rune_garde": {"nom": "Rune de garde", "type": "allies", "magique": true, "element": "terre", "zone": 1, "mana": 8, "etat_allies": "rune", "duree": 3, "cond": {"Int": 12},
+		"desc": "Une rune sur toi et les alliés collés à toi : +10 de défense pendant 3 tours."},
+	"lien_objet": {"nom": "Lien d'objet", "type": "hors_combat", "cond": {"Sag": 10}, "desc": "Lier un objet à soi : il revient à ta main (plus tard)."},
 }
+
+## Les 12 éléments et leurs opposés (competences.md).
+const OPPOSES := {"feu": ["eau", "glace"], "eau": ["feu"], "glace": ["feu"], "terre": ["air"], "air": ["terre"],
+	"foudre": ["terre"], "lumière": ["ombre"], "ombre": ["lumière"], "nature": ["mort"], "mort": ["nature", "lumière"],
+	"sang": ["lumière"], "esprit": []}
+const AFFINITE_PAR_DEFAUT := 20
+## Durée des états (en tours du porteur).
+const DUREES := {"saignement": 99, "etourdi": 1, "renverse": 2, "brulure": 3, "gel": 3, "mouille": 3, "aveugle": 2, "affaibli": 3}
+const NOMS_ETATS := {"renverse": "renversé", "etourdi": "étourdi", "saignement": "en sang", "brulure": "en feu", "gel": "gelé",
+	"mouille": "trempé", "aveugle": "aveuglé", "affaibli": "affaibli"}
+const ETATS_NEFASTES := ["brulure", "gel", "saignement", "poison", "aveugle", "affaibli", "etourdi"]
 
 ## La riposte, qui n'est pas dans le menu.
 const RIPOSTE := {"nom": "riposte", "mult": 1.0, "stat": "Agi"}
@@ -159,6 +213,8 @@ var noeud: Node3D
 var style := {}              # ce que le joueur a fait pendant le combat (pour lui proposer une classe)
 var utilise := {}            # compétences une fois par combat déjà servies
 var provoque_par: Combattant = null
+var affinites := {}          # élément -> 0..100
+var elements := {}           # bêtes : élément -> facteur de dégâts reçus (bestiaire)
 
 
 ## La catégorie d'une arme d'après son nom et sa portée : dague, arc, lance, poings ou for.
@@ -192,6 +248,43 @@ static func peut_utiliser(k: String, s: Dictionary, arme: Dictionary, bouclier: 
 			return bouclier > 0
 		var cat:
 			return categorie_arme(arme) == cat
+
+
+func affinite(e: String) -> int:
+	return int(affinites.get(e, AFFINITE_PAR_DEFAUT))
+
+
+## Puissance d'un sort selon l'affinité du lanceur : +1 % par point au-dessus de 50, −1 % sous 20.
+func bonus_affinite(e: String) -> float:
+	var a := affinite(e)
+	return 1.0 + maxf(0, a - 50) / 100.0 - maxf(0, 20 - a) / 100.0
+
+
+## Ce que coûte une compétence en mana : moins dans un élément aimé, double sous 10 d'affinité.
+func cout_mana(comp: Dictionary) -> int:
+	var m := int(comp.get("mana", 0))
+	if m == 0 or not comp.has("element"):
+		return m
+	var a := affinite(comp.element)
+	if a < 10:
+		return m * 2
+	return maxi(1, roundi(m * (1.0 - maxf(0, a - 50) / 200.0)))
+
+
+## Ce que la cible prend d'un élément : les bêtes selon le bestiaire ; les gens résistent à leurs
+## éléments forts (−0,5 % par point) et craignent l'opposé de ceux à 60 et plus (+25 %).
+func facteur_element(e: String) -> float:
+	if est_bete:
+		return float(elements.get(e, 1.0))
+	var f := 1.0 - affinite(e) * 0.005
+	for fort in affinites:
+		if int(affinites[fort]) >= 60 and e in OPPOSES.get(fort, []):
+			f += 0.25
+	return maxf(0.0, f)
+
+
+func peut_payer(comp: Dictionary) -> bool:
+	return endurance >= int(comp.get("endurance", 0)) and mana >= cout_mana(comp)
 
 
 func a_comp(k: String) -> bool:
@@ -230,6 +323,10 @@ static func depuis_pnj(d: Dictionary, n: Node3D) -> Combattant:
 	for s in STATS:
 		c.stats[s] = int(d.get(s, "6"))
 	c.niveau = maxi(1, int(d.get("niveau_classe", "1")))
+	for morceau in str(d.get("affinites_fortes", "")).split(",", false):
+		var m := morceau.strip_edges().split(" ", false)
+		if m.size() == 2 and m[1].is_valid_int():
+			c.affinites[m[0]] = int(m[1])
 	var classe := str(d.get("classe", "")).to_lower()
 	if classe.contains("archer"):
 		c.arme = ARMES.arc
@@ -281,14 +378,14 @@ static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 		if o.get("type", "") == "arme":
 			c.arme = {"nom": o.nom, "degats": int(o.degats), "portee": int(o.portee), "stat": o.stat, "crit": int(o.crit), "objet": o.id}
 	c.competences = f.competences()
+	c.affinites = f.affinites.duplicate()
 	c._calculer()
+	c.mana_max = f.mana_max()
+	c.mana = f.mana_actuelle()
 	c.pv_max = f.pv_max()
 	c.pv = clampi(f.pv, 1, c.pv_max)
 	if f.a("rapide"):
 		c.vitesse += 3
-	if f.a("ferme_magie"):
-		c.mana_max = int(c.mana_max * 0.6)
-		c.mana = c.mana_max
 	c.bonus_toucher = 5 if f.vie == "soldat" else 0
 	c.bonus_distance = (10 if f.a("tireur") else 0) - (10 if f.a("mauvaise_vue") and not f.equipe("BRV014") else 0)
 	c.increvable = f.a("increvable")
@@ -302,9 +399,9 @@ static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 const BETES := {
 	"loup": {"nom": "Loup gris", "niveau": 2, "arme": "crocs", "competences": ["morsure"], "planche": "res://sprites/loup_planche.png",
 		"stats": {"For": 6, "Agi": 9, "End": 7, "Vit": 3, "Rob": 4, "Int": 1, "Sag": 2, "Per": 9, "Vol": 3}},
-	"rat": {"nom": "Rat géant", "niveau": 1, "arme": "dents", "competences": [], "planche": "res://sprites/rat_planche.png",
+	"rat": {"nom": "Rat géant", "niveau": 1, "arme": "dents", "competences": [], "planche": "res://sprites/rat_planche.png", "elements": {"feu": 1.5, "lumière": 1.25},
 		"stats": {"For": 3, "Agi": 7, "End": 4, "Vit": 1, "Rob": 2, "Int": 1, "Sag": 1, "Per": 6, "Vol": 2}},
-	"crabe": {"nom": "Crabe-rocher", "niveau": 2, "arme": "pinces", "competences": [], "armure": 10, "ventre_mou": true,
+	"crabe": {"nom": "Crabe-rocher", "niveau": 2, "arme": "pinces", "competences": [], "armure": 10, "ventre_mou": true, "elements": {"foudre": 1.5, "eau": 0.5, "feu": 0.75},
 		"planche": "res://sprites/crabe_planche.png",
 		"stats": {"For": 6, "Agi": 3, "End": 6, "Vit": 5, "Rob": 12, "Int": 1, "Sag": 1, "Per": 5, "Vol": 4}},
 	"sanglier": {"nom": "Sanglier des ronces", "niveau": 3, "arme": "defenses", "competences": ["charge"], "planche": "res://sprites/sanglier_planche.png",
@@ -325,6 +422,7 @@ static func bete(type: String, i: int, n: Node3D) -> Combattant:
 	c.competences = b.competences.duplicate()
 	c.def_phys = b.get("armure", 0)
 	c.ventre_mou = b.get("ventre_mou", false)
+	c.elements = b.get("elements", {})
 	c._calculer()
 	return c
 
@@ -344,4 +442,10 @@ func etat_texte() -> String:
 		return "hors du combat"
 	if a_terre:
 		return "stabilisé" if stable else "à terre (%d tours)" % tours_saignement
-	return "%d/%d PV" % [pv, pv_max]
+	var t := "%d/%d PV" % [pv, pv_max]
+	if est_joueur and mana_max > 0:
+		t += " · %d/%d mana" % [mana, mana_max]
+	var visibles: Array = etats.keys().filter(func(e): return NOMS_ETATS.has(e)).map(func(e): return NOMS_ETATS[e])
+	if not visibles.is_empty():
+		t += " · " + ", ".join(visibles)
+	return t
