@@ -139,6 +139,15 @@ D'après `univers.md` (« Désir et sexualité »). Désactivable à la créatio
   - Récompenses et pénalités : affection, cuivre, objet, leçon gratuite, Art d'aimer, et `pacte maitre` (il te propose un pacte où tu mènes, si son profil le veut aussi).
 - **« T'entraîner »** : une heure de compétences par jour (+15 expérience), un combat d'entraînement contre quelqu'un de ton équipe (à mains nues, personne ne t'en veut), ou une pratique à deux avec un partenaire consentant (l'Art d'aimer monte).
 
+## Vesperine, la nuit du jour 1
+
+D'après `monde/demons/vesperine.md` et la chronique du jour 1 avec le joueur (`scripts/vesperine.gd`).
+
+- **21 h 30**, elle échoue sa barque à la Bouche de mer, épuisée ; **21 h 45** elle mange des algues ; **22 h 30** elle longe la falaise ; **23 h 10** elle descend vers la crique ; **23 h 20** Silas la voit ; **23 h 30** la drogue et le collier. Sans toi, elle est capturée et vendue à Pierrefane : elle disparaît du jeu, et rien d'intime n'est possible avec une captive.
+- **La nourrir** (un pain ou un poisson) : elle lit ce que tu lui veux (si ton désir est trop fort, elle garde ses distances). **La guider chez Agnès** (affection 20) : la crique n'a jamais lieu.
+- **À la crique, si tu y es à 23 h 20** : intervenir en parlant (Int + Per), faire diversion (Agi), te battre contre Silas (niveau 18), ou regarder caché. Lucas, qui refuse d'y toucher, t'en sait gré si tu la sauves.
+- **Libre**, elle vit cachée (chez Agnès, la falaise, le bois, la pointe du Guet le soir). Tant qu'elle a faim et peur, rien d'intime. Nourrie et en sécurité, c'est une adulte libre : succube, libido 95, elle aime l'audace et les jeux de pouvoir. Son défi : **« cinq fois cette nuit »** ; relevé, elle te propose un pacte où tu mènes.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

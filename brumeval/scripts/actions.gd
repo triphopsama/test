@@ -77,6 +77,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if l.id == "defis" and (pnj == null or (Defis.de(monde, pnj).is_empty() and not monde.fiche.defis_actifs.keys().any(func(id): return Defis.tous()[id].pnj == pnj.id))):
 			continue
+		if l.id == "guider" and not (Horloge.jour() == 1 and Vesperine.etat(monde) in ["", "a_la_crique"]):
+			continue
 		if l.id == "suivre" and (pnj == null or pnj.suit or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
 			continue
 		if l.id in ["laisser", "habiller"] and (pnj == null or not pnj.suit):
@@ -157,6 +159,10 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		return
 	if donne == "lecon":
 		monde.fenetres.lecons(pnj)
+		return
+	if donne in ["v_nourrir", "v_guider"]:
+		Horloge.avancer(float(l.duree_min))
+		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))
 		return
 	if donne == "defis":
 		monde.fenetres.defis(pnj)

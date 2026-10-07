@@ -101,6 +101,8 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 	if p.is_empty() or not m.actions.intime_possible(pnj):
 		return "%s n'est pas de ceux-là, ou pas ici, pas maintenant." % nom
 	var f: Fiche = m.fiche
+	if str(pnj.donnees.get("detresse", "0")) == "1":
+		return "%s a faim, a peur, n'a nulle part où aller. Ce n'est pas le moment, et tu le sais." % nom
 	if not attire_par(p, f):
 		return "%s te sourit, mais pas comme ça. Tu ne l'attires pas." % nom
 	var aff: int = m.relations.get(pnj.id, 0)

@@ -19,7 +19,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	print("== Données")
 	ok(monde.lieux.size() == 28, "28 lieux (%d)" % monde.lieux.size())
-	ok(monde.pnjs.size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
+	ok(monde.pnjs.filter(func(n): return n.id != Vesperine.ID).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
 	ok(monde.actions.lignes.size() >= 10, "actions lues (%d)" % monde.actions.lignes.size())
 	ok(monde.praticable(monde.lieux.reveil.pos), "on peut marcher à la clairière du réveil")
 	ok(not monde.praticable(Vector2(50, 600)), "on ne marche pas sur la mer")
@@ -186,6 +186,7 @@ func _ready() -> void:
 	await _magie(mara)
 	await _intime()
 	await _defis()
+	await _vesperine()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -553,7 +554,7 @@ func _intime() -> void:
 	print("== Intime (adultes consentants)")
 	var f := Fiche.new()
 	monde.fiche = f
-	ok(Intime.profils().size() == 20 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "20 profils d'adultes, aucun pour Tim et Nina")
+	ok(Intime.profils().size() == 21 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "21 profils d'adultes (avec Vesperine), aucun pour Tim et Nina")
 	ok(Intime.gestes().size() >= 15, "%d gestes de scène" % Intime.gestes().size())
 	# personne d'autre autour : pas de témoins
 	var caches := []
@@ -792,6 +793,65 @@ func _defis() -> void:
 	ok(Defis.entrainer_competences(monde).contains("déjà"), "une fois par jour")
 	monde.combat_auto = false
 	for id in ["BRU002", "BRU012", "BRU013", "BRU020"]:
+		monde.relations[id] = 0
+	monde.sauver_etat()
+	monde.fiche = Fiche.new()
+	Horloge.avancer(-float(Horloge._decalage) / 60.0)
+
+
+func _vesperine() -> void:
+	print("== Vesperine")
+	var f := Fiche.new()
+	monde.fiche = f
+	f.drapeaux["vesperine"] = "libre"
+	Vesperine.installer(monde)
+	var v: Node = Vesperine.noeud(monde)
+	ok(v != null and Vesperine.etat(monde) == "libre", "libre, elle est au village")
+	if v == null:
+		return
+	var caches := []
+	for n in monde.pnjs:
+		if n.visible and n != v:
+			caches.append(n)
+			n.visible = false
+	v.visible = true
+	v.donnees.detresse = "1"
+	monde.joueur.position = v.position + Vector3(1, 0, 0)
+	monde.relations[Vesperine.ID] = 95
+	ok(Intime.consentement(monde, v, "nuit").contains("faim"), "affamée et apeurée : rien d'intime, même à 95 d'affection")
+	f.desir = 20
+	ok(Vesperine.nourrir(monde).contains("dévore") and v.donnees.detresse == "0", "nourrie et en sécurité : la détresse s'efface")
+	ok(Intime.consentement(monde, v, "nuit") == "", "libre et nourrie, elle dit oui si elle le veut")
+	ok(Defis.de(monde, v).any(func(d): return d.id == "vesperine_cinq"), "elle te lance son défi : cinq fois cette nuit")
+	var sc := Intime.nouvelle_scene(monde, [v], "agnes")
+	sc["defi"] = {"defi": "vesperine_cinq", "fois": 5, "pnj": Vesperine.ID}
+	for i in 80:
+		Intime.jouer(monde, sc, "amour_passion")
+		if sc.fini:
+			break
+	ok(sc.defi.compte == 5, "cinq fois (%d)" % sc.defi.compte)
+	Intime.finir(monde, sc, "rester")
+	monde.relations[Vesperine.ID] = 95
+	Defis.resoudre(monde, v, "vesperine_cinq", true)
+	ok(f.pactes.get(Vesperine.ID, "") == "maitre", "défi relevé : elle te propose un pacte où tu mènes, et tu acceptes")
+	Illustrations.fermer()
+	# la nuit du jour 1 : sans rien faire, elle est capturée
+	Vesperine._regarder(monde)
+	ok(Vesperine.etat(monde) == "capturee" and Vesperine.noeud(monde) == null, "regarder sans rien faire : capturée, elle disparaît vers Pierrefane")
+	Illustrations.fermer()
+	await get_tree().process_frame
+	f.drapeaux["vesperine"] = ""
+	f.stats.Int = 30
+	f.stats.Per = 30
+	if Horloge.jour() == 1:
+		Vesperine.installer(monde)
+	f.drapeaux["vesperine"] = "a_la_crique"
+	Vesperine._parler(monde)
+	ok(Vesperine.etat(monde) == "libre", "intervenir en parlant (Int et Per hautes) : Silas la lâche")
+	Illustrations.fermer()
+	for n in caches:
+		n.visible = true
+	for id in [Vesperine.ID, "BRU003", "BRU012"]:
 		monde.relations[id] = 0
 	monde.sauver_etat()
 	monde.fiche = Fiche.new()

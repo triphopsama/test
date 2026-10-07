@@ -99,6 +99,8 @@ def main():
             lignes.append(anciens[p["id"]])
         else:
             lignes.append(profil(p))
+    vus = {l["id"] for l in lignes}
+    lignes += [l for id_, l in anciens.items() if l.get("fige") == "1" and id_ not in vus]   # ex. Vesperine
     with SORTIE.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=COLONNES, delimiter=";", lineterminator="\n")
         w.writeheader()

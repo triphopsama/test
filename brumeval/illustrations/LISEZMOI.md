@@ -47,3 +47,5 @@ Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU0
 | `habiller_nu/`, `habiller_BRV040/` … `habiller_BRV044/` | tu habilles ou déshabilles un compagnon (ids des accessoires dans `data/objets.csv`) |
 | `defi_<id>/`, `defi_<id>_victoire/`, `defi_<id>_echec/` | un défi (id de `data/defis.csv`) : accepté, gagné, perdu |
 | `entrainement/` | une heure d'entraînement |
+| `vesperine_crique/`, `vesperine_libre/`, `vesperine_capturee/` | la nuit de Vesperine (son id : `VES019`) |
+| `nourrir_pain/`, `nourrir_poisson/`, `guider/` | la nourrir, la guider chez Agnès |

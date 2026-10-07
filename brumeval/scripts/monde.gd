@@ -70,6 +70,7 @@ func _ready() -> void:
 	_creer_joueur()
 	_creer_pnjs()
 	Compagnons.restaurer(self)
+	Vesperine.installer(self)
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
@@ -488,6 +489,7 @@ func _process(delta: float) -> void:
 	_surveiller_desirs(delta)
 	_surveiller_equipe(delta)
 	_surveiller_defis(delta)
+	Vesperine.surveiller(self)
 	_surveiller_hostiles(delta)
 	_regenerer()
 
@@ -1149,6 +1151,10 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 		if Illustrations.ouvert:
 			await Illustrations.ferme
 		Defis.resoudre(self, contexte.cible, contexte.defi, resultat == "victoire")
+	if contexte.has("vesperine"):
+		if Illustrations.ouvert:
+			await Illustrations.ferme
+		Vesperine.apres_combat(self, resultat)
 	# les vaincus encore à terre : à toi de décider de leur sort
 	var vaincus := ennemis.filter(func(c): return c.a_terre and not c.mort and not c.est_bete)
 	if resultat == "victoire" and contexte.mode != "bagarre" and not vaincus.is_empty() and not combat_auto:
