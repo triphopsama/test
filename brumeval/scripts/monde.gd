@@ -875,10 +875,10 @@ func _se_montrer(groupe: Array) -> void:
 			lignes.append("%s ne se cache même pas. Un sourire : « Tu restes ? »" % nom)
 		elif p.pudeur >= 60:
 			relations[x.id] = clampi(aff - 8, -100, 100)
-			lignes.append("%s se rhabille, rouge de honte et de colère (−8)." % nom)
+			lignes.append("%s se rhabille, rouge de honte et de colère (-8)." % nom)
 		else:
 			relations[x.id] = clampi(aff - 3, -100, 100)
-			lignes.append("%s, gêné·e, cherche ses mots (−3)." % nom)
+			lignes.append("%s, gêné·e, cherche ses mots (-3)." % nom)
 	sauver_etat()
 	Illustrations.montrer("se_montrer", groupe.map(func(x): return x.id), " ".join(lignes))
 	await Illustrations.ferme
@@ -895,7 +895,7 @@ func _partir_sans_bruit(groupe: Array) -> void:
 		for x in groupe:
 			relations[x.id] = clampi(relations.get(x.id, 0) - 5, -100, 100)
 		sauver_etat()
-		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Une latte qui craque. Un regard qui se tourne vers toi au moment où tu files. Ils savent (−5).")
+		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Une latte qui craque. Un regard qui se tourne vers toi au moment où tu files. Ils savent (-5).")
 	else:
 		Illustrations.montrer("partir_sans_bruit", groupe.map(func(x): return x.id), "Tu recules sans un bruit. Personne ne saura.")
 

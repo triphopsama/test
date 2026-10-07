@@ -51,7 +51,7 @@ const COMPETENCES := {
 		"desc": "Soulever et jeter au sol : 1,0 × For, renverse (For contre For)."},
 	# Garde
 	"bouclier_leve": {"nom": "Lever le bouclier", "type": "soi", "endurance": 4, "etat_soi": "garde", "cond": {"Rob": 8}, "arme": "bouclier",
-		"desc": "Jusqu'à ton prochain tour, −40 % de dégâts reçus de face."},
+		"desc": "Jusqu'à ton prochain tour, -40 % de dégâts reçus de face."},
 	"provocation": {"nom": "Provocation", "type": "provoquer", "portee": 3, "endurance": 4, "resiste": "Vol", "stat": "Vol", "cond": {"Vol": 8},
 		"desc": "La cible (à 3 cases) doit s'en prendre à toi à son prochain tour (Vol contre Vol)."},
 	# Lancier
@@ -84,7 +84,7 @@ const COMPETENCES := {
 	"volee": {"nom": "Volée", "mult": 0.7, "stat": "Per", "endurance": 6, "portee": 5, "zone": 1, "cond": {"Agi": 10}, "arme": "arc",
 		"desc": "Une volée de flèches : 0,7 × Per sur la cible et chaque ennemi collé à elle."},
 	"tir_oeil": {"nom": "Tir dans l'œil", "mult": 1.5, "stat": "Per", "endurance": 8, "toucher": -10, "crit": 30, "cond": {"Per": 16}, "arme": "arc",
-		"desc": "Viser l'œil : 1,5 × Per, +30 % de critique, mais −10 % pour toucher."},
+		"desc": "Viser l'œil : 1,5 × Per, +30 % de critique, mais -10 % pour toucher."},
 	# Lanceur
 	"couteaux": {"nom": "Couteaux de lancer", "mult": 0.6, "stat": "Agi", "endurance": 4, "portee": 4, "coups": 2, "cond": {"Agi": 8}, "arme": "dague",
 		"desc": "Deux lames lancées à 4 cases : 0,6 × Agi chacune."},
@@ -125,7 +125,7 @@ const COMPETENCES := {
 	"boule_feu": {"nom": "Boule de feu", "magique": true, "element": "feu", "mult": 1.3, "stat": "Int", "mana": 10, "portee": 5, "zone": 1, "cond": {"Int": 10},
 		"etat": "brulure", "resiste": "Vit", "desc": "1,3 × Int de feu sur la cible et tout ce qui la touche, peut brûler."},
 	"eclat_glace": {"nom": "Éclat de glace", "magique": true, "element": "glace", "mult": 1.1, "stat": "Int", "mana": 7, "portee": 5, "cond": {"Int": 10},
-		"etat": "gel", "resiste": "Rob", "desc": "1,1 × Int de glace à 5 cases, peut geler (déplacement −2, vitesse −30 %)."},
+		"etat": "gel", "resiste": "Rob", "desc": "1,1 × Int de glace à 5 cases, peut geler (déplacement -2, vitesse -30 %)."},
 	# Mage de soin
 	"soin_leger": {"nom": "Soin léger", "type": "soin", "magique": true, "element": "lumière", "soin": 1.5, "stat": "Sag", "mana": 6, "portee": 3, "cond": {"Sag": 8},
 		"desc": "Soigne un allié à 3 cases (ou toi) de 1,5 × Sag. Hors combat : se soigner, ou soigner quelqu'un (il t'en sait gré)."},
@@ -140,7 +140,7 @@ const COMPETENCES := {
 	"lire_maree": {"nom": "Lire la marée", "type": "hors_combat", "cond": {"Per": 8}, "desc": "« Lire la marée » sur la côte : l'heure des basses mers, et une pêche meilleure dans les trois heures."},
 	# Prêtre de combat
 	"lumiere_pale": {"nom": "Lumière de la Pâle", "magique": true, "element": "lumière", "mult": 1.2, "stat": "Sag", "mana": 8, "portee": 4, "cond": {"Sag": 10},
-		"etat": "aveugle", "resiste": "Per", "desc": "1,2 × Sag de lumière à 4 cases, peut aveugler (−40 % pour toucher)."},
+		"etat": "aveugle", "resiste": "Per", "desc": "1,2 × Sag de lumière à 4 cases, peut aveugler (-40 % pour toucher)."},
 	"benediction": {"nom": "Bénédiction", "type": "allies", "magique": true, "element": "lumière", "zone": 2, "mana": 6, "etat_allies": "inspire", "duree": 3, "cond": {"Sag": 8},
 		"desc": "Les alliés à 2 cases sont inspirés : +10 % pour toucher pendant 3 tours. Hors combat : « Bénir » quelqu'un (les pieux adorent)."},
 	"masse_sainte": {"nom": "Masse sainte", "mult": 1.0, "stat": "For", "endurance": 6, "cond": {"For": 8}, "element_bonus": "lumière",
@@ -160,7 +160,7 @@ const COMPETENCES := {
 
 	# ---- l'intime (univers.md, « Désir et sexualité ») : entre adultes consentants
 	"seduction": {"nom": "Séduction", "type": "hors_combat", "cond": {"Vol": 10, "Per": 8},
-		"desc": "On te dit oui plus facilement (−10 d'affection demandée) et le plaisir monte plus vite. Silas, Élise l'enseignent."},
+		"desc": "On te dit oui plus facilement (-10 d'affection demandée) et le plaisir monte plus vite. Silas, Élise l'enseignent."},
 	"lecture_envies": {"nom": "Lecture des envies", "type": "hors_combat", "cond": {"Per": 12},
 		"desc": "Demander à quelqu'un ce qu'il aime révèle tous ses goûts et toutes ses limites. Théo l'enseigne."},
 	"massage": {"nom": "Massage", "type": "hors_combat", "cond": {"Agi": 8},
@@ -222,9 +222,9 @@ var sorti := false         # a fui ou s'est rendu
 var tours_saignement := 3
 var ventre_mou := false      # crabe-rocher : de flanc ou de dos, la carapace ne protège plus
 var bonus_toucher := 0       # Soldat : +5
-var bonus_distance := 0      # Œil de tireur +10, Mauvaise vue −10
+var bonus_distance := 0      # Œil de tireur +10, Mauvaise vue -10
 var increvable := false      # une fois : reste debout à 1 PV
-var chance := 0              # +1 Chanceux (rejoue un raté), −1 Malchanceux (rejoue un réussi), une fois
+var chance := 0              # +1 Chanceux (rejoue un raté), -1 Malchanceux (rejoue un réussi), une fois
 var noeud: Node3D
 var style := {}              # ce que le joueur a fait pendant le combat (pour lui proposer une classe)
 var utilise := {}            # compétences une fois par combat déjà servies
@@ -270,7 +270,7 @@ func affinite(e: String) -> int:
 	return int(affinites.get(e, AFFINITE_PAR_DEFAUT))
 
 
-## Puissance d'un sort selon l'affinité du lanceur : +1 % par point au-dessus de 50, −1 % sous 20.
+## Puissance d'un sort selon l'affinité du lanceur : +1 % par point au-dessus de 50, -1 % sous 20.
 func bonus_affinite(e: String) -> float:
 	var a := affinite(e)
 	return 1.0 + maxf(0, a - 50) / 100.0 - maxf(0, 20 - a) / 100.0
@@ -288,7 +288,7 @@ func cout_mana(comp: Dictionary) -> int:
 
 
 ## Ce que la cible prend d'un élément : les bêtes selon le bestiaire ; les gens résistent à leurs
-## éléments forts (−0,5 % par point) et craignent l'opposé de ceux à 60 et plus (+25 %).
+## éléments forts (-0,5 % par point) et craignent l'opposé de ceux à 60 et plus (+25 %).
 func facteur_element(e: String) -> float:
 	if est_bete:
 		return float(elements.get(e, 1.0))

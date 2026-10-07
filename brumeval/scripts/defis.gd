@@ -115,7 +115,7 @@ static func appliquer(m: Node, pnj_id: String, quoi: String) -> String:
 			"cuivre":
 				var c := maxi(-f.bourse, int(p[1]))
 				f.bourse += c
-				r.append("%s%s." % ["+" if c >= 0 else "−", Objets.texte_prix(absi(c))])
+				r.append("%s%s." % ["+" if c >= 0 else "-", Objets.texte_prix(absi(c))])
 			"objet":
 				f.ajouter(p[1])
 				r.append("+ %s." % Objets.get_(p[1]).get("nom", p[1]))

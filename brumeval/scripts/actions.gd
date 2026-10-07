@@ -381,7 +381,7 @@ func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String
 			f.partenaires.erase(id)
 			var perte := 35 if Intime.profil(id).jalousie >= 70 else 20
 			monde.relations[id] = clampi(monde.relations.get(id, 0) - perte, -100, 100)
-			r = "Tu le dis comme tu peux. {nom} encaisse (−%d)." % perte
+			r = "Tu le dis comme tu peux. {nom} encaisse (-%d)." % perte
 		"pacte_maitre", "pacte_esclave":
 			var role := "maitre" if quoi == "pacte_maitre" else "esclave"
 			r = Intime.pacte(monde, pnj, role)
@@ -537,7 +537,7 @@ Basse mer à %s, puis à %s. Les poissons monteront avec le flot : pêche dans l
 				monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) + gain, -100, 100)
 				monde.sauver_etat()
 			if cout > 0:
-				r += " (−%d mana)" % cout
+				r += " (-%d mana)" % cout
 		"feu_camp":
 			if not _une_fois("feu_camp"):
 				return "Tu as déjà fait un feu aujourd'hui. Le bois sec manque."

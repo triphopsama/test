@@ -90,7 +90,7 @@ func au_repos() -> bool:
 	return false
 
 
-## Valeur d'un trait (-100 à +100) : « colerique +70 » → 70.
+## Valeur d'un trait (-100 à +100) : « colerique +70 » > 70.
 func trait_(nom: String) -> int:
 	for t in str(donnees.get("traits", "")).split(","):
 		var morceaux := t.strip_edges().split(" ")

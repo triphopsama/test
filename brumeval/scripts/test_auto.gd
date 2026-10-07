@@ -25,13 +25,13 @@ func _ready() -> void:
 	ok(not monde.praticable(Vector2(50, 600)), "on ne marche pas sur la mer")
 	print("== Trajets")
 	var c: PackedVector2Array = monde.chemin("place", "crique")
-	ok(c.size() >= 2, "un chemin place → crique (%d étapes)" % c.size())
+	ok(c.size() >= 2, "un chemin place > crique (%d étapes)" % c.size())
 	var c2: PackedVector2Array = monde.chemin("reveil", "forge")
-	ok(c2.size() >= 3, "un chemin réveil → forge (%d étapes)" % c2.size())
+	ok(c2.size() >= 3, "un chemin réveil > forge (%d étapes)" % c2.size())
 	print("== Heure : jour %d, %s, marée basse : %s" % [Horloge.jour(), Horloge.texte_heure(), Horloge.maree_basse()])
 	print("== PNJ")
 	for n in monde.pnjs:
-		print("  %-20s %-14s → %-12s visible=%s" % [n.donnees.nom, n.lieu_actuel, n.lieu_cible, n.visible])
+		print("  %-20s %-14s > %-12s visible=%s" % [n.donnees.nom, n.lieu_actuel, n.lieu_cible, n.visible])
 	print("== Actions")
 	var mara: Node = _pnj("BRU001")
 	var tim: Node = _pnj("BRU005")
@@ -493,7 +493,7 @@ func _magie(mara: Node) -> void:
 	f.pv = 10
 	var mana0 := f.mana_actuelle()
 	monde.actions.executer(_action("soigner_soi", null, "place"), null, "place")
-	ok(f.pv > 10 and f.mana_actuelle() == mana0 - 6, "Soin léger hors combat : PV %d, mana −6" % f.pv)
+	ok(f.pv > 10 and f.mana_actuelle() == mana0 - 6, "Soin léger hors combat : PV %d, mana -6" % f.pv)
 	Illustrations.fermer()
 	var bram: Node = _pnj("BRU002")
 	monde.relations["BRU002"] = 0
@@ -533,7 +533,7 @@ func _magie(mara: Node) -> void:
 		var r1: Combattant = monde.combat.combattants.filter(func(x): return x.est_bete)[0]
 		var pv_rat := r1.pv
 		monde.combat._attaquer(moi, r1, "eclat_glace")
-		ok(r1.pv < pv_rat, "Éclat de glace touche toujours (%d → %d PV)" % [pv_rat, r1.pv])
+		ok(r1.pv < pv_rat, "Éclat de glace touche toujours (%d > %d PV)" % [pv_rat, r1.pv])
 		monde.combat._attaquer(moi, moi, "arme_enflammee")
 		ok(moi.etats.has("arme_feu"), "Arme enflammée : l'arme brûle")
 		moi.etats["gel"] = 3

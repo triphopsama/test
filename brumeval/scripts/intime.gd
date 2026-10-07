@@ -4,7 +4,7 @@
 #   attire      hommes, femmes (ce qui l'attire)
 #   cherche     amour, plaisir, aventure, sécurité, statut, fidélité, passion, paix…
 #   libido      0 à 100 : son désir monte de libido/10 par heure, retombe quand il est comblé
-#   axe         −100 (très soumis) à +100 (très dominant)
+#   axe         -100 (très soumis) à +100 (très dominant)
 #   pudeur      0 à 100 : refuse plus souvent devant témoins ou l'inconnu
 #   experience  vierge, peu, experimente
 #   bdsm        0 à 100 : intérêt pour les jeux de pouvoir (toujours consentis, avec un mot d'arrêt)
@@ -414,7 +414,7 @@ static func devenir_couple(m: Node, n: Node) -> String:
 		if p.partage < 50:
 			var perte := int(p.jalousie / 3.0)
 			m.relations[id] = clampi(m.relations.get(id, 0) - perte, -100, 100)
-			lignes.append("%s l'apprend et le vit mal (−%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0), perte])
+			lignes.append("%s l'apprend et le vit mal (-%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0), perte])
 	f.partenaires[n.id] = "couple"
 	return " ".join(lignes)
 
@@ -432,7 +432,7 @@ static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 		var c: String = profil(n.id).get("couple", "")
 		if c != "" and not c in ids and not m.morts.has(c):
 			m.relations[c] = clampi(m.relations.get(c, 0) - 40, -100, 100)
-			lignes.append("%s découvre %s avec %s (−40)." % [str(m._pnj_par_id(c).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(c) else c, quoi, n.donnees.nom.get_slice(" ", 0)])
+			lignes.append("%s découvre %s avec %s (-40)." % [str(m._pnj_par_id(c).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(c) else c, quoi, n.donnees.nom.get_slice(" ", 0)])
 	for id in f.partenaires:
 		if id in ids:
 			continue
@@ -440,7 +440,7 @@ static func rumeur(m: Node, pnjs: Array, quoi: String, bruit := 0) -> String:
 		if p.jalousie > p.partage:
 			var perte := int(p.jalousie / 3.0)
 			m.relations[id] = clampi(m.relations.get(id, 0) - perte, -100, 100)
-			lignes.append("%s est jaloux·se (−%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(id) else id, perte])
+			lignes.append("%s est jaloux·se (-%d)." % [str(m._pnj_par_id(id).donnees.nom).get_slice(" ", 0) if m._pnj_par_id(id) else id, perte])
 	for id in profils():
 		if profil(id).pudeur >= 70 and not id in ids and not f.partenaires.has(id):
 			m.relations[id] = clampi(m.relations.get(id, 0) - 3, -100, 100)

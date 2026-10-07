@@ -469,7 +469,7 @@ func sort_des_vaincus(vaincus: Array) -> void:
 	var c: Combattant = restants[0]
 	_entete.text = "%s est à terre, à ta merci. Le village saura ce que tu as choisi." % c.nom
 	_ligne("Épargner %s" % c.nom, _sort.bind(vaincus, c, "epargner"), "Tu le laisses vivre, et tu poses un bandage. Il te devra la vie (+15), les témoins s'en souviendront (+3).")
-	_ligne("Tuer %s" % c.nom, _sort.bind(vaincus, c, "tuer"), "Tu l'achèves. Les morts restent morts, et ceux qui l'ont vu t'en voudront (−30).")
+	_ligne("Tuer %s" % c.nom, _sort.bind(vaincus, c, "tuer"), "Tu l'achèves. Les morts restent morts, et ceux qui l'ont vu t'en voudront (-30).")
 
 
 func _sort(vaincus: Array, c: Combattant, choix: String) -> void:

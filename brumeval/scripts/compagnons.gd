@@ -180,11 +180,11 @@ static func reactions(m: Node) -> Array:
 				f.bourse -= amende
 				m.relations["BRU014"] = clampi(m.relations.get("BRU014", 0) - 5, -100, 100)
 				_tout_retirer(m, id)
-				lignes.append("Corentin s'interpose : « Indécence sur la voie publique. Couvrez-le, et c'est %s d'amende. » (−5)" % Objets.texte_prix(amende))
+				lignes.append("Corentin s'interpose : « Indécence sur la voie publique. Couvrez-le, et c'est %s d'amende. » (-5)" % Objets.texte_prix(amende))
 				outre = true
 			elif pudeur >= 70 or t.trait_("pieux") >= 40:
 				m.relations[t.id] = clampi(m.relations.get(t.id, 0) - 5, -100, 100)
-				lignes.append("%s voit %s (%s) et détourne les yeux, outré·e (−5)." % [qui, nom, description(m, id)])
+				lignes.append("%s voit %s (%s) et détourne les yeux, outré·e (-5)." % [qui, nom, description(m, id)])
 				outre = true
 			elif pudeur < 40 or "risque" in p.get("aime", []) or "dominer" in p.get("aime", []):
 				m.relations[t.id] = clampi(m.relations.get(t.id, 0) + 2, -100, 100)
@@ -192,7 +192,7 @@ static func reactions(m: Node) -> Array:
 				lignes.append("%s ne peut pas détourner les yeux de %s (+2)." % [qui, nom])
 			else:
 				m.relations[t.id] = clampi(m.relations.get(t.id, 0) - 2, -100, 100)
-				lignes.append("%s, gêné·e, fait mine de ne rien voir (−2)." % qui)
+				lignes.append("%s, gêné·e, fait mine de ne rien voir (-2)." % qui)
 			# le compagnon : ce que ces regards lui font
 			if "risque" in pc.aime or "audace" in pc.aime:
 				m.desirs[id] = mini(100, Intime.desir(m, id) + 5)
@@ -202,7 +202,7 @@ static func reactions(m: Node) -> Array:
 					f.drapeaux.erase("malaise_" + id)
 					_tout_retirer(m, id)
 					m.relations[id] = clampi(m.relations.get(id, 0) - 10, -100, 100)
-					lignes.append("« %s. » %s a dit le mot d'arrêt : tu le couvres, le jeu s'arrête là (−10)." % [Intime.MOT_D_ARRET, nom])
+					lignes.append("« %s. » %s a dit le mot d'arrêt : tu le couvres, le jeu s'arrête là (-10)." % [Intime.MOT_D_ARRET, nom])
 					break
 	m.sauver_etat()
 	f.sauver()
