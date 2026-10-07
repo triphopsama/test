@@ -71,6 +71,7 @@ func _ready() -> void:
 	_creer_pnjs()
 	Compagnons.restaurer(self)
 	Vesperine.installer(self)
+	Fees.installer(self)
 	hud = preload("res://scripts/hud.gd").new()
 	hud.monde = self
 	add_child(hud)
@@ -1048,6 +1049,13 @@ func _surveiller_rencontres(delta: float) -> void:
 			greve = true
 	var loin_taniere: bool = p.distance_to(lieux.loups.pos) > 40.0
 	var choix := ""
+	if dans_bois:
+		var egare := Fees.dans_le_bois(self)
+		if egare != "":
+			Illustrations.montrer("brume_egare", [Fees.ID], egare)
+			return
+		if Fees.protege(self) and randf() < 0.5:
+			return   # la Brume t'écarte des bêtes
 	if dans_bois and loin_taniere and randf() < 1.0 / 20.0:
 		choix = "loup"
 	elif (dans_bois or dans_landes) and randf() < (1.0 / 10.0 if lieux.has("roncier") and p.distance_to(lieux.roncier.pos) < 60.0 else 1.0 / 35.0):

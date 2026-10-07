@@ -158,6 +158,13 @@ La carte s'étend vers l'est (2 400 m) : le bois profond, avec cinq lieux de plu
 - **Étang noir** : un brochet, et une légende de noyé.
 - La source, la clairière et l'étang sont aussi des lieux pour un moment risqué à deux.
 
+## Les fées, les Gens de la Brume
+
+D'après les vieilles croyances (`univers.md` : la Brume guide ceux qu'elle aime et prend ceux qui lui manquent de respect). Trois sœurs, fées adultes et très anciennes, visibles à l'aube (5 h – 8 h) et au crépuscule (19 h – 22 h) : **Brumelle** à la Source chaude, **Lirelle** à l'Étang noir, **Mousse** à la Clairière aux cerfs.
+- **Leur faveur** est partagée : ce que tu fais à l'une, les trois le savent. Offrandes (pain sur la pierre de la source, pain, mûres) : +8 la première du jour.
+- Faveur 30 : **la bénédiction de la Brume** pour la journée (un coup raté se rejoue en combat). Faveur 50 : dans le bois, **la Brume t'écarte des bêtes**. Faveur 70 : **elles peuvent choisir de te suivre** (un pacte, pas une capture : on ne dompte pas un être qui pense). Faveur −30 : **la Brume t'égare** dans le bois.
+- Ce sont des adultes libres : l'intime suit les mêmes règles qu'avec tout le monde. Elles adorent le dehors, le bain, le jeu, l'audace et les nuits à plusieurs (partage 100, aucune jalousie).
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

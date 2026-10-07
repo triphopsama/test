@@ -162,6 +162,11 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne == "lecon":
 		monde.fenetres.lecons(pnj)
 		return
+	if donne in ["fee_offrande", "fee_benir", "fee_mepris"]:
+		Horloge.avancer(float(l.duree_min))
+		var tf := Fees.offrande(monde, texte) if donne == "fee_offrande" else (Fees.benir(monde) if donne == "fee_benir" else Fees.mepris(monde))
+		Illustrations.montrer(l.id, cles, _remplacer(tf, pnj, lieu))
+		return
 	if donne in ["v_nourrir", "v_guider"]:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))

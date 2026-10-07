@@ -49,3 +49,4 @@ Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU0
 | `entrainement/` | une heure d'entraînement |
 | `vesperine_crique/`, `vesperine_libre/`, `vesperine_capturee/` | la nuit de Vesperine (son id : `VES019`) |
 | `nourrir_pain/`, `nourrir_poisson/`, `guider/` | la nourrir, la guider chez Agnès |
+| `offrande_pierre/`, `offrande_pain/`, `offrande_mures/`, `fee_benir/`, `fee_mepris/`, `brume_egare/` | les fées (ids `FEE001` Brumelle, `FEE002` Lirelle, `FEE003` Mousse) |

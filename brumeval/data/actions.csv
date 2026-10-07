@@ -58,3 +58,8 @@ prier_autel;Prier à l'autel effondré;lieu;ruines;*;0;20;0;0;;autel;;Tu t'ageno
 bain_source;Se baigner dans la source chaude;lieu;source;*;0;40;0;0;;bain;;L'eau tiède te prend jusqu'aux épaules. La fatigue s'en va avec la vapeur.
 pecher_etang;Pêcher à l'Étang noir;lieu;etang;*;0;60;0;0;;BRV053 1;;L'eau est noire et immobile. Quelque chose mord, et tire fort.
 cueillir_mures;Cueillir des mûres;lieu;roncier;*;0;30;0;0;;BRV054 2;;Les ronces griffent, les mûres tachent.
+offrande_pierre;Laisser du pain sur la pierre de la source;lieu;source;*;0;5;-100;0;OBJ327 1;fee_offrande;;Tu poses le pain sur la pierre moussue, comme Agnès le fait.
+offrande_pain;Lui offrir du pain;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;OBJ327 1;fee_offrande;;Brumelle prend le pain du bout des doigts, le respire, sourit.
+offrande_mures;Lui offrir des mûres;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;BRV054 1;fee_offrande;;Elle croque une mûre, et ses lèvres deviennent violettes. Elle rit.
+fee_benir;Lui demander la bénédiction de la Brume;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;;fee_benir;;
+fee_mepris;Te moquer de la « fée »;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;;fee_mepris;;

@@ -406,6 +406,8 @@ static func joueur(n: Node3D, f: Fiche = null) -> Combattant:
 	c.bonus_distance = (10 if f.a("tireur") else 0) - (10 if f.a("mauvaise_vue") and not f.equipe("BRV014") else 0)
 	c.increvable = f.a("increvable")
 	c.chance = (1 if f.a("chanceux") else 0) - (1 if f.a("malchanceux") else 0)
+	if n != null and n.get_parent() and n.get_parent().has_method("_surveiller_desirs") and Fees.beni(n.get_parent()):
+		c.chance = maxi(c.chance, 1)   # la bénédiction de la Brume
 	c.appliquer_passifs()
 	c.nom = f.nom if f.nom != "" else "Toi"
 	return c

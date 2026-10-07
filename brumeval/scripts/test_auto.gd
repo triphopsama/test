@@ -19,7 +19,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	print("== Données")
 	ok(monde.lieux.size() == 33, "33 lieux, avec le bois profond (%d)" % monde.lieux.size())
-	ok(monde.pnjs.filter(func(n): return n.id != Vesperine.ID).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
+	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
 	ok(monde.actions.lignes.size() >= 10, "actions lues (%d)" % monde.actions.lignes.size())
 	ok(monde.praticable(monde.lieux.reveil.pos), "on peut marcher à la clairière du réveil")
 	ok(not monde.praticable(Vector2(50, 600)), "on ne marche pas sur la mer")
@@ -187,6 +187,7 @@ func _ready() -> void:
 	await _intime()
 	await _defis()
 	await _vesperine()
+	_fees()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -554,7 +555,7 @@ func _intime() -> void:
 	print("== Intime (adultes consentants)")
 	var f := Fiche.new()
 	monde.fiche = f
-	ok(Intime.profils().size() == 21 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "21 profils d'adultes (avec Vesperine), aucun pour Tim et Nina")
+	ok(Intime.profils().size() == 24 and Intime.profil("BRU005").is_empty() and Intime.profil("BRU016").is_empty(), "24 profils d'adultes (avec Vesperine et les trois fées), aucun pour Tim et Nina")
 	ok(Intime.gestes().size() >= 15, "%d gestes de scène" % Intime.gestes().size())
 	# personne d'autre autour : pas de témoins
 	var caches := []
@@ -890,6 +891,30 @@ func _vesperine() -> void:
 	monde.sauver_etat()
 	monde.fiche = Fiche.new()
 	Horloge.avancer(-float(Horloge._decalage) / 60.0)
+
+
+func _fees() -> void:
+	print("== Les fées")
+	var f := Fiche.new()
+	monde.fiche = f
+	var b: Node = monde._pnj_par_id(Fees.ID)
+	ok(b != null and b.donnees.peuple == "fée" and int(b.donnees.age) >= 18, "Brumelle, une fée adulte, vit à la source")
+	monde.relations[Fees.ID] = 0
+	ok(Fees.benir(monde).contains("Pourquoi"), "sans faveur, pas de bénédiction")
+	for i in 4:
+		f.drapeaux.erase("offrande_%d" % Horloge.jour())
+		Fees.offrande(monde, "")
+	ok(Fees.faveur(monde) == 32, "quatre offrandes : faveur 32")
+	ok(Fees.benir(monde).contains("veille") and Fees.beni(monde), "béni par la Brume")
+	ok(Combattant.joueur(monde.joueur, f).chance >= 1, "en combat : un coup raté se rejoue")
+	Fees.mepris(monde)
+	ok(Fees.faveur(monde) == 2, "le mépris coûte cher (-30)")
+	monde.relations[Fees.ID] = 75
+	ok(Compagnons.peut_suivre(monde, b) == "", "faveur 75 : Brumelle veut bien te suivre (un choix, pas une capture)")
+	ok(Intime.profil("FEE002").partage == 100 and monde._pnj_par_id("FEE003") != null, "ses sœurs Lirelle et Mousse, qui adorent les nuits à plusieurs")
+	monde.relations[Fees.ID] = 0
+	monde.sauver_etat()
+	monde.fiche = Fiche.new()
 
 
 ## Seul avec n : les autres de la liste ne sont pas là (pas de témoins).
