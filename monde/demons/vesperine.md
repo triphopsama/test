@@ -1,6 +1,6 @@
 # Vesperine, succube, éclaireuse de la reine
 
-> Le premier démon que le joueur peut rencontrer. Envoyée par la reine Ashkaël pour espionner la côte, elle est capturée **la nuit même de son arrivée, la nuit du jour 1**, par Silas, qui la prend pour une étrangère sans papiers, et vendue dès le lendemain à la Maison des Lanternes, le bordel de Pierrefane. Personne ne sait qu'elle est une démone. Sa mission est en ruine, et sur l'île, son silence commence à inquiéter.
+> Le premier démon que le joueur peut rencontrer. Envoyée par la reine Sanae pour espionner la côte, elle est capturée **la nuit même de son arrivée, la nuit du jour 1**, par Silas, qui la prend pour une étrangère sans papiers, et vendue dès le lendemain à la Maison des Lanternes, le bordel de Pierrefane. Personne ne sait qu'elle est une démone. Sa mission est en ruine, et sur l'île, son silence commence à inquiéter.
 
 ## Fiche
 
@@ -88,7 +88,7 @@ Une fois libre, Vesperine peut devenir compagne de route, alliée pour la paix, 
 
 | Vesperine → | Affection | Confiance | Respect | Peur | Étiquette |
 | --- | --- | --- | --- | --- | --- |
-| La reine Ashkaël | +70 | +80 | +90 | 0 | Reine |
+| La reine Sanae | +70 | +80 | +90 | 0 | Reine |
 | Vaëris (chef du Fil) | +60 | +70 | +80 | 0 | Mentor |
 | Korrah (chef de la Lame) | -30 | -50 | +40 | +20 | Rival dangereux |
 | Silas | -80 | -90 | +10 | +40 | Celui qui l'a vendue |

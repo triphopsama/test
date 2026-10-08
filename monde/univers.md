@@ -127,7 +127,7 @@ Chaque lieu a un nombre fixe de **PNJ simulés** (caractère, envies, relations,
 
 | Type | Lieu | PNJ | Ce qui le distingue |
 | --- | --- | --- | --- |
-| Capitale | **Nocthar** | 100 | Cité de la reine Ashkaël, sièges des factions du Fil et de la Lame ; la faim se voit partout |
+| Capitale | **Nocthar** | 100 | Cité de la reine Sanae, sièges des factions du Fil et de la Lame ; la faim se voit partout |
 | Village | **Morne-Rive** | 25 | Village côtier tourné vers le continent ; port des éclaireurs |
 
 
@@ -155,7 +155,7 @@ Il y a environ **400 ans**, les démons ont fait la guerre aux autres peuples po
 Dans les chapelles et les écoles, on enseigne que les démons étaient des monstres sans âme venus détruire le monde, et que l'Empire les a vaincus presque seul. On dit qu'ils sont tous morts. La plupart des gens les croient légendaires.
 
 ### Aujourd'hui
-L'île ne nourrit plus sa population. Les démons **meurent de faim**. La **reine démone, Ashkaël**, doit agir. Elle est coincée entre deux factions :
+L'île ne nourrit plus sa population. Les démons **meurent de faim**. La **reine démone, Sanae**, doit agir. Elle est coincée entre deux factions :
 
 | Faction | Ce qu'elle veut | Chef |
 | --- | --- | --- |
@@ -732,4 +732,4 @@ Leurs caractères, envies et secrets sont dans [memoire_monde.md](memoire_monde.
 - **La fille de Joss**, Maëlle : vivante à Saltevaux ?
 - **Ce que croient les démons**, et à quoi ressemble la vie sur l'île.
 - **Le premier contact :** [Vesperine](demons/vesperine.md), succube capturée la nuit du jour 1 et vendue au bordel de Pierrefane dès le jour 2. Son silence pousse les démons vers la guerre : expédition au jour 30, guerre décidée au jour 60.
-- **Les autres démons :** la reine Ashkaël, Vaëris, Korrah et la vie à Nocthar restent à écrire.
+- **Les autres démons :** la reine Sanae, Vaëris, Korrah et la vie à Nocthar restent à écrire.
