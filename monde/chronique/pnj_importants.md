@@ -22,7 +22,7 @@
 | 5 | **Lilie** | 20 | femme-bête (renarde) | Palais d'Aurelle, esclave | Celle par qui le joueur voit l'Empire de l'intérieur ; sa fuite peut rallumer l'exode vers Aëlinde |
 | 6 | **Serena**, gardienne de Sylve-Claire | 230 (paraît 30) | elfe | Sylve-Claire, Aëlinde | Garde la porte des elfes : qui accoste, qui repart |
 | 7 | **Korrah**, général de la Lame | 61 (paraît 25) | démon | Morne-Rive, île des démons | Prépare l'invasion ; c'est lui qui fait disparaître les bateaux de pêche |
-| 8 | **Vaëris**, conseiller du Fil | 520 | démon | Nocthar | Veut la paix ; a envoyé Vesperine, comme il avait envoyé Kaërith il y a 31 ans |
+| 8 | **Vaëris**, conseiller du Fil | 395 | démon | Nocthar | Veut la paix ; a envoyé Vesperine, comme il avait envoyé Kaërith il y a 31 ans |
 | 9 | **Ivo Saumane** | 212 (paraît 45) | démon déguisé | Saltevaux, au Sénat | Espion du Fil, secrétaire du père d'Helena depuis vingt ans |
 | 10 | **Kaërith** | 300 environ | démon, captif | Sous l'Académie de Lorvane | Le secret qui prouve que la République ment ; captif depuis 31 ans |
 | 11 | **Baldrec Ferrepierre**, roi nain | 190 | nain | Haut-Grisemont | Vend des armes à tout le monde ; choisir à qui il les vend en premier, c'est choisir la guerre |
@@ -135,7 +135,7 @@ Sa fiche existe déjà (`monde/demons/vesperine.md`), et ses jours 1 à 3 sont �
 
 ## 8. Vaëris, conseiller du Fil
 
-- **Qui :** un démon de 520 ans, qui a lu les archives de la guerre. Il est le seul vivant à se souvenir de l'avant-Purge par les livres de son père. Fatigué, lucide, têtu.
+- **Qui :** un démon de 395 ans, né sur la grève du Refuge trois ans après la Purge. Il connaît l'avant-Purge et la guerre par les archives que son père a sauvées, et personne ne les a lues comme lui. Fatigué, lucide, têtu.
 - **Ce qu'il veut :** une paix, même humiliante, qui laisse vivre son peuple.
 - **Son remords :** il a envoyé Kaërith il y a 31 ans, et il le croit mort par sa faute.
 - **Au jour 1 :** il gagne sept jours au conseil. La nuit, il attend sur le quai de Nocthar le signal de Vesperine : une lanterne verte au large. Elle ne vient pas.
