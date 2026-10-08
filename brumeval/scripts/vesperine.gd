@@ -44,7 +44,7 @@ static func noeud(m: Node) -> Node:
 ## À l'ouverture du monde : elle est là le soir du jour 1, ou libre ensuite.
 static func installer(m: Node) -> void:
 	var e := etat(m)
-	if e == "capturee" or noeud(m) != null:
+	if e in ["capturee", "rachetee"] or noeud(m) != null:   # vendue, ou rachetée à Pierrefane (biens.gd)
 		return
 	var n := preload("res://scripts/pnj.gd").new()
 	n.monde = m

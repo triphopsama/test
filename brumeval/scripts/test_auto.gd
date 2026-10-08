@@ -22,8 +22,13 @@ func _ready() -> void:
 	monde.journal_liens.clear()
 	Liens.installer(monde)
 	if monde.carte == "pierrefane":
+		var gardee: Fiche = monde.fiche
+		monde.fiche = Fiche.new()
+		monde.fiche.drapeaux["carte"] = "pierrefane"
 		_pierrefane()
-		monde.fiche.drapeaux.erase("carte")
+		gardee.drapeaux.erase("carte")
+		monde.fiche = gardee
+		gardee.sauver()
 		print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
 		get_tree().quit(erreurs)
 		return
@@ -203,6 +208,7 @@ func _ready() -> void:
 	_fees()
 	await _domptage()
 	_liens()
+	_maison_biens()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -1026,6 +1032,7 @@ func _pierrefane() -> void:
 	f.drapeaux.erase("brute_PIE004")
 	ok(not _action("travailler_nuit", null, "auberge").is_empty(), "le travail de nuit, libre, au Mouillage")
 	ok(not _action("dormir", null, "auberge").is_empty() and _action("dormir", null, "auberge").description.contains("Ondine"), "dormir chez Ondine")
+	_contrats()
 	var thorga := _pnj("PIE012")
 	monde.relations["PIE012"] = 0
 	ok(Defis.de(monde, thorga).any(func(d): return d.id == "thorga_bras"), "Thorga te défie au bras de fer")
@@ -1245,3 +1252,122 @@ func _grotte() -> void:
 	ok(monde._env.background_mode == Environment.BG_SKY, "dehors, le ciel revient")
 	monde.relations = relations_avant
 	monde.sauver_etat()
+
+
+func _fermer_tout() -> void:
+	Illustrations.fermer()
+	monde.fenetres.fermer()
+
+
+func _maison_biens() -> void:
+	print("== Ta maison, et tout ce qui s'achète")
+	var f := Fiche.new()
+	f.bourse = 20000
+	monde.fiche = f
+	var ysolde := _pnj("BRU004")
+	monde.relations["BRU004"] = 0
+	ok(not _action("maison_demander", ysolde, "chapelle").is_empty(), "demander la maison de la falaise à Ysolde")
+	ok(_action("maison_demander", _pnj("BRU001"), "place").is_empty(), "... pas à Mara")
+	Maison._acheter(monde)
+	_fermer_tout()
+	ok(Maison.niveau(monde) == 1 and f.bourse == 20000 - 96, "achetée 8 pièces d'argent : une ruine à toi")
+	ok(_action("crocheter", null, "falaise").is_empty(), "on ne crochète plus sa propre porte")
+	ok(not _action("maison_travaux", null, "falaise").is_empty() and _action("maison_dormir", null, "falaise").is_empty(), "des travaux à faire, pas encore de quoi dormir")
+	for i in 3:
+		Maison.faire_travaux(monde, 1, false)
+		_fermer_tout()
+	ok(Maison.niveau(monde) == 4, "habitable, meublée, aménagée")
+	ok(_action("maison_travaux", null, "falaise").is_empty(), "plus de travaux à faire")
+	for id in ["maison_dormir", "maison_coffre", "maison_bain"]:
+		ok(not _action(id, null, "falaise").is_empty(), "chez toi : " + id)
+	f.ajouter("BRV003", 2)
+	Maison.deposer(monde, "BRV003")
+	ok(f.nombre("BRV003") == 1 and Maison.coffre(monde).get("BRV003", 0) == 1, "le coffre garde un maquereau")
+	Maison.reprendre(monde, "BRV003")
+	ok(f.nombre("BRV003") == 2 and not Maison.coffre(monde).has("BRV003"), "et le rend")
+	var mara := _pnj("BRU001")
+	monde.relations["BRU001"] = 10
+	ok(Maison.inviter(monde, mara).contains("affection"), "Mara ne vient pas vivre chez un inconnu")
+	monde.relations["BRU001"] = 80
+	Maison.inviter(monde, mara)
+	ok("BRU001" in Maison.habitants(monde) and mara.maison == "falaise", "Mara vit chez toi : elle y dort, et garde sa boulangerie")
+	ok(mara.emploi.any(func(e): return e[1] == "boulangerie"), "... elle travaille toujours au fournil")
+	Maison.agir(monde, "maison_renvoyer", mara)
+	ok(not "BRU001" in Maison.habitants(monde) and mara.maison != "falaise", "elle rentre chez elle")
+	# les biens
+	var taverne: Dictionary = Biens.tous().taverne
+	monde.relations["BRU011"] = 0
+	var cher := Biens.prix(monde, taverne)
+	monde.relations["BRU011"] = 60
+	ok(cher > Biens.prix(monde, taverne) and Biens.prix(monde, taverne) == 960, "Rosalie vend plus cher à qui elle n'aime pas (%d / %d)" % [cher, Biens.prix(monde, taverne)])
+	ok(not _action("bien_acheter", null, "taverne").is_empty(), "acheter la taverne")
+	Biens.acheter(monde, "taverne")
+	_fermer_tout()
+	ok(Biens.statut(monde, "taverne") == "achat" and Biens.possede_de(monde, "BRU011"), "la taverne est à toi")
+	ok(Biens.chez_soi(monde, "taverne") and not _action("dormir_chez_toi", null, "taverne").is_empty(), "tu y dors gratuitement")
+	ok(not _action("bien_vendre", null, "taverne").is_empty(), "tu peux la revendre")
+	f.drapeaux["revenus_jour"] = Horloge.jour() - 2
+	var avant := f.bourse
+	Biens.jour_passe(monde)
+	ok(f.bourse == avant + 80, "deux jours : 80 cuivre de recettes (%d)" % (f.bourse - avant))
+	Biens.negocier(monde, "forge")
+	_fermer_tout()
+	ok(f.drapeaux.has("nego_forge"), "négocier la forge : %.2f" % float(f.drapeaux.nego_forge))
+	monde.relations["BRU006"] = 0
+	Biens.preter(monde, "joss")
+	_fermer_tout()
+	ok(Biens.statut(monde, "joss") == "", "Joss ne prête pas sa cabane à un inconnu")
+	monde.relations["BRU006"] = 80
+	Biens.preter(monde, "joss")
+	_fermer_tout()
+	ok(Biens.statut(monde, "joss") == "pret", "... mais à un ami, si")
+	Biens.louer(monde, "cabane")
+	_fermer_tout()
+	ok(Biens.statut(monde, "cabane") == "location", "louer la cabane de Pierrick")
+	Defis.appliquer(monde, "PIE015", "pret mahaut, bien moulin")
+	ok(Biens.statut(monde, "mahaut") == "pret" and Biens.statut(monde, "moulin") == "achat", "un événement te prête ou te donne un bien")
+	_fermer_tout()
+	monde.fiche = Fiche.new()
+	monde.reconstruire_maison()
+	monde.relations.clear()
+	monde.sauver_etat()
+
+
+## Pierrefane : racheter un contrat de dette, le garder ou le déchirer.
+func _contrats() -> void:
+	print("== Les contrats de la Maison des Lanternes")
+	var f: Fiche = monde.fiche
+	f.bourse = 20000
+	var lysa := _pnj("PIE002")
+	ok(not _action("dette_racheter", lysa, "lanternes").is_empty(), "racheter le contrat de Lysa")
+	Biens.racheter(monde, "dette_lysa")
+	ok(Biens.contrats(monde).has("PIE002"), "son contrat est à toi")
+	ok(not monde.actions.intime_possible(lysa), "sous ton contrat : rien d'intime, jamais")
+	_fermer_tout()
+	Biens._assigner(monde, lysa, "travail")
+	_fermer_tout()
+	f.drapeaux["revenus_jour"] = Horloge.jour() - 1
+	monde.relations["PIE002"] = 0
+	var avant := f.bourse
+	Biens.jour_passe(monde)
+	ok(f.bourse == avant + 8 and monde.relations["PIE002"] == -2, "elle travaille pour toi : 8 cuivre, et elle t'en veut (-2)")
+	Biens.liberer(monde, lysa)
+	_fermer_tout()
+	ok(not Biens.contrats(monde).has("PIE002") and "PIE002" in Biens.liberes(monde) and lysa.donnees.statut_social.begins_with("libre"), "contrat déchiré : Lysa est libre (+30)")
+	var ves := _pnj("VES019")
+	if Vesperine.etat(monde) == "capturee":
+		ok(ves != null and not monde.actions.intime_possible(ves), "Vesperine, vendue, enfermée aux Lanternes : rien d'intime")
+		Biens.racheter(monde, "dette_vesperine")
+		_fermer_tout()
+		Biens.liberer(monde, ves)
+		_fermer_tout()
+		ok(Vesperine.etat(monde) == "rachetee" and Intime.consentement(monde, ves, "nuit") != "", "rachetée et libérée : d'abord, elle respire")
+	Biens.acheter(monde, "lanternes")
+	_fermer_tout()
+	Biens._dechirer_lanternes(monde)
+	_fermer_tout()
+	ok(Biens.statut(monde, "lanternes") == "achat" and "PIE003" in Biens.liberes(monde), "la Maison des Lanternes est à toi, Bastien est libre")
+	f.drapeaux.erase("liberes")
+	f.drapeaux.erase("contrats")
+	f.drapeaux.erase("biens")
+	f.drapeaux.erase("vesperine")

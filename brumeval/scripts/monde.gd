@@ -91,6 +91,9 @@ func _ready() -> void:
 	_creer_pnjs()
 	Compagnons.restaurer(self)
 	Liens.installer(self)
+	Biens.installer(self)
+	Maison.installer(self)
+	reconstruire_maison()
 	if carte == "brumeval":
 		Vesperine.installer(self)
 	Fees.installer(self)
@@ -353,7 +356,9 @@ func _construire_batiments() -> void:
 		var l: Dictionary = lieux[cle]
 		var p: Vector2 = l.pos
 		var h := hauteur(p.x, p.y)
-		if tailles.has(l.type):
+		if carte == "brumeval" and cle == Maison.LIEU:
+			pass    # ta maison : reconstruire_maison(), selon les travaux
+		elif tailles.has(l.type):
 			var t: Vector2 = tailles[l.type]
 			if cle == "mairie":
 				t = Vector2(12, 9)
@@ -615,6 +620,9 @@ func _regenerer() -> void:
 	_derniere_regen += heures * 3600.0
 	Intime.passer_temps(self, heures)
 	Liens.passer_temps(self, heures)
+	var rentes := Biens.jour_passe(self)
+	if rentes != "" and hud:
+		hud.annoncer(rentes)
 	Defis.expirer(self)
 	if fiche.pv < fiche.pv_max() or fiche.mana_actuelle() < fiche.mana_max():
 		fiche.pv = mini(fiche.pv_max(), fiche.pv + maxi(1, fiche.pv_max() / 10) * heures)
@@ -697,7 +705,10 @@ func _creer_pnjs() -> void:
 		pnjs.append(n)
 	# ton équipe venue d'une autre carte : elle marche avec toi, et t'attend au sentier si tu la laisses
 	for id in fiche.equipiers:
-		if emplois.has(id) or not pnj_donnees.has(id) or id in [Vesperine.ID, Fees.ID] or Fees.SOEURS.has(id):
+		if id == Vesperine.ID and Vesperine.etat(self) in ["capturee", "rachetee"] and not pnj_donnees.has(id):
+			pnj_donnees[id] = Vesperine.DONNEES.duplicate()     # rachetée à Pierrefane, elle te suit
+			pnj_donnees[id].statut_social = "libre (rachetée)" if id in Biens.liberes(self) else "sous contrat (à toi)"
+		if emplois.has(id) or not pnj_donnees.has(id) or (id == Vesperine.ID and _pnj_par_id(id) != null) or id == Fees.ID or Fees.SOEURS.has(id):
 			continue
 		var n := preload("res://scripts/pnj.gd").new()
 		n.monde = self
@@ -1513,3 +1524,72 @@ func marquer_mort(c: Combattant) -> void:
 		morts[c.id] = true
 		n.mort = true
 		sauver_etat()
+
+
+# ---------------------------------------------------------------- ta maison
+
+var _maison_noeud: Node3D = null
+var _maison_lumiere: OmniLight3D = null
+
+
+## La maison de la falaise, selon où en sont les travaux (maison.gd) : une ruine sans toit,
+## puis une maison, puis la lumière aux fenêtres, puis l'enclos et le bain.
+func reconstruire_maison() -> void:
+	if carte != "brumeval" or not lieux.has(Maison.LIEU):
+		return
+	if _maison_noeud:
+		_lumieres.erase(_maison_lumiere)
+		_maison_noeud.queue_free()
+	_maison_noeud = Node3D.new()
+	add_child(_maison_noeud)
+	var nv := Maison.niveau(self)
+	var p: Vector2 = lieux[Maison.LIEU].pos
+	var t := Vector2(9, 7)
+	var c := Vector2(p.x, p.y - t.y / 2.0 - 2.0)
+	var hc := hauteur(c.x, c.y)
+	var pierre := _mat(Color(0.6, 0.58, 0.55) if nv >= 2 else Color(0.45, 0.44, 0.42))
+	var murs := 7.0 if nv >= 2 else 4.0
+	var b := _boite(Vector3(t.x, murs + 3.0, t.y), Vector3(c.x, hc - 3.0 + (murs + 3.0) / 2.0, c.y), pierre)
+	b.reparent(_maison_noeud)
+	if nv >= 2:
+		var toit := MeshInstance3D.new()
+		var pm := PrismMesh.new()
+		pm.size = Vector3(t.x + 1.0, 2.6, t.y + 1.0)
+		toit.mesh = pm
+		toit.position = Vector3(c.x, hc + murs + 1.3, c.y)
+		toit.material_override = _mat(Color(0.25, 0.27, 0.32))
+		_maison_noeud.add_child(toit)
+	else:
+		# la ruine : des poutres qui dépassent, des gravats
+		for k in 3:
+			var poutre := _boite(Vector3(0.4, 0.4, t.y + 2.0), Vector3(c.x - 3.0 + k * 3.0, hc + murs + 0.2, c.y), _mat(Color(0.3, 0.22, 0.15)))
+			poutre.rotation.x = 0.2 * (k - 1)
+			poutre.reparent(_maison_noeud)
+	if nv >= 3:
+		var lum := OmniLight3D.new()
+		lum.light_color = Color(1.0, 0.72, 0.4)
+		lum.omni_range = 10.0
+		lum.light_energy = 1.6
+		lum.position = Vector3(p.x, hauteur(p.x, p.y) + 2.5, p.y - 1.5)
+		lum.visible = false
+		_maison_noeud.add_child(lum)
+		_lumieres.append(lum)
+		_maison_lumiere = lum
+	if nv >= 4:
+		var bois := _mat(Color(0.45, 0.32, 0.2))
+		for k in 5:
+			var piquet := _boite(Vector3(0.3, 1.4, 0.3), Vector3(p.x + 6.0 + k * 1.2, hauteur(p.x + 6.0 + k * 1.2, p.y + 4.0) + 0.7, p.y + 4.0), bois)
+			piquet.reparent(_maison_noeud)
+		var bain := _boite(Vector3(4, 3, 4), Vector3(c.x + t.x / 2.0 + 2.5, hc + 1.5, c.y), _mat(Color(0.7, 0.66, 0.6)))
+		bain.reparent(_maison_noeud)
+	if not batiments.has(Rect2(c - t / 2.0 + Vector2(0.4, 0.4), t - Vector2(0.8, 0.8))):
+		batiments.append(Rect2(c - t / 2.0 + Vector2(0.4, 0.4), t - Vector2(0.8, 0.8)))
+	var etiquette := Label3D.new()
+	etiquette.text = lieux[Maison.LIEU].nom if nv == 0 else "Ta maison (%s)" % Maison.NOMS[nv]
+	etiquette.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	etiquette.font_size = 48
+	etiquette.pixel_size = 0.012
+	etiquette.outline_size = 10
+	etiquette.position = Vector3(p.x, hauteur(p.x, p.y) + 8.0, p.y - 4.0)
+	etiquette.visibility_range_end = 70.0
+	_maison_noeud.add_child(etiquette)

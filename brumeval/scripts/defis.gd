@@ -8,7 +8,8 @@
 #                adultes consentants seulement, les mêmes règles que toute nuit)
 #   propose      1 : il te le propose de lui-même quand tu passes près de lui (une fois par jour)
 #   recompense, penalite  « affection 15, cuivre 6, objet OBJ002, lecon parade, art 3,
-#                pacte maitre » (pacte : il te propose un pacte où tu mènes, s'il le veut aussi)
+#                pacte maitre, bien cabane, pret mahaut » (pacte : il te propose un pacte où tu mènes,
+#                s'il le veut aussi ; bien / pret : il te donne ou te prête un bien de data/biens.csv)
 #   texte, texte_victoire, texte_echec   ce qu'il dit
 #   condition    vide, ou « corps sexe_grand|poitrine_genereuse » (ton corps, fiche C),
 #                ou « age max 30 » / « age min 40 » : sinon il ne te le lance pas
@@ -138,6 +139,11 @@ static func appliquer(m: Node, pnj_id: String, quoi: String) -> String:
 				if not p[1] in f.apprises:
 					f.apprises.append(p[1])
 					r.append("Tu apprends : %s." % Combattant.COMPETENCES[p[1]].nom)
+			"bien", "pret":
+				# un bien offert (ou prêté) : un noble sauvé, une dette d'honneur…
+				var t := Biens.offrir(m, p[1], "achat" if p[0] == "bien" else "pret", "", false)
+				if t != "":
+					r.append(t)
 			"art":
 				f.drapeaux["art_xp"] = int(f.drapeaux.get("art_xp", 0)) + int(p[1])
 				r.append("Art d'aimer : +%d." % int(p[1]))

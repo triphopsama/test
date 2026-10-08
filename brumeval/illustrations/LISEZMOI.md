@@ -55,3 +55,7 @@ Pour une nuit, l'ordre de recherche est : les ids des participants (`BRU013+BRU0
 | `lien_trahison/`, `lien_pardon/`, `lien_ouvert/`, `lien_rupture/` | ton couple t'a trompé·e, et ce que tu en fais |
 | `lien_invitation/` | un couple ouvert t'invite à les suivre |
 | `ragots/`, `confidences/`, `entremetteur/`, `denoncer/`, `couvrir/`, `chantage/`, `consoler/`, `reconcilier/`, `zizanie/` | ce que tu fais de leurs amours |
+| `maison_1/` … `maison_4/`, `maison_demander/`, `maison_dormir/`, `maison_coffre/`, `maison_bain/`, `maison_betes/`, `maison_inviter/`, `maison_renvoyer/` | ta maison de la falaise, étape par étape |
+| `bien_<id>/`, `bien_offert/`, `bien_vendre/`, `negocier/`, `louer/`, `preter_refus/` | acheter, négocier, louer, se faire prêter (ids de `data/biens.csv`) |
+| `bien_lanternes/`, `bien_lanternes_libre/`, `bien_lanternes_contrats/` | la Maison des Lanternes achetée, et ses contrats |
+| `dette_racheter/`, `liberer/`, `contrat_travail/`, `contrat_equipe/`, `contrat_garde/` | les contrats de dette |

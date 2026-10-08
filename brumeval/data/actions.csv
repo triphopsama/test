@@ -105,3 +105,16 @@ journal_aldric;Montrer le journal de Gaspard;pnj;*;BRU007;0;10;0;0;;grotte_aldri
 grotte_silas;Parler affaires (la grotte);pnj;*;BRU003;0;10;0;0;;grotte_silas;;
 soie_isaure;Vendre la soie d'araignée (1 or pièce);pnj;*;BRU019;0;10;0;0;;grotte_isaure;;
 souvenir_ysolde;Lui demander un souvenir de sa famille;pnj;*;BRU004;0;15;50;2;;grotte_souvenir;;
+maison_demander;Lui demander la maison de la falaise;pnj;*;BRU004;0;10;-100;0;;maison_demander;;
+maison_travaux;Faire des travaux dans ta maison;lieu;falaise;*;0;0;-100;0;;maison_travaux;;
+maison_dormir;Dormir chez toi;lieu;falaise;*;0;0;-100;0;;maison_dormir;;
+maison_coffre;Ouvrir le coffre;lieu;falaise;*;0;0;-100;0;;maison_coffre;;
+maison_bain;Prendre un bain chaud;lieu;falaise;*;0;0;-100;0;;maison_bain;;
+maison_betes;L'enclos (tes bêtes);lieu;falaise;*;0;0;-100;0;;maison_betes;;
+maison_inviter;Lui proposer de vivre chez toi;pnj;*;*;0;10;-100;0;;maison_inviter;;
+maison_renvoyer;Lui demander de rentrer chez lui;pnj;*;*;0;5;-100;0;;maison_renvoyer;;
+bien_acheter;Acheter, louer, négocier ce lieu;lieu;*;*;0;15;-100;0;;bien_acheter;;
+bien_vendre;Revendre ce lieu;lieu;*;*;0;15;-100;0;;bien_vendre;;
+dette_racheter;Racheter son contrat;pnj;*;*;0;15;-100;0;;dette_racheter;;
+contrat_gerer;Son contrat;pnj;*;*;0;0;-100;0;;contrat_gerer;;
+dormir_chez_toi;Dormir (chez toi);lieu;*;*;0;360;-100;0;;repos;;Tes murs, ton lit, ta porte. Personne pour te réveiller.

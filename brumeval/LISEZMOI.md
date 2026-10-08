@@ -224,6 +224,47 @@ Le premier donjon (`monde/donjons/grotte_de_brumeval.md`, code dans `scripts/gro
 - **Au village, après** : rendre Léa (ou seulement son carnet, son alliance) à Pierrick, le fer d'étoile à Bram, les bijoux et le journal à Ysolde, le journal à Aldric (pour qu'il le brûle, ou pour le faire chanter), l'eau-de-vie et le secret de la grotte à Silas, la soie à Isaure.
 - **Équilibre** (`godot --headless -- --equilibre --grotte`, épée courte et rondache) : au niveau 5, on gagne contre les rats et la moitié du temps dans la salle inondée et au gouffre ; la Bête aveugle se bat de front vers le niveau 7, ou dès le niveau 5 avec les stalactites ; tomber dans le nid se paie cher avant le niveau 9.
 
+## Ta maison
+
+La maison de la falaise (l'ancienne maison Marbre, au-dessus de la grotte). Ysolde en a hérité :
+demande-la-lui. Elle te la donne si elle t'aime bien (affection 50), sinon elle te la vend 8 pièces d'argent.
+Ensuite, les travaux, sur place (Bram aide si tu es son ami, et ça va deux fois plus vite) :
+
+| Étape | Prix | Ce que ça ouvre |
+| --- | --- | --- |
+| 1. une ruine | (l'achat) | elle est à toi, on ne crochète plus sa porte |
+| 2. habitable | 5 argent, 8 h | dormir chez toi ; y loger quelqu'un |
+| 3. meublée | 6 argent, 6 h | le coffre (ce que tu ne portes pas) |
+| 4. aménagée | 1 or, 10 h | la salle d'armes (+10 à l'entraînement), le bain chaud, l'enclos des bêtes |
+
+La maison change à l'écran à chaque étape (une ruine sans toit, puis un toit, puis la lumière aux fenêtres,
+puis l'enclos et le bain). « Lui proposer de vivre chez toi » : un compagnon ou un proche (affection 50
+s'il est lié à toi, 70 sinon) garde son travail mais dort chez toi ; à l'entraînement, chez toi, ceux qui
+y vivent sont là. Une bête à l'enclos ne prend plus de place dans l'équipe.
+
+## Tout a un prix
+
+`data/biens.csv` : chaque maison, chaque commerce, le Goéland gris… Sur place, « Acheter, louer, négocier ce lieu » :
+
+- **Acheter** : au prix de base si le propriétaire t'aime assez (colonne `vend`), plus cher sinon, et il t'en
+  veut d'avoir forcé la main. Ton commerce rapporte chaque jour (colonne `revenu`), le propriétaire y reste
+  et y travaille ; chez lui, tu achètes à moitié prix. On peut **revendre** aux trois quarts.
+- **Négocier** (une fois) : Int + Sag (+ Séduction, + commerçant) contre le vendeur : -15 % ou -30 %, ou +15 % s'il se vexe.
+- **Louer** : un dixième du prix par semaine ; on y dort, pas de revenus ; loyer impayé, clé reprise.
+- **Se le faire prêter** : une maison, par un ami (affection 70) ; il la reprend si vous vous brouillez.
+- **Un événement** peut te donner ou te prêter un bien : `bien <id>` ou `pret <id>` dans une récompense de
+  `data/defis.csv` (exemple : la vieille Mahaut te prête sa cabane si tu lui rapportes ses herbes). C'est là
+  qu'on branche « un noble sauvé t'offre une maison ».
+- Chez toi (acheté, loué, prêté), on dort gratuitement. Le corps de garde, la mairie, les chapelles et la
+  maison du prévôt ne se vendent jamais.
+
+**Les contrats de dette** (Lysa, Bastien, et Vesperine si elle a été vendue à Pierrefane) : « Racheter son
+contrat » auprès d'Orsoline. Le contrat est à toi : tu le déchires (libre, +30), ou tu le gardes : il travaille
+pour toi (8 cuivre par jour) ou il te suit au combat, et son affection baisse chaque jour. **Sous contrat,
+rien d'intime, jamais** : il ne peut pas consentir. Acheter la Maison des Lanternes met ses contrats dans ta
+poche (les déchirer, ou les garder). Vesperine rachetée et libérée reste à Pierrefane, et a besoin de deux
+jours avant quoi que ce soit.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

@@ -427,7 +427,14 @@ func entrainement() -> void:
 	_vider()
 	_ligne("Entraîner tes compétences (1 h)", _entrainer_seul, "Une fois par jour : +15 expérience, ta classe progresse aussi.")
 	var lieu: String = monde.lieu_proche(monde.joueur.pos2d(), 40.0)
-	for id in monde.fiche.equipiers:
+	var presents: Array = monde.fiche.equipiers.duplicate()
+	if Maison.chez_toi(monde):
+		# chez toi : ceux qui y vivent, s'ils sont là
+		for id in Maison.habitants(monde):
+			var h: Node = monde._pnj_par_id(id)
+			if h and h.visible and not id in presents and h.pos2d().distance_to(monde.joueur.pos2d()) < 40.0:
+				presents.append(id)
+	for id in presents:
 		var n: Node = monde._pnj_par_id(id)
 		if n == null:
 			continue
@@ -440,7 +447,39 @@ func entrainement() -> void:
 func _entrainer_seul() -> void:
 	fermer()
 	Horloge.avancer(60.0)
-	Illustrations.montrer("entrainement", ["defaut"], Defis.entrainer_competences(monde))
+	var t := Defis.entrainer_competences(monde)
+	if Maison.chez_toi(monde) and Maison.niveau(monde) >= 4 and t.contains("+15"):
+		monde.fiche.gagner_xp(10)
+		t += " La salle d'armes : +10 de plus."
+	Illustrations.montrer("entrainement", ["defaut"], t)
+
+
+# ---------------------------------------------------------------- le coffre de ta maison
+
+func coffre() -> void:
+	if ouvert != "coffre":
+		_ouvrir("coffre")
+	var f: Fiche = monde.fiche
+	_titre.text = "Le coffre"
+	_entete.text = "Clic sur une ligne : déposer (sac) ou reprendre (coffre)."
+	_vider()
+	var c := Maison.coffre(monde)
+	for id in c:
+		_ligne("[coffre] %s ×%d" % [Objets.get_(id).get("nom", id), c[id]], _coffre_reprendre.bind(id), _detail_objet(id))
+	for id in _ids_tries():
+		if f.equipe(id) and f.nombre(id) <= 1:
+			continue
+		_ligne("[sac] %s ×%d" % [Objets.get_(id).get("nom", id), f.nombre(id)], _coffre_deposer.bind(id), _detail_objet(id))
+
+
+func _coffre_deposer(id: String) -> void:
+	Maison.deposer(monde, id)
+	coffre()
+
+
+func _coffre_reprendre(id: String) -> void:
+	Maison.reprendre(monde, id)
+	coffre()
 
 
 func _lutter(n: Node) -> void:
@@ -565,7 +604,9 @@ func marchand(pnj: Node, vente: bool) -> void:
 
 func prix_achat(id: String) -> int:
 	var p := Objets.prix(id)
-	if _marchand and monde.relations.get(_marchand.id, 0) >= 50:
+	if _marchand and Biens.possede_de(monde, _marchand.id):
+		p = int(p * 0.5)            # c'est ton commerce : prix coûtant
+	elif _marchand and monde.relations.get(_marchand.id, 0) >= 50:
 		p = int(p * 0.9)            # un ami fait un geste
 	if monde.fiche.vie == "commercant":
 		p = int(p * 0.95)           # marchandage

@@ -93,6 +93,14 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if str(l.donne) in Liens.ACTIONS and not Liens.dispo(monde, str(l.donne), pnj):
 			continue
+		if str(l.donne) in Maison.ACTIONS and not Maison.dispo(monde, str(l.donne), pnj):
+			continue
+		if str(l.donne) in Biens.ACTIONS and not Biens.dispo(monde, str(l.donne), pnj, lieu):
+			continue
+		if l.id == "dormir_chez_toi" and (not Biens.chez_soi(monde, lieu) or lieu == Maison.LIEU):
+			continue
+		if l.id == "crocheter" and lieu == Maison.LIEU and Maison.niveau(monde) >= 1:
+			continue   # c'est chez toi
 		if str(l.get("competence", "")) != "" and _competence_requise(l) == "":
 			continue
 		if l.id in ["vol_tire", "benir"] and (pnj == null or int(pnj.donnees.get("age", "0")) < AGE_ADULTE):
@@ -163,12 +171,21 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		if aff < int(l.affection_min):
 			_refus(l, pnj, cles)
 			return
-	var manque := _manque(str(l.get("prix", "")))
+	var prix_l := str(l.get("prix", ""))
+	if str(l.get("donne", "")).contains("repos") and Biens.chez_soi(monde, lieu):
+		prix_l = ""     # chez toi, on ne paie pas
+	var manque := _manque(prix_l)
 	if manque != "":
 		Illustrations.montrer(l.id + "_refus", cles, manque)
 		return
-	_payer(str(l.get("prix", "")))
+	_payer(prix_l)
 	var donne := str(l.get("donne", ""))
+	if donne in Maison.ACTIONS or donne in Biens.ACTIONS:
+		Horloge.avancer(float(l.duree_min))
+		var tm: String = Maison.agir(monde, donne, pnj) if donne in Maison.ACTIONS else Biens.agir(monde, donne, pnj, lieu)
+		if tm != "":
+			Illustrations.montrer(l.id, cles, _remplacer(tm, pnj, lieu))
+		return
 	if donne.begins_with("grotte"):
 		Horloge.avancer(float(l.duree_min))
 		Grotte.action(monde, donne, l, pnj)

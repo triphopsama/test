@@ -1,0 +1,26 @@
+id;carte;lieu;type;nom;proprietaire;prix;revenu;vend;texte
+cabane;brumeval;cabane;maison;La cabane du chasseur;BRU020;6 argent;0;affection 60;Pierrick se gratte la barbe : « Ma cabane ? Je dormirai sous le chêne, c'est pareil. »
+agnes;brumeval;agnes;commerce;La maison de la guérisseuse;BRU015;1 or;14;affection 50;Agnès plisse les yeux : « Je reste. Je soigne. Toi, tu encaisses, et tu payes les herbes. »
+ferme;brumeval;ferme;commerce;La ferme Champart;BRU018;3 or;30;affection 40;Basile crache par terre : « Mes moutons restent mes moutons. Le toit, il est à toi. »
+moulin;brumeval;moulin;commerce;Le moulin Dumoulin;BRU013;2 or 6 argent;26;affection 40;Élise rit : « Un associé ? Pourquoi pas. Tant que je garde la clé du grenier. »
+joss;brumeval;joss;maison;La cabane de Joss;BRU006;4 argent;0;affection 50;Joss hausse les épaules : « Prends. J'ai mon bateau. »
+comptoir;brumeval;comptoir;commerce;Le comptoir de Silas;BRU003;5 or;48;affection 30;Silas compte deux fois : « Le comptoir, oui. Ce qui passe par l'arrière-salle, non. »
+taverne;brumeval;taverne;commerce;La taverne du Hareng Rieur;BRU011;4 or;40;affection 50;Rosalie tape sur le comptoir : « Je reste derrière, et c'est moi qui choisis la bière. Marché conclu. »
+boulangerie;brumeval;boulangerie;commerce;La boulangerie Fournier;BRU001;2 or;22;affection 50;Mara essuie ses mains sur son tablier : « Pour Tim. Pour qu'il ait de quoi, plus tard. »
+forge;brumeval;forge;commerce;La forge Ferrand;BRU002;3 or;32;affection 60;Bram grogne : « L'enclume reste à moi. Le reste, prends. »
+atelier;brumeval;atelier;commerce;L'atelier de couture;BRU019;1 or 6 argent;18;affection 40;Isaure lisse un tissu : « Je couds, tu vends. Ça me va. »
+garde;brumeval;garde;public;Le corps de garde;BRU014;—;0;jamais;Corentin te regarde comme un fou : « C'est à la République. »
+mairie;brumeval;mairie;public;La mairie;BRU007;—;0;jamais;Aldric sourit poliment : « La mairie n'est pas à vendre. Le maire, peut-être un jour. »
+chapelle;brumeval;chapelle;public;La chapelle des Sept Astres;BRU004;—;0;jamais;Ysolde ne répond même pas.
+goeland;pierrefane;port;bateau;Le Goéland gris (un caboteur);PIE006;8 or;60;affection 40;Le capitaine Daunel rit fort : « Mon bateau ? Payé comptant, et je reste capitaine. Avec un pourcentage. »
+lanternes;pierrefane;lanternes;commerce;La Maison des Lanternes;PIE001;12 or;70;affection 30;Orsoline te jauge longtemps : « Tout s'achète. Mais si vous déchirez mes contrats, ce sera sans moi. »
+auberge;pierrefane;auberge;commerce;Au Mouillage;PIE013;4 or;40;affection 50;Ondine hésite, regarde Pâris : « Avec ses dettes de dés... D'accord. Mais je reste aux fourneaux. »
+entrepot;pierrefane;entrepot;commerce;L'épicerie-entrepôt Daunel;PIE007;5 or;50;affection 40;Bérénice serre les lèvres : « Mon mari boit ce que je gagne. Autant que ce soit à vous. »
+chantier;pierrefane;chantier;commerce;Le chantier naval;PIE011;6 or;55;affection 50;Maître Ferrat lisse sa barbe : « Un chantier sans commandes meurt. Apportez des commandes, et il est à vous. »
+hangar;pierrefane;hangar;maison;Le hangar à bateaux;PIE018;1 or;0;affection 40;Gilles sourit en coin : « Vous ne demandez pas ce que mes barques transportent. Alors il est à vous. »
+mahaut;pierrefane;mahaut;maison;La cabane de Mahaut;PIE015;5 argent;0;affection 60;La vieille Mahaut rit : « Quand je serai morte. Ou maintenant, si tu me laisses y mourir. »
+prevot;pierrefane;prevot;public;La maison du prévôt;PIE009;—;0;jamais;Le prévôt s'étrangle : « La loi ne se vend pas ! » Puis, plus bas : « Pas comme ça. »
+chapelle_pie;pierrefane;chapelle;public;La petite chapelle;PIE010;—;0;jamais;Sœur Odile sourit dans le vide : « Les Astres ne vendent rien. »
+dette_lysa;pierrefane;lanternes;dette;Le contrat de dette de Lysa;PIE002;3 or;0;affection -100;Orsoline sort un papier jauni : « Trois pièces d'or, et elle n'est plus à moi. Elle ne sera pas à vous non plus : un contrat racheté est un contrat déchiré. »
+dette_bastien;pierrefane;lanternes;dette;Le contrat de dette de Bastien;PIE003;2 or 6 argent;0;affection -100;Orsoline hausse les épaules : « Le petit commis ? Deux pièces d'or et demie. Il ne rapporte pas grand-chose. »
+dette_vesperine;pierrefane;lanternes;dette;Le collier de Vesperine;VES019;10 or;0;affection -100;Orsoline caresse la clé du collier : « Une démone. Rare. Dix pièces d'or, et pas une de moins. »
