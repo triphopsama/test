@@ -75,7 +75,7 @@ Sa fiche existe déjà (`monde/demons/vesperine.md`), et ses jours 1 à 3 sont �
 
 ## 4. Électra, impératrice d'Aurelle
 
-- **Qui :** quarante ans, l'une des plus belles femmes du monde, et elle s'en sert. Elle règne seule depuis la mort de l'empereur Aldéric il y a six ans, comme régente d'un fils malade. Cruelle par calcul autant que par goût. C'est elle qui a doublé les primes sur les hommes-bêtes fugitifs.
+- **Qui :** quarante ans, l'une des plus belles femmes du monde, et elle s'en sert. Elle règne seule depuis la mort de l'empereur Aldéric il y a six ans, comme régente de son fils, l'empereur Lothaire (14 ans, malade : AUR002). Cruelle par calcul autant que par goût. C'est elle qui a doublé les primes sur les hommes-bêtes fugitifs.
 - **Ce qu'elle veut :** un Empire qui ne plie devant personne, et la République à genoux par le mariage plutôt que par la guerre, parce que c'est moins cher. Elle se voit comme la vraie héritière de la victoire sur les démons.
 - **Son secret :** l'Inquisition de Sainte-Aube lui a rapporté des lanternes au large de la côte est aussi. Elle croit au retour des démons, mais elle ne le dit à personne : elle veut être celle qui les écrasera.
 - **Au jour 1 :**
