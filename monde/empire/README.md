@@ -14,7 +14,7 @@
   - le **maréchal de l'Empire**, Anselme Varlac, qui commande les armées de terre ;
   - l'**amiral de Kerval**, Gaël Kerhoas, qui commande la flotte (il siège rarement : il est à Kerval) ;
   - le **grand chambellan**, Gonthier Faucq, qui tient le palais, ses clés, ses comptes et ses esclaves ;
-  - l'**archiprêtre des Sept Astres**, Clémentin Aubrac, chef du culte ;
+  - l'**archiprêtre des Sept Astres**, Clémentin Vérac, chef du culte ;
   - le **légat de l'Inquisition**, l'œil de Sainte-Aube à la cour.
 - **Les provinces** sont tenues par la noblesse (ducs et comtes) au nom de l'empereur. Les villes de garnison (Haute-Lance) et la ville sainte (Sainte-Aube) ont leur propre chef, militaire ou religieux, qui répond directement au trône.
   - **Aurelle** : cité impériale, tenue par le palais.
@@ -113,7 +113,7 @@ Comme dans la République, certains PNJ voyagent en temps réel et restent compt
 | 15 | Orvieu | Tournoi de la Rose |
 | 20 | Tout le continent | Solstice |
 
-Le détail jour par jour est dans les chroniques de chaque lieu ([aurelle](../chronique/aurelle/jour_001.md), [kerval](../chronique/kerval/jour_001.md), [orvieu](../chronique/orvieu/jour_001.md)…).
+Le détail jour par jour sera écrit dans les chroniques de chaque lieu (`chronique/<lieu>/`), une fois tous les passés faits.
 
 ## Les lieux
 
