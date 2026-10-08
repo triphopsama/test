@@ -30,7 +30,7 @@ Classes propres aux démons : Mage de sang, Danseur d'ombre, Enjôleur ([classes
 ## Comment l'île est gouvernée
 
 - **La reine Sanae** (NOC001) règne depuis l'an −212. Elle mange la ration des dockers, sur le quai, matin et soir.
-- **Le conseil des Six** se réunit dans la salle de basalte du palais : la reine, Vaëris (conseiller du Fil), Korrah (général de la Lame), Ondrae (Maîtresse du Voile), Méreth (Intendante du Grenier) et Mère Ossane (Grande Veilleuse de la Braise). La reine tranche seule.
+- **Le conseil des Six** se réunit dans la salle de basalte du palais : la reine, Vaëris (conseiller de la reine et chef du Fil), Korrah (général de la Lame), Ondrae (Maîtresse du Voile), Méreth (Intendante du Grenier) et Mère Ossane (Grande Veilleuse de la Braise). La reine tranche seule.
 - **La justice** : Maître Hald Crane (NOC078), juge de la reine.
 - **Échelle sociale** : captif → sans-rang → guerrier ou artisan → officier d'une faction → chef de faction → conseiller → reine.
 

@@ -90,14 +90,14 @@ Toutes les fiches complètes du monde (les cinq nations) sont réunies dans [tou
 | 16 | Vaulx-sur-Mer | Procès de Sauge, un loup sous contrat accusé d'un meurtre qu'il n'a pas commis |
 | 16 | Gué-Moreau | La caravane naine de Brokk arrive ; la renarde Senna prévoit d'incendier les entrepôts pour s'enfuir |
 | 17 | Vaulx-sur-Mer | Pendaison prévue de Gweltaz le Borgne, témoin du trafic du *Goéland gris* |
-| 18 | Saltevaux | Ysar, frère de la louve Nayla, doit être vendu à l'Empire depuis la Cave aux Contrats |
-| ~18 | Lorvane | Pleine lune : Gauvain, le fils du prévôt, est un loup-garou caché |
 | 20 | Hautecombe | Fête de la Fleur (solstice) : Ysaline veut empoisonner son mari Bertrand Castelroux ; trois fuites la même nuit |
 | 20 | Gué-Moreau | Le convoi de l'impôt part ; le Freux veut le voler |
 | 20 | Port-Salin | Grande pesée du sel : grève possible |
-| ~20 | Fort-Corbeau | Nuit sans lune : les Faucons de Vaillac veulent provoquer la guerre avec l'Empire |
+| 25 | Lorvane | Pleine lune : Gauvain, le fils du prévôt, est un loup-garou caché |
 | 26 | Saltevaux | Vote de la loi Sarrazin au Sénat ; un assassinat est prévu avant |
 | 30 | Île des démons | Sans nouvelles de Vesperine, la Lame lance une expédition de reconnaissance |
+| 40 | Saltevaux | Ysar, frère de la louve Nayla, doit être vendu à l'Empire, à la nuit sans lune, depuis la Cave aux Contrats |
+| 40 | Fort-Corbeau | Nuit sans lune : les Faucons de Vaillac veulent provoquer la guerre avec l'Empire |
 | 60 | Île des démons | La guerre est décidée |
 
 ## Les démons cachés dans la République
