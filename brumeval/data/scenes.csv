@@ -15,7 +15,7 @@ j1_enfants;brumeval;1;14.5;14.9;plage;;BRU005,BRU016;;Les ricochets;Tim et Nina 
 j1_nina;brumeval;1;15;15.3;place;;BRU014,BRU016;;Au voleur;Corentin poursuit Nina, qui a volé des pommes. Elle passe en courant à côté de toi.;
 j1_mains;brumeval;1;17.5;17.7;forge;;BRU002,BRU019;;Les mains de Bram;Bram sort de chez Mara. Ses mains tremblent : il fait tomber une pince, la ramasse vite. Isaure, de l'autre côté de la rue, a vu aussi.;
 j1_amants;brumeval;1;18;18.7;taverne;;BRU009,BRU010,BRU011;;Derrière la taverne;Gaëlle, la fille du maire, et Félix, le chanteur, s'embrassent derrière la taverne. Par la fenêtre de la cuisine, Rosalie les a vus.;fil amants=vendus
-j1_taverne;brumeval;1;20;20.6;taverne;;BRU010,BRU006,BRU011;;Le Hareng Rieur;Rosalie : « Ici on paie avant de boire, mon grand. » Félix chante. Joss raconte la dispute de la forge en exagérant tout.;
+j1_taverne;brumeval;1;20;20.6;taverne;;BRU010,BRU006,BRU011;;Le Hareng Rieur;Rosalie : « Ici on paie avant de boire, mon grand. » Félix chante. Joss raconte la dispute de la forge en exagérant tout.;ragot Silas tient la moitié du village par les dettes
 j1_bram_taverne;brumeval;1;20.66;21;taverne;;BRU002,BRU006;;Bram entend;Bram entre, entend la fin de l'histoire de Joss, et repart sans boire.;
 j1_toit;brumeval;1;21;21.4;chapelle;;BRU004;aff BRU004>=0;Des lanternes au large;Sur le toit de la chapelle, Ysolde regarde la mer. Des lanternes, au large, sans bateau annoncé.;
 j2_puits_nuit;brumeval;2;0.15;0.7;falaise;;BRU020;;Quelqu'un creuse;Dans le jardin de la maison de la falaise, quelqu'un creuse, à la lanterne sourde.;
@@ -56,7 +56,7 @@ j2_enfants;brumeval;2;14.5;14.9;plage;;BRU005,BRU016;fil falaise!=denonces;Le pl
 j2_amants;brumeval;2;15;15.4;place;;BRU009,BRU010;fil amants!=denonces|chantage;Un bateau;Sous le porche de la mairie, à l'abri de l'averse, Gaëlle et Félix parlent de partir. « Il nous faut une place sur un bateau. »;
 j2_basile;brumeval;2;16;16.4;ferme;;BRU018;fil pierrick=puits;Le quatrième mouton;Basile découvre qu'un quatrième mouton a disparu près de la falaise. Il jure contre Pierrick.;
 j2_ysolde_v;brumeval;2;16.5;17;agnes;;BRU004,BRU015;ves libre;La lumière de la Pâle;Ysolde passe à la lisière s'excuser à demi-mot auprès d'Agnès. Vesperine est dans la pièce d'à côté.;
-j2_accusation;brumeval;2;20;20.5;taverne;;BRU018,BRU020,BRU002;;Les moutons;Basile accuse Pierrick de voler ses moutons. Pierrick répond qu'il ferait mieux de surveiller ses bêtes. Bram se lève pour les séparer.;
+j2_accusation;brumeval;2;20;20.5;taverne;;BRU018,BRU020,BRU002;;Les moutons;Basile accuse Pierrick de voler ses moutons. Pierrick répond qu'il ferait mieux de surveiller ses bêtes. Bram se lève pour les séparer.;ragot Pierrick vole les moutons de Basile
 j2_rosalie;brumeval;2;21;21.3;taverne;;BRU011,BRU003;fil mara=candidate|ysolde_tot;Ce que Rosalie vend;Rosalie se penche vers Silas, une information à vendre.;
 j2_mara_soir;brumeval;2;22;22.5;boulangerie;;BRU001;aff BRU001>=20;Mara seule;Mara, seule, regarde la pièce d'or de Tim et repense à la proposition d'Ysolde.;
 j2_recherche;brumeval;2;22;23;agnes;;BRU003,BRU012;"ves libre;fil silas=soupcon|ennemi|soupcon_gilles";Les lanternes;Silas et Lucas fouillent la lisière à la lanterne.;
@@ -88,7 +88,7 @@ j3_falaise;brumeval;3;14;15.5;falaise;;BRU005,BRU016;fil falaise=avec_toi|invite
 j3_pierrick;brumeval;3;15.6;16;falaise;;BRU020;vu j3_falaise;Pierrick;Pierrick surgit au coin de la maison, l'arc à la main.;
 j3_amants;brumeval;3;18;18.5;plage;;BRU009,BRU010;fil amants=gilles;Ce soir;Gaëlle supplie Félix de ne pas venir au dîner.;
 j3_diner;brumeval;3;19.5;20.2;mairie;;BRU003,BRU007,BRU008,BRU009;fil diner=invite;Le dîner des Montval;Silas est charmant. Gaëlle porte une robe. Clémence surveille tout le monde.;
-j3_chanson;brumeval;3;20.25;20.6;taverne;;BRU010;;La chanson;Félix chante « La fille du maire et le marchand de farine ». Toute la taverne rit. Les fenêtres de la mairie sont ouvertes.;
+j3_chanson;brumeval;3;20.25;20.6;taverne;;BRU010;;La chanson;Félix chante « La fille du maire et le marchand de farine ». Toute la taverne rit. Les fenêtres de la mairie sont ouvertes.;ragot Clémence vend sa fille à Silas
 j3_perron;brumeval;3;21;21.3;mairie;;BRU009,BRU003;fil amants=pret;Le perron;Sur le perron, Silas dit à Gaëlle, à voix basse, qu'il ne veut pas l'épouser.;
 j3_rosalie;brumeval;3;22;22.4;taverne;;BRU011;;Le loyer;Un mot de Clémence : le loyer de la taverne augmente d'un tiers, « pour le bruit ». Rosalie le froisse.;
 j3_orage;brumeval;3;23;23.6;crique;;BRU003,BRU012;;L'orage;L'orage éclate sur la crique. Un tonneau glisse sur les rochers, droit sur la main de Lucas.;
@@ -108,7 +108,7 @@ j1_course;brumeval;1;22.75;23.2;crique;;BRU003,BRU012;fil silas=recrue;La course
 j1_tonneaux;brumeval;1;22.75;23.4;guet;;BRU017;fil theo=allie;Les tonneaux;Sur la falaise d'en face, Théo compte à voix basse. En bas, à la crique, des lanternes.;
 toi_cellule;brumeval;2;5.5;8.4;comptoir;99999;;fil captif=cellule;La cellule;La paille, le collier, et elle à côté de toi, qui se réveille. Au-dessus, Silas dort.;fil captif=charrette
 toi_charrette;brumeval;2;8.4;10.6;comptoir;99999;;fil captif=charrette;La charrette;Une bâche, un plancher de charrette, le pas du cheval. Garec tient les rênes, Silas est à côté de lui. À la halte de la source, ils descendent tous les deux.;fil captif=vente
-toi_vente;pierrefane;2;10;14;lanternes;99999;PIE001,PIE006;fil captif=vente;La vente;On vous fait descendre devant la Maison des Lanternes. Orsoline vous examine comme deux rouleaux de tissu.;
+toi_vente;pierrefane;2;10;14;lanternes;99999;PIE001,PIE006;fil captif=vente;La vente;On vous fait descendre devant la Maison des Lanternes. Orsoline vous examine comme deux rouleaux de tissu.;captif vendu
 toi_entretien;pierrefane;3;10;11;lanternes;99999;PIE001,PIE005;fil captif=entretien;Le ménage;"Le ménage des Lanternes, de dix à onze. Le bureau d'Orsoline est ouvert ; Hugues somnole dans le couloir.";
 toi_cale;pierrefane;3;11.75;13;port;99999;PIE006,PIE008;fil captif=matelot;Le pont;Daunel est parti boire au Mouillage. Sur le pont, il n'y a que toi et le mousse, Yann.;
 toi_yann;pierrefane;3;22;23;port;99999;PIE008;"fil captif=matelot;fil yann=ami";La clé de la cale;Yann descend dans la cale, la clé à la main : « Va-t'en. Je dirai que la serrure a lâché. »;
@@ -132,3 +132,26 @@ p3_ferrat;pierrefane;3;9;9.4;chantier;;PIE011,PIE018;;La barque fendue;Gilles am
 p3_bastien;pierrefane;3;13;13.5;lanternes;;PIE003;fil bastien=aide;La ligne;Bastien te glisse un bout de papier sorti de sa chaussure.;
 p3_convocation;pierrefane;3;14;14.5;lanternes;;PIE001;fil paris=dette_rachetee;La convocation;Orsoline t'attend dans son bureau : « La dette de Pâris. Je vous la rachète le double. »;
 p3_lettre;pierrefane;3;15;15.5;chapelle;;PIE010;;La lettre aux Libres;Sœur Odile cachette une lettre : « Pour les Libres de Saltevaux. Il faut la porter au Passeur. »;
+j1_aube;brumeval;1;5;5.6;boulangerie;;BRU001;;Deux jours de farine;Mara découvre qu'il lui reste de la farine pour deux jours. Elle jure à voix basse.;
+j1_falaise_nina;brumeval;1;5.5;5.9;falaise;;BRU020,BRU016;;Le chasseur et la renarde;Pierrick surprend une gamine aux oreilles de renarde qui sort de la maison abandonnée, et la chasse en bandant son arc.;
+j1_moulin_mara;brumeval;1;6.5;6.9;moulin;;BRU001,BRU013;;Plus de grain;Mara vient chercher de la farine. Élise n'a plus de grain : « Deux semaines, après je ferme. »;
+j1_port_rumeur;brumeval;1;11.75;12.1;port;;BRU006;;Ce que dit le port;Deux clients de la forge racontent la dispute de Bram et de Silas. Joss écoute avec gourmandise.;
+j1_theo_ysolde;brumeval;1;14.15;14.45;chapelle;;BRU017,BRU004;;Le capitaine du ravitaillement;Théo, du haut de son échafaudage, demande à Ysolde ce qu'elle sait du capitaine du ravitaillement.;
+j1_robe;brumeval;1;16.5;16.9;atelier;;BRU008,BRU019;;La robe de fiançailles;Clémence commande une robe de fiançailles, « pour bientôt ». Isaure comprend qu'il s'agit de Silas.;
+j1_rosalie_clemence;brumeval;1;18.75;19.1;mairie;;BRU011,BRU008;fil amants=vendus|-;Ce que Rosalie vend;Rosalie glisse quelque chose à l'oreille de Clémence, contre une remise sur son loyer.;
+j1_tim_fenetre;brumeval;1;23.25;23.6;boulangerie;;BRU005;;Les lumières;À la fenêtre de la boulangerie, Tim regarde les lumières de la crique et hésite à sortir.;
+j2_mara_isaure;brumeval;2;17.5;17.8;boulangerie;;BRU001,BRU019;;Bram est fatigué;Isaure confie à Mara qu'elle trouve Bram « fatigué ». Mara lui dit qu'elle devrait lui parler.;
+j2_gaelle_isaure;brumeval;2;18;18.4;atelier;;BRU009,BRU019;;Le vert;Gaëlle demande à Isaure de faire sa robe en vert, pas en bleu. Isaure promet d'essayer.;
+j2_diner_annonce;brumeval;2;19.5;19.9;mairie;;BRU008,BRU009;;Le dîner de demain;Clémence annonce un dîner avec Silas pour demain soir. Gaëlle refuse, la porte claque, elle s'enferme.;
+j2_lutte;brumeval;2;20.5;20.8;taverne;;BRU013,BRU002;;Le pari d'Élise;Élise parie sur une lutte de taverne, perd, et paie en pièces neuves. Bram le remarque.;
+j3_aube;brumeval;3;5;5.6;boulangerie;;BRU001;fil farine!=en_route|don|distribuee;La demi-fournée;Plus de farine. Mara ne fait que la moitié des miches. Des clients repartent les mains vides.;
+j3_annonce;brumeval;3;9.5;10;chapelle;;BRU001,BRU004;fil mara!=candidate;La candidate;Mara annonce à Ysolde qu'elle se présentera : « Si un enfant doit voler du pain, c'est qu'on a laissé faire. »;fil mara=candidate
+j3_nina_agnes;brumeval;3;16.5;16.9;agnes;;BRU016,BRU015;;Le puits;Nina, essoufflée, raconte le puits à Agnès. Agnès devient très sérieuse : « N'y retourne jamais. Ce puits mène à une grotte qui a déjà tué. »;
+j3_pierrick_mara;brumeval;3;17;17.4;boulangerie;;BRU020,BRU001;fil falaise!=protege;La menace;Pierrick vient trouver Mara, sec : « Ton fils était chez moi. La prochaine fois je ne serai pas aussi poli. »;
+p2_matin;pierrefane;2;6;6.6;auberge;;PIE013,PIE017;;Le pain chaud;Ondine ouvre l'auberge, allume le feu, et pose du pain chaud sur le comptoir.;
+p2_salon;pierrefane;2;18;18.6;lanternes;;VES019,PIE001;ves capturee;La nouvelle chante;Au salon des Lanternes, la nouvelle chante, collier au cou. La salle se tait. Orsoline note les regards.;ragot la nouvelle de chez Orsoline chante comme une sirène
+p2_hugues;pierrefane;2;22;22.4;lanternes;;PIE005,PIE002;;Le petit chat;Dans le couloir, Hugues donne à Lysa un petit chat sculpté dans le bois. Elle le cache sous son matelas.;
+p3_peche;pierrefane;3;5;5.6;port;;PIE014;;La bonne pêche;Pâris rentre de la mer, pour une fois à l'heure : des bars, des maquereaux. Il est fier.;
+p3_lysa_ves;pierrefane;3;13.5;14;lanternes;;PIE002,VES019;ves capturee;Où va la mer;Au repas, la nouvelle demande à Lysa « où va la mer, vers le sud ». Lysa, tout bas : « Vers Aëlinde. Il y a un homme qui y emmène des gens. »;
+p3_salon;pierrefane;3;18;18.6;lanternes;;VES019,PIE006,PIE001;ves capturee;Demain, capitaine;La nouvelle chante. Daunel la réclame encore. Orsoline : « Demain, capitaine. »;
+p3_orage;pierrefane;3;23;23.5;hangar;;PIE018,PIE016;;Le jour 6;L'orage éclate sur Pierrefane. Aucune barque ne sortira cette nuit ni la suivante. Gilles : « Le jour 6. Pas avant. » Kael serre les poings.;

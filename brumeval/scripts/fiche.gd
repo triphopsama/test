@@ -92,7 +92,34 @@ func stats_totales() -> Dictionary:
 		var b := Objets.bonus(equipement[e])
 		for s in b:
 			t[s] = maxi(1, t[s] + b[s])
+	# le corps : Affamé (-1 For, Vol) après 8 h sans manger, Fatigué (-2 Per, Agi) après 18 h debout
+	if affame():
+		t.For = maxi(1, int(t.get("For", 1)) - 1)
+		t.Vol = maxi(1, int(t.get("Vol", 1)) - 1)
+	if fatigue():
+		t.Per = maxi(1, int(t.get("Per", 1)) - 2)
+		t.Agi = maxi(1, int(t.get("Agi", 1)) - 2)
 	return t
+
+
+const FAIM_H := 8.0
+const VEILLE_H := 18.0
+
+
+func affame() -> bool:
+	return drapeaux.has("repas") and Horloge.maintenant() - float(drapeaux.repas) > FAIM_H * 3600.0
+
+
+func fatigue() -> bool:
+	return drapeaux.has("reveil") and Horloge.maintenant() - float(drapeaux.reveil) > VEILLE_H * 3600.0
+
+
+func manger() -> void:
+	drapeaux["repas"] = Horloge.maintenant()
+
+
+func reposer() -> void:
+	drapeaux["reveil"] = Horloge.maintenant()
 
 
 func pv_max() -> int:

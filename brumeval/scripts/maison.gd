@@ -142,6 +142,7 @@ static func agir(m: Node, quoi: String, pnj: Node) -> String:
 			return ""
 		"maison_dormir":
 			Horloge.avancer(360.0)
+			f.reposer()
 			f.pv = f.pv_max()
 			f.mana = f.mana_max()
 			f.sauver()

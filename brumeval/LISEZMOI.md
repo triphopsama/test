@@ -267,7 +267,7 @@ jours avant quoi que ce soit.
 
 ## Les jours de la chronique
 
-Les jours 1 à 3 de [la chronique](../monde/chronique/joueur/) se jouent : `data/scenes.csv` (133 scènes,
+Les jours 1 à 3 de [la chronique](../monde/chronique/joueur/) se jouent : `data/scenes.csv` (156 scènes,
 Brumeval et Pierrefane) et `data/scenes_choix.csv` (leurs choix). Chaque scène a un jour, une heure de
 début et de fin, un lieu et des PNJ : **les PNJ y vont à l'heure dite, même sans toi**. Si tu arrives à
 moins de 30 m pendant la scène, elle s'ouvre (l'image, le texte, puis les choix). Si elle se termine sans
@@ -285,6 +285,15 @@ jour 1 ouvre ou ferme des choix au jour 2 et 3. Tout est expliqué en tête de `
 jour 9, Garec aux jours 1 à 3 puis à partir du jour 10, Mouche à partir du jour 10).
 
 Images : `illustrations/<id de la scène>/` pour la scène, `illustrations/<scène>_<choix>/` pour la suite d'un choix.
+
+**La partie commence au jour 1** : créer un personnage remet l'horloge au jour 1, à l'heure réelle où tu
+lances (comme dans la chronique : on se réveille quand on joue). Pour tester une heure précise :
+`godot -- --jour=2 --heure=8.5` ; pour voir une scène et ses choix : `godot -- --capture=img.png --jour=1
+--heure=8.55 --scene=j1_farine_silas` (`--texte` pour l'image du texte seulement).
+
+**Le corps** (règle 6 du jour 1) : 8 h sans manger, *Affamé* (-1 en For et Vol) ; 18 h debout, *Fatigué*
+(-2 en Per et Agi). On mange au sac (un pain, un poisson), chez Agnès, au fournil de Mara, au Mouillage ;
+on se repose en dormant (taverne, Mouillage, chez toi). Le haut de l'écran le dit.
 
 **Toi, captif** (`scripts/captif.gd`) : battu par Silas à la crique la nuit du jour 1, si tu vaux quelque chose
 pour lui (homme-bête, démon ; un étranger sans papiers, une fois sur deux) : la cellule à l'aube (tes liens,

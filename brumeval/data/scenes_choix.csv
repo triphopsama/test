@@ -3,9 +3,9 @@ j1_pierrick;calme;Répondre calmement;;;;aff BRU020 +5, fil pierrick=calme;Il te
 j1_pierrick;mentir;Mentir (un voyageur égaré);;;Int 18;aff BRU020 +2, fil pierrick=calme;Il ne te croit qu'à moitié, mais il te montre le chemin.;aff BRU020 -10;« Égaré ? Avec ces mains-là ? » Il crache par terre et disparaît dans les fougères.
 j1_pierrick;provoquer;Le provoquer;Un archer de niveau 26. Au niveau 1, c'est perdu d'avance.;;;fil pierrick=provoque, aff BRU020 -20, combat BRU020 bagarre;Mauvaise idée.;;
 j1_pierrick;suivre;Le laisser partir, puis le suivre en douce;;;Agi 22 +discretion 5;fil pierrick=sculpture, temps 20;Tu le suis jusqu'à sa cabane. Par la porte entrouverte : une sculpture de bois, une femme qui rit, polie par des années de mains. Un nom gravé dessous : Léa.;aff BRU020 -10;Une brindille craque. Il se retourne d'un bloc : « T'as fini de me suivre ? »
-j1_agnes;entrer;Entrer;;;;aff BRU015 +10, fil agnes=soigne, temps 30;Elle te soigne, te nourrit, te pose des questions sans attendre les réponses. En te mettant dehors : « Va voir Mara à la boulangerie. Dis que c'est moi qui t'envoie. »;;
+j1_agnes;entrer;Entrer;;;;aff BRU015 +10, fil agnes=soigne, temps 30, repas;Elle te soigne, te nourrit, te pose des questions sans attendre les réponses. En te mettant dehors : « Va voir Mara à la boulangerie. Dis que c'est moi qui t'envoie. »;;
 j1_agnes;mefiant;Rester sur le seuil, méfiant;;;;aff BRU015 +2;« Comme tu veux. La soupe, elle attend personne. »;;
-j1_fournil;aider;Proposer ton aide au fournil;;;;aff BRU001 +10, temps 30;Une demi-heure à pétrir. Mara se détend, parle de Tim et de la farine, et te nourrit.;;
+j1_fournil;aider;Proposer ton aide au fournil;;;;aff BRU001 +10, temps 30, repas;Une demi-heure à pétrir. Mara se détend, parle de Tim et de la farine, et te nourrit.;;
 j1_fournil;tim;Lui dire que Tim s'est sauvé;;;;aff BRU001 +5, aff BRU005 -10, fil tim=trahi;Mara te remercie du bout des lèvres. Tim, plus tard, te le reprochera.;;
 j1_fournil;taire;Te taire;;;;aff BRU005 +5, fil tim=complice;Par la fenêtre, Tim te fait un clin d'œil.;;
 j1_farine_silas;refuser;Conseiller à Mara de refuser;;;;fil farine=refus, aff BRU001 +10, aff BRU003 -5, fil silas=geneur;Mara refuse. Silas te regarde pour la première fois : « Et toi, l'étranger, tu te mêles de quoi ? »;;
@@ -239,3 +239,13 @@ p3_bastien;lire;Le lire;;;;fil carnet=nom, fil preuve_vente=oui;« La nouvelle :
 p3_convocation;refuser;Refuser;;;;aff PIE001 -15;« Comme vous voudrez. » Tant que tu tiens la dette, Fleur est à l'abri.;;
 p3_convocation;accepter;Accepter (6 or);;;;cuivre +1440, fil paris=dette_orsoline;Orsoline sourit. Pâris lui doit de nouveau tout.;;
 p3_lettre;porter;La porter toi-même à Gilles;;;;aff PIE018 +10, aff PIE010 +5, fil gilles=allie;Les Libres connaissent ton nom.;;
+j1_falaise_nina;interposer;Te mettre entre eux;;;;aff BRU016 +10, aff BRU020 -5;Nina file entre tes jambes. Pierrick baisse l'arc et crache par terre.;;
+j1_theo_ysolde;ecouter;Écouter;;;;fil ravitaillement=doute;Le bateau du ravitaillement est en retard « depuis le printemps ». Théo note tout.;;
+j1_robe;gaelle;Le dire à Gaëlle;;present BRU009;;aff BRU009 +5, aff BRU008 -5;Gaëlle pâlit, puis serre les poings.;;
+j1_tim_fenetre;rester;Lui faire signe de rester chez lui;;;;aff BRU005 +3;Il hoche la tête et referme le volet.;;
+j2_diner_annonce;consoler;Parler à Gaëlle à travers la porte;;;;aff BRU009 +5;« Je ne l'épouserai pas. Jamais. »;;
+j2_lutte;voir;Regarder les pièces;;;Per 14;fil elise_argent=vu;Des pièces neuves, frappées à Saltevaux. L'argent de Silas.;;
+j3_annonce;feliciter;La féliciter;;;;fil mara=candidate, aff BRU001 +5;Elle rougit, et redresse le menton.;;
+j3_pierrick_mara;defendre;Défendre Mara;;;;aff BRU001 +5, aff BRU020 -5;Pierrick te toise, et s'en va.;;
+p2_matin;manger;Manger avec Ondine (2 cuivres);;bourse>=2;;cuivre -2, repas, aff PIE013 +5;Elle parle : Orsoline, le prévôt, et sa sœur, morte « de fièvre », il y a huit ans. Elle n'y croit pas.;;
+p3_peche;aider;L'aider à décharger;;;;aff PIE014 +5, objet BRV003 +1;Il te donne un maquereau : « Pour toi. Ne le dis pas aux dés. »;;

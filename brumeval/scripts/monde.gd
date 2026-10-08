@@ -72,6 +72,15 @@ func _ready() -> void:
 	_bruit.frequency = 0.02
 	fiche = Fiche.charger()
 	carte = str(fiche.drapeaux.get("carte", "brumeval"))
+	var jour_demande := -1
+	var heure_demandee := 6.0
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--jour="):
+			jour_demande = int(a.trim_prefix("--jour="))
+		elif a.begins_with("--heure=") and "--jour" in str(OS.get_cmdline_user_args()):
+			heure_demandee = float(a.trim_prefix("--heure="))
+	if jour_demande > 0:
+		Horloge.aller_a(jour_demande, heure_demandee)      # tests : --jour=2 --heure=8.5
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("--carte="):      # tests et captures : --carte=pierrefane
 			carte = a.trim_prefix("--carte=")
@@ -577,6 +586,11 @@ func _creation() -> void:
 
 ## Une nouvelle vie : le monde oublie l'ancien personnage, et accueille le nouveau selon qui il est.
 func nouvelle_vie() -> void:
+	Horloge.recommencer()     # la chronique commence au réveil : jour 1, à l'heure où tu lances ta partie
+	fiche.drapeaux["repas"] = Horloge.maintenant()
+	fiche.drapeaux["reveil"] = Horloge.maintenant()
+	liens.clear()
+	journal_liens.clear()
 	relations.clear()
 	morts.clear()
 	for n in pnjs:
@@ -1548,7 +1562,9 @@ func reconstruire_maison() -> void:
 	if carte != "brumeval" or not lieux.has(Maison.LIEU):
 		return
 	if _maison_noeud:
-		_lumieres.erase(_maison_lumiere)
+		if _maison_lumiere and is_instance_valid(_maison_lumiere):
+			_lumieres.erase(_maison_lumiere)
+		_maison_lumiere = null
 		_maison_noeud.queue_free()
 	_maison_noeud = Node3D.new()
 	add_child(_maison_noeud)

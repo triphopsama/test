@@ -92,6 +92,15 @@ func _process(_delta: float) -> void:
 		monde.lieux[lieu].nom if lieu != "" else "Dans la nature",
 		f.pv, f.pv_max(), f.niveau, " (%d points à répartir)" % f.points if f.points > 0 else "",
 		(" · %s %d" % [Classes.classe(f.classe).nom, f.niveau_classe]) if f.classe != "" else "", Objets.texte_prix(f.bourse)]
+	var corps := []
+	if f.affame():
+		corps.append("Affamé (-1 For, Vol)")
+	if f.fatigue():
+		corps.append("Fatigué (-2 Per, Agi)")
+	if Captif.est(monde):
+		corps.append("Captif : un collier de fer")
+	if not corps.is_empty():
+		_infos.text += "\n" + " · ".join(corps)
 	if not f.equipiers.is_empty():
 		_infos.text += "\nÉquipe : " + ", ".join(f.equipiers.map(func(id): return _membre(id)))
 	if _t_annonce > 0.0:

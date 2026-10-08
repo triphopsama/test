@@ -211,6 +211,7 @@ func _ready() -> void:
 	_maison_biens()
 	await _scenes()
 	_captif()
+	await _tous_les_choix()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -300,6 +301,8 @@ func _ready() -> void:
 	var bram: Node = _pnj("BRU002")
 	monde.relations["BRU002"] = -90
 	bram.visible = true
+	for id in Intime.profils():
+		monde.desirs[id] = 0     # personne ne se laisse surprendre pendant ce test
 	bram.mort = false
 	bram.hostile = true
 	monde.joueur.position = bram.position + Vector3(5, 0, 0)
@@ -1402,7 +1405,7 @@ func _scenes() -> void:
 	ok(toutes.size() >= 100, "%d scènes" % toutes.size())
 	# chaque condition et chaque effet est compris par le moteur
 	var mots_c := ["fil", "aff", "stat", "comp", "objet", "bourse>=", "bourse", "peuple", "sexe", "vu", "pasvu", "ves", "present", "bien"]
-	var mots_e := ["fil", "aff", "desir", "cuivre", "objet", "xp", "temps", "ragot", "lecon", "ves", "bien", "pret", "combat", "scene", "voyage", "maison", "acheter", "racheter", "liberer", "partir", "captif"]
+	var mots_e := ["fil", "aff", "desir", "cuivre", "objet", "xp", "temps", "ragot", "lecon", "ves", "bien", "pret", "combat", "scene", "voyage", "maison", "acheter", "racheter", "liberer", "partir", "captif", "repas", "repos"]
 	var inconnus := []
 	for id in toutes:
 		var listes := [[str(toutes[id].condition), ";", mots_c], [str(toutes[id].get("sans_toi", "")), ",", mots_e]]
@@ -1447,6 +1450,24 @@ func _scenes() -> void:
 	Illustrations.fermer()
 	await get_tree().process_frame
 	ok(Vesperine.etat(monde) == "libre" and Vesperine.noeud(monde) != null, "Vesperine est libre, à Brumeval")
+	# le corps : la faim et la fatigue
+	var corps := Fiche.new()
+	var avant: Dictionary = corps.stats_totales()
+	corps.drapeaux["repas"] = Horloge.maintenant() - 9 * 3600.0
+	corps.drapeaux["reveil"] = Horloge.maintenant() - 19 * 3600.0
+	var apres: Dictionary = corps.stats_totales()
+	ok(corps.affame() and apres.For == maxi(1, avant.For - 1) and apres.Vol == maxi(1, avant.Vol - 1), "8 h sans manger : Affamé (-1 For, Vol)")
+	ok(corps.fatigue() and apres.Per == maxi(1, avant.Per - 2) and apres.Agi == maxi(1, avant.Agi - 2), "18 h debout : Fatigué (-2 Per, Agi)")
+	monde.fiche = corps
+	Scenes.appliquer(monde, "repas, repos")
+	ok(not corps.affame() and not corps.fatigue(), "un repas, une nuit : ça va mieux")
+	monde.fiche = f
+	# l'horloge : se placer au jour 2 à 8 h 30 (tests), puis revenir
+	var d: float = Horloge._decalage
+	Horloge.aller_a(2, 8.5)
+	ok(Horloge.jour() == 2 and absf(Horloge.heure() - 8.5) < 0.02, "aller au jour 2, 8 h 30 (%d, %s)" % [Horloge.jour(), Horloge.texte_heure()])
+	Horloge._decalage = d
+	Horloge._sauver()
 	# la fuite de Gaëlle et Félix
 	Scenes.appliquer(monde, "partir BRU009, partir BRU010")
 	ok(not monde.present("BRU009") and not monde.present("BRU010"), "Gaëlle et Félix sont partis")
@@ -1512,3 +1533,32 @@ func _captif_pierrefane() -> void:
 	if ves:
 		monde.pnjs.erase(ves)
 		ves.queue_free()
+
+
+## Chaque effet de chaque choix (réussi ou raté) s'applique sans erreur (les combats et voyages ne sont
+## que demandés, pas lancés).
+func _tous_les_choix() -> void:
+	print("== Les 250 choix, un par un")
+	var n := 0
+	for id in Scenes.toutes():
+		for c in Scenes.choix_de(id):
+			for effets in [str(c.effets), str(c.get("effets_rate", ""))]:
+				var f := Fiche.new()
+				f.bourse = 5000
+				monde.fiche = f
+				Scenes.appliquer(monde, effets)
+				n += 1
+	await get_tree().process_frame
+	_fermer_tout()
+	ok(n >= 400, "%d effets appliqués (regarder s'il y a des SCRIPT ERROR plus haut)" % n)
+	var v := Vesperine.noeud(monde)
+	if v:
+		monde.pnjs.erase(v)
+		v.queue_free()
+	monde.liens.clear()
+	Liens.installer(monde)
+	monde.relations.clear()
+	monde.desirs.clear()
+	monde.fiche = Fiche.new()
+	monde.reconstruire_maison()
+	monde.sauver_etat()

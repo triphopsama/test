@@ -211,6 +211,8 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))
 		return
+	if l.id == "manger":
+		monde.fiche.manger()
 	if donne == "liberte":
 		Captif.fin(monde, _remplacer(texte, pnj, lieu))
 		return
@@ -353,6 +355,8 @@ func _donner(donne: String) -> String:
 			continue
 		var n := int(m[1]) if m.size() > 1 else 1
 		if m[0] == "repos":
+			f.reposer()
+			f.manger()       # une chambre, c'est aussi un repas (taverne, Mouillage, chez toi)
 			f.pv = f.pv_max()
 			f.mana = f.mana_max()
 			r.append("Tu te sens reposé : %d/%d PV, %d mana." % [f.pv, f.pv_max(), f.mana])

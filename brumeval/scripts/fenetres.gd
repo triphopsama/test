@@ -178,6 +178,7 @@ func _choisir_objet(id: String) -> void:
 	var msg := ""
 	if o.type == "consommable":
 		msg = f.utiliser(id)
+		f.manger()
 	elif o.type == "parchemin":
 		msg = f.lire_parchemin(id)
 		if msg.begins_with("Deux heures"):

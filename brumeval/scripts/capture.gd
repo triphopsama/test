@@ -1,4 +1,5 @@
-# Capture d'écran pour vérifier le rendu : godot -- --capture=chemin.png --heure=11 --lieu=place (ou --grotte=veine)
+# Capture d'écran pour vérifier le rendu : godot -- --capture=chemin.png --heure=11 --lieu=place (ou --grotte=veine,
+# ou --scene=j1_farine_silas [--texte] : une scène de la chronique et ses choix)
 extends Node
 
 var monde: Node3D
@@ -9,7 +10,7 @@ func _ready() -> void:
 	for a in OS.get_cmdline_user_args():
 		var kv := a.trim_prefix("--").split("=")
 		args[kv[0]] = kv[1] if kv.size() > 1 else ""
-	if args.has("heure"):
+	if args.has("heure") and not args.has("jour"):     # avec --jour, le monde s'est déjà placé
 		var ecart := fposmod(float(args.heure) - Horloge.heure(), 24.0)
 		Horloge.avancer(ecart * 60.0)
 	if args.has("lieu"):
@@ -33,6 +34,21 @@ func _ready() -> void:
 			await get_tree().process_frame
 	for i in 90:
 		await get_tree().process_frame
+	if args.has("scene"):
+		# --scene=j1_farine_silas : ouvre une scène de la chronique, puis ses choix
+		var s: Dictionary = Scenes.toutes()[args.scene]
+		var l: Vector2 = monde.lieux[s.lieu].pos + Vector2(0, 6)
+		monde.joueur.position = Vector3(l.x, monde.hauteur(l.x, l.y), l.y)
+		monde.camera.position = monde.joueur.position + Vector3(0, 10, 14)
+		monde.fiche.bourse = maxi(monde.fiche.bourse, 200)
+		Illustrations.fermer()
+		Scenes.declencher(monde, s)
+		for i in 30:
+			await get_tree().process_frame
+		if not args.has("texte"):
+			Illustrations.fermer()
+		for i in 30:
+			await get_tree().process_frame
 	if args.has("combat"):
 		# --combat=loups : la meute près de sa tanière ; --combat=bagarre : Lucas au port
 		if Combattant.BETES.has(args.combat):

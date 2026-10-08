@@ -94,3 +94,18 @@ func maree_basse() -> bool:
 func avancer(minutes: float) -> void:
 	_decalage += minutes * 60.0
 	_sauver()
+
+
+## Une nouvelle partie : aujourd'hui redevient le jour 1, à l'heure réelle (on se réveille quand on lance).
+func recommencer() -> void:
+	_depart = floor(_local_reel() / 86400.0) * 86400.0
+	_decalage = 0.0
+	_sauver()
+
+
+## Pour tester : se placer au jour j, à l'heure h (--jour=2 --heure=8.5).
+func aller_a(j: int, h: float) -> void:
+	_decalage = 0.0
+	var vise := _depart + (j - 1) * 86400.0 + h * 3600.0
+	_decalage = vise - _local_reel()
+	_sauver()
