@@ -496,7 +496,11 @@ func _pratiquer(n: Node, lieu: String) -> void:
 # ---------------------------------------------------------------- un choix
 
 ## Une question et ses réponses : options = [[texte, appel, détail], …]. Fermer = la dernière.
+var options_choix: Array = []     # les options de la dernière question (partie_auto.gd s'en sert)
+
+
 func choix(titre: String, texte: String, options: Array) -> void:
+	options_choix = options
 	_ouvrir("choix")
 	_titre.text = titre
 	_entete.text = texte

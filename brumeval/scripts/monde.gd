@@ -115,7 +115,7 @@ func _ready() -> void:
 	fenetres.monde = self
 	add_child(fenetres)
 	var args := Array(OS.get_cmdline_user_args())
-	var outil: bool = "--autotest" in args or "--equilibre" in args or args.any(func(a): return a.begins_with("--capture="))
+	var outil: bool = "--autotest" in args or "--equilibre" in args or args.any(func(a): return a.begins_with("--capture=") or a.begins_with("--partie="))
 	if not outil and ("--nouveau" in args or not fiche.drapeaux.has("cree")):
 		_creation()
 	for a in OS.get_cmdline_user_args():
@@ -127,6 +127,12 @@ func _ready() -> void:
 		var eq := preload("res://scripts/equilibre.gd").new()
 		eq.monde = self
 		add_child(eq)
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--partie="):
+			var pa := preload("res://scripts/partie_auto.gd").new()
+			pa.monde = self
+			pa.profil = a.trim_prefix("--partie=")
+			add_child(pa)
 	if "--autotest" in OS.get_cmdline_user_args():
 		var t := preload("res://scripts/test_auto.gd").new()
 		t.monde = self

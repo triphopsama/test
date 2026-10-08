@@ -333,6 +333,8 @@ static func appliquer(m: Node, effets: String) -> Dictionary:
 				Horloge.avancer(float(p[0]))
 			"ragot":
 				m.journal_liens.append({"jour": Horloge.jour(), "texte": reste, "ids": ["BRU000", "BRU000"] if m.carte == "brumeval" else ["PIE000", "PIE000"]})
+			"braise":
+				Liens.attiser(m, p[0], p[1])
 			"repas":
 				f.manger()
 			"repos":

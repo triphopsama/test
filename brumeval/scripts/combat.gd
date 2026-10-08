@@ -52,13 +52,21 @@ func commencer(m: Node3D, allies: Array, ennemis: Array, centre: Vector2, mode_c
 		for c in combattants:
 			c.arme = c.arme if c.arme == Combattant.ARMES.lutte else Combattant.ARMES.poings
 			c.competences = c.competences.filter(func(k): return k == "prise")
-	_origine = Vector2(floor(centre.x) - TAILLE / 2, floor(centre.y) - TAILLE / 2)
-	for j in TAILLE:
-		for i in TAILLE:
-			var p := _origine + Vector2(i + 0.5, j + 0.5)
-			if monde.praticable(p):
-				var h: float = monde.hauteur(p.x, p.y)
-				_cases[Vector2i(i, j)] = {"pos": Vector3(p.x, h, p.y), "niveau": roundi(h)}
+	_quadriller(centre)
+	if _cases.size() < TAILLE * 2:
+		# au bord de l'eau (la crique, la jetée) : on se bat sur la terre ferme la plus proche
+		for r in range(4, 44, 4):
+			var trouve := false
+			for k in 16:
+				var p := centre + Vector2.from_angle(TAU * k / 16.0) * r
+				if monde.praticable(p):
+					_cases.clear()
+					_quadriller(p)
+					if _cases.size() >= TAILLE * 2:
+						trouve = true
+						break
+			if trouve:
+				break
 	for c in combattants:
 		c.case = _case_libre_proche(c.noeud.position, 3 if c.camp == 1 else 0)
 		if not _cases.has(c.case):
@@ -84,6 +92,16 @@ func commencer(m: Node3D, allies: Array, ennemis: Array, centre: Vector2, mode_c
 
 
 ## La case libre la plus proche de p3, à au moins « ecart » cases du camp du joueur.
+func _quadriller(centre: Vector2) -> void:
+	_origine = Vector2(floor(centre.x) - TAILLE / 2, floor(centre.y) - TAILLE / 2)
+	for j in TAILLE:
+		for i in TAILLE:
+			var p := _origine + Vector2(i + 0.5, j + 0.5)
+			if monde.praticable(p):
+				var h: float = monde.hauteur(p.x, p.y)
+				_cases[Vector2i(i, j)] = {"pos": Vector3(p.x, h, p.y), "niveau": roundi(h)}
+
+
 func _case_libre_proche(p3: Vector3, ecart := 0) -> Vector2i:
 	var p := Vector2(p3.x, p3.z)
 	var meilleure := Vector2i(-1, -1)

@@ -4,6 +4,7 @@ extends Node
 
 var monde: Node3D
 var erreurs := 0
+var sauvee: Fiche
 
 
 func ok(cond: bool, quoi: String) -> void:
@@ -32,6 +33,11 @@ func _ready() -> void:
 		print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
 		get_tree().quit(erreurs)
 		return
+	# un personnage neutre, quelle que soit la sauvegarde (une partie auto peut avoir laissé un captif)
+	sauvee = monde.fiche
+	monde.fiche = Fiche.new()
+	monde.fiche.drapeaux["cree"] = true
+	monde.fiche.drapeaux["carte"] = "brumeval"
 	print("== Données")
 	var hors_grotte: int = monde.lieux.keys().filter(func(k): return not k.begins_with("g_")).size()
 	ok(hors_grotte == 33, "33 lieux, avec le bois profond (%d)" % hors_grotte)
@@ -321,6 +327,8 @@ func _ready() -> void:
 	monde.relations["BRU002"] = 0
 	monde.morts.clear()
 	monde.sauver_etat()
+	monde.fiche = sauvee
+	sauvee.sauver()
 	monde.fiche = sauvee
 	sauvee.sauver()
 	print("== %s" % ("TOUT EST BON" if erreurs == 0 else "%d ÉCHEC(S)" % erreurs))
@@ -1060,7 +1068,29 @@ func _liens() -> void:
 	ok(Liens.couple_de(monde, "BRU009") == "BRU010" and Intime.profil("BRU010").couple == "BRU009", "Gaëlle et Félix en couple au départ")
 	ok(Liens.couple_de(monde, "PIE013") == "PIE014", "Ondine et Pâris aussi, à Pierrefane")
 	ok(not Liens.compatibles(monde, "BRU001", "BRU005"), "jamais avec un enfant (Tim)")
+	ok(not Liens.compatibles(monde, "BRU013", "BRU018"), "Élise et Basile se haïssent (le ruisseau) : jamais ensemble")
 	ok(not Liens.compatibles(monde, "BRU013", "PIE004"), "pas d'une ville à l'autre")
+	# ... sauf si la haine change de nature : des ennemis qui se plaisent, sur le bon chemin
+	var haines := []
+	for a in Intime.profils():
+		for b in Intime.profils():
+			if a < b and Liens.ennemis_attires(monde, a, b):
+				haines.append(a + "|" + b)
+	print("  ennemis qui pourraient s'aimer : ", haines)
+	if not haines.is_empty():
+		var hp: PackedStringArray = haines[0].split("|")
+		ok(not Liens.compatibles(monde, hp[0], hp[1]), "au départ, ennemis : rien")
+		for k in Liens.BRAISE_MAX:
+			Liens.attiser(monde, hp[0], hp[1])
+		ok(Liens.compatibles(monde, hp[0], hp[1]), "trois pas sur le chemin, et la haine a changé de nature")
+		monde.desirs[hp[0]] = 80
+		monde.desirs[hp[1]] = 80
+		var tl := Liens.evenement(monde, "liaison")
+		ok(Liens.entre(monde, hp[0], hp[1]).get("etat", "") == "liaison" or tl != "", "ennemis devenus amants : " + tl)
+		monde.fiche.drapeaux.erase("braise_" + Liens.cle(hp[0], hp[1]))
+		monde.liens.clear()
+		monde.journal_liens.clear()
+		Liens.installer(monde)
 	monde.fiche.drapeaux["parti_BRU009"] = true
 	ok(not Liens.compatibles(monde, "BRU009", "BRU012"), "ni avec qui est parti au loin (Gaëlle)")
 	monde.fiche.drapeaux.erase("parti_BRU009")

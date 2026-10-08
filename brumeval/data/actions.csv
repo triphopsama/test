@@ -80,6 +80,7 @@ chantage;Faire payer ton silence;pnj;*;*;0;10;-100;0;;chantage;;
 consoler;Le consoler;pnj;*;*;0;30;-100;0;;consoler;;
 reconcilier;Les réconcilier;pnj;*;*;0;60;20;0;;reconcilier;;
 zizanie;Semer le doute dans son couple;pnj;*;*;0;15;-100;0;;zizanie;;
+attiser;Le jeter contre son ennemi;pnj;*;*;0;45;0;0;;attiser;;Deux qui se haïssent et se plaisent : une corvée à deux, une dispute vidée jusqu'au bout, une nuit d'orage. La haine peut changer de nature.
 proposer_trois;Leur proposer une nuit à trois;pnj;*;*;1;0;40;0;;proposer_trois;;
 entrer_bouche;Entrer sous la falaise (marée basse);lieu;brumeval:bouche,brumeval:crique;*;0;10;0;0;;grotte_bouche;;Les rochers, la falaise, une bouche noire au ras de l'eau.
 remonter_puits;Remonter à la corde;lieu;g_puits;*;0;5;0;0;;grotte_remonter;;La corde pend dans le rond de jour.

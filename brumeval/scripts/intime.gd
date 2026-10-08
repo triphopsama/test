@@ -182,7 +182,8 @@ static func consentement(m: Node, pnj: Node, quoi: String, avec: Array = []) -> 
 	if quoi != "seduire" and quoi != "risque" and not regards.is_empty() and ("public" in p.refuse or (p.pudeur >= 60 and not "risque" in p.aime)):
 		return "%s jette un œil aux autres : « Pas devant tout le monde. »" % nom
 	for autre in avec:
-		if str(pnj.donnees.get("relations", "")).contains("ennemi") and str(pnj.donnees.get("relations", "")).contains(autre.id):
+		if str(pnj.donnees.get("relations", "")).contains("ennemi") and str(pnj.donnees.get("relations", "")).contains(autre.id) \
+				and Liens.braise(m, pnj.id, autre.id) < Liens.BRAISE_MAX:
 			return "%s ne veut pas de %s dans ce lit." % [nom, Donnees.prenom(autre.donnees.nom)]
 	return ""
 

@@ -17,6 +17,7 @@
 #   consoler       consoler après une rupture
 #   reconcilier    réconcilier un couple qui s'est séparé
 #   zizanie        semer le doute dans un couple : risqué
+#   attiser        jeter deux ennemis l'un contre l'autre jusqu'à ce que la haine change de nature
 #   proposer_trois proposer une nuit à trois à un couple ouvert (intime)
 # Et quand c'est ton couple qui te trompe : pardonner, rompre, proposer de partager, ou
 # t'expliquer avec l'autre (une bagarre).
@@ -27,9 +28,9 @@ class_name Liens
 extends RefCounted
 
 const ACTIONS := ["ragots", "confidences", "entremetteur", "denoncer", "couvrir", "chantage", "consoler",
-	"reconcilier", "zizanie", "proposer_trois"]
+	"reconcilier", "zizanie", "proposer_trois", "attiser"]
 ## Chance, par heure du monde, qu'il se passe quelque chose entre eux.
-const PAR_HEURE := 0.12
+const PAR_HEURE := 0.06
 const JOURNAL_MAX := 40
 
 
@@ -97,7 +98,7 @@ static func couple_de(m: Node, id: String) -> String:
 
 
 ## Peuvent-ils s'aimer ? Deux adultes vivants avec un profil, de la même ville, qui s'attirent, pas de la même famille.
-static func compatibles(m: Node, a: String, b: String) -> bool:
+static func compatibles(m: Node, a: String, b: String, haine_ok := false) -> bool:
 	if a == b or _ville(a) != _ville(b) or not _ville(a) in ["BRU", "PIE"]:
 		return false
 	var pa := Intime.profil(a)
@@ -112,7 +113,52 @@ static func compatibles(m: Node, a: String, b: String) -> bool:
 		return false   # parti au loin
 	if not (str(db.get("sexe", "")).to_lower() + "s") in pa.attire or not (str(da.get("sexe", "")).to_lower() + "s") in pb.attire:
 		return false
-	return not famille(da, db)
+	return not famille(da, db) and (haine_ok or not ennemis(da, db) or braise(m, a, b) >= BRAISE_MAX)
+
+
+## Des ennemis qui finissent amants : il y faut un chemin. Chaque pas (forcés à travailler ensemble,
+## un danger partagé, une dispute qui dure trop longtemps) attise la braise ; à BRAISE_MAX la haine
+## a changé de nature, et le reste suit comme pour n'importe qui (désir, attirance, envie).
+const BRAISE_MAX := 3
+const BRAISE_TEXTES := [
+	"%s et %s se sont encore disputés. Plus longtemps que nécessaire, et en se regardant beaucoup.",
+	"%s et %s ont dû se serrer les coudes, un temps. Ils n'en parlent pas. Ils évitent même de se croiser.",
+	"%s et %s : on les a vus se crier dessus, très près l'un de l'autre. Puis plus rien. Le silence a duré.",
+]
+
+static func braise(m: Node, a: String, b: String) -> int:
+	return int(m.fiche.drapeaux.get("braise_" + cle(a, b), 0))
+
+
+## Attiser : un pas de plus sur le chemin. Renvoie le texte du ragot.
+static func attiser(m: Node, a: String, b: String) -> String:
+	var n := mini(braise(m, a, b) + 1, BRAISE_MAX)
+	m.fiche.drapeaux["braise_" + cle(a, b)] = n
+	var t: String = BRAISE_TEXTES[n - 1] % [_nom(m, a), _nom(m, b)]
+	_noter(m, "braise", [a, b], t, false)
+	m.sauver_etat()
+	return t
+
+
+## Deux ennemis qui pourraient s'aimer, si la haine changeait de nature (même ville, adultes, attirés).
+static func ennemis_attires(m: Node, a: String, b: String) -> bool:
+	return ennemis(m.pnj_donnees.get(a, {}), m.pnj_donnees.get(b, {})) and compatibles(m, a, b, true)
+
+
+## Ennemis d'après leurs fiches (« ennemie de Basile », « méprise Corentin », « en veut à Aldric ») :
+## ceux-là ne finissent pas dans le même lit.
+static func ennemis(da: Dictionary, db: Dictionary) -> bool:
+	for paire in [[da, db], [db, da]]:
+		var rel := str(paire[0].get("relations", "")).to_lower()
+		var i := rel.find(str(paire[1].get("id", "?")).to_lower())
+		if i < 0:
+			continue
+		var debut := maxi(0, rel.rfind(",", i) + 1)
+		var avant := rel.substr(debut, i - debut)
+		for mot in ["ennemi", "méprise", "en veut", "déteste", "hait", "se méfie"]:
+			if avant.contains(mot):
+				return true
+	return false
 
 
 static func famille(da: Dictionary, db: Dictionary) -> bool:
@@ -127,6 +173,16 @@ static func famille(da: Dictionary, db: Dictionary) -> bool:
 			if avant.contains(mot):
 				return true
 	return false
+
+
+## Cherche-t-il le plaisir, l'aventure ou la passion (une liaison peut naître vite) ?
+static func _leger(id: String) -> bool:
+	return Intime.profil(id).cherche.any(func(c): return c in ["plaisir", "aventure", "passion", "liberté"])
+
+
+static func _fidele_en_couple(m: Node, id: String) -> bool:
+	var p := Intime.profil(id)
+	return couple_de(m, id) != "" and p.partage < 60 and p.cherche.any(func(c): return c in ["amour", "fidélité", "sécurité", "statut"])
 
 
 ## Tromper : il est en couple avec quelqu'un d'autre, qui ne partage pas.
@@ -170,7 +226,25 @@ static func evenement(m: Node, force := "") -> String:
 				continue
 			if Intime.profil(a).libido < 30 or Intime.profil(b).libido < 30:
 				continue
-			possibles.append([1.0 + (1.0 if m.fiche.drapeaux.get("pousse_" + cle(a, b), false) else 0.0), "liaison", [a, b]])
+			var pousse: bool = m.fiche.drapeaux.get("pousse_" + cle(a, b), false)
+			var braise_pleine := braise(m, a, b) >= BRAISE_MAX
+			if braise_pleine:
+				pousse = true    # la haine a tourné : la passion n'attend pas qu'on la courtise
+			if not pousse and jour <= 3:
+				continue     # les trois premiers jours sont écrits (monde/chronique) : rien d'inventé, sauf ce que tu provoques
+			if not pousse and not (_leger(a) or _leger(b)):
+				continue     # deux qui cherchent l'amour se courtisent d'abord (l'entremetteur peut les pousser)
+			if not pousse and (_fidele_en_couple(m, a) or _fidele_en_couple(m, b)):
+				continue     # en couple et fidèle de cœur : pas sans qu'on l'y pousse
+			possibles.append([2.0 if pousse else 1.0, "liaison", [a, b]])
+	# des ennemis sur le chemin : allumée (par toi ou par une scène), la braise couve seule d'un pas ;
+	# le dernier, il faut un vrai moment (toi, ou une scène qui les jette l'un contre l'autre)
+	for k in m.fiche.drapeaux.keys():
+		if not str(k).begins_with("braise_"):
+			continue
+		var paire: PackedStringArray = str(k).substr(7).split("|")
+		if paire.size() == 2 and int(m.fiche.drapeaux[k]) == 1 and ennemis_attires(m, paire[0], paire[1]):
+			possibles.append([0.3, "braise", [paire[0], paire[1]]])
 	for k in m.liens:
 		var l = m.liens[k]
 		if not l is Dictionary or not present(m, l.a) or not present(m, l.b):
@@ -197,6 +271,8 @@ static func evenement(m: Node, force := "") -> String:
 					possibles.append([0.25, "reconciliation", [l.a, l.b]])
 	if force != "":
 		possibles = possibles.filter(func(p): return p[1] == force)
+	elif jour <= 3:
+		possibles = possibles.filter(func(p): return not p[1] in ["rupture", "ouvert", "fin", "couple"])   # la chronique tient
 	if possibles.is_empty():
 		return ""
 	var total := 0.0
@@ -233,6 +309,8 @@ static func appliquer_evenement(m: Node, type: String, a: String, b: String) -> 
 			m.desirs[a] = 20
 			m.desirs[b] = 20
 			t = "%s et %s ont passé la nuit ensemble." % [na, nb]
+			if ennemis(m.pnj_donnees.get(a, {}), m.pnj_donnees.get(b, {})):
+				t = "%s et %s, les ennemis jurés, ont passé la nuit ensemble. Personne n'y comprend rien. Eux non plus." % [na, nb]
 			if secret:
 				t += " En secret : %s." % " et ".join(entre(m, a, b).trahis.map(func(x): return _nom(m, x) + " n'en sait rien"))
 		"couple":
@@ -252,6 +330,8 @@ static func appliquer_evenement(m: Node, type: String, a: String, b: String) -> 
 			t = "%s et %s se sont retrouvés. On les a vus main dans la main." % [na, nb]
 		"infidelite":
 			t = decouverte(m, a, b)
+		"braise":
+			return attiser(m, a, b)
 	appliquer(m)
 	_noter(m, type, [a, b], t, secret)
 	m.sauver_etat()
@@ -327,6 +407,8 @@ static func dispo(m: Node, quoi: String, pnj: Node) -> bool:
 			return de(m, id, ["rompu"]).any(func(l): return not m.morts.has(autre(l, id)))
 		"zizanie":
 			return couple_de(m, id) != ""
+		"attiser":
+			return not _ennemis_attires_de(m, id).is_empty() and not m.fiche.drapeaux.has("attiser_%s_%d" % [id, Horloge.jour()])
 		"proposer_trois":
 			var c := _partenaire_present(m, pnj)
 			return c != null
@@ -453,6 +535,13 @@ static func agir(m: Node, quoi: String, pnj: Node) -> String:
 				m.relations[x] = clampi(m.relations.get(x, 0) - 25, -100, 100)
 			m.sauver_etat()
 			return "%s te regarde longuement : « Pourquoi tu me racontes ça ? » Ils en parlent le soir même, et comprennent que c'est toi (-25 chacun).\n\n%s" % [nom, Intime.rumeur(m, [], "tes mensonges", 200)]
+		"attiser":
+			var choix := []
+			for o in _ennemis_attires_de(m, id):
+				choix.append([_nom(m, o), _attiser_avec.bind(m, pnj, o), ATTISER_PAS[braise(m, id, o)] % [nom, _nom(m, o)]])
+			choix.append(["Laisser tomber", func(): pass, ""])
+			m.fenetres.choix("Les jeter l'un contre l'autre", "Qui %s déteste-t-il assez pour que ça change ?" % nom, choix)
+			return ""
 		"proposer_trois":
 			var o := _partenaire_present(m, pnj)
 			if o == null:
@@ -464,6 +553,41 @@ static func agir(m: Node, quoi: String, pnj: Node) -> String:
 			m.scene_intime([pnj, o], m.lieu_proche(pnj.pos2d(), 40.0))
 			return ""
 	return ""
+
+
+const ATTISER_PAS := [
+	"Les obliger à travailler ensemble, %s et %s : une corvée, une seule, à deux.",
+	"Les mettre face à face, %s et %s, et les laisser vider leur sac. Jusqu'au bout.",
+	"Les enfermer dans la même nuit, %s et %s : un orage, une seule lanterne, et toi qui t'en vas.",
+]
+
+static func _ennemis_attires_de(m: Node, id: String) -> Array:
+	var r := []
+	for o in Intime.profils():
+		if ennemis_attires(m, id, o) and braise(m, id, o) < BRAISE_MAX and not entre(m, id, o).get("etat", "") in ["liaison", "couple"]:
+			r.append(o)
+	return r
+
+
+static func _attiser_avec(m: Node, pnj: Node, o: String) -> void:
+	var f: Fiche = m.fiche
+	var st: Dictionary = f.stats_totales()
+	f.drapeaux["attiser_%s_%d" % [pnj.id, Horloge.jour()]] = true
+	var nom := Donnees.prenom(pnj.donnees.nom)
+	var seuil := 24 + 3 * braise(m, pnj.id, o)
+	var t := ""
+	if st.Sag + st.Vol + randi_range(1, 20) >= seuil:
+		t = "Ça ne se passe pas comme tu crois. Ça se passe mieux. " + attiser(m, pnj.id, o)
+		if braise(m, pnj.id, o) >= BRAISE_MAX:
+			m.desirs[pnj.id] = maxi(Intime.desir(m, pnj.id), 60)
+			m.desirs[o] = maxi(Intime.desir(m, o), 60)
+			t += "\n\nLa haine a changé de nature. Le reste, ils le feront seuls, ou pas."
+	else:
+		for x in [pnj.id, o]:
+			m.relations[x] = clampi(m.relations.get(x, 0) - 10, -100, 100)
+		t = "%s et %s finissent par se mettre d'accord sur une seule chose : t'en vouloir (-10 chacun)." % [nom, _nom(m, o)]
+	m.sauver_etat()
+	Illustrations.montrer("attiser", [pnj.id, o], t)
 
 
 static func _presenter(m: Node, pnj: Node, o: String) -> void:
