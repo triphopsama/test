@@ -63,7 +63,7 @@ Sans-clan, banni → apprenti → membre de clan → maître artisan → ancien 
 ## Au jour 1 : les deux commandes
 
 - **Le matin**, Dvalin arrive de Saltevaux avec la commande du Sénat : **des chaînes de port** pour fermer la passe de Saltevaux, de la « chaîne qui ne rompt pas », livrables avant les tempêtes d'hiver, payables par lettre de change sur le comptoir de Hordak. La consule Margaux Ternier demande audience.
-- **À midi**, l'heure même où l'impératrice Électra reçoit à Aurelle l'ambassadeur de Baldrec, l'ambassadeur impérial **Thibald de Lancerre** présente à Haut-Grisemont la commande d'Électra : **dix mille fers de lance**, la moitié de l'or à la signature.
+- **À midi**, l'heure même où l'impératrice Électra reçoit à Aurelle l'ambassadeur de Baldrec, l'ambassadeur impérial **Thibald de Lancerre** présente à Haut-Grisemont la commande d'Électra : **dix mille fers de lance**, la moitié de l'or à la signature. Électra lui a fait porter sa lettre six jours plus tôt, pour qu'il parle à la même heure qu'elle : à Aurelle, elle reçoit Durn Ferrecloche, l'ambassadeur de Baldrec, qui part au jour 2 avec la commande signée et l'apportera par Valgris. Baldrec la connaît donc dès le jour 1, par la bouche de l'Empire.
 - **Le problème** : Runa Brasier a calculé que la Grande Forge sort six mille fers avant les neiges sans tourner la nuit ; la houille d'Ulfhild tient six mois ; le fer de Forge-Profonde manque depuis que la Veine-Mère est noyée (et Skarn en détourne un dixième). Il y a du fer pour une commande, pas pour deux.
 - **Les deux issues cachées** : la pompe à piston double de Nelda Rouage, dont Solveig garde le secret, viderait la Veine-Mère en un mois ; ou l'on ouvre la **Porte scellée** de Forge-Profonde, derrière laquelle Ylvir entend chanter du fer d'étoile. Mais derrière elle dorment aussi les archives de la Purge.
 - **Le soir**, une lettre de Pic-d'Ambre : l'elfe Ithrel demande audience au nom d'Aëlis, pour régler la vieille dette de la forêt de Sombrevert, à une condition : que Grisemont ne vende pas les fers de lance à l'Empire.
@@ -107,7 +107,7 @@ Sans-clan, banni → apprenti → membre de clan → maître artisan → ancien 
 | Dagna Mâchefer | Vaulx-sur-Mer | Tante d'Asgerd, gardienne de la Porte haute |
 | Hrolf Basalte | Lorvane | Frère cadet de Torgrim, maître des archives |
 | Kettil Ambrefer | Lorvane | Fils de Thorunn et d'Orm, petit-fils de Gudrun, frère d'Ylva, cousin de Dagny |
-| Sigrun Engrenard | Lorvane | Sœur d'Orm Ambrefer, donc tante de Kettil |
+| Sigrun Engrenard | Lorvane | Sœur cadette de Thorunn Ambrefer (née Rivet), donc tante de Kettil ; belle-sœur d'Orm |
 | Maître Ferrat et Thorga | Pierrefane | Frère et nièce de Halla Roue-Ferrée, maîtresse des wagonnets |
 | Hulda Brisefer | Port-Salin | Bannie de Pic-d'Ambre en an −40 pour 120 or dus aux Ambrefer ; Gunnar Tonnelet, son ancien fiancé, a mis 96 or de côté |
 | Rosalie Bonvin | Brumeval | Cousine de Hallgerd Ambrebière, tavernière de Pic-d'Ambre |
