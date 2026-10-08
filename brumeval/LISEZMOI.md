@@ -267,7 +267,7 @@ jours avant quoi que ce soit.
 
 ## Les jours de la chronique
 
-Les jours 1 à 3 de [la chronique](../monde/chronique/joueur/) se jouent : `data/scenes.csv` (104 scènes,
+Les jours 1 à 3 de [la chronique](../monde/chronique/joueur/) se jouent : `data/scenes.csv` (133 scènes,
 Brumeval et Pierrefane) et `data/scenes_choix.csv` (leurs choix). Chaque scène a un jour, une heure de
 début et de fin, un lieu et des PNJ : **les PNJ y vont à l'heure dite, même sans toi**. Si tu arrives à
 moins de 30 m pendant la scène, elle s'ouvre (l'image, le texte, puis les choix). Si elle se termine sans
@@ -285,6 +285,18 @@ jour 1 ouvre ou ferme des choix au jour 2 et 3. Tout est expliqué en tête de `
 jour 9, Garec aux jours 1 à 3 puis à partir du jour 10, Mouche à partir du jour 10).
 
 Images : `illustrations/<id de la scène>/` pour la scène, `illustrations/<scène>_<choix>/` pour la suite d'un choix.
+
+**Toi, captif** (`scripts/captif.gd`) : battu par Silas à la crique la nuit du jour 1, si tu vaux quelque chose
+pour lui (homme-bête, démon ; un étranger sans papiers, une fois sur deux) : la cellule à l'aube (tes liens,
+Lucas), la charrette (la halte de la source), la vente à Pierrefane, puis matelot de Daunel (For 12 et plus)
+ou à l'entretien chez Orsoline. Captif : ni voyage, ni achat, **rien d'intime** (un captif ne peut pas
+consentir, et le jeu ne te met jamais au service intime de qui que ce soit). On en sort par Yann et la clé de
+la cale, en sautant à l'eau sous l'orage, par le bureau et le double des clés, par l'évasion de la lande, en
+rachetant ton propre contrat (1 or chez Orsoline, 2 chez Daunel), ou par Mahaut si elle a eu la lettre d'Agnès.
+
+**Être esclave par choix** : c'est le pacte où tu sers (« Lui proposer un pacte où tu sers »), avec un adulte
+qui aime mener et qui le veut aussi : un jeu consenti des deux côtés, que tu arrêtes quand tu veux avec le mot
+d'arrêt (Brume).
 
 ## Le sort des vaincus
 

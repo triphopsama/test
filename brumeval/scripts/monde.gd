@@ -545,6 +545,7 @@ func _process(delta: float) -> void:
 	Vesperine.surveiller_pierrefane(self)
 	Vesperine.surveiller_dette(self)
 	Scenes.surveiller(self, delta)
+	Captif.surveiller(self)
 	Grotte.surveiller(self, delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
@@ -670,6 +671,8 @@ func point_d_arrivee() -> Vector2:
 	var bout: Vector2 = lieux.sentier.pos + Vector2(-3, -3) if lieux.has("sentier") else lieux.values()[0].pos
 	if fiche.drapeaux.get("arrivee", "") == carte:
 		fiche.drapeaux.erase("arrivee")
+		if Scenes.fil(self, "captif") == "vente" and lieux.has("lanternes"):
+			return lieux.lanternes.pos + Vector2(2, 3)    # la charrette s'arrête devant les Lanternes
 		return bout
 	if fiche.drapeaux.get("pos_" + carte, null) is Vector2:
 		return fiche.drapeaux["pos_" + carte]
@@ -1310,7 +1313,9 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 				else:
 					texte += " Personne n'est mort. Ça se racontera quand même."
 		"defaite":
-			if contexte.has("loups"):
+			if contexte.has("vesperine"):
+				texte = "Le noir."     # la suite : vesperine.gd (capturée, et toi peut-être avec elle)
+			elif contexte.has("loups"):
 				texte = "Le noir. Puis l'odeur des herbes : Pierrick t'a trouvé et porté chez Agnès. « T'as de la chance que j'aie entendu les loups. »"
 			elif contexte.has("betes"):
 				texte = "Le noir. Tu te réveilles chez Agnès, qui recoud en grommelant : « Battu par une bête. Ça arrive aux meilleurs, et surtout aux autres. »" if carte == "brumeval" else "Le noir. Tu te réveilles chez %s, qui recoud sans un mot, une pipe froide entre les dents." % CARTES[carte].soigneur
@@ -1318,6 +1323,8 @@ func _fin_combat(resultat: String, contexte: Dictionary, allies: Array, ennemis:
 				texte = ("Tu te réveilles plus tard, chez %s, le visage en sang." if contexte.mode == "bagarre" else "Tu te réveilles plus tard, chez %s, le visage en sang et la bourse plus légère.") % CARTES[carte].soigneur
 			Horloge.avancer(180.0)
 			var p: Vector2 = lieux[CARTES[carte].refuge].pos + Vector2(0, 4)
+			if contexte.has("vesperine"):
+				p = lieux.crique.pos if lieux.has("crique") else p
 			joueur.position = Vector3(p.x, hauteur(p.x, p.y), p.y)
 		"fuite":
 			texte = "Tu as pris tes jambes à ton cou. Ceux qui t'ont vu fuir s'en souviendront."

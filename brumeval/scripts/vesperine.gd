@@ -228,6 +228,8 @@ static func apres_combat(m: Node, resultat: String) -> void:
 		Scenes.poser(m, "silas", "ennemi")
 		liberer(m, "Silas recule dans le noir en tenant son bras. Vesperine te regarde, incrédule : « Pourquoi ? » Puis elle te suit.")
 	else:
+		if Captif.pris_a_la_crique(m):
+			return
 		capturer(m, "Quand tu reprends tes esprits, la crique est vide. Ils l'ont emmenée.")
 
 
@@ -255,7 +257,7 @@ static func surveiller_pierrefane(m: Node) -> void:
 		return
 	var h: float = Horloge.heure()
 	var pres: bool = m.lieux.has("lanternes") and m.joueur.pos2d().distance_to(m.lieux.lanternes.pos) < 30.0
-	if Horloge.jour() == 2 and h >= 10.75 and h < 11.5 and pres and not m.fiche.drapeaux.has("vente_vue"):
+	if Horloge.jour() == 2 and h >= 10.75 and h < 11.5 and pres and not m.fiche.drapeaux.has("vente_vue") and not Captif.est(m):
 		m.fiche.drapeaux["vente_vue"] = true
 		vente(m)
 		return
@@ -274,6 +276,8 @@ static func vente(m: Node) -> void:
 	options.append(["Enchérir : cinq pièces d'or", _encherir.bind(m), "Ta bourse et ce que tu portes de ton monde (la montre, le bijou… Silas adore ces choses-là) : %s en tout." % Objets.texte_prix(fortune)])
 	options.append(["Proposer à Silas une dette", _dette.bind(m), "Six pièces d'or, le jour du vote. Silas adore tenir les gens, mais il ne fait pas crédit à un inconnu."])
 	options.append(["Dire qu'elle est malade", _malade.bind(m), "Int contre Orsoline : le prix baisse, la vente traîne."])
+	if Scenes.fil(m, "prevot") == "tenu":
+		options.append(["Faire venir le prévôt", _prevot.bind(m), "Il a peur de toi : il « vérifiera les papiers ». Il n'y en a pas."])
 	options.append(["Regarder sans rien dire", _laisser_vendre.bind(m), "Elle est vendue. Tu pourras revenir au salon, ou racheter son contrat plus tard (8 à 12 pièces d'or)."])
 	m.fenetres.choix("La vente", texte, options)
 
@@ -332,6 +336,14 @@ static func _malade(m: Node) -> void:
 		Illustrations.montrer("vesperine_vente", [ID, "lanternes"], "« Elle tousse. Elle a la fièvre des noyés, j'en ai vu à Brumeval. » Orsoline recule d'un pas. « Deux pièces d'or. » Silas refuse, jure, et la vente traîne : elle reste enfermée chez Orsoline, pas encore vendue. Tu as gagné une nuit.")
 	else:
 		Illustrations.montrer("vesperine_vente", [ID, "lanternes"], "Orsoline te regarde par-dessus son lorgnon : « Elle est en meilleure santé que vous, mon cher. » Quatre pièces d'or.")
+	await Illustrations.ferme
+	_laisser_vendre(m, false)
+
+
+static func _prevot(m: Node) -> void:
+	Scenes.poser(m, "vente", "suspendue")
+	m.relations["PIE001"] = clampi(m.relations.get("PIE001", 0) - 15, -100, 100)
+	Illustrations.montrer("vesperine_vente", [ID, "lanternes"], "Le prévôt arrive, essoufflé, et demande les papiers de vente. Il n'y en a pas. « Je garde la… personne… jusqu'à ce que tout soit en règle. » Orsoline te fixe. Silas sourit sans joie. La vente est suspendue : elle reste enfermée chez Orsoline, pas vendue. Demain, à 13 h, Orsoline ira voir le prévôt avec une enveloppe.")
 	await Illustrations.ferme
 	_laisser_vendre(m, false)
 

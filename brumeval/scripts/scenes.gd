@@ -32,7 +32,8 @@
 #   ragot texte (entendu ensuite aux ragots), lecon comp, ves libre|capturee,
 #   bien id, pret id, combat ID bagarre|mortel [vesperine], voyage pierrefane, scene ID (enchaîne),
 #   ves libre|hangar|partie|capturee, maison (la falaise est à toi), acheter id / racheter id
-#   (ouvre l'achat de data/biens.csv), liberer ID (déchire un contrat), partir ID (il quitte le pays)
+#   (ouvre l'achat de data/biens.csv), liberer ID (déchire un contrat), partir ID (il quitte le pays),
+#   captif charrette|vente|vendu|fin (toi, captif : captif.gd)
 class_name Scenes
 extends RefCounted
 
@@ -202,6 +203,8 @@ static func _suite(m: Node, suite: Dictionary) -> void:
 		declencher(m, _scenes[suite.scene])
 	elif suite.has("voyage"):
 		m.voyager(suite.voyage)
+	elif suite.has("montrer"):
+		Illustrations.montrer("captif_vendu", ["captif"], suite.montrer)
 
 
 static func _remplacer(m: Node, t: String) -> String:
@@ -353,6 +356,15 @@ static func appliquer(m: Node, effets: String) -> Dictionary:
 			"partir":
 				f.drapeaux["parti_" + reste] = true
 				f.equipiers.erase(reste)
+			"captif":
+				match reste:
+					"fin":
+						Captif.fin(m)
+					"vendu":
+						suite.montrer = Captif.vendu(m)
+						Biens.installer.call_deferred(m)
+					_:
+						poser(m, "captif", reste)
 			"scene":
 				suite.scene = reste
 			"voyage":

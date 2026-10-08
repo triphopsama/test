@@ -97,6 +97,10 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if str(l.donne) in Biens.ACTIONS and not Biens.dispo(monde, str(l.donne), pnj, lieu):
 			continue
+		if Captif.est(monde) and (l.id in ["voyager", "bien_acheter", "bien_vendre", "dette_racheter", "maison_demander", "nuit_parler", "travailler_nuit", "danser"] or l.intime == "1"):
+			continue   # captif : ni voyage, ni achats, rien d'intime
+		if l.id == "racheter_toi" and not (pnj != null and Scenes.fil(monde, "captif") == ("matelot" if pnj.id == "PIE006" else "entretien")):
+			continue
 		if l.id == "nuit_parler" and (pnj == null or not _captif(pnj)):
 			continue
 		if l.id == "dormir_chez_toi" and (not Biens.chez_soi(monde, lieu) or lieu == Maison.LIEU):
@@ -114,7 +118,7 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 
 ## Une action intime sur place (danser, travailler la nuit) : contenu adulte activé, aucun enfant à portée.
 func intime_lieu_possible() -> bool:
-	return monde.fiche.options.get("adulte", true) and not monde.enfant_proche(monde.joueur.pos2d())
+	return monde.fiche.options.get("adulte", true) and not monde.enfant_proche(monde.joueur.pos2d()) and not Captif.est(monde)
 
 
 func _de_nuit() -> bool:
@@ -147,7 +151,7 @@ func _intime_dispo(donne: String, pnj: Node) -> bool:
 
 ## Les garde-fous des actions intimes. Faux = l'action n'apparaît même pas.
 func intime_possible(pnj: Node) -> bool:
-	if pnj == null or not monde.fiche.options.get("adulte", true):
+	if pnj == null or not monde.fiche.options.get("adulte", true) or Captif.est(monde):
 		return false
 	var d: Dictionary = pnj.donnees
 	if int(d.get("age", "0")) < AGE_ADULTE:
@@ -206,6 +210,9 @@ func executer(l: Dictionary, pnj: Node, lieu: String) -> void:
 	if donne in ["v_nourrir", "v_guider"]:
 		Horloge.avancer(float(l.duree_min))
 		Illustrations.montrer(l.id, cles, Vesperine.nourrir(monde) if donne == "v_nourrir" else Vesperine.guider(monde))
+		return
+	if donne == "liberte":
+		Captif.fin(monde, _remplacer(texte, pnj, lieu))
 		return
 	if donne == "voyage":
 		var vers: String = monde.CARTES[monde.carte].voisine

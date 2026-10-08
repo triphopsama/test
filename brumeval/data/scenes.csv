@@ -103,3 +103,32 @@ p3_couteau;pierrefane;3;18;18.5;lanternes;;PIE013,PIE005;fil ondine=couteau;Le c
 p3_margo;pierrefane;3;20;20.5;lanternes;;PIE004,PIE001;ves capturee;Margo;Margo demande à Orsoline de garder la nouvelle au salon une semaine de plus. Orsoline refuse.;
 p3_hugues;pierrefane;3;21;21.4;lanternes;;PIE005,PIE002;fil evasion=avancee;Hugues;Dans le couloir, Lysa remercie Hugues pour le petit chat. Il rougit.;
 p3_lande;pierrefane;3;23;23.9;lanternes;;PIE002,PIE003;fil evasion=cle|avancee;L'évasion;L'orage. Aucune barque ne sortira. Mais la lande est là, noire, et la cabane de Mahaut au bout.;
+j1_verre;brumeval;1;21;21.5;taverne;;BRU003;fil silas=geneur;Un verre;Silas pose un verre devant toi et s'assoit sans demander : « L'étranger qui est partout où je passe. Qui t'envoie ? »;
+j1_course;brumeval;1;22.75;23.2;crique;;BRU003,BRU012;fil silas=recrue;La course louche;Des tonneaux sur les galets, une barque qui repart sans lanterne. Silas : « Porte, l'étranger. Et tais-toi. »;
+j1_tonneaux;brumeval;1;22.75;23.4;guet;;BRU017;fil theo=allie;Les tonneaux;Sur la falaise d'en face, Théo compte à voix basse. En bas, à la crique, des lanternes.;
+toi_cellule;brumeval;2;5.5;8.4;comptoir;99999;;fil captif=cellule;La cellule;La paille, le collier, et elle à côté de toi, qui se réveille. Au-dessus, Silas dort.;fil captif=charrette
+toi_charrette;brumeval;2;8.4;10.6;comptoir;99999;;fil captif=charrette;La charrette;Une bâche, un plancher de charrette, le pas du cheval. Garec tient les rênes, Silas est à côté de lui. À la halte de la source, ils descendent tous les deux.;fil captif=vente
+toi_vente;pierrefane;2;10;14;lanternes;99999;PIE001,PIE006;fil captif=vente;La vente;On vous fait descendre devant la Maison des Lanternes. Orsoline vous examine comme deux rouleaux de tissu.;
+toi_entretien;pierrefane;3;10;11;lanternes;99999;PIE001,PIE005;fil captif=entretien;Le ménage;"Le ménage des Lanternes, de dix à onze. Le bureau d'Orsoline est ouvert ; Hugues somnole dans le couloir.";
+toi_cale;pierrefane;3;11.75;13;port;99999;PIE006,PIE008;fil captif=matelot;Le pont;Daunel est parti boire au Mouillage. Sur le pont, il n'y a que toi et le mousse, Yann.;
+toi_yann;pierrefane;3;22;23;port;99999;PIE008;"fil captif=matelot;fil yann=ami";La clé de la cale;Yann descend dans la cale, la clé à la main : « Va-t'en. Je dirai que la serrure a lâché. »;
+toi_sauter;pierrefane;3;23;23.9;port;99999;;fil captif=matelot;L'orage;L'orage. Le Goéland gris tire sur ses amarres, le pont est désert.;
+toi_allie;pierrefane;3;18;19;lanternes;99999;PIE015;"fil captif=matelot|entretien;fil mahaut=lettre";Mahaut;La vieille Mahaut entre chez Orsoline, une bourse à la main : « Agnès m'a écrit. Il est à nous, celui-là. Combien ? »;
+p2_prevot;pierrefane;2;9;12;prevot;;PIE009;fil prevot=enveloppe;Le prévôt;Le prévôt Gourdin mange un pâté à son bureau. Il pâlit en te reconnaissant.;
+j2_invitation;brumeval;2;21;21.5;taverne;;BRU003;fil silas=recrue|complice;L'invitation;Silas, à la taverne : « Demain soir, je dîne chez les Montval. Viens. Un ami étranger, ça fait riche. »;
+j2_fees;brumeval;2;19;22;source;;FEE001;"ves libre;aff FEE001>=30";La Dame de la Source;Brumelle danse dans la vapeur. Elle s'arrête quand tu approches : « Tu sens le sel et la braise, ce soir. »;
+j3_service;brumeval;3;22.5;23;comptoir;;BRU003;fil silas=creancier|recrue|complice;Le service;Silas, au comptoir : « L'orage arrive. J'ai besoin de bras à la crique. Tu me dois bien ça. »;
+p3_suspendue;pierrefane;3;12.5;13.5;prevot;;PIE009,PIE001;fil vente=suspendue;L'enveloppe;Orsoline monte chez le prévôt, une enveloppe à la main, pour régler « l'affaire de la nouvelle ».;
+p3_odile;pierrefane;3;14;14.5;lanternes;;PIE010;ves capturee;La bénédiction;Sœur Odile bénit la Maison des Lanternes, comme chaque mois. Elle demande à saluer « la nouvelle », et lui prend la main.;
+j1_bouche;brumeval;1;21.5;22.4;bouche;;VES019;ves -;La Bouche de mer;Une barque noire se faufile sous la falaise. Une femme à la peau gris-mauve, des cornes, des ailes repliées, s'effondre sur les galets. Cinq jours de mer, rien mangé.;
+j2_joss;brumeval;2;5;6.9;port;;BRU006;aff BRU006>=5;Le filet vide;Joss rentre de la pêche avec un filet presque vide : « Même les poissons fuient la tempête qui existe pas. »;
+p2_mahaut;pierrefane;2;17;17.6;mahaut;;PIE015;fil mahaut=lettre;La réponse;Mahaut te tend un pli : « Pour l'Agnès. Et dis-lui que la maison d'en bas a une nouvelle. Une du sud. »;
+j3_moulin_theo;brumeval;3;0;0.5;guet;;BRU017;"fil theo=allie|devoile|tonneaux;fil elise=moud|sabotee";La lumière du moulin;Sur la falaise d'en face, Théo regarde la lumière du moulin, allumée en pleine nuit.;
+j3_promenade;brumeval;3;12;12.5;port;;BRU003,BRU007,BRU008;;La promenade;Silas se promène au port avec le couple Montval. Tout le port les voit.;ragot le maire soutient Silas
+j3_pierrick_ronde;brumeval;3;13;13.4;cabane;;BRU020;fil pierrick=sculpture|puits|confie;La ronde;Pierrick part pour sa ronde dans le bois, à l'opposé de la falaise.;
+j3_tim;brumeval;3;17.5;17.8;boulangerie;;BRU001,BRU005;fil falaise!=protege;La pièce confisquée;Mara confisque la pièce d'or de Tim et lui interdit le port. Tim pleure de rage.;
+j3_guet;brumeval;3;23;23.6;guet;;BRU017;fil theo=allie|devoile|tonneaux|moulin;La falaise d'en face;Sous l'orage, avec Théo, sur la falaise d'en face. En bas, à la crique, un tonneau glisse sur les rochers.;
+p3_ferrat;pierrefane;3;9;9.4;chantier;;PIE011,PIE018;;La barque fendue;Gilles amène une barque au bordé fendu. Ferrat la répare sans rien demander : « On est quittes quand je suis mort, Passeur. »;
+p3_bastien;pierrefane;3;13;13.5;lanternes;;PIE003;fil bastien=aide;La ligne;Bastien te glisse un bout de papier sorti de sa chaussure.;
+p3_convocation;pierrefane;3;14;14.5;lanternes;;PIE001;fil paris=dette_rachetee;La convocation;Orsoline t'attend dans son bureau : « La dette de Pâris. Je vous la rachète le double. »;
+p3_lettre;pierrefane;3;15;15.5;chapelle;;PIE010;;La lettre aux Libres;Sœur Odile cachette une lettre : « Pour les Libres de Saltevaux. Il faut la porter au Passeur. »;

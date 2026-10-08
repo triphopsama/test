@@ -119,3 +119,5 @@ dette_racheter;Racheter son contrat;pnj;*;*;0;15;-100;0;;dette_racheter;;
 contrat_gerer;Son contrat;pnj;*;*;0;0;-100;0;;contrat_gerer;;
 dormir_chez_toi;Dormir (chez toi);lieu;*;*;0;360;-100;0;;repos;;Tes murs, ton lit, ta porte. Personne pour te réveiller.
 nuit_parler;"Payer sa nuit (parler, dormir ; rien d'autre)";pnj;lanternes;VES019,PIE002,PIE003;0;480;-100;5;3 argent;;;Une chambre, une lampe, une nuit sans autre client. {nom} mange ce que tu as apporté, parle un peu, puis dort, roulé en boule contre le mur. Tu restes assis près de la porte jusqu'au matin.
+racheter_toi;Racheter ton propre contrat (1 or);pnj;*;PIE001;0;10;-100;0;1 or;liberte;;Orsoline compte, lentement, et te tend le papier : « Une pièce d'or. Je ne perds jamais d'argent, mon cher. » Tu le déchires devant elle. Elle sourit.
+racheter_toi;Racheter ton propre contrat (2 or);pnj;*;PIE006;0;10;-100;0;2 or;liberte;;Daunel crache dans sa main et te la tend : « Marché conclu. T'as gratté ma coque pour rien, alors. » Le collier tombe sur le pont.

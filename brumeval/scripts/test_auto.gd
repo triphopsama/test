@@ -210,6 +210,7 @@ func _ready() -> void:
 	_liens()
 	_maison_biens()
 	await _scenes()
+	_captif()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -1034,6 +1035,7 @@ func _pierrefane() -> void:
 	ok(not _action("travailler_nuit", null, "auberge").is_empty(), "le travail de nuit, libre, au Mouillage")
 	ok(not _action("dormir", null, "auberge").is_empty() and _action("dormir", null, "auberge").description.contains("Ondine"), "dormir chez Ondine")
 	_contrats()
+	_captif_pierrefane()
 	var thorga := _pnj("PIE012")
 	monde.relations["PIE012"] = 0
 	ok(Defis.de(monde, thorga).any(func(d): return d.id == "thorga_bras"), "Thorga te défie au bras de fer")
@@ -1400,7 +1402,7 @@ func _scenes() -> void:
 	ok(toutes.size() >= 100, "%d scènes" % toutes.size())
 	# chaque condition et chaque effet est compris par le moteur
 	var mots_c := ["fil", "aff", "stat", "comp", "objet", "bourse>=", "bourse", "peuple", "sexe", "vu", "pasvu", "ves", "present", "bien"]
-	var mots_e := ["fil", "aff", "desir", "cuivre", "objet", "xp", "temps", "ragot", "lecon", "ves", "bien", "pret", "combat", "scene", "voyage", "maison", "acheter", "racheter", "liberer", "partir"]
+	var mots_e := ["fil", "aff", "desir", "cuivre", "objet", "xp", "temps", "ragot", "lecon", "ves", "bien", "pret", "combat", "scene", "voyage", "maison", "acheter", "racheter", "liberer", "partir", "captif"]
 	var inconnus := []
 	for id in toutes:
 		var listes := [[str(toutes[id].condition), ";", mots_c], [str(toutes[id].get("sans_toi", "")), ",", mots_e]]
@@ -1456,3 +1458,57 @@ func _scenes() -> void:
 	monde.relations.clear()
 	monde.fiche = Fiche.new()
 	monde.sauver_etat()
+
+
+## Toi, captif : battu par Silas à la crique (captif.gd).
+func _captif() -> void:
+	print("== Toi, captif")
+	var f := Fiche.new()
+	f.peuple = "homme_bete"
+	monde.fiche = f
+	Vesperine.apres_combat(monde, "defaite")
+	Illustrations.fermer()
+	ok(Scenes.fil(monde, "captif") == "cellule" and Captif.est(monde), "un homme-bête battu par Silas : la cellule, à côté d'elle")
+	ok(monde.joueur.pos2d().distance_to(monde.lieux.comptoir.pos) < 5.0, "sous le comptoir de Silas")
+	ok(Vesperine.etat(monde) == "capturee", "elle aussi")
+	ok(Scenes.condition(monde, str(Scenes.toutes().toi_cellule.condition)), "la scène de la cellule t'attend à l'aube")
+	ok(not monde.actions.intime_possible(_pnj("BRU013")), "captif : rien d'intime, avec personne")
+	ok(not _ids(monde.actions.disponibles(null, "sentier")).has("voyager"), "captif : pas de voyage")
+	var parler: Dictionary = Scenes.choix_de("toi_cellule").filter(func(x): return x.id == "parler")[0]
+	Scenes.choisir(monde, Scenes.toutes().toi_cellule, parler)
+	Illustrations.fermer()
+	ok(Scenes.fil(monde, "captif") == "charrette", "puis la charrette")
+	monde.relations["BRU012"] = 20
+	var lucas: Dictionary = Scenes.choix_de("toi_cellule").filter(func(x): return x.id == "lucas")[0]
+	Scenes.poser(monde, "captif", "cellule")
+	Scenes.choisir(monde, Scenes.toutes().toi_cellule, lucas)
+	Illustrations.fermer()
+	ok(not Captif.est(monde) and Vesperine.etat(monde) == "libre", "Lucas ouvre la trappe : libres tous les deux")
+	var v := Vesperine.noeud(monde)
+	if v:
+		monde.pnjs.erase(v)
+		v.queue_free()
+	_fermer_tout()
+	monde.relations.clear()
+	monde.fiche = Fiche.new()
+
+
+## Pierrefane : vendu avec elle, puis libre.
+func _captif_pierrefane() -> void:
+	print("== Toi, captif à Pierrefane")
+	var f: Fiche = monde.fiche
+	var t: String = Captif.vendu(monde)
+	ok(Scenes.fil(monde, "captif") in ["matelot", "entretien"] and t.contains("Orsoline achète Vesperine"), "vendu : " + Scenes.fil(monde, "captif"))
+	ok(not _ids(monde.actions.disponibles(null, "sentier")).has("voyager"), "pas de sentier pour un captif")
+	ok(not monde.actions.intime_possible(_pnj("PIE004")), "rien d'intime, même avec Margo")
+	var maitre := "PIE006" if Scenes.fil(monde, "captif") == "matelot" else "PIE001"
+	ok(not _action("racheter_toi", _pnj(maitre), "port").is_empty(), "racheter ton propre contrat à ton maître")
+	ok(_action("racheter_toi", _pnj("PIE006" if maitre == "PIE001" else "PIE001"), "port").is_empty(), "... pas à l'autre")
+	Captif.fin(monde, "")
+	ok(not Captif.est(monde) and _ids(monde.actions.disponibles(null, "sentier")).has("voyager"), "libre : le sentier, de nouveau")
+	f.drapeaux.erase("vente_faite")
+	f.drapeaux.erase("vesperine")
+	var ves := _pnj("VES019")
+	if ves:
+		monde.pnjs.erase(ves)
+		ves.queue_free()
