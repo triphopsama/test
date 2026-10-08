@@ -54,6 +54,17 @@ Les conséquences utilisent les jauges du document de conception (affection, con
 | Rosalie | Vend des informations aux deux camps ; veut racheter la taverne à Clémence. |
 | La fille de Joss | Aucune nouvelle ; la chanson de Félix a ému tout le village. |
 
+## Pierrefane
+
+La même chronique, à 16 km de là (le port où Vesperine est vendue).
+
+| Jour | Titre | Résumé |
+| --- | --- | --- |
+| [1](pierrefane/jour_001.md) | Le gouvernail | Le *Goéland gris* reste à quai sur une avarie inventée ; Orsoline nomme Fleur devant Pâris ; Gilles fait passer deux fugitifs. |
+| [2](pierrefane/jour_002.md) | La nouvelle | Silas vend Vesperine à Orsoline ; Lysa la prend sous son aile ; le plan d'évasion passe à trois. |
+
 ## Avec le joueur
 
 - [Jour 1 avec le joueur](joueur/jour_001_avec_joueur.md) : Brumeval heure par heure, toutes les actions possibles et leur suite, dont l'embranchement de Vesperine.
+- [Jour 1 à Pierrefane avec le joueur](joueur/jour_001_pierrefane_avec_joueur.md) : y aller (à pied, en courant, avec Joss), Pierrefane heure par heure, et comment voir les deux villes le même jour.
+- [Jour 2 avec le joueur](joueur/jour_002_avec_joueur.md) : l'état du monde au réveil (tous les fils du jour 1 et leurs valeurs), les actions nouvelles, Brumeval et Pierrefane heure par heure, et les embranchements qui mènent au jour 3.

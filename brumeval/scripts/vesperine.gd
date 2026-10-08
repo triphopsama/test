@@ -177,3 +177,174 @@ static func apres_combat(m: Node, resultat: String) -> void:
 		liberer(m, "Silas recule dans le noir en tenant son bras. Vesperine te regarde, incrédule : « Pourquoi ? » Puis elle te suit.")
 	else:
 		capturer(m, "Quand tu reprends tes esprits, la crique est vide. Ils l'ont emmenée.")
+
+
+# ---------------------------------------------------------------- le jour 2 à Pierrefane
+
+## La vente (monde/chronique/pierrefane/jour_002.md) : la charrette de Garec arrive à 10 h 45,
+## Silas vend à 11 h, elle est aux Lanternes à 11 h 30. Si tu es là, tu peux enchérir.
+const OBJETS_DAILLEURS := ["BRV011", "BRV017", "BRV014", "BRV015", "BRV012", "BRV013"]
+const PRIX_SILAS := 960            # 4 pièces d'or : Orsoline paie ça ; il faut mieux
+const DETTE_SILAS := 1440          # 6 pièces d'or, à rendre le jour du vote (jour 5)
+
+
+## Est-elle déjà aux Lanternes ? Pas avant le jour 2 à 11 h 30, ni pendant la vente.
+static func arrivee_a_pierrefane(m: Node) -> bool:
+	if m.fiche.drapeaux.get("vente_faite", false):
+		return true
+	return Horloge.jour() > 2 or (Horloge.jour() == 2 and Horloge.heure() >= 11.5)
+
+
+## Chaque seconde, à Pierrefane : la vente si tu es aux Lanternes vers 11 h, sinon elle arrive sans toi.
+static func surveiller_pierrefane(m: Node) -> void:
+	if m.carte != "pierrefane" or etat(m) != "capturee" or Horloge.jour() < 2 or m.joueur == null:
+		return
+	if m.fenetres.ouvert != "" or Illustrations.ouvert or m.combat != null:
+		return
+	var h: float = Horloge.heure()
+	var pres: bool = m.lieux.has("lanternes") and m.joueur.pos2d().distance_to(m.lieux.lanternes.pos) < 30.0
+	if Horloge.jour() == 2 and h >= 10.75 and h < 11.5 and pres and not m.fiche.drapeaux.has("vente_vue"):
+		m.fiche.drapeaux["vente_vue"] = true
+		vente(m)
+		return
+	if m._pnj_par_id(ID) == null and arrivee_a_pierrefane(m):
+		Biens.installer(m)
+		if pres and m.hud:
+			m.hud.annoncer("Une charrette bâchée est repartie à vide. Chez Orsoline, il y a une nouvelle.")
+
+
+static func vente(m: Node) -> void:
+	var texte := "Une charrette bâchée devant la Maison des Lanternes. Silas en descend, frais comme au marché ; Garec soulève la bâche. Vesperine, le collier au cou, les yeux encore lourds de drogue. Orsoline la regarde comme on regarde un tissu : « Trois pièces d'or. » Silas sourit : « Quatre. »"
+	Illustrations.montrer("vesperine_vente", [ID, "lanternes"], texte)
+	await Illustrations.ferme
+	var options := []
+	var fortune := _fortune(m)
+	options.append(["Enchérir : cinq pièces d'or", _encherir.bind(m), "Ta bourse et ce que tu portes de ton monde (la montre, le bijou… Silas adore ces choses-là) : %s en tout." % Objets.texte_prix(fortune)])
+	options.append(["Proposer à Silas une dette", _dette.bind(m), "Six pièces d'or, le jour du vote. Silas adore tenir les gens, mais il ne fait pas crédit à un inconnu."])
+	options.append(["Dire qu'elle est malade", _malade.bind(m), "Int contre Orsoline : le prix baisse, la vente traîne."])
+	options.append(["Regarder sans rien dire", _laisser_vendre.bind(m), "Elle est vendue. Tu pourras revenir au salon, ou racheter son contrat plus tard (8 à 12 pièces d'or)."])
+	m.fenetres.choix("La vente", texte, options)
+
+
+## Ce que tu peux mettre sur la table : ta bourse et les objets de ton monde (au prix qu'en donne Silas).
+static func _fortune(m: Node) -> int:
+	var t: int = m.fiche.bourse
+	for id in OBJETS_DAILLEURS:
+		t += m.fiche.nombre(id) * maxi(0, Objets.prix(id))
+	return t
+
+
+static func _payer_avec_tout(m: Node, montant: int) -> String:
+	var donnes := []
+	var reste := montant
+	for id in OBJETS_DAILLEURS:
+		while reste > 0 and m.fiche.nombre(id) > 0 and Objets.prix(id) > 0:
+			m.fiche.retirer(id)
+			reste -= Objets.prix(id)
+			donnes.append(Objets.get_(id).nom.to_lower())
+	if reste > 0:
+		m.fiche.bourse -= reste
+	elif reste < 0:
+		m.fiche.bourse += -reste      # Silas rend la monnaie, en grognant
+	return ", ".join(donnes)
+
+
+static func _encherir(m: Node) -> void:
+	var prix := PRIX_SILAS + 240
+	if _fortune(m) < prix:
+		Illustrations.montrer("vesperine_vente_refus", [ID, "lanternes"], "Tu comptes. Il te manque %s. Silas rit : « Reviens quand tu seras riche, l'ami. » La vente se fait sous tes yeux." % Objets.texte_prix(prix - _fortune(m)))
+		await Illustrations.ferme
+		_laisser_vendre(m)
+		return
+	var objets := _payer_avec_tout(m, prix)
+	m.relations["PIE001"] = clampi(m.relations.get("PIE001", 0) - 10, -100, 100)
+	_a_toi(m, "Orsoline pince les lèvres et se retire. Silas compte, empoche%s, et te tend la clé du collier : « Elle est à toi. Fais-en ce que tu veux, ce n'est plus mon affaire. »" % (" " + objets if objets != "" else ""))
+
+
+static func _dette(m: Node) -> void:
+	if int(m.relations.get("BRU003", 0)) < 10:
+		Illustrations.montrer("vesperine_vente_refus", [ID, "lanternes"], "Silas te regarde de haut en bas : « Je ne fais pas crédit aux inconnus. » La vente se fait sous tes yeux.")
+		await Illustrations.ferme
+		_laisser_vendre(m)
+		return
+	m.fiche.drapeaux["dette_silas"] = {"montant": DETTE_SILAS, "jour": 5}
+	m.relations["BRU003"] = clampi(m.relations.get("BRU003", 0) + 5, -100, 100)
+	m.relations["PIE001"] = clampi(m.relations.get("PIE001", 0) - 10, -100, 100)
+	_a_toi(m, "Silas sourit comme un homme qui vient de gagner plus que de l'or : « Six pièces, le jour du vote. Ou un service. » Il te tend la clé du collier.")
+
+
+static func _malade(m: Node) -> void:
+	var t: Dictionary = m.fiche.stats_totales()
+	if t.Int + randi_range(1, 20) >= 14 + randi_range(1, 20):
+		m.fiche.drapeaux["vente_suspendue"] = Horloge.jour()
+		Illustrations.montrer("vesperine_vente", [ID, "lanternes"], "« Elle tousse. Elle a la fièvre des noyés, j'en ai vu à Brumeval. » Orsoline recule d'un pas. « Deux pièces d'or. » Silas refuse, jure, et la vente traîne : elle reste enfermée chez Orsoline, pas encore vendue. Tu as gagné une nuit.")
+	else:
+		Illustrations.montrer("vesperine_vente", [ID, "lanternes"], "Orsoline te regarde par-dessus son lorgnon : « Elle est en meilleure santé que vous, mon cher. » Quatre pièces d'or.")
+	await Illustrations.ferme
+	_laisser_vendre(m, false)
+
+
+static func _laisser_vendre(m: Node, montrer := true) -> void:
+	m.fiche.drapeaux["vente_faite"] = true
+	m.fiche.sauver()
+	Biens.installer(m)
+	if montrer:
+		Illustrations.montrer("vesperine_vendue", [ID, "lanternes"], "Quatre pièces d'or. Orsoline note la vente dans son carnet. Vesperine passe devant toi sans te regarder ; Lysa l'attend dans le couloir avec une assiette.")
+
+
+static func _a_toi(m: Node, texte: String) -> void:
+	m.fiche.drapeaux["vente_faite"] = true
+	Biens.contrats(m)[ID] = "garde"
+	m.fiche.sauver()
+	m.sauver_etat()
+	Biens.installer(m)
+	Illustrations.montrer("vesperine_achetee", [ID, "lanternes"], texte)
+	await Illustrations.ferme
+	m.fenetres.choix("La clé du collier", "La clé est dans ta main. Elle te regarde, et lit ce que tu veux d'elle.", [
+		["Ouvrir le collier", Biens.liberer.bind(m, m._pnj_par_id(ID)), "Elle est libre. Elle n'a nulle part où aller, et deux jours avant de pouvoir penser à autre chose qu'à manger et dormir."],
+		["Garder la clé", func(): pass, "Elle est à toi, sous contrat. Rien d'intime, jamais, tant qu'elle porte ton collier."]])
+
+
+## Le jour du vote (jour 5 et après), à Brumeval : Silas réclame sa dette quand il te croise.
+static func surveiller_dette(m: Node) -> void:
+	var d = m.fiche.drapeaux.get("dette_silas", null)
+	if not d is Dictionary or m.carte != "brumeval" or Horloge.jour() < int(d.jour):
+		return
+	if m.fenetres.ouvert != "" or Illustrations.ouvert or m.combat != null:
+		return
+	var silas: Node = m._pnj_par_id("BRU003")
+	if silas == null or silas.mort or not silas.visible or silas.pos2d().distance_to(m.joueur.pos2d()) > 8.0:
+		return
+	if m.fiche.drapeaux.get("dette_silas_vu", -1) == Horloge.jour():
+		return
+	m.fiche.drapeaux["dette_silas_vu"] = Horloge.jour()
+	var texte := "Silas te barre le passage, aimable : « Le jour du vote, l'ami. Six pièces d'or. Ou tu me rends un service. »"
+	m.fenetres.choix("La dette de Silas", texte, [
+		["Payer (%s)" % Objets.texte_prix(int(d.montant)), _payer_silas.bind(m), "Tu ne lui dois plus rien."],
+		["Pas maintenant", _repousser_silas.bind(m), "Il sourit moins. Chaque jour de retard coûte."]])
+
+
+static func _payer_silas(m: Node) -> void:
+	var d: Dictionary = m.fiche.drapeaux["dette_silas"]
+	if m.fiche.bourse < int(d.montant):
+		Illustrations.montrer("dette_silas_refus", ["BRU003"], "Il te manque %s. Silas : « Demain, alors. Avec les intérêts. »" % Objets.texte_prix(int(d.montant) - m.fiche.bourse))
+		d.montant = int(int(d.montant) * 1.1)
+		return
+	m.fiche.bourse -= int(d.montant)
+	m.fiche.drapeaux.erase("dette_silas")
+	m.fiche.sauver()
+	Illustrations.montrer("dette_silas", ["BRU003"], "Silas compte, lentement, devant tout le monde. « Un plaisir de faire affaire. » Tu ne lui dois plus rien.")
+
+
+static func _repousser_silas(m: Node) -> void:
+	var d: Dictionary = m.fiche.drapeaux["dette_silas"]
+	d.montant = int(int(d.montant) * 1.1)
+	d["refus"] = int(d.get("refus", 0)) + 1
+	m.relations["BRU003"] = clampi(m.relations.get("BRU003", 0) - 15, -100, 100)
+	var t := "Silas te tapote la joue : « Dix pour cent par jour, l'ami. » (-15)"
+	if int(d.refus) >= 3:
+		t += " Ce soir, ses hommes viendront te rappeler ce que tu dois."
+		m.relations["BRU003"] = mini(int(m.relations.get("BRU003", 0)), -60)   # il envoie Garec et Mouche
+	m.sauver_etat()
+	m.fiche.sauver()
+	Illustrations.montrer("dette_silas_refus", ["BRU003"], t)

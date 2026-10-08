@@ -1354,14 +1354,26 @@ func _contrats() -> void:
 	Biens.liberer(monde, lysa)
 	_fermer_tout()
 	ok(not Biens.contrats(monde).has("PIE002") and "PIE002" in Biens.liberes(monde) and lysa.donnees.statut_social.begins_with("libre"), "contrat déchiré : Lysa est libre (+30)")
-	var ves := _pnj("VES019")
 	if Vesperine.etat(monde) == "capturee":
-		ok(ves != null and not monde.actions.intime_possible(ves), "Vesperine, vendue, enfermée aux Lanternes : rien d'intime")
-		Biens.racheter(monde, "dette_vesperine")
+		# la vente du jour 2 : enchérir avec la montre et le bijou de l'autre monde
+		f.bourse = 200
+		f.ajouter("BRV011")
+		f.ajouter("BRV017")
+		ok(Vesperine._fortune(monde) == 200 + 720 + 360, "ta fortune : la bourse, la montre, le bijou (%d)" % Vesperine._fortune(monde))
+		Vesperine._encherir(monde)
+		var ves := _pnj("VES019")
+		ok(ves != null and Biens.contrats(monde).has("VES019") and f.nombre("BRV011") == 0 and f.bourse == 80, "cinq pièces d'or : la montre, le bijou et 120 cuivre ; la clé du collier est à toi")
+		ok(not monde.actions.intime_possible(ves), "sous ton collier : rien d'intime")
 		_fermer_tout()
 		Biens.liberer(monde, ves)
 		_fermer_tout()
-		ok(Vesperine.etat(monde) == "rachetee" and Intime.consentement(monde, ves, "nuit") != "", "rachetée et libérée : d'abord, elle respire")
+		ok(Vesperine.etat(monde) == "rachetee" and Intime.consentement(monde, ves, "nuit") != "", "le collier ouvert : libre, et d'abord elle respire")
+		f.drapeaux.erase("vente_faite")
+		monde.relations["BRU003"] = 0
+		Vesperine._dette(monde)
+		_fermer_tout()
+		ok(not f.drapeaux.has("dette_silas"), "Silas ne fait pas crédit à un inconnu")
+	f.bourse = 20000
 	Biens.acheter(monde, "lanternes")
 	_fermer_tout()
 	Biens._dechirer_lanternes(monde)
@@ -1371,3 +1383,5 @@ func _contrats() -> void:
 	f.drapeaux.erase("contrats")
 	f.drapeaux.erase("biens")
 	f.drapeaux.erase("vesperine")
+	f.drapeaux.erase("vente_faite")
+	f.drapeaux.erase("dette_silas")

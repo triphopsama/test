@@ -542,6 +542,8 @@ func _process(delta: float) -> void:
 	_surveiller_defis(delta)
 	_surveiller_liens(delta)
 	Vesperine.surveiller(self)
+	Vesperine.surveiller_pierrefane(self)
+	Vesperine.surveiller_dette(self)
 	Grotte.surveiller(self, delta)
 	_surveiller_hostiles(delta)
 	_regenerer()

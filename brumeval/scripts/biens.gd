@@ -99,7 +99,7 @@ static func installer(m: Node) -> void:
 	for id in contrats(m):
 		if m.pnj_donnees.has(id):
 			m.pnj_donnees[id]["statut_social"] = "sous contrat de dette (à toi)"
-	if m.carte == "pierrefane" and Vesperine.etat(m) == "capturee" and m._pnj_par_id(Vesperine.ID) == null:
+	if m.carte == "pierrefane" and Vesperine.etat(m) == "capturee" and m._pnj_par_id(Vesperine.ID) == null and Vesperine.arrivee_a_pierrefane(m):
 		var d: Dictionary = Vesperine.DONNEES.duplicate()
 		d.statut_social = "captive de la Maison des Lanternes (collier)"
 		d.detresse = "1"
