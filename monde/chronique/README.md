@@ -62,9 +62,11 @@ La même chronique, à 16 km de là (le port où Vesperine est vendue).
 | --- | --- | --- |
 | [1](pierrefane/jour_001.md) | Le gouvernail | Le *Goéland gris* reste à quai sur une avarie inventée ; Orsoline nomme Fleur devant Pâris ; Gilles fait passer deux fugitifs. |
 | [2](pierrefane/jour_002.md) | La nouvelle | Silas vend Vesperine à Orsoline ; Lysa la prend sous son aile ; le plan d'évasion passe à trois. |
+| [3](pierrefane/jour_003.md) | Le thé de Madame | Odile touche la main de Vesperine ; Orsoline fixe le jour 4 pour « les chambres » ; elle parle de Fleur à Pâris ; l'orage cloue les barques. |
 
 ## Avec le joueur
 
 - [Jour 1 avec le joueur](joueur/jour_001_avec_joueur.md) : Brumeval heure par heure, toutes les actions possibles et leur suite, dont l'embranchement de Vesperine.
 - [Jour 1 à Pierrefane avec le joueur](joueur/jour_001_pierrefane_avec_joueur.md) : y aller (à pied, en courant, avec Joss), Pierrefane heure par heure, et comment voir les deux villes le même jour.
 - [Jour 2 avec le joueur](joueur/jour_002_avec_joueur.md) : l'état du monde au réveil (tous les fils du jour 1 et leurs valeurs), les actions nouvelles, Brumeval et Pierrefane heure par heure, et les embranchements qui mènent au jour 3.
+- [Jour 3 avec le joueur](joueur/jour_003_avec_joueur.md) : la farine, Garec qui cherche Vesperine, la falaise avec les enfants, le dîner des Montval, la fuite de Gaëlle et Félix avant l'orage, Lucas sous le tonneau ; à Pierrefane, le compte à rebours d'Orsoline, le carnet, Fleur, l'évasion par la terre ; et les embranchements du jour 4.
