@@ -78,7 +78,7 @@ Le soir du jour 1, **revenir de Pierrefane après 20 h** te fait arriver à Brum
 
 | Fil | Si tu as agi | Si tu n'as rien fait |
 | --- | --- | --- |
-| **Le *Goéland gris*** | Tu sais que l'avarie est fausse (plongée, Ferrat) et que Daunel est payé (Margo, Daunel ivre) : au jour 2, avec Bérénice, tu peux faire partir la farine pour Brumeval. | Le bateau reste à quai jusqu'au jour 4 ; la farine n'arrive à Brumeval qu'au jour 6. |
+| **Le *Goéland gris*** | Tu sais que l'avarie est fausse (plongée, Ferrat) et que Daunel est payé (Margo, Daunel ivre) : au jour 2, avec Bérénice, tu peux faire partir la farine pour Brumeval. | Le bateau reste à quai jusqu'au soir du vote (jour 5) ; la farine n'arrive à Brumeval qu'au jour 6, et Silas s'en attribue le mérite. |
 | **Pâris et Fleur** | Ondine sait (dispute, vengeance qui démarre), ou tu as joué contre Pâris (il te doit, ou tu lui dois). | Orsoline avance ses pions sur Fleur. |
 | **Lysa et l'évasion** | Tu as entendu Kael et Gilles ; tu as aidé Bastien ; tu as aidé la barque : au jour 2, tu peux être mis dans la confidence. Ou tu as dénoncé : Lysa à la cave, Kael ennemi. | Le plan attend la clé et le jour 6. |
 | **Le prévôt** | Tu as vu l'enveloppe : chantage possible. | — |

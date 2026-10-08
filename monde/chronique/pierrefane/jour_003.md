@@ -25,7 +25,7 @@
 | 17:00 | Quai | Orsoline, Pâris | Orsoline admire la pêche de Pâris et lui dit, aimable : « Votre petite a l'âge d'apprendre un métier. Servir le thé au salon, c'est un début. Nous en reparlerons après votre prochaine mauvaise nuit. » Pâris ne répond pas. | Pâris : humeur peur 75 |
 | 18:00 | Maison des Lanternes | tous | Salon. Vesperine chante. Daunel la réclame encore. Orsoline : « Demain, capitaine. » | — |
 | 20:00 | Maison des Lanternes (bureau) | Margo, Orsoline | Margo demande à Orsoline de laisser « la nouvelle » au salon une semaine de plus : « Elle rapporte plus en chantant, et elle cassera si tu la presses. » Orsoline refuse. | Margo → Orsoline : affection -10. Margo : envie « reprendre la maison » +10 % |
-| 21:00 | Bout de la jetée | Hugues, Lysa (par la lucarne) | Lysa remercie Hugues pour le petit chat. Hugues rougit, ne sait pas quoi dire, s'en va. | Hugues → Lysa : affection +10 |
+| 21:00 | Couloir des Lanternes | Hugues, Lysa | Entre deux chansons, Lysa remercie Hugues pour le petit chat. Hugues rougit, ne sait pas quoi dire, s'en va. | Hugues → Lysa : affection +10 |
 | 23:00 | Hangar du Passeur | Gilles, Kael | L'orage éclate. Aucune barque ne sortira cette nuit ni la suivante. Gilles : « Le jour 6. Pas avant. » Kael serre les poings. | Évasion : toujours le jour 6 |
 | 00:30 | Au Mouillage | Pâris, Ondine | Pâris, qui n'a pas joué ce soir, dort pour la première fois depuis une semaine. Ondine le regarde dormir et se demande ce qu'il lui cache. | — |
 

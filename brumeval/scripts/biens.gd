@@ -5,6 +5,8 @@
 #   id, carte, lieu      le bien et où il est
 #   type                 maison, commerce, bateau, public (jamais à vendre), dette (un contrat de captif)
 #   proprietaire         qui le vend (pour une dette : le captif lui-même ; c'est Orsoline qui vend)
+#   tenu_par             qui le tient (la taverne : Clémence en a les murs, Rosalie la tient) ; c'est
+#                        chez lui que tu achètes à moitié prix quand le commerce est à toi
 #   prix                 « 3 or », « 6 argent »… ; revenu : cuivre par jour s'il est à toi
 #   vend                 « affection N » : à ce prix s'il t'aime assez, plus cher sinon ; « jamais »
 #   texte                ce que dit le vendeur
@@ -69,7 +71,7 @@ static func chez_soi(m: Node, lieu: String) -> bool:
 
 ## Tu possèdes le commerce de ce marchand : moitié prix.
 static func possede_de(m: Node, pnj_id: String) -> bool:
-	return tous().values().any(func(b): return b.proprietaire == pnj_id and b.type == "commerce" and statut(m, b.id) == "achat")
+	return tous().values().any(func(b): return str(b.get("tenu_par", "")) == pnj_id and b.type == "commerce" and statut(m, b.id) == "achat")
 
 
 static func _nom(m: Node, id: String) -> String:

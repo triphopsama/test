@@ -1296,14 +1296,14 @@ func _maison_biens() -> void:
 	ok(not "BRU001" in Maison.habitants(monde) and mara.maison != "falaise", "elle rentre chez elle")
 	# les biens
 	var taverne: Dictionary = Biens.tous().taverne
-	monde.relations["BRU011"] = 0
+	monde.relations["BRU008"] = 0
 	var cher := Biens.prix(monde, taverne)
-	monde.relations["BRU011"] = 60
-	ok(cher > Biens.prix(monde, taverne) and Biens.prix(monde, taverne) == 960, "Rosalie vend plus cher à qui elle n'aime pas (%d / %d)" % [cher, Biens.prix(monde, taverne)])
+	monde.relations["BRU008"] = 60
+	ok(cher > Biens.prix(monde, taverne) and Biens.prix(monde, taverne) == 960, "Clémence (les murs) vend plus cher à qui elle n'aime pas (%d / %d)" % [cher, Biens.prix(monde, taverne)])
 	ok(not _action("bien_acheter", null, "taverne").is_empty(), "acheter la taverne")
 	Biens.acheter(monde, "taverne")
 	_fermer_tout()
-	ok(Biens.statut(monde, "taverne") == "achat" and Biens.possede_de(monde, "BRU011"), "la taverne est à toi")
+	ok(Biens.statut(monde, "taverne") == "achat" and Biens.possede_de(monde, "BRU011"), "la taverne est à toi, et Rosalie te fait les prix du patron")
 	ok(Biens.chez_soi(monde, "taverne") and not _action("dormir_chez_toi", null, "taverne").is_empty(), "tu y dors gratuitement")
 	ok(not _action("bien_vendre", null, "taverne").is_empty(), "tu peux la revendre")
 	f.drapeaux["revenus_jour"] = Horloge.jour() - 2

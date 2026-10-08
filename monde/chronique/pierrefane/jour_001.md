@@ -14,7 +14,7 @@
 | 06:00 | Au Mouillage | Ondine, Fleur | Ondine ouvre l'auberge, allume le feu, gronde Fleur qui veut « juste aller voir les chats ». | — |
 | 06:30 | Chantier naval | Ferrat, Thorga | Le chantier ouvre. Thorga allume la forge d'ancres en chantant faux. | — |
 | 07:00 | Épicerie-entrepôt | Bérénice | Bérénice ouvre l'entrepôt. Dans le registre des cargaisons : vingt sacs de farine pour Brumeval, chargés sur le *Goéland gris* il y a cinq jours, toujours à bord. | Bérénice : souvenir « la farine de Brumeval ne part pas » (55) |
-| 08:00 | Quai | Capitaine Daunel, Yann, marins | Daunel annonce au port que le *Goéland gris* reste à quai : « Le gouvernail a pris un coup. Trois jours, peut-être cinq. » Yann le croit. | Rumeur « le Goéland est en avarie » (60) |
+| 08:00 | Quai | Capitaine Daunel, Yann, marins | Daunel annonce au port que le *Goéland gris* reste à quai : « Le gouvernail a pris un coup. Trois jours, peut-être cinq. » Yann le croit. (En vérité, Silas le paie pour que le ravitaillement de Brumeval n'arrive qu'après le vote du jour 5 : le bateau partira la nuit du jour 5 et sera à Brumeval le jour 6 au matin.) | Rumeur « le Goéland est en avarie » (60) |
 | 09:00 | Chantier naval | Ferrat, Daunel | Daunel demande à Ferrat de signer un bon de réparation. Ferrat a plongé à l'aube pour voir le gouvernail : il est intact. Il refuse de signer. Daunel menace de faire réparer ailleurs. | Ferrat → Daunel : respect -20. Daunel : humeur nerveux +10 |
 | 09:30 | Entrepôt | Bérénice, Daunel | Daunel demande à sa femme de ne pas vendre la farine de Brumeval « pour l'instant ». Bérénice ne pose pas de question. Elle note tout, le soir. | Bérénice : dossier +1 page |
 | 10:00 | Maison des Lanternes | Orsoline | Lever, thé noir. Elle relit la lettre de Silas reçue la veille : « Peut-être une pièce rare cette semaine. » | — |
@@ -32,12 +32,12 @@
 | 16:10 | Fenêtre de la Maison | Orsoline | Orsoline voit la petite à la palissade et sourit. | Orsoline : souvenir « Fleur » (40) |
 | 17:00 | Cabane de Mahaut | Mahaut | Mahaut fait sécher de la sauge et parle seule de « l'Agnès, là-haut, qui ne m'écrit plus ». | — |
 | 18:00 | Maison des Lanternes | Orsoline, Margo, Hugues, Lysa, Bastien | Ouverture du salon. Hugues à la porte, Margo au salon, Lysa chante, Bastien sert. | — |
-| 19:00 | Au Mouillage | Ondine, Margo | Margo vient manger la soupe avant son service. Ondine la sert sans un mot ; elles sont cousines par Pâris, et ne s'aiment pas. | — |
+| 17:30 | Au Mouillage | Ondine, Margo | Margo vient manger la soupe avant son service. Ondine la sert sans un mot ; elles sont cousines par Pâris, et ne s'aiment pas. | — |
 | 20:00 | Maison des Lanternes (salon) | Daunel, Margo | Daunel, ivre de rhum, se vante devant Margo de « gagner plus à rester au port qu'à naviguer ». Margo rit et retient. | Margo : souvenir « Daunel est payé pour rester » (55) |
 | 21:00 | Au Mouillage | Pâris, Ondine | Dispute à mi-voix derrière le comptoir. Pâris jure qu'il ne joue plus. Ondine fait semblant de le croire. | Ondine : humeur méfiante +10 |
 | 22:00 | Maison des Lanternes (bureau) | Bastien | Pendant que tout le monde est au salon, Bastien ouvre le carnet d'Orsoline trois minutes. Il lit un nom de Vaulx-sur-Mer qu'il connaît. Il remet tout en place. | Bastien : souvenir « le carnet » (70) |
 | 23:00 | Hangar du Passeur | Gilles, Kael, deux fugitifs | Deux hommes-bêtes (un vieux loup et son petit-fils) montent dans la barque de Gilles. Kael pousse la barque à l'eau. Cap au sud, vers Aëlinde. | Gilles : 25 fugitifs passés. Kael → Gilles : confiance +5 |
-| 01:00 | Bout de la jetée | Hugues | Hugues fume seul, sculpte un petit chat en bois pour Lysa. | — |
+| 04:30 | Bout de la jetée | Hugues | Les portes fermées, Hugues fume seul et sculpte un petit chat en bois pour Lysa. | — |
 | 02:00 | Au Mouillage | Pâris | Pâris rentre de l'arrière-salle. Il a rejoué. Il a perdu. | Pâris : dette envers Orsoline toujours 3 pièces d'or, plus 4 argent à des marins |
 
 ## Bilan du jour

@@ -65,11 +65,11 @@ fee_benir;Lui demander la bénédiction de la Brume;pnj;*;FEE001,FEE002,FEE003;0
 fee_mepris;Te moquer de la « fée »;pnj;*;FEE001,FEE002,FEE003;0;5;-100;0;;fee_mepris;;
 relacher;Relâcher une bête;lieu;*;*;0;5;0;0;;relacher;;
 voyager;Prendre le sentier côtier (3 h);lieu;sentier;*;0;0;-100;0;;voyage;;Seize kilomètres de lande et de vent, la mer à main gauche, les mouettes au-dessus. Trois heures plus tard, les toits d'une autre ville.
-dormir;Dormir au Mouillage (1 argent);lieu;auberge;*;0;360;-100;0;1 argent;repos;;Ondine te tend une clé et une couverture qui sent le sel : « Pas de dés dans les chambres. » Par la fenêtre, le ressac.
+dormir;Dormir au Mouillage (8 cuivres);lieu;auberge;*;0;360;-100;0;8 cuivre;repos;;Ondine te tend une clé et une couverture qui sent le sel : « Pas de dés dans les chambres. » Par la fenêtre, le ressac.
 danser;Danser au Mouillage;lieu;auberge;*;1;60;-100;0;;danser;danse_lascive;
 travailler_nuit;Travailler la nuit (courtisan·e libre);lieu;pierrefane:port,auberge;*;1;60;-100;0;;courtisan;;Les marins du Goéland gris ont la paie en poche et la nuit devant eux. Tu fixes ton prix, tu choisis qui, et personne ne prend sa part.
 nuit_margo;Monter avec Margo (2 argent);pnj;lanternes;PIE004;1;0;-100;0;2 argent;nuit_payee;;
-manger;Manger la soupe de poisson (3 cuivre);lieu;auberge;*;0;30;-100;0;3 cuivre;;;Ondine pose un bol fumant : « Le poisson de Pâris, quand il pêche au lieu de jouer. » Pâris, à la table d'à côté, fait semblant de ne pas entendre.
+manger;Manger la soupe de poisson (2 cuivres);lieu;auberge;*;0;30;-100;0;2 cuivre;;;Ondine pose un bol fumant : « Le poisson de Pâris, quand il pêche au lieu de jouer. » Pâris, à la table d'à côté, fait semblant de ne pas entendre.
 pecher;Pêcher;lieu;pierrefane:port;*;0;60;0;0;;BRV003 2;;Une heure au bout du quai de Pierrefane, entre les caisses du Goéland gris. Kael te regarde faire sans rien dire, puis te montre où mordent les bars.
 ragots;Écouter les ragots;lieu;taverne,auberge,lavoir,place;*;0;30;-100;0;;ragots;;
 confidences;Lui demander où il en est (amours);pnj;*;*;0;20;-100;0;;confidences;;

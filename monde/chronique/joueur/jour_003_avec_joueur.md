@@ -27,7 +27,7 @@
 | État | D'où il vient |
 | --- | --- |
 | **[Toi-libre]** | Le cas normal. |
-| **[Toi-matelot]** | Captif, acheté par Daunel : tu dors dans la cale du *Goéland gris*, à quai jusqu'à la nuit du jour 4. |
+| **[Toi-matelot]** | Captif, acheté par Daunel : tu dors dans la cale du *Goéland gris*, à quai jusqu'à la nuit du jour 5 (Silas a payé Daunel jusqu'au vote). |
 | **[Toi-entretien]** | Captif, acheté par Orsoline : tu fais la plonge et le ménage des Lanternes. Tu as accès aux couloirs, au bureau à l'heure du ménage (10 h – 11 h), aux clés quand Hugues dort. |
 
 ### Silas → toi [S]
@@ -70,6 +70,19 @@
 | **Racheter Vesperine** | Pierrefane, Maison des Lanternes | 8 à 12 or ; Orsoline monte le prix si elle sent que tu y tiens |
 | **Protéger Fleur** | Pierrefane, 16 h – 17 h | Orsoline parle d'elle à Pâris |
 | **Travailler de l'intérieur** | Les Lanternes, 10 h – 11 h | [Toi-entretien] : le bureau, le carnet, les clés |
+
+### Vesperine près de toi, au jour 3
+
+Si elle est libre près de toi ([V-Brumeval], [V-libre-toi], [V-hangar] et que tu es là), elle a ses propres envies, et elle agit si tu ne fais rien.
+
+| Ce qu'elle veut | Comment l'aider | Si personne ne l'aide |
+| --- | --- | --- |
+| **Écrire à sa reine** | De l'encre et du papier : Théo (le verrier écrit des rapports), Odile, Isaure, Bérénice ; un messager : la mer (sa barque), ou un oiseau de la Brume (Brumelle, à faveur 30) | Elle vole de quoi écrire chez Agnès, qui s'en aperçoit (Agnès → elle : -10). |
+| **Récupérer sa barque** | Basse mer à 10 h 50 et 23 h 15 (l'orage commence à 23 h : trop tard pour partir cette nuit) | Elle tente les rochers seule à 10 h 50 ; si Silas fait surveiller la falaise (le puits révélé), Lucas la voit. |
+| **Manger, dormir, ne pas être touchée** | Rien à faire, justement : la laisser tranquille | Sa *détresse* tombe au soir du jour 3 si elle a mangé et dormi deux nuits à l'abri. |
+| **Savoir ce que tu lui veux** | Elle lit tes désirs (*Lecture des désirs*) : ce que tu ressens compte plus que ce que tu dis | — |
+
+**À partir du soir du jour 3**, libre (jamais sous ton collier), nourrie, à l'abri et si elle te fait confiance (affection 60 et plus) : c'est une adulte comme les autres, une succube de 140 ans, attirée par les hommes et les femmes. Les règles ordinaires s'appliquent : elle peut proposer, elle peut refuser, et ce qu'elle a lu en toi décide. Sous ton collier : rien, jamais.
 
 ---
 
@@ -119,7 +132,7 @@
 | 19 h 30 | Dîner chez les Montval : Silas charmant, Gaëlle en robe verte, Clémence furieuse. | [Dîner-invité] ; la soie verte vient de toi | **À table** : soutenir Silas (Clémence → toi : +10) ; le mettre mal à l'aise (une question sur le *Goéland gris*, sur la crique) ; parler à Aldric (sa voix) ; **séduire** quelqu'un à table (adultes consentants, comme partout ; Clémence cherche le statut, Silas le plaisir et les jeux de pouvoir, Gaëlle aime Félix). | Mal à l'aise : Silas te regarde enfin comme un adversaire à sa hauteur ([S-ennemi], mais il te respecte). Aldric, seul avec toi au cigare, peut basculer vers l'abstention. |
 | 20 h 15 | Félix chante « La fille du maire et le marchand de farine » ; la taverne rit, la mairie entend. | Tu es à la taverne | **Chanter avec lui** (la rumeur double). **Ajouter un couplet sur Silas** (Silas → toi : ennemi, la taverne t'adore). **L'empêcher** (Clémence te le revaudra). | La chanson est partout au jour 4. |
 | 21 h | Silas, sur le perron, dit à Gaëlle qu'il ne veut pas l'épouser. | [Amants-Gilles-ce-soir] | **Faire sortir Gaëlle** pendant cette minute sur le perron : elle a jusqu'à 22 h pour être à la plage. Silas la laisse filer (il ne veut pas l'épouser, il ne la retiendra pas). | **Gaëlle et Félix partent à 22 h** dans la barque de Gilles, une heure avant l'orage. Au jour 4, Clémence fait fouiller le village ; elle soupçonne Joss, puis toi si on t'a vu au perron. Aldric, en secret, est soulagé. Les jours 9 et 10 de la chronique n'ont plus lieu. |
-| 22 h | Clémence augmente le loyer de Rosalie d'un tiers. | — | **Proposer à Rosalie de racheter la taverne avec toi** (le système des biens : la taverne à Rosalie, toi en associé). | Rosalie, libre de Clémence, vote Mara au jour 5. Clémence perd sa prise sur elle. |
+| 22 h | Clémence augmente le loyer de Rosalie d'un tiers. | — | **Racheter les murs de la taverne à Clémence** et les louer à Rosalie à l'ancien loyer (le système des biens ; Clémence vend cher à qui elle n'aime pas), ou **prêter à Rosalie** de quoi les racheter elle-même. | Rosalie, libre de Clémence, vote Mara au jour 5. Clémence perd sa prise sur elle. |
 | 23 h | L'orage. Un tonneau se brise sur les rochers de la crique ; Lucas se blesse la main. | [S-créancier] ou [S-recrue] : tu portes les tonneaux avec Lucas | **Sauver Lucas** quand le tonneau glisse (For 10 ou Agi 10). **Garder un tonneau** pour toi (une preuve, ou de l'eau-de-vie à vendre). **Saboter** le déchargement (un tonneau à la mer, exprès). **Refuser le service** et payer Silas (ou fuir). | Lucas sauvé : Lucas → toi : +30 ; sous la pluie, il dit tout (la dette, les moutures, **la femme à la crique** s'il l'a vue) ; **il change de camp dès le jour 3** au lieu du jour 5. Un tonneau gardé : Théo te l'achète, ou Ysolde l'apporte à Vaulx. Le service refusé : Silas → toi : ennemi, et la dette monte. |
 | 23 h | — | Tu n'es pas à la crique | **Être sur la falaise d'en face** avec Théo. | Vous voyez le tonneau se briser et Lucas tomber : un témoin de plus. |
 | 23 h 45 | Lucas se fait panser chez Agnès. | [V-Brumeval] chez Agnès | **L'empêcher de voir Vesperine** (elle dort dans la pièce d'à côté). **Le laisser voir.** | Lucas la reconnaît (« la femme de la crique ») : s'il est de ton côté, il se tait ; sinon, Silas le sait à l'aube. |
@@ -136,6 +149,8 @@
 | 7 h | Daunel gifle Yann qui demande pour la farine. | — | **T'interposer** (Daunel est lâche en privé : il recule devant un témoin). **Consoler Yann** ensuite. | Yann (17 ans) → toi : un modèle ; il parle (son père, Silas, les bourses). Bérénice → toi : +15. Daunel → toi : ennemi. |
 | 8 h | Thorga et Kael courent sur la lande. | — | **Courir avec eux** (le défi de Kael : Agi contre 15). | Gagner : Kael → toi : +20, « personne ne m'a jamais battu ». |
 | 9 h | Ferrat répare la barque de Gilles pour rien. | — | **Aider au chantier** (une journée de métier). | Ferrat te dit pourquoi il doit la vie à Gilles : tu comprends que Gilles n'est pas un simple contrebandier. |
+| 9 h | — | [V-hangar] | **Silas et Garec chez le prévôt** : « On m'a volé une marchandise. » (Il ne peut pas dire laquelle.) Le prévôt promet de fouiller le port à midi, sans zèle. **La déplacer** avant midi : chez Mahaut (si elle te fait confiance), dans la coque du chantier (Ferrat le fera pour Gilles), dans ta chambre au Mouillage (Ondine ne pose pas de questions si elle t'apprécie). **La laisser au hangar** (Gilles a une cache sous le plancher, Per 14 pour la trouver). | Trouvée : Silas la reprend, la vente du jour 2 se refait au jour 4. Pas trouvée : Silas repart vers Brumeval furieux, et soupçonne Gilles pour de bon : la guerre Silas-Gilles commence (Garec, puis Mouche, sur le hangar). |
+| 6 h – 18 h | — | [Toi-matelot] | **Travailler sur le pont** (Daunel te fait gratter la coque). **Fouiller la cabine de Daunel** quand il est au Mouillage (11 h 45 – 13 h) : les lettres de Silas, la bourse. **Parler à Yann** : il a 17 ans, il a honte de son père depuis la gifle, et il a la clé de la cale. | Les lettres : la preuve de la famine fabriquée. Yann t'ouvre la cale le soir (Yann → toi : un ami qui risque tout ; Daunel le battra s'il l'apprend). Libre dans le port de jour : Hugues et le prévôt te cherchent, Kael ou Gilles te cachent. |
 | 10 h – 11 h | Ménage aux Lanternes. | [Toi-entretien] | **Fouiller le bureau** pendant le ménage (10 min, Per de Hugues dans le couloir) : le carnet, le trousseau de rechange, les contrats. **Prendre le carnet** (il manquera ce soir). **Recopier** une page (lent, mais rien ne manque). | Le carnet : de quoi faire tomber Orsoline, le prévôt, des notables de Vaulx. Volé : Orsoline fouille tout le monde à 18 h (Lysa est soupçonnée en premier, puis toi). Une page recopiée : personne ne sait. |
 | 11 h | Orsoline écrit : « salon, trois jours ; puis les chambres ». | [V-vendue] | **Racheter son contrat** à Orsoline maintenant (8 or ; 10 si tu as payé ses nuits, elle sent que tu y tiens ; 12 si tu as été insolent). **Négocier** (Int + Sag ; Orsoline est forte : Int 16). **Payer d'avance une semaine de nuits** (3 argent la nuit, 21 argent la semaine : « Je la réserve. ») | Rachetée : [V-libre-toi] ou [V-collier] au jour 4. Une semaine payée : **le compte à rebours recule au jour 10**, tant que tu paies ; Orsoline te note comme « le client de la nouvelle », et Daunel te hait. |
 | 13 h | Bastien recopie la ligne de la vente. | [Carnet-un-nom], [Lysa-confiance] | **Récupérer le papier** de Bastien (13 h 30, au repas, par la palissade ou de la main à la main si tu es au salon). | La preuve écrite de la vente de Vesperine par Silas : avec le témoignage de Lucas ou de Théo, Silas peut tomber devant le gouverneur. |
@@ -154,26 +169,26 @@
 | 20 h | Margo demande à Orsoline de garder la nouvelle au salon ; refus. | Margo → toi ≥ 10 | **Soutenir Margo** : avec ton argent (la semaine payée) ou avec une menace (le carnet, la page recopiée). | Avec une menace : Orsoline cède, et ne l'oublie jamais. Margo voit en toi un allié pour « reprendre la maison » : la Maison des Lanternes peut changer de mains (Margo à sa tête, libre, ou toi qui l'achètes). |
 | 21 h | Lysa remercie Hugues pour le petit chat. | [Évasion-avancée] | **Rallier Hugues** : lui dire ce qu'Orsoline prépare pour Fleur ; lui demander le double de la clé « pour Lysa ». | Hugues, avec une raison : il donne la clé, ou il « dort » le soir de l'évasion. Sans raison : il le dit à Orsoline. |
 | 23 h | L'orage cloue les barques. Gilles : « Le jour 6. » | [Évasion-avancée] | **Fuir par la terre** malgré l'orage : par la lande jusqu'à la cabane de Mahaut (elle les cache, si elle te fait confiance), puis le sentier vers Brumeval (4 h sous l'orage, Agi 10). Il faut la clé (Hugues, le trousseau, ou crocheter : Agi 14) et que Hugues ne soit pas à la porte. | **Évasion par la terre au jour 3** : Lysa, Vesperine, Bastien (s'il suit) chez Mahaut, puis Brumeval. Orsoline découvre tout à 4 h ; Silas et le prévôt cherchent au jour 4 ; Mahaut est la première soupçonnée. Si ça rate : la cave pour Lysa, et Vesperine aux chambres dès le jour 4. |
-| 23 h | — | [Toi-matelot] | Le *Goéland gris* est à quai sous l'orage, le pont désert. **Sauter à l'eau** (End 10, la nuit, la tempête). **Attendre** la nuit du jour 4. | Libre et trempé sur le quai : Kael te ramasse, ou Hugues. |
+| 23 h | — | [Toi-matelot] | Le *Goéland gris* est à quai sous l'orage, le pont désert. **Sauter à l'eau** (End 10, la nuit, la tempête). **Attendre** : le bateau part la nuit du jour 5 pour Brumeval (le ravitaillement), où tu peux sauter à quai le jour 6. | Libre et trempé sur le quai : Kael te ramasse, ou Hugues. |
 
 ---
 
 ## 5. Vers le jour 4
 
-Le jour 4 sans joueur ([Brumeval, jour 4](../jour_004.md)) : Joss trouve les douelles du tonneau (5 h 30), Basile pousse Élise dans le ruisseau (8 h), Pierrick confie la grotte à Agnès (10 h), **Bram se brûle (14 h)**, Théo envoie son rapport (17 h), Silas achète Corentin (21 h 15), et chaque camp compte ses voix pour le vote du jour 5. À Pierrefane : **Orsoline met Vesperine aux chambres**, et le *Goéland gris* doit repartir la nuit du jour 4.
+Le jour 4 sans joueur ([Brumeval, jour 4](../jour_004.md)) : Joss trouve les douelles du tonneau (5 h 30), Basile pousse Élise dans le ruisseau (8 h), Pierrick confie la grotte à Agnès (10 h), **Bram se brûle (14 h)**, Théo envoie son rapport (17 h), Silas achète Corentin (21 h 15), et chaque camp compte ses voix pour le vote du jour 5. À Pierrefane : **Orsoline met Vesperine aux chambres**, et le *Goéland gris* attend toujours le soir du vote (jour 5) pour partir vers Brumeval.
 
 ### Les grands fils
 
 | Fil | États au soir du jour 3 | Ce que le jour 4 devient |
 | --- | --- | --- |
 | **Vesperine** | *libre à Brumeval* ; *au hangar* ; *partie* ; *à toi* (collier ouvert ou fermé) ; *évadée par la terre* ; *réservée* (une semaine payée) ; *vendue, compte à rebours* | Réservée : rien ne change tant que tu paies, Daunel te cherche des noises. Vendue sans rien : le jour 4 de la chronique (ce que le jeu ne montre pas, mais qui laisse des traces : voir [jour 1 avec le joueur](jour_001_avec_joueur.md), « Si tu la rates »). Évadée : Silas et le prévôt la cherchent ; Garec arrive à Brumeval. Libre à Brumeval : Ysolde, Garec, et Lucas qui l'a vue. |
-| **Silas → toi** | *recrue* ; *créancier* ; *ennemi* ; *ennemi qui te respecte* (le dîner) | Ennemi : Garec et Mouche arrivent le soir du jour 4 (au lieu du jour 10). Il attaque ta réputation avant le vote (« l'étranger qui cache une fugitive »). |
+| **Silas → toi** | *recrue* ; *créancier* ; *ennemi* ; *ennemi qui te respecte* (le dîner) | Ennemi : Garec (resté au village) et Mouche, arrivé de Saltevaux, viennent te trouver le soir du jour 4 (au lieu du jour 10). Il attaque ta réputation avant le vote (« l'étranger qui cache une fugitive »). |
 | **Le vote du jour 5** | Les voix de Mara et de Silas au soir du jour 3 | Chaque voix compte : Isaure (tissus de Silas), Rosalie (loyer ou taverne rachetée), Élise (son aveu), Aldric (le cigare), Corentin (Silas l'achète à 21 h 15 : **tu peux passer avant**). |
 | **Bram** | *Thorga forge avec lui* ; *mains soignées* ; *rien* | Thorga avec lui : **pas de brûlure à 14 h** ; Bram forge, Isaure n'entre pas la première, et le rapprochement Bram-Isaure prend un autre chemin. Rien : la brûlure, sept jours sans forger. |
 | **Lucas** | *sauvé par toi* ; *blessé* ; *rien* | Sauvé : il témoigne avec Théo dès le jour 4 ; Silas perd son porteur, et ses moutures s'arrêtent. |
 | **Gaëlle et Félix** | *partis* ; *à Brumeval* | Partis : Clémence fouille, Aldric s'abstient au vote, Silas n'a plus de prise sur les Montval. |
 | **Pierrick** | *t'a confié la grotte* ; *menace Mara* ; *rien* | Il t'a confié la grotte : au jour 4, il te demande d'y descendre avec lui chercher ce qui reste de Léa (la grotte, avec un guide qui connaît le puits). |
-| **Pierrefane** | *carnet volé ou recopié* ; *Hugues rallié* ; *Ondine au cachot* ; *dette de Pâris rachetée* ; *le Goéland part ou non* | Carnet volé : Orsoline fouille et accuse ; le prévôt tremble. Ondine au cachot : l'auberge fermée, Pâris seul avec Fleur, Orsoline revient à la charge. Le *Goéland gris* : s'il part la nuit du jour 4, Daunel touche sa dernière bourse de Silas ; si la farine est déjà partie, Daunel accuse sa femme et Bérénice donne son dossier à Vaulx. |
+| **Pierrefane** | *carnet volé ou recopié* ; *Hugues rallié* ; *Ondine au cachot* ; *dette de Pâris rachetée* ; *le Goéland part ou non* | Carnet volé : Orsoline fouille et accuse ; le prévôt tremble. Ondine au cachot : l'auberge fermée, Pâris seul avec Fleur, Orsoline revient à la charge. Le *Goéland gris* : il part la nuit du jour 5 ; si la farine est déjà partie, Daunel accuse sa femme au jour 4 et Bérénice donne son dossier à Vaulx. |
 
 ### Les nouveaux embranchements du jour 4
 
@@ -184,7 +199,7 @@ Le jour 4 sans joueur ([Brumeval, jour 4](../jour_004.md)) : Joss trouve les dou
 | **Le secret de Pierrick** | Chez Agnès, 10 h | Être là (Agnès et toi), ou il te l'a déjà dit : descendre avec lui |
 | **Corentin acheté** | Place, 21 h 15 | Passer avant Silas (lui offrir mieux : le respect, un témoin, la vérité sur la cellule), ou le laisser se vendre |
 | **Garec et Mouche** | Brumeval, le soir, si [S-ennemi] | Te cacher, te battre (deux mercenaires), demander la protection de Bram et Thorga, ou partir à Pierrefane |
-| **Le départ du *Goéland gris*** | Pierrefane, nuit du jour 4 | Monter à bord (vers Saltevaux : une autre histoire), empêcher le départ, livrer Daunel au prévôt avec le dossier de Bérénice |
+| **Le *Goéland gris* au jour 4** | Pierrefane, quai | Préparer le départ du jour 5 (il emporte la farine de Brumeval : la décharger avant, ou la laisser arriver au jour 6 au profit de Silas), livrer Daunel au prévôt avec le dossier de Bérénice, t'engager à bord |
 | **Les chambres** | Les Lanternes, jour 4 | Si Vesperine est encore vendue : la racheter, la réserver, l'évader, ou ne rien faire |
 | **Ondine** | Prévôté ou auberge | La faire sortir du cachot (payer, faire chanter le prévôt), garder l'auberge ouverte avec Pâris, protéger Fleur |
 

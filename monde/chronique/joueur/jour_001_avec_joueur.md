@@ -14,6 +14,17 @@ Le jeu tourne en temps réel : le joueur se réveille dans le **bois de Ronceval
 | **Le peuple** | Humain : un inconnu. Nain : Rosalie l'accueillera en cousin. Elfe : on le croit espion d'Aëlinde. Demi-sang : regards de travers, Pierrick se reconnaît en lui. **Homme-bête** : Silas le repère dans l'heure comme marchandise possible ; Corentin le surveille. **Démon** : il doit cacher ses traits ; Vesperine, ce soir, le reconnaîtra au premier regard. |
 | **Le corps** | Ce qui se voit habillé joue tout de suite sur les premières impressions (voir [création de personnage](../../creation_personnage.md), 2.8 ter). Un joueur nu au réveil voit **tout** son corps commenté par ceux qui le croisent, et la rumeur part du premier témoin. |
 
+### Ce que le jeu ajoute dès le réveil
+
+| Quoi | Où, quand | Ce que tu peux faire | La suite |
+| --- | --- | --- | --- |
+| **Les fées** | Source chaude des Fées, à 6 min de la clairière du réveil ; Brumelle visible de 5 h à 8 h et de 19 h à 22 h | **Une offrande** (des mûres du Grand Roncier, un pain, ou simplement une parole respectueuse). **Te moquer** de « la fée ». **Passer sans la voir.** | Offrande : faveur +8, et la Brume te connaît ; à 30 de faveur (jour 3 au plus tôt), sa bénédiction rejoue un coup raté. Moquerie : -30, la Brume peut t'égarer dans le bois (90 min perdues), y compris la nuit de la crique. |
+| **Les objets de ton monde** | Tenue « ailleurs », ou l'objet choisi à la création | **Les vendre** à Silas (il paie bien et te note : « l'étranger aux merveilles », il te cherchera pour en avoir d'autres), à Bérénice ou à Orsoline (Pierrefane). **Les garder** (la montre donne l'heure exacte ; le briquet fait du feu sans magie). | La montre vaut 3 pièces d'or, le bijou 1 or 10 argent : **assez, dès le jour 1**, pour acheter Vesperine à Silas sur place (6 or avec les deux et une dette), racheter la maison de la falaise, ou payer une grosse part de la dette de Bram. Le tout premier embranchement, c'est de savoir à qui tu vends. |
+| **La maison de la falaise** | Ysolde, à la chapelle (14 h) ; ou par la fenêtre de la cave, que Nina connaît | **La demander** (8 argent, ou un objet de ton monde). **Y dormir en squatteur** (la cave, la nuit). | Y dormir le jour 1 : Nina y dort aussi jusqu'au jour 5. Elle a peur, puis te tolère si tu partages ton pain. À 0 h 10, vous entendez tous les deux Pierrick qui creuse dehors. **La grotte est sous vos pieds**, et la crique à 3 min. |
+| **Les défis** | Taverne, 20 h | Lucas te défie si tu ris de son père, ou si tu le défends (« Alors prouve-le. ») | Voir la bagarre de taverne, plus bas. |
+| **Le travail de nuit** | Taverne, à partir de 20 h | Danser, ou travailler (courtisan·e libre) : de l'argent, des regards, des rumeurs. | « L'étranger qui se vend » ou « l'étranger qui danse » : selon les témoins, une réputation pour des jours. |
+| **Mourir** | Partout | Perdre un combat à mort : contre les loups, Pierrick te porte chez Agnès ; contre Silas à la crique, voir « À la crique ». | Le monde continue pendant que tu es inconscient (3 h). |
+
 ---
 
 ## Plusieurs actions dans la même heure
@@ -243,7 +254,7 @@ C'est le grand embranchement du jour 1. Sans le joueur : elle débarque à 21 h 
 | Heure | Où | Choix | Suite |
 | --- | --- | --- | --- |
 | Avant 8 h 30 | Cellule sous le plancher du comptoir de Silas | **Crocheter** (Agi 10 + *Crochetage*), **voler la clé**, **soudoyer Lucas** (il t'ouvre si tu l'as défendu) | Elle est libre avant la vente. Silas cherche le voleur. |
-| 8 h 30 – 11 h | Sentier côtier, charrette de Garec sous une bâche | **Tendre une embuscade**, **suivre**, **payer Garec** | Garec seul (Mercenaire 14) : dur. Le suivre te mène à la Maison des Lanternes. Payer Garec pour « la perdre en route » : il prend l'argent et le dit à Silas. |
+| 8 h 30 – 11 h | Sentier côtier, charrette de Garec sous une bâche | **Tendre une embuscade**, **suivre**, **payer Garec** | Garec (Mercenaire 14) **et Silas**, monté sur la charrette après le moulin : très dur à deux contre un ; la halte de 10 h à la source de la lande est le seul moment où ils descendent tous les deux. Le suivre te mène à la Maison des Lanternes. Payer Garec pour « la perdre en route » : il prend l'argent et le dit à Silas. |
 | 11 h | Pierrefane, Maison des Lanternes | **Enchérir contre Orsoline** | Silas vend au plus offrant : il faut plus de 4 pièces d'or, ou une dette envers lui. |
 
 ---

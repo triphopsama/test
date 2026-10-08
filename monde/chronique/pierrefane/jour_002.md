@@ -12,13 +12,13 @@
 | 05:00 | Quai | Pâris | Pâris ne sort pas en mer : il dort, habillé, sur un banc de l'auberge. | Ondine → Pâris : confiance -5 |
 | 07:00 | Entrepôt | Bérénice, Yann | Yann demande à sa mère pourquoi on ne vend pas la farine. Bérénice : « Demande à ton père. » Il n'ose pas. | Yann : souvenir (30) |
 | 07:30 | Palissade des Lanternes | Fleur | Fleur passe avant l'école. Personne à la lucarne. Elle laisse un coquillage. | — |
-| 08:30 | Sentier côtier | Garec, Vesperine | (Depuis Brumeval.) Trois heures de charrette sous une bâche. Vesperine voit des champs par un trou de la toile et pleure sans bruit. | Vesperine : santé mentale -5 |
+| 08:30 | Sentier côtier | Garec, Silas, Vesperine | (Depuis Brumeval.) Silas monte sur la charrette en sortant du moulin. Deux heures et quart de charrette sous une bâche. Vesperine voit des champs par un trou de la toile et pleure sans bruit. | Vesperine : santé mentale -5 |
 | 09:00 | Chantier naval | Ferrat, Thorga | Ferrat raconte à sa fille le gouvernail intact. Thorga : « Alors pourquoi on le garde ici ? » Ferrat : « Pour que quelqu'un, quelque part, ait faim. » | Thorga : souvenir (40) |
 | 10:00 | Maison des Lanternes | Orsoline | Lever, thé. Un gamin du port apporte un mot : « La charrette de Silas arrive avant midi. » Orsoline fait préparer la chambre du fond. | — |
 | 10:45 | Entrée du village (sentier) | Garec, Kael | La charrette passe devant les docks. Kael sent l'odeur sous la bâche (pas humaine, pas animale) et suit des yeux jusqu'aux Lanternes. | Kael : souvenir « quelque chose sous la bâche » (50) |
 | 11:00 | Maison des Lanternes (bureau) | Silas, Orsoline, Vesperine | Marchandage. Orsoline la trouve belle mais farouche et offre 3 pièces d'or ; Silas en obtient 4. La vente est notée dans le carnet. | **Vesperine vendue 4 pièces d'or.** Preuve écrite chez Orsoline |
 | 11:30 | Maison des Lanternes | Orsoline, Vesperine | Les règles : chanter et servir au salon, manger, dormir dans une chambre fermée, le collier reste. « Tu travailleras ta dette. Quatre pièces d'or. » | Vesperine : dette 4 pièces d'or |
-| 11:45 | Au Mouillage | Silas, Daunel | Silas paie à boire au capitaine et lui glisse une bourse sous la table : « Encore une semaine au port. » | Daunel : payé. Ondine voit la bourse passer |
+| 11:45 | Au Mouillage | Silas, Daunel | Silas paie à boire au capitaine et lui glisse une bourse sous la table : « Tu pars le soir du vote, pas avant. » | Daunel : payé. Ondine voit la bourse passer |
 | 12:30 | Maison des Lanternes | Vesperine, Lysa | Lysa lui apporte à manger : « Mange tout, toujours. » | Vesperine → Lysa : affection +20 |
 | 13:00 | Petite chapelle | Sœur Odile | Odile sent la braise de la veille, maintenant tout près, du côté des Lanternes. Elle prie longtemps. | Odile : souvenir (65), envie « libérer les captifs » +5 % |
 | 14:00 | Au Mouillage (arrière-salle) | Pâris, marins | Averse, pas de pêche. Pâris rejoue aux dés « pour se refaire ». Il gagne deux fois, puis perd tout. | Pâris : dette envers les marins 7 argent |
