@@ -44,7 +44,7 @@ static func noeud(m: Node) -> Node:
 ## À l'ouverture du monde : elle est là le soir du jour 1, ou libre ensuite.
 static func installer(m: Node) -> void:
 	var e := etat(m)
-	if e in ["capturee", "rachetee"] or noeud(m) != null:   # vendue, ou rachetée à Pierrefane (biens.gd)
+	if e in ["capturee", "rachetee", "partie", "hangar"] or noeud(m) != null:   # vendue, ou rachetée à Pierrefane (biens.gd)
 		return
 	var n := preload("res://scripts/pnj.gd").new()
 	n.monde = m
@@ -53,6 +53,8 @@ static func installer(m: Node) -> void:
 	if e == "libre":
 		n.donnees.detresse = "0" if Horloge.jour() > 1 or m.fiche.drapeaux.get("vesperine_nourrie", false) else "1"
 		n.emploi = LIBRE
+		if Biens.contrats(m).has(ID):
+			n.donnees.statut_social = "sous contrat (à toi), le collier au cou"   # achetée à Silas sur place
 	else:
 		n.emploi = NUIT_1
 	m.add_child(n)
@@ -136,7 +138,55 @@ static func a_la_crique(m: Node) -> void:
 		["Intervenir en parlant", _parler.bind(m), "« Elle est avec moi. » Int et Per contre la méfiance de Silas."],
 		["Faire diversion", _diversion.bind(m), "Une pierre, un cri : « La garde ! » Agi. Elle fuit dans le noir, Silas ne sait pas que c'est toi."],
 		["Te battre contre Silas", _battre.bind(m, silas), "Voleur niveau 18. Lucas ne se battra pas pour lui. Très dur au niveau 1."],
+		["L'acheter sur place", _acheter_crique.bind(m), "« Pour toi, six pièces d'or. » Ta bourse, les objets de ton monde, ou une dette s'il te connaît."],
+		["Aider Silas", _aider_silas.bind(m), "Tu la tiens pendant qu'il la drogue. Il te paiera."],
+		["Courir prévenir Corentin", _corentin.bind(m), "Il a peur du noir. Il viendra, mais quand ?"],
 		["Regarder caché, sans rien faire", _regarder.bind(m), "Comme si tu n'étais pas là. Mais tu auras vu."]])
+
+
+static func _acheter_crique(m: Node) -> void:
+	var prix := 1440
+	var silas_ok: bool = int(m.relations.get("BRU003", 0)) >= 10 or Scenes.fil(m, "silas") == "recrue"
+	if _fortune(m) >= prix:
+		var objets := _payer_avec_tout(m, prix)
+		_a_toi_crique(m, "Silas compte, empoche%s, et te lance la clé du collier : « Elle en vaudra le double à Pierrefane. Ton affaire. »" % (" " + objets if objets != "" else ""))
+	elif silas_ok:
+		m.fiche.drapeaux["dette_silas"] = {"montant": prix, "jour": 5}
+		Scenes.poser(m, "silas", "creancier")
+		_a_toi_crique(m, "Silas sourit comme un homme qui vient de gagner plus que de l'or : « Six pièces, le jour du vote. Ou des services. » Il te lance la clé du collier.")
+	else:
+		capturer(m, "Silas rit : « Tu n'as rien, l'ami, et je ne te connais pas. » La drogue, le collier. Lucas recule.")
+
+
+static func _a_toi_crique(m: Node, texte: String) -> void:
+	m.fiche.drapeaux["vesperine"] = "libre"
+	m.fiche.drapeaux["vesperine_choix"] = true
+	Biens.contrats(m)[ID] = "garde"
+	var n := noeud(m)
+	if n:
+		n.emploi = LIBRE
+		n.donnees.statut_social = "sous contrat (à toi), le collier au cou"
+		n.donnees.detresse = "1"
+	m.relations["BRU012"] = clampi(m.relations.get("BRU012", 0) - 10, -100, 100)
+	m.fiche.sauver()
+	m.sauver_etat()
+	Illustrations.montrer("vesperine_achetee", [ID, "crique"], texte + " Sous ton collier, rien d'intime, jamais : elle ne peut pas consentir. Tu peux l'ouvrir quand tu veux (son contrat).")
+
+
+static func _aider_silas(m: Node) -> void:
+	Scenes.poser(m, "silas", "complice")
+	m.fiche.bourse += 60
+	m.relations["BRU003"] = clampi(m.relations.get("BRU003", 0) + 20, -100, 100)
+	m.relations["BRU012"] = clampi(m.relations.get("BRU012", 0) - 30, -100, 100)
+	m.relations[ID] = clampi(m.relations.get(ID, 0) - 60, -100, 100)
+	capturer(m, "Tu la tiens. Silas la drogue, lui passe le collier. Il te glisse cinq pièces d'argent : « Demain, huit heures, au comptoir. » Lucas te regarde : « Toi aussi, t'es une ordure. » Elle, elle a vu ton visage.")
+
+
+static func _corentin(m: Node) -> void:
+	Scenes.poser(m, "corentin", "crique")
+	m.relations["BRU014"] = clampi(m.relations.get("BRU014", 0) + 5, -100, 100)
+	m.relations["BRU003"] = clampi(m.relations.get("BRU003", 0) - 10, -100, 100)
+	capturer(m, "Corentin arrive à minuit moins dix, sa lanterne à la main. La crique est vide. Il te croit quand même. Silas, lui, apprend qui l'a envoyé.")
 
 
 static func _parler(m: Node) -> void:
@@ -146,6 +196,7 @@ static func _parler(m: Node) -> void:
 	var lui: int = 30 + randi_range(1, 20)
 	m.relations["BRU003"] = clampi(m.relations.get("BRU003", 0) - 20, -100, 100)
 	if moi >= lui:
+		Scenes.poser(m, "silas", "geneur")
 		liberer(m, "Silas te jauge longtemps, puis crache dans le sable : « Garde-la, ta noyée. Mais je me souviendrai de ta tête. » (%d contre %d)" % [moi, lui])
 	else:
 		capturer(m, "Silas sourit : « Prouve-le. » Tu n'as rien à prouver. Lucas recule, Silas sort la fiole. La drogue, le collier. (%d contre %d)" % [moi, lui])
@@ -174,6 +225,7 @@ static func _regarder(m: Node) -> void:
 ## Après le combat contre Silas à la crique.
 static func apres_combat(m: Node, resultat: String) -> void:
 	if resultat == "victoire":
+		Scenes.poser(m, "silas", "ennemi")
 		liberer(m, "Silas recule dans le noir en tenant son bras. Vesperine te regarde, incrédule : « Pourquoi ? » Puis elle te suit.")
 	else:
 		capturer(m, "Quand tu reprends tes esprits, la crique est vide. Ils l'ont emmenée.")

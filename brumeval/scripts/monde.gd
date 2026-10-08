@@ -544,6 +544,7 @@ func _process(delta: float) -> void:
 	Vesperine.surveiller(self)
 	Vesperine.surveiller_pierrefane(self)
 	Vesperine.surveiller_dette(self)
+	Scenes.surveiller(self, delta)
 	Grotte.surveiller(self, delta)
 	_surveiller_hostiles(delta)
 	_regenerer()
@@ -1595,3 +1596,27 @@ func reconstruire_maison() -> void:
 	etiquette.position = Vector3(p.x, hauteur(p.x, p.y) + 8.0, p.y - 4.0)
 	etiquette.visibility_range_end = 70.0
 	_maison_noeud.add_child(etiquette)
+
+
+# ---------------------------------------------------------------- qui est là, quel jour
+
+var _presences := {}   # id -> [[du, au], …] (au = 0 : toujours)
+
+
+## Le PNJ est-il dans le pays ce jour-là ? (data/presences.csv ; sinon : pas « en route »)
+func present(id: String) -> bool:
+	if _presences.is_empty():
+		_presences["_lu"] = []
+		for l in Donnees.lire_csv("res://data/presences.csv"):
+			if not _presences.has(l.pnj):
+				_presences[l.pnj] = []
+			_presences[l.pnj].append([int(l.du), int(l.au) if str(l.au) != "" else 0])
+	if fiche and fiche.drapeaux.has("parti_" + id):
+		return false     # parti pour de bon (Gaëlle et Félix en barque, par exemple)
+	if _presences.has(id):
+		var j: int = Horloge.jour()
+		for p in _presences[id]:
+			if j >= p[0] and (p[1] == 0 or j <= p[1]):
+				return true
+		return false
+	return not str(pnj_donnees.get(id, {}).get("lieu", "")).begins_with("en route")

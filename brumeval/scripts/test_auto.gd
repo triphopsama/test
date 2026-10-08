@@ -35,7 +35,7 @@ func _ready() -> void:
 	print("== Données")
 	var hors_grotte: int = monde.lieux.keys().filter(func(k): return not k.begins_with("g_")).size()
 	ok(hors_grotte == 33, "33 lieux, avec le bois profond (%d)" % hors_grotte)
-	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size() == 19, "19 PNJ au village (%d)" % monde.pnjs.size())
+	ok(monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size() == 22, "22 PNJ au village, Théo, Gaëlle et Félix compris (%d)" % monde.pnjs.filter(func(n): return n.id.begins_with("BRU")).size())
 	ok(monde.actions.lignes.size() >= 10, "actions lues (%d)" % monde.actions.lignes.size())
 	ok(monde.praticable(monde.lieux.reveil.pos), "on peut marcher à la clairière du réveil")
 	ok(not monde.praticable(Vector2(50, 600)), "on ne marche pas sur la mer")
@@ -209,6 +209,7 @@ func _ready() -> void:
 	await _domptage()
 	_liens()
 	_maison_biens()
+	await _scenes()
 	monde.relations.clear()
 	# pour les combats : une dague, de quoi se soigner
 	f = Fiche.new()
@@ -1055,7 +1056,9 @@ func _liens() -> void:
 	ok(Liens.couple_de(monde, "PIE013") == "PIE014", "Ondine et Pâris aussi, à Pierrefane")
 	ok(not Liens.compatibles(monde, "BRU001", "BRU005"), "jamais avec un enfant (Tim)")
 	ok(not Liens.compatibles(monde, "BRU013", "PIE004"), "pas d'une ville à l'autre")
+	monde.fiche.drapeaux["parti_BRU009"] = true
 	ok(not Liens.compatibles(monde, "BRU009", "BRU012"), "ni avec qui est parti au loin (Gaëlle)")
+	monde.fiche.drapeaux.erase("parti_BRU009")
 	var t := Liens.appliquer_evenement(monde, "liaison", "BRU008", "BRU012")
 	var l := Liens.entre(monde, "BRU008", "BRU012")
 	ok(l.etat == "liaison" and l.secret and "BRU007" in l.trahis, "Clémence et Lucas : une liaison secrète, Aldric trompé (%s)" % t)
@@ -1385,3 +1388,71 @@ func _contrats() -> void:
 	f.drapeaux.erase("vesperine")
 	f.drapeaux.erase("vente_faite")
 	f.drapeaux.erase("dette_silas")
+
+
+## Les scènes datées de la chronique (scenes.gd, data/scenes*.csv).
+func _scenes() -> void:
+	print("== Les scènes des jours 1 à 3")
+	var f := Fiche.new()
+	f.bourse = 500
+	monde.fiche = f
+	var toutes := Scenes.toutes()
+	ok(toutes.size() >= 100, "%d scènes" % toutes.size())
+	# chaque condition et chaque effet est compris par le moteur
+	var mots_c := ["fil", "aff", "stat", "comp", "objet", "bourse>=", "bourse", "peuple", "sexe", "vu", "pasvu", "ves", "present", "bien"]
+	var mots_e := ["fil", "aff", "desir", "cuivre", "objet", "xp", "temps", "ragot", "lecon", "ves", "bien", "pret", "combat", "scene", "voyage", "maison", "acheter", "racheter", "liberer", "partir"]
+	var inconnus := []
+	for id in toutes:
+		var listes := [[str(toutes[id].condition), ";", mots_c], [str(toutes[id].get("sans_toi", "")), ",", mots_e]]
+		for c in Scenes.choix_de(id):
+			listes += [[str(c.condition), ";", mots_c], [str(c.effets), ",", mots_e], [str(c.get("effets_rate", "")), ",", mots_e]]
+		for l in listes:
+			for morceau in str(l[0]).split(l[1], false):
+				var mot := morceau.strip_edges().get_slice(" ", 0)
+				if mot != "" and not mot in l[2] and not mot.begins_with("bourse"):
+					inconnus.append("%s : %s" % [id, morceau])
+	ok(inconnus.is_empty(), "conditions et effets tous compris %s" % str(inconnus.slice(0, 3)))
+	ok(Scenes.condition(monde, "fil farine=-") and not Scenes.condition(monde, "fil farine=refus"), "un fil sans valeur vaut « - »")
+	ok(Scenes.condition(monde, "bourse>=500;aff BRU001>=0") and not Scenes.condition(monde, "bourse>=501"), "la bourse, l'affection")
+	ok(Scenes.jet(monde, "Agi 0") and not Scenes.jet(monde, "Agi 999"), "les jets")
+	# un choix : conseiller à Mara de refuser la farine de Silas
+	monde.relations["BRU001"] = 0
+	var s: Dictionary = toutes.j1_farine_silas
+	var c: Dictionary = Scenes.choix_de("j1_farine_silas").filter(func(x): return x.id == "refuser")[0]
+	Scenes.choisir(monde, s, c)
+	Illustrations.fermer()
+	ok(Scenes.fil(monde, "farine") == "refus" and monde.relations["BRU001"] == 10 and Scenes.fil(monde, "silas") == "geneur", "Mara refuse la farine de Silas grâce à toi")
+	# le monde continue sans toi
+	Scenes._finir_sans_toi(monde, toutes.j1_rigole)
+	ok(Scenes.fil(monde, "rigole") == "plainte", "sans toi, la dispute de la rigole finit à la mairie")
+	# la mise en scène : Silas va à la boulangerie à 8 h 30, au jour 1
+	Scenes._mettre_en_scene(monde, {"BRU003": s})
+	ok(_pnj("BRU003").scene_lieu == "boulangerie", "Silas est appelé à la boulangerie")
+	Scenes._mettre_en_scene(monde, {})
+	ok(_pnj("BRU003").scene_lieu == "", "... puis reprend sa journée")
+	# les présences
+	ok(monde.present("BRU017") == (Horloge.jour() <= 11), "Théo est au village jusqu'au jour 11")
+	f.drapeaux["parti_BRU010"] = true
+	ok(not monde.present("BRU010"), "Félix parti en barque n'est plus là")
+	f.drapeaux.erase("parti_BRU010")
+	# la cellule : Lucas ouvre la trappe, Vesperine est libre
+	f.drapeaux["vesperine"] = "capturee"
+	monde.relations["BRU012"] = 20
+	ok(Scenes.condition(monde, str(toutes.j2_cellule.condition)), "la cellule existe quand Vesperine est prise")
+	var lucas: Dictionary = Scenes.choix_de("j2_cellule").filter(func(x): return x.id == "lucas")[0]
+	ok(Scenes.condition(monde, str(lucas.condition)), "Lucas peut ouvrir s'il te respecte")
+	Scenes.choisir(monde, toutes.j2_cellule, lucas)
+	Illustrations.fermer()
+	await get_tree().process_frame
+	ok(Vesperine.etat(monde) == "libre" and Vesperine.noeud(monde) != null, "Vesperine est libre, à Brumeval")
+	# la fuite de Gaëlle et Félix
+	Scenes.appliquer(monde, "partir BRU009, partir BRU010")
+	ok(not monde.present("BRU009") and not monde.present("BRU010"), "Gaëlle et Félix sont partis")
+	var v := Vesperine.noeud(monde)
+	if v:
+		monde.pnjs.erase(v)
+		v.queue_free()
+	_fermer_tout()
+	monde.relations.clear()
+	monde.fiche = Fiche.new()
+	monde.sauver_etat()

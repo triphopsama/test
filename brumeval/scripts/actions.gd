@@ -97,6 +97,8 @@ func disponibles(pnj: Node, lieu: String) -> Array:
 			continue
 		if str(l.donne) in Biens.ACTIONS and not Biens.dispo(monde, str(l.donne), pnj, lieu):
 			continue
+		if l.id == "nuit_parler" and (pnj == null or not _captif(pnj)):
+			continue
 		if l.id == "dormir_chez_toi" and (not Biens.chez_soi(monde, lieu) or lieu == Maison.LIEU):
 			continue
 		if l.id == "crocheter" and lieu == Maison.LIEU and Maison.niveau(monde) >= 1:
@@ -484,6 +486,8 @@ func _intime(quoi: String, l: Dictionary, pnj: Node, lieu: String, texte: String
 						monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 2, -100, 100)
 			r = (texte if texte != "" else "La musique, les regards, la chaleur de la salle. Tu danses, et la taverne se tait.") + " +%s de pourboires." % Objets.texte_prix(c)
 		"courtisan":
+			if monde.carte == "pierrefane" and Scenes.fil(monde, "orsoline") == "-":
+				Scenes.poser(monde, "orsoline", "offre")    # Orsoline l'a remarqué : elle te fera une offre
 			var c := 10 + 3 * Intime.maitrise_art(f) + (4 if "seduction" in f.competences() else 0)
 			f.bourse += c
 			f.drapeaux["art_xp"] = int(f.drapeaux.get("art_xp", 0)) + 1
@@ -695,6 +699,7 @@ func _vol_tire(pnj: Node, texte: String) -> String:
 		f.sauver()
 		return "%s\n\n+%s. Personne n'a rien vu (%d %%)." % [texte, Objets.texte_prix(c), chance]
 	# pris la main dans le sac : la victime et ceux qui ont vu s'en souviendront
+	Scenes.poser(monde, "casier", "vol")     # Corentin te convoquera (scenes.csv)
 	monde.relations[pnj.id] = clampi(monde.relations.get(pnj.id, 0) - 30, -100, 100)
 	for n in regards:
 		monde.relations[n.id] = clampi(monde.relations.get(n.id, 0) - 15, -100, 100)
@@ -740,3 +745,8 @@ func _remplacer(t: String, pnj: Node, lieu: String) -> String:
 	if monde.lieux.has(lieu):
 		t = t.replace("{lieu}", monde.lieux[lieu].nom)
 	return t
+
+
+func _captif(pnj: Node) -> bool:
+	var statut := str(pnj.donnees.get("statut_social", "")).to_lower()
+	return CAPTIF.any(func(mot): return statut.contains(mot)) or statut.contains("collier")

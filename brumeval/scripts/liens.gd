@@ -35,7 +35,7 @@ const JOURNAL_MAX := 40
 
 ## Pas parti au loin (« en route vers Saltevaux »).
 static func present(m: Node, id: String) -> bool:
-	return not str(m.pnj_donnees.get(id, {}).get("lieu", "")).begins_with("en route")
+	return m.present(id)
 
 
 static func cle(a: String, b: String) -> String:

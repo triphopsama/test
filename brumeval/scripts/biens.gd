@@ -115,6 +115,19 @@ static func installer(m: Node) -> void:
 		m.pnj_donnees[Vesperine.ID] = d
 		m.add_child(n)
 		m.pnjs.append(n)
+	if m.carte == "pierrefane" and Vesperine.etat(m) == "hangar" and m._pnj_par_id(Vesperine.ID) == null:
+		# libérée à Pierrefane (la charrette arrêtée, l'évasion) : Gilles la cache au hangar
+		var dh: Dictionary = Vesperine.DONNEES.duplicate()
+		dh.statut_social = "libre, cachée chez le Passeur"
+		dh.detresse = "1" if Horloge.jour() <= 3 else "0"
+		var nh := preload("res://scripts/pnj.gd").new()
+		nh.monde = m
+		nh.id = Vesperine.ID
+		nh.donnees = dh
+		nh.emploi = [[0.0, "hangar", "cachée sous le plancher du hangar"], [21.0, "jetee", "regarde la mer, la nuit"], [23.0, "hangar", "dort"]]
+		m.pnj_donnees[Vesperine.ID] = dh
+		m.add_child(nh)
+		m.pnjs.append(nh)
 	if m.carte == "pierrefane" and Vesperine.etat(m) == "rachetee" and m._pnj_par_id(Vesperine.ID) == null:
 		var d: Dictionary = Vesperine.DONNEES.duplicate()
 		d.statut_social = "libre (rachetée)"
@@ -412,7 +425,7 @@ static func _liberer_id(m: Node, id: String) -> void:
 		if n.suit:
 			Compagnons.laisser(m, n)
 	if id == Vesperine.ID:
-		m.fiche.drapeaux["vesperine"] = "rachetee"
+		m.fiche.drapeaux["vesperine"] = "rachetee" if m.carte == "pierrefane" else "libre"
 		m.fiche.drapeaux["vesperine_rachat_jour"] = Horloge.jour()
 		if n:
 			n.donnees["detresse"] = "1"     # deux jours pour respirer avant quoi que ce soit

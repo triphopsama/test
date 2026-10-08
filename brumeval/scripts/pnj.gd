@@ -22,6 +22,8 @@ var maison := ""
 var mort := false
 var hostile := false             # fonce sur le joueur pour l'agresser
 var suit := false                # compagnon : te suit au lieu de son emploi du temps
+var scene_lieu := ""             # une scène de la chronique l'appelle ici (scenes.gd)
+var scene_activite := ""
 var prochaine_agression := 0.0   # heure du monde (secondes) avant laquelle il ne recommence pas
 var sprite: Sprite3D
 var _chemin := PackedVector2Array()
@@ -60,6 +62,8 @@ func pos2d() -> Vector2:
 
 
 func _entree_courante() -> Array:
+	if scene_lieu != "":
+		return [0.0, scene_lieu, scene_activite]
 	var h: float = Horloge.heure()
 	var courante: Array = emploi[emploi.size() - 1]
 	for e in emploi:
@@ -100,8 +104,8 @@ func trait_(nom: String) -> int:
 
 
 func _process(delta: float) -> void:
-	if mort:
-		visible = false
+	if mort or not monde.present(id):
+		visible = false     # mort, ou loin d'ici ces jours-là (data/presences.csv)
 		return
 	if hostile:
 		visible = true

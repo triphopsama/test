@@ -48,6 +48,17 @@ BRU008;Clémence Montval;9;place;visites
 BRU008;Clémence Montval;11;atelier;atelier d'Isaure
 BRU008;Clémence Montval;14;mairie;réception de notables (annulées depuis le jour 9)
 BRU008;Clémence Montval;19;mairie;maison
+BRU009;Gaëlle Montval;0;mairie;nuit
+BRU009;Gaëlle Montval;9;chapelle;aide Ysolde à l'école
+BRU009;Gaëlle Montval;13;mairie;repas avec ses parents
+BRU009;Gaëlle Montval;15;place;promenade sous le porche
+BRU009;Gaëlle Montval;17;atelier;essayages chez Isaure
+BRU009;Gaëlle Montval;19;mairie;dîner, puis sa chambre
+BRU010;Félix Chantemerle;0;taverne;dort dans la soupente de la taverne
+BRU010;Félix Chantemerle;10;plage;compose au bord de l'eau
+BRU010;Félix Chantemerle;13;port;écoute Joss
+BRU010;Félix Chantemerle;16;place;chante pour quelques pièces
+BRU010;Félix Chantemerle;19;taverne;chante à la taverne
 BRU011;Rosalie Bonvin;0;taverne;nuit
 BRU011;Rosalie Bonvin;10;taverne;ménage
 BRU011;Rosalie Bonvin;12;taverne;service
@@ -83,6 +94,13 @@ BRU016;Nina;9;place;marché (chipe ce qui brille)
 BRU016;Nina;10;chapelle;école chez Ysolde pour le goûter
 BRU016;Nina;14;plage;avec Tim
 BRU016;Nina;19;agnes;dort chez Agnès
+BRU017;Théo Lancier;0;taverne;dort dans une chambre de la taverne
+BRU017;Théo Lancier;1;taverne;dort
+BRU017;Théo Lancier;7;chapelle;vitrail, sur l'échafaudage
+BRU017;Théo Lancier;12;port;repas au port, regarde tout
+BRU017;Théo Lancier;14;chapelle;vitrail
+BRU017;Théo Lancier;18;taverne;écoute la salle
+BRU017;Théo Lancier;23;guet;compte les tonneaux depuis la falaise d'en face
 BRU018;Basile Champart;0;ferme;nuit
 BRU018;Basile Champart;5;ferme;bergerie
 BRU018;Basile Champart;9;landes;pâturages

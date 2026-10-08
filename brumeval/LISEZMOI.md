@@ -265,6 +265,27 @@ rien d'intime, jamais** : il ne peut pas consentir. Acheter la Maison des Lanter
 poche (les déchirer, ou les garder). Vesperine rachetée et libérée reste à Pierrefane, et a besoin de deux
 jours avant quoi que ce soit.
 
+## Les jours de la chronique
+
+Les jours 1 à 3 de [la chronique](../monde/chronique/joueur/) se jouent : `data/scenes.csv` (104 scènes,
+Brumeval et Pierrefane) et `data/scenes_choix.csv` (leurs choix). Chaque scène a un jour, une heure de
+début et de fin, un lieu et des PNJ : **les PNJ y vont à l'heure dite, même sans toi**. Si tu arrives à
+moins de 30 m pendant la scène, elle s'ouvre (l'image, le texte, puis les choix). Si elle se termine sans
+toi, ses effets « sans toi » s'appliquent : le monde continue (Élise moud pour Silas, la plainte de la
+rigole arrive à la mairie, Nina vole ta bourse…).
+
+Les choix ont des conditions (« fil elise=amante », « aff BRU012>=15 », « bourse>=36 », « ves capturee »,
+« peuple demon »…), des jets (« Agi 20 +crochetage 6 » : ta caractéristique + 1d20 contre 20, +6 si tu as
+Crochetage) et des effets (« fil farine=refus », « aff BRU001 +10 », « cuivre -36 », « ves libre »,
+« combat BRU003 mortel vesperine », « partir BRU009 », « acheter taverne »…). Les **fils** (farine, Élise,
+Silas, Nina, les amants, la falaise, Pâris, l'évasion…) relient les jours entre eux : ce que tu as fait au
+jour 1 ouvre ou ferme des choix au jour 2 et 3. Tout est expliqué en tête de `scripts/scenes.gd`.
+
+`data/presences.csv` : qui est dans le pays quels jours (Théo jusqu'au jour 11, Gaëlle et Félix jusqu'au
+jour 9, Garec aux jours 1 à 3 puis à partir du jour 10, Mouche à partir du jour 10).
+
+Images : `illustrations/<id de la scène>/` pour la scène, `illustrations/<scène>_<choix>/` pour la suite d'un choix.
+
 ## Le sort des vaincus
 
 Après un vrai combat gagné contre quelqu'un, ceux qui sont à terre : **épargner** (il te doit la vie, +15, les témoins +3) ou **tuer** (les morts restent morts, les témoins −30).

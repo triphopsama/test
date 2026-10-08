@@ -118,3 +118,4 @@ bien_vendre;Revendre ce lieu;lieu;*;*;0;15;-100;0;;bien_vendre;;
 dette_racheter;Racheter son contrat;pnj;*;*;0;15;-100;0;;dette_racheter;;
 contrat_gerer;Son contrat;pnj;*;*;0;0;-100;0;;contrat_gerer;;
 dormir_chez_toi;Dormir (chez toi);lieu;*;*;0;360;-100;0;;repos;;Tes murs, ton lit, ta porte. Personne pour te réveiller.
+nuit_parler;"Payer sa nuit (parler, dormir ; rien d'autre)";pnj;lanternes;VES019,PIE002,PIE003;0;480;-100;5;3 argent;;;Une chambre, une lampe, une nuit sans autre client. {nom} mange ce que tu as apporté, parle un peu, puis dort, roulé en boule contre le mur. Tu restes assis près de la porte jusqu'au matin.
