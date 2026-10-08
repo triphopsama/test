@@ -76,7 +76,7 @@ Tout le monde ne reste pas chez soi. **Certains PNJ voyagent d'un lieu à l'autr
 
 Ces trajets sont tenus au jour le jour dans la [chronique](../chronique/README.md).
 
-Toutes les fiches complètes sont aussi réunies dans [toutes_pnj.csv](../donnees/pnj/toutes_pnj.csv) (410 lignes : les 407 habitants, plus Vesperine, captive à Pierrefane mais comptée chez les démons, et Garec et Mouche, de Saltevaux, de passage à Brumeval).
+Toutes les fiches complètes du monde (les cinq nations) sont réunies dans [toutes_pnj.csv](../donnees/pnj/toutes_pnj.csv), avec la colonne `passe` : la vie de chacun avant le jour 1.
 
 ## Ce qui va arriver (si personne n'intervient)
 

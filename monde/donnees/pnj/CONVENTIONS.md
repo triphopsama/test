@@ -2,9 +2,10 @@
 
 Un fichier par lieu (`saltevaux.csv`, `pierrefane.csv`…). CSV UTF-8, séparateur `;`, aucun `;` dans les cellules (utiliser `,` ou `/`). Tout en français. Le même profil que la création de personnage du joueur ([creation_personnage.md](../../creation_personnage.md)).
 
-En-tête exacte (34 colonnes) :
-`id;nom;lieu;age;sexe;peuple;lignee;statut_social;role;classe;niveau_classe;metier;niveau_metier;For;Agi;End;Vit;Rob;Int;Sag;Per;Vol;affinites_fortes;traits;valeurs;passions;envie_principale;secret;apparence;profil_intime;relations;emploi_du_temps;parole;competences`
+En-tête exacte (35 colonnes) :
+`id;nom;lieu;age;sexe;peuple;lignee;statut_social;role;classe;niveau_classe;metier;niveau_metier;For;Agi;End;Vit;Rob;Int;Sag;Per;Vol;affinites_fortes;traits;valeurs;passions;envie_principale;secret;apparence;profil_intime;relations;emploi_du_temps;parole;competences;passe`
 
+- `passe` : la vie avant le jour 1, 4 à 8 faits datés en « an −N » (le jour 1 est l'an 0), séparés par « | ». Deux PNJ liés racontent le même fait à la même date.
 - `id` : 3 lettres du lieu + numéro (ex. `SAL001`, `PIE001`, `BRU001`).
 - `sexe` : homme, femme, intersexe.
 - `peuple` : humain, elfe, nain, homme-bête, demi-sang, démon. `lignee` : animal, clan, lignée, ou les deux peuples d'un demi-sang ; sinon `—`.
