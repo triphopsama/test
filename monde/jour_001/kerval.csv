@@ -1,0 +1,718 @@
+pnj;debut;fin;lieu;avec;action;consequence
+KER001;00:00;04:30;Hôtel de l'amirauté, chambre des Kerhoas;—;Dort mal, rêve de cinq lumières qui avancent sur la rade.;Amiral : fatigue +10
+KER001;04:30;05:00;Hôtel de l'amirauté;—;Se lève, s'habille seul, prend sa longue-vue.;—
+KER001;05:00;05:30;Capitainerie;KER060;Tour du port. Il passe à la capitainerie. Jaouen lui dit que la rade ne tiendra pas douze vaisseaux à quai en même temps.;—
+KER001;05:30;07:00;Quais;—;Tour du port. Il regarde l'est plus longtemps que d'habitude.;—
+KER001;07:00;07:15;Amirauté, bureau de l'amiral;—;Bureau. Il signe les réquisitions de bois et de toile pour les douze vaisseaux.;—
+KER001;07:15;07:45;Amirauté, bureau de l'amiral;KER013;Bellec fait son rapport. À la fin : « Le chanteur Riou chante encore ses lumières au Hareng. » L'amiral : « Je m'en occupe. »;Amiral : décision « faire taire la chanson »
+KER001;07:45;08:00;Amirauté, bureau de l'amiral;—;Ensuite, bureau. Il signe les réquisitions de bois et de toile pour les douze vaisseaux.;—
+KER001;08:00;08:30;Amirauté, bureau de l'amiral;KER039;Rospars présente l'état des chantiers. « Les trois coques avancent. » L'amiral signe sans lever les yeux.;—
+KER001;08:30;12:00;Amirauté, bureau de l'amiral;—;Ensuite, bureau. Il signe les réquisitions de bois et de toile pour les douze vaisseaux.;—
+KER001;12:00;13:00;Amirauté, salle des cartes;KER005,KER006,KER013;Repas avec ses capitaines. Morgane demande une troisième fois une reconnaissance. « Non. » Puis, à Le Goff : « Le chanteur du Hareng. Qu'il se taise. Sans casse. »;Amiral → Morgane : agacement +5. Ordre : faire taire la chanson
+KER001;13:00;14:00;Amirauté, bureau de l'amiral;—;Seul après le repas. Il relit l'ordre chiffré de l'impératrice, puis le range sous clé.;—
+KER001;14:00;14:30;Chantiers navals;—;Tournée des vaisseaux et des chantiers.;—
+KER001;14:30;15:15;Chantiers navals;KER007,KER039,KER057,KER019;Il visite les trois coques. Il tape du poing le bordé de la troisième. Une charpentière s'avance, Quéré la retient. Elle dit seulement : « Le bois travaille, amiral. »;Amiral : souvenir « le bois travaille » (30)
+KER001;15:15;18:00;Chantiers navals;—;Ensuite, tournée des vaisseaux et des chantiers.;—
+KER001;18:00;19:00;Amirauté, bureau de l'amiral;—;Courrier du soir. Une lettre du fort : rien de neuf sur l'elfe.;—
+KER001;19:00;20:00;Hôtel de l'amirauté, salle à manger;KER002,KER004;Souper en famille. Nolwenn demande ce qu'il y a au large. « Rien. Mange. »;—
+KER001;20:00;21:00;Hôtel de l'amirauté;—;Soirée à l'hôtel. Il fume sa pipe à la fenêtre.;—
+KER001;21:00;21:45;Hôtel de l'amirauté, salon;KER002;Anne joue de la harpe. Il fume sans rien dire.;—
+KER001;21:45;22:00;Hôtel de l'amirauté;—;Ensuite, soirée à l'hôtel. Il fume sa pipe à la fenêtre.;—
+KER001;22:00;23:15;Tour de l'amirauté;—;Il monte à la tour et regarde la mer une heure et quart. Rien ne s'allume. Il reste quand même.;Amiral : peur +5
+KER001;23:15;24:00;Hôtel de l'amirauté, chambre des Kerhoas;KER002;Il se couche contre Anne sans un mot. Elle lui prend la main. Il ne dort pas.;—
+KER002;00:00;06:30;Hôtel de l'amirauté, chambre des Kerhoas;—;Dort.;—
+KER002;06:30;08:00;Hôtel de l'amirauté;—;Se lève, donne les ordres de la maison.;—
+KER002;08:00;08:45;Chapelle de l'Étoile de la Mer;KER028,KER012;Messe. Elle prie pour Tanguy, puis pour la caisse.;—
+KER002;08:45;09:00;Chapelle de l'Étoile de la Mer;—;Messe.;—
+KER002;09:00;13:00;Hôtel de l'amirauté;—;Tient l'hôtel. Elle remet en secret une pièce d'or dans la caisse des veuves. Il en manque encore onze.;Anne : −1 or (caisse remboursée, reste 11)
+KER002;13:00;13:45;Hôtel de l'amirauté, salle à manger;KER004;Repas avec Nolwenn. Nolwenn parle d'îles. Anne parle de mariage.;—
+KER002;13:45;14:00;Hôtel de l'amirauté, salle à manger;—;Repas.;—
+KER002;14:00;16:00;Ruelles des veuves de marins;—;Visites aux veuves. Chez la veuve de Yannig, elle voit une pièce posée sur la table, « trouvée sur le seuil, comme chaque semaine ».;Anne : souvenir « la pièce sur le seuil » (40)
+KER002;16:00;16:30;Hôtel de l'amirauté, salon;KER040;Blanche Rospars apporte une pièce pour les veuves et parle de la caisse « maigre ». Anne sourit, la main froide.;Anne : peur +15. Anne → Blanche : mépris +10
+KER002;16:30;16:45;Hôtel de l'amirauté;—;Retour à l'hôtel. Elle recompte la caisse deux fois.;—
+KER002;16:45;17:15;Maison des herbes de Rozenn, rue des Haubans;KER029;Elle passe chez Rozenn et lui laisse de l'argent pour les remèdes « des pauvres ».;Anne : −5 pièces d'argent
+KER002;17:15;19:00;Hôtel de l'amirauté;—;Ensuite, retour à l'hôtel. Elle recompte la caisse deux fois.;—
+KER002;19:00;20:00;Hôtel de l'amirauté, salle à manger;KER001,KER004;Souper. Elle voit son mari serrer la mâchoire quand Nolwenn parle du large.;—
+KER002;20:00;21:00;Hôtel de l'amirauté;—;Souper, puis lecture.;—
+KER002;21:00;21:45;Hôtel de l'amirauté, salon;KER001;Elle joue pour son mari. Il ne l'écoute pas, mais il reste.;—
+KER002;21:45;23:15;Hôtel de l'amirauté, salon;—;Harpe, puis elle attend son mari en brodant.;—
+KER002;23:15;24:00;Hôtel de l'amirauté, chambre des Kerhoas;KER001;Il se couche contre elle. Elle lui prend la main et ne demande rien.;Anne → Gaël : tendresse +5
+KER003;00:00;01:00;Maison des Vents, chambre de Lénaïg;KER031;Il reste avec Lénaïg après la soirée de la veille. Ils rient, puis ils parlent bas.;—
+KER003;01:00;06:30;Chambre de Tanguy, hôtel de l'amirauté;—;Rentre par l'escalier de service. Dort.;—
+KER003;06:30;07:00;Quais;—;Court au Lion des Mers.;—
+KER003;07:00;07:30;Le Lion des Mers;KER005,KER024,KER025,KER043;Revue à bord. Il arrive en retard de deux minutes. Le Goff le note à voix haute.;Tanguy → Le Goff : rancune +5
+KER003;07:30;13:00;Le Lion des Mers;—;Quart à bord. Il fait son service sans un mot de trop.;—
+KER003;13:00;14:30;Quartier des officiers;—;Repas. Il joue aux dés et perd deux pièces d'argent.;Tanguy : −2 pièces d'argent
+KER003;14:30;15:00;Comptoir de Le Duff, rue des Haubans;KER056;Le Duff lui rappelle les trente pièces. « Ou votre père saura. » Il demande une semaine. Il l'obtient, à un dixième de plus.;Tanguy : dette 33 or. Peur +10
+KER003;15:00;19:00;Quartier des officiers;—;Il dort une heure, puis astique son épée. Il pense à la somme.;—
+KER003;19:00;21:45;Le Hareng d'Or;—;Au Hareng d'Or, dans un coin. Il voit de loin Glenmor se faire couper. Il boit.;—
+KER003;21:45;22:00;Maison des Vents, salon;—;Il arrive à la Maison des Vents.;—
+KER003;22:00;24:00;Maison des Vents, chambre de Lénaïg;KER031;Il monte chez Lénaïg. Il raconte que son père a fait taire un chanteur et qu'il a les mains qui tremblent. Ils passent la nuit ensemble.;—
+KER004;00:00;07:00;Chambre de Nolwenn, hôtel de l'amirauté;—;Dort. Rêve qu'elle grimpe au grand mât du Lion des Mers.;—
+KER004;07:00;08:00;Hôtel de l'amirauté;—;Se lève, cache son carnet sous le matelas.;—
+KER004;08:00;11:00;Hôtel de l'amirauté;—;Leçons avec son précepteur : latin, calcul. Elle dessine des vagues dans la marge.;—
+KER004;11:00;11:30;Cabinet des cartes de l'amirauté;KER027;Elle se glisse au cabinet des cartes. Lagadec lui montre une île à l'est, sur une carte jaune. Elle la recopie dans sa tête.;Nolwenn : souvenir « l'île de l'est » (70)
+KER004;11:30;13:00;Hôtel de l'amirauté;—;Elle recopie de mémoire l'île de l'est dans son carnet.;Nolwenn : carnet +1 dessin
+KER004;13:00;13:45;Hôtel de l'amirauté, salle à manger;KER002;Repas avec sa mère. Elle demande s'il existe des îles à l'est. Sa mère répond qu'il existe des maris à terre.;Nolwenn → Anne : agacement +5
+KER004;13:45;14:00;Hôtel de l'amirauté, salle à manger;—;Repas.;—
+KER004;14:00;15:00;Phare de la Pointe;KER051,KER052;Elle montre son carnet de dessins à Morwenna. Morwenna lui dit de le cacher mieux.;Nolwenn : décision « cacher le carnet »
+KER004;15:00;16:30;Phare de la Pointe, galerie;—;Sur la galerie avec Ewen. Il lui dit tout bas qu'« il y a une cachette ». Il ne dit pas où.;Nolwenn : souvenir « une cachette » (60)
+KER004;16:30;18:00;Crique de la Pointe;—;Elle nage en cachette dans la crique, en chemise.;Nolwenn : humeur libre +10
+KER004;18:00;19:00;Hôtel de l'amirauté;—;Rentre, cheveux mouillés. Elle dit qu'il a plu.;—
+KER004;19:00;20:00;Hôtel de l'amirauté, salle à manger;KER001,KER002;Elle demande à son père ce qu'il y a au large. Il dit « rien ». Elle sait qu'il ment.;Nolwenn → Gaël : défiance +10
+KER004;20:00;23:00;Chambre de Nolwenn, hôtel de l'amirauté;—;Elle cache le carnet dans le pied creux de son lit. Puis elle reste à la fenêtre et regarde l'est.;Nolwenn : carnet caché
+KER004;23:00;24:00;Chambre de Nolwenn, hôtel de l'amirauté;—;Dort.;—
+KER005;00:00;01:30;Pavillon du jardin de l'hôtel Rospars;KER040;Il a passé la soirée avec Blanche au pavillon. Il repart par la porte du jardin à une heure et demie.;—
+KER005;01:30;05:30;Logis du capitaine, quai du Lion;—;Rentre par les ruelles. Dort.;—
+KER005;05:30;07:00;Le Lion des Mers;—;Monte à bord, lit le journal de bord.;—
+KER005;07:00;07:30;Le Lion des Mers;KER003,KER024,KER025,KER043;Rassemblement à bord. Il passe l'équipage en revue et fait courir Youenn dans la mâture « pour le réveiller ».;—
+KER005;07:30;12:00;Le Lion des Mers;—;Bord. Exercice de pièces. Il crie sur les chefs de pièce.;—
+KER005;12:00;13:00;Amirauté, salle des cartes;KER001,KER006,KER013;Repas chez l'amiral. Il reçoit l'ordre de faire taire Glenmor. Il remarque que les mains de l'amiral tremblent sur la pipe.;Le Goff : souvenir « l'amiral a peur » (70)
+KER005;13:00;13:20;Le Lion des Mers;KER024;Il revient à bord et dit au sergent Cadiou : « Le chanteur. Ce soir. Sans casse. »;—
+KER005;13:20;14:00;Le Lion des Mers;—;Bord.;—
+KER005;14:00;17:30;Amirauté;—;Écritures à l'amirauté. Il croise Rospars et lui sourit. Rospars ne sourit pas.;Le Goff → Rospars : mépris +5
+KER005;17:30;19:30;Le Hareng d'Or;—;Au Hareng d'Or. Il boit du rhum seul et attend l'heure.;—
+KER005;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER053,KER059,KER009,KER038,KER025,KER015,KER042;Il regarde l'ordre exécuté, depuis le coin. Il paie sa tournée et sort.;—
+KER005;20:00;22:00;Logis du capitaine, quai du Lion;—;Il se rase, change de chemise, attend la nuit.;—
+KER005;22:00;24:00;Pavillon du jardin de l'hôtel Rospars;KER040;Il entre par la porte du jardin. Il raconte à Blanche que l'amiral a peur. Ils passent la nuit ensemble.;—
+KER006;00:00;05:00;Logis de Morgane Tréguier, rue des Pilotes;—;Dort.;—
+KER006;05:00;05:30;L'Hirondelle;—;Bord de l'Hirondelle. Calculs de marée pour une sortie dans deux nuits.;—
+KER006;05:30;06:30;L'Hirondelle;KER026,KER041;Inspection à bord. Elle fait vérifier les fanaux de nuit et les lignes de sonde « pour un exercice, bientôt ».;—
+KER006;06:30;12:00;L'Hirondelle;—;Ensuite, bord de l'Hirondelle. Calculs de marée pour une sortie dans deux nuits.;—
+KER006;12:00;13:00;Amirauté, salle des cartes;KER001,KER005,KER013;Elle demande pour la troisième fois la permission de pousser vers le large. Refus. Elle ne redemandera pas.;Morgane : décision « sortir sans permission »
+KER006;13:00;14:00;Quais;—;Elle marche sur les quais pour se calmer.;—
+KER006;14:00;16:00;Cabinet des cartes de l'amirauté;KER027;Chez Lagadec. Il lui montre la vieille carte de l'est et l'île effacée. Elle trace un cap au crayon, puis le gomme.;Morgane : souvenir « l'île de l'est » (80)
+KER006;16:00;18:00;L'Hirondelle;—;Retour à bord. Elle dit à son second : « Dans deux nuits, exercice de nuit. Vivres pour trois jours. »;Morgane : sortie fixée au jour 3
+KER006;18:00;18:30;Quai de l'Hirondelle;KER018,KER041;Katell vient pour sa leçon. Morgane parle d'un exercice de nuit. Katell veut venir. « Pas cette fois. »;Morgane → Katell : affection +5
+KER006;18:30;20:30;Logis de Morgane Tréguier, rue des Pilotes;—;Souper seule. Elle relit ses relevés d'étoiles.;—
+KER006;20:30;21:15;Le Hareng d'Or;KER057;Elle s'assoit en face de Tifenn. Elle parle bois vert. « Va à l'amiral par moi. » Tifenn refuse. Elles rient.;Morgane → Tifenn : désir +10
+KER006;21:15;23:00;Phare de la Pointe, pied de la tour;—;Elle monte voir la mer depuis le pied du phare. Rien.;—
+KER006;23:00;24:00;Logis de Morgane Tréguier, rue des Pilotes;—;Dort.;—
+KER007;00:00;04:30;Maison Quéré;—;Dort mal. Rêve de la poulie.;—
+KER007;04:30;05:00;Maison Quéré;—;Se lève, réveille Erwan.;—
+KER007;05:00;05:30;Chantiers navals;KER019,KER008,KER057,KER020,KER021,KER022,KER023;Appel des chantiers. Il répartit les hommes sur les trois coques. Il évite de regarder la troisième.;—
+KER007;05:30;12:00;Chantiers navals;—;Chantiers. Il mesure en cachette la courbure du bordé de la troisième coque. Elle a bougé.;Quéré : souvenir « le bordé bouge » (60)
+KER007;12:00;12:45;Chantiers navals, la soupe;KER057,KER008,KER019;La soupe de poisson. Tifenn dit que si l'amiral vient cet après-midi, elle lui parlera. Il la supplie d'attendre.;Quéré : peur +15
+KER007;12:45;14:30;Chantiers navals;—;Chantiers.;—
+KER007;14:30;15:15;Chantiers navals;KER001,KER039,KER057,KER019;L'amiral visite. Tifenn s'avance. Il la prend au bras, fort. Elle se tait à moitié.;Quéré : honte +15
+KER007;15:15;15:45;Bureau des chantiers;KER039;Rospars lui rappelle Yannig et Erwan. Il dit oui à tout.;Quéré : peur +10
+KER007;15:45;19:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER007;19:00;20:00;Maison Quéré;—;Souper. Il ne parle pas.;—
+KER007;20:00;23:00;Maison Quéré;—;Plans du Soleil-d'Aurelle. Il trace la quille, puis froisse la feuille.;—
+KER007;23:00;24:00;Maison Quéré;—;Dort.;—
+KER008;00:00;04:30;Maison Quéré;—;Dort mal, rêve de la poulie qui casse.;—
+KER008;04:30;05:00;Maison Quéré;—;Se lève.;—
+KER008;05:00;05:30;Chantiers navals;KER007,KER019,KER057,KER020,KER021,KER022,KER023;À l'appel, on le met au rabotage avec Tifenn.;—
+KER008;05:30;12:00;Chantiers navals;—;Rabotage avec Tifenn.;—
+KER008;12:00;12:45;Chantiers navals, la soupe;KER007,KER057,KER019;Il mange sa soupe en écoutant Tifenn et son père. Il ne comprend pas pourquoi son père a peur.;—
+KER008;12:45;17:00;Chantiers navals;—;Chantiers.;—
+KER008;17:00;17:20;Chantiers navals;KER022;Varech lui tend le maillet tombé. Il ne peut pas soutenir son regard.;Erwan : cauchemar à venir +10
+KER008;17:20;19:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER008;19:00;19:10;Quais;—;Sort des chantiers.;—
+KER008;19:10;19:40;La jetée;KER043;Youenn lui confie la phrase du capitaine Le Goff. Il lui dit d'en parler à la capitaine Tréguier, et à personne d'autre.;Erwan : souvenir « Le Goff et l'amiral » (60)
+KER008;19:40;20:00;Atelier d'Erwan, derrière la maison Quéré;—;Il pose sa lampe et reprend la figure de proue.;—
+KER008;20:00;20:30;Atelier d'Erwan, derrière la maison Quéré;KER046;Gaïd vient le regarder sculpter. Il ne dit pas un mot de la poulie. Ni du reste.;Erwan → Gaïd : amour +5
+KER008;20:30;23:00;Atelier d'Erwan, derrière la maison Quéré;—;Il sculpte encore longtemps après le départ de Gaïd. Il pense à Youenn et à l'amiral.;—
+KER008;23:00;24:00;Maison Quéré;—;Dort.;—
+KER009;00:00;02:30;Maison des Le Bras;—;Dort.;—
+KER009;02:30;03:00;Maison des Le Bras;—;Se lève, réveille Riwal. Pain et cidre.;—
+KER009;03:00;04:00;En mer, sur les bancs de l'est;—;En mer avec Riwal. Il tient le cap au sud et ne regarde pas l'est.;—
+KER009;04:00;04:30;En mer, sur les bancs de l'est;KER010,KER054;Les barques de Job et d'Alain se rangent bord à bord pour la relève des lignes. Riwal montre l'est du menton. Job dit non sans le regarder.;—
+KER009;04:30;11:00;En mer, sur les bancs de l'est;—;Ensuite, en mer avec Riwal. Il tient le cap au sud et ne regarde pas l'est.;Job : pêche moyenne
+KER009;11:00;12:00;Port des pêcheurs;—;Retour, débarque les paniers.;—
+KER009;12:00;12:45;La criée;KER010,KER054,KER036;Il vend sa pêche à Maryvonne. Elle demande tout bas pour les lumières. « Je n'ai rien vu. »;—
+KER009;12:45;14:00;Maison des Le Bras;—;Repas, sieste courte.;—
+KER009;14:00;17:00;Port des pêcheurs;—;Il répare ses filets. Il pense aux deux pièces d'or, cousues dans sa paillasse.;—
+KER009;17:00;17:30;Chapelle de l'Étoile de la Mer;KER028;Il revient voir Josselin. Il veut rendre l'or de l'amiral. Josselin : « Donne-le aux veuves. »;Job : décision « donner l'or aux veuves »
+KER009;17:30;18:00;Chapelle de l'Étoile de la Mer;—;Chapelle.;—
+KER009;18:00;19:30;Le Hareng d'Or;KER038,KER042;Il boit son cidre avec Tudal et Gwilherm. Il dit que l'or lui brûle la poche.;—
+KER009;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER059,KER038,KER025,KER015,KER042;Il voit Glenmor se taire. Il baisse la tête dans son cidre.;Job : honte +10
+KER009;20:00;21:00;Maison des Le Bras;—;Rentre. Il découd la paillasse et met les deux pièces dans sa poche pour demain.;Job : 2 or prêts pour les veuves
+KER009;21:00;24:00;Maison des Le Bras;—;Dort.;—
+KER010;00:00;02:30;Maison des Le Bras;—;Dort.;—
+KER010;02:30;03:00;Maison des Le Bras;—;Se lève.;—
+KER010;03:00;04:00;En mer, sur les bancs de l'est;—;En mer avec son père.;—
+KER010;04:00;04:30;En mer, sur les bancs de l'est;KER009,KER054;Il dit qu'avec deux heures de plus vers l'est on verrait « l'endroit ». Son père répond non. Alain rit jaune.;Riwal → Job : agacement +10
+KER010;04:30;11:00;En mer, sur les bancs de l'est;—;Ensuite, en mer avec son père.;—
+KER010;11:00;12:00;Port des pêcheurs;—;Débarque les paniers.;—
+KER010;12:00;12:45;La criée;KER009,KER054,KER036;Il pose les paniers. Il voit son père mentir à Maryvonne.;Riwal → Job : honte +5
+KER010;12:45;14:00;La criée;—;Criée, puis il mange un hareng sur le pouce.;—
+KER010;14:00;15:00;Quais;—;Il traîne sur les quais, du côté de l'Hirondelle.;—
+KER010;15:00;15:20;Quai de l'Hirondelle;KER026;Il raconte à Annaïg la nuit des lumières, et que l'amiral a payé son père pour qu'il se taise.;—
+KER010;15:20;18:00;Quais;—;Ensuite, il traîne sur les quais, du côté de l'Hirondelle.;—
+KER010;18:00;20:00;Port des pêcheurs;—;Il calfate la barque avec un autre pêcheur, en pensant à l'est.;—
+KER010;20:00;20:40;Le Hareng d'Or;KER025,KER053;Pol lui raconte la chanson coupée. Kerdraon leur paie du rhum. Riwal refuse de boire et sort.;Riwal → Kerdraon : méfiance +15
+KER010;20:40;20:45;Le Hareng d'Or;—;Hareng d'Or.;—
+KER010;20:45;21:30;La jetée;KER046;Il retrouve Gaïd sur la jetée. Ils s'embrassent au bout, contre le fanal.;Riwal → Gaïd : amour +10
+KER010;21:30;24:00;Maison des Le Bras;—;Rentre. Dort tard, content.;—
+KER011;00:00;04:30;Cellule de Tugdual, maison de l'Inquisition;—;Dort.;—
+KER011;04:30;05:00;Cellule de Tugdual, maison de l'Inquisition;—;Prière.;—
+KER011;05:00;05:45;Chapelle de l'Étoile de la Mer;KER028;Office de l'aube. Il demande à Josselin ce que Job a confessé. Refus poli.;Tugdual → Josselin : méfiance +5
+KER011;05:45;06:00;Chapelle de l'Étoile de la Mer;—;Office.;—
+KER011;06:00;12:00;La criée;—;Il écoute à la criée et sur les quais. On parle des lumières plus bas qu'hier. Il note qui se tait.;Tugdual : liste « ceux qui se taisent »
+KER011;12:00;13:45;Cellule de Tugdual, maison de l'Inquisition;—;Repas. Il relit la copie de ses deux lettres à Sainte-Aube.;—
+KER011;13:45;14:00;Fort de la Pointe, poste du commandant;KER050;Le Floch lui offre l'elfe. Il n'a pas de réponse de Sainte-Aube. Il refuse.;—
+KER011;14:00;15:00;Cellule du fort de la Pointe;KER048,KER049;Interrogatoire. Pour la première fois, il parle des lumières : cinq, pâles, en ligne. Elle lève la tête et dit : « Ce ne sont pas des bateaux. »;Tugdual : souvenir « ce ne sont pas des bateaux » (90)
+KER011;15:00;17:00;Chemin du fort de la Pointe;—;Il redescend du fort lentement, en répétant la phrase de l'elfe.;—
+KER011;17:00;18:00;Cellule de Tugdual, maison de l'Inquisition;—;Prière.;—
+KER011;18:00;18:45;Chapelle de l'Étoile de la Mer;KER028;Office du soir. Il chante faux, la tête ailleurs.;—
+KER011;18:45;20:00;Cellule de Tugdual, maison de l'Inquisition;—;Souper maigre.;—
+KER011;20:00;23:00;Cellule de Tugdual, maison de l'Inquisition;—;Il écrit une troisième lettre au Grand Inquisiteur : l'elfe a parlé. Elle partira avec le courrier de demain.;Tugdual : troisième lettre écrite
+KER011;23:00;24:00;Cellule de Tugdual, maison de l'Inquisition;—;Dort.;—
+KER012;00:00;06:30;Maison de Soizic, rue des Haubans;—;Dort.;—
+KER012;06:30;08:00;Maison de Soizic, rue des Haubans;—;Se lève, nourrit les mouettes à la fenêtre.;—
+KER012;08:00;08:45;Chapelle de l'Étoile de la Mer;KER028,KER002;Messe. Elle allume une chandelle pour son fils.;—
+KER012;08:45;09:00;Chapelle de l'Étoile de la Mer;—;Messe.;—
+KER012;09:00;17:30;Mercerie de Soizic, rue des Haubans;—;Mercerie. Elle vend des rubans à des femmes de marins. Repas sur le comptoir.;—
+KER012;17:30;17:45;Mercerie de Soizic, rue des Haubans;KER013;Bellec apporte une lettre de Corvin. Le cachet a été recollé. Elle remercie.;Soizic : humeur heureuse +15
+KER012;17:45;19:00;Mercerie de Soizic, rue des Haubans;—;Elle lit la lettre de Corvin trois fois. Il signe « ton négociant en vins ». Elle la range dans la boîte à rubans.;Soizic : souvenir « lettre de Corvin » (70)
+KER012;19:00;19:50;Veillée chez Maryvonne;KER036,KER055;Elle lit à la veillée deux lignes de Corvin : il va bien, il vend du vin.;—
+KER012;19:50;20:00;Veillée chez Maryvonne;—;Veillée.;—
+KER012;20:00;24:00;Maison de Soizic, rue des Haubans;—;Dort, la boîte à rubans sur la table de nuit.;—
+KER013;00:00;06:00;Logis de Bellec, amirauté;—;Dort.;—
+KER013;06:00;07:00;Logis de Bellec, amirauté;—;Il ouvre la lettre de Corvin à la vapeur. Corvin n'a pas encore les plans du Fort des Brumes.;Bellec : souvenir « Corvin piétine » (40)
+KER013;07:00;07:15;Amirauté, bureau du renseignement;—;Chiffres et rapports.;—
+KER013;07:15;07:45;Amirauté, bureau de l'amiral;KER001;Rapport du matin. Le Saltevien Paol compte toujours les coques. Puis il parle de la chanson de Glenmor. L'amiral pâlit un peu.;Bellec : souvenir « l'amiral a pâli » (50)
+KER013;07:45;12:00;Amirauté, bureau du renseignement;—;Ensuite, chiffres et rapports.;—
+KER013;12:00;13:00;Amirauté, salle des cartes;KER001,KER005,KER006;Il assiste au repas et se tait. Il compte les refus de l'amiral.;—
+KER013;13:00;17:00;Quais;—;Port et chiffres. À cinq heures, il voit Paol Saliou entrer à la Maison des Vents. Il note l'heure.;Bellec : Paol vu à la Maison des Vents
+KER013;17:00;17:30;Rue des Haubans;—;Il marche jusqu'à la mercerie.;—
+KER013;17:30;17:45;Mercerie de Soizic, rue des Haubans;KER012;Il apporte à Soizic la lettre de Corvin, déjà lue.;—
+KER013;17:45;21:00;Logis de Bellec, amirauté;—;Souper seul, huîtres.;—
+KER013;21:00;23:00;Logis de Bellec, amirauté;—;Il écrit à Oriane Sabran, à Aurelle : l'amiral a fait taire une chanson, le Saltevien court toujours.;Bellec : lettre pour Aurelle
+KER013;23:00;24:00;Logis de Bellec, amirauté;—;Dort.;—
+KER014;00:00;00:30;Le Hareng d'Or;—;Ferme le Hareng. Compte la caisse.;—
+KER014;00:30;05:30;Chambre des Le Moal, au-dessus du Hareng;—;Dort contre Fañch.;—
+KER014;05:30;06:00;Le Hareng d'Or;—;Se lève, allume le feu.;—
+KER014;06:00;15:00;Le Hareng d'Or;—;Service. Les pêcheurs, puis les dockers, puis la soupe de midi.;—
+KER014;15:00;17:00;Le Hareng d'Or;—;Comptes. Elle rêve de chambres à l'étage, encore.;—
+KER014;17:00;19:30;Le Hareng d'Or;—;Service du soir.;—
+KER014;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER005,KER053,KER059,KER009,KER038,KER025,KER015,KER042;Elle fait rasseoir Annaïg et sert une tournée « pour la paix ».;Gwenn : −5 pièces d'argent
+KER014;20:00;24:00;Le Hareng d'Or;—;Service. Elle ne regarde pas les tonneaux d'Hoël dans l'arrière-cour.;Gwenn : humeur inquiète +5
+KER015;00:00;00:30;Le Hareng d'Or;—;Range les chaises.;—
+KER015;00:30;06:30;Chambre des Le Moal, au-dessus du Hareng;—;Dort contre Gwenn.;—
+KER015;06:30;07:00;Le Hareng d'Or;—;Pain et cidre.;—
+KER015;07:00;12:00;Tonnellerie de Fañch;—;Tonnellerie. Il cercle des tonneaux pour la flotte.;—
+KER015;12:00;13:00;Le Hareng d'Or;—;Repas.;—
+KER015;13:00;14:00;Chambre des Le Moal, au-dessus du Hareng;—;Sieste.;—
+KER015;14:00;14:15;Tonnellerie de Fañch;KER032;Hoël passe commander deux tonneaux « avec de l'air ». Fañch : « Je ne veux pas savoir. »;Fañch : humeur inquiète +10
+KER015;14:15;18:00;Tonnellerie de Fañch;—;Tonnellerie. Il commence un double fond en grommelant.;—
+KER015;18:00;19:00;Le Hareng d'Or;—;Souper avec Mael.;—
+KER015;19:00;19:30;Le Hareng d'Or;—;Comptoir du Hareng.;—
+KER015;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER059,KER009,KER038,KER025,KER042;Au comptoir, il essuie le même verre pendant toute la scène.;—
+KER015;20:00;24:00;Le Hareng d'Or;—;Ensuite, comptoir du Hareng.;—
+KER016;00:00;06:30;Chambre de Mael, au-dessus du Hareng;—;Dort. Rêve de pirates.;—
+KER016;06:30;07:00;Le Hareng d'Or;—;Pain et lait.;—
+KER016;07:00;09:00;École du temple;—;École du temple. Lettres et chiffres.;—
+KER016;09:00;11:00;École du temple;KER037,KER052;École. À la récréation, il raconte son « rêve de pirate » : un homme-bête sorti d'un tonneau. Klervi dit qu'il ment.;—
+KER016;11:00;12:00;École du temple;—;École.;—
+KER016;12:00;13:00;Le Hareng d'Or;—;Mange à la taverne.;—
+KER016;13:00;13:45;Grève sous les chantiers;KER023,KER037;Course à la nage jusqu'à la bouée avec Galet. Galet gagne de trois brasses.;Mael → Galet : admiration +5
+KER016;13:45;16:00;La jetée;—;Il pêche des crabes au bout de la jetée.;Mael : +3 crabes
+KER016;16:00;16:30;Banc du port;KER038,KER058;Il écoute Tudal. Il demande si le bateau perdu avait des tonneaux. Tudal rit.;Mael : souvenir « le bateau qui n'est pas revenu » (50)
+KER016;16:30;18:00;La jetée;—;Il regarde le Lion des Mers et compte les sabords.;—
+KER016;18:00;20:00;Le Hareng d'Or;—;Soupe à la cuisine. Il entend la chanson coupée depuis l'escalier.;—
+KER016;20:00;24:00;Chambre de Mael, au-dessus du Hareng;—;Dort.;—
+KER017;00:00;06:00;Maison Penhoët;—;Dort.;—
+KER017;06:00;07:00;Maison Penhoët;—;Se lève, lit les cours du vin d'Orvieu.;—
+KER017;07:00;11:00;Comptoir Penhoët;—;Comptoir. Il écrit à l'envoyé Duplessis, à Aurelle : de l'argent suit pour « pousser le mariage ».;—
+KER017;11:00;11:30;Comptoir Penhoët;KER018,KER032;Hoël vient prendre les ordres : vin d'Orvieu pour Saltevaux, sous pavillon nain, dans trois nuits.;—
+KER017;11:30;13:00;Comptoir Penhoët;—;Ensuite, comptoir. Il écrit à l'envoyé Duplessis, à Aurelle : de l'argent suit pour « pousser le mariage ».;Penhoët : −20 or pour Duplessis
+KER017;13:00;14:00;Comptoir Penhoët, salle à manger;KER039;Repas d'affaires avec Rospars. Il lui accorde un mois de plus sur son prêt, contre le bois du prochain chantier.;—
+KER017;14:00;18:00;Quais;—;Quais. Il visite ses deux marchands en charge.;—
+KER017;18:00;20:00;Comptoir Penhoët;—;Comptoir, il ferme lui-même.;—
+KER017;20:00;21:00;Maison Penhoët;—;Souper avec Katell. Il dit qu'un capitaine de vaisseau serait un bon parti. Elle ne répond pas.;Penhoët → Katell : agacement +5
+KER017;21:00;24:00;Maison Penhoët;—;Dort.;—
+KER018;00:00;06:00;Maison Penhoët;—;Dort.;—
+KER018;06:00;07:00;Maison Penhoët;—;Se lève.;—
+KER018;07:00;11:00;Comptoir Penhoët;—;Comptes du comptoir.;—
+KER018;11:00;11:30;Comptoir Penhoët;KER017,KER032;Elle écrit la cargaison de Hoël dans le livre « bis ». En tournant la page, elle revoit les paiements à Duplessis.;Katell : souvenir « Duplessis » (60)
+KER018;11:30;13:00;Comptoir Penhoët;—;Ensuite, comptes du comptoir.;—
+KER018;13:00;13:45;Comptoir Penhoët;KER046;Elle mange avec Gaïd dans l'arrière-boutique. Gaïd parle de Riwal et d'Erwan. Katell parle de bateaux.;—
+KER018;13:45;17:00;Comptoir Penhoët;—;Comptes. Elle recopie en cachette les paiements à Duplessis sur une feuille.;Katell : copie des paiements Duplessis
+KER018;17:00;18:00;Quais;—;Elle marche vers le quai de l'Hirondelle.;—
+KER018;18:00;18:30;Quai de l'Hirondelle;KER006,KER041;Elle demande à venir à l'exercice de nuit. Refus.;Katell : envie « commander un navire » +5 %
+KER018;18:30;19:15;La jetée;KER041;Raoul demande sa main. Elle rit, et lui répond qu'ils commanderont chacun un navire d'abord.;Katell → Raoul : affection +5
+KER018;19:15;20:00;Maison Penhoët;—;Rentre.;—
+KER018;20:00;21:00;Maison Penhoët;—;Souper avec son père. Il parle de capitaines à épouser. Elle pense à commander.;—
+KER018;21:00;24:00;Maison Penhoët;—;Dort.;—
+KER019;00:00;04:30;Maison Kervella;—;Dort.;—
+KER019;04:30;05:00;Maison Kervella;—;Se lève.;—
+KER019;05:00;05:30;Chantiers navals;KER007,KER008,KER057,KER020,KER021,KER022,KER023;Il fait l'appel et crie les tâches. Il pousse Varech vers les piles de bois.;—
+KER019;05:30;12:00;Chantiers navals;—;Chantiers. Il crie sur les esclaves. Il met un rouleau de cuivre de côté sous une bâche.;—
+KER019;12:00;12:45;Chantiers navals, la soupe;KER007,KER057,KER008;Il mange vite et dit à Tifenn de se mêler de son rabot.;Jos → Tifenn : hostilité +5
+KER019;12:45;14:30;Chantiers navals;—;Chantiers.;—
+KER019;14:30;15:15;Chantiers navals;KER001,KER007,KER039,KER057;Il fait travailler les hommes plus fort pendant la visite.;—
+KER019;15:15;19:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER019;19:00;19:15;Rue des Haubans;—;Il sort avec le cuivre sous le bras.;—
+KER019;19:15;19:45;Ferraille de Prigent;KER033;Il apporte du cuivre des chantiers.;Jos : +8 pièces d'argent
+KER019;19:45;20:00;Rue des Haubans;—;Il va au Goulet.;—
+KER019;20:00;21:30;Combats de coqs, hangar du Goulet;KER033,KER034;Combats de coqs. Il perd la moitié de son cuivre.;Jos : −4 pièces d'argent
+KER019;21:30;24:00;Maison Kervella;—;Rentre de mauvaise humeur. Dort.;—
+KER020;00:00;04:30;Baraque des esclaves des chantiers;—;Dort.;—
+KER020;04:30;05:00;Baraque des esclaves des chantiers;—;Se lève.;—
+KER020;05:00;05:30;Chantiers navals;KER007,KER019,KER008,KER057,KER021,KER022,KER023;À l'appel, on l'envoie plonger sous la coque du milieu pour gratter.;—
+KER020;05:30;12:00;Chantiers navals;—;Plongée sous les coques. Il gratte et cherche des perles dans les moules. Il en trouve une petite.;Brisant : +1 petite perle
+KER020;12:00;13:30;Chantiers navals;—;Restes, au bord de l'eau.;—
+KER020;13:30;13:45;Cale sud des chantiers;KER021,KER032;Il tient le chiffon des perles. Hoël baisse à quatre. Il calcule : encore une perle, peut-être deux.;Brisant : décision « plonger plus loin »
+KER020;13:45;19:00;Chantiers navals;—;Chantiers. Il plonge plus loin que les autres jours.;—
+KER020;19:00;20:00;Baraque des esclaves des chantiers;—;Retour à la baraque. La porte est fermée derrière eux.;—
+KER020;20:00;21:00;Baraque des esclaves des chantiers;KER021,KER022,KER023;Ils comptent les perles : trois belles, une petite. Il chante à Galet un chant de baleine.;—
+KER020;21:00;24:00;Baraque des esclaves des chantiers;—;Dort.;—
+KER021;00:00;04:30;Baraque des esclaves des chantiers;—;Dort, Galet contre elle.;—
+KER021;04:30;05:00;Baraque des esclaves des chantiers;—;Se lève.;—
+KER021;05:00;05:30;Chantiers navals;KER007,KER019,KER008,KER057,KER020,KER022,KER023;À l'appel, on l'envoie plonger avec Brisant.;—
+KER021;05:30;12:00;Chantiers navals;—;Plongée avec Brisant.;—
+KER021;12:00;13:30;Chantiers navals;—;Restes.;—
+KER021;13:30;13:45;Cale sud des chantiers;KER020,KER032;Hoël passe à la cale. Elle lui montre les perles dans un chiffon. Il les soupèse : « Trois pièces. Il en faut cinq. » Puis : « Pour le petit, quatre. »;Écume : espoir +15. Passage : 4 or
+KER021;13:45;19:00;Chantiers navals;—;Calfatage. Elle chante sous l'eau pour que Galet l'entende du bord.;—
+KER021;19:00;20:00;Baraque des esclaves des chantiers;—;Retour à la baraque.;—
+KER021;20:00;21:00;Baraque des esclaves des chantiers;KER020,KER022,KER023;Elle recompte les perles. Il en faut une ou deux de plus. Elle tient Galet contre elle.;Écume : espoir +5
+KER021;21:00;24:00;Baraque des esclaves des chantiers;—;Dort.;—
+KER022;00:00;00:45;Baraque des esclaves des chantiers;KER029;Rozenn lui frotte le dos. Il ne dit rien, il souffle par le nez quand elle appuie.;Varech : douleur du dos −10 pour la nuit
+KER022;00:45;04:30;Baraque des esclaves des chantiers;—;Dort, mieux que d'habitude.;—
+KER022;04:30;05:00;Baraque des esclaves des chantiers;—;Se lève, le dos raide.;—
+KER022;05:00;05:30;Chantiers navals;KER007,KER019,KER008,KER057,KER020,KER021,KER023;À l'appel, Jos le pousse vers les piles de bois.;—
+KER022;05:30;12:00;Chantiers navals;—;Portage du bois. Il porte une planche de la troisième coque et sent qu'elle est lourde d'eau.;—
+KER022;12:00;13:00;Chantiers navals;—;Restes. Il donne la moitié de son pain à Galet.;—
+KER022;13:00;17:00;Chantiers navals;—;Portage. Jos crie sur lui deux fois.;—
+KER022;17:00;17:20;Chantiers navals;KER008;Erwan laisse tomber un maillet près de lui. Il le ramasse, le lui tend, et le regarde.;—
+KER022;17:20;19:00;Chantiers navals;—;Ensuite, portage. Jos crie sur lui deux fois.;—
+KER022;19:00;20:00;Baraque des esclaves des chantiers;—;Retour à la baraque.;—
+KER022;20:00;21:00;Baraque des esclaves des chantiers;KER020,KER021,KER023;Il fredonne une berceuse sous le chant de Brisant.;—
+KER022;21:00;24:00;Baraque des esclaves des chantiers;—;Dort.;—
+KER023;00:00;04:30;Baraque des esclaves des chantiers;—;Dort contre sa mère.;—
+KER023;04:30;05:00;Baraque des esclaves des chantiers;—;Se lève.;—
+KER023;05:00;05:30;Chantiers navals;KER007,KER019,KER008,KER057,KER020,KER021,KER022;À l'appel, on lui donne un panier pour les copeaux.;—
+KER023;05:30;12:00;Chantiers navals;—;Il ramasse les copeaux. Il en vole un joli pour Mael.;—
+KER023;12:00;13:00;Chantiers navals;—;Restes. Varech lui donne du pain.;—
+KER023;13:00;13:45;Grève sous les chantiers;KER016,KER037;Pendant les restes, il file à la grève et bat Mael à la nage. Klervi fait l'arbitre.;Galet : humeur fier +10
+KER023;13:45;18:00;Chantiers navals;—;Copeaux. Jos ne s'est pas aperçu de son absence.;—
+KER023;18:00;20:00;Baraque des esclaves des chantiers;—;À la baraque, il attend sa mère.;—
+KER023;20:00;21:00;Baraque des esclaves des chantiers;KER020,KER021,KER022;Il écoute le chant de baleine. Il raconte qu'il a battu Mael.;—
+KER023;21:00;24:00;Baraque des esclaves des chantiers;—;Dort.;—
+KER024;00:00;05:30;Entrepont du Lion des Mers;—;Dort dans son hamac.;—
+KER024;05:30;07:00;Le Lion des Mers;—;Se lève, réveille ses soldats.;—
+KER024;07:00;07:30;Le Lion des Mers;KER005,KER003,KER025,KER043;Revue. Il aligne ses soldats de marine.;—
+KER024;07:30;13:00;Le Lion des Mers;—;Bord. Exercice d'abordage.;—
+KER024;13:00;13:20;Le Lion des Mers;KER005;Le capitaine lui donne l'ordre pour Glenmor. Il dit « oui, capitaine », et il crache par-dessus bord après.;Cadiou : humeur dégoûtée +10
+KER024;13:20;14:00;Le Lion des Mers;—;Bord.;—
+KER024;14:00;17:00;Quais;—;Exercice à terre. Il fait courir ses hommes plus que nécessaire.;—
+KER024;17:00;19:30;Le Hareng d'Or;—;Au Hareng. Il boit sans plaisir en attendant Glenmor.;—
+KER024;19:30;20:00;Le Hareng d'Or;KER058,KER026,KER014,KER005,KER053,KER059,KER009,KER038,KER025,KER015,KER042;Il pose la main sur le bras de Glenmor. « Ordre de l'amirauté. Pas de casse. » Il a honte.;Cadiou : humeur honteuse +10
+KER024;20:00;21:00;Le Hareng d'Or;—;Hareng d'Or.;—
+KER024;21:00;22:30;Maison des Vents, chambre de Bleuenn;KER030;Il monte avec Bleuenn. Il lui dit qu'il a fait taire un chanteur et qu'il en a honte. Ils passent la soirée ensemble.;Cadiou : humeur honteuse −10
+KER024;22:30;24:00;Entrepont du Lion des Mers;—;Rentre à bord. Dort.;—
+KER025;00:00;04:30;Entrepont du Lion des Mers;—;Dort.;—
+KER025;04:30;07:00;Le Lion des Mers;—;Lavage du pont.;—
+KER025;07:00;07:30;Le Lion des Mers;KER005,KER003,KER024,KER043;Revue. Il a la tête lourde de la veille.;—
+KER025;07:30;13:00;Le Lion des Mers;—;Bord.;—
+KER025;13:00;14:00;Le Lion des Mers;—;Repas à bord.;—
+KER025;14:00;17:00;Quais;—;Corvées : il roule des barriques de poudre.;—
+KER025;17:00;18:00;Entrepont du Lion des Mers;—;Il se lave et se met en chemise propre.;—
+KER025;18:00;19:30;Le Hareng d'Or;—;Au Hareng. Il boit avec deux matelots et joue aux dés.;Pol : −1 pièce d'argent
+KER025;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER059,KER009,KER038,KER015,KER042;Il voit son sergent faire taire Glenmor. Il ne comprend pas tout.;—
+KER025;20:00;20:40;Le Hareng d'Or;KER010,KER053;Il raconte à Riwal ce qui s'est passé. Kerdraon paie le rhum. Pol boit.;—
+KER025;20:40;22:00;Le Hareng d'Or;—;Il boit encore le rhum du sergent Kerdraon.;—
+KER025;22:00;24:00;Entrepont du Lion des Mers;—;Rentre à bord, ivre. Dort.;—
+KER026;00:00;04:30;Entrepont de l'Hirondelle;—;Dort.;—
+KER026;04:30;05:30;L'Hirondelle;—;Se lève.;—
+KER026;05:30;06:30;L'Hirondelle;KER006,KER041;Elle graisse les poulies du mât de misaine. La capitaine demande les fanaux de nuit prêts.;Annaïg : souvenir « un exercice de nuit » (40)
+KER026;06:30;13:00;L'Hirondelle;—;Mâture. Elle répare une vergue.;—
+KER026;13:00;14:00;Quai de l'Hirondelle;—;Repas sur le quai.;—
+KER026;14:00;15:00;Poste aux lettres du port;—;Elle demande si une lettre pour Aurelle est revenue. Le commis dit qu'elle a dû se perdre.;—
+KER026;15:00;15:20;Quai de l'Hirondelle;KER010;Riwal lui dit que l'amiral a payé Job pour se taire. Elle comprend qu'il est interdit d'en parler. Elle pense à ses lettres.;Annaïg : souvenir « c'est interdit » (70)
+KER026;15:20;18:00;Quais;—;Elle marche longtemps sur les quais en pensant à Ursule.;—
+KER026;18:00;19:30;Le Hareng d'Or;—;Au Hareng avec son cousin Glenmor avant son tour de chant.;—
+KER026;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER014,KER005,KER053,KER059,KER009,KER038,KER025,KER015,KER042;Elle voit Cadiou faire taire son cousin. Elle se lève, Gwenn la fait rasseoir.;Annaïg → l'amirauté : colère +15
+KER026;20:00;22:00;Le Hareng d'Or;—;Elle reste près de Glenmor. Ils ne parlent pas des lumières.;—
+KER026;22:00;24:00;Entrepont de l'Hirondelle;—;Elle écrit une troisième lettre à Ursule, puis la garde sous sa chemise sans l'envoyer.;Annaïg : lettre gardée
+KER027;00:00;02:30;Terrasse de l'amirauté;—;Observations. Il relève les étoiles de l'est.;—
+KER027;02:30;03:30;Terrasse de l'amirauté;—;Vers trois heures, il voit deux lueurs pâles très bas sur l'horizon de l'est, vingt minutes. Il les note en marge d'une carte.;Lagadec : souvenir « deux lueurs » (80)
+KER027;03:30;07:00;Logis de Lagadec, amirauté;—;Dort.;—
+KER027;07:00;11:00;Cabinet des cartes de l'amirauté;—;Il compare l'angle des lueurs avec l'île des vieilles cartes. Ça tombe juste.;Lagadec : certitude « l'île » +20 %
+KER027;11:00;11:30;Cabinet des cartes de l'amirauté;KER004;Nolwenn entre « par erreur ». Il lui montre la vieille carte de l'est, l'île effacée. Elle pose trop de questions justes.;Lagadec → Nolwenn : affection +10
+KER027;11:30;14:00;Cabinet des cartes de l'amirauté;—;Repas sur la table des cartes.;—
+KER027;14:00;16:00;Cabinet des cartes de l'amirauté;KER006;Il montre la carte ancienne à Morgane. Il dit que les lumières viennent peut-être de là. Elle relève un cap.;—
+KER027;16:00;19:00;Cabinet des cartes de l'amirauté;—;Il recopie la vieille carte, au cas où on la brûlerait.;—
+KER027;19:00;21:00;Logis de Lagadec, amirauté;—;Souper. Dort une heure.;—
+KER027;21:00;24:00;Terrasse de l'amirauté;—;Observations. L'est reste noir. La lune décroissante se lève vers minuit.;—
+KER028;00:00;04:30;Presbytère de l'Étoile de la Mer;—;Dort.;—
+KER028;04:30;05:00;Presbytère de l'Étoile de la Mer;—;Se lève.;—
+KER028;05:00;05:45;Chapelle de l'Étoile de la Mer;KER011;Office de l'aube. Après, Tugdual lui demande si Job s'est confessé de l'or. Josselin : « Ce qui est dit au confessionnal y reste. »;—
+KER028;05:45;06:00;Chapelle de l'Étoile de la Mer;—;Office.;—
+KER028;06:00;08:00;Port des pêcheurs;—;Il bénit deux barques qui sortent tard.;—
+KER028;08:00;08:45;Chapelle de l'Étoile de la Mer;KER002,KER012;Messe de huit heures. Peu de monde : Anne Kerhoas, Soizic.;—
+KER028;08:45;09:00;Chapelle de l'Étoile de la Mer;—;Messe.;—
+KER028;09:00;13:00;Port des pêcheurs;—;Bénédictions. Il bénit les barques qui rentrent.;—
+KER028;13:00;14:00;Presbytère de l'Étoile de la Mer;—;Repas.;—
+KER028;14:00;17:00;Chapelle de l'Étoile de la Mer;—;Confessions. Trois femmes de marins, un docker.;—
+KER028;17:00;17:30;Chapelle de l'Étoile de la Mer;KER009;Job veut rendre l'or. Il lui conseille la caisse des veuves.;—
+KER028;17:30;18:00;Crypte de la chapelle;—;Il descend vérifier le vieux livre de prières de la Brume. Il est à sa place.;—
+KER028;18:00;18:45;Chapelle de l'Étoile de la Mer;KER011;Office du soir.;—
+KER028;18:45;19:00;Chapelle de l'Étoile de la Mer;—;Office.;—
+KER028;19:00;22:00;Presbytère de l'Étoile de la Mer;—;Cidre. Il prie pour qu'aucun bateau ne se perde.;—
+KER028;22:00;24:00;Presbytère de l'Étoile de la Mer;—;Dort.;—
+KER029;00:00;00:45;Baraque des esclaves des chantiers;KER022;Rozenn entre par la planche décrochée. Elle frotte le dos de Varech avec un onguent d'algues et de saindoux.;Varech → Rozenn : confiance +5
+KER029;00:45;02:00;Rue des Haubans;—;Rentre par les ruelles.;—
+KER029;02:00;06:00;Maison des herbes de Rozenn, rue des Haubans;—;Dort.;—
+KER029;06:00;08:00;Grève de la Pointe;—;Herbes de grève à marée basse.;—
+KER029;08:00;13:00;Maison des herbes de Rozenn, rue des Haubans;—;Maison des herbes. Elle prépare un onguent pour Varech et des tisanes.;—
+KER029;13:00;14:00;Maison des herbes de Rozenn, rue des Haubans;—;Repas.;—
+KER029;14:00;16:45;Ruelles du port;—;Visites. Une femme grosse de huit mois, rue des Pilotes.;—
+KER029;16:45;17:15;Maison des herbes de Rozenn, rue des Haubans;KER002;Anne Kerhoas lui laisse de l'argent. Rozenn sait pour qui sont les remèdes. Anne aussi.;Rozenn → Anne : affection +5
+KER029;17:15;22:00;Maison des herbes de Rozenn, rue des Haubans;—;Elle range, soupe, dort un peu.;—
+KER029;22:00;24:00;Rue des Pilotes;—;Elle est appelée pour l'accouchement. Le travail commence.;—
+KER030;00:00;02:00;Maison des Vents, salon;—;Salon. Elle tient la salle.;—
+KER030;02:00;03:00;Maison des Vents, salon;—;Ferme.;—
+KER030;03:00;04:00;Maison des Vents, salon;—;Comptes.;—
+KER030;04:00;12:00;Maison des Vents, chambre de Bleuenn;—;Dort.;—
+KER030;12:00;14:00;Maison des Vents, salon;—;Repas, inspection des chambres.;—
+KER030;14:00;14:15;Maison des Vents, salon;—;Ouverture.;—
+KER030;14:15;14:30;Maison des Vents, salon;KER034;Ouverture. Cosquer passe prendre sa semaine. Elle la lui donne sans sourire.;Bleuenn : −5 pièces d'argent
+KER030;14:30;21:00;Maison des Vents, salon;—;Salon. Musique, marins, une partie de dames.;—
+KER030;21:00;22:30;Maison des Vents, chambre de Bleuenn;KER024;Cadiou monte avec elle. Il parle de l'ordre de l'amiral. Elle l'écoute, puis le fait rire.;Bleuenn : souvenir « l'amiral a fait taire Glenmor » (60)
+KER030;22:30;24:00;Maison des Vents, salon;—;Salon. Elle se demande à qui l'ordre de l'amiral vaut de l'or.;—
+KER031;00:00;01:00;Maison des Vents, chambre de Lénaïg;KER003;Elle garde Tanguy jusqu'à une heure. Il lui dit que son père dort mal depuis quinze jours.;Lénaïg : souvenir « l'amiral dort mal » (40)
+KER031;01:00;02:00;Maison des Vents, salon;—;Salon.;—
+KER031;02:00;12:00;Maison des Vents, chambre de Lénaïg;—;Dort.;—
+KER031;12:00;14:00;Maison des Vents, chambre de Lénaïg;—;Lever, coiffure.;—
+KER031;14:00;16:00;Maison des Vents, bains;—;Bains.;—
+KER031;16:00;17:00;Maison des Vents, salon;—;Salon. Elle danse pour deux marins.;—
+KER031;17:00;17:30;Maison des Vents, salon;KER059;Paol passe. Elle n'a rien à vendre. « Ce soir, peut-être. »;—
+KER031;17:30;22:00;Maison des Vents, salon;—;Salon.;—
+KER031;22:00;24:00;Maison des Vents, chambre de Lénaïg;KER003;Tanguy lui raconte l'ordre et les mains de l'amiral. Ils passent la nuit ensemble.;Lénaïg : souvenir « les mains de l'amiral » (60)
+KER032;00:00;01:00;Le Hareng d'Or;—;Il finit sa chope au comptoir après la fermeture.;—
+KER032;01:00;10:00;Cabine de la Mouette-Grise;—;Dort à bord.;—
+KER032;10:00;11:00;Cabine de la Mouette-Grise;—;Lever. Rhum coupé d'eau.;—
+KER032;11:00;11:30;Comptoir Penhoët;KER017,KER018;Chez Penhoët. Il prend les ordres pour la prochaine sortie : vin d'Orvieu, trois nuits d'ici.;Hoël : prochaine sortie dans 3 nuits
+KER032;11:30;12:00;Quais;KER034;Il passe par le poste de douane et glisse sa bourse de la semaine à Cosquer.;Hoël : −5 pièces d'argent
+KER032;12:00;13:30;Quais;—;Quais. Il mange au bord de l'eau.;—
+KER032;13:30;13:45;Cale sud des chantiers;KER021,KER020;Il soupèse les perles d'Écume et de Brisant. Il dit cinq, puis quatre, à cause du petit. Il s'en veut d'être mou.;Hoël : prix baissé à 4 or
+KER032;13:45;14:00;Quais;—;Quais.;—
+KER032;14:00;14:15;Tonnellerie de Fañch;KER015;Il commande deux tonneaux à double fond à Fañch.;—
+KER032;14:15;15:00;Quais;—;Quais.;—
+KER032;15:00;20:00;La Mouette-Grise;—;Cotre. Il vérifie le gréement pour la sortie dans trois nuits. Il touche la lettre de l'elfe dans sa vareuse et ne la sort pas.;—
+KER032;20:00;20:30;Le Hareng d'Or;KER049;Bastian demande pour la lettre de l'elfe. Il promet la semaine prochaine. La lettre est dans sa vareuse.;—
+KER032;20:30;23:30;Le Hareng d'Or;—;Il boit et joue aux cartes. Il dit que Saltevaux, c'est pour bientôt.;—
+KER032;23:30;24:00;Cabine de la Mouette-Grise;—;Dort.;—
+KER033;00:00;07:00;Ferraille de Prigent, arrière-boutique;—;Dort avec ses chats.;—
+KER033;07:00;08:00;Ferraille de Prigent, arrière-boutique;—;Se lève.;—
+KER033;08:00;10:00;Ferraille de Prigent;—;Boutique. Il trie la ferraille.;—
+KER033;10:00;10:20;Ferraille de Prigent;KER047;Brodd achète le cuivre. Il dit que le roi Baldrec a une énorme commande de l'Empire. Prigent retient.;Prigent : souvenir « le fer va monter » (40)
+KER033;10:20;19:15;Ferraille de Prigent;—;Ensuite, boutique. Il trie la ferraille.;—
+KER033;19:15;19:45;Ferraille de Prigent;KER019;Jos apporte du cuivre. Il paie peu.;Prigent : −8 pièces d'argent
+KER033;19:45;20:00;Rue des Haubans;—;Va au Goulet.;—
+KER033;20:00;21:30;Combats de coqs, hangar du Goulet;KER019,KER034;Il demande à Cosquer, l'air de rien, ce que vaut la prime pour un fugitif. « Elle va doubler, dit-on à Aurelle. »;Prigent : souvenir « la prime va doubler » (60)
+KER033;21:30;24:00;Ferraille de Prigent, arrière-boutique;—;Il fait ses comptes. Il écrit « Hoël, prime double ? » sur un bout de papier, puis le brûle.;Prigent : idée « vendre Hoël »
+KER034;00:00;06:00;Maison Cosquer;—;Dort.;—
+KER034;06:00;07:00;Maison Cosquer;—;S'habille avec soin.;—
+KER034;07:00;09:00;Quais;—;Douane.;—
+KER034;09:00;09:30;Capitainerie;KER060;Jaouen pose la question de la Mouette-Grise. Il répond « réglé » et note la question dans son carnet.;Cosquer : souvenir « Jaouen demande » (30)
+KER034;09:30;11:30;Quais;—;Ensuite, douane.;—
+KER034;11:30;12:00;Quais;KER032;Hoël paie sa semaine. Il note la somme le soir dans son carnet.;Cosquer : +5 pièces d'argent
+KER034;12:00;13:00;Quais;—;Ensuite, douane.;—
+KER034;13:00;14:00;Maison Cosquer;—;Repas.;—
+KER034;14:00;14:15;Quais;—;Quais. Il lève deux taxes, en oublie une contre un pot-de-vin.;—
+KER034;14:15;14:30;Maison des Vents, salon;KER030;Il prend la semaine de Bleuenn.;Cosquer : +5 pièces d'argent
+KER034;14:30;20:00;Quais;—;Ensuite, quais. Il lève deux taxes, en oublie une contre un pot-de-vin.;—
+KER034;20:00;21:30;Combats de coqs, hangar du Goulet;KER019,KER033;Il répond à Prigent que la prime va doubler. Il note la question dans son carnet.;—
+KER034;21:30;23:00;Maison Cosquer;—;Il recopie la journée dans son carnet : Hoël, Bleuenn, Jaouen qui pose des questions, Prigent qui parle de primes.;Cosquer : carnet +4 lignes
+KER034;23:00;24:00;Maison Cosquer;—;Dort.;—
+KER035;00:00;04:30;Maison Kerrien;—;Dort.;—
+KER035;04:30;05:00;Maison Kerrien;—;Se lève.;—
+KER035;05:00;08:00;Forge d'ancres;—;Forge. Il éprouve une patte d'ancre au marteau : elle se fend.;Bran : patte d'ancre fendue
+KER035;08:00;08:30;Quais;KER059;Il vient à la barge, prend une barre au hasard, la casse d'un coup. Du laitier. Il crache.;Bran : colère +15
+KER035;08:30;13:00;Forge d'ancres;—;Forge. Il trie les barres, met de côté les plus mauvaises.;—
+KER035;13:00;14:00;Maison Kerrien;—;Repas.;—
+KER035;14:00;16:00;Forge d'ancres;—;Forge.;—
+KER035;16:00;16:45;Forge d'ancres;KER047;Brodd propose du fer nain. Il répond que ce n'est pas lui qui paie, c'est l'amirauté, et que l'amirauté ne lit pas.;Bran : décision « porter la patte fendue à l'amirauté »
+KER035;16:45;19:00;Forge d'ancres;—;Ensuite, forge.;—
+KER035;19:00;20:00;Maison Kerrien;—;Souper.;—
+KER035;20:00;22:00;Le Hareng d'Or;—;Bière. Il ne parle pas de fer, pour une fois.;—
+KER035;22:00;24:00;Maison Kerrien;—;Dort.;—
+KER036;00:00;03:30;Maison Guéguen;—;Dort.;—
+KER036;03:30;04:00;Maison Guéguen;—;Se lève, réveille Klervi.;—
+KER036;04:00;12:00;La criée;—;Criée. Elle chante les prix. Elle raconte les lumières plus bas que la semaine dernière.;—
+KER036;12:00;12:45;La criée;KER009,KER010,KER054;Elle achète aux Le Bras et à Kerboul. Elle demande à Job, tout bas, s'il a revu les lumières. Il dit non trop vite.;Maryvonne : souvenir « Job a peur » (40)
+KER036;12:45;14:00;Maison Guéguen;—;Repas avec Klervi.;—
+KER036;14:00;18:00;Marché du port;—;Marché.;—
+KER036;18:00;19:00;Maison Guéguen;—;Elle couche Klervi.;—
+KER036;19:00;19:50;Veillée chez Maryvonne;KER055,KER012;Veillée chez elle. On parle des lumières, plus bas que la semaine dernière.;—
+KER036;19:50;20:00;Veillée chez Maryvonne;—;Veillée.;—
+KER036;20:00;24:00;Maison Guéguen;—;Dort.;—
+KER037;00:00;03:30;Maison Guéguen;—;Dort.;—
+KER037;03:30;04:00;Maison Guéguen;—;Se lève.;—
+KER037;04:00;08:00;La criée;—;Elle crie la criée avec sa mère.;—
+KER037;08:00;09:00;Maison Guéguen;—;Pain et lait.;—
+KER037;09:00;11:00;École du temple;KER016,KER052;École. Elle montre son écaille brillante. Mael raconte un rêve de pirate. Elle ne le croit pas.;—
+KER037;11:00;12:00;École du temple;—;École.;—
+KER037;12:00;13:00;La criée;—;Elle mange un hareng avec sa mère.;—
+KER037;13:00;13:45;Grève sous les chantiers;KER016,KER023;Elle arbitre la course. Elle donne la victoire à Galet, puis à Mael pour être juste.;—
+KER037;13:45;18:00;Grève sous les chantiers;—;Elle cherche une autre écaille brillante. Elle caresse un chat du port.;Klervi : envie « un chat » +5 %
+KER037;18:00;19:00;Maison Guéguen;—;Soupe.;—
+KER037;19:00;24:00;Maison Guéguen;—;Dort, l'écaille sous l'oreiller.;—
+KER038;00:00;07:00;Maison Le Gac;—;Dort.;—
+KER038;07:00;09:00;Maison Le Gac;—;Se lève, taille un petit bateau.;—
+KER038;09:00;12:00;Banc du port;—;Banc du port. Il raconte aux enfants qui passent.;—
+KER038;12:00;14:00;Maison Le Gac;—;Soupe.;—
+KER038;14:00;16:00;Banc du port;—;Banc.;—
+KER038;16:00;16:30;Banc du port;KER058,KER016;Il raconte le bateau parti vers les lumières, il y a cinquante ans, qui n'est jamais revenu. Glenmor écoute. Mael aussi.;—
+KER038;16:30;18:00;Banc du port;—;Ensuite, banc.;—
+KER038;18:00;19:30;Le Hareng d'Or;KER009,KER042;Il boit avec Job et Gwilherm. Il dit à Job : « Moi je te crois. »;Job → Tudal : confiance +5
+KER038;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER059,KER009,KER025,KER015,KER042;Il dit tout haut : « On ne fait pas taire la mer. » Personne ne répond.;—
+KER038;20:00;21:00;Le Hareng d'Or;—;Hareng.;—
+KER038;21:00;24:00;Maison Le Gac;—;Dort.;—
+KER039;00:00;06:30;Hôtel Rospars;—;Dort seul, chambre à part.;—
+KER039;06:30;08:00;Hôtel Rospars;—;Se lève.;—
+KER039;08:00;08:30;Amirauté, bureau de l'amiral;KER001;Il présente les chantiers « dans les délais ». L'amiral signe. Il ressort content.;Rospars : humeur assurée +5
+KER039;08:30;12:00;Amirauté, intendance;—;Intendance. Il facture du bois sec pour une livraison de bois vert.;Rospars : +6 or volés
+KER039;12:00;13:00;Amirauté, intendance;—;Courrier.;—
+KER039;13:00;14:00;Comptoir Penhoët, salle à manger;KER017;Il obtient de Penhoët un mois de plus. Il promet du bois qu'il n'a pas encore volé.;Rospars : dette repoussée d'un mois
+KER039;14:00;14:30;Chantiers navals;—;Chantiers.;—
+KER039;14:30;15:15;Chantiers navals;KER001,KER007,KER057,KER019;Il accompagne l'amiral. Il voit Tifenn s'avancer et Quéré la retenir. Il sourit.;Rospars → Tifenn : hostilité +10
+KER039;15:15;15:45;Bureau des chantiers;KER007;Il dit à Quéré : « Votre fille de bordé parle trop. Pensez à Yannig. Et à votre fils. »;—
+KER039;15:45;16:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER039;16:00;16:30;Corderie et voilerie;KER045,KER044;Il passe à la voilerie et annonce que les voiles des douze vaisseaux iront « à un atelier d'Aurelle ».;—
+KER039;16:30;17:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER039;17:00;19:00;Hôtel Rospars;—;Il rentre et boit.;—
+KER039;19:00;19:30;Hôtel Rospars;KER040;Souper avec Blanche. Il boit trop et parle de bois.;—
+KER039;19:30;24:00;Hôtel Rospars;—;Il s'endort tôt sur le vin.;—
+KER040;00:00;01:30;Pavillon du jardin de l'hôtel Rospars;KER005;Le Goff est encore là. Elle le laisse partir par le jardin, et reste un moment à la fenêtre.;Blanche : humeur satisfaite +10
+KER040;01:30;10:00;Hôtel Rospars;—;Dort.;—
+KER040;10:00;14:00;Hôtel Rospars;—;Lever, toilette, robes. Elle fait réparer sa harpe.;—
+KER040;14:00;16:00;Ruelles hautes de Kerval;—;Visites chez deux épouses d'officiers.;—
+KER040;16:00;16:30;Hôtel de l'amirauté, salon;KER002;Visite de politesse à Anne Kerhoas. Elle offre une pièce d'or pour les veuves et dit : « On dit la caisse bien maigre cette année. »;Blanche : −1 or. Souvenir « Anne a pâli » (50)
+KER040;16:30;19:00;Hôtel Rospars;—;Harpe.;—
+KER040;19:00;19:30;Hôtel Rospars;KER039;Souper. Elle écoute son mari parler de bois et de chiffres. Elle pense à dix heures.;—
+KER040;19:30;22:00;Hôtel Rospars;—;Elle attend. Elle laisse la porte du jardin entrouverte.;—
+KER040;22:00;24:00;Pavillon du jardin de l'hôtel Rospars;KER005;Le Goff arrive par le jardin. Il dit que l'amiral a peur. Elle demande ce que ça change. « Tout. »;Blanche : souvenir « l'amiral a peur » (50)
+KER041;00:00;04:30;Entrepont de l'Hirondelle;—;Dort.;—
+KER041;04:30;05:30;L'Hirondelle;—;Se lève.;—
+KER041;05:30;06:30;L'Hirondelle;KER006,KER026;Il compte les fanaux et les lignes de sonde sur ordre de la capitaine. Il comprend qu'on sortira loin.;Raoul : souvenir « on va sortir » (50)
+KER041;06:30;13:00;L'Hirondelle;—;Bord.;—
+KER041;13:00;14:00;Quai de l'Hirondelle;—;Repas.;—
+KER041;14:00;17:00;Amirauté;—;Écritures. Il recopie des ordres de mouillage.;—
+KER041;17:00;18:00;Quai de l'Hirondelle;—;Il attend Katell.;—
+KER041;18:00;18:30;Quai de l'Hirondelle;KER006,KER018;Il écoute la capitaine et Katell. Il comprend que l'exercice n'en sera pas un.;—
+KER041;18:30;19:15;La jetée;KER018;Promenade sur la jetée avec Katell. Il demande sa main. Elle répond : « Commande d'abord un navire. Moi aussi. »;Raoul → Katell : amour +5
+KER041;19:15;20:00;Entrepont de l'Hirondelle;—;Souper à bord.;—
+KER041;20:00;22:00;Entrepont de l'Hirondelle;—;Il écrit à sa mère, à Aurelle. Il parle de Katell, pas de l'amiral. Il ne parle jamais de l'amiral.;Raoul : lettre pour Aliette
+KER041;22:00;24:00;Entrepont de l'Hirondelle;—;Dort.;—
+KER042;00:00;07:00;Logis du chirurgien, amirauté;—;Dort, cuvant.;—
+KER042;07:00;08:00;Logis du chirurgien, amirauté;—;Se lève, boit un verre « pour la main ».;—
+KER042;08:00;10:00;Infirmerie de l'amirauté;—;Infirmerie.;—
+KER042;10:00;10:20;Infirmerie de l'amirauté;KER043;Youenn arrive avec une brûlure de corde à la main. Il demande si on doit dire quand un homme veut du mal à un autre. Gwilherm : « On doit boire, petit. »;—
+KER042;10:20;12:00;Infirmerie de l'amirauté;—;Ensuite, infirmerie.;—
+KER042;12:00;14:00;Infirmerie de l'amirauté;—;Repas au rhum.;—
+KER042;14:00;15:00;Chemin du fort de la Pointe;—;Monte au fort.;—
+KER042;15:00;15:30;Cellule du fort de la Pointe;KER048,KER049;Il examine l'elfe. Elle a encore maigri. Il dit à Bastian : « Un mois, deux peut-être. »;Gwilherm : souvenir « elle dépérit » (60)
+KER042;15:30;16:00;Fort de la Pointe, poste du commandant;KER050;Il fait son rapport au commandant : l'elfe dépérit.;—
+KER042;16:00;18:00;Chemin du fort de la Pointe;—;Redescend lentement, s'arrête boire au flacon.;—
+KER042;18:00;19:30;Le Hareng d'Or;KER009,KER038;Il boit son rhum avec Job et Tudal.;—
+KER042;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER059,KER009,KER038,KER025,KER015;Il boit et dit que les lumières, lui, il s'en fout.;—
+KER042;20:00;21:00;Le Hareng d'Or;—;Hareng.;—
+KER042;21:00;24:00;Logis du chirurgien, amirauté;—;Dort ivre.;—
+KER043;00:00;03:30;Entrepont du Lion des Mers;—;Dort.;—
+KER043;03:30;07:00;Le Lion des Mers;—;Se lève, aide à la cuisine du bord.;—
+KER043;07:00;07:30;Le Lion des Mers;KER005,KER003,KER024,KER025;Le capitaine le fait monter en haut du grand mât et redescendre. Deux fois.;Youenn → Le Goff : peur +5
+KER043;07:30;10:00;Le Lion des Mers;—;Bord. Il se brûle la main sur une corde.;Youenn : main brûlée
+KER043;10:00;10:20;Infirmerie de l'amirauté;KER042;Il fait bander sa main. Il pose sa question au chirurgien. La réponse ne l'aide pas.;Youenn : souvenir « personne à qui le dire » (60)
+KER043;10:20;14:00;Le Lion des Mers;—;Bord.;—
+KER043;14:00;18:00;Quais;—;Corvées.;—
+KER043;18:00;19:10;Quais;—;Il traîne sur le port, du côté de l'Hirondelle, sans oser.;—
+KER043;19:10;19:40;La jetée;KER008;Il raconte à Erwan ce qu'il a entendu : « Il suffirait que l'amiral se noie. » Erwan lui dit d'aller à la capitaine Tréguier.;Youenn : décision « parler à Morgane »
+KER043;19:40;24:00;Entrepont du Lion des Mers;—;Il rentre à bord. Il dort mal, il répète ce qu'il dira à la capitaine.;—
+KER044;00:00;04:30;Maison Le Hir;—;Dort.;—
+KER044;04:30;05:00;Maison Le Hir;—;Se lève.;—
+KER044;05:00;12:00;Corderie et voilerie;—;Corderie. Il essaie un cordage sous charge, pour lui, pour se prouver.;—
+KER044;12:00;13:00;Corderie et voilerie;—;Repas avec Soazig.;—
+KER044;13:00;16:00;Corderie et voilerie;—;Corderie.;—
+KER044;16:00;16:30;Corderie et voilerie;KER039,KER045;Il entend Rospars et prend la main de sa femme sous l'établi.;—
+KER044;16:30;19:00;Corderie et voilerie;—;Ensuite, corderie.;—
+KER044;19:00;20:00;Maison Le Hir;—;Rentre.;—
+KER044;20:00;22:00;Maison Le Hir;—;Souper en famille. Gaïd rentre tard. Il ne dit rien.;—
+KER044;22:00;24:00;Maison Le Hir;—;Dort.;—
+KER045;00:00;04:30;Maison Le Hir;—;Dort.;—
+KER045;04:30;05:00;Maison Le Hir;—;Se lève.;—
+KER045;05:00;12:00;Corderie et voilerie;—;Voilerie.;—
+KER045;12:00;13:00;Corderie et voilerie;—;Repas avec Jakez.;—
+KER045;13:00;16:00;Corderie et voilerie;—;Voilerie.;—
+KER045;16:00;16:30;Corderie et voilerie;KER039,KER044;Rospars lui dit que les voiles iront à Aurelle. Elle répond poliment. Elle ne lui pardonnera pas.;Soazig → Rospars : haine +10
+KER045;16:30;19:00;Corderie et voilerie;—;Ensuite, voilerie.;—
+KER045;19:00;20:00;Maison Le Hir;—;Rentre.;—
+KER045;20:00;22:00;Maison Le Hir;—;Souper. Elle dit à Jakez qu'elle écrira elle-même à l'amirauté pour les voiles.;Soazig : décision « écrire à l'amirauté »
+KER045;22:00;24:00;Maison Le Hir;—;Dort.;—
+KER046;00:00;05:30;Maison Le Hir;—;Dort.;—
+KER046;05:30;06:00;Maison Le Hir;—;Se lève.;—
+KER046;06:00;13:00;Corderie et voilerie;—;Voilerie.;—
+KER046;13:00;13:45;Comptoir Penhoët;KER018;Elle mange avec Katell. Elle dit qu'elle préfère Riwal, et qu'elle ira quand même voir Erwan sculpter.;Gaïd → Katell : confiance +5
+KER046;13:45;19:00;Corderie et voilerie;—;Voilerie.;—
+KER046;19:00;20:00;La jetée;—;Elle attend Riwal sur la jetée. Il ne vient pas.;—
+KER046;20:00;20:30;Atelier d'Erwan, derrière la maison Quéré;KER008;Elle vient voir Erwan sculpter une figure de proue. Il lui montre un visage de femme. Elle ne demande pas qui.;—
+KER046;20:30;20:45;La jetée;—;Elle repasse par la jetée.;—
+KER046;20:45;21:30;La jetée;KER010;Riwal arrive enfin. Ils s'embrassent au bout de la jetée.;Gaïd → Riwal : amour +5
+KER046;21:30;24:00;Maison Le Hir;—;Rentre. Sa mère ne dit rien. Dort.;—
+KER047;00:00;06:00;Comptoir nain du port, logis;—;Dort.;—
+KER047;06:00;07:00;Comptoir nain du port, logis;—;Se lève.;—
+KER047;07:00;10:00;Comptoir nain du port;—;Comptoir. Il écrit à Valgris : le fer va monter, garder les stocks.;Brodd : lettre pour Valgris
+KER047;10:00;10:20;Ferraille de Prigent;KER033;Il passe chez Prigent et achète un sac de cuivre sans demander d'où il vient. Il dit que le fer va monter.;—
+KER047;10:20;13:00;Comptoir nain du port;—;Comptoir.;—
+KER047;13:00;14:00;Comptoir nain du port;—;Repas.;—
+KER047;14:00;16:00;Quais;—;Quais.;—
+KER047;16:00;16:45;Forge d'ancres;KER035;Il passe à la forge. Il propose du fer de Grisemont, cher et bon. « Achetez avant la hausse. »;—
+KER047;16:45;20:00;Quais;—;Quais, puis comptoir.;—
+KER047;20:00;22:00;Le Hareng d'Or;—;Bière. Il compte sur ses doigts la hausse du fer.;—
+KER047;22:00;24:00;Comptoir nain du port, logis;—;Dort.;—
+KER048;00:00;01:00;Cellule du fort de la Pointe;—;Elle chante à voix basse un chant d'Aëlis. Le garde de nuit écoute derrière la porte.;—
+KER048;01:00;06:00;Cellule du fort de la Pointe;—;Dort mal. Rêve des arbres d'Aëlis et de lumières en mer.;—
+KER048;06:00;07:00;Cellule du fort de la Pointe;—;Elle regarde le jour par la meurtrière.;—
+KER048;07:00;07:15;Cellule du fort de la Pointe;KER049;Bastian apporte le pain. Il y a du poisson dessous. Elle le remercie dans sa langue.;Ilyren → Bastian : confiance +5
+KER048;07:15;10:00;Cellule du fort de la Pointe;—;Elle compte les traits sur le mur. Elle en ajoute un.;Ilyren : un jour de plus
+KER048;10:00;11:00;Rempart du fort de la Pointe;KER049;Une heure sur le rempart. Elle regarde l'est. Elle demande à Bastian si la lettre est partie. Il dit que non, pas encore.;Ilyren : espoir −10
+KER048;11:00;14:00;Cellule du fort de la Pointe;—;Cellule. Elle mange la moitié du pain.;—
+KER048;14:00;15:00;Cellule du fort de la Pointe;KER011,KER049;Tugdual parle de cinq lumières en ligne. Elle répond pour la première fois en un an : « Ce ne sont pas des bateaux. » Puis plus rien.;Ilyren : décision « parler, un peu »
+KER048;15:00;15:30;Cellule du fort de la Pointe;KER042,KER049;Le chirurgien l'examine. Elle se laisse faire, les yeux fermés.;—
+KER048;15:30;21:00;Cellule du fort de la Pointe;—;Elle reste assise face au mur de l'est. Elle pense que les anciens la croient morte.;—
+KER048;21:00;22:00;Cellule du fort de la Pointe;—;Elle chante, plus fort que la veille.;—
+KER048;22:00;24:00;Cellule du fort de la Pointe;—;Dort.;—
+KER049;00:00;05:30;Maison Coat;—;Dort.;—
+KER049;05:30;06:00;Maison Coat;—;Se lève, prend un maquereau grillé dans un linge.;—
+KER049;06:00;06:15;Fort de la Pointe, cour;KER050;Appel. Il dit que l'elfe a chanté, sans dire qu'il en a été content.;—
+KER049;06:15;07:00;Fort de la Pointe, cour;—;Fort.;—
+KER049;07:00;07:15;Cellule du fort de la Pointe;KER048;Il porte le pain et l'eau. Sous le pain, un morceau de maquereau grillé.;—
+KER049;07:15;10:00;Fort de la Pointe, cour;—;Garde. Il sculpte un oiseau dans un bout de bois.;—
+KER049;10:00;11:00;Rempart du fort de la Pointe;KER048;Il garde l'elfe sur le rempart. Il lui dit que Hoël n'a pas encore pris la mer. Elle se tait jusqu'à la fin de l'heure.;Bastian : souvenir « elle a demandé la lettre » (60)
+KER049;11:00;14:00;Fort de la Pointe, cour;—;Garde.;—
+KER049;14:00;15:00;Cellule du fort de la Pointe;KER011,KER048;Il garde la porte pendant l'interrogatoire. Il entend l'elfe parler. Il en a la chair de poule.;Bastian : souvenir « elle a parlé » (60)
+KER049;15:00;15:30;Cellule du fort de la Pointe;KER042,KER048;Le chirurgien dit « un mois, deux ». Il serre les dents.;Bastian : peur +15
+KER049;15:30;18:00;Fort de la Pointe, cour;—;Garde.;—
+KER049;18:00;20:00;Maison Coat;—;Rentre. Souper.;—
+KER049;20:00;20:30;Le Hareng d'Or;KER032;Il demande à Hoël quand la lettre partira. « La semaine prochaine, la barque du sud. » Il paie la chope.;—
+KER049;20:30;24:00;Maison Coat;—;Rentre. Il fredonne à sa femme l'air de l'elfe. Dort.;—
+KER050;00:00;05:30;Fort de la Pointe, logis du commandant;—;Dort.;—
+KER050;05:30;06:00;Fort de la Pointe, logis du commandant;—;Se lève.;—
+KER050;06:00;06:15;Fort de la Pointe, cour;KER049;Appel de la garde. Il demande des nouvelles de l'elfe. « Elle chantait encore cette nuit, mon commandant. »;—
+KER050;06:15;12:00;Fort de la Pointe, cour;—;Fort. Inspection des pièces du rempart.;—
+KER050;12:00;13:45;Fort de la Pointe, poste du commandant;—;Repas.;—
+KER050;13:45;14:00;Fort de la Pointe, poste du commandant;KER011;Il reçoit Frère Tugdual. « Prenez-la, mon frère, débarrassez-moi. » Tugdual répond qu'il n'a pas d'ordre de Sainte-Aube.;—
+KER050;14:00;15:30;Fort de la Pointe, cour;—;Fort.;—
+KER050;15:30;16:00;Fort de la Pointe, poste du commandant;KER042;Gwilherm dit que l'elfe dépérit. Il décide d'écrire à l'amiral pour qu'on la donne à l'Inquisition.;Le Floch : décision « écrire à l'amiral »
+KER050;16:00;18:00;Fort de la Pointe, poste du commandant;—;Il écrit à l'amiral : l'elfe dépérit, qu'on la remette à l'Inquisition.;Le Floch : lettre pour l'amiral
+KER050;18:00;20:00;Fort de la Pointe, logis du commandant;—;Souper.;—
+KER050;20:00;22:00;Fort de la Pointe, poste du commandant;—;Dames avec le sergent de garde. Il gagne deux parties.;—
+KER050;22:00;24:00;Fort de la Pointe, logis du commandant;—;Dort.;—
+KER051;00:00;03:00;Phare de la Pointe, lanterne;—;Veille. Elle tient le feu et note l'heure et le vent.;—
+KER051;03:00;03:30;Phare de la Pointe, lanterne;—;Deux lueurs pâles, très bas à l'est, vingt minutes. Elle les note sur une feuille volante, pas dans le registre, et glisse la feuille dans la lanterne de secours.;Morwenna : souvenir « elles reviennent » (80)
+KER051;03:30;06:00;Phare de la Pointe, lanterne;—;Veille.;—
+KER051;06:00;07:00;Phare de la Pointe;—;Extinction. Elle réveille Ewen et lui donne son pain.;—
+KER051;07:00;13:00;Phare de la Pointe;—;Dort.;—
+KER051;13:00;14:00;Phare de la Pointe;—;Repas.;—
+KER051;14:00;15:00;Phare de la Pointe;KER004,KER052;Elle astique la lentille avec Nolwenn et Ewen. Nolwenn montre son carnet. Morwenna : « Garde-le. Mais cache-le mieux. »;Morwenna → Nolwenn : confiance +10
+KER051;15:00;17:15;Phare de la Pointe;—;Elle remplit les réserves d'huile. Elle écoute les enfants sur la galerie.;—
+KER051;17:15;17:45;Phare de la Pointe;KER052;Soupe avec Ewen avant l'allumage.;—
+KER051;17:45;18:00;Phare de la Pointe;—;Elle monte.;—
+KER051;18:00;24:00;Phare de la Pointe, lanterne;—;Allumage. Veille. Elle couche Ewen à sept heures, puis remonte. Rien à l'est.;—
+KER052;00:00;06:00;Phare de la Pointe;—;Dort.;—
+KER052;06:00;07:00;Phare de la Pointe;—;Se lève, mange son pain.;—
+KER052;07:00;09:00;Chemin de la Pointe;—;Il descend en ville, s'arrête aux flaques.;—
+KER052;09:00;11:00;École du temple;KER016,KER037;École. Il dit que sa grand-mère « écrit les lumières », puis se tait, rouge.;Ewen : peur d'avoir trop parlé +10
+KER052;11:00;12:00;École du temple;—;École.;—
+KER052;12:00;13:00;Chemin de la Pointe;—;Remonte au phare.;—
+KER052;13:00;14:00;Grève de la Pointe;—;Crabes.;—
+KER052;14:00;15:00;Phare de la Pointe;KER051,KER004;Il astique la lentille avec sa grand-mère et Nolwenn.;—
+KER052;15:00;16:30;Phare de la Pointe, galerie;—;Galerie avec Nolwenn. Il lui dit qu'il y a une cachette, pas où.;Ewen : secret à moitié dit
+KER052;16:30;17:15;Grève de la Pointe;—;Crabes.;—
+KER052;17:15;17:45;Phare de la Pointe;KER051;Soupe avec sa grand-mère.;—
+KER052;17:45;19:00;Phare de la Pointe;—;Il compte les étoiles qui s'allument.;—
+KER052;19:00;24:00;Phare de la Pointe;—;Dort.;—
+KER053;00:00;02:00;Bouge du Goulet;—;Rhum.;—
+KER053;02:00;10:00;Chambre de Kerdraon, rue du Goulet;—;Dort.;—
+KER053;10:00;10:30;Quais;—;Quais.;—
+KER053;10:30;11:00;Comptoir de Le Duff, rue des Haubans;KER056;Il passe chez Le Duff. Le Duff lui donne trois noms d'endettés. Le premier est Alain Kerboul.;Kerdraon : cible « Alain Kerboul »
+KER053;11:00;15:00;Quais;—;Quais. Il compte les fils de pêcheurs qui débarquent.;—
+KER053;15:00;19:30;Tavernes du port;—;Tavernes. Il paie à boire à deux jeunes dockers. L'un signe.;Kerdraon : +1 recrue
+KER053;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER059,KER009,KER038,KER025,KER015,KER042;Il glisse que Glenmor aurait sa place dans une mâture. Il rit seul.;Kerdraon : cible « Glenmor »
+KER053;20:00;20:40;Le Hareng d'Or;KER010,KER025;Il paie le rhum à Pol et Riwal. Riwal refuse. Il le regarde sortir.;Kerdraon : cible « Riwal Le Bras »
+KER053;20:40;22:00;Tavernes du port;—;Tavernes.;—
+KER053;22:00;24:00;Bouge du Goulet;—;Rhum.;—
+KER054;00:00;02:30;Maison des Kerboul;—;Dort.;—
+KER054;02:30;03:00;Maison des Kerboul;—;Se lève sans bruit.;—
+KER054;03:00;04:00;En mer, sur les bancs de l'est;—;En mer. Pêche maigre.;—
+KER054;04:00;04:30;En mer, sur les bancs de l'est;KER009,KER010;Bord à bord avec les Le Bras. Il demande à Job combien le sergent de la presse donne à la signature. Job : « Deux pièces. Et ta vie. »;Alain : souvenir « deux pièces à la signature » (50)
+KER054;04:30;11:00;En mer, sur les bancs de l'est;—;Ensuite, en mer. Pêche maigre.;—
+KER054;11:00;12:00;Port des pêcheurs;—;Débarque.;—
+KER054;12:00;12:45;La criée;KER009,KER010,KER036;Il vend une pêche maigre. Maryvonne paie un denier de moins.;Alain : −1 denier
+KER054;12:45;13:30;Maison des Kerboul;KER055;Repas. Il ne parle pas de la presse. Il dit que la pêche était bonne.;—
+KER054;13:30;16:30;Grève;—;Filets.;—
+KER054;16:30;17:00;Comptoir de Le Duff, rue des Haubans;KER056;Il demande un délai. Le Duff : « Votre femme a déjà payé un mois, avec ses boucles. Le sergent Kerdraon paie bien, à ce qu'on dit. »;Alain : souvenir « les boucles de Maëla » (80)
+KER054;17:00;20:00;Grève;—;Il reste sur la grève, assis sur la barque retournée.;—
+KER054;20:00;24:00;Maison des Kerboul;—;Il rentre. Il regarde les oreilles nues de Maëla pendant le souper, et ne dit rien. Ils dorment dos à dos, puis il lui prend la main.;Alain → Maëla : tendresse +10. Alain : décision « voir Kerdraon demain »
+KER055;00:00;04:30;Maison des Kerboul;—;Dort.;—
+KER055;04:30;05:00;Maison des Kerboul;—;Se lève.;—
+KER055;05:00;12:00;Grève;—;Filets. Elle ravaude au bord de l'eau.;—
+KER055;12:00;12:45;Maison des Kerboul;—;Prépare le repas.;—
+KER055;12:45;13:30;Maison des Kerboul;KER054;Repas. Elle sait que la pêche était mauvaise, au poids des paniers. Elle ne dit rien.;—
+KER055;13:30;18:00;Grève;—;Grève.;—
+KER055;18:00;19:00;Maison des Kerboul;—;Soupe.;—
+KER055;19:00;19:50;Veillée chez Maryvonne;KER036,KER012;Elle ravaude à la veillée. Elle dit que son mari a l'air ailleurs.;—
+KER055;19:50;20:00;Veillée chez Maryvonne;—;Veillée.;—
+KER055;20:00;24:00;Maison des Kerboul;—;Son mari la regarde trop. Elle croit qu'il a bu. Elle s'endort sa main dans la sienne.;—
+KER056;00:00;06:00;Logis de Le Duff, au-dessus du comptoir;—;Dort.;—
+KER056;06:00;07:00;Logis de Le Duff, au-dessus du comptoir;—;Café.;—
+KER056;07:00;10:30;Comptoir de Le Duff, rue des Haubans;—;Comptoir. Les endettés défilent.;—
+KER056;10:30;11:00;Comptoir de Le Duff, rue des Haubans;KER053;Kerdraon passe. Il lui donne la liste : Kerboul, et deux autres. Ils parlent de la part de chacun.;—
+KER056;11:00;14:30;Comptoir de Le Duff, rue des Haubans;—;Ensuite, comptoir. Les endettés défilent.;—
+KER056;14:30;15:00;Comptoir de Le Duff, rue des Haubans;KER003;Tanguy Kerhoas vient demander du temps. Il donne une semaine, contre trois pièces de plus.;Le Duff : créance Tanguy 33 or
+KER056;15:00;16:30;Comptoir de Le Duff, rue des Haubans;—;Ensuite, comptoir. Les endettés défilent.;—
+KER056;16:30;17:00;Comptoir de Le Duff, rue des Haubans;KER054;Kerboul demande un délai. Il lui apprend que sa femme a payé. Puis il parle du sergent.;—
+KER056;17:00;19:00;Comptoir de Le Duff, rue des Haubans;—;Ensuite, comptoir. Les endettés défilent.;—
+KER056;19:00;22:00;Logis de Le Duff, au-dessus du comptoir;—;Comptes. Il calcule ce que vaut un fils d'amiral endetté.;Le Duff : idée « écrire à l'amiral »
+KER056;22:00;24:00;Logis de Le Duff, au-dessus du comptoir;—;Dort.;—
+KER057;00:00;04:30;Chambre de Tifenn, rue des Calfats;—;Dort.;—
+KER057;04:30;05:00;Chambre de Tifenn, rue des Calfats;—;Se lève.;—
+KER057;05:00;05:30;Chantiers navals;KER007,KER019,KER008,KER020,KER021,KER022,KER023;À l'appel, elle pose la main sur le bordé de la troisième coque. Il est humide sous les doigts.;Tifenn : colère froide +10
+KER057;05:30;12:00;Chantiers navals;—;Rabotage avec Erwan. Elle mesure encore l'humidité du bordé.;—
+KER057;12:00;12:45;Chantiers navals, la soupe;KER007,KER008,KER019;À la soupe, elle annonce qu'elle parlera à l'amiral s'il passe. Quéré pâlit.;—
+KER057;12:45;14:30;Chantiers navals;—;Chantiers.;—
+KER057;14:30;15:15;Chantiers navals;KER001,KER007,KER039,KER019;Elle s'avance vers l'amiral. Quéré lui serre le bras. Elle dit juste : « Le bois travaille. »;Tifenn : décision « aller seule à l'amirauté demain »
+KER057;15:15;19:00;Chantiers navals;—;Ensuite, chantiers.;—
+KER057;19:00;20:30;Le Hareng d'Or;—;Elle boit seule un cidre au Hareng.;—
+KER057;20:30;21:15;Le Hareng d'Or;KER006;Morgane s'assoit en face d'elle. Elle refuse son aide. Elle accepte un deuxième cidre.;Tifenn → Morgane : affection +10
+KER057;21:15;22:00;Le Hareng d'Or;—;Elle reste un moment seule, souriante.;—
+KER057;22:00;24:00;Chambre de Tifenn, rue des Calfats;—;Dort.;—
+KER058;00:00;01:00;Le Hareng d'Or;—;Il chante les dernières chansons au comptoir.;—
+KER058;01:00;11:00;Chambre de Glenmor, rue des Haubans;—;Dort.;—
+KER058;11:00;14:00;Chambre de Glenmor, rue des Haubans;—;Lever, il accorde sa vielle.;—
+KER058;14:00;16:00;Quais;—;Il chante pour les dockers contre des sous.;Glenmor : +3 pièces d'argent
+KER058;16:00;16:30;Banc du port;KER038,KER016;Tudal raconte le bateau perdu. Il en fait un couplet de plus, à mi-voix.;Glenmor : chanson « un sixième couplet »
+KER058;16:30;19:00;Quais;—;Quais.;—
+KER058;19:00;19:30;Le Hareng d'Or;—;Hareng. Chansons à boire.;—
+KER058;19:30;20:00;Le Hareng d'Or;KER024,KER026,KER014,KER005,KER053,KER059,KER009,KER038,KER025,KER015,KER042;Il commence « les Cinq Lumières », à mi-voix. Cadiou lui prend le bras : « Ordre de l'amirauté. » Kerdraon ajoute qu'une voix pareille crie bien dans une mâture. Il se tait.;Glenmor : peur +20. Rumeur « l'amiral fait taire la chanson » (70)
+KER058;20:00;24:00;Le Hareng d'Or;—;Il chante d'autres chansons, la voix cassée. À minuit moins le quart, il écrit le sixième couplet sur un mouchoir.;Glenmor : décision « la chanter ailleurs »
+KER059;00:00;05:30;Chambre de Paol, rue du Goulet;—;Dort.;—
+KER059;05:30;06:00;Chambre de Paol, rue du Goulet;—;Se lève.;—
+KER059;06:00;06:15;Capitainerie;KER060;Jaouen l'envoie décharger la barge de fer. Il compte en passant les coques sur cale.;—
+KER059;06:15;08:00;Quais;—;Quais.;—
+KER059;08:00;08:30;Quais;KER035;Il décharge les barres de fer. Le forgeron Bran en casse une d'un coup de masse devant lui. Paol regarde la cassure grise.;Paol : souvenir « le fer de Marchefer casse » (50)
+KER059;08:30;14:00;Quais;—;Décharge. Il compte trois coques sur cale, deux vaisseaux armés.;—
+KER059;14:00;17:00;Port;—;Port.;—
+KER059;17:00;17:30;Maison des Vents, salon;KER031;Il passe voir Lénaïg. Rien de neuf. « Ce soir, peut-être. »;—
+KER059;17:30;19:00;Port;—;Il fait le tour de la rade à pied.;—
+KER059;19:00;19:30;Le Hareng d'Or;—;Hareng.;—
+KER059;19:30;20:00;Le Hareng d'Or;KER058,KER024,KER026,KER014,KER005,KER053,KER009,KER038,KER025,KER015,KER042;Il voit l'amiral faire taire une chanson. Il retient la scène pour Saltevaux.;Paol : souvenir « la chanson interdite » (60)
+KER059;20:00;21:00;Le Hareng d'Or;—;Ensuite, hareng.;—
+KER059;21:00;24:00;Chambre de Paol, rue du Goulet;—;Il écrit en chiffres pour Saltevaux : les coques, le fer qui casse, la chanson interdite.;Paol : rapport pour Saltevaux
+KER060;00:00;04:30;Maison Jaouen;—;Dort.;—
+KER060;04:30;05:00;Maison Jaouen;—;Se lève, regarde la marée.;—
+KER060;05:00;05:30;Capitainerie;KER001;L'amiral passe. Il lui annonce que le port ne tiendra pas douze vaisseaux sans un second môle. Il ne parle pas de la Mouette-Grise.;Jaouen : souvenir « je n'ai rien dit » (30)
+KER060;05:30;06:00;Capitainerie;—;Capitainerie. Registres de mouillage.;—
+KER060;06:00;06:15;Capitainerie;KER059;Il donne les ordres aux dockers : la barge de fer de Marchefer est à décharger ce matin.;—
+KER060;06:15;09:00;Capitainerie;—;Ensuite, capitainerie. Registres de mouillage.;—
+KER060;09:00;09:30;Capitainerie;KER034;Il demande à Cosquer, sans le regarder, si la Mouette-Grise a déclaré quelque chose cette semaine. « Réglé », dit Cosquer.;—
+KER060;09:30;13:00;Capitainerie;—;Ensuite, capitainerie. Registres de mouillage.;—
+KER060;13:00;14:00;Maison Jaouen;—;Repas.;—
+KER060;14:00;18:00;Quais;—;Quais. Il mesure les fonds pour un second môle.;—
+KER060;18:00;20:00;Capitainerie;—;Il relit son registre. Il souligne la Mouette-Grise, puis efface le trait.;Jaouen : remords +5
+KER060;20:00;22:00;Maison Jaouen;—;Souper avec sa femme. Pipe.;—
+KER060;22:00;24:00;Maison Jaouen;—;Dort.;—

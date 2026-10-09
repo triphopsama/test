@@ -1,0 +1,1089 @@
+pnj;debut;fin;lieu;avec;action;consequence
+AUR001;00:00;05:30;Appartements de l'impératrice;—;Dort. Ursule veille à la porte.;—
+AUR001;05:30;06:00;Appartements de l'impératrice;AUR095;Réveillée avant la cloche. Gabrielle ouvre les rideaux. Électra demande le parchemin de Saltevaux pour huit heures, pas plus tard.;—
+AUR001;06:00;07:00;Bains de l'impératrice;AUR024,AUR095;Le bain. Elle ne parle qu'à Odette, pour l'huile, et à Gabrielle, pour la robe. Les deux esclaves des bains sont des mains, elle ne les voit pas.;humeur : calme, tranchante
+AUR001;07:00;08:00;Parc impérial;AUR085;Chevauchée au parc, au galop sous les tilleuls. Hector suit à distance. Elle pense aux lances, pas au mariage.;—
+AUR001;08:00;09:00;Cabinet de l'impératrice;AUR004,AUR017;Relit le contrat de mariage d'Aymon et d'Helena Castelmar, rature une clause sur la dot, et signe. Dorlan scelle.;décision : contrat signé, courrier à 10 h
+AUR001;09:00;10:00;Cabinet de l'impératrice;—;Seule au cabinet. Lettres de Kerval et d'Orvieu. Relit l'ordre de silence à l'amiral, n'y change rien.;—
+AUR001;10:00;10:30;Cabinet de l'impératrice;AUR076;Oriane fait son rapport. L'envoyé Duplessis a écrit à Saltevaux qu'il manque à l'Empire deux fois plus de lances que commandé. Électra : « Qu'ils comptent. Ils compteront mal. » Elle demande d'où il le tient.;décision : savoir qui a parlé
+AUR001;10:30;12:00;Salle du Conseil;AUR004,AUR005,AUR006,AUR007,AUR008,AUR045;Conseil avancé pour laisser midi à l'ambassadeur. Elle annonce le contrat parti. Varlac veut les lances, elle les lui promet. Malherbe parle de guerre sainte, elle le fait taire d'un mot. Dorlan demande d'adoucir la prime, elle refuse.;—
+AUR001;12:00;13:00;Salle du trône;AUR004,AUR005,AUR016,AUR017,AUR040,AUR045;Reçoit Durn Ferrecloche, ambassadeur de Baldrec. Commande dix mille fers de lance, un tiers d'or d'avance. « À cette heure, votre roi l'entend de la bouche de Lancerre. » Sa lettre à Lancerre est partie il y a six jours. Elle signe.;commande signée : dix mille fers de lance
+AUR001;13:00;14:00;Grande salle du palais;AUR003,AUR012,AUR013,AUR014,AUR036,AUR037,AUR040;Repas de cour. Elle annonce à table que le contrat est parti pour Saltevaux à dix heures, et lève son verre au « fiancé ». Aymon sourit. Elle le trouve faible de sourire.;mépris pour Aymon +5
+AUR001;14:00;15:00;Salle du trône;AUR037,AUR040,AUR041,AUR042;Audience des plaintes. Jehan Lévêque contre le comte de Morvay. Coquelin lit la sentence, déjà écrite. Elle la confirme, et fait garder la quittance « pour examen ». Implacable.;—
+AUR001;15:00;16:00;Salle du trône;AUR040,AUR041,AUR043;Marthe Cauvin demande le corps de son fils, pendu à Haute-Lance. « Les déserteurs restent où on les pend. » Elle lui interdit de revenir à l'audience.;—
+AUR001;16:00;17:00;Salle du trône;AUR013,AUR040,AUR041,AUR044;Guillaume Fabert contre Bastien de Lorge, son esclave de chambre. Elle donne raison au drapier, en entier : Lorge paiera quatre ans de draps sous dix jours, ou quittera la cour. Elle le dit en le regardant.;Bastien humilié en public
+AUR001;17:00;17:30;Chambre de l'empereur;AUR002,AUR011,AUR020;Visite à Lothaire. Il tousse moins. Grellier en prend le mérite. « Continuez. » Elle ne s'assoit pas.;—
+AUR001;17:30;18:00;Appartements de l'impératrice;AUR095;Change de robe pour le souper. Ne parle pas.;—
+AUR001;18:00;19:00;Grande salle du palais;AUR003,AUR077;Souper. Elle place Duplessis à côté d'Aymon et leur parle de Saltevaux, de la belle-famille, de la trêve. Elle s'amuse des deux.;—
+AUR001;19:00;20:00;Grande salle du palais;—;Écoute la luthiste jouer. Remarque que le prince ne la regarde pas, avec trop de soin.;souvenir « Aymon ne regarde pas la luthiste » (35)
+AUR001;20:00;21:00;Bains de l'impératrice;AUR024;Bain du soir. Elle demande à Odette une huile plus forte. Rien d'autre.;—
+AUR001;21:00;21:30;Appartements de l'impératrice;AUR012,AUR095;Ysoline apporte le carnet des visites du soir. Électra écrit un seul nom : Lorge. Gabrielle prépare la chambre.;décision : Bastien ce soir
+AUR001;21:30;22:30;Appartements de l'impératrice;AUR013;Appartements privés, sous le pacte. Elle reprend en mots, lentement, l'audience de l'après-midi. Elle tient le jeu, la voix, les limites.;—
+AUR001;22:30;22:45;Appartements de l'impératrice;AUR013;Il dit « Brume ». Elle arrête tout, sur-le-champ, défait ce qui doit l'être, et lui montre la porte d'un regard plein de mépris. Elle obéit au mot, comme toujours.;mépris pour Bastien +20, pacte respecté
+AUR001;22:45;23:30;Appartements de l'impératrice;AUR095;Gabrielle apporte du vin. Électra sort de son coffre le rapport des lanternes de Kerval et le relit à la chandelle. Elle le range sous clé.;conviction : les démons reviennent (secret)
+AUR001;23:30;24:00;Appartements de l'impératrice;—;Dort.;—
+AUR002;00:00;07:00;Chambre de l'empereur;—;Dort. Tousse vers trois heures, moins longtemps que d'habitude.;—
+AUR002;07:00;07:30;Chambre de l'empereur;AUR011,AUR020;Grellier lui donne l'eau d'argent. Il en avale une gorgée devant lui.;—
+AUR002;07:30;08:00;Chambre de l'empereur;—;Seul un instant. Vide le reste du verre dans le pot de géranium.;—
+AUR002;08:00;09:00;Chambre de l'empereur;AUR097;Leçon de géographie. Hippolyte déplie la vieille carte avec l'île à l'ouest. Il demande combien de jours jusqu'à la mer.;—
+AUR002;09:00;10:00;Chambre de l'empereur;AUR021,AUR097;Leçon d'histoire. Colin écoute au fond. Lothaire lui fait des signes quand Hippolyte se retourne.;—
+AUR002;10:00;10:30;Chambre de l'empereur;AUR003,AUR021,AUR097;Le cousin Aymon passe. Lothaire lui demande s'il est vrai qu'il va se marier. Aymon rit et dit « On verra ».;admiration pour Aymon +5
+AUR002;10:30;11:00;Chambre de l'empereur;AUR021,AUR097;Fin de leçon. Tousse deux fois seulement.;—
+AUR002;11:00;12:00;Chambre de l'empereur;AUR020;Repos. Par la fenêtre fermée, on entend un crieur dans la ville haute : la prime doublée sur les hommes-bêtes. Il demande à Berthe ce que c'est.;souvenir « la prime doublée » (40)
+AUR002;12:00;13:00;Chambre de l'empereur;—;Somnole. Rêve de la mer.;—
+AUR002;13:00;14:00;Chambre de l'empereur;AUR020;Repas au lit. Mange un peu plus que d'habitude.;—
+AUR002;14:00;16:00;Chambre de l'empereur;AUR020,AUR021;Jeux et oiseaux avec Colin. Il lui demande pourquoi on paie double pour un homme-bête. Colin ne sait pas. Ils nourrissent les mésanges.;—
+AUR002;16:00;17:00;Chambre de l'empereur;—;Repos. Compte ses toux de la journée : six.;espoir +10
+AUR002;17:00;17:30;Chambre de l'empereur;AUR001,AUR011,AUR020;Sa mère vient une demi-heure. Il dit qu'il tousse moins. Il ne dit pas pourquoi. Le géranium est sur l'appui.;—
+AUR002;17:30;19:00;Chambre de l'empereur;AUR020;Après la visite de sa mère, lit son livre de cartes.;—
+AUR002;19:00;20:30;Chambre de l'empereur;AUR020;Souper et coucher. Il demande à Berthe si on verra la mer un jour.;—
+AUR002;20:30;24:00;Chambre de l'empereur;—;Dort.;—
+AUR003;00:00;03:30;Tonnelle des jardins du palais;AUR018;Sous la tonnelle avec Ninon. Ils parlent de Saltevaux à voix basse, elle joue pour lui très doucement, ils restent ensemble jusqu'à la fin de la nuit.;amour +5
+AUR003;03:30;04:00;Appartements du prince Aymon;AUR019;Rentre par l'escalier de service. Firmin l'attendait.;—
+AUR003;04:00;09:00;Appartements du prince Aymon;—;Dort.;—
+AUR003;09:00;10:00;Appartements du prince Aymon;AUR019;Lever. Firmin lui dit que le courrier part à dix heures avec le contrat scellé.;humeur : sombre
+AUR003;10:00;10:30;Chambre de l'empereur;AUR002,AUR021,AUR097;Visite à Lothaire. L'enfant demande s'il va se marier. Il répond « On verra », et lui laisse un oiseau en bois.;—
+AUR003;10:30;11:00;Appartements du prince Aymon;—;À la fenêtre. Voit partir le courrier par la porte de l'ouest.;souvenir « le courrier part » (60)
+AUR003;11:00;13:00;Salle d'armes du palais;AUR013,AUR078;Escrime. Tristan provoque son frère Bastien sur « la chambre de la reine ». Aymon s'interpose et propose un assaut à Tristan. Il perd, proprement.;—
+AUR003;13:00;14:00;Grande salle du palais;AUR001,AUR012,AUR013,AUR014,AUR036,AUR037,AUR040;Entend l'impératrice lever son verre à son mariage devant toute la cour. Il sourit, il boit. Il pense à Ninon.;humiliation, souvenir « le verre levé » (70)
+AUR003;14:00;14:30;Appartements du prince Aymon;AUR019;Donne à Firmin une bourse sans nom, « pour le libraire ». Il ne dit pas pour qui.;argent −5 or
+AUR003;14:30;15:00;Appartements du prince Aymon;—;Seul. Pense à Saltevaux, et à une femme qu'il n'a jamais vue.;—
+AUR003;15:00;17:00;Tour du Levant;—;Musique dans la tour du Levant. Compose un air qu'il n'osera jamais jouer à la cour.;—
+AUR003;17:00;18:00;Appartements du prince Aymon;AUR019;Habillage du soir. Il demande à Firmin si Ninon va bien. Firmin dit « Elle a mauvaise mine le matin. »;inquiétude +5
+AUR003;18:00;19:00;Grande salle du palais;AUR001,AUR077;Placé près de l'envoyé de la République. Répond poliment sur Saltevaux, qu'il n'a jamais vu.;—
+AUR003;19:00;20:00;Grande salle du palais;—;Ninon joue. Il ne la regarde pas. Il compte les heures jusqu'aux jardins.;—
+AUR003;20:00;22:00;Appartements du prince Aymon;—;Écrit une lettre à Helena Castelmar, la déchire.;—
+AUR003;22:00;24:00;Tonnelle des jardins du palais;AUR018;Retrouve Ninon sous la tonnelle. Il lui raconte le verre levé. Elle lui prend la main et dit : « Demain, je te dirai quelque chose. »;—
+AUR004;00:00;07:00;Chambre du chancelier;—;Dort mal.;—
+AUR004;07:00;08:00;Grand temple des Sept Astres;—;Messe. Prie pour Lothaire.;—
+AUR004;08:00;09:00;Cabinet de l'impératrice;AUR001,AUR017;Appose le sceau de la chancellerie. Dit que la trêve de Fort-Corbeau vaut mieux qu'une guerre. Électra répond qu'une trêve se rompt.;inquiétude +10
+AUR004;09:00;10:30;Chancellerie;AUR094;Chancellerie. Fait enregistrer le départ du contrat.;—
+AUR004;10:30;12:00;Salle du Conseil;AUR001,AUR005,AUR006,AUR007,AUR008,AUR045;Demande qu'on attende la réponse de Saltevaux avant de crier la prime dans l'ouest. Refusé. Il n'insiste pas.;Électra : méfiance +5
+AUR004;12:00;13:00;Salle du trône;AUR001,AUR005,AUR016,AUR017,AUR040,AUR045;Assiste, contresigne pour la chancellerie. Compte ce que coûtera le tiers d'avance.;—
+AUR004;13:00;14:00;Chancellerie;—;Repas frugal à son bureau.;—
+AUR004;14:00;14:30;Chancellerie;—;Signe les copies de la commande.;—
+AUR004;14:30;15:30;Chancellerie;AUR077;Reçoit Duplessis « pour les relais de poste ». Lui dit que le contrat est parti et que les lances sont commandées. Ils parlent de la paix.;—
+AUR004;15:30;18:00;Chancellerie;—;Chancellerie. Écrit une lettre chiffrée pour Duplessis, sur la paix.;—
+AUR004;18:00;19:00;Chambre du chancelier;—;Rentre chez lui.;—
+AUR004;19:00;23:00;Chambre du chancelier;—;Souper seul. Ouvre le coffre et relit la confession du piqueur : la sangle coupée. Referme.;peur +10
+AUR004;23:00;24:00;Chambre du chancelier;—;Dort.;—
+AUR005;00:00;05:00;Logis du maréchal;—;Dort. Rêve de Haute-Lance.;—
+AUR005;05:00;06:00;Cour d'exercice de la garnison;AUR045;Exercice à l'épée avec Desforges.;—
+AUR005;06:00;10:30;État-major du maréchal;AUR045;État-major. Revoit les chiffres des lances avec Desforges. Haute-Lance, Fort-Corbeau.;—
+AUR005;10:30;12:00;Salle du Conseil;AUR001,AUR004,AUR006,AUR007,AUR008,AUR045;Présente les chiffres de Desforges : dix mille fers, et mille porteurs à lever. L'impératrice le soutient devant tous. Il ne la regarde pas trop longtemps.;humeur : fier
+AUR005;12:00;13:00;Salle du trône;AUR001,AUR004,AUR016,AUR017,AUR040,AUR045;Écoute le nain marchander. Pense aux lances de Fort-Corbeau.;espoir : réarmer +10
+AUR005;13:00;14:00;État-major du maréchal;AUR045;Repas avec ses officiers. Parle de Fort-Corbeau.;—
+AUR005;14:00;16:00;Remparts de la ville haute;—;Inspection des remparts de la ville haute.;—
+AUR005;16:00;16:15;Parvis du grand temple;AUR048;Inspection. Passe par le parvis. Un mendiant le hèle : « Maréchal, la pension de la Corbière ! Haute-Lance ! » Il jette une pièce et ne se retourne pas.;souvenir « Haute-Lance » (60), cauchemar à venir
+AUR005;16:15;18:00;Caserne de la ville haute;—;Inspection des casernes. Ne pense qu'à la pièce jetée.;—
+AUR005;18:00;20:00;Logis du maréchal;—;Rentre. Ôte ses bottes seul.;—
+AUR005;20:00;22:00;Logis du maréchal;—;Souper. Pense à l'impératrice levant son verre, et n'en dit rien à personne.;—
+AUR005;22:00;24:00;Logis du maréchal;—;Prière, puis dort mal.;—
+AUR006;00:00;06:00;Chambre du chambellan;—;Dort.;—
+AUR006;06:00;06:30;Cuisines du palais;AUR023;Tour des cuisines et des réserves avec Brisemiche. Compte les sacs, prend sa part sur la farine.;—
+AUR006;06:30;07:00;Cour du puits des cuisines;AUR027;Voit le vieil ours plié en deux près du puits. Note dans sa tête : « bientôt de fièvre ».;décision : proposer Bru à Gâche
+AUR006;07:00;10:30;Bureau du chambellan;—;Comptes du palais. Note la farine, les huiles, les têtes.;—
+AUR006;10:30;12:00;Salle du Conseil;AUR001,AUR004,AUR005,AUR007,AUR008,AUR045;Annonce que les crieurs sont partis à l'aube, que l'édit est lu aux portes. Parle des comptes du palais, rien de la poterne.;—
+AUR006;12:00;13:00;Bureau du chambellan;—;Comptes.;—
+AUR006;13:00;14:00;Bureau du chambellan;—;Repas à son bureau.;—
+AUR006;14:00;14:45;Bureau du chambellan;AUR054;Gâche passe. Faucq lui propose « un vieil ours, après le solstice ». Gâche demande aussi pour la renarde des bains. Faucq refuse : l'impératrice voit les bains.;accord : Bru après le solstice
+AUR006;14:45;17:00;Étages du palais;—;Tournée des étages. Passe deux fois près de la poterne sans s'arrêter.;—
+AUR006;17:00;17:30;Bureau du chambellan;AUR009,AUR031;Rapport du soir. Corne dit que « la rousse des bains » traîne près du corps de garde de la poterne. Faucq pâlit et ne dit rien de la clé.;peur +20, hésite à changer la serrure
+AUR006;17:30;21:00;Chambre du chambellan;—;Seul. Pense à la serrure. La changer, c'est avouer.;—
+AUR006;21:00;22:00;La Cour des Myrtes;AUR054,AUR064;À la Cour des Myrtes avec Gâche. Boit, parle trop de « l'ours qui mourra de fièvre ».;—
+AUR006;22:00;24:00;Chambre du chambellan;—;Rentre. Dort.;—
+AUR007;00:00;05:00;Logis de l'archiprêtre;—;Dort.;—
+AUR007;05:00;06:00;Grand temple des Sept Astres;AUR049,AUR050,AUR051;Office de l'aube.;—
+AUR007;06:00;07:00;Grand temple des Sept Astres;—;Bréviaire.;—
+AUR007;07:00;10:30;Grand temple des Sept Astres;—;Audiences du temple.;—
+AUR007;10:30;12:00;Salle du Conseil;AUR001,AUR004,AUR005,AUR006,AUR008,AUR045;Bénit le Conseil, approuve tout. Évite le regard du légat.;peur de Malherbe +5
+AUR007;12:00;14:00;Logis de l'archiprêtre;—;Repas copieux. Confitures.;—
+AUR007;14:00;16:00;Logis de l'archiprêtre;—;Sieste.;—
+AUR007;16:00;18:00;Observatoire du temple;—;Observatoire. Regarde la lune décroître, n'y croit pas plus qu'hier.;—
+AUR007;18:00;19:00;Grand temple des Sept Astres;AUR038,AUR039,AUR043,AUR049,AUR050,AUR051;Grand office. Chante juste, sans y croire.;—
+AUR007;19:00;21:00;Logis de l'archiprêtre;—;Souper.;—
+AUR007;21:00;24:00;Logis de l'archiprêtre;—;Dort.;—
+AUR008;00:00;04:00;Tour Noire;—;Dort sur une planche.;—
+AUR008;04:00;06:00;Tour Noire;—;Prière.;—
+AUR008;06:00;07:00;Tour Noire;—;Jeûne.;—
+AUR008;07:00;08:00;Greffe de la Tour Noire;AUR052,AUR053;Mélisende demande à fouiller les charrettes du palais. Il l'autorise.;—
+AUR008;08:00;10:30;Greffe de la Tour Noire;—;Tribunal. Deux affaires de sorcellerie de quartier.;—
+AUR008;10:30;12:00;Salle du Conseil;AUR001,AUR004,AUR005,AUR006,AUR007,AUR045;Parle de la guerre sainte contre la République. L'impératrice le coupe : « Pas maintenant. » Il pense aux lanternes et se tait.;frustration +10
+AUR008;12:00;14:00;Tour Noire;—;Jeûne et lecture.;—
+AUR008;14:00;16:00;Salle d'interrogatoire de la Tour Noire;AUR053,AUR080,AUR081;Interroge Fulcran sur la pierre. Fulcran lâche : « Je ne suis pas le seul à Aurelle à en avoir une. » Il refuse le nom.;soupçon sur Grellier +15
+AUR008;16:00;18:00;Tour Noire;—;Écrit au Grand Inquisiteur de Sainte-Aube, sans parler des lanternes.;—
+AUR008;18:00;21:00;Tour Noire;—;Office, puis relit la lettre anonyme sur les mœurs de la chambre impériale.;—
+AUR008;21:00;22:00;Tour Noire;—;Discipline et prière.;—
+AUR008;22:00;24:00;Tour Noire;—;Dort.;—
+AUR009;00:00;06:00;Maison du capitaine;—;Dort.;—
+AUR009;06:00;07:00;Corps de garde du palais;—;Relève de la garde.;—
+AUR009;07:00;10:00;Cours du palais;—;Ronde des cours et des portes.;—
+AUR009;10:00;10:30;Cour du puits des cuisines;AUR086;Barbe vient régler leur part. La prime est doublée : quatre pièces d'or par fugitif vivant, et sa part double aussi. Ils rient.;argent espéré +
+AUR009;10:30;12:00;Cours du palais;—;Fin de ronde.;—
+AUR009;12:00;13:00;Corps de garde du palais;—;Repas au corps de garde.;—
+AUR009;13:00;17:00;Corps de garde du palais;—;Rapports, registre des esclaves signé sans le lire.;—
+AUR009;17:00;17:30;Bureau du chambellan;AUR006,AUR031;Rapport. Corne parle de la rousse. Sauveterre rit : « Elle a un galant chez les gardes. »;—
+AUR009;17:30;18:00;Corps de garde du palais;—;Rit encore de la « rousse amoureuse ».;—
+AUR009;18:00;19:00;Corps de garde du palais;—;Relève.;—
+AUR009;19:00;20:00;Maison du capitaine;—;Souper avec sa femme et sa fille.;—
+AUR009;20:00;21:00;Corps de garde du palais;AUR015,AUR047;Dés au corps de garde. Évrard demande, en passant, qui fait la ronde de la poterne. Sauveterre rit : « Achard, s'il est réveillé. »;—
+AUR009;21:00;23:00;Corps de garde du palais;—;Dés avec les gardes.;—
+AUR009;23:00;23:30;Corps de garde de la poterne de la Lune;AUR035;Dernière ronde. Achard est éveillé, pour une fois. Rien à signaler.;—
+AUR009;23:30;24:00;Maison du capitaine;—;Dort.;—
+AUR010;00:00;04:00;Dortoir des esclaves;—;Dort mal. Rêve de la poterne qui s'ouvre sur un bois.;—
+AUR010;04:00;04:30;Dortoir des esclaves;AUR031,AUR025,AUR026,AUR027,AUR028,AUR029,AUR089;Corne frappe les montants. Il s'arrête devant elle. La clé est dans l'ourlet sous ses genoux. Elle se lève sans le regarder.;peur +15
+AUR010;04:30;05:00;Bains de l'impératrice;AUR024,AUR026;Allume les braseros sous les cuves, frotte le marbre, sort les huiles. Odette compte les flacons sans la regarder.;—
+AUR010;05:00;06:00;Bains de l'impératrice;AUR024,AUR026,AUR027;Remplit les cuves avec Bru, règle l'eau au coude, jette les pétales de tilleul. Bru grimace en posant un seau, elle fait comme si elle n'avait rien vu.;souvenir « Bru a mal » (40)
+AUR010;06:00;07:00;Bains de l'impératrice;AUR024,AUR026,AUR095;Verse l'eau sur les épaules de l'impératrice, les yeux baissés. Elle ne connaît pas son nom. Lilie pense à la poterne.;—
+AUR010;07:00;08:00;Cuisines du palais;—;Porte l'eau aux cuisines.;—
+AUR010;08:00;09:00;Cuisines du palais;AUR029,AUR032,AUR033,AUR096;Épluche avec Pierrot et Fenouil. Jeannette raconte que la reine a signé le mariage du prince. Fabien glisse un gâteau à Fenouil.;—
+AUR010;09:00;10:00;Cuisines du palais;—;Vaisselle du matin.;—
+AUR010;10:00;10:30;Cour du puits des cuisines;AUR025;Tire l'eau au puits. Derrière elle, le capitaine et la chasseuse parlent de la prime doublée, quatre pièces d'or pour un fugitif vivant. Elle ne se retourne pas. Tarn pose la main sur la corde, à côté de la sienne.;souvenir « quatre pièces d'or, vivante » (85), peur +20
+AUR010;10:30;13:00;Cuisines du palais;—;Légumes et vaisselle. Ne parle à personne. Pense : quatre pièces d'or.;—
+AUR010;13:00;14:00;Arrière-cour des cuisines;AUR025,AUR026,AUR027,AUR028,AUR029,AUR032,AUR089;Les restes. Pierrot partage son pain. Vieux Tilleul parle du bois de Cendrebois. Elle demande, l'air de rien, si la route de l'ouest est longue.;—
+AUR010;14:00;16:00;Lavoir du palais;AUR026,AUR028,AUR029;Lessive des linges de bains. Plume lui demande à l'oreille : « Tu vas partir ? » Lilie lui dit de se taire et lui serre la main.;souvenir « Plume sait » (70)
+AUR010;16:00;18:00;Lavoir du palais;—;Étend le linge. Regarde le ciel : la lune est un fil, de plus en plus mince.;—
+AUR010;18:00;19:00;Cuisines du palais;—;Prépare les plats du souper.;—
+AUR010;19:00;20:00;Grande salle du palais;—;Porte les plats. Un courtisan dit en riant que les renards vont valoir cher. Elle pose le plat sans bruit.;peur +10
+AUR010;20:00;21:00;Bains de l'impératrice;AUR024,AUR026;Bain du soir. Chauffe les linges, sort à reculons. Neuf, pense-t-elle, sans compter encore.;—
+AUR010;21:00;21:45;Cuisines du palais;—;Vaisselle du souper.;—
+AUR010;21:45;22:15;Dortoir des esclaves;AUR031,AUR025,AUR026,AUR027,AUR028,AUR029,AUR089;Corne compte les têtes et fouille la paillasse de Tarn, pas la sienne. Elle ne respire plus jusqu'à ce que la clé tourne.;peur +20
+AUR010;22:15;22:45;Dortoir des esclaves;—;Dans le noir, elle compte sur ses doigts jusqu'à la nouvelle lune : neuf jours. Elle touche l'ourlet de la paillasse, la clé est là.;décision : la nuit du jour 10, souvenir « neuf jours » (90)
+AUR010;22:45;24:00;Dortoir des esclaves;—;Dort.;—
+AUR011;00:00;06:00;Chambre du médecin;—;Dort.;—
+AUR011;06:00;07:00;Laboratoire de Grellier;—;Prépare l'eau d'argent.;—
+AUR011;07:00;07:30;Chambre de l'empereur;AUR002,AUR020;Donne le remède, note le pouls, la toux. La toux est plus rare. Il l'écrit.;—
+AUR011;07:30;12:00;Laboratoire de Grellier;—;Laboratoire. Pèse le fragment de pierre d'affinité, le range.;—
+AUR011;12:00;14:00;Laboratoire de Grellier;—;Repas et lecture d'un livre de Lorvane.;—
+AUR011;14:00;16:00;Galerie des consultations;—;Consultations de cour : goutte, migraines.;—
+AUR011;16:00;17:00;Laboratoire de Grellier;—;Laboratoire.;—
+AUR011;17:00;17:30;Chambre de l'empereur;AUR001,AUR002,AUR020;Dit que l'eau d'argent agit enfin. Il ne comprend pas pourquoi, et ses notes disent le contraire.;doute +10
+AUR011;17:30;24:00;Laboratoire de Grellier;—;Compare ses notes. L'enfant va mieux, et rien ne l'explique. Il ne dort pas avant minuit.;doute +10
+AUR012;00:00;07:00;Chambre d'Ysoline;—;Dort.;—
+AUR012;07:00;08:00;Chambre d'Ysoline;—;Toilette.;—
+AUR012;08:00;12:15;Antichambre de l'impératrice;—;Antichambre. Reçoit les placets, renvoie les fâcheux.;—
+AUR012;12:15;13:00;Antichambre de l'impératrice;AUR062;Ambrevin passe avec ses flacons. Elle lui vend un mot : l'impératrice a ri en signant le contrat. Pas de nom.;argent +1 or
+AUR012;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR013,AUR014,AUR036,AUR037,AUR040;À la droite de l'impératrice. Regarde Margaux rire trop fort.;jalousie +5
+AUR012;14:00;17:00;Antichambre de l'impératrice;—;Antichambre.;—
+AUR012;17:00;18:00;Chambre d'Ysoline;—;Change de robe.;—
+AUR012;18:00;20:00;Grande salle du palais;AUR040;Parle cérémonial avec Charlier, regarde la table de l'impératrice.;—
+AUR012;21:00;21:30;Appartements de l'impératrice;AUR001,AUR095;Ouvre le carnet. L'impératrice choisit Bastien, le jour même où elle l'a humilié. Ysoline l'écrit.;—
+AUR012;21:30;22:45;Antichambre de l'impératrice;AUR095;Attend dans l'antichambre, le carnet sur les genoux. Gabrielle et elle ne se parlent pas.;—
+AUR012;22:45;23:00;Antichambre de l'impératrice;—;Voit Lorge sortir trop tôt. Écrit l'heure dans le carnet.;souvenir « Lorge sorti à 22 h 45 » (50)
+AUR012;23:00;24:00;Chambre d'Ysoline;—;Rentre chez elle. Dort.;—
+AUR013;00:00;10:00;Chambre de Bastien;—;Dort.;—
+AUR013;10:00;11:00;Chambre de Bastien;—;Lever. Relit la convocation de l'audience.;—
+AUR013;11:00;13:00;Salle d'armes du palais;AUR003,AUR078;Salle d'armes. Son frère Tristan le traite de chien de chambre devant tous. Le prince s'interpose.;haine de Tristan +10
+AUR013;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR012,AUR014,AUR036,AUR037,AUR040;Rit avec les autres. Pense à la convocation de l'après-midi : le drapier Fabert le poursuit devant l'audience.;inquiétude +10
+AUR013;14:00;16:00;Chambre de Bastien;—;Attend l'audience, compte ce qu'il n'a pas.;—
+AUR013;16:00;17:00;Salle du trône;AUR001,AUR040,AUR041,AUR044;Jugé devant toute la cour par celle qui le tient sous le pacte. Dix jours pour payer, ou quitter la cour. Il s'incline.;humiliation +50, dette à trouver
+AUR013;17:00;17:45;Comptoir de Grimaud, rue Basse;AUR063;Demande à Grimaud de quoi payer Fabert. Grimaud prête, à condition d'un service « plus tard ».;dette : 40 or + promesse d'un service
+AUR013;17:45;18:00;Chambre de Bastien;—;Change de pourpoint.;—
+AUR013;18:00;20:00;Grande salle du palais;AUR014,AUR036,AUR037;Fait bonne figure. Margaux lui demande, très haut, combien coûtent quatre ans de draps.;humiliation +10
+AUR013;20:00;21:30;Chambre de Bastien;—;Un page lui porte l'appel de l'impératrice. Il hésite, puis y va.;—
+AUR013;21:30;22:30;Appartements de l'impératrice;AUR001;Entre sous le pacte. Elle reprend l'humiliation de l'audience, à voix basse. Le jeu qu'il aimait lui pèse ce soir.;—
+AUR013;22:30;22:45;Appartements de l'impératrice;AUR001;Il dit « Brume », pour la première fois en un an. Tout s'arrête aussitôt. Elle lui montre la porte.;honte +30, souvenir « Brume » (90)
+AUR013;22:45;23:00;Porte des appartements de l'impératrice;AUR098;Sort par la porte de la garde. Ursule le regarde passer. Il dit : « Rien vu. » Elle répond : « Rien vu. »;—
+AUR013;23:00;24:00;Chambre de Bastien;—;Ne dort pas. Ne sait pas s'il a perdu sa place ou s'il s'est trouvé.;—
+AUR014;00:00;10:00;Chambre de Margaux;—;Dort.;—
+AUR014;10:00;11:00;Chambre de Margaux;—;Lever.;—
+AUR014;11:00;13:00;Chambre de Margaux;—;Écrit à Diane de Sarrance : le contrat part ce matin.;—
+AUR014;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR012,AUR013,AUR036,AUR037,AUR040;Observe l'impératrice et retient chaque mot pour sa lettre à Diane de Sarrance.;—
+AUR014;14:00;15:00;Hôtel de Sarrance;AUR036;Arrive au salon. Raconte le meunier débouté.;—
+AUR014;15:00;17:00;Hôtel de Sarrance;AUR036,AUR037;Salon de Sarrance. Parle de l'audience de Lorge.;—
+AUR014;17:00;18:00;Chambre de Margaux;—;Toilette du soir.;—
+AUR014;18:00;20:00;Grande salle du palais;AUR013,AUR036,AUR037;Pique Bastien sur ses draps. Aliette l'invite aux cartes ce soir.;—
+AUR014;20:00;21:30;Chambre de Margaux;—;Attend un appel qui ne vient pas. Apprend par un page que c'est Lorge.;jalousie +10
+AUR014;21:30;23:00;Hôtel de Sarrance;AUR036;Cartes chez Aliette. Raconte l'humeur de l'impératrice, la signature, l'audience. Elle n'a pas été appelée ce soir, et elle le dit en riant.;—
+AUR014;23:00;24:00;Chambre de Margaux;—;Ajoute un post-scriptum à sa lettre pour Diane. Dort.;—
+AUR015;00:00;06:00;Quartier des chevaliers;—;Dort.;—
+AUR015;06:00;07:00;Corps de garde du palais;—;Relève.;—
+AUR015;07:00;13:00;Porte des appartements de l'impératrice;—;Garde des appartements de l'impératrice. Elle passe deux fois sans le regarder.;—
+AUR015;13:00;14:00;Corps de garde du palais;AUR047;Repas au corps de garde avec Thierry.;—
+AUR015;14:00;15:00;Lices du palais;—;Joutes.;—
+AUR015;15:00;17:00;Lices du palais;AUR047;Exercice. Thierry lui raconte le chat à queue rousse vu près de la poterne, il y a onze nuits. Évrard se tait : c'est la nuit où il a vu la poterne entrouverte.;doute sur la poterne (50)
+AUR015;17:00;19:00;Quartier des chevaliers;—;Sculpte un cheval de bois.;—
+AUR015;19:00;20:00;Corps de garde du palais;—;Corps de garde.;—
+AUR015;20:00;21:00;Corps de garde du palais;AUR009,AUR047;Dés. Demande qui fait la ronde de la poterne. Ne dit pas pourquoi.;décision : voir la poterne de nuit au jour 2
+AUR015;21:00;21:30;Porte des appartements de l'impératrice;AUR098;Vient à la porte des appartements, au cas où. Ursule lui dit que c'est Lorge, ce soir.;jalousie +20
+AUR015;21:30;24:00;Quartier des chevaliers;—;Ne dort pas. Pense à la poterne entrouverte, et à Lorge.;—
+AUR016;00:00;07:00;Ambassade de Grisemont;—;Dort.;—
+AUR016;07:00;08:00;Ambassade de Grisemont;—;Prière aux ancêtres.;—
+AUR016;08:00;11:30;Ambassade de Grisemont;—;Comptes. Prépare le tarif des fers.;—
+AUR016;11:30;12:00;Cours du palais;—;Monte au palais en habit d'apparat.;—
+AUR016;12:00;13:00;Salle du trône;AUR001,AUR004,AUR005,AUR017,AUR040,AUR045;Présenté par Charlier. Accepte la commande, exige un tiers d'or d'avance, l'obtient. Ne dit rien des chaînes que Saltevaux voulait commander, dont Haut-Grisemont lui a écrit. Partira au jour 2.;argent : promesse d'avance, fierté +20
+AUR016;13:00;14:30;Ambassade de Grisemont;—;Repas. Écrit le tiers d'avance au registre.;—
+AUR016;14:30;15:30;Forge du palais;AUR058,AUR059;Visite la forge du palais. Demande à Hamon combien de fers il ferait en un an. Hamon répond honnêtement, cette fois : cinq cents.;certitude : l'Empire dépend de Grisemont
+AUR016;15:30;19:00;Ambassade de Grisemont;—;Écrit à Baldrec. Prépare le départ du jour 2, par Valgris.;—
+AUR016;19:00;21:00;Ambassade de Grisemont;—;Souper à l'ambassade.;—
+AUR016;21:00;23:00;Ambassade de Grisemont;AUR058;Bière noire avec Hamon. Chante un conte des ancêtres. Ne parle pas de Saltevaux.;—
+AUR016;23:00;24:00;Ambassade de Grisemont;—;Dort.;—
+AUR017;00:00;06:00;Chambre d'Octave;—;Dort.;—
+AUR017;06:00;07:00;Chambre d'Octave;—;Lever. Nourrit ses serins.;—
+AUR017;07:00;08:00;Cabinet de l'impératrice;—;Prépare le contrat au propre.;—
+AUR017;08:00;09:00;Cabinet de l'impératrice;AUR001,AUR004;Présente le contrat recopié au propre, tient la cire. L'impératrice rature, il recopie la page en vingt minutes.;—
+AUR017;09:00;09:30;Cabinet de l'impératrice;—;Recopie la page raturée. Fait une copie pour lui.;objet : copie du contrat
+AUR017;09:30;10:00;Écuries impériales;AUR075,AUR085;Remet le contrat scellé au courrier Guénolé, dans l'étui de cuir. Fait signer le registre des départs.;—
+AUR017;10:00;12:00;Cabinet de l'impératrice;—;Cabinet. Chiffre les lettres du jour.;—
+AUR017;12:00;13:00;Salle du trône;AUR001,AUR004,AUR005,AUR016,AUR040,AUR045;Écrit la commande sous la dictée, en deux exemplaires.;—
+AUR017;13:00;14:00;Cabinet de l'impératrice;—;Repas seul.;—
+AUR017;14:00;19:00;Cabinet de l'impératrice;—;Recopie la commande de Grisemont.;—
+AUR017;19:00;20:00;Librairie Pasquier;AUR070;Chez Pasquier. Achète un livre sur les oiseaux. Reste plus longtemps qu'il ne faut.;—
+AUR017;20:00;24:00;Chambre d'Octave;—;Glisse la copie sous les lattes. Couvre les serins. Dort.;—
+AUR018;00:00;03:30;Tonnelle des jardins du palais;AUR003;Avec Aymon sous la tonnelle. Elle a la phrase sur les lèvres, l'enfant, et ne la dit pas.;—
+AUR018;03:30;09:00;Logis des musiciens;—;Dort.;—
+AUR018;09:00;10:00;Jardins du palais;—;Nausée au réveil, derrière la haie.;—
+AUR018;10:00;12:00;Salle de musique du palais;—;Répétition.;—
+AUR018;12:00;13:00;Salle de musique du palais;—;Repas avec les musiciens.;—
+AUR018;13:00;13:45;Atelier d'essayage du palais;AUR061;Essayage. Aude élargit encore la robe, sans un mot, avec un regard.;—
+AUR018;13:45;14:00;Cours du palais;—;Traverse vers l'hôtel de Morvay.;—
+AUR018;14:00;15:00;Hôtel de Morvay;AUR038,AUR039;Leçon de luth à Iseut. La comtesse écoute.;—
+AUR018;15:00;17:00;Salle de musique du palais;—;Leçons aux demoiselles de la cour.;—
+AUR018;17:00;19:00;Logis des musiciens;—;Écrit un air pour des paroles qu'elle n'a pas encore.;—
+AUR018;19:00;21:30;Grande salle du palais;—;Joue au souper. Ne regarde pas Aymon. Joue un air qu'elle a écrit pour la ville basse, sans les paroles.;—
+AUR018;21:30;22:00;Logis des musiciens;—;Range son luth.;—
+AUR018;22:00;24:00;Tonnelle des jardins du palais;AUR003;Avec Aymon. Elle décide de lui dire l'enfant, demain.;décision : parler à Aymon au jour 2
+AUR019;00:00;03:30;Appartements du prince Aymon;—;Attend le prince en somnolant sur une chaise.;—
+AUR019;03:30;04:00;Appartements du prince Aymon;AUR003;Le prince rentre. Firmin lui retire ses bottes sans rien dire.;—
+AUR019;04:00;06:00;Chambre de Firmin;—;Dort.;—
+AUR019;06:00;09:00;Appartements du prince Aymon;—;Brosse les habits du prince.;—
+AUR019;09:00;10:00;Appartements du prince Aymon;AUR003;Habille le prince. Lui dit que le courrier part à dix heures, il le tient du valet de la chancellerie.;—
+AUR019;10:00;13:00;Appartements du prince Aymon;—;Range les appartements.;—
+AUR019;13:00;14:00;Office du palais;—;Repas à l'office.;—
+AUR019;14:00;14:30;Appartements du prince Aymon;AUR003;Reçoit une bourse pour le libraire Pasquier. Il ne pose pas de question.;objet : bourse
+AUR019;14:30;15:00;Ville haute;—;Descend vers la librairie.;—
+AUR019;15:00;15:30;Librairie Pasquier;AUR070;Dépose la bourse « pour Monsieur Vasse, de la part d'un ami ». Achète un almanach pour se donner une raison.;—
+AUR019;15:30;17:00;Ville haute;—;Courses et réparations.;—
+AUR019;17:00;18:00;Appartements du prince Aymon;AUR003;Habille le prince. Lui dit que Ninon a mauvaise mine le matin, sans aller plus loin.;—
+AUR019;18:00;23:00;Appartements du prince Aymon;—;Range. Arrose ses pots.;—
+AUR019;23:00;24:00;Appartements du prince Aymon;—;Attend le retour du prince.;—
+AUR020;00:00;06:00;Chambre de Berthe;—;Dort.;—
+AUR020;06:00;07:00;Chambre de l'empereur;—;Lever de l'empereur.;—
+AUR020;07:00;07:30;Chambre de l'empereur;AUR002,AUR011;Regarde Grellier verser, compte les gouttes. Le flacon qu'elle a volé est dans sa manche.;—
+AUR020;07:30;11:00;Chambre de l'empereur;—;Dans un coin pendant les leçons. Brode.;—
+AUR020;11:00;12:00;Chambre de l'empereur;AUR002;Explique à l'empereur ce que crient les crieurs. Il demande si c'est sa mère qui l'a voulu. Elle dit oui.;—
+AUR020;12:00;13:00;Chambre de Berthe;—;Repas.;—
+AUR020;13:00;14:00;Chambre de l'empereur;AUR002;Fait manger l'empereur. Il mange mieux. Elle ne comprend pas, et elle se méfie.;—
+AUR020;14:00;16:00;Chambre de l'empereur;AUR002,AUR021;Brode près d'eux. Surveille Colin, qui a un regard pour le géranium.;—
+AUR020;16:00;17:00;Chambre de l'empereur;—;L'empereur se repose. Elle regarde le géranium, jaune.;—
+AUR020;17:00;17:30;Chambre de l'empereur;AUR001,AUR002,AUR011;Se tient près du lit, ne salue que d'une révérence. Regarde Grellier se vanter.;colère contre Grellier +10
+AUR020;17:30;19:00;Chambre de l'empereur;AUR002;Reste près de lui. Pense à son flacon.;—
+AUR020;19:00;20:30;Chambre de l'empereur;AUR002;Fait souper l'empereur, le couche.;—
+AUR020;20:30;22:00;Chambre de Berthe;—;Prière. Sort le flacon d'eau d'argent. Décide d'aller voir Hermine.;décision : Hermine au jour 2
+AUR020;22:00;24:00;Chambre de Berthe;—;Dort.;—
+AUR021;00:00;06:00;Maison des palefreniers;—;Dort.;—
+AUR021;06:00;06:45;Écuries impériales;AUR022,AUR030,AUR090;Écuries avec son père. Aide Pépin à porter le foin.;—
+AUR021;06:45;09:00;Écuries impériales;AUR030,AUR090;Joue avec Pépin entre deux corvées.;—
+AUR021;09:00;10:00;Chambre de l'empereur;AUR002,AUR097;Au fond de la salle. Recopie mal le nom des fleuves.;—
+AUR021;10:00;10:30;Chambre de l'empereur;AUR002,AUR003,AUR097;Regarde le prince de près. Pas un chevalier, mais presque.;—
+AUR021;10:30;11:00;Chambre de l'empereur;AUR002,AUR097;Fin de leçon. Lothaire lui montre deux doigts : deux toux.;—
+AUR021;11:00;12:00;Écuries impériales;—;Aide aux écuries.;—
+AUR021;12:00;14:00;Maison des palefreniers;—;Repas avec son père.;—
+AUR021;14:00;16:00;Chambre de l'empereur;AUR002,AUR020;Joue avec Lothaire. Pense à la renarde vue une nuit au jardin, et ne dit rien.;—
+AUR021;16:00;17:00;Jardins du palais;—;Joue à la fronde dans les jardins.;—
+AUR021;17:00;19:30;Écuries impériales;AUR090;Retour aux écuries. Raconte à Pépin que l'empereur a nourri les mésanges.;—
+AUR021;19:30;24:00;Maison des palefreniers;—;Souper et dort.;—
+AUR022;00:00;05:00;Maison des palefreniers;—;Dort.;—
+AUR022;05:00;05:30;Écuries impériales;AUR030,AUR031,AUR085,AUR090;Écuries. Corne vient secouer Orage. Gaucher regarde ailleurs, comme toujours.;—
+AUR022;05:30;06:00;Écuries impériales;AUR030,AUR090;Panse les chevaux avec les deux esclaves. Glisse un quignon à Pépin.;—
+AUR022;06:00;06:45;Écuries impériales;AUR021,AUR030,AUR090;Selle la jument de l'impératrice. Colin aide.;—
+AUR022;06:45;07:00;Écuries impériales;AUR085;Présente la jument sellée à Hector, qui vérifie la sangle.;—
+AUR022;07:00;12:00;Écuries impériales;—;Soins des chevaux.;—
+AUR022;12:00;13:00;Maison des palefreniers;—;Repas avec Colin.;—
+AUR022;13:00;14:00;Écuries impériales;AUR030,AUR090;Repas. Partage le sien avec Pépin et Orage.;—
+AUR022;14:00;18:00;Écuries impériales;—;Écuries.;—
+AUR022;18:00;19:00;Maison des palefreniers;—;Se lave.;—
+AUR022;19:00;21:00;Le Lion d'Azur;AUR046,AUR085;Bière avec Brac et Hector.;—
+AUR022;21:00;24:00;Maison des palefreniers;—;Dort.;—
+AUR023;00:00;04:00;Maison de Brisemiche;—;Dort.;—
+AUR023;04:00;06:00;Cuisines du palais;—;Ouvre les cuisines. Crie.;—
+AUR023;06:00;06:30;Cuisines du palais;AUR006;Tour des réserves avec le chambellan. Ils s'entendent sur les sacs sans les nommer.;—
+AUR023;06:30;12:00;Cuisines du palais;—;Préparation du déjeuner de cour.;—
+AUR023;12:00;12:30;Cuisines du palais;AUR032,AUR060;Prosper livre le pain. Brisemiche le paie et râle sur le prix de la farine.;—
+AUR023;12:30;14:00;Cuisines du palais;—;Service du déjeuner.;—
+AUR023;14:00;16:00;Cuisines du palais;—;Repos.;—
+AUR023;16:00;22:00;Cuisines du palais;—;Souper de cour. Fermeture.;—
+AUR023;22:00;24:00;Maison de Brisemiche;—;Dort.;—
+AUR024;00:00;04:30;Chambre d'Odette;—;Dort.;—
+AUR024;04:30;05:00;Bains de l'impératrice;AUR010,AUR026;Ouvre les bains, compte les flacons d'huile, donne les ordres à voix basse, les yeux sur les flacons.;—
+AUR024;05:00;06:00;Bains de l'impératrice;AUR010,AUR026,AUR027;Vérifie la chaleur de l'eau, fait recommencer une cuve trop chaude.;—
+AUR024;06:00;07:00;Bains de l'impératrice;AUR001,AUR010,AUR026,AUR095;Sert l'impératrice au bain. Répond « Majesté » et rien d'autre. Ne regarde ni la renarde ni la chatte.;—
+AUR024;07:00;08:00;Bains de l'impératrice;—;Range les bains.;—
+AUR024;12:00;13:00;Bains de l'impératrice;—;Vide les cuves.;—
+AUR024;13:00;14:00;Chambre d'Odette;—;Repas avec ses chats.;—
+AUR024;14:00;20:00;Bains de l'impératrice;—;Linge et huiles.;—
+AUR024;20:00;21:00;Bains de l'impératrice;AUR001,AUR010,AUR026;Bain du soir de l'impératrice. Sert, se tait.;—
+AUR024;21:00;22:00;Chambre d'Odette;—;Cantique. Pense à un enfant qu'on lui a pris.;—
+AUR024;22:00;24:00;Chambre d'Odette;—;Dort.;—
+AUR025;00:00;04:00;Dortoir des esclaves;—;Dort.;—
+AUR025;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR026,AUR027,AUR028,AUR029,AUR089;Réveil. Ne baisse pas les yeux devant Corne.;Corne : haine +5
+AUR025;04:30;06:00;Cour du puits des cuisines;—;Puits et bois.;—
+AUR025;06:00;10:00;Cuisines du palais;—;Porteur des cuisines.;—
+AUR025;10:00;10:30;Cour du puits des cuisines;AUR010;Porte les seaux. Entend la chasseuse et le capitaine. Voit les mains de Lilie trembler sur la corde. Il prend la corde.;—
+AUR025;10:30;13:00;Cuisines du palais;—;Porte le bois. Regarde Lilie de loin.;—
+AUR025;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR026,AUR027,AUR028,AUR029,AUR032,AUR089;Mange debout. Voit Bru ne pas manger et lui pousse son écuelle.;—
+AUR025;14:00;19:00;Bûcher du palais;—;Bois et eau. Corne passe et le provoque, Tarn ne baisse pas les yeux.;—
+AUR025;19:00;21:45;Dortoir des esclaves;—;Sculpte un os.;—
+AUR025;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR026,AUR027,AUR028,AUR029,AUR089;Corne retourne sa paillasse. Tarn se tait et le regarde.;—
+AUR025;22:15;24:00;Dortoir des esclaves;—;Voit Lilie compter sur ses doigts. Fait semblant de dormir.;—
+AUR026;00:00;04:00;Dortoir des esclaves;—;Dort.;—
+AUR026;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR027,AUR028,AUR029,AUR089;Réveil. Se cache derrière Lilie.;—
+AUR026;04:30;05:00;Bains de l'impératrice;AUR010,AUR024;Plie les linges chauds. Chuchote une chanson, Lilie lui fait signe de se taire.;—
+AUR026;05:00;06:00;Bains de l'impératrice;AUR010,AUR024,AUR027;Porte les serviettes. Bru lui tend un pétale, elle rit en silence.;—
+AUR026;06:00;07:00;Bains de l'impératrice;AUR010,AUR024,AUR095;Tend les linges. Sent le regard de Gabrielle sur elle et pense au ruban caché sous la dalle.;peur +5
+AUR026;07:00;12:00;Bains de l'impératrice;—;Bains des dames de la cour.;—
+AUR026;12:00;13:00;Bains de l'impératrice;—;Vérifie le ruban sous la dalle.;—
+AUR026;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR027,AUR028,AUR029,AUR032,AUR089;Mange contre Lilie. Ne la lâche pas des yeux.;—
+AUR026;14:00;16:00;Lavoir du palais;AUR010,AUR028,AUR029;Linge avec Lilie. Lui demande si elle va partir. Lilie ne répond pas, et lui serre la main.;peur +10, attachement +10
+AUR026;16:00;20:00;Lavoir du palais;—;Linge.;—
+AUR026;20:00;21:00;Bains de l'impératrice;AUR010,AUR024;Tient les linges, ne lève pas les yeux.;—
+AUR026;21:00;21:45;Dortoir des esclaves;—;Rentre.;—
+AUR026;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR027,AUR028,AUR029,AUR089;Rentrée du bain du soir. Compte avec Corne, se fait petite.;—
+AUR026;22:15;24:00;Dortoir des esclaves;—;Dort contre le dos de Lilie.;—
+AUR027;00:00;04:00;Dortoir des esclaves;—;Dort mal, la douleur.;—
+AUR027;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR028,AUR029,AUR089;Se lève lentement, la main sur le ventre.;—
+AUR027;04:30;05:00;Cour du puits des cuisines;—;Puits.;—
+AUR027;05:00;06:00;Bains de l'impératrice;AUR010,AUR024,AUR026;Monte l'eau chaude du puits, seau après seau. Le ventre le tire, il serre les dents.;douleur, cache (+)
+AUR027;06:00;06:30;Cour du puits des cuisines;—;Puits.;—
+AUR027;06:30;07:00;Cour du puits des cuisines;AUR006;Le chambellan le voit se plier de douleur. Bru se redresse trop tard.;peur +30
+AUR027;07:00;12:00;Bains de l'impératrice;—;Eau des bains des dames.;—
+AUR027;12:00;13:00;Cour du puits des cuisines;—;S'assoit contre la margelle quand personne ne regarde.;—
+AUR027;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR026,AUR028,AUR029,AUR032,AUR089;Ne mange presque rien. Dit qu'il n'a pas faim. Tarn ne le croit pas.;—
+AUR027;14:00;19:00;Cuisines du palais;—;Eau des cuisines.;—
+AUR027;19:00;21:45;Dortoir des esclaves;—;Allongé. Sculpte une cuillère.;—
+AUR027;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR028,AUR029,AUR089;Allongé déjà. Se lève pour le compte.;—
+AUR027;22:15;24:00;Dortoir des esclaves;—;Dort mal. Pense au regard du chambellan.;peur +10
+AUR028;00:00;04:00;Dortoir des esclaves;—;Dort.;—
+AUR028;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR029,AUR089;Réveille Fenouil avant que Corne n'arrive à lui.;—
+AUR028;04:30;05:00;Dortoir des esclaves;—;Habille Fenouil.;—
+AUR028;05:00;08:00;Lavoir du palais;AUR029,AUR034;Lavoir. Gisèle lui dit tout bas que les crieurs partent ce matin, et que l'Inquisition regarde les charrettes.;—
+AUR028;08:00;12:00;Lavoir du palais;AUR034;Lavoir avec Gisèle. Pense à Genêt, vendu comme mort.;—
+AUR028;12:00;13:00;Lavoir du palais;—;Étend le linge.;—
+AUR028;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR026,AUR027,AUR029,AUR032,AUR089;Partage son pain avec Fenouil. Dit tout bas que les crieurs ont crié le double.;—
+AUR028;14:00;14:30;Lavoir du palais;AUR010,AUR026,AUR029,AUR034;Charge les paniers de Gisèle. Lave avec Lilie et Plume.;—
+AUR028;14:30;16:00;Lavoir du palais;AUR010,AUR026,AUR029;Lessive. Entend Plume chuchoter quelque chose à Lilie et fait semblant de rien.;—
+AUR028;16:00;19:00;Lavoir du palais;—;Repassage.;—
+AUR028;19:00;21:45;Dortoir des esclaves;—;Brode en cachette avec Fenouil endormi contre elle.;—
+AUR028;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR029,AUR089;Garde Fenouil contre elle pendant le compte.;—
+AUR028;22:15;24:00;Dortoir des esclaves;—;Dort.;—
+AUR029;00:00;04:00;Dortoir des esclaves;—;Dort.;—
+AUR029;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR028,AUR089;Réveillé par sa mère. Dit bonjour tout bas à Majesté, la souris.;—
+AUR029;04:30;05:00;Dortoir des esclaves;—;Sa mère l'habille.;—
+AUR029;05:00;08:00;Lavoir du palais;AUR028,AUR034;Aide au lavoir, saute dans les flaques.;—
+AUR029;08:00;09:00;Cuisines du palais;AUR010,AUR032,AUR033,AUR096;Épluchures. Fabien lui glisse un gâteau, il le partage avec Lilie.;joie +10
+AUR029;09:00;12:00;Cuisines du palais;—;Épluchures.;—
+AUR029;12:00;13:00;Cuisines du palais;—;Ramasse des miettes pour Majesté.;—
+AUR029;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR026,AUR027,AUR028,AUR032,AUR089;Mange les miettes du pâtissier. Demande ce que c'est, une prime.;—
+AUR029;14:00;16:00;Lavoir du palais;AUR010,AUR026,AUR028;Lavoir. Fait des bulles avec le savon pour Plume.;—
+AUR029;16:00;18:00;Lavoir du palais;—;Lavoir. Voit passer Malestroit en armure, de loin. Un vrai chevalier.;joie +20
+AUR029;18:00;21:45;Dortoir des esclaves;—;Joue avec Majesté, puis s'endort.;—
+AUR029;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR028,AUR089;Cache les miettes de Majesté dans le trou du mur avant que Corne passe.;—
+AUR029;22:15;24:00;Dortoir des esclaves;—;Dort.;—
+AUR030;00:00;05:00;Grenier à foin des écuries;—;Enchaîné au grenier. Aiguise la lame de sabot dans le noir.;—
+AUR030;05:00;05:30;Écuries impériales;AUR022,AUR031,AUR085,AUR090;Corne le secoue au bout de sa chaîne. Orage ne dit rien et pense à la lame dans le foin.;haine de Corne +10
+AUR030;05:30;06:00;Écuries impériales;AUR022,AUR090;Sort le fumier.;—
+AUR030;06:00;06:45;Écuries impériales;AUR021,AUR022,AUR090;Soins des chevaux. Le petit Colin parle trop.;—
+AUR030;06:45;09:00;Écuries impériales;AUR021,AUR090;Travaille. Pépin et Colin rient, il ne rit pas.;—
+AUR030;09:00;13:00;Écuries impériales;—;Écuries.;—
+AUR030;13:00;14:00;Écuries impériales;AUR022,AUR090;Mange le pain de Gaucher. Compte en silence : dix-neuf jours jusqu'au solstice.;—
+AUR030;14:00;20:00;Écuries impériales;—;Écuries. Repère où le foin est le plus sec.;—
+AUR030;20:00;22:00;Grenier à foin des écuries;AUR090;Enchaîné au grenier. Aiguise la lame de sabot. Pépin lui demande de ne pas le faire. Orage dit : « Pas sans toi. »;décision : le feu au solstice
+AUR030;22:00;24:00;Grenier à foin des écuries;—;Dort enchaîné.;—
+AUR031;00:00;02:00;Bouge des quais;—;Boit dans un bouge des quais.;—
+AUR031;02:00;04:00;Chambre de Corne;—;Dort.;—
+AUR031;04:00;04:30;Dortoir des esclaves;AUR010,AUR025,AUR026,AUR027,AUR028,AUR029,AUR089;Réveille le dortoir au bâton contre les montants. S'arrête devant la paillasse de la renarde et la regarde se lever.;—
+AUR031;04:30;05:00;Cuisines du palais;—;Ronde des cuisines.;—
+AUR031;05:00;05:30;Écuries impériales;AUR022,AUR030,AUR085,AUR090;Ronde des écuries. Menace Orage, qui ne baisse pas les yeux.;—
+AUR031;05:30;13:00;Cours du palais;—;Ronde des cuisines, des bains et des écuries. Passe deux fois près de la poterne.;—
+AUR031;13:00;14:00;Chambre de Corne;—;Repas.;—
+AUR031;14:00;17:00;Cours du palais;—;Ronde. Provoque Tarn au bûcher.;—
+AUR031;17:00;17:30;Bureau du chambellan;AUR006,AUR009;Rapporte qu'il surveille la rousse des bains, trop souvent près de la poterne. Le capitaine rit. Le chambellan ne rit pas, et Corne le remarque.;soupçon sur Lilie +10
+AUR031;17:30;21:45;Cours du palais;—;Ronde du soir. Suit des yeux la renarde au souper.;—
+AUR031;21:45;22:15;Dortoir des esclaves;AUR010,AUR025,AUR026,AUR027,AUR028,AUR029,AUR089;Compte les têtes, ferme le dortoir à clé. Fait ouvrir la paillasse de Tarn pour rien, par plaisir.;—
+AUR031;22:15;24:00;Bouge des quais;—;Ville basse. Boit.;—
+AUR032;00:00;04:00;Cuisines du palais;—;Dort sous l'escalier des cuisines.;—
+AUR032;04:00;08:00;Cuisines du palais;—;Allume les feux, épluchures.;—
+AUR032;08:00;09:00;Cuisines du palais;AUR010,AUR029,AUR033,AUR096;Jongle avec deux navets pour faire rire Lilie. Ça marche à moitié.;—
+AUR032;09:00;12:00;Cuisines du palais;—;Broches.;—
+AUR032;12:00;12:30;Cuisines du palais;AUR023,AUR060;Son oncle Prosper livre le pain. Lui glisse une brioche.;—
+AUR032;12:30;13:00;Cuisines du palais;—;Broches.;—
+AUR032;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR026,AUR027,AUR028,AUR029,AUR089;Partage son pain avec Lilie et Plume. Il voudrait lui dire que Corne « surveille la rousse ». Il n'ose pas devant les autres.;décision : le dire à Lilie au jour 2
+AUR032;14:00;16:00;Cuisines du palais;—;Repos sous l'escalier. Mange la brioche de son oncle.;—
+AUR032;16:00;21:00;Cuisines du palais;—;Service du souper.;—
+AUR032;21:00;24:00;Cuisines du palais;—;Dort sous l'escalier.;—
+AUR033;00:00;05:00;Dortoir des servantes;—;Dort.;—
+AUR033;05:00;08:00;Cuisines du palais;—;Cuisines.;—
+AUR033;08:00;09:00;Cuisines du palais;AUR010,AUR029,AUR032,AUR096;Raconte à tout le monde que la reine a signé le mariage du prince, et que le prince a une musicienne.;—
+AUR033;09:00;14:00;Cuisines du palais;—;Cuisines.;—
+AUR033;14:00;14:30;Ville haute;—;Descend rue des Parfums.;—
+AUR033;14:30;15:00;Parfumerie Ambrevin, rue des Parfums;AUR062;Vend à Ambrevin le ragot du jour contre un ruban : la reine a levé son verre au fiancé.;objet : ruban vert
+AUR033;15:00;16:00;Dortoir des servantes;—;Repos. Noue le ruban.;—
+AUR033;16:00;21:00;Cuisines du palais;—;Service.;—
+AUR033;21:00;22:00;Escalier de la garde;AUR047;Retrouve Thierry dans l'escalier. Baisers, promesses, un ruban.;amour +5
+AUR033;22:00;24:00;Dortoir des servantes;—;Dort.;—
+AUR034;00:00;05:00;Maison de Gisèle, ville basse;—;Sommeil léger.;—
+AUR034;05:00;08:00;Lavoir du palais;AUR028,AUR029;Lavoir. Dit à Cannelle que la prime est doublée et que la Craon regarde les charrettes. Il faudra être prudentes.;prudence +20
+AUR034;08:00;12:00;Lavoir du palais;AUR028;Lavoir avec Cannelle. Chante une vieille chanson de la Brume, très bas.;—
+AUR034;12:00;13:00;Lavoir du palais;—;Repas.;—
+AUR034;13:00;14:00;Lavoir du palais;—;Trie le linge des maisons nobles.;—
+AUR034;14:00;14:30;Lavoir du palais;AUR028;Charge les paniers de linge sur la charrette. Ne regarde pas la renarde, qu'elle ne connaît pas.;—
+AUR034;14:30;15:00;Porte des charrettes du palais;—;Mène la charrette vers la porte.;—
+AUR034;15:00;15:30;Porte des charrettes du palais;AUR052;La Craon arrête sa charrette à la porte et fouille le linge à la pique. Il n'y a que du linge aujourd'hui. Gisèle tient les rênes sans trembler.;peur +30, prudence : plus de passage avant quelques jours
+AUR034;15:30;17:00;Hôtels de la ville haute;—;Livre le linge aux maisons nobles.;—
+AUR034;17:00;18:30;Maison de Gisèle, ville basse;—;Rentre. Brûle une lettre qu'elle devait faire sortir.;—
+AUR034;18:30;19:30;Échoppe d'Hermine, ville basse;AUR072;Chez Hermine. Raconte la fouille. Hermine lui parle du flacon de Berthe.;—
+AUR034;19:30;24:00;Maison de Gisèle, ville basse;—;Sommeil léger.;—
+AUR035;00:00;06:00;Corps de garde de la poterne de la Lune;—;Garde de nuit. Ne boit pas. Somnole quand même vers quatre heures.;—
+AUR035;06:00;07:00;Maison d'Achard;—;Rentre.;—
+AUR035;07:00;14:00;Maison d'Achard;—;Dort.;—
+AUR035;14:00;15:00;Maison d'Achard;—;Mange.;—
+AUR035;15:00;17:00;Port fluvial;—;Pêche dans l'Aure. Rien.;—
+AUR035;17:00;18:00;Maison d'Achard;—;Soupe avec sa femme.;—
+AUR035;18:00;23:00;Corps de garde de la poterne de la Lune;—;Garde. Compte ses clés à la ceinture, il les recompte.;—
+AUR035;23:00;23:30;Corps de garde de la poterne de la Lune;AUR009;Sauveterre passe. Achard se tient droit, la main sur son trousseau.;—
+AUR035;23:30;24:00;Corps de garde de la poterne de la Lune;—;Garde.;—
+AUR036;00:00;09:00;Hôtel de Sarrance;—;Dort.;—
+AUR036;09:00;10:00;Hôtel de Sarrance;—;Lever.;—
+AUR036;10:00;13:00;Hôtel de Sarrance;—;Écrit à Bérard et à Diane : le contrat part ce matin, la santé de l'empereur est la porte.;—
+AUR036;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR012,AUR013,AUR014,AUR037,AUR040;Regarde Aymon sourire et se dit que le garçon est plus fort qu'on ne croit. Prépare son salon.;—
+AUR036;14:00;15:00;Hôtel de Sarrance;AUR014;Ouvre son salon. Écoute Margaux.;—
+AUR036;15:00;17:00;Hôtel de Sarrance;AUR014,AUR037;Salon. Prépare la question de la santé de l'empereur. Morvay approuve tout.;—
+AUR036;17:00;18:00;Hôtel de Sarrance;—;S'habille pour le souper.;—
+AUR036;18:00;20:00;Grande salle du palais;AUR013,AUR014,AUR037;Invite Margaux aux cartes. Glisse à Morvay qu'il y aura au prochain Conseil une question sur la santé de l'empereur.;—
+AUR036;20:00;21:00;Hôtel de Sarrance;—;Rentre.;—
+AUR036;21:00;21:30;Hôtel de Sarrance;AUR094;Ernoul lui vend une copie de la commande des dix mille fers.;renseignement : commande des lances
+AUR036;21:30;23:00;Hôtel de Sarrance;AUR014;Cartes avec Margaux. Apprend que l'impératrice a appelé Lorge ce soir. Dit que la santé de l'empereur sera au prochain Conseil.;—
+AUR036;23:00;24:00;Hôtel de Sarrance;—;Dort.;—
+AUR037;00:00;02:00;Salle de jeu des nobles;—;Jeux.;—
+AUR037;02:00;10:00;Hôtel de Morvay;—;Dort.;—
+AUR037;10:00;11:00;Hôtel de Morvay;—;Lever et toilette.;—
+AUR037;11:00;13:00;Antichambres du palais;—;Antichambres.;—
+AUR037;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR012,AUR013,AUR014,AUR036,AUR040;Flatte l'impératrice sur la lettre, écoute Aliette du coin de l'oreille.;—
+AUR037;14:00;15:00;Salle du trône;AUR001,AUR040,AUR041,AUR042;Plaide contre le meunier par la bouche d'un clerc. Gagne. Remercie l'impératrice d'une révérence trop basse.;gagne le moulin de l'Aure
+AUR037;15:00;17:00;Hôtel de Sarrance;AUR014,AUR036;Salon de Sarrance. Retient tout ce qui se dit sur la santé de l'empereur.;—
+AUR037;17:00;18:00;Hôtel de Morvay;—;Change d'habit.;—
+AUR037;18:00;20:00;Grande salle du palais;AUR013,AUR014,AUR036;Rit avec Margaux. Retient la phrase d'Aliette pour Oriane.;—
+AUR037;20:00;21:00;Antichambres du palais;—;Traîne dans les antichambres.;—
+AUR037;21:00;22:00;Garde-robe de l'impératrice;AUR076;Rapport chez Oriane : le salon de Sarrance prépare la question de la santé de l'empereur.;—
+AUR037;22:00;23:00;Hôtel de Morvay;—;Rentre. Regarde la biche servir. Elle baisse les yeux.;—
+AUR037;23:00;24:00;Salle de jeu des nobles;—;Jeux.;—
+AUR038;00:00;07:00;Hôtel de Morvay;—;Dort.;—
+AUR038;07:00;08:00;Hôtel de Morvay;—;Lever.;—
+AUR038;08:00;09:00;Grand temple des Sept Astres;—;Messe.;—
+AUR038;09:00;10:00;Hôtel de Morvay;—;Hôtel.;—
+AUR038;10:00;11:00;Hôtel de Morvay;AUR088;Leçon de lecture à Myrtille, porte fermée.;—
+AUR038;11:00;13:00;Hôtel de Morvay;—;Comptes de la maison.;—
+AUR038;13:00;14:00;Hôtel de Morvay;AUR039;Repas avec Iseut.;—
+AUR038;14:00;15:00;Hôtel de Morvay;AUR018,AUR039;Écoute la leçon de sa fille en brodant.;—
+AUR038;15:00;17:00;Hôtel de Morvay;AUR088;Broderie. Myrtille lit, Amicie fait le guet.;—
+AUR038;17:00;18:00;Hôtel de Morvay;—;Repos.;—
+AUR038;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR039,AUR043,AUR049,AUR050,AUR051;Office avec Iseut. Prie pour sa fille.;—
+AUR038;19:00;20:00;Hôtel de Morvay;—;Rentre.;—
+AUR038;20:00;21:00;Hôtel de Morvay;AUR039,AUR088;Souper avec Iseut. Myrtille sert.;—
+AUR038;21:00;24:00;Hôtel de Morvay;—;Coucher.;—
+AUR039;00:00;08:00;Hôtel de Morvay;—;Dort.;—
+AUR039;08:00;09:00;Grand temple des Sept Astres;—;Messe.;—
+AUR039;09:00;12:00;Hôtel de Morvay;—;Leçons.;—
+AUR039;12:00;13:00;Hôtel de Morvay;—;Relit un pamphlet sous son matelas.;—
+AUR039;13:00;14:00;Hôtel de Morvay;AUR038;Repas avec sa mère.;—
+AUR039;14:00;15:00;Hôtel de Morvay;AUR018,AUR038;Leçon de luth. Demande à Ninon si elle connaît l'air de « la Reine aux yeux verts ». Ninon rit et ne répond pas.;soupçon sur Ninon (20)
+AUR039;15:00;17:00;Manège des écuries;AUR085;Équitation. Demande à Hector si le prince se marie vraiment.;—
+AUR039;17:00;18:00;Hôtel de Morvay;—;Se change.;—
+AUR039;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR038,AUR043,AUR049,AUR050,AUR051;Office. Pense aux pamphlets sous son matelas.;—
+AUR039;19:00;20:00;Hôtel de Morvay;—;Lecture.;—
+AUR039;20:00;21:00;Hôtel de Morvay;AUR038,AUR088;Souper.;—
+AUR039;21:00;22:00;Hôtel de Morvay;—;Lecture interdite.;—
+AUR039;22:00;22:30;Soupente de l'hôtel de Morvay;AUR088;Monte chez Myrtille avec un pamphlet. Myrtille dit : « La prime doublée, c'est pour mon frère. »;souvenir « le frère de Myrtille » (60)
+AUR039;22:30;24:00;Hôtel de Morvay;—;Dort.;—
+AUR040;00:00;06:00;Logis de Charlier;—;Dort.;—
+AUR040;06:00;07:00;Logis de Charlier;—;Remonte ses horloges.;—
+AUR040;07:00;08:00;Grand temple des Sept Astres;—;Messe.;—
+AUR040;08:00;12:00;Salle des cérémonies;—;Prépare l'audience d'État et l'ordre des plaintes.;—
+AUR040;12:00;13:00;Salle du trône;AUR001,AUR004,AUR005,AUR016,AUR017,AUR045;Annonce l'ambassadeur de Grisemont avec ses titres complets, sans en oublier un.;—
+AUR040;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR012,AUR013,AUR014,AUR036,AUR037;Règle le service et l'ordre des toasts.;—
+AUR040;14:00;15:00;Salle du trône;AUR001,AUR037,AUR041,AUR042;Appelle les causes, tient la baguette.;—
+AUR040;15:00;16:00;Salle du trône;AUR001,AUR041,AUR043;Appelle la veuve Cauvin. Fait sortir la femme quand elle ne se relève pas.;—
+AUR040;16:00;17:00;Salle du trône;AUR001,AUR013,AUR041,AUR044;Appelle la cause Fabert contre Lorge. Ne cille pas.;—
+AUR040;17:00;18:00;Logis de Charlier;—;Repos.;—
+AUR040;18:00;20:00;Grande salle du palais;AUR012;Règle l'ordre des plats et des musiciens.;—
+AUR040;20:00;21:00;Logis de Charlier;—;Rentre.;—
+AUR040;21:00;23:00;Logis de Charlier;—;Horloges. Pense à la page arrachée.;—
+AUR040;23:00;24:00;Logis de Charlier;—;Dort.;—
+AUR041;00:00;07:00;Maison de Coquelin;—;Dort.;—
+AUR041;07:00;08:00;Maison de Coquelin;—;Relit les sentences écrites hier.;—
+AUR041;08:00;12:00;Tribunal de la ville;—;Tribunal de la ville.;—
+AUR041;12:00;14:00;Maison de Coquelin;—;Repas. Reçoit un billet : l'impératrice change la sentence Lorge.;—
+AUR041;14:00;15:00;Salle du trône;AUR001,AUR037,AUR040,AUR042;Lit la sentence écrite la veille : la quittance est « irrégulière », le moulin va au comte. L'argent de Grimaud est déjà dans sa bourse.;—
+AUR041;15:00;16:00;Salle du trône;AUR001,AUR040,AUR043;Lit le refus écrit la veille.;—
+AUR041;16:00;17:00;Salle du trône;AUR001,AUR013,AUR040,AUR044;Lit une sentence qu'il n'avait pas écrite ainsi : l'impératrice l'a corrigée ce matin.;—
+AUR041;17:00;19:00;Maison de Coquelin;—;Rentre.;—
+AUR041;19:00;19:30;Comptoir de Grimaud, rue Basse;AUR063;Passe chez Grimaud. Reçoit le reste pour le meunier.;argent +3 or
+AUR041;19:30;22:00;Maison de Coquelin;—;Écrit les sentences du prochain jour d'audience.;—
+AUR041;22:00;24:00;Maison de Coquelin;—;Dort.;—
+AUR042;00:00;06:00;Maison de Jehan;—;Dort mal.;—
+AUR042;06:00;12:00;Port fluvial;—;Décharge des sacs au port pour quelques sous.;argent +3 sous
+AUR042;12:00;13:30;Maison de Jehan;—;Mange. Sa femme lui dit de ne pas crier au palais.;—
+AUR042;13:30;14:00;Antichambre des plaintes;AUR043,AUR044;Attend sur le banc des plaignants, la quittance pliée contre la poitrine. Dit aux deux autres qu'il a la preuve.;—
+AUR042;14:00;15:00;Salle du trône;AUR001,AUR037,AUR040,AUR041;Montre sa quittance signée. On la lui prend « pour examen ». Le moulin va au comte. Il sort sans un mot.;rage +40, décision : brûler le moulin plutôt que le laisser
+AUR042;15:00;17:00;Moulin de l'Aure;—;Va regarder le moulin. Les gens du comte y sont déjà.;rage +10
+AUR042;17:00;20:00;Maison de Jehan;—;Rentre. Ne parle pas.;—
+AUR042;20:00;21:30;Le Lion d'Azur;AUR069;Raconte à Jacquot la quittance prise. Dit qu'il brûlera le moulin plutôt que de le laisser au comte. Jacquot le supplie d'attendre.;décision : attendre une nuit
+AUR042;21:30;24:00;Maison de Jehan;—;Dort mal.;—
+AUR043;00:00;06:30;Maison de Marthe;—;Dort mal. Rêve de Martin.;—
+AUR043;06:30;07:00;Escalier de Marthe Cauvin, ville basse;AUR068;Réveille Huguette sous son escalier, lui donne un morceau de pain. Dit qu'elle va au palais.;—
+AUR043;07:00;08:00;Grand temple des Sept Astres;—;Messe.;—
+AUR043;08:00;13:30;Maison de Marthe;—;Couture à façon.;—
+AUR043;13:30;14:00;Antichambre des plaintes;AUR042,AUR044;Attend, les mains serrées sur son sac. Ne dit pas ce qu'elle porte dans la doublure.;peur +10
+AUR043;14:00;15:00;Antichambre des plaintes;AUR044;Attend son tour. Guillaume lui dit que la reine juge vite. Elle prie.;—
+AUR043;15:00;16:00;Salle du trône;AUR001,AUR040,AUR041;Demande le corps de Martin. Refusé, interdite d'audience. Elle ne sort pas la lettre de la doublure. Elle sait que c'est la corde.;chagrin, souvenir « les déserteurs restent où on les pend » (90)
+AUR043;16:00;17:30;Grand temple des Sept Astres;AUR049;Va voir Aurore en confession. Lui montre enfin la lettre de Martin : il avait refusé de brûler une cabane d'hommes-bêtes.;soulagement, risque
+AUR043;17:30;18:00;Grand temple des Sept Astres;—;Prie seule.;—
+AUR043;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR038,AUR039,AUR049,AUR050,AUR051;Office. Prie pour Martin.;—
+AUR043;19:00;20:00;Escalier de Marthe Cauvin, ville basse;AUR068;Rentre. Raconte le refus à Huguette, assise sur la marche.;chagrin
+AUR043;20:00;24:00;Maison de Marthe;—;Seule. Recoud la lettre dans la doublure. Dort.;—
+AUR044;00:00;07:00;Maison de Guillaume;—;Dort.;—
+AUR044;07:00;08:00;Maison de Guillaume;—;Sa femme lui répète : pas trop fort.;—
+AUR044;08:00;12:00;Boutique de Guillaume, rue des Merciers;—;Boutique.;—
+AUR044;12:00;13:30;Maison de Guillaume;—;Repas.;—
+AUR044;13:30;14:00;Antichambre des plaintes;AUR042,AUR043;Attend, répète à mi-voix ses chiffres : quatre ans de draps.;—
+AUR044;14:00;15:00;Antichambre des plaintes;AUR043;Attend. Essaie de rassurer la veuve, qui ne l'entend pas.;—
+AUR044;15:00;16:00;Antichambre des plaintes;—;Attend seul. Il a vu sortir le meunier, le visage gris, puis la veuve en pleurs.;peur +10
+AUR044;16:00;17:00;Salle du trône;AUR001,AUR013,AUR040,AUR041;Plaide sans parler trop fort. Gagne, en entier. N'en revient pas.;argent : quatre ans de draps à recevoir, humeur : stupéfait
+AUR044;17:00;17:30;Boutique de Guillaume, rue des Merciers;—;Rouvre.;—
+AUR044;17:30;18:00;Atelier d'Aude, rue des Merciers;AUR061;Raconte à Aude qu'il a gagné contre Lorge.;—
+AUR044;18:00;19:00;Boutique de Guillaume, rue des Merciers;—;Boutique.;—
+AUR044;19:00;24:00;Maison de Guillaume;—;Fête avec sa femme. Dort.;—
+AUR045;00:00;01:00;La Cour des Myrtes;AUR065;Finit la nuit à la Cour des Myrtes avec Capucine. Parle trop des lances, comme toujours. Ils passent l'heure ensemble.;—
+AUR045;01:00;05:00;Logis de Desforges;—;Dort.;—
+AUR045;05:00;06:00;Cour d'exercice de la garnison;AUR005;Exercice avec le maréchal. Dormi deux heures.;fatigue
+AUR045;06:00;10:30;État-major du maréchal;AUR005;Prépare les chiffres pour le Conseil. Dix mille. Il en faudrait vingt mille.;—
+AUR045;10:30;12:00;Salle du Conseil;AUR001,AUR004,AUR005,AUR006,AUR007,AUR008;Au fond, debout, tient les cartes du maréchal. Sait que dix mille ne suffiront pas, et se tait.;—
+AUR045;12:00;13:00;Salle du trône;AUR001,AUR004,AUR005,AUR016,AUR017,AUR040;Tient la note des dix mille. Sait qu'il en faudrait vingt mille.;—
+AUR045;13:00;14:00;État-major du maréchal;AUR005;Repas avec le maréchal.;—
+AUR045;14:00;15:00;Caserne de la ville haute;AUR099;Ordonne à Corneille de presser la levée : mille hommes pour l'automne.;—
+AUR045;15:00;18:00;Caserne de la ville haute;—;Casernes.;—
+AUR045;18:00;20:00;Logis de Desforges;—;Souper.;—
+AUR045;20:00;24:00;La Cour des Myrtes;AUR065;Cour des Myrtes. Fête la commande signée avec Capucine. Lui dit « dix mille, et il en faudrait le double ». Ils passent la soirée ensemble.;—
+AUR046;00:00;00:30;Ruelle derrière le Lion d'Azur;AUR066;Vend au Rat ce qu'il sait : la prime doublée sera criée à l'aube. Le Rat paie.;argent +2 sous
+AUR046;00:30;06:00;Maison de Brac;—;Dort.;—
+AUR046;06:00;14:00;Ville basse;—;Ronde de la ville basse. Entend crier l'édit à la porte de l'Aure.;—
+AUR046;14:00;15:00;Maison de Brac;—;Repas.;—
+AUR046;15:00;18:00;Corps de garde du guet;—;Corps de garde.;—
+AUR046;18:00;19:00;Ville basse;—;Ronde.;—
+AUR046;19:00;21:00;Le Lion d'Azur;AUR022,AUR085;Bière avec Gaucher et Hector. Parle de la prime comme s'il l'avait inventée.;—
+AUR046;21:00;22:00;Le Lion d'Azur;—;Encore une bière.;—
+AUR046;22:00;22:30;Ville basse;—;Couvre-feu.;—
+AUR046;22:30;24:00;Maison de Brac;—;Dort.;—
+AUR047;00:00;06:00;Quartier des gardes;—;Dort.;—
+AUR047;06:00;13:00;Cours du palais;—;Garde des cours.;—
+AUR047;13:00;14:00;Corps de garde du palais;AUR015;Mange avec Malestroit, qu'il admire. Lui parle du tournoi.;—
+AUR047;14:00;15:00;Corps de garde du palais;—;Repos.;—
+AUR047;15:00;17:00;Lices du palais;AUR015;Exercice avec Malestroit. Lui parle de la queue rousse. Évrard devient sérieux et lui demande l'heure exacte.;doute (40)
+AUR047;17:00;20:00;Quartier des gardes;—;Astique son armure.;—
+AUR047;20:00;21:00;Corps de garde du palais;AUR009,AUR015;Dés. Perd deux sous. Pense à Jeannette.;argent −2 sous
+AUR047;21:00;22:00;Escalier de la garde;AUR033;Jeannette dans l'escalier. Il lui promet une maison. Il ne parle pas de la queue rousse.;amour +5
+AUR047;22:00;24:00;Quartier des gardes;—;Dort.;—
+AUR048;00:00;07:00;Parvis du grand temple;—;Dort sous le porche.;—
+AUR048;07:00;08:00;Parvis du grand temple;—;Tend la main.;—
+AUR048;08:00;09:00;Parvis du grand temple;AUR067,AUR068;Le crieur passe sur le parvis : prime doublée sur les hommes-bêtes fugitifs, quatre pièces d'or vivant, deux pour une tête. Fulbert crache.;—
+AUR048;09:00;12:00;Parvis du grand temple;—;Raconte la guerre aux pigeons.;—
+AUR048;12:00;13:00;Parvis du grand temple;AUR049,AUR050,AUR067,AUR068;Soupe des pauvres. Raconte Haute-Lance à Moineau. Personne ne le croit.;—
+AUR048;13:00;16:00;Parvis du grand temple;—;Parvis.;—
+AUR048;16:00;16:15;Parvis du grand temple;AUR005;Hèle le maréchal sur le parvis. Il reçoit une pièce. Varlac pâlit au mot « Haute-Lance ».;argent +1 sou
+AUR048;16:15;19:00;Parvis du grand temple;—;Parvis. Montre sa pièce à tout le monde.;—
+AUR048;19:00;24:00;Parvis du grand temple;—;Personne ne paie la taverne. Dort sous le porche.;—
+AUR049;00:00;05:00;Cellule d'Aurore;—;Dort.;—
+AUR049;05:00;06:00;Grand temple des Sept Astres;AUR007,AUR050,AUR051;Office de l'aube.;—
+AUR049;06:00;07:00;Grand temple des Sept Astres;—;Prière.;—
+AUR049;07:00;11:00;Archives du grand temple;—;Archives. Relit le registre ancien.;—
+AUR049;11:00;12:00;Grand temple des Sept Astres;—;Prépare la soupe.;—
+AUR049;12:00;13:00;Parvis du grand temple;AUR048,AUR050,AUR067,AUR068;Sert la soupe. Moineau demande ce que veut dire « vivant ou mort ».;—
+AUR049;13:00;14:00;Cellule d'Aurore;—;Repas.;—
+AUR049;14:00;16:00;Grand temple des Sept Astres;—;Confessions.;—
+AUR049;16:00;17:30;Grand temple des Sept Astres;AUR043;Lit la lettre de Martin Cauvin. Des soldats qui refusent de brûler des hommes-bêtes. Elle pense au registre des archives. Conseille de la cacher.;souvenir « la lettre de Martin » (75)
+AUR049;17:30;18:00;Grand temple des Sept Astres;—;Seule, pense à la lettre et au registre.;—
+AUR049;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR038,AUR039,AUR043,AUR050,AUR051;Office. Regarde Marthe prier.;—
+AUR049;19:00;22:00;Cellule d'Aurore;—;Lecture.;—
+AUR049;22:00;24:00;Cellule d'Aurore;—;Dort.;—
+AUR050;00:00;02:00;Archives du grand temple;—;Copie à la chandelle des pages interdites pour Clément.;—
+AUR050;02:00;05:00;Dortoir des novices;—;Dort.;—
+AUR050;05:00;06:00;Grand temple des Sept Astres;AUR007,AUR049,AUR051;Office de l'aube, les yeux rouges.;—
+AUR050;06:00;11:00;Grand temple des Sept Astres;—;Études et ménage.;—
+AUR050;11:00;12:00;Grand temple des Sept Astres;—;Aide à la soupe.;—
+AUR050;12:00;13:00;Parvis du grand temple;AUR048,AUR049,AUR067,AUR068;Sert la soupe, la tête lourde de la nuit.;—
+AUR050;13:00;14:00;Dortoir des novices;—;Repas.;—
+AUR050;14:00;17:00;Archives du grand temple;—;Copie officielle aux archives.;—
+AUR050;17:00;18:00;Grand temple des Sept Astres;—;Prière.;—
+AUR050;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR038,AUR039,AUR043,AUR049,AUR051;Office. Pense à la page qu'il copiera cette nuit.;—
+AUR050;19:00;23:30;Dortoir des novices;—;Dort.;—
+AUR050;23:30;24:00;Archives du grand temple;—;Archives, en cachette. Recopie la page du registre ancien.;—
+AUR051;00:00;05:00;Maison de la marchande de chandelles;—;Dort.;—
+AUR051;05:00;06:00;Grand temple des Sept Astres;AUR007,AUR049,AUR050;Office de l'aube. Regarde la corde de la grande cloche.;—
+AUR051;06:00;07:00;Maison de la marchande de chandelles;—;Déjeune.;—
+AUR051;07:00;11:00;École du temple;—;École.;—
+AUR051;11:00;14:30;Maison de la marchande de chandelles;—;Repas chez sa mère.;—
+AUR051;14:30;15:30;Rue du Four;AUR057,AUR067,AUR091;Joue avec les autres dans la rue du Four.;—
+AUR051;15:30;18:00;Parvis du grand temple;—;Joue sur le parvis.;—
+AUR051;18:00;19:00;Grand temple des Sept Astres;AUR007,AUR038,AUR039,AUR043,AUR049,AUR050;Chœur. Chante fort. Regarde encore la corde de la cloche.;—
+AUR051;19:00;24:00;Maison de la marchande de chandelles;—;Souper et dort.;—
+AUR052;00:00;04:00;Tour Noire;—;Dort.;—
+AUR052;04:00;05:00;Tour Noire;—;Prière.;—
+AUR052;05:00;07:00;Portes de la ville basse;—;Fait afficher l'édit aux portes.;—
+AUR052;07:00;08:00;Greffe de la Tour Noire;AUR008,AUR053;Obtient du légat le droit de fouiller les charrettes du palais.;décision : fouiller les charrettes de linge
+AUR052;08:00;13:00;Porte de l'Aure;—;Contrôle des passants à la porte de l'Aure.;—
+AUR052;13:00;14:00;Tour Noire;—;Repas.;—
+AUR052;14:00;15:00;Ville haute;—;Ville.;—
+AUR052;15:00;15:30;Porte des charrettes du palais;AUR034;Fouille la charrette de linge du palais à la pique. Rien. Note le nom de la blanchisseuse.;soupçon : Gisèle (25)
+AUR052;15:30;18:00;Portes de la ville basse;—;Portes.;—
+AUR052;18:00;20:00;Tour Noire;—;Office.;—
+AUR052;20:00;22:00;Tour Noire;—;Rapport : charrette de linge fouillée, rien, blanchisseuse Fauvel à surveiller.;—
+AUR052;22:00;24:00;Tour Noire;—;Dort.;—
+AUR053;00:00;06:00;Chambre d'Hilarion;—;Dort mal.;—
+AUR053;06:00;07:00;Tour Noire;—;Prière.;—
+AUR053;07:00;08:00;Greffe de la Tour Noire;AUR008,AUR052;Note l'autorisation au registre. La main tremble.;—
+AUR053;08:00;13:00;Greffe de la Tour Noire;—;Greffe.;—
+AUR053;13:00;14:00;Greffe de la Tour Noire;—;Repas.;—
+AUR053;14:00;16:00;Salle d'interrogatoire de la Tour Noire;AUR008,AUR080,AUR081;Écrit les réponses. Écrit aussi « pas le seul à Aurelle ».;—
+AUR053;16:00;18:00;Greffe de la Tour Noire;—;Recopie l'interrogatoire.;—
+AUR053;18:00;19:00;Tour Noire;—;Office.;—
+AUR053;19:00;24:00;Chambre d'Hilarion;—;Vin seul. Relit la liste des noms de Cendrebois. Dort tard.;—
+AUR054;00:00;01:00;La Cour des Myrtes;AUR064;Dernier verre à la Cour des Myrtes avec Violaine. Parle de Marchefer.;—
+AUR054;01:00;07:00;Maison de Gâche;—;Dort.;—
+AUR054;07:00;08:00;Maison de Gâche;—;Lever.;—
+AUR054;08:00;12:00;Comptoir de Gâche, rue aux Chaînes;—;Comptoir. L'édit fait monter le prix des fugitifs repris.;—
+AUR054;12:00;14:00;Comptoir de Gâche, rue aux Chaînes;—;Repas.;—
+AUR054;14:00;14:45;Bureau du chambellan;AUR006;Chez le chambellan. On lui propose un vieil ours. Il demande la renarde qu'il a vendue il y a huit ans. Refusé, pour l'instant.;—
+AUR054;14:45;17:00;Hôtels de la ville haute;—;Visites des maisons nobles.;—
+AUR054;17:00;21:00;Comptoir de Gâche, rue aux Chaînes;—;Comptes.;—
+AUR054;21:00;22:00;La Cour des Myrtes;AUR006,AUR064;Boit avec Faucq. Parle de Marchefer et des prix.;—
+AUR054;22:00;24:00;Maison de Gâche;—;Dort.;—
+AUR055;00:00;00:30;Le Lion d'Azur;—;Ferme les volets.;—
+AUR055;00:30;03:00;Cave du Lion d'Azur;AUR066,AUR079;Tient la chandelle pendant l'impression. Compte les feuilles.;—
+AUR055;03:00;06:00;Le Lion d'Azur;—;Dort.;—
+AUR055;06:00;11:00;Le Lion d'Azur;—;Ouvre. Cuisine.;—
+AUR055;11:00;15:00;Le Lion d'Azur;—;Service.;—
+AUR055;15:00;17:00;Le Lion d'Azur;—;Comptes. Doit toujours 25 or à Grimaud.;—
+AUR055;17:00;21:30;Le Lion d'Azur;—;Service du soir.;—
+AUR055;21:30;22:00;Le Lion d'Azur;AUR069;Jacquot vient au comptoir. Elle lui sert sa bière et le regarde d'une certaine façon.;—
+AUR055;22:00;23:30;Chambre de l'aubergiste, Lion d'Azur;AUR069;Couvre-feu. Jacquot reste. Ils passent la soirée ensemble.;humeur : légère
+AUR055;23:30;24:00;Cave du Lion d'Azur;AUR066,AUR079;Descend à la cave pour l'impression.;—
+AUR056;00:00;07:00;Le Lion d'Azur;—;Dort.;—
+AUR056;07:00;15:00;Le Lion d'Azur;—;Service.;—
+AUR056;15:00;15:30;Ville haute;—;Promenade vers le palais.;—
+AUR056;15:30;16:30;Atelier de Daunay;AUR071;Passe à l'atelier du peintre. Voit un tableau sous un drap. Il l'éloigne.;curiosité : le tableau sous le drap (40)
+AUR056;16:30;20:00;Le Lion d'Azur;—;Service.;—
+AUR056;20:00;22:00;Le Lion d'Azur;AUR071;Daunay est revenu. Il lui promet encore le palais. Elle le croit à moitié.;—
+AUR056;22:00;24:00;Le Lion d'Azur;—;Dort.;—
+AUR057;00:00;07:00;Le Lion d'Azur;—;Dort.;—
+AUR057;07:00;12:00;École du quartier;—;École.;—
+AUR057;12:00;14:30;Le Lion d'Azur;—;Mange à l'auberge.;—
+AUR057;14:30;15:30;Rue du Four;AUR051,AUR067,AUR091;Jeu de billes dans la rue.;—
+AUR057;15:30;18:00;Rue du Four;—;Joue dans la rue.;—
+AUR057;18:00;20:00;Le Lion d'Azur;—;Regarde les soldats boire.;—
+AUR057;20:00;24:00;Le Lion d'Azur;—;Dort.;—
+AUR058;00:00;05:00;Maison d'Hamon;—;Dort.;—
+AUR058;05:00;12:00;Forge du palais;AUR059;Forge avec Gilet.;—
+AUR058;12:00;13:00;Forge du palais;—;Repas.;—
+AUR058;13:00;14:30;Forge du palais;AUR059;Forge.;—
+AUR058;14:30;15:30;Forge du palais;AUR016,AUR059;L'ambassadeur demande combien de fers il ferait. Il dit la vérité : cinq cents, pas plus.;honte +10
+AUR058;15:30;18:00;Forge du palais;AUR059;Forge. Gilet demande ce qu'a dit le nain.;—
+AUR058;18:00;21:00;Maison d'Hamon;—;Souper avec sa femme.;—
+AUR058;21:00;23:00;Ambassade de Grisemont;AUR016;Bière noire chez le nain. Durn lui promet de montrer son travail à un maître de Grisemont.;espoir +10
+AUR058;23:00;24:00;Maison d'Hamon;—;Dort.;—
+AUR059;00:00;05:00;Forge du palais;—;Dort sous l'établi, la dague sous la paillasse.;—
+AUR059;05:00;12:00;Forge du palais;AUR058;Forge.;—
+AUR059;12:00;13:00;Forge du palais;—;Repas.;—
+AUR059;13:00;14:30;Forge du palais;AUR058;Forge.;—
+AUR059;14:30;15:30;Forge du palais;AUR016,AUR058;Regarde le nain tourner une lame dans ses doigts. Rêve d'une épée.;—
+AUR059;15:30;18:00;Forge du palais;AUR058;Forge.;—
+AUR059;18:00;19:00;Ruelles de la ville basse;—;Ruelles.;—
+AUR059;19:00;20:00;Le Lion d'Azur;AUR099;Corneille lui offre une bière et un papier à signer. Gilet dit qu'il a seize ans. Corneille dit que ça ne se voit pas.;refuse, pour l'instant
+AUR059;20:00;22:00;Ruelles de la ville basse;—;Cherche un acheteur pour sa dague. Ne trouve pas.;—
+AUR059;22:00;24:00;Forge du palais;—;Dort.;—
+AUR060;00:00;02:00;Maison Miche;—;Dort.;—
+AUR060;02:00;07:00;Boulangerie Miche, rue du Four;AUR092;Fournil. La farine a encore monté.;—
+AUR060;07:00;12:00;Boulangerie Miche, rue du Four;—;Boutique. Donne le pain de la veille aux pauvres du parvis.;—
+AUR060;12:00;12:30;Cuisines du palais;AUR023,AUR032;Livre le pain du palais. Brisemiche râle sur la farine. Prosper accuse le prévôt.;argent +
+AUR060;12:30;13:00;Ville haute;—;Redescend du palais.;—
+AUR060;13:00;15:00;Maison Miche;—;Sieste.;—
+AUR060;15:00;15:30;Boulangerie Miche, rue du Four;AUR068,AUR092;Donne le pain de la veille à Huguette. Annette pince les lèvres.;—
+AUR060;15:30;19:00;Boulangerie Miche, rue du Four;—;Boutique.;—
+AUR060;19:00;24:00;Maison Miche;—;Souper, coucher.;—
+AUR061;00:00;07:00;Maison d'Aude;—;Dort.;—
+AUR061;07:00;12:30;Atelier d'Aude, rue des Merciers;—;Atelier. Coupe une soie pour l'impératrice.;—
+AUR061;12:30;13:00;Ville haute;—;Monte au palais.;—
+AUR061;13:00;13:45;Atelier d'essayage du palais;AUR018;Élargit la robe de Ninon pour la troisième fois. Dit seulement : « Il faudra le lui dire. »;—
+AUR061;13:45;15:00;Atelier d'essayage du palais;—;Essayages des dames.;—
+AUR061;15:00;17:30;Atelier d'Aude, rue des Merciers;—;Atelier.;—
+AUR061;18:00;19:00;Atelier d'Aude, rue des Merciers;—;Atelier.;—
+AUR061;19:00;22:00;Maison d'Aude;—;Dessine des robes.;—
+AUR061;22:00;24:00;Maison d'Aude;—;Dort.;—
+AUR062;00:00;01:00;La Cour des Myrtes;—;Cour des Myrtes. Écoute.;—
+AUR062;01:00;08:00;Maison d'Ambrevin;—;Dort.;—
+AUR062;08:00;12:00;Parfumerie Ambrevin, rue des Parfums;—;Boutique.;—
+AUR062;12:15;13:00;Antichambre de l'impératrice;AUR012;Achète à Ysoline le rire de l'impératrice sur le contrat.;ragot : « elle a ri en signant »
+AUR062;13:00;14:30;Antichambres du palais;—;Visites de cour. Revend le rire de l'impératrice.;—
+AUR062;14:30;15:00;Parfumerie Ambrevin, rue des Parfums;AUR033;Jeannette vend le toast de l'impératrice. Ambrevin paie d'un ruban.;—
+AUR062;15:00;18:00;Parfumerie Ambrevin, rue des Parfums;—;Laboratoire. Prépare la poudre pour le médecin rival de Grellier.;—
+AUR062;18:00;22:00;Salons de la ville haute;—;Salons.;—
+AUR062;22:00;24:00;La Cour des Myrtes;—;Cour des Myrtes.;—
+AUR063;00:00;07:00;Maison de Grimaud;—;Dort.;—
+AUR063;07:00;12:00;Comptoir de Grimaud, rue Basse;—;Comptoir.;—
+AUR063;12:00;13:00;Comptoir de Grimaud, rue Basse;—;Soupe.;—
+AUR063;13:00;17:00;Comptoir de Grimaud, rue Basse;—;Comptoir.;—
+AUR063;17:00;17:45;Comptoir de Grimaud, rue Basse;AUR013;Le baron de Lorge revient emprunter. Grimaud prête, contre un service à nommer plus tard. Un esclave de chambre de l'impératrice, ça vaut cher.;prise sur Bastien
+AUR063;17:45;19:00;Comptoir de Grimaud, rue Basse;—;Comptoir.;—
+AUR063;19:00;19:30;Comptoir de Grimaud, rue Basse;AUR041;Paie Coquelin pour le moulin de l'Aure.;argent −3 or
+AUR063;19:30;21:00;Comptoir de Grimaud, rue Basse;—;Comptes.;—
+AUR063;21:00;24:00;Maison de Grimaud;—;Dort.;—
+AUR064;00:00;01:00;La Cour des Myrtes;AUR054;Écoute Gâche parler de ses achats. Retient.;—
+AUR064;01:00;02:00;La Cour des Myrtes;—;Salon.;—
+AUR064;02:00;04:00;La Cour des Myrtes;—;Ferme. Comptes. Note ce qu'a dit Gâche.;—
+AUR064;04:00;12:00;La Cour des Myrtes;—;Dort.;—
+AUR064;12:00;14:00;La Cour des Myrtes;—;Repas, paie les filles et les garçons.;—
+AUR064;14:00;16:00;La Cour des Myrtes;—;Ouvre les bains.;—
+AUR064;16:00;21:00;La Cour des Myrtes;—;Salon.;—
+AUR064;21:00;22:00;La Cour des Myrtes;AUR006,AUR054;Sert elle-même le chambellan et le marchand. Retient « l'ours qui mourra de fièvre ».;note : Faucq et Gâche, un ours (60)
+AUR064;22:00;24:00;La Cour des Myrtes;—;Salon. Écrit ce qu'a dit le chambellan.;—
+AUR065;00:00;01:00;La Cour des Myrtes;AUR045;Avec Desforges, client fidèle. Il parle des lances. Elle écoute, rit, retient.;argent +
+AUR065;01:00;03:00;La Cour des Myrtes;—;Salon.;—
+AUR065;03:00;12:00;La Cour des Myrtes;—;Dort.;—
+AUR065;12:00;14:00;La Cour des Myrtes;—;Lever.;—
+AUR065;14:00;16:00;La Cour des Myrtes;—;Bains.;—
+AUR065;16:00;20:00;La Cour des Myrtes;—;Salon.;—
+AUR065;20:00;24:00;La Cour des Myrtes;AUR045;Desforges arrive content. Il redit qu'il manque le double des lances. Elle décide de le revendre à Duplessis.;décision : vendre à Duplessis au jour 2
+AUR066;00:00;00:30;Ruelle derrière le Lion d'Azur;AUR046;Brac lui vend la nouvelle de la prime. Le Rat paie et pense aux fugitifs à vendre.;—
+AUR066;00:30;03:00;Cave du Lion d'Azur;AUR055,AUR079;Dit à Clément que la prime sera criée demain. Imprime « la Reine aux yeux verts ».;—
+AUR066;03:00;04:00;Toits de la ville basse;—;Toits.;—
+AUR066;04:00;12:00;Repaire du Rat;—;Dort.;—
+AUR066;12:00;13:00;Repaire du Rat;—;Lever.;—
+AUR066;13:00;17:00;Ville basse;—;Affaires. Fait savoir aux gueux que les fugitifs valent le double.;—
+AUR066;17:00;19:00;Le Lion d'Azur;—;Lion d'Azur.;—
+AUR066;19:00;20:00;Le Lion d'Azur;AUR079;Au Lion d'Azur avec Clément. La ville parle déjà de la prime.;—
+AUR066;20:00;22:00;Le Lion d'Azur;—;Cartes.;—
+AUR066;22:00;23:30;Toits de la ville basse;—;Toits.;—
+AUR066;23:30;24:00;Cave du Lion d'Azur;AUR055,AUR079;Cave. Nouvelle impression.;—
+AUR067;00:00;06:00;Grenier de Moineau;—;Dort, la lettre dans sa chemise.;—
+AUR067;06:00;08:00;Place du marché;—;Marché.;—
+AUR067;08:00;09:00;Parvis du grand temple;AUR048,AUR068;Écoute le crieur. Compte : quatre pièces d'or, c'est plus qu'elle a jamais vu.;souvenir « quatre pièces d'or » (50)
+AUR067;09:00;12:00;Place du marché;—;Vole deux pommes.;—
+AUR067;12:00;13:00;Parvis du grand temple;AUR048,AUR049,AUR050,AUR068;Soupe. Écoute Fulbert. Demande à Aurore ce que veut dire « vivant ou mort ».;—
+AUR067;13:00;14:00;Remparts de la ville haute;AUR084;Sur les remparts avec Suzon. Lui montre la lettre volée au courrier de Kerval. Suzon déchiffre : « Ursule », « des lumières au large ».;souvenir « la lettre est pour une Ursule » (55)
+AUR067;14:00;14:30;Rue du Four;—;Descend rue du Four.;—
+AUR067;14:30;15:30;Rue du Four;AUR051,AUR057,AUR091;Bertille lui donne sa brioche. Joue aux billes.;—
+AUR067;15:30;18:00;Rues hautes;—;Rues hautes.;—
+AUR067;18:00;24:00;Grenier de Moineau;—;Grenier. Se demande qui est Ursule. Dort.;—
+AUR068;00:00;06:30;Escalier de Marthe Cauvin, ville basse;—;Dort sous l'escalier.;—
+AUR068;06:30;07:00;Escalier de Marthe Cauvin, ville basse;AUR043;Marthe lui dit qu'elle va au palais demander le corps de Martin.;—
+AUR068;07:00;08:00;Parvis du grand temple;—;Parvis.;—
+AUR068;08:00;09:00;Parvis du grand temple;AUR048,AUR067;Le crieur passe. Huguette dit que ça finira mal.;—
+AUR068;09:00;12:00;Parvis du grand temple;—;Parvis.;—
+AUR068;12:00;13:00;Parvis du grand temple;AUR048,AUR049,AUR050,AUR067;Soupe. Dit que la veuve Cauvin va au palais aujourd'hui.;—
+AUR068;13:00;15:00;Rue du Four;—;Coin de la rue du Four.;—
+AUR068;15:00;15:30;Boulangerie Miche, rue du Four;AUR060,AUR092;Reçoit le pain de Prosper.;—
+AUR068;15:30;19:00;Rue du Four;—;Coin de la rue du Four.;—
+AUR068;19:00;20:00;Escalier de Marthe Cauvin, ville basse;AUR043;Console Marthe sur la marche.;—
+AUR068;20:00;24:00;Escalier de Marthe Cauvin, ville basse;—;Dort.;—
+AUR069;00:00;05:00;Barge de Jacquot, port d'Orvieu;—;Dort sur sa barge, à Orvieu.;—
+AUR069;05:00;06:00;Barge de Jacquot, port d'Orvieu;—;Charge le vin.;—
+AUR069;06:00;18:00;En route vers Aurelle;—;Remonte l'Aure. Lent, à la gaffe.;—
+AUR069;18:00;19:30;Port fluvial;—;Décharge au port.;argent +1 or
+AUR069;19:30;20:00;Le Lion d'Azur;—;Arrive au Lion d'Azur.;—
+AUR069;20:00;21:30;Le Lion d'Azur;AUR042;Jehan veut brûler son moulin. Jacquot le fait promettre d'attendre au moins demain.;—
+AUR069;21:30;22:00;Le Lion d'Azur;AUR055;Au comptoir avec Ermengarde.;—
+AUR069;22:00;23:30;Chambre de l'aubergiste, Lion d'Azur;AUR055;Reste avec Ermengarde après le couvre-feu.;—
+AUR069;23:30;24:00;Chambre de l'aubergiste, Lion d'Azur;—;Dort.;—
+AUR070;00:00;02:00;Cave de la librairie Pasquier;—;Copie dans la cave.;—
+AUR070;02:00;08:00;Librairie Pasquier;—;Dort.;—
+AUR070;08:00;12:00;Librairie Pasquier;—;Boutique.;—
+AUR070;12:00;13:00;Librairie Pasquier;—;Repas.;—
+AUR070;13:00;15:00;Librairie Pasquier;—;Boutique.;—
+AUR070;15:00;15:30;Librairie Pasquier;AUR019;Un valet dépose une bourse pour Clément. Pasquier la range sous le comptoir. Il reconnaît la livrée du prince, et l'oublie.;secret : la bourse vient de chez le prince (60)
+AUR070;15:30;19:00;Librairie Pasquier;—;Boutique.;—
+AUR070;19:00;20:00;Librairie Pasquier;AUR017;Octave passe, comme chaque soir. Ils parlent d'oiseaux.;—
+AUR070;20:00;24:00;Cave de la librairie Pasquier;—;Copie. Pense à la livrée du valet.;—
+AUR071;00:00;10:00;Chambre d'une conquête;—;Dort chez une conquête.;—
+AUR071;10:00;11:00;Atelier de Daunay;—;Lever.;—
+AUR071;11:00;15:30;Atelier de Daunay;—;Atelier. Retouche les yeux du second portrait.;—
+AUR071;15:30;16:30;Atelier de Daunay;AUR056;Rose passe. Il l'empêche de soulever le drap du second portrait.;—
+AUR071;16:30;19:00;Atelier de Daunay;—;Atelier.;—
+AUR071;19:00;20:00;Tavernes de la ville basse;—;Tavernes.;—
+AUR071;20:00;22:00;Le Lion d'Azur;AUR056;Courtise Rose au Lion d'Azur. Lui promet une place au palais.;—
+AUR071;22:00;24:00;Atelier de Daunay;—;Rentre seul.;—
+AUR072;00:00;03:00;Ville basse;—;Accouchement chez une femme de tanneur. Une fille.;—
+AUR072;03:00;06:00;Échoppe d'Hermine, ville basse;—;Dort.;—
+AUR072;06:00;08:00;Hors les murs;—;Cueillette.;—
+AUR072;08:00;13:00;Échoppe d'Hermine, ville basse;—;Échoppe.;—
+AUR072;13:00;14:00;Échoppe d'Hermine, ville basse;—;Repas.;—
+AUR072;14:00;18:30;Ville basse;—;Visites.;—
+AUR072;18:30;19:30;Échoppe d'Hermine, ville basse;AUR034;Gisèle lui raconte la fouille de la charrette. Hermine dit que Berthe n'est pas revenue avec son flacon.;—
+AUR072;19:30;24:00;Échoppe d'Hermine, ville basse;—;Dort.;—
+AUR073;00:00;05:00;Maison du jardinier;—;Dort.;—
+AUR073;05:00;07:00;Jardins du palais;AUR089;Taille les roses du solstice avec Vieux Tilleul.;—
+AUR073;07:00;09:00;Jardins du palais;AUR074,AUR089;Jardins avec sa petite-fille. Greffe un églantier.;—
+AUR073;09:00;09:30;Poterne de la Lune, côté jardins;AUR089;Montre l'herbe foulée devant la poterne. « Qui passe ici ? » Vieux Tilleul dit : les lapins.;doute (30)
+AUR073;09:30;12:00;Jardins du palais;—;Roses.;—
+AUR073;12:00;13:00;Jardins du palais;AUR074;Repas avec Pâquerette dans la cabane à outils.;—
+AUR073;13:00;19:00;Jardins du palais;—;Jardins.;—
+AUR073;19:00;24:00;Maison du jardinier;—;Souper, dort.;—
+AUR074;00:00;07:00;Maison du jardinier;—;Dort.;—
+AUR074;07:00;09:00;Jardins du palais;AUR073,AUR089;Aide son grand-père. Cherche des coccinelles.;—
+AUR074;09:00;10:00;Jardins du palais;—;Insectes.;—
+AUR074;10:00;10:30;Jardins du palais;AUR089;Raconte à Vieux Tilleul son rêve de la renarde qui ouvrait la porte. Il dit que les rêves de renarde, on ne les raconte pas, sinon elles ne reviennent pas.;promesse : ne rien dire
+AUR074;10:30;12:00;Jardins du palais;—;Fleurs.;—
+AUR074;12:00;13:00;Jardins du palais;AUR073;Mange avec son grand-père.;—
+AUR074;13:00;14:00;Maison du jardinier;—;Sieste.;—
+AUR074;14:00;18:00;Jardins du palais;—;Jardins.;—
+AUR074;18:00;24:00;Maison du jardinier;—;Souper et dort.;—
+AUR075;00:00;07:00;Relais du palais;—;Dort.;—
+AUR075;07:00;09:30;Relais du palais;—;Prépare son sac et ses relais.;—
+AUR075;09:30;10:00;Écuries impériales;AUR017,AUR085;Reçoit le contrat scellé pour Saltevaux. Hector lui a préparé le gris pommelé. Il plaisante sur les auberges de Haute-Lance.;objet : contrat de mariage scellé
+AUR075;10:00;14:00;En route vers Rochemaure;—;Part à dix heures, route de l'ouest.;—
+AUR075;14:00;14:30;Relais de poste de la route de l'ouest;—;Change de cheval.;—
+AUR075;14:30;20:00;En route vers Rochemaure;—;Route.;—
+AUR075;20:00;24:00;Relais de Rochemaure;—;Arrive au relais de Rochemaure. Soupe, dort. Le maître de poste Lamothe regarde l'étui scellé.;—
+AUR076;00:00;01:00;Garde-robe de l'impératrice;—;Chiffres.;—
+AUR076;01:00;07:00;Chambre d'Oriane;—;Dort.;—
+AUR076;07:00;08:00;Chambre d'Oriane;—;Lever.;—
+AUR076;08:00;10:00;Garde-robe de l'impératrice;—;Lettres et rapports. Relit la copie de la lettre de Duplessis.;—
+AUR076;10:00;10:30;Cabinet de l'impératrice;AUR001;Rapporte la copie de la lettre de Duplessis, et qu'Aliette a acheté une copie du contrat. Elle garde pour elle ce qu'elle sait du prince et de la luthiste : une carte se joue au bon moment.;garde une carte : Ninon
+AUR076;10:30;13:00;Garde-robe de l'impératrice;—;Rapports des valets.;—
+AUR076;13:00;14:00;Garde-robe de l'impératrice;—;Repas.;—
+AUR076;14:00;18:00;Salon des dames du palais;—;Broderie avec les dames. Écoute.;—
+AUR076;18:00;21:00;Garde-robe de l'impératrice;—;Rapports.;—
+AUR076;21:00;22:00;Garde-robe de l'impératrice;AUR037;Morvay rapporte le salon. La santé de l'empereur au prochain Conseil. Elle l'écrit.;renseignement : Aliette et le Conseil
+AUR076;22:00;24:00;Garde-robe de l'impératrice;—;Fait prendre la lettre de Duplessis au relais. Chiffres.;—
+AUR077;00:00;07:00;Ambassade de Valmer;—;Dort.;—
+AUR077;07:00;08:00;Ambassade de Valmer;—;Lever.;—
+AUR077;08:00;12:00;Ambassade de Valmer;—;Ambassade.;—
+AUR077;12:00;14:30;Ambassade de Valmer;—;Repas.;—
+AUR077;14:30;15:30;Chancellerie;AUR004;Chez Dorlan. Apprend les dix mille fers commandés ce midi et le contrat parti à dix heures.;renseignement : commande des lances
+AUR077;15:30;16:00;Ambassade de Valmer;—;Rentre.;—
+AUR077;16:00;17:00;Ambassade de Valmer;AUR093;Vernier vient parler commerce et paix. Ils rêvent de barges de sel.;—
+AUR077;17:00;18:00;Ambassade de Valmer;—;Se change.;—
+AUR077;18:00;19:00;Grande salle du palais;AUR001,AUR003;Félicite le prince. Retient tout pour sa lettre de ce soir.;—
+AUR077;19:00;20:00;Grande salle du palais;—;Boit peu, observe la table impériale, compte les sourires.;—
+AUR077;20:00;21:00;Ambassade de Valmer;—;Rentre.;—
+AUR077;21:00;23:00;Ambassade de Valmer;—;Écrit au Premier sénateur Castelmar : contrat parti à dix heures, dix mille fers commandés à Grisemont. Il ne sait pas qu'Oriane lira la lettre.;lettre pour Saltevaux
+AUR077;23:00;24:00;Ambassade de Valmer;—;Dort.;—
+AUR078;00:00;08:00;Chambre de Tristan;—;Dort.;—
+AUR078;08:00;11:00;Salle d'armes du palais;—;Salle d'armes.;—
+AUR078;11:00;13:00;Salle d'armes du palais;AUR003,AUR013;Vient provoquer Bastien. Le prince s'en mêle. Il bat le prince à l'épée et ne se fait pas d'ami.;satisfaction, Aymon : relation −5
+AUR078;13:00;18:00;Tavernes de la ville haute;—;Tavernes. Raconte qu'il a battu le prince.;—
+AUR078;18:00;20:00;Chambre de Tristan;—;Repos.;—
+AUR078;20:00;24:00;Salle de jeu des nobles;—;Jeux. Apprend que son frère est appelé chez l'impératrice.;mépris pour Bastien +10
+AUR079;00:00;00:30;Mansarde de Clément;—;Descend vers le Lion d'Azur.;—
+AUR079;00:30;03:00;Cave du Lion d'Azur;AUR055,AUR066;Le Rat dit que la prime est criée demain. Clément décide d'avancer son pamphlet sur la prime.;décision : pamphlet de la prime plus tôt
+AUR079;03:00;11:00;Mansarde de Clément;—;Dort.;—
+AUR079;11:00;12:00;Mansarde de Clément;—;Lever.;—
+AUR079;12:00;19:00;Mansarde de Clément;—;Écrit le pamphlet sur la prime doublée.;—
+AUR079;19:00;20:00;Le Lion d'Azur;AUR066;Lit au Rat les premiers vers sur la prime. Le Rat rit.;—
+AUR079;20:00;22:00;Le Lion d'Azur;—;Boit, écrit sur la table.;—
+AUR079;22:00;23:30;Mansarde de Clément;—;Finit le pamphlet.;—
+AUR079;23:30;24:00;Cave du Lion d'Azur;AUR055,AUR066;Apporte à la cave le pamphlet sur la prime.;—
+AUR080;00:00;07:00;Cellule de la Tour Noire;—;Cellule. Dort mal.;—
+AUR080;07:00;07:15;Cellule de la Tour Noire;AUR081;Ogier apporte le pain et l'eau.;—
+AUR080;07:15;14:00;Cellule de la Tour Noire;—;Écrit de mémoire, avec l'ongle, sur le mur.;—
+AUR080;14:00;16:00;Salle d'interrogatoire de la Tour Noire;AUR008,AUR053,AUR081;Interrogé. Dit que la pierre vient d'une corne vivante. Laisse échapper qu'il n'est pas le seul à en avoir une, puis se tait.;peur +10
+AUR080;16:00;24:00;Cellule de la Tour Noire;—;Cellule. Regrette ce qu'il a dit.;—
+AUR081;00:00;06:00;Maison d'Ogier;—;Dort.;—
+AUR081;06:00;07:00;Tour Noire;—;Tour Noire.;—
+AUR081;07:00;07:15;Cellule de la Tour Noire;AUR080;Pain et eau à Fulcran. Ne parle pas.;—
+AUR081;07:15;14:00;Tour Noire;—;Vend à une famille le droit de faire passer du pain.;argent +5 sous
+AUR081;14:00;16:00;Salle d'interrogatoire de la Tour Noire;AUR008,AUR053,AUR080;Garde la porte de la salle. Pense aux cahiers dans son coffre.;—
+AUR081;16:00;18:00;Tour Noire;—;Tour Noire.;—
+AUR081;18:00;21:00;Maison d'Ogier;—;Maison.;—
+AUR081;21:00;23:00;Maison d'Ogier;—;Dames avec un voisin.;—
+AUR081;23:00;24:00;Maison d'Ogier;—;Dort.;—
+AUR082;00:00;06:00;Maison du bourreau;—;Dort.;—
+AUR082;06:00;07:00;Maison du bourreau;—;Prière.;—
+AUR082;07:00;12:00;Maison du bourreau;—;Menuiserie. Aucune exécution.;—
+AUR082;12:00;14:00;Maison du bourreau;—;Repas.;—
+AUR082;14:00;18:30;Maison du bourreau;—;Menuiserie.;—
+AUR082;18:30;20:00;Maison du bourreau;AUR083,AUR084;Souper. Marion dit que la veuve Cauvin a été chassée de l'audience. Jacob sort le chapelet de Martin et le regarde longtemps.;décision : rendre le chapelet ?
+AUR082;20:00;24:00;Maison du bourreau;—;Dort.;—
+AUR083;00:00;02:00;Maison du bourreau;—;Soins à la porte de derrière : un poignet foulé.;—
+AUR083;02:00;06:00;Maison du bourreau;—;Dort.;—
+AUR083;06:00;14:00;Maison du bourreau;—;Maison.;—
+AUR083;14:00;17:00;Place du marché;—;Marché, où on l'évite. Entend parler de la veuve Cauvin.;—
+AUR083;17:00;18:30;Maison du bourreau;—;Rentre.;—
+AUR083;18:30;20:00;Maison du bourreau;AUR082,AUR084;Raconte au souper ce qu'on dit au marché : la veuve Cauvin, refusée.;—
+AUR083;20:00;22:00;Maison du bourreau;—;Dort un peu.;—
+AUR083;22:00;24:00;Maison du bourreau;—;Soins à la porte de derrière.;—
+AUR084;00:00;07:00;Maison du bourreau;—;Dort.;—
+AUR084;07:00;13:00;Maison du bourreau;—;Maison. Lit les registres de son père.;—
+AUR084;13:00;14:00;Remparts de la ville haute;AUR067;Moineau lui montre une lettre. Suzon lit : « Ma sœur Ursule », « des lumières au large de Kerval ».;—
+AUR084;14:00;17:00;Remparts de la ville haute;—;Remparts. Regarde les oiseaux.;—
+AUR084;17:00;18:30;Maison du bourreau;—;Rentre.;—
+AUR084;18:30;20:00;Maison du bourreau;AUR082,AUR083;Souper. Voit son père regarder un chapelet.;—
+AUR084;20:00;24:00;Maison du bourreau;—;Dort.;—
+AUR085;00:00;05:00;Logis du grand écuyer;—;Dort.;—
+AUR085;05:00;05:30;Écuries impériales;AUR022,AUR030,AUR031,AUR090;Laisse Corne faire. Orage lui fait peur.;—
+AUR085;05:30;06:45;Écuries impériales;—;Écuries.;—
+AUR085;06:45;07:00;Écuries impériales;AUR022;Vérifie la sangle de la jument de l'impératrice, deux fois.;—
+AUR085;07:00;08:00;Parc impérial;AUR001;Accompagne l'impératrice à cheval, à deux longueurs. Elle monte mieux que tous ses officiers, et il le sait.;—
+AUR085;08:00;09:30;Écuries impériales;—;Écuries. Prépare le cheval du courrier.;—
+AUR085;09:30;10:00;Écuries impériales;AUR017,AUR075;Choisit lui-même le cheval du courrier, vérifie les sangles deux fois. Il vérifie toujours les sangles, depuis six ans.;—
+AUR085;10:00;13:00;Écuries impériales;—;Écuries.;—
+AUR085;13:00;14:00;Écuries impériales;—;Repas.;—
+AUR085;14:00;15:00;Manège des écuries;—;Dressage.;—
+AUR085;15:00;17:00;Manège des écuries;AUR039;Fait monter la demoiselle de Morvay. Répond que oui, le courrier est parti à dix heures.;—
+AUR085;17:00;19:00;Manège des écuries;—;Dressage.;—
+AUR085;19:00;21:00;Le Lion d'Azur;AUR022,AUR046;Bière. Parle chevaux.;—
+AUR085;21:00;24:00;Logis du grand écuyer;—;Dort.;—
+AUR086;00:00;06:00;Chambre de Barbe;—;Dort.;—
+AUR086;06:00;08:00;Chenil de Barbe;—;Chenil.;—
+AUR086;08:00;10:00;Porte de l'Aure;—;Affiche l'avis de prime doublée aux portes.;—
+AUR086;10:00;10:30;Cour du puits des cuisines;AUR009;Vient voir le capitaine pour sa part sur les prises d'Aurelle. Quatre pièces d'or la tête vivante, maintenant. Elle part au jour 2 vers Cendrebois.;—
+AUR086;10:30;12:00;Place du marché;—;Marché.;—
+AUR086;12:00;14:00;Chambre de Barbe;—;Repas.;—
+AUR086;14:00;16:00;Ruelle des Tanneurs;AUR087;Traque dans la ville basse. Passe par la ruelle des Tanneurs, sous la poterne de la Lune, sans y penser.;—
+AUR086;16:00;20:00;Chenil de Barbe;—;Prépare chiens et sacs pour Cendrebois.;—
+AUR086;20:00;22:00;Le Lion d'Azur;AUR087;Prépare le départ pour Cendrebois avec Fergus. Il raconte sa partie de dés avec Achard et le trousseau où manquait une clé. Barbe relève la tête : quelle clé ?;soupçon : la clé d'Achard (35)
+AUR086;22:00;24:00;Chambre de Barbe;—;Dort. Pense à une clé.;—
+AUR087;00:00;09:00;Chambre de Fergus;—;Dort.;—
+AUR087;09:00;10:00;Chambre de Fergus;—;Lever.;—
+AUR087;10:00;13:00;Chenil de Barbe;—;Chenil.;—
+AUR087;13:00;14:00;Chambre de Fergus;—;Repas.;—
+AUR087;14:00;16:00;Ruelle des Tanneurs;AUR086;Traque avec Barbe. Rien.;—
+AUR087;16:00;20:00;Tavernes de la ville basse;—;Dés.;argent −4 sous
+AUR087;20:00;22:00;Le Lion d'Azur;AUR086;Raconte en riant le trousseau d'Achard, où il manquait une clé. Barbe demande laquelle. Il ne sait pas.;—
+AUR087;22:00;24:00;Chambre de Fergus;—;Dort.;—
+AUR088;00:00;06:00;Soupente de l'hôtel de Morvay;—;Dort.;—
+AUR088;06:00;08:00;Hôtel de Morvay;—;Appartements de la comtesse.;—
+AUR088;08:00;09:00;Place du marché;—;Course au marché. Entend le crieur : prime doublée. Pense à son frère.;peur +20
+AUR088;09:00;10:00;Hôtel de Morvay;—;Appartements de la comtesse.;—
+AUR088;10:00;11:00;Hôtel de Morvay;AUR038;Leçon de lecture.;—
+AUR088;11:00;13:00;Hôtel de Morvay;—;Service.;—
+AUR088;13:00;15:00;Hôtel de Morvay;—;Restes, puis ménage.;—
+AUR088;15:00;17:00;Hôtel de Morvay;AUR038;Broderie, lit en cachette.;—
+AUR088;17:00;20:00;Hôtel de Morvay;—;Service.;—
+AUR088;20:00;21:00;Hôtel de Morvay;AUR038,AUR039;Sert le souper.;—
+AUR088;21:00;22:00;Hôtel de Morvay;—;Service.;—
+AUR088;22:00;22:30;Soupente de l'hôtel de Morvay;AUR039;Iseut monte avec un pamphlet. Myrtille lit la ligne sur la prime et dit : c'est pour mon frère.;—
+AUR088;22:30;24:00;Soupente de l'hôtel de Morvay;—;Dort.;—
+AUR089;00:00;04:00;Dortoir des esclaves;—;Dort.;—
+AUR089;04:00;04:30;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR028,AUR029;Se lève, salue Corne d'un hochement de tête, comme on salue la pluie.;—
+AUR089;04:30;05:00;Jardins du palais;—;Va aux jardins.;—
+AUR089;05:00;07:00;Jardins du palais;AUR073;Taille et ramasse. Pense à Lilie.;—
+AUR089;07:00;09:00;Jardins du palais;AUR073,AUR074;Désherbe. Pâquerette lui apporte une coccinelle.;—
+AUR089;09:00;09:30;Poterne de la Lune, côté jardins;AUR073;Le maître voit l'herbe foulée. Il dit « les lapins » et se promet de la relever chaque matin.;décision : effacer les traces
+AUR089;09:30;10:00;Jardins du palais;—;Relève l'herbe foulée devant la poterne, à la main.;—
+AUR089;10:00;10:30;Jardins du palais;AUR074;Pâquerette parle de la renarde à la poterne. Il lui fait promettre de garder le rêve pour elle.;—
+AUR089;10:30;13:00;Jardins du palais;—;Jardins.;—
+AUR089;13:00;14:00;Arrière-cour des cuisines;AUR010,AUR025,AUR026,AUR027,AUR028,AUR029,AUR032;Raconte la forêt de Cendrebois. Répond à Lilie que la route de l'ouest est longue, et qu'on la fait la nuit.;—
+AUR089;14:00;19:00;Jardins du palais;—;Jardins.;—
+AUR089;19:00;21:45;Dortoir des esclaves;—;Dortoir.;—
+AUR089;21:45;22:15;Dortoir des esclaves;AUR031,AUR010,AUR025,AUR026,AUR027,AUR028,AUR029;Debout pour le compte.;—
+AUR089;22:15;24:00;Dortoir des esclaves;—;Dort. Entend Lilie compter tout bas.;—
+AUR090;00:00;05:00;Grenier à foin des écuries;—;Dort près d'Orage.;—
+AUR090;05:00;05:30;Écuries impériales;AUR022,AUR030,AUR031,AUR085;Se cache derrière une stalle pendant que Corne crie.;peur +10
+AUR090;05:30;06:00;Écuries impériales;AUR022,AUR030;Mange le quignon de Gaucher en cachette.;—
+AUR090;06:00;06:45;Écuries impériales;AUR021,AUR022,AUR030;Porte le foin avec Colin. Rit.;—
+AUR090;06:45;09:00;Écuries impériales;AUR021,AUR030;Travaille et joue avec Colin.;—
+AUR090;09:00;13:00;Écuries impériales;—;Écuries.;—
+AUR090;13:00;14:00;Écuries impériales;AUR022,AUR030;Mange. Regarde Orage compter sur ses doigts et a peur.;—
+AUR090;14:00;17:00;Écuries impériales;—;Écuries.;—
+AUR090;17:00;19:30;Écuries impériales;AUR021;Joue avec Colin dans la paille.;—
+AUR090;19:30;20:00;Écuries impériales;—;Écuries.;—
+AUR090;20:00;22:00;Grenier à foin des écuries;AUR030;Demande à Orage de ne pas faire le feu. Il n'est pas écouté.;peur +15
+AUR090;22:00;24:00;Grenier à foin des écuries;—;Dort mal.;—
+AUR091;00:00;07:00;Maison Miche;—;Dort.;—
+AUR091;07:00;09:00;Boulangerie Miche, rue du Four;—;Boutique.;—
+AUR091;09:00;12:00;Maison Miche;—;Joue avec la pâte.;—
+AUR091;12:00;13:00;Maison Miche;—;Repas.;—
+AUR091;13:00;14:30;Maison Miche;—;Sieste.;—
+AUR091;14:30;15:30;Rue du Four;AUR051,AUR057,AUR067;Donne sa brioche à Moineau en cachette.;—
+AUR091;15:30;18:00;Boulangerie Miche, rue du Four;—;Boutique.;—
+AUR091;18:00;24:00;Maison Miche;—;Souper, dort.;—
+AUR092;00:00;02:00;Maison Miche;—;Dort.;—
+AUR092;02:00;07:00;Boulangerie Miche, rue du Four;AUR060;Aide au fournil puis ouvre la boutique.;—
+AUR092;07:00;12:00;Boulangerie Miche, rue du Four;—;Comptoir.;—
+AUR092;12:00;15:00;Maison Miche;—;Repas.;—
+AUR092;15:00;15:30;Boulangerie Miche, rue du Four;AUR060,AUR068;Voit Prosper donner le pain. Ne dit rien.;—
+AUR092;15:30;19:00;Boulangerie Miche, rue du Four;—;Comptoir.;—
+AUR092;19:00;20:00;Maison Miche;—;Souper.;—
+AUR092;20:00;21:00;Maison Miche;—;Comptes. Touche la brique du fournil.;—
+AUR092;21:00;24:00;Maison Miche;—;Dort.;—
+AUR093;00:00;07:00;Maison Vernier;—;Dort.;—
+AUR093;07:00;08:00;Maison Vernier;—;Lever.;—
+AUR093;08:00;12:00;Maison des marchands;—;Maison des marchands. Apprend que Fabert plaide aujourd'hui.;—
+AUR093;12:00;13:00;Maison des marchands;—;Affaires.;—
+AUR093;13:00;15:00;Maison des marchands;—;Banquet.;—
+AUR093;15:00;16:00;Ville haute;—;Visites.;—
+AUR093;16:00;17:00;Ambassade de Valmer;AUR077;Chez l'envoyé de la République. Parle des affaires qu'apporterait une trêve.;—
+AUR093;17:00;20:00;Maison Vernier;—;Apprend que Fabert a gagné. Dépit.;rancune contre Fabert +10
+AUR093;20:00;22:00;Maison Vernier;—;Souper.;—
+AUR093;22:00;24:00;Maison Vernier;—;Dort.;—
+AUR094;00:00;06:00;Chambre d'Ernoul;—;Dort.;—
+AUR094;06:00;07:00;Chambre d'Ernoul;—;Lever.;—
+AUR094;07:00;09:00;Chancellerie;—;Chancellerie.;—
+AUR094;09:00;10:30;Chancellerie;AUR004;Enregistre le départ du contrat. Le recopie une fois de plus, pour lui.;—
+AUR094;10:30;13:00;Chancellerie;—;Chancellerie.;—
+AUR094;13:00;14:00;Chancellerie;—;Repas.;—
+AUR094;14:00;18:00;Chancellerie;—;Recopie la commande de Grisemont. Une copie de plus, pour lui.;objet : copie de la commande
+AUR094;18:00;21:00;Tavernes de la ville haute;—;Dés.;argent −1 or
+AUR094;21:00;21:30;Hôtel de Sarrance;AUR036;Vend à la comtesse une copie de la commande de Grisemont.;argent +2 or
+AUR094;21:30;24:00;Tavernes de la ville haute;—;Dés.;—
+AUR095;00:00;05:00;Chambre de Gabrielle;—;Dort.;—
+AUR095;05:00;05:30;Chambre de Gabrielle;—;Lever.;—
+AUR095;05:30;06:00;Appartements de l'impératrice;AUR001;Ouvre les rideaux, présente la robe du matin. Note l'ordre pour Vinay.;—
+AUR095;06:00;07:00;Bains de l'impératrice;AUR001,AUR024,AUR010,AUR026;Tient la robe, surveille les esclaves. Voit la petite chatte lorgner les rubans de la robe, et se le note.;soupçon sur Plume +5
+AUR095;07:00;09:00;Appartements de l'impératrice;—;Range la chambre.;—
+AUR095;09:00;13:00;Appartements de l'impératrice;—;Chambre.;—
+AUR095;13:00;14:00;Garde-robe de l'impératrice;—;Repas.;—
+AUR095;14:00;17:30;Garde-robe de l'impératrice;—;Garde-robe.;—
+AUR095;17:30;18:00;Appartements de l'impératrice;AUR001;Habille l'impératrice pour le souper.;—
+AUR095;18:00;21:00;Garde-robe de l'impératrice;—;Garde-robe. Se dit qu'il faudra soulever les dalles des bains.;décision : chercher le ruban
+AUR095;21:00;21:30;Appartements de l'impératrice;AUR001,AUR012;Prépare la chambre pour le soir, comme d'habitude, sans un mot.;—
+AUR095;21:30;22:45;Antichambre de l'impératrice;AUR012;Attend dans l'antichambre, à portée de voix, comme chaque soir de pacte.;—
+AUR095;22:45;23:30;Appartements de l'impératrice;AUR001;Apporte le vin, range la chambre. Ne pose aucune question.;—
+AUR095;23:30;24:00;Chambre de Gabrielle;—;Dort.;—
+AUR096;00:00;04:00;Chambre de Fabien;—;Dort.;—
+AUR096;04:00;08:00;Cuisines du palais;—;Pâtisserie.;—
+AUR096;08:00;09:00;Cuisines du palais;AUR010,AUR029,AUR032,AUR033;Glisse un gâteau à Fenouil. Regarde Jeannette parler.;—
+AUR096;09:00;11:00;Cuisines du palais;—;Pâtisserie.;—
+AUR096;11:00;14:00;Cuisines du palais;—;Repas.;—
+AUR096;14:00;16:00;Chambre de Fabien;—;Repos.;—
+AUR096;16:00;21:00;Cuisines du palais;—;Desserts du souper. Laisse un reste de gâteau sur le coin de la table pour Lilie.;—
+AUR096;21:00;24:00;Chambre de Fabien;—;Dort.;—
+AUR097;00:00;07:00;Chambre d'Hippolyte;—;Dort.;—
+AUR097;07:00;08:00;Chambre d'Hippolyte;—;Lever.;—
+AUR097;08:00;09:00;Chambre de l'empereur;AUR002;Montre la carte de Pasquier, la côte ouest, l'île. Dit « Huit jours de route, Majesté, et vous la verrez. »;—
+AUR097;09:00;10:00;Chambre de l'empereur;AUR002,AUR021;La Grande Guerre. Il dit que les démons ne sont peut-être pas tous morts, et le regrette.;—
+AUR097;10:00;10:30;Chambre de l'empereur;AUR002,AUR003,AUR021;Interrompt la leçon pour le prince.;—
+AUR097;10:30;11:00;Chambre de l'empereur;AUR002,AUR021;Range la carte. Remarque que l'empereur tousse moins.;—
+AUR097;11:00;14:00;Chambre d'Hippolyte;—;Repas.;—
+AUR097;14:00;18:00;Bibliothèque du palais;—;Bibliothèque. Calcule la route jusqu'à la mer.;—
+AUR097;18:00;22:00;Chambre d'Hippolyte;—;Lectures.;—
+AUR097;22:00;24:00;Chambre d'Hippolyte;—;Dort.;—
+AUR098;00:00;06:00;Porte des appartements de l'impératrice;—;Garde de nuit des appartements.;—
+AUR098;06:00;07:00;Corps de garde du palais;—;Relève.;—
+AUR098;07:00;13:00;Quartier des gardes;—;Dort.;—
+AUR098;13:00;14:00;Quartier des gardes;—;Repas.;—
+AUR098;14:00;16:00;Cour d'exercice de la garnison;—;Lutte.;—
+AUR098;16:00;17:00;Quartier des gardes;—;Écrit à sa sœur Annaïg. Toujours pas de réponse.;inquiétude +10
+AUR098;17:00;18:00;Quartier des gardes;—;Repos.;—
+AUR098;18:00;21:00;Porte des appartements de l'impératrice;—;Garde des appartements.;—
+AUR098;21:00;21:30;Porte des appartements de l'impératrice;AUR015;Dit à Évrard que c'est Lorge. Il reste un moment sans bouger.;—
+AUR098;21:30;22:45;Porte des appartements de l'impératrice;—;Garde.;—
+AUR098;22:45;23:00;Porte des appartements de l'impératrice;AUR013;Voit sortir Bastien trop tôt, le visage défait. Elle ne juge pas.;souvenir « Lorge sorti tôt » (40)
+AUR098;23:00;24:00;Porte des appartements de l'impératrice;—;Garde.;—
+AUR099;00:00;09:00;Chambre de Thibault;—;Dort.;—
+AUR099;09:00;12:00;Place du marché;—;Recrute au marché.;—
+AUR099;12:00;14:00;Tavernes de la ville basse;—;Tavernes.;—
+AUR099;14:00;15:00;Caserne de la ville haute;AUR045;Reçoit l'ordre de presser la levée. Mille porteurs de lances.;—
+AUR099;15:00;19:00;Tavernes de la ville basse;—;Tavernes.;—
+AUR099;19:00;20:00;Le Lion d'Azur;AUR059;Essaie de faire signer l'apprenti armurier. Il refuse.;—
+AUR099;20:00;22:00;Le Lion d'Azur;—;Fait signer deux garçons ivres.;levée +2
+AUR099;22:00;24:00;Chambre de Thibault;—;Dort.;—
+AUR100;00:00;07:00;Chambre de Jehanne;—;Dort.;—
+AUR100;07:00;08:00;Chambre de Jehanne;—;Lever.;—
+AUR100;08:00;09:00;Grand temple des Sept Astres;—;Messe.;—
+AUR100;09:00;10:00;Chambre de Jehanne;—;Rentre.;—
+AUR100;10:00;12:00;Chambre de Jehanne;—;À la fenêtre. Voit partir le courrier de Saltevaux.;—
+AUR100;12:00;14:00;Chambre de Jehanne;—;Repas.;—
+AUR100;14:00;17:00;Chambre de Jehanne;—;Broderie. Attend la visite du mois, qui ne vient pas aujourd'hui.;—
+AUR100;17:00;18:00;Chambre de Jehanne;—;Sieste.;—
+AUR100;18:00;20:00;Chambre de Jehanne;—;Souper.;—
+AUR100;20:00;24:00;Chambre de Jehanne;—;Dort.;—
