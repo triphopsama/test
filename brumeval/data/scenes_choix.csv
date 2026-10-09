@@ -1,0 +1,251 @@
+scene;id;texte;detail;condition;test;effets;texte_ok;effets_rate;texte_rate
+j1_pierrick;calme;Répondre calmement;;;;aff BRU020 +5, fil pierrick=calme;Il te jauge longtemps, puis baisse l'arc et te montre le chemin du village. « Par là. Et touche à rien. »;;
+j1_pierrick;mentir;Mentir (un voyageur égaré);;;Int 18;aff BRU020 +2, fil pierrick=calme;Il ne te croit qu'à moitié, mais il te montre le chemin.;aff BRU020 -10;« Égaré ? Avec ces mains-là ? » Il crache par terre et disparaît dans les fougères.
+j1_pierrick;provoquer;Le provoquer;Un archer de niveau 26. Au niveau 1, c'est perdu d'avance.;;;fil pierrick=provoque, aff BRU020 -20, combat BRU020 bagarre;Mauvaise idée.;;
+j1_pierrick;suivre;Le laisser partir, puis le suivre en douce;;;Agi 22 +discretion 5;fil pierrick=sculpture, temps 20;Tu le suis jusqu'à sa cabane. Par la porte entrouverte : une sculpture de bois, une femme qui rit, polie par des années de mains. Un nom gravé dessous : Léa.;aff BRU020 -10;Une brindille craque. Il se retourne d'un bloc : « T'as fini de me suivre ? »
+j1_agnes;entrer;Entrer;;;;aff BRU015 +10, fil agnes=soigne, temps 30, repas;Elle te soigne, te nourrit, te pose des questions sans attendre les réponses. En te mettant dehors : « Va voir Mara à la boulangerie. Dis que c'est moi qui t'envoie. »;;
+j1_agnes;mefiant;Rester sur le seuil, méfiant;;;;aff BRU015 +2;« Comme tu veux. La soupe, elle attend personne. »;;
+j1_fournil;aider;Proposer ton aide au fournil;;;;aff BRU001 +10, temps 30, repas;Une demi-heure à pétrir. Mara se détend, parle de Tim et de la farine, et te nourrit.;;
+j1_fournil;tim;Lui dire que Tim s'est sauvé;;;;aff BRU001 +5, aff BRU005 -10, fil tim=trahi;Mara te remercie du bout des lèvres. Tim, plus tard, te le reprochera.;;
+j1_fournil;taire;Te taire;;;;aff BRU005 +5, fil tim=complice;Par la fenêtre, Tim te fait un clin d'œil.;;
+j1_farine_silas;refuser;Conseiller à Mara de refuser;;;;fil farine=refus, aff BRU001 +10, aff BRU003 -5, fil silas=geneur;Mara refuse. Silas te regarde pour la première fois : « Et toi, l'étranger, tu te mêles de quoi ? »;;
+j1_farine_silas;acheter;Acheter le sac toi-même pour elle (3 argent);;bourse>=36;;cuivre -36, fil farine=don, aff BRU001 +20, aff BRU003 +5;Mara rougit : elle te doit une faveur. Silas sourit : un client à ferrer.;;
+j1_farine_silas;services;Proposer tes services à Silas;;;;fil silas=recrue, aff BRU003 +10;Silas te détaille : « Passe à la taverne ce soir. J'ai peut-être une course pour toi. »;;
+j1_moulin;deconseiller;Lui déconseiller d'accepter;;;;fil elise=dissuadee, aff BRU013 +5;Elle hésite plus longtemps. Il lui faudrait du grain honnête : Basile en cache, dit-on.;;
+j1_moulin;encourager;L'encourager;;;;fil elise=encouragee;Elle hausse les épaules : « On verra demain. »;;
+j1_rigole;elise;Prendre le parti d'Élise;;;;aff BRU013 +15, aff BRU018 -15, fil rigole=elise, fil elise=alliee;Élise te regarde autrement. Basile s'en souviendra.;;
+j1_rigole;partage;Proposer un partage de l'eau (jours alternés);;;Int 20;aff BRU013 +5, aff BRU018 +5, fil rigole=partage;Ils grognent, puis acceptent. La plainte à la mairie n'aura pas lieu. Basile, en partant : « J'ai du grain, moi. Pour qui paie. »;aff BRU013 -5, aff BRU018 -5, fil rigole=plainte;Ils t'envoient promener tous les deux.
+j1_rigole;frapper;Frapper Basile;;;;aff BRU013 +5, fil rigole=basile_frappe, fil casier=basile, combat BRU018 bagarre;Basile porte plainte. Corentin te convoquera.;;
+j1_mairie;aldric;Parler à Aldric ensuite;;;;aff BRU007 +5;Poli, mou, gentil. Il a peur de sa femme.;;
+j1_mairie;clemence;Te présenter à Clémence;;;;aff BRU008 +5;Elle te classe tout de suite : riche, ou bon à rien. Tu sauras plus tard.;;
+j1_forge;defendre;« Il te doit de l'argent, pas son honneur. »;;;;aff BRU002 +15, aff BRU003 -10, fil bram=defendu, fil silas=geneur;Bram ne dit rien. Mais il s'en souviendra.;;
+j1_forge;payer;Payer une partie de la dette (10 argent);;bourse>=120;;cuivre -120, aff BRU002 +10, aff BRU012 +25, fil bram=dette_payee;Bram en a honte, et te le doit. Lucas, derrière lui, te regarde comme un frère.;;
+j1_forge;moquer;Te moquer de Bram;;;;aff BRU002 -20, aff BRU003 +5, fil bram=moque;Silas te sourit. Bram, lui, n'oubliera pas.;;
+j1_forge;travail;Demander du travail;;;;aff BRU002 +2, fil bram=apprenti;« T'as des mains de demoiselle. Pose ça avant de te couper un truc qui te manquera. » Il te garde quand même.;;
+j1_atelier;habits;Demander à Isaure de t'habiller à crédit;;;Sag 16;aff BRU019 +10, objet OBJ223 +1;Tu la fais rire. Elle te trouve une chemise et des braies : « Tu paieras quand tu pourras. »;aff BRU019 -2;« À crédit ? Avec quelle tête ? »
+j1_tim;parler;Parler à Tim, après;;;;aff BRU005 +5, fil tim=lumieres;Il te montre fièrement la pièce, et te raconte les lumières de la crique, la nuit. Quelque chose se passe là-bas.;;
+j1_theo;parler;Parler au verrier;;;Per 18;aff BRU017 +10, fil theo=allie;« Le verre, c'est comme les gens. Tu le chauffes assez longtemps, il prend la forme que tu veux. » Puis, plus bas : « Cette nuit, la falaise d'en face. Si tu veux compter avec moi. »;fil theo=connu;Il te sourit poliment et parle de vitraux.
+j1_chapelle;travail;Lui proposer ton aide (le vitrail, l'école);;;;aff BRU004 +5, fil ysolde=travail;« Il y a une paillasse dans la sacristie. Tu travailles, tu dors. » Elle ne demande pas d'où tu viens.;;
+j1_chapelle;maison;Lui demander la maison de la falaise (8 argent);;bourse>=96;;cuivre -96, maison;Elle te regarde longtemps : « La maison de mes pères. Une ruine. » Elle prend l'argent, et te tend une clé rouillée.;;
+j1_chapelle;illusion;Garder ton illusion sous sa lumière;;peuple demon;Vol 22;aff BRU004 +0;Sa lumière passe sur toi sans s'arrêter.;fil ysolde=soupcon, aff BRU004 -20;Une ombre de corne, une seconde. Ysolde se fige, et ne dit rien. Pour l'instant.
+j1_enfants;denoncer;Le dire à Mara;;;;fil falaise=denonces, aff BRU016 -20, aff BRU005 -10, aff BRU001 +5;L'expédition n'aura pas lieu. Nina te déteste.;;
+j1_enfants;en_etre;Dire que tu en es;;;;fil falaise=invites, aff BRU005 +10, aff BRU016 +10;Tu deviens leur grand frère. Mara s'en souviendra, dans un sens ou dans l'autre.;;
+j1_nina;cacher;La cacher;;;;fil nina=cachee, aff BRU016 +25, aff BRU014 -5;Corentin passe sans la voir. Nina, essoufflée : « Je te dois une. La maison de la falaise : la fenêtre de la cave. »;;
+j1_nina;livrer;La livrer;;;;fil nina=livree, aff BRU014 +10, aff BRU016 -30;Corentin te remercie. Nina te regarde comme on regarde un traître.;;
+j1_mains;garder;Garder le secret;;;;fil mains=garde;Bram te fera confiance, plus tard, s'il apprend que tu savais.;;
+j1_mains;agnes;En parler à Agnès;;;;fil mains=agnes, aff BRU015 +5;« J'ai un remède. Pas une guérison. »;;
+j1_mains;silas;Le vendre à Silas;;;;fil mains=silas, aff BRU003 +10, cuivre +12;Silas sourit et paie. Il s'en servira.;;
+j1_amants;guet;Faire le guet, et retenir Rosalie au comptoir (une tournée);;bourse>=12;;cuivre -12, fil amants=couverts, aff BRU009 +15, aff BRU010 +15;Rosalie n'a rien vu. Elle n'aura rien à vendre à Clémence.;;
+j1_amants;denoncer;Les dénoncer toi-même à Clémence;;;;fil amants=denonces, cuivre +24, aff BRU008 +10, aff BRU010 -30;Clémence te paie et te trouve utile.;;
+j1_amants;chantage;Les faire chanter;;;;fil amants=chantage, cuivre +36, aff BRU010 -40, aff BRU009 -20;Gaëlle paie. Félix te hait.;;
+j1_taverne;tournee;Payer une tournée;;bourse>=12;;cuivre -12, aff BRU006 +5, aff BRU010 +5, aff BRU011 +5;Le village t'aime un peu.;;
+j1_taverne;conte;Raconter une histoire de ton monde;;;;aff BRU010 +10, ragot l'étranger raconte des contes de pays où les lanternes s'allument sans feu;Tout le monde prend ça pour un conte lointain. Joss te vole l'histoire et la répète partout.;;
+j1_taverne;ecouter;Boire et écouter;;;;temps 30;"Trois rumeurs : la dette de Bram ; « Silas tient le village par les dettes » ; des lanternes au large, la nuit, sans bateau annoncé.";;
+j1_bram_taverne;defendre;Défendre Bram devant Joss;;;;aff BRU002 +10, aff BRU006 -5;Joss râle. Bram, sur le seuil, t'a entendu.;;
+j1_bram_taverne;rajouter;En rajouter;;;;aff BRU002 -15, ragot Bram a peur de Silas comme un gamin;La rumeur grossit.;;
+j1_toit;monter;Monter la rejoindre;;;;fil lanternes=vues, aff BRU004 +3;Vous regardez ensemble. Elle ne dit rien. Toi, tu sais maintenant où regarder cette nuit.;;
+j2_puits_nuit;regarder;Approcher sans bruit;;;Agi 18 +discretion 5;fil pierrick=puits;Pierrick enterre un mouton. Derrière lui, un vieux puits couvert de planches. Il ne t'a pas vu.;aff BRU020 -10;Il lève la lanterne vers toi. « Dégage. Et oublie. »
+p1_gouvernail;brumeval;Demander quand le bateau part pour Brumeval;;;;fil goeland=farine_a_bord, aff PIE006 -3;Daunel se ferme : « Quand il partira. » Un mousse te souffle qu'il y a vingt sacs de farine pour Brumeval dans la cale.;;
+p1_ferrat;plonger;Plonger voir le gouvernail;;;End 18;fil goeland=avarie_fausse, aff PIE011 +10, temps 10;L'eau est glacée. Le gouvernail est intact, sans une écaille.;temps 10;Tu bois la tasse et remontes sans avoir rien vu.
+p1_ferrat;ferrat;Prendre le parti de Ferrat;;;;aff PIE011 +10, aff PIE006 -10;Daunel te note comme gêneur.;;
+p1_ferrat;daunel;Prendre le parti de Daunel;;;;aff PIE006 +10, fil daunel=offre;Daunel t'offre un verre ce soir : « J'ai du travail de quai pour toi. Bien payé. Sans questions. »;;
+p1_ferrat;travail;Demander du travail au chantier;;;;aff PIE011 +3, cuivre +18, temps 180;Trois heures à porter des bordés. Ferrat ne dit rien, et paie juste.;;
+p1_entrepot;demander;Demander cette farine pour Brumeval;;;;aff PIE007 +5;Bérénice te regarde longtemps : « Elle n'est pas à vendre. Pas encore. Revenez avec une raison. »;;
+p1_kael;assis;T'asseoir à côté sans rien dire;;;;aff PIE016 +5;Au bout de dix minutes, il parle. Un peu.;;
+p1_kael;frere;T'asseoir à côté, en frère;;peuple homme_bete|demi_sang;;aff PIE016 +15;Il te regarde, renifle, hoche la tête. Pas besoin de mots.;;
+p1_kael;provoquer;Le provoquer;;;;aff PIE016 -20, combat PIE016 bagarre;Tout le port le saura.;;
+p1_code;garder;Garder ce que tu as entendu;;;;fil lysa=code_entendu;Tu ne comprends pas tout. Mais tu as le fil.;;
+p1_code;denoncer;Le répéter au videur de la Maison des Lanternes;;;;fil lysa=denoncee, aff PIE016 -40, aff PIE005 +5;Hugues le répète à Orsoline. Kael ne te le pardonnera jamais.;;
+p1_prevot;voir;Regarder par la fenêtre;;;Per 18;fil prevot=enveloppe;Le prévôt glisse l'enveloppe sous un pâté sans la compter. « Toujours un plaisir, Madame. »;;Tu ne vois rien de plus qu'une porte qui se ferme.
+p1_odile;verite;Ne pas lui mentir;;;;aff PIE010 +10;Elle sourit. « Je ne le dirai à personne. »;;
+p1_paris;intervenir;Intervenir;;;;aff PIE001 -5, fil orsoline=curieux;Orsoline te sourit : « Et vous êtes ? » Elle note ton visage.;;
+p1_paris;jouer;Jouer aux dés contre Pâris;;;Int 22;cuivre +24, fil paris=joue;Tu le plumes proprement.;cuivre -12, fil paris=joue;Il a de la chance, pour une fois. Pas longtemps.
+p1_ondine;dire;Lui dire ce que tu as entendu;;;;fil paris=ondine_sait, aff PIE013 +20, aff PIE014 -10;Ondine pâlit, puis rougit. Ce soir, la dispute sera une explosion.;;
+p1_palissade;lysa;Parler doucement à travers les planches;;;;aff PIE002 +5;Un nom : « Lysa. » Et rien d'autre.;;
+p1_palissade;eloigner;Ramener la petite chez sa mère;;;;fil fleur=eloignee;Fleur te tire la langue. À la fenêtre, personne ne l'a vue cette fois.;;
+p1_mahaut;agnes;Lui dire qu'Agnès t'a soigné;;fil agnes=soigne;;aff PIE015 +20, fil mahaut=lettre;« Elle soigne tous les chiens perdus. » Elle te confie une lettre pour Agnès.;;
+p1_mahaut;parler;Lui parler;;;;aff PIE015 +2;« Qu'est-ce que tu veux, toi ? » Elle te met dehors, gentiment.;;
+p1_daunel;boire;Le faire boire encore (une tournée);;bourse>=12;;cuivre -12, fil goeland=daunel_paye;« Un ami de Brumeval paie mieux que la mer. » La famine de Brumeval est fabriquée, et tu le sais.;;
+p1_dispute;preter;Prêter à Pâris de quoi se refaire;;bourse>=24;;cuivre -24, aff PIE014 +5, fil paris=pret;Il te remercie. Il perdra tout à deux heures.;;
+p1_dispute;ondine;Te ranger du côté d'Ondine;;fil paris=ondine_sait;;aff PIE013 +5, aff PIE014 -5;Pâris dort dehors.;;
+p1_bastien;diversion;Faire diversion pour lui;;;Agi 16;fil bastien=aide, aff PIE003 +15;Un verre renversé, une question à Orsoline. Bastien a dix minutes au lieu de trois. Il te regarde, pour la première fois, comme un humain.;;"Ta diversion tombe à plat ; il a eu ses trois minutes, pas plus."
+p1_bastien;denoncer;Le dénoncer;;;;fil bastien=denonce, aff PIE001 +10, aff PIE003 -40;Bastien passe la nuit à la cave.;;
+p1_gilles;aider;Aider à pousser la barque;;;;fil gilles=allie, aff PIE018 +20, aff PIE016 +10;Le Passeur te demande ton nom, rien d'autre. Tu es dans le secret des Libres.;;
+p1_gilles;prevenir;Prévenir le prévôt;;;;fil gilles=ennemi, aff PIE018 -40, aff PIE016 -30;Le prévôt ne bouge pas la nuit. Mais Daunel le dira à Silas.;;
+j2_cellule;crocheter;Crocheter la trappe;;;Agi 20 +crochetage 6;ves libre, fil silas=soupcon;Le loquet cède. Tu la portes dehors, à moitié endormie, jusqu'à la lisière.;fil silas=ennemi, combat BRU003 bagarre;Le loquet grince. Des pas à l'étage.
+j2_cellule;lucas;Demander à Lucas la seconde clé;;aff BRU012>=15;;ves libre, aff BRU012 +5, fil lucas=demi;Lucas te regarde longtemps, puis ouvre sans un mot, et s'en va.;;
+j2_cellule;nina;Envoyer Nina par le soupirail;;fil nina=cachee;;ves libre, aff BRU016 +10;Nina se glisse dans le soupirail comme une anguille. Trois minutes plus tard, la trappe s'ouvre de l'intérieur.;;
+j2_cellule;ysolde;Courir prévenir Ysolde;;;;aff BRU004 +15, fil ysolde=cellule;Ysolde descend au comptoir, lumière à la main. Silas sourit : « Une cave de marchand, ma sœur. » Elle n'a aucun droit. Mais elle sait.;;
+j2_agnes_v;rien;Ne rien lui demander;;;;aff VES019 +10;Elle te regarde par-dessus son bol. Ce qu'elle lit en toi la rassure.;;
+j2_agnes_v;questions;Lui demander qui elle est;;;;aff VES019 -5;« Je viens du sud. Mon bateau a coulé. » Elle ment, et elle sait que tu le sais.;;
+j2_ysolde;mara;Lui souffler le nom de Mara;;;;aff BRU004 +5, fil mara=ysolde_tot;Elle ira voir Mara dès ce matin.;;
+j2_boulangerie;crique;Dire à Mara ce que tu sais de la crique;;fil tim=lumieres;;aff BRU001 +5, aff BRU005 -10, fil mara=furieuse;Mara blêmit. Tim t'en veut.;;
+j2_moulin;grain;Lui apporter le grain caché de Basile (4 argent);;"fil rigole=partage;bourse>=48";;cuivre -48, fil elise=refus, aff BRU013 +10, aff BRU003 -10;Élise refuse Silas. Pas de mouture de nuit.;;
+j2_moulin;promesse;Lui promettre du grain honnête;;fil elise=amante|alliee|dissuadee;;fil elise=refus_promesse, aff BRU003 -10;Elle te croit. Si tu ne tiens pas parole au jour 3, elle retournera voir Silas.;;
+j2_moulin;accepter;L'encourager à accepter;;;;fil elise=moud;Elle accepte. Elle a honte.;;
+j2_escorte;monter;Monter sur la charrette;;;;cuivre +60, voyage pierrefane;Trois heures de sentier, avec ce qu'il y a sous la bâche.;;
+j2_escorte;refuser;Refuser;;;;aff BRU003 -10;Silas hausse les épaules. Il s'en souviendra.;;
+j2_charrette;attaquer;L'arrêter, de force;Silas et Garec : presque impossible seul.;;;combat BRU003 mortel vesperine;Silas descend de la charrette, la lame déjà sortie.;;
+j2_charrette;halte;La suivre jusqu'à la halte de la source, et ouvrir la cage;;;Agi 22 +crochetage 5;ves libre, fil silas=soupcon_gilles, temps 90;Garec abreuve le cheval, Silas se dégourdit les jambes. Deux minutes. Elle glisse hors de la cage et disparaît dans la bruyère avec toi.;fil silas=ennemi, temps 90;Silas se retourne au moment où le loquet cède. Il te voit. Il la remet dedans.
+j2_charrette;payer;Payer Garec pour qu'il la « perde en route » (2 argent);;bourse>=24;;cuivre -24, fil silas=ennemi;Garec prend l'argent. Il le dira à Silas.;;
+j2_charrette;suivre;La suivre jusqu'à Pierrefane;;;;voyage pierrefane;Trois heures, à distance.;;
+j2_mara_vote;soutenir;Soutenir Ysolde;;aff BRU001>=20;;fil mara=candidate, aff BRU004 +5, aff BRU001 +5;Mara accepte, dès aujourd'hui.;;
+j2_mara_vote;farine;Proposer d'aller chercher la farine à Pierrefane;;;;fil farine=promise, aff BRU001 +5;Mara te regarde comme une bouée.;;
+j2_mara_vote;vendre;Vendre l'information à Silas;;;;fil mara=vendue, aff BRU003 +15, cuivre +12;Silas paie, et sourit. Mara ne le saura jamais.;;
+j2_corentin;amende;Payer l'amende (6 cuivres);;bourse>=6;;cuivre -6, aff BRU014 +5, fil casier=paye;Un casier propre.;;
+j2_corentin;balayer;Balayer la place deux heures;;;;temps 120, aff BRU014 +5, fil casier=paye;Les enfants rient. Corentin, presque gentil : « C'est réglé. »;;
+j2_corentin;plaider;Faire plaider Ysolde pour toi;;aff BRU004>=20;;aff BRU014 -5, fil casier=paye;Corentin se sent humilié. Encore.;;
+j2_corentin;fuir;Filer;;;;aff BRU014 -15, fil casier=fuite;Il court mal. Tout le village rit. Il te traquera toute la semaine.;;
+j2_barque;recuperer;La récupérer pour elle;;;;fil barque=recuperee, aff VES019 +10;Tu la caches dans une anfractuosité. Vesperine pourra repartir par la mer.;;
+j2_barque;vendre;La vendre à Silas;;;;fil barque=vendue, cuivre +60, fil silas=soupcon_ile;Silas paie sans discuter. Il reconnaît un bois de l'île, et comprend que sa marchandise perdue n'était pas une simple naufragée.;;
+j2_depart;aider;L'aider à partir;;;;ves partie, aff VES019 +20;La barque noire glisse dans la nuit. Avant de disparaître, elle se retourne une fois.;;
+j2_depart;retenir;Lui demander de rester;;aff VES019>=30;;aff VES019 +5;« Encore un peu, alors. » Elle tire la barque sur les galets.;;
+j2_ecole;classe;Faire la classe avec elle;;;;aff BRU005 +10, aff BRU016 +10, fil falaise=invites, temps 60;Tu racontes ton monde comme un conte. Tim et Nina te proposent la falaise, pour demain.;;
+j2_nina_vol;pardon;La laisser filer, et lui pardonner devant Ysolde;;;Per 20;aff BRU016 +25, fil nina=pardon;Un deuxième départ.;cuivre -12, fil nina=a_vole;Trop tard : ta bourse est plus légère, et Nina a disparu.
+j2_nina_vol;crier;Crier au voleur;;;;aff BRU016 -10, aff BRU014 +5;Corentin arrive. Tout recommence.;;
+j2_aldric;parler;Parler à Aldric ensuite;;;Int 18;fil aldric=doute, aff BRU007 +5;Il a honte de Silas. Il te le dit presque.;;Il parle du temps qu'il fait.
+j2_soie;verte;Acheter la soie verte pour Gaëlle (1 argent);;bourse>=12;;cuivre -12, fil soie=verte, aff BRU009 +15, aff BRU019 +5;Isaure cache un sourire. Au dîner de demain, la robe sera verte.;;
+j2_forge;agnes;Amener Agnès et son remède;;fil mains=agnes;;fil mains=soignees, aff BRU002 +5;Bram refuse devant Lucas, accepte seul.;;
+j2_forge;lucas;Parler à Lucas;;fil bram=dette_payee;;aff BRU012 +10, fil lucas=allie;« Mon père ne dira jamais merci. Moi, si. N'importe quoi, demande. »;;
+j2_theo;confirmer;Confirmer;;vu j2_cellule;;fil theo=devoile, aff BRU017 +15;Il retire ses lunettes : « Je ne suis pas verrier. Pas seulement. »;;
+j2_theo;tonneaux;Lui dire ce que vous avez vu ensemble;;fil theo=tonneaux;;fil theo=devoile, aff BRU017 +15;Il retire ses lunettes : « Alors on était deux. Je ne suis pas verrier. Pas seulement. »;;
+j2_theo;mentir;Mentir;;;;aff BRU017 -10, fil theo=soupcon;Il le sent. Il remet ses lunettes.;;
+j2_sauge;paix;Faire la paix entre elles;;;Sag 20;fil ysolde=alliee_agnes, aff BRU004 +5, aff BRU015 +5;Elles se regardent comme deux chattes. Puis Agnès dit merci.;;Agnès part sans dire merci.
+j2_enfants;venir;Venir avec eux demain;;;;fil falaise=avec_toi;Ils te tapent dans la main.;;
+j2_enfants;mara;Le dire à Mara;;;;fil falaise=denonces, aff BRU005 -15, aff BRU016 -15;L'expédition n'aura pas lieu.;;
+j2_amants;gilles;Leur parler du Passeur de Pierrefane;;fil gilles=allie;;fil amants=gilles, aff BRU009 +10, aff BRU010 +10;« Demain soir, avant l'orage, une barque à la plage. » Gaëlle te serre les mains.;;
+j2_amants;joss;Leur parler de Joss;;;;fil amants=joss, aff BRU009 +5;Joss les aidera, mais plus tard.;;
+j2_amants;denoncer;Les dénoncer à Clémence;;;;fil amants=denonces, cuivre +24, fil diner=invite;Clémence te trouve utile, et t'invite au dîner de demain.;;
+j2_basile;verite;Lui dire la vérité (le puits);;;;fil puits=revele, aff BRU018 +10, aff BRU020 -15;Basile se calme, mais exige qu'on condamne le puits. Demain, des planches neuves.;;
+j2_ysolde_v;eloigner;L'éloigner avec un prétexte;;;Int 18;aff BRU004 +0;Elle s'en va sans avoir rien vu.;fil ysolde=a_vu;Sa lumière passe sur la porte entrouverte : une ombre de corne, une seconde. Ysolde a vu.
+j2_ysolde_v;verite;Lui dire la vérité;;aff BRU004>=20;;fil ysolde=compte_a_rebours;« Trois jours. Ensuite elle part, ou je la livre. »;;
+j2_accusation;pierrick;Défendre Pierrick;;;;aff BRU020 +15, aff BRU018 -10;Pierrick te regarde, étonné.;;
+j2_accusation;basile;Donner raison à Basile;;;;aff BRU018 +10, aff BRU020 -15;Pierrick sort sans un mot.;;
+j2_accusation;puits;Révéler le puits devant toute la taverne;;fil pierrick=puits;;fil puits=revele, aff BRU020 -20, ragot il y a un puits qui mène sous la falaise;Toute la taverne le sait. Silas aussi : il fera surveiller la falaise.;;
+j2_rosalie;payer;La payer plus cher pour qu'elle se taise (2 argent);;bourse>=24;;cuivre -24, fil mara=secret;Rosalie empoche, et sourit à Silas en parlant du temps.;;
+j2_mara_soir;encourager;L'encourager;;;;fil mara=candidate, aff BRU001 +10;« Si un enfant doit voler du pain… » Elle se présentera.;;
+j2_recherche;deplacer;La déplacer avant qu'ils passent;;;Int 16;aff VES019 +5;Vous passez par le bois. Les lanternes s'éloignent.;;Silas lève sa lanterne : il l'a vue. Chez Agnès, devant témoin, il ne peut rien. Il reviendra.
+j2_recherche;lucas;Laisser Lucas la trouver;;aff BRU012>=10;;fil lucas=demi, aff BRU012 +5;Lucas baisse sa lanterne et passe son chemin.;;
+j2_mouture;temoin;Regarder, caché;;;;fil preuve_moulin=oui;Une preuve de plus.;;
+j2_mouture;saboter;Saboter la roue;;;Int 20;fil elise=sabotee, aff BRU003 -5;La roue tourne à vide, le grain est mouillé. Silas accusera Élise.;;Tu n'arrives pas à bloquer la roue.
+j2_mouture;aider;Aider à porter (Silas paie);;fil silas=recrue|complice;;cuivre +12, fil silas=recrue;Lucas ne te regarde pas.;;
+p2_farine;partir;Lui montrer ce que tu sais, et faire partir la farine;;;;fil farine=en_route, aff PIE007 +10, aff PIE006 -20;Bérénice « perd » vingt sacs de son registre. À l'aube de demain, ils seront à Brumeval.;;
+p2_thorga;bram;Lui proposer de venir à Brumeval rencontrer Bram;;;;fil thorga=brumeval;« Un forgeron qui a des mains ? Demain. »;;
+p2_charrette;arreter;L'arrêter avec Kael;;aff PIE016>=5;For 18;ves hangar, aff PIE016 +15, fil silas=ennemi;Silas ne se bat pas devant un port plein de témoins. Il recule, jure, et file chez le prévôt. Sous la bâche, une femme droguée, un collier de fer. Gilles la cache au hangar.;;Garec fouette le cheval. La charrette passe.
+p2_bourse;voir;Regarder la bourse passer;;;Per 16;fil goeland=bourse_vue;« Tu pars le soir du vote, pas avant. » Ondine a vu aussi.;;
+p2_bastien;lire;Le lire;;;;fil carnet=nom;Un nom de Vaulx-sur-Mer, et une somme. Le premier bout du carnet.;;
+p2_paris;perdre;Jouer contre lui et perdre exprès (2 argent);;bourse>=24;;cuivre -24, aff PIE014 +10;Il rembourse les marins.;;
+p2_paris;racheter;Racheter sa dette à Orsoline (3 or);;bourse>=720;;cuivre -720, fil paris=dette_rachetee, aff PIE014 +20, aff PIE001 -20;Orsoline ne pourra plus parler de Fleur.;;
+p2_ondine;mahaut;L'accompagner chez Mahaut;;;;fil ondine=alliee, aff PIE013 +15, temps 60;Mahaut lui dit ce qu'elle sait de sa sœur : ce n'était pas la fièvre. Ondine redescend sans un mot. Elle veut le carnet d'Orsoline.;;
+p2_lysa;cle;Parler à Lysa;;fil gilles=allie;;fil lysa=confiance, aff PIE002 +10;« Tu es celui de la barque. » Une seule chose : la clé du collier.;;
+p2_offre;accepter;Accepter;;;;fil orsoline=salon, aff PIE001 +10;Tu es dans la maison chaque nuit, au plus près de Lysa, de Bastien, et de la nouvelle.;;
+p2_offre;refuser;Refuser;;;;fil orsoline=refus, aff PIE001 -10;Une ennemie polie.;;
+p2_lettre_offre;ouvrir;La prendre, et l'ouvrir en route;;;Int 16 +crochetage 5;fil goeland=lettre_lue;« Le bateau partira le soir du vote, comme convenu. Le reste à la livraison. » La preuve.;fil goeland=lettre_abimee;Le cachet se brise mal. Daunel saura.
+p2_lettre_offre;berenice;La donner à Bérénice;;;;fil goeland=dossier, aff PIE007 +20, aff PIE006 -30;Son dossier est complet.;;
+p2_lettre_offre;porter;La porter sans l'ouvrir;;;;fil silas=recrue, cuivre +12;Daunel paie. Silas aussi, demain.;;
+p2_kael;avancer;Proposer d'avancer l'évasion;;;;fil evasion=avancee;Kael te regarde longtemps : « Si tu trouves la clé. »;;
+p2_gilles;rien;Rien;;;;aff PIE018 +15;Il te fait confiance pour toujours.;;
+p2_gilles;argent;De l'argent;;;;cuivre +24, aff PIE018 -5;Il paie, et te range parmi les mercenaires.;;
+j3_poisson;corentin;Le porter à Corentin;;;;aff BRU014 +5, fil corentin=doute;Il note, il ne fait rien. Mais il commence à regarder Silas autrement.;;
+j3_poisson;clouer;Le clouer sur la porte du comptoir de Silas;;;;aff BRU003 -10, ragot l'étranger a cloué un poisson sur la porte de Silas;Tout le village rit. Silas aussi, en public.;;
+j3_farine_silas;acheter;Acheter le sac toi-même (3 argent);;bourse>=36;;cuivre -36, aff BRU001 +15, fil farine=don;Mara n'a pas cédé. Elle n'a pas de honte à cacher au vote.;;
+j3_nina;payer;Payer la miche;;bourse>=3;;cuivre -3, aff BRU016 +10;Corentin repart humilié, une fois de plus.;;
+j3_nina;faute;Prendre la faute;;;;aff BRU016 +25, aff BRU014 -5, fil nina=grand_frere;« C'est moi qui l'ai envoyée. » Nina te regarde comme personne ne t'a jamais regardé.;;
+j3_farine_port;distribuer;La distribuer, à Mara d'abord;;;;fil farine=distribuee, aff BRU001 +20, aff BRU003 -20, fil silas=ennemi, ragot l'étranger a ramené la farine de Pierrefane;Le pain baisse. La candidature de Mara s'envole.;;
+j3_farine_port;vendre;La vendre cher;;;;fil farine=vendue, cuivre +720, ragot l'étranger vend la farine aussi cher que Silas;Tu gagnes trois pièces d'or. Le village te range avec Silas.;;
+j3_planches;lache;Aider, et laisser une planche lâche;;;Int 15;fil puits=planche_lache;Le puits reste praticable, pour toi seul.;;Pierrick vérifie chaque planche.
+j3_campagne;campagne;Faire campagne avec elles;;;;aff BRU019 +5, aff BRU011 +5, fil campagne=oui, temps 60;Isaure, Rosalie. Une voix gagnée aujourd'hui, Silas ne pourra plus l'acheter.;;
+j3_theo;temoigner;Témoigner;;;;fil ysolde=guerre, aff BRU004 +10;Ysolde prépare une plainte au gouverneur de Vaulx.;;
+j3_garec;cacher;La cacher;;;Int 18;fil garec=rien;Garec ne trouve rien. Silas croit qu'elle est partie par la mer.;fil garec=vue;Garec l'a vue. Chez Agnès, en plein jour, il ne peut rien. Il reviendra la nuit.
+j3_garec;payer;Le payer pour qu'il ne trouve rien (2 argent);;bourse>=24;;cuivre -24, fil garec=paye;Il prend l'argent. Il le dira à Silas quand même.;;
+j3_ysolde_v;parler;Parler pour elle;;aff BRU004>=20;;fil ysolde=apaisee;« Si un seul enfant de ce village a peur d'elle, je la livre. » Le compte à rebours est levé.;;
+j3_ysolde_v;amener;L'amener à la chapelle, en plein jour;;;Vol 20;fil ysolde=apaisee, aff VES019 +10;Vesperine soutient la lumière de la Pâle sans trembler. Ysolde baisse les yeux la première.;;Vesperine recule devant la lumière. Ysolde serre les mâchoires.
+j3_elise;couvrir;Couvrir Élise;;;;aff BRU013 +10, aff BRU004 -10;Élise te remercie d'un regard.;;
+j3_elise;verite;Lui conseiller de dire la vérité;;;;fil elise=avoue, aff BRU004 +10;Élise avoue. Ysolde la protégera, en échange de son témoignage. Elle votera Mara.;;
+j3_thorga;accueillir;Les présenter;;;;fil bram=thorga, aff BRU002 +10;Elle voit ses mains trembler : « Je forge avec toi une semaine. Tu tiens, je frappe. » Bram, fier, refuse. Puis accepte.;;
+j3_falaise;expliquer;Leur expliquer les moutons et le puits;;fil pierrick=puits;;fil falaise=explore, aff BRU005 +5, aff BRU016 +5;Ils comprennent que Pierrick n'est pas un voleur.;;
+j3_falaise;empecher;Les empêcher de descendre;;;;fil falaise=explore;Ils râlent. Ils sont vivants.;;
+j3_pierrick;montrer;Te montrer à la place des enfants;;;;fil falaise=protege, aff BRU005 +20, aff BRU020 -5;« C'est moi qui les ai emmenés. » Pierrick viendra te trouver toi, pas Mara.;;
+j3_pierrick;lea;Lui parler de Léa;;fil pierrick=sculpture;;fil pierrick=confie, aff BRU020 +20;Il s'assoit sur la margelle et raconte : sa femme, la grotte, dix ans.;;
+j3_amants;heure;Leur dire l'heure : la barque, 22 h, avant l'orage;;;;fil amants=pret;Gaëlle devra quitter le dîner.;;
+j3_diner;soutenir;Soutenir Silas;;;;aff BRU008 +10, aff BRU003 +5;Clémence t'adopte.;;
+j3_diner;malaise;Le mettre mal à l'aise (le Goéland gris, la crique);;;;fil silas=respect, aff BRU003 -5;Silas te regarde enfin comme un adversaire à sa hauteur.;;
+j3_diner;aldric;Parler à Aldric, au cigare;;;Int 18;fil aldric=abstention, aff BRU007 +5;Il s'abstiendra, peut-être.;;Il parle de chevaux.
+j3_chanson;chanter;Chanter avec lui;;;;aff BRU010 +10, aff BRU008 -10;La rumeur double.;;
+j3_chanson;couplet;Ajouter un couplet sur Silas;;;;aff BRU010 +15, aff BRU003 -15, fil silas=ennemi;La taverne t'adore. Silas, non.;;
+j3_perron;sortir;Faire sortir Gaëlle pendant cette minute;;;;partir BRU009, partir BRU010, fil amants=partis, aff BRU009 +20, aff BRU007 +5;À 22 h, la barque de Gilles emporte Gaëlle et Félix, une heure avant l'orage.;;
+j3_rosalie;murs;Racheter les murs à Clémence;;;;acheter taverne;;;
+j3_orage;sauver;Sauver Lucas;;;For 16;fil lucas=sauve, aff BRU012 +30;Sous la pluie, Lucas dit tout : la dette, les moutures, la femme à la crique.;fil lucas=blesse;Le tonneau se brise. Lucas hurle, la main en sang.
+j3_orage;tonneau;Garder un tonneau (une preuve);;;;fil preuve_tonneau=oui;Théo te l'achètera, ou Ysolde l'apportera à Vaulx.;;
+j3_lucas_agnes;cacher;L'empêcher de la voir;;;Agi 16;aff VES019 +5;Il ne voit rien.;;Il la voit : « La femme de la crique. »
+p3_yann;interposer;T'interposer;;;;aff PIE008 +20, aff PIE007 +15, aff PIE006 -20;Daunel recule devant un témoin. Yann te regarde comme un modèle.;;
+p3_course;courir;Courir avec eux;;;Agi 20;aff PIE016 +20, aff PIE012 +5;« Personne ne m'avait jamais battu. »;;Kael t'attend à la cabane, assis.
+p3_hangar;mahaut;La conduire chez Mahaut;;aff PIE015>=20;;aff PIE015 +5;Mahaut ouvre sans poser de questions.;;
+p3_hangar;laisser;La laisser sous le plancher;;;Int 14;aff PIE018 +5;Le prévôt ne trouve rien. Silas repart furieux.;ves capturee;Le prévôt soulève une planche. Silas la reprend.
+p3_orsoline;racheter;Racheter son contrat;;;;racheter dette_vesperine;;;
+p3_orsoline;semaine;Payer une semaine de ses nuits d'avance (21 argent);;bourse>=252;;cuivre -252, fil reserve=oui;« Je la réserve. » Orsoline note : le client de la nouvelle. Le compte à rebours recule tant que tu paies.;;
+p3_fleur;ramener;Ramener Fleur avant qu'Orsoline la voie;;;;fil fleur=protegee;Orsoline ne la voit pas une troisième fois.;;
+p3_paris;interposer;« La dette de Pâris, c'est combien ? »;;;;aff PIE001 -10, aff PIE014 +10;Orsoline te regarde par-dessus son lorgnon. Elle s'en va.;;
+p3_paris;ondine;Le dire à Ondine;;;;fil ondine=couteau;Ondine prend un couteau de cuisine.;;
+p3_paris;racheter;Racheter la dette (3 or);;bourse>=720;;cuivre -720, fil paris=dette_rachetee, aff PIE014 +20, aff PIE001 -20;La menace sur Fleur tombe pour de bon.;;
+p3_couteau;arreter;L'arrêter;;;Sag 18;fil ondine=calmee, aff PIE013 +10;Elle pleure contre ton épaule, le couteau par terre.;fil ondine=cachot, aff PIE001 -10;Hugues la désarme. Le prévôt la met au cachot pour la nuit.
+p3_margo;menace;Soutenir Margo avec une menace (le carnet);;fil carnet=nom;;fil reserve=oui, aff PIE004 +15, aff PIE001 -20;Orsoline cède, et ne l'oubliera jamais.;;
+p3_hugues;rallier;Lui dire ce qu'Orsoline prépare pour Fleur;;;Sag 18;fil evasion=cle, aff PIE005 +10;Hugues serre les poings. Il te donne le double de la clé.;;Il se ferme : « Madame sait ce qu'elle fait. »
+p3_lande;fuir;Fuir par la lande (avec la clé);;fil evasion=cle;;liberer PIE002, liberer PIE003, captif fin, aff PIE001 -50;Lysa et Bastien dans la nuit, trempés, libres. Mahaut ouvre sa porte.;;
+p3_lande;tous;Fuir avec Lysa, Bastien, et elle (avec la clé);;"fil evasion=cle;ves capturee";;liberer PIE002, liberer PIE003, ves hangar, captif fin, aff PIE001 -60;"Trois silhouettes et toi sur la lande, sous l'orage. Mahaut ouvre sa porte ; à l'aube, Gilles cache la démone au hangar.";;
+p3_lande;crocheter;Crocheter les colliers et fuir;;;Agi 24 +crochetage 6;liberer PIE002, liberer PIE003, captif fin, aff PIE001 -50;Libres.;;Hugues arrive. Lysa passe la nuit à la cave.
+j1_verre;verite;« Personne. »;;;;aff BRU003 +5;Il te regarde longtemps. « Alors tu es soit très honnête, soit très bête. On verra. »;;
+j1_verre;mentir;Inventer un maître à Saltevaux;;;Int 18;aff BRU003 +3;Il hoche la tête. Il vérifiera.;fil silas=ennemi, aff BRU003 -10;« Saltevaux ? Je connais tout le monde à Saltevaux. » Il se lève. Tu viens de te faire un ennemi.
+j1_verre;services;Lui proposer tes services;;;;fil silas=recrue, aff BRU003 +10;« Ce soir, onze heures moins le quart, à la crique. Des tonneaux à porter. Et tu ne vois rien. »;;
+j1_course;porter;Porter les tonneaux;;;;cuivre +24, aff BRU003 +5, aff BRU012 -5;Neuf tonneaux. Lucas ne te regarde pas. Et tu es là, à la crique, quand elle sortira des rochers.;;
+j1_tonneaux;compter;Compter avec lui;;;;fil theo=tonneaux, aff BRU017 +5;Neuf tonneaux. Et, dans la brume, quelqu'un qu'on embarque ? Ni toi ni lui ne pouvez l'affirmer. Pas encore.;;
+toi_cellule;liens;Défaire tes liens, crocheter la trappe;;;Agi 22 +crochetage 6;captif fin, ves libre, fil silas=ennemi;Le loquet cède. Vous sortez par le soupirail, elle et toi, et courez jusqu'à la lisière.;fil captif=charrette;Tu n'y arrives pas. À huit heures, on vient vous chercher.
+toi_cellule;lucas;Appeler Lucas;;aff BRU012>=15;;captif fin, ves libre, aff BRU012 +10, fil lucas=demi;Lucas descend, pâle, ouvre la trappe sans un mot, et remonte. « J'ai rien vu. »;;
+toi_cellule;parler;Lui parler, à elle;;;;aff VES019 +10, fil captif=charrette;Elle te regarde dans le noir. Elle lit ce que tu veux. Ce qu'elle y lit la rassure un peu.;;
+toi_charrette;halte;À la halte, défaire tes liens et sauter;;;For 20;captif fin, ves libre, fil silas=ennemi, temps 90;Les cordes cèdent. Tu la tires hors de la cage, et vous disparaissez dans la bruyère avant que Garec ait fini d'abreuver son cheval.;fil captif=vente, temps 90;Les cordes tiennent. La charrette repart.
+toi_charrette;attendre;Attendre, et lui parler sous la bâche;;;;aff VES019 +15, fil captif=vente;Trois heures. Elle te raconte la mer, l'île, sa reine. Par un trou de la bâche, elle voit des champs et pleure sans bruit.;;
+toi_vente;subir;Te laisser examiner;;;;captif vendu;;;
+toi_vente;mordre;Mordre la main d'Orsoline;;;;aff PIE001 -20, captif vendu;Elle retire sa main sans un cri, et te regarde comme on regarde une dette.;;
+toi_entretien;carnet;Recopier une page du carnet;;;Per 18;fil carnet=nom;Des noms de Vaulx-sur-Mer, des sommes, et la vente de la nouvelle : 4 or, vendeur S.;;Hugues tousse dans le couloir. Tu refermes le carnet à temps.
+toi_entretien;cle;Prendre le double des clés;;;Agi 20;fil evasion=cle;Un trousseau dans le tiroir. Personne ne le comptera avant ce soir.;;Le tiroir grince. Tu fais semblant d'épousseter.
+toi_entretien;travailler;Faire le ménage, et rien d'autre;;;;cuivre +6;Margo te glisse une pièce : « Pour le jour où tu partiras. »;;
+toi_cale;cabine;Fouiller la cabine de Daunel;;;Agi 18;fil goeland=lettre_lue;Des lettres de Silas : « Le bateau partira le soir du vote. » La preuve de la famine fabriquée.;;Yann te surprend. Il ne dit rien. Il te regarde.
+toi_cale;yann;Parler à Yann;;;;aff PIE008 +15, fil yann=ami;Il a honte de son père depuis la gifle. Il a la clé de la cale.;;
+toi_cale;gratter;Gratter la coque;;;;cuivre +6;Daunel te jette une pièce en revenant : « T'es moins inutile que t'en as l'air. »;;
+toi_yann;partir;Partir;;;;captif fin, aff PIE008 +10;Le quai, la nuit, le collier dans l'eau. Kael te ramasse au bout de la jetée.;;
+toi_sauter;sauter;Sauter à l'eau;;;End 18;captif fin;L'eau noire, la tempête, et le quai, enfin. Libre et trempé.;;Une vague te renvoie contre la coque. Tu remontes à bord, à moitié noyé.
+toi_allie;merci;La remercier;;;;captif fin, aff PIE015 +20;Orsoline compte, et cède : elle craint Mahaut. Tu sors des Lanternes au bras d'une vieille femme qui te traite d'imbécile tout le long du chemin.;;
+p2_prevot;silence;Faire payer ton silence (l'enveloppe);;;;cuivre +24, fil prevot=tenu, aff PIE009 -20;Il te glisse deux pièces d'argent. Désormais, il a peur de toi.;;
+j2_invitation;accepter;Accepter;;;;fil diner=invite;« Sept heures et demie. Lave-toi. »;;
+j2_fees;vesperine;Lui parler de Vesperine;;;;fil brume=cache, aff FEE001 +5;« Le bois la cachera, si tu le lui demandes. » Tant que la Brume t'aime, Garec et Silas ne la trouveront pas au bois.;;
+j3_service;porter;Y aller;;;;fil service=fait, cuivre +12;Tu descends à la crique avec Lucas, sous les premières gouttes.;;
+j3_service;refuser;Refuser;;;;aff BRU003 -15, fil silas=ennemi;Silas ne dit rien. Il note.;;
+p3_suspendue;avant;Arriver avant elle;;fil prevot=tenu;;ves hangar, aff PIE001 -20, fil vente=prevot;Le prévôt, qui a plus peur de toi que d'Orsoline, te confie « la personne » en attendant les papiers. Il n'y aura jamais de papiers. Gilles la cache au hangar.;;
+p3_odile;rester;Rester près d'elles;;;;aff PIE010 +10, aff VES019 +5;Odile tourne la tête vers toi : « Toi et elle, vous n'êtes pas d'ici. Aide-la. » Elle te souffle le nom du Passeur.;;
+j1_bouche;aider;L'aider, et la cacher dans la grotte;;;;ves libre, fil barque=recuperee, aff VES019 +25;Elle lit ton envie dans tes yeux, et décide de te faire confiance. Elle reste cachée dans la grotte : elle ne passera jamais par la crique.;;
+j1_bouche;menacer;La menacer;;;;aff VES019 -20;Elle se relève, lance son illusion (cornes et ailes disparaissent) et file le long de la falaise.;;
+j1_bouche;prevenir;Courir prévenir le village;;;;fil ysolde=demone, aff BRU004 +5;« Des cornes ? T'as bu quoi ? » Personne ne te croit, sauf Ysolde, qui prend sa lumière et part la chercher.;;
+j1_bouche;attaquer;L'attaquer;;;;aff VES019 -40, fil vesperine_attaquee=oui;Affaiblie, elle est encore de niveau 24. Elle te jette au sol d'un revers d'aile et s'enfuit dans la nuit. Elle t'en voudra.;;
+j2_joss;aider;L'aider à vider le filet;;;;aff BRU006 +5, temps 20;Il te raconte ce qu'il a vu de nuit, au large : des lanternes, encore.;;
+j2_joss;pierrefane;Partir avec lui à Pierrefane, en barque;;;;temps -90, voyage pierrefane;Une heure et demie de mer. Tu es à Pierrefane avant la charrette.;;
+p2_mahaut;prendre;Prendre la réponse;;;;fil mahaut=reponse, aff PIE015 +5;Mahaut, qui a mis au monde la moitié de la côte, témoignera si quelqu'un tient tête à Orsoline.;;
+j3_moulin_theo;regarder;Regarder avec lui;;;;fil theo=moulin, aff BRU017 +5;La piste Élise s'ouvre, avec toi comme second.;;
+j3_promenade;bateau;Demander tout haut quand le Goéland gris arrivera;;fil goeland=avarie_fausse|daunel_paye|bourse_vue|lettre_lue|dossier;;aff BRU003 -10, ragot Silas affame le village;Le port murmure. Silas sourit trop longtemps.;;
+j3_pierrick_ronde;retenir;Le retenir une heure (une leçon d'arc);;;;fil pierrick=retenu, aff BRU020 +5, temps 60;Il ne reviendra pas à la falaise avant la nuit.;;
+j3_tim;plaider;Plaider pour Tim;;;;aff BRU005 +10, aff BRU001 -3;Mara lui rend la pièce. Tim garde sa liberté, et son envie de la falaise grandit.;;
+j3_guet;voir;Regarder;;;;fil temoin_orage=oui, aff BRU017 +5;Vous voyez le tonneau se briser et Lucas tomber. Un témoin de plus.;;
+p3_ferrat;aider;Aider au chantier;;;;aff PIE011 +5, cuivre +6, temps 60;Ferrat te raconte, entre deux coups de maillet, qu'il doit la vie au Passeur. Tu comprends que Gilles n'est pas un simple contrebandier.;;
+p3_bastien;lire;Le lire;;;;fil carnet=nom, fil preuve_vente=oui;« La nouvelle : 4 or, vendeur S., Brumeval. » La preuve écrite que Silas vend des gens.;;
+p3_convocation;refuser;Refuser;;;;aff PIE001 -15;« Comme vous voudrez. » Tant que tu tiens la dette, Fleur est à l'abri.;;
+p3_convocation;accepter;Accepter (6 or);;;;cuivre +1440, fil paris=dette_orsoline;Orsoline sourit. Pâris lui doit de nouveau tout.;;
+p3_lettre;porter;La porter toi-même à Gilles;;;;aff PIE018 +10, aff PIE010 +5, fil gilles=allie;Les Libres connaissent ton nom.;;
+j1_falaise_nina;interposer;Te mettre entre eux;;;;aff BRU016 +10, aff BRU020 -5;Nina file entre tes jambes. Pierrick baisse l'arc et crache par terre.;;
+j1_theo_ysolde;ecouter;Écouter;;;;fil ravitaillement=doute;Le bateau du ravitaillement est en retard « depuis le printemps ». Théo note tout.;;
+j1_robe;gaelle;Le dire à Gaëlle;;present BRU009;;aff BRU009 +5, aff BRU008 -5;Gaëlle pâlit, puis serre les poings.;;
+j1_tim_fenetre;rester;Lui faire signe de rester chez lui;;;;aff BRU005 +3;Il hoche la tête et referme le volet.;;
+j2_diner_annonce;consoler;Parler à Gaëlle à travers la porte;;;;aff BRU009 +5;« Je ne l'épouserai pas. Jamais. »;;
+j2_lutte;voir;Regarder les pièces;;;Per 14;fil elise_argent=vu;Des pièces neuves, frappées à Saltevaux. L'argent de Silas.;;
+j3_annonce;feliciter;La féliciter;;;;fil mara=candidate, aff BRU001 +5;Elle rougit, et redresse le menton.;;
+j3_pierrick_mara;defendre;Défendre Mara;;;;aff BRU001 +5, aff BRU020 -5;Pierrick te toise, et s'en va.;;
+p2_matin;manger;Manger avec Ondine (2 cuivres);;bourse>=2;;cuivre -2, repas, aff PIE013 +5;Elle parle : Orsoline, le prévôt, et sa sœur, morte « de fièvre », il y a huit ans. Elle n'y croit pas.;;
+p3_peche;aider;L'aider à décharger;;;;aff PIE014 +5, objet BRV003 +1;Il te donne un maquereau : « Pour toi. Ne le dis pas aux dés. »;;

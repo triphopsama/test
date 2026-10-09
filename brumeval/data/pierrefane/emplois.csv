@@ -1,0 +1,110 @@
+pnj;nom;heure;lieu;activite
+PIE001;Madame Orsoline;0;lanternes;salon
+PIE001;Madame Orsoline;4;lanternes;ferme les portes et dort
+PIE001;Madame Orsoline;10;lanternes;thé noir, comptes et carnet
+PIE001;Madame Orsoline;14;place;prêts et visites
+PIE001;Madame Orsoline;17;lanternes;prépare le salon
+PIE001;Madame Orsoline;18;lanternes;salon
+PIE002;Lysa;0;lanternes;chant et service au salon
+PIE002;Lysa;4;lanternes;dort, enfermée
+PIE002;Lysa;10;lanternes;ménage de la maison
+PIE002;Lysa;14;lanternes;enfermée, guette les toits
+PIE002;Lysa;16;lanternes;coquillages de Fleur à la palissade
+PIE002;Lysa;18;lanternes;chant et service au salon
+PIE003;Bastien;0;lanternes;service au salon
+PIE003;Bastien;4;lanternes;dort, enfermé
+PIE003;Bastien;9;lanternes;corvées et écritures
+PIE003;Bastien;14;lanternes;enfermé, lit en cachette
+PIE003;Bastien;18;lanternes;service au salon
+PIE004;Margo;0;lanternes;salon et chambres
+PIE004;Margo;4;lanternes;dort
+PIE004;Margo;11;lanternes;lever
+PIE004;Margo;13;place;marché et bains
+PIE004;Margo;15;lanternes;compte ses économies
+PIE004;Margo;18;lanternes;salon et chambres
+PIE005;Gros Hugues;0;lanternes;garde la porte
+PIE005;Gros Hugues;4;lanternes;ronde des chambres, puis dort
+PIE005;Gros Hugues;12;lanternes;lever
+PIE005;Gros Hugues;13;lanternes;sculpte sur le perron
+PIE005;Gros Hugues;18;lanternes;garde la porte
+PIE006;Capitaine Ambroise Daunel;0;entrepot;dort
+PIE006;Capitaine Ambroise Daunel;10;entrepot;lever
+PIE006;Capitaine Ambroise Daunel;11;port;quai et entrepôt
+PIE006;Capitaine Ambroise Daunel;14;auberge;cartes et rhum
+PIE006;Capitaine Ambroise Daunel;20;lanternes;à la Maison des Lanternes
+PIE007;Bérénice Daunel;0;entrepot;nuit
+PIE007;Bérénice Daunel;7;entrepot;épicerie-entrepôt
+PIE007;Bérénice Daunel;13;chapelle;visite à Sœur Odile
+PIE007;Bérénice Daunel;14;entrepot;épicerie-entrepôt
+PIE007;Bérénice Daunel;19;entrepot;roses, puis son dossier secret
+PIE007;Bérénice Daunel;22;entrepot;nuit
+PIE008;Yann Daunel;0;entrepot;nuit
+PIE008;Yann Daunel;6;port;quai
+PIE008;Yann Daunel;9;entrepot;aide à l'entrepôt de sa mère
+PIE008;Yann Daunel;14;chantier;traîne au chantier naval
+PIE008;Yann Daunel;19;port;écoute les marins
+PIE008;Yann Daunel;22;entrepot;nuit
+PIE009;Prévôt Anselme Gourdin;0;prevot;nuit
+PIE009;Prévôt Anselme Gourdin;9;prevot;lever
+PIE009;Prévôt Anselme Gourdin;10;prevot;bureau
+PIE009;Prévôt Anselme Gourdin;12;auberge;long repas
+PIE009;Prévôt Anselme Gourdin;15;prevot;sieste
+PIE009;Prévôt Anselme Gourdin;18;port;tournée du quai
+PIE009;Prévôt Anselme Gourdin;20;prevot;dîner
+PIE009;Prévôt Anselme Gourdin;22;prevot;nuit
+PIE010;Sœur Odile;0;chapelle;prière dans la chapelle
+PIE010;Sœur Odile;6;chapelle;chant du matin
+PIE010;Sœur Odile;9;place;soins
+PIE010;Sœur Odile;13;entrepot;chez Bérénice
+PIE010;Sœur Odile;14;chapelle;les enfants
+PIE010;Sœur Odile;17;place;visites
+PIE010;Sœur Odile;20;chapelle;prière dans la chapelle
+PIE011;Maître Ferrat;0;chantier;nuit
+PIE011;Maître Ferrat;6;chantier;au chantier
+PIE011;Maître Ferrat;12;chantier;repas et bière
+PIE011;Maître Ferrat;13;chantier;au chantier
+PIE011;Maître Ferrat;19;auberge;bière brune et débats
+PIE011;Maître Ferrat;23;chantier;nuit
+PIE012;Thorga;0;chantier;nuit
+PIE012;Thorga;6;chantier;forge d'ancres
+PIE012;Thorga;12;chantier;repas avec son père
+PIE012;Thorga;13;chantier;forge d'ancres
+PIE012;Thorga;19;auberge;bière et bras de fer
+PIE012;Thorga;23;chantier;nuit
+PIE013;Ondine Lebras;0;auberge;nuit
+PIE013;Ondine Lebras;6;auberge;fourneaux
+PIE013;Ondine Lebras;12;auberge;service
+PIE013;Ondine Lebras;15;place;marché
+PIE013;Ondine Lebras;17;auberge;service du soir
+PIE013;Ondine Lebras;23;auberge;nuit
+PIE014;Pâris Lebras;0;auberge;nuit
+PIE014;Pâris Lebras;4;port;pêche
+PIE014;Pâris Lebras;10;port;vente au quai
+PIE014;Pâris Lebras;12;auberge;aide à l'auberge
+PIE014;Pâris Lebras;15;auberge;sieste
+PIE014;Pâris Lebras;19;port;dés dans l'arrière-salle du port
+PIE015;Vieille Mahaut;0;mahaut;nuit
+PIE015;Vieille Mahaut;5;lande;cueillette sur la lande
+PIE015;Vieille Mahaut;10;mahaut;préparations
+PIE015;Vieille Mahaut;14;place;visites et accouchements
+PIE015;Vieille Mahaut;18;mahaut;repas
+PIE015;Vieille Mahaut;21;mahaut;nuit
+PIE016;Kael;0;lande;course de nuit, messages pour Gilles
+PIE016;Kael;3;entrepot;dort
+PIE016;Kael;6;port;déchargement sur le quai
+PIE016;Kael;12;jetee;seul au bout de la jetée
+PIE016;Kael;14;entrepot;entrepôt Daunel
+PIE016;Kael;19;port;traîne au port
+PIE016;Kael;22;lande;course de nuit, messages pour Gilles
+PIE017;Fleur Lebras;0;auberge;nuit
+PIE017;Fleur Lebras;7;auberge;aide à l'auberge
+PIE017;Fleur Lebras;10;chapelle;avec Sœur Odile
+PIE017;Fleur Lebras;14;plage;coquillages
+PIE017;Fleur Lebras;16;lanternes;coquillages pour Lysa, à la palissade
+PIE017;Fleur Lebras;19;auberge;à l'auberge
+PIE017;Fleur Lebras;21;auberge;nuit
+PIE018;Gilles le Passeur;0;hangar;en mer, la nuit
+PIE018;Gilles le Passeur;4;hangar;dort
+PIE018;Gilles le Passeur;14;hangar;répare les barques
+PIE018;Gilles le Passeur;18;auberge;écoute, au Mouillage
+PIE018;Gilles le Passeur;22;hangar;prend la mer

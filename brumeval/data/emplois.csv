@@ -1,0 +1,132 @@
+pnj;nom;heure;lieu;activite
+BRU001;Mara Fournier;0;boulangerie;nuit
+BRU001;Mara Fournier;5;boulangerie;fournil
+BRU001;Mara Fournier;8;boulangerie;boutique
+BRU001;Mara Fournier;14;place;livraisons
+BRU001;Mara Fournier;17;chapelle;réunion de l'alliance à la chapelle certains soirs
+BRU001;Mara Fournier;19;plage;maison avec Tim
+BRU002;Bram Ferrand;0;forge;nuit
+BRU002;Bram Ferrand;6;forge;forge (une demi-journée par jour depuis le jour 11)
+BRU002;Bram Ferrand;12;forge;repas avec Lucas
+BRU002;Bram Ferrand;13;forge;pansement et soins avec Isaure et Agnès
+BRU002;Bram Ferrand;17;forge;retour
+BRU002;Bram Ferrand;20;taverne;taverne
+BRU003;Silas Varenne;0;comptoir;nuit
+BRU003;Silas Varenne;2;comptoir;retour
+BRU003;Silas Varenne;9;comptoir;port et comptoir
+BRU003;Silas Varenne;12;taverne;taverne
+BRU003;Silas Varenne;15;place;tournée des maisons et du marché
+BRU003;Silas Varenne;19;comptoir;comptes au comptoir
+BRU003;Silas Varenne;23;crique;crique (contrebande avec Garec et Mouche)
+BRU004;Ysolde Marbre;0;chapelle;nuit
+BRU004;Ysolde Marbre;6;chapelle;prière
+BRU004;Ysolde Marbre;9;chapelle;soins aux malades
+BRU004;Ysolde Marbre;10;chapelle;école des enfants
+BRU004;Ysolde Marbre;12;chapelle;retour
+BRU004;Ysolde Marbre;14;chapelle;jardin d'herbes
+BRU004;Ysolde Marbre;17;chapelle;réunions de l'alliance à la sacristie
+BRU004;Ysolde Marbre;21;chapelle;observation des étoiles sur le toit de la chapelle
+BRU005;Tim Fournier;0;boulangerie;nuit
+BRU005;Tim Fournier;7;boulangerie;aide au fournil
+BRU005;Tim Fournier;10;chapelle;école chez Ysolde
+BRU005;Tim Fournier;12;boulangerie;retour
+BRU005;Tim Fournier;14;falaise;cabane de Pierrick ou falaise avec Nina
+BRU005;Tim Fournier;19;boulangerie;maison
+BRU006;Joss Le Vieux;0;joss;nuit
+BRU006;Joss Le Vieux;5;port;pêche
+BRU006;Joss Le Vieux;11;port;vente au port
+BRU006;Joss Le Vieux;13;joss;sieste
+BRU006;Joss Le Vieux;18;taverne;taverne jusqu'à la fermeture
+BRU007;Aldric Montval;0;mairie;nuit
+BRU007;Aldric Montval;8;mairie;mairie
+BRU007;Aldric Montval;12;mairie;repas en famille
+BRU007;Aldric Montval;14;mairie;mairie
+BRU007;Aldric Montval;18;port;promenade au port
+BRU007;Aldric Montval;20;mairie;maison
+BRU008;Clémence Montval;0;mairie;nuit
+BRU008;Clémence Montval;9;place;visites
+BRU008;Clémence Montval;11;atelier;atelier d'Isaure
+BRU008;Clémence Montval;14;mairie;réception de notables (annulées depuis le jour 9)
+BRU008;Clémence Montval;19;mairie;maison
+BRU009;Gaëlle Montval;0;mairie;nuit
+BRU009;Gaëlle Montval;9;chapelle;aide Ysolde à l'école
+BRU009;Gaëlle Montval;13;mairie;repas avec ses parents
+BRU009;Gaëlle Montval;15;place;promenade sous le porche
+BRU009;Gaëlle Montval;17;atelier;essayages chez Isaure
+BRU009;Gaëlle Montval;19;mairie;dîner, puis sa chambre
+BRU010;Félix Chantemerle;0;taverne;dort dans la soupente de la taverne
+BRU010;Félix Chantemerle;10;plage;compose au bord de l'eau
+BRU010;Félix Chantemerle;13;port;écoute Joss
+BRU010;Félix Chantemerle;16;place;chante pour quelques pièces
+BRU010;Félix Chantemerle;19;taverne;chante à la taverne
+BRU011;Rosalie Bonvin;0;taverne;nuit
+BRU011;Rosalie Bonvin;10;taverne;ménage
+BRU011;Rosalie Bonvin;12;taverne;service
+BRU011;Rosalie Bonvin;15;taverne;sieste
+BRU011;Rosalie Bonvin;17;chapelle;réunion de l'alliance si besoin
+BRU011;Rosalie Bonvin;18;taverne;-minuit service
+BRU012;Lucas Ferrand;0;forge;nuit
+BRU012;Lucas Ferrand;7;port;port (déchargement)
+BRU012;Lucas Ferrand;12;forge;repas avec Bram
+BRU012;Lucas Ferrand;14;port;port
+BRU012;Lucas Ferrand;18;forge;forge avec son père
+BRU013;Élise Dumoulin;0;moulin;nuit
+BRU013;Élise Dumoulin;6;moulin;moulin
+BRU013;Élise Dumoulin;13;moulin;ventes
+BRU013;Élise Dumoulin;17;moulin;réparations
+BRU013;Élise Dumoulin;20;taverne;taverne (paris)
+BRU014;Corentin Taillefer;0;garde;nuit
+BRU014;Corentin Taillefer;3;garde;retour
+BRU014;Corentin Taillefer;8;place;ronde de la place
+BRU014;Corentin Taillefer;12;taverne;taverne
+BRU014;Corentin Taillefer;14;port;ronde du port
+BRU014;Corentin Taillefer;18;garde;sieste
+BRU014;Corentin Taillefer;23;crique;veille à la crique dans le noir (notes sur un bout de papier)
+BRU015;Agnès Ronce;0;agnes;nuit
+BRU015;Agnès Ronce;6;reveil;cueillette au bois avec Nina
+BRU015;Agnès Ronce;10;agnes;préparations
+BRU015;Agnès Ronce;14;place;visites de malades
+BRU015;Agnès Ronce;17;chapelle;réunions de l'alliance
+BRU015;Agnès Ronce;19;agnes;maison
+BRU016;Nina;0;agnes;nuit
+BRU016;Nina;6;reveil;cueillette avec Agnès
+BRU016;Nina;9;place;marché (chipe ce qui brille)
+BRU016;Nina;10;chapelle;école chez Ysolde pour le goûter
+BRU016;Nina;14;plage;avec Tim
+BRU016;Nina;19;agnes;dort chez Agnès
+BRU017;Théo Lancier;0;taverne;dort dans une chambre de la taverne
+BRU017;Théo Lancier;1;taverne;dort
+BRU017;Théo Lancier;7;chapelle;vitrail, sur l'échafaudage
+BRU017;Théo Lancier;12;port;repas au port, regarde tout
+BRU017;Théo Lancier;14;chapelle;vitrail
+BRU017;Théo Lancier;18;taverne;écoute la salle
+BRU017;Théo Lancier;23;guet;compte les tonneaux depuis la falaise d'en face
+BRU018;Basile Champart;0;ferme;nuit
+BRU018;Basile Champart;5;ferme;bergerie
+BRU018;Basile Champart;9;landes;pâturages
+BRU018;Basile Champart;17;ferme;réparations de clôtures
+BRU018;Basile Champart;20;ferme;maison
+BRU019;Isaure Champart;0;atelier;nuit
+BRU019;Isaure Champart;8;atelier;atelier
+BRU019;Isaure Champart;9;forge;forge (pansement de Bram)
+BRU019;Isaure Champart;11;atelier;clientes
+BRU019;Isaure Champart;15;atelier;atelier
+BRU019;Isaure Champart;18;forge;forge « par hasard »
+BRU019;Isaure Champart;21;taverne;taverne aux côtés de Bram
+BRU020;Pierrick Sauvage;0;cabane;nuit
+BRU020;Pierrick Sauvage;5;reveil;chasse
+BRU020;Pierrick Sauvage;12;cabane;cabane (sculpture)
+BRU020;Pierrick Sauvage;14;plage;leçon d'arc avec Tim
+BRU020;Pierrick Sauvage;16;falaise;ronde vers la falaise
+BRU021;Garec;0;taverne;nuit
+BRU021;Garec;2;taverne;retour
+BRU021;Garec;9;comptoir;comptoir de Silas
+BRU021;Garec;12;taverne;taverne (rhum et dés)
+BRU021;Garec;22;taverne;retour
+BRU021;Garec;23;crique;crique (déchargement)
+BRU022;Mouche;0;taverne;nuit
+BRU022;Mouche;2;taverne;retour
+BRU022;Mouche;10;taverne;lever
+BRU022;Mouche;11;port;tournée du port et du marché pour Silas (il écoute tout)
+BRU022;Mouche;14;taverne;taverne
+BRU022;Mouche;23;crique;crique

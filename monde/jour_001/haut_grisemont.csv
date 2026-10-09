@@ -1,0 +1,740 @@
+pnj;debut;fin;lieu;avec;action;consequence
+HGR001;00:00;05:00;appartements royaux;—;Dort à côté de Ragna. Vers trois heures, il parle dans son sommeil, des mots sans suite sur des étais.;—
+HGR001;05:00;05:30;appartements royaux;—;Se lève, se lave à l'eau froide, tresse sa barbe seul.;—
+HGR001;05:30;06:00;Halle des Ancêtres;HGR027,HGR030;Prie à voix basse devant la pierre de Dain. Vigdis prie trois pierres plus loin. Ils se saluent d'un signe de tête, sans un mot.;Souvenir : Dain, comme chaque matin (40)
+HGR001;06:00;07:30;cabinet du roi;—;Registres seul. Il plisse l'œil gauche sur les petites colonnes, puis cache l'œil de la main pour lire. Il fait le compte du fer en réserve.;Inquiet : le fer manque, il le savait déjà
+HGR001;07:30;08:00;cabinet du roi;HGR042;Eydis lui met le collyre de lichen bleu. Il demande combien de temps. Elle dit « avant l'hiver ». Il répond « alors avant l'hiver, on aura choisi ».;Secret gardé : l'œil (relation Eydis +2)
+HGR001;08:00;09:00;appartements royaux;HGR002;Repas avec Ragna. Elle lui lit les petites lettres de la nuit. Il dit qu'un courrier de Saltevaux est en vue de la Porte haute.;—
+HGR001;09:00;09:20;Salle de Basalte;HGR040,HGR009,HGR010,HGR011;Dvalin lui remet en main propre une lettre scellée de Hordak, « pour le roi seul ». Il la glisse dans son pourpoint sans l'ouvrir : l'écriture de Hordak est trop fine pour son œil.;Objet : lettre scellée de Hordak (non lue)
+HGR001;09:20;10:00;Salle de Basalte;HGR009,HGR010,HGR011;Deux affaires de clans : une limite de galerie et un mur mitoyen. Il tranche vite.;—
+HGR001;10:00;11:00;Salle de Basalte;HGR039,HGR055,HGR009,HGR010,HGR011,HGR003;La consule Ternier présente la commande du Sénat : des chaînes de port qui ne rompent pas, livrables avant les tempêtes, payables par lettre de change sur le comptoir de Hordak. Il dit : « Vous me payez avec l'argent de mon propre comptoir. » Elle sourit. Brynja parle pour la commande.;Commande reçue : chaînes de Saltevaux. Méfiance envers le paiement
+HGR001;11:00;11:40;Salle de Basalte;HGR053,HGR011,HGR009,HGR010;Ragnvald rend compte du col : le troll a mangé neuf chèvres. Puis il dit les chariots impériaux à cages vides vus à Valgris il y a vingt jours. Le roi demande pourquoi il l'apprend si tard.;Souvenir : les cages vides de Valgris (55)
+HGR001;11:40;12:00;Salle de Basalte;HGR009,HGR010,HGR059;Bodvar annonce l'ambassadeur impérial à midi. Le roi demande qui a fixé l'heure. Bodvar dit « l'usage ». Pip baisse les yeux.;—
+HGR001;12:00;12:45;Salle de Basalte;HGR036,HGR037,HGR038,HGR009,HGR010,HGR011;Lancerre présente la commande d'Électra : dix mille fers de lance, la moitié de l'or à la signature. Il ajoute qu'à cette heure même l'impératrice reçoit Durn Ferrecloche à Aurelle. Le roi répond que tout Grand Contrat passe au conseil du jour 7.;Commande reçue : dix mille fers pour l'Empire. Humeur : sombre et attentif
+HGR001;12:45;13:30;appartements royaux;HGR002;Repas avec Ragna. Il pose deux pièces sur la table, une d'or impérial, une de Saltevaux, et les regarde sans manger.;—
+HGR001;13:30;14:15;Grande Forge;HGR019,HGR004,HGR011;Tournée de la Grande Forge avec Skarn. Skarn parle de dix mille fers comme d'une chose faite. Eirik ne lève pas la tête de son enclume. Thyra suit à trois pas.;Méfiance envers Skarn (+5)
+HGR001;14:15;15:00;Grande Forge;HGR019,HGR020;Il demande les chiffres à Runa, devant son père. Elle dit : six mille fers avant les neiges sans tourner la nuit, pas un de plus. Skarn dit qu'on fera la nuit.;Souvenir : « six mille, pas un de plus » (60)
+HGR001;15:00;15:45;Salle de Basalte;HGR016,HGR009,HGR010;Gudrun pousse l'Empire : l'or comptant, le péage de Pic-d'Ambre. Puis elle rappelle, très bas, la voix de −62 et le monopole promis.;Dette rappelée : la voix de Gudrun
+HGR001;15:45;16:30;Salle de Basalte;HGR017,HGR022,HGR009,HGR010;Hakon et Solveig parlent pour Saltevaux : 11 000 or de créances, un débiteur mort ne paie plus. Solveig commence une phrase sur les pompes, puis s'arrête.;Note : Solveig cache quelque chose
+HGR001;16:30;17:15;Salle de Basalte;HGR007,HGR003,HGR010;Grimald dit que le Trésor ne peut avancer l'or du fer pour les deux commandes. Il parle d'écarts de pesée à Forge-Profonde, sans nom. Brynja chiffre la dette du Sénat.;Décision : demander à Grimald un rapport écrit des pesées
+HGR001;17:15;18:00;Salle de Basalte;HGR027;Vigdis entre sans être annoncée. « Ni l'un ni l'autre. On ne réarme pas les humains. » Il répond qu'on ne vit pas de refus. Elle sort.;Relation Vigdis −3
+HGR001;18:00;18:45;cabinet du roi;HGR060;Ásgeir fait son rapport : Ulf vend aussi à l'ambassadeur, Orri doit de l'or aux Impériaux, Skarn va souvent aux bains avec Lancerre. Pas de preuve écrite.;Décision : qu'Ásgeir trouve qui est payé par l'Empire avant le jour 7
+HGR001;18:45;19:00;Halle des Ancêtres;—;Repasse seul devant la pierre de Dain. Il ne prie pas. Il reste debout.;—
+HGR001;19:00;20:00;appartements royaux;HGR002,HGR003,HGR004,HGR005,HGR006;Souper en famille. Tor parle de wagonnets, Hilde regarde ses parents assis loin l'un de l'autre. Le roi ne parle pas des commandes.;—
+HGR001;20:00;20:30;appartements royaux;HGR002;Jeu des Cols avec Ragna. Il joue mal et le sait.;—
+HGR001;20:30;20:45;appartements royaux;HGR002,HGR059;Pip apporte un pigeon de Pic-d'Ambre : l'envoyé d'Aëlis, l'elfe Ithrel, demande audience pour régler la dette de Sombrevert, au double, si Grisemont ne vend pas les fers à l'Empire. Le roi pâlit. Il dit « une aumône » et jette le billet sur la table.;Souvenir : Ithrel, −150 (70). Colère
+HGR001;20:45;21:15;appartements royaux;HGR002;Reprend la partie. Ragna lui demande pourquoi ce mot, « aumône ». Il ne répond pas.;—
+HGR001;21:15;21:30;appartements royaux;HGR002,HGR007;Grimald monte un pigeon de Hordak : le Sénat a voté les chaînes ce matin, payées à la livraison, et l'échéance de la dette tombe dans vingt jours.;Pression : Saltevaux presse
+HGR001;21:30;22:00;appartements royaux;HGR002;Il pose les pièces du jeu. Il compte à voix haute : six mille fers, dix mille demandés, des chaînes en plus.;—
+HGR001;22:00;23:00;appartements royaux;HGR002;Ragna lui lit la lettre scellée de Hordak : servir Saltevaux d'abord, ou les 11 000 or seront perdus. Puis il lui fait relire le billet d'Ithrel. Il ne tranche pas.;Décision : ne rien promettre avant le jour 7. Demander à Ásgeir, à Grimald et à Runa des chiffres écrits
+HGR001;23:00;24:00;appartements royaux;—;Couché, il ne dort pas. Il pense au pin, aux chaînes, aux fers. Il entend Ragna faire semblant de dormir.;Dort mal
+HGR002;00:00;05:00;appartements royaux;—;Dort. Vers trois heures, elle entend le roi parler d'étais en dormant et ne se rendort qu'à l'aube.;Dort mal
+HGR002;05:00;06:00;appartements royaux;—;Se lève, s'habille, touche la doublure de son coffre de mariage du bout des doigts.;—
+HGR002;06:00;08:00;appartements royaux;—;Cartes et lettres. Elle recopie une vieille carte de la Veine du Nord pour Alfhild.;—
+HGR002;08:00;09:00;appartements royaux;HGR001;Repas avec Baldrec. Elle lui lit les petites lettres. Elle voit qu'il plisse l'œil plus qu'hier.;—
+HGR002;09:00;10:00;appartements royaux;HGR006;Leçon de lecture avec Hilde. Hilde lit lentement et demande si les grandes personnes peuvent changer de chambre pour toujours.;Inquiète pour Hilde
+HGR002;10:00;11:00;lavoir de la Source;HGR051,HGR052;Visite au lavoir. Gyda lui dit qu'elle porte au conseil du jour 7 le prix du sang de son mari contre Bjarni, son neveu. La reine dit : « Porte-la. »;Souvenir : la même hâte qu'en −151 (65)
+HGR002;11:00;11:45;cuisines royales;HGR006,HGR015;Aux cuisines, Gunnhild lui répète à mi-voix ce que Thordis a entendu aux bains : Skarn et l'ambassadeur ont parlé de Valgris.;Information : Skarn et Valgris
+HGR002;11:45;12:45;appartements royaux;—;Seule. Elle écrit sur une carte vierge : « Skarn, Valgris ». Elle range la carte.;—
+HGR002;12:45;13:30;appartements royaux;HGR001;Repas avec le roi. Il pose deux pièces sur la table. Elle dit : « Ne choisis pas une date contre des vies. » Il fait semblant de ne pas comprendre.;Tension avec Baldrec
+HGR002;13:30;14:00;appartements royaux;—;Se repose un moment, les yeux ouverts.;—
+HGR002;14:00;15:00;Halle des Ancêtres;HGR030;Halle des Ancêtres. Elle se confie à Asa : le roi a des absences de vue, et il va choisir encore une fois une date. Asa écoute sans rien dire.;—
+HGR002;15:00;16:00;atelier de Gorm;HGR041;Chez Gorm. Elle demande combien de temps pour vider la Veine-Mère sans étais de fortune. Gorm dit deux mois de bras, ou une pompe qu'on n'a pas.;—
+HGR002;16:00;17:00;archives runiques;HGR028;Aux archives. Torgrim lui dit que Bjorn cherche toujours le rapport de −151. Elle demande s'il l'a trouvé. Non.;Peur : que Bjorn trouve
+HGR002;17:00;18:00;appartements royaux;—;Elle prépare le jeu des Cols et range des lettres.;—
+HGR002;18:00;18:45;Bains de la Source chaude (bassin des femmes);HGR039,HGR050;Aux bains. La consule Ternier tente de parler des chaînes. La reine dit : « Pas ici. » Thordis rit.;—
+HGR002;18:45;19:00;appartements royaux;—;Revient se changer.;—
+HGR002;19:00;20:00;appartements royaux;HGR001,HGR003,HGR004,HGR005,HGR006;Souper en famille. Elle voit Hilde regarder ses parents. Elle sert Eirik elle-même.;—
+HGR002;20:00;20:30;appartements royaux;HGR001;Jeu des Cols. Elle gagne deux pièces sans le vouloir.;—
+HGR002;20:30;20:45;appartements royaux;HGR001,HGR059;Le billet de Pic-d'Ambre. Elle voit le roi pâlir au nom d'Ithrel.;Souvenir : le roi pâle (50)
+HGR002;20:45;21:15;appartements royaux;HGR001;Elle demande : « Pourquoi aumône ? » Il ne répond pas. Elle n'insiste pas.;—
+HGR002;21:15;21:30;appartements royaux;HGR001,HGR007;Grimald apporte le pigeon de Hordak. Elle lit le billet à voix haute.;—
+HGR002;21:30;22:00;appartements royaux;HGR001;Elle compte avec lui : six mille fers, deux commandes.;—
+HGR002;22:00;23:00;appartements royaux;HGR001;Elle lit au roi la lettre scellée de Hordak, puis le billet d'Ithrel. Elle pense à sa lettre de −151 cousue dans le coffre.;Décision : attendre, encore
+HGR002;23:00;24:00;appartements royaux;—;Couchée, elle fait semblant de dormir pour qu'il puisse penser.;Dort mal
+HGR003;00:00;06:00;appartements de Brynja;—;Dort seule dans sa chambre.;—
+HGR003;06:00;07:00;appartements de Brynja;—;Se lève, s'habille, réveille Tor.;—
+HGR003;07:00;08:30;Monnaie et Grand Registre;—;Grand Registre. Elle met à jour la copie secrète des dettes du Sénat : 11 000 or.;—
+HGR003;08:30;09:00;Monnaie et Grand Registre;HGR040,HGR007,HGR008;Dvalin lui remet une lettre de Hordak. Hordak écrit que l'échéance du Sénat approche et que la commande arrive.;Lettre de Hordak reçue
+HGR003;09:00;10:00;Monnaie et Grand Registre;HGR008;Elle dicte à Ingrid le total des créances naines dans la République, ligne par ligne.;—
+HGR003;10:00;11:00;Salle de Basalte;HGR001,HGR039,HGR055,HGR009,HGR010,HGR011;La consule lui a demandé d'assister. Elle parle pour les chaînes : « La République doit vivre assez longtemps pour payer. »;Engagée en public pour Saltevaux
+HGR003;11:00;11:45;consulat de la République;HGR039;Au consulat. Elle dit à Margaux qu'elle poussera au conseil. Elle demande des nouvelles du siège promis à la Balance. Margaux dit « le Sénat tient parole ».;Doute sur la promesse de Ternier
+HGR003;11:45;12:00;Grande Voie;—;Remonte la Grande Voie.;—
+HGR003;12:00;13:00;appartements de Brynja;HGR004,HGR005;Repas avec Eirik et Tor. Ils se parlent poliment. Tor raconte une histoire de dragon que personne n'écoute.;—
+HGR003;13:00;16:30;Monnaie et Grand Registre;—;Registre. Elle prépare un tableau : ce que coûte la mort de la République aux maisons naines.;—
+HGR003;16:30;17:15;Salle de Basalte;HGR001,HGR007,HGR010;Avec Grimald devant le roi. Elle chiffre : si l'Empire écrase la République, 11 000 or deviennent des cendres.;—
+HGR003;17:15;18:00;Terrasse des Cols;—;Promenade à cheval sur la Terrasse des Cols.;—
+HGR003;18:00;18:30;Terrasse des Cols;HGR026;Le vieil Ottar, sourd, lui dit sans qu'elle demande : « Skarn. Valgris. Cent pour un. » Elle le fait répéter.;Souvenir : « cent pour un » (60)
+HGR003;18:30;19:00;appartements de Brynja;—;Elle note les mots d'Ottar dans son carnet.;—
+HGR003;19:00;20:00;appartements royaux;HGR001,HGR002,HGR004,HGR005,HGR006;Souper en famille. Elle évite le regard d'Eirik. Hilde la regarde.;—
+HGR003;20:00;21:00;appartements de Brynja;—;Couche Hilde, lui chante une chanson.;—
+HGR003;21:00;23:00;appartements de Brynja;—;Lettres. Elle écrit à Hordak ce qu'a dit Ottar et que le roi ne tranche pas.;Lettre pour Hordak, confiée à Dvalin au départ
+HGR003;23:00;24:00;appartements de Brynja;—;Dort seule.;—
+HGR004;00:00;05:30;appartements de Brynja;—;Dort seul dans sa chambre.;—
+HGR004;05:30;06:00;appartements de Brynja;—;Se lève.;—
+HGR004;06:00;08:00;Grande Forge;—;Atelier des plates. Il martèle une épaulière pour son armure des Ancêtres.;—
+HGR004;08:00;09:00;Grande Forge;HGR024;Il montre à Finna comment tenir une trempe. Elle dit avoir vu des caisses de lames la nuit. Il ne relève pas.;Souvenir vague : caisses de nuit (20)
+HGR004;09:00;12:00;Grande Forge;—;Atelier des plates. Il entend parler d'une commande impériale. Il serre les dents.;—
+HGR004;12:00;13:00;appartements de Brynja;HGR003,HGR005;Repas avec Brynja et Tor. Il lui demande comment elle va. Elle dit « bien ».;Triste
+HGR004;13:00;13:30;Grande Forge;—;Retour à l'enclume.;—
+HGR004;13:30;14:15;Grande Forge;HGR001,HGR019,HGR011;Le roi passe avec Skarn. Il ne lève pas la tête. Il entend Skarn dire « dix mille ».;—
+HGR004;14:15;16:00;Grande Forge;—;Plates. Il calcule seul les nuits qu'il faudrait. Il pense aux deux apprentis de −10.;—
+HGR004;16:00;17:00;Grande Forge;HGR023;Yngvar lui demande s'il sera avec les Souffleurs. Eirik dit : « Je ne porterai pas un troisième corps. »;Proche des Souffleurs (relation Yngvar +5)
+HGR004;17:00;19:00;Grande Forge;—;Finit l'épaulière.;—
+HGR004;19:00;20:00;appartements royaux;HGR001,HGR002,HGR003,HGR005,HGR006;Souper en famille. Il parle à Hilde de son armure.;—
+HGR004;20:00;22:00;Chope Fendue;HGR012;Lutte au bras avec Kolbein à la Chope Fendue. Il gagne deux fois sur trois.;—
+HGR004;22:00;24:00;appartements de Brynja;—;Dort seul.;—
+HGR005;00:00;07:00;appartements de Brynja;—;Dort. Rêve d'un wagonnet qui descend tout seul.;—
+HGR005;07:00;08:00;appartements de Brynja;—;Se lève, mange, cherche ses cailloux qui brillent.;—
+HGR005;08:00;12:00;archives runiques;HGR028,HGR029;Leçons de runes avec Torgrim. Sölvi lui souffle qu'elle a trouvé la « Porte du Serment » dans un registre.;Envie : voir la Porte scellée
+HGR005;12:00;13:00;appartements de Brynja;HGR003,HGR004;Repas avec ses parents. Il raconte une histoire de dragon. Personne ne rit.;—
+HGR005;13:00;14:00;quai des wagonnets de Haut-Grisemont;—;Regarde arriver le wagonnet de Forge-Profonde. Il compte les bennes.;—
+HGR005;14:00;15:00;quai des wagonnets de Haut-Grisemont;HGR048,HGR049;Arni dit encore que son papa fait des voyages de nuit avec des caisses qui tintent. Knut lui dit de se taire. Tor écoute.;Souvenir : caisses qui tintent (30)
+HGR005;15:00;17:00;trappes de service des wagonnets;HGR044;Dans les trappes avec Ketta. Il essaie la clé sur une trappe. Elle s'ouvre. Ils décident de descendre un jour.;Projet : descendre par la trappe
+HGR005;17:00;18:00;Grande Voie;HGR024,HGR052;Courses dans les escaliers avec Finna et Einar. Einar lui parle d'une lettre de Toki : on a percé un trou près de la Porte scellée. Ils se bagarrent pour rire.;Souvenir : le trou de sonde (45)
+HGR005;18:00;19:00;Bains de la Source chaude (bassin des hommes);—;Bains avec les enfants de la cour.;—
+HGR005;19:00;20:00;appartements royaux;HGR001,HGR002,HGR003,HGR004,HGR006;Souper en famille. Il parle trop de wagonnets.;—
+HGR005;20:00;21:00;Hall des enfants;HGR045;Bragi raconte la Purge comme un conte : des démons qui mangeaient l'écorce. Tor demande si c'est vrai.;—
+HGR005;21:00;24:00;appartements de Brynja;—;Dort.;—
+HGR006;00:00;07:00;appartements de Brynja;—;Dort avec son chat de cuisine.;—
+HGR006;07:00;09:00;appartements de Brynja;—;Se lève, s'habille, arrose une mousse dans un pot.;—
+HGR006;09:00;10:00;appartements royaux;HGR002;Leçon avec sa grand-mère. Elle demande si les grandes personnes peuvent changer de chambre pour toujours.;—
+HGR006;10:00;11:00;cuisines royales;HGR015;Aux cuisines. Gunnhild lui donne un morceau de pâte à pétrir.;Contente
+HGR006;11:00;11:45;cuisines royales;HGR002,HGR015;Sa grand-mère vient aux cuisines. Elle écoute les grandes parler bas.;—
+HGR006;11:45;13:00;cuisines royales;HGR015;Elle nourrit les chats et mange avec Gunnhild.;—
+HGR006;13:00;16:00;champignonnières royales;HGR057;Aux champignonnières. Sa planche de mousses brille un peu plus. Oddny dit qu'elle a la main.;Fière
+HGR006;16:00;16:45;Bains de la Source chaude (bassin des femmes);HGR050;Aux bains. Elle demande à Thordis comment on fait pour que deux personnes dorment ensemble. Thordis rit doucement et dit « on les fait rire ».;Idée : faire rire papa et maman
+HGR006;17:00;18:00;Hall des enfants;HGR035;Chante avec Freya et les enfants au Hall.;—
+HGR006;18:00;19:00;appartements de Brynja;—;Joue seule.;—
+HGR006;19:00;20:00;appartements royaux;HGR001,HGR002,HGR003,HGR004,HGR005;Souper. Elle raconte une blague pour faire rire ses parents. Ils rient chacun de leur côté.;—
+HGR006;20:00;24:00;appartements de Brynja;—;Dort.;—
+HGR007;00:00;06:00;Monnaie et Grand Registre;—;Dort dans le logement de la Monnaie.;—
+HGR007;06:00;07:00;Monnaie et Grand Registre;—;Se lève.;—
+HGR007;07:00;08:30;Monnaie et Grand Registre;—;Pesées. Il repèse un lingot venu de Forge-Profonde. Il manque encore.;—
+HGR007;08:30;09:00;Monnaie et Grand Registre;HGR040,HGR008,HGR003;Dvalin lui apporte des nouvelles de Hordak, son frère. Hordak va bien et tousse.;Soulagé
+HGR007;09:00;12:00;Monnaie et Grand Registre;—;Frappe. Il reprend les pesées de trois ans et écrit enfin le nom de Gils sur une feuille.;Preuve en cours : Gils
+HGR007;12:00;13:00;Monnaie et Grand Registre;HGR008;Repas avec Ingrid. Il lui demande si elle écrit encore à son oncle. Elle dit « un peu ».;—
+HGR007;13:00;16:30;Monnaie et Grand Registre;—;Comptes du Trésor. Il ne trouve pas l'or pour deux commandes.;—
+HGR007;16:30;17:15;Salle de Basalte;HGR001,HGR003,HGR010;Devant le roi. Il dit que le Trésor ne peut avancer pour les deux. Il parle des écarts, sans nom.;Ordre du roi : rapport écrit
+HGR007;17:15;19:00;Monnaie et Grand Registre;—;Commence le rapport écrit. Il s'arrête au nom de Skarn.;—
+HGR007;19:00;20:45;Chope Fendue;HGR040;Bière noire à la Chope avec Dvalin. Ils parlent de Hordak et des routes.;—
+HGR007;20:45;21:15;pigeonnier de la Monnaie;—;Un pigeon de Hordak arrive. Il lit et monte aussitôt chez le roi.;—
+HGR007;21:15;21:30;appartements royaux;HGR001,HGR002;Il remet le billet : le Sénat a voté, paiement à la livraison, échéance dans vingt jours.;—
+HGR007;21:30;24:00;Monnaie et Grand Registre;—;Dort.;—
+HGR008;00:00;07:00;Monnaie et Grand Registre;—;Dort.;—
+HGR008;07:00;08:30;Monnaie et Grand Registre;—;Écritures à la Monnaie.;—
+HGR008;08:30;09:00;Monnaie et Grand Registre;HGR040,HGR007,HGR003;Dvalin lui glisse une lettre de son oncle Hordak et prend la sienne pour le retour.;Lettre de Hordak (joie)
+HGR008;09:00;10:00;Monnaie et Grand Registre;HGR003;Brynja lui dicte le total des créances naines.;—
+HGR008;10:00;12:00;Monnaie et Grand Registre;—;Lit la lettre de Hordak en cachette : il parle de la mer en hiver.;Envie de partir
+HGR008;12:00;13:00;Monnaie et Grand Registre;HGR007;Repas avec son père. Elle ment un peu sur ses lettres.;—
+HGR008;13:00;14:00;Monnaie et Grand Registre;—;Écritures.;—
+HGR008;14:00;14:20;consulat de la République;HGR055;Elle porte un reçu au consulat. Tanguy la remercie sans la regarder.;—
+HGR008;14:20;17:00;Monnaie et Grand Registre;—;Écritures. Elle recopie le nom de Tanguy dans une marge, puis l'efface.;—
+HGR008;17:00;18:00;Monnaie et Grand Registre;—;Range son pupitre.;—
+HGR008;18:00;19:00;Chope Fendue;HGR034;À la Chope avec Mina, son amie. Elles rient des clients.;—
+HGR008;19:00;20:00;Chope Fendue;HGR034,HGR055;Tanguy donne un poème à Mina. Mina le met dans son tablier sans le lire. Ingrid regarde ailleurs.;Chagrin (souvenir 40)
+HGR008;20:00;22:00;Monnaie et Grand Registre;—;Écrit à Hordak : les deux commandes, le roi qui ne tranche pas.;—
+HGR008;22:00;24:00;Monnaie et Grand Registre;—;Dort.;—
+HGR009;00:00;06:00;maison Tranche-Mot;—;Dort.;—
+HGR009;06:00;07:00;maison Tranche-Mot;—;Se lève, brosse sa robe de héraut.;—
+HGR009;07:00;07:30;Salle de Basalte;HGR059;Il fixe l'ordre des audiences : la consule à dix heures, l'ambassadeur à midi. Il envoie Pip confirmer à l'ambassade.;—
+HGR009;07:30;09:00;Salle de Basalte;—;Prépare la salle et le protocole.;—
+HGR009;09:00;09:20;Salle de Basalte;HGR001,HGR040,HGR010,HGR011;Annonce le courrier de Saltevaux.;—
+HGR009;09:20;10:00;Salle de Basalte;HGR001,HGR010,HGR011;Annonce les affaires de clans.;—
+HGR009;10:00;11:00;Salle de Basalte;HGR001,HGR039,HGR055,HGR010,HGR011,HGR003;Annonce la consule de la République.;—
+HGR009;11:00;11:40;Salle de Basalte;HGR001,HGR053,HGR011,HGR010;Fait entrer l'éclaireur.;—
+HGR009;11:40;12:00;Salle de Basalte;HGR001,HGR010,HGR059;Annonce l'ambassadeur pour midi. Le roi demande qui a fixé l'heure. Il dit « l'usage ».;Gêné
+HGR009;12:00;12:45;Salle de Basalte;HGR001,HGR036,HGR037,HGR038,HGR010,HGR011;Annonce le comte de Lancerre. Il voit le roi se fermer.;—
+HGR009;12:45;13:30;Salle de Basalte;—;Repas dans l'antichambre.;—
+HGR009;13:30;15:00;Salle de Basalte;—;Protocole et lettres.;—
+HGR009;15:00;15:45;Salle de Basalte;HGR001,HGR016,HGR010;Annonce Gudrun Ambrefer.;—
+HGR009;15:45;16:30;Salle de Basalte;HGR001,HGR017,HGR022,HGR010;Annonce Hakon et Solveig.;—
+HGR009;16:30;19:00;Salle de Basalte;—;Écrit le registre des audiences du jour.;—
+HGR009;19:00;20:15;Hall des Comptoirs;HGR017;Souper au Hall des Comptoirs avec Hakon. Il parle d'un vieux protocole pour les envoyés elfes.;—
+HGR009;20:15;20:30;Hall des Comptoirs;HGR017,HGR059;Pip apporte le billet de Pic-d'Ambre. Bodvar lit l'adresse : un envoyé d'Aëlis. Il veut une audience en règle, pas à la porte.;Envie : recevoir l'elfe selon le protocole
+HGR009;20:30;22:00;maison Tranche-Mot;—;Cherche dans ses livres le protocole de −160 pour les elfes.;—
+HGR009;22:00;24:00;maison Tranche-Mot;—;Dort.;—
+HGR010;00:00;05:30;maison Plume-de-Fer;—;Dort.;—
+HGR010;05:30;06:00;maison Plume-de-Fer;—;Se lève.;—
+HGR010;06:00;09:00;cabinet du roi;—;Copie des registres du roi. Il écrit plus gros que d'habitude.;—
+HGR010;09:00;09:20;Salle de Basalte;HGR001,HGR040,HGR009,HGR011;Note l'arrivée du courrier de Saltevaux.;—
+HGR010;09:20;10:00;Salle de Basalte;HGR001,HGR009,HGR011;Écrit les jugements.;—
+HGR010;10:00;11:00;Salle de Basalte;HGR001,HGR039,HGR055,HGR009,HGR011,HGR003;Écrit la commande des chaînes sous la dictée.;—
+HGR010;11:00;11:40;Salle de Basalte;HGR001,HGR053,HGR011,HGR009;Écrit le rapport de l'éclaireur : cages vides à Valgris.;—
+HGR010;11:40;12:00;Salle de Basalte;HGR001,HGR009,HGR059;Prépare une feuille neuve.;—
+HGR010;12:00;12:45;Salle de Basalte;HGR001,HGR036,HGR037,HGR038,HGR009,HGR011;Écrit la commande impériale. Dix mille fers. Il souligne deux fois.;—
+HGR010;12:45;13:30;cabinet du roi;—;Repas seul.;—
+HGR010;13:30;15:00;cabinet du roi;—;Lettres du roi.;—
+HGR010;15:00;15:45;Salle de Basalte;HGR001,HGR016,HGR009;Écrit l'audience.;—
+HGR010;15:45;16:30;Salle de Basalte;HGR001,HGR017,HGR022,HGR009;Écrit l'audience.;—
+HGR010;16:30;17:15;Salle de Basalte;HGR001,HGR007,HGR003;Écrit les chiffres du Trésor.;—
+HGR010;17:15;19:30;cabinet du roi;—;Recopie les deux commandes côte à côte, en gros caractères, pour que le roi les lise seul.;—
+HGR010;19:30;21:00;archives runiques;HGR028;Aux archives avec Torgrim. Il parle de la lettre à Bardin et du double qu'il garde. Torgrim lui dit de le brûler.;—
+HGR010;21:00;22:00;maison Plume-de-Fer;—;Ne brûle pas le double.;—
+HGR010;22:00;24:00;maison Plume-de-Fer;—;Dort.;—
+HGR011;00:00;05:00;maison Bouclier-Gris;—;Dort.;—
+HGR011;05:00;06:00;maison Bouclier-Gris;—;Se lève, graisse son bouclier ébréché.;—
+HGR011;06:00;07:00;salle d'armes de la Garde;HGR012;Entraînement de la Garde. Elle fait tomber Kolbein deux fois.;—
+HGR011;07:00;08:00;salle d'armes de la Garde;HGR053;Ragnvald lui fait son rapport du col.;—
+HGR011;08:00;09:00;Salle de Basalte;—;Prend son quart auprès du roi.;—
+HGR011;09:00;09:20;Salle de Basalte;HGR001,HGR040,HGR009,HGR010;Fouille la sacoche du courrier.;—
+HGR011;09:20;10:00;Salle de Basalte;HGR001,HGR009,HGR010;Garde la salle.;—
+HGR011;10:00;11:00;Salle de Basalte;HGR001,HGR039,HGR055,HGR009,HGR010,HGR003;Garde la salle.;—
+HGR011;11:00;11:40;Salle de Basalte;HGR001,HGR053,HGR009,HGR010;Confirme au roi le rapport de Ragnvald.;—
+HGR011;11:40;12:00;Salle de Basalte;—;Garde la porte.;—
+HGR011;12:00;12:45;Salle de Basalte;HGR001,HGR036,HGR037,HGR038,HGR009,HGR010;Elle regarde le chevalier Aubry et le lapin Pell. Pell lève les yeux vers le roi, une seule fois.;Méfiance envers Aubry
+HGR011;12:45;13:30;appartements royaux;—;Garde la porte des appartements.;—
+HGR011;13:30;14:15;Grande Forge;HGR001,HGR019,HGR004;Suit le roi à la Forge. Elle regarde Skarn et pense à la porte de service de l'ambassade.;—
+HGR011;14:15;15:00;Grande Forge;—;Attend à la porte de l'atelier de Runa.;—
+HGR011;15:00;20:00;Salle de Basalte;—;Garde pendant les audiences de l'après-midi, puis à la porte du souper.;—
+HGR011;20:00;20:30;Porte haute;HGR014;Ronde de la Porte haute avec Hrefna.;—
+HGR011;20:30;22:00;salle d'armes de la Garde;—;Remplit le registre de la Garde.;—
+HGR011;22:00;23:00;Chope Fendue;HGR053;Bière avec Ragnvald. Elle lui dit enfin qu'elle a vu Skarn sortir deux fois de l'ambassade à minuit.;Secret partagé avec Ragnvald
+HGR011;23:00;24:00;maison Bouclier-Gris;—;Dort.;—
+HGR012;00:00;06:00;chambrée de la Garde;—;Dort.;—
+HGR012;06:00;07:00;salle d'armes de la Garde;HGR011;Entraînement. Thyra le fait tomber deux fois.;—
+HGR012;07:00;12:00;Salle de Basalte;—;Garde à la porte de la Salle de Basalte.;—
+HGR012;12:00;14:00;Salle de Basalte;—;Garde pendant l'audience de l'ambassadeur. Il retient l'heure : midi.;—
+HGR012;14:00;15:00;chambrée de la Garde;—;Repas.;—
+HGR012;15:00;18:00;chambrée de la Garde;—;Dort.;—
+HGR012;18:00;19:00;chambrée de la Garde;—;Se lève, mange.;—
+HGR012;19:00;20:00;Chope Fendue;HGR021;Dés avec Orri. Orri lui demande l'heure de la prochaine audience de la consule. Il dit qu'il ne sait pas.;Refus (dette toujours 2 or)
+HGR012;20:00;22:00;Chope Fendue;HGR004;Lutte au bras avec Eirik. Il perd deux fois sur trois.;—
+HGR012;22:00;23:00;Chope Fendue;—;Boit seul et regarde Mina servir.;—
+HGR012;23:00;24:00;chambrée de la Garde;—;Dort.;—
+HGR013;00:00;06:00;maison Mâchefer;—;Dort.;—
+HGR013;06:00;07:00;Porte haute;—;Prend la garde.;—
+HGR013;07:00;07:30;Porte haute;HGR040;Contrôle le courrier de Saltevaux. Il porte la commande du Sénat.;—
+HGR013;07:30;14:00;Porte haute;—;Contrôle des caisses. Deux caisses d'outils de la Grande Forge descendent vers Pic-d'Ambre. Elle les soupèse et les note.;Soupçon (notes)
+HGR013;14:00;14:30;Porte haute;HGR014;Relève par Hrefna.;—
+HGR013;14:30;15:00;maison Mâchefer;—;Repas.;—
+HGR013;15:00;18:00;maison Mâchefer;—;Forge de sa maison : elle fait un crochet.;—
+HGR013;18:00;21:00;maison Mâchefer;—;Souper, repos.;—
+HGR013;21:00;22:00;maison Mâchefer;—;Écrit à sa tante Dagna : des caisses d'outils qui sonnent comme des lames.;—
+HGR013;22:00;24:00;maison Mâchefer;—;Dort.;—
+HGR014;00:00;01:00;Chope Fendue;—;Écoute Freya chanter la dernière chanson.;—
+HGR014;01:00;08:00;chambrée de la Garde;—;Dort.;—
+HGR014;08:00;12:00;Terrasse des Cols;—;Marche sur les cols. Elle regarde vers le sud, là où serait la mer.;—
+HGR014;12:00;14:00;chambrée de la Garde;—;Repas, repos.;—
+HGR014;14:00;14:30;Porte haute;HGR013;Relève Asgerd à la Porte haute.;—
+HGR014;14:30;16:30;Porte haute;—;Garde.;—
+HGR014;16:30;16:45;Porte haute;HGR038;Pell passe pour une course. Il demande si le roi a parlé de la pierre. Elle dit : « Le roi reçoit qui demande. »;Relation Pell +5
+HGR014;16:45;20:00;Porte haute;—;Garde.;—
+HGR014;20:00;20:30;Porte haute;HGR011;Ronde avec Thyra. Elle ne parle pas de Pell.;—
+HGR014;20:30;22:00;Porte haute;—;Garde.;—
+HGR014;22:00;22:30;Chope Fendue;—;Bière.;—
+HGR014;22:30;23:00;Chope Fendue;HGR035;Elle dit à Freya que sa chanson était belle. Freya remercie et retourne vers le comptoir.;Tristesse douce
+HGR014;23:00;24:00;Chope Fendue;—;Reste jusqu'à la fermeture.;—
+HGR015;00:00;04:30;cuisines royales;—;Dort dans sa chambre derrière les cuisines.;—
+HGR015;04:30;05:00;cuisines royales;—;Se lève.;—
+HGR015;05:00;10:00;cuisines royales;—;Cuisines royales : pain, bouillie, repas du roi.;—
+HGR015;10:00;11:00;cuisines royales;HGR006;Donne à Hilde de la pâte à pétrir.;—
+HGR015;11:00;11:45;cuisines royales;HGR002,HGR006;Elle répète à la reine ce que Thordis a entendu : Skarn, l'ambassadeur, Valgris.;—
+HGR015;11:45;13:00;cuisines royales;HGR006;Mange avec Hilde.;—
+HGR015;13:00;13:30;cuisines royales;—;Vaisselle.;—
+HGR015;13:30;14:00;cuisines royales;HGR044;Donne une soupe à Ketta.;—
+HGR015;14:00;16:00;cuisines royales;—;Sieste.;—
+HGR015;16:00;18:00;cuisines royales;—;Prépare le souper royal.;—
+HGR015;18:00;18:30;cuisines royales;HGR057;Reçoit les champignons d'Oddny.;—
+HGR015;18:30;21:00;cuisines royales;—;Souper royal et rangement.;—
+HGR015;21:00;22:00;Bains de la Source chaude (bassin des femmes);HGR050;Ragots avec Thordis : l'ambassadeur était encore aux bains avec Skarn.;—
+HGR015;22:00;24:00;cuisines royales;—;Dort.;—
+HGR016;00:00;06:00;maison Ambrefer de Haut-Grisemont;—;Dort.;—
+HGR016;06:00;08:00;maison Ambrefer de Haut-Grisemont;—;Se lève, lit le courrier de Valgris.;—
+HGR016;08:00;08:45;Hall des Comptoirs;HGR017;Au Hall. Hakon dit qu'un courrier de Saltevaux est arrivé. Elle dit que l'Empire paie comptant.;—
+HGR016;08:45;12:00;Hall des Comptoirs;—;Comptoirs.;—
+HGR016;12:00;13:00;maison Ambrefer de Haut-Grisemont;HGR018;Repas avec Dagny. Elle parle de la date du mariage avec Orri, « après le vote ».;—
+HGR016;13:00;14:00;Hall des Comptoirs;—;Rendez-vous d'affaires.;—
+HGR016;14:00;15:00;maison Ambrefer de Haut-Grisemont;HGR036;Reçoit Lancerre chez elle. Il lui raconte l'audience. Elle compte déjà la part de Pic-d'Ambre.;Engagée pour l'Empire
+HGR016;15:00;15:45;Salle de Basalte;HGR001,HGR009,HGR010;Devant le roi : l'Empire, l'or comptant. Puis elle rappelle la voix de −62 et le monopole du péage promis.;Dette réclamée pour le jour 7
+HGR016;15:45;16:00;Hall des Comptoirs;—;Retour au Hall.;—
+HGR016;16:00;17:00;pigeonnier de la Salle de Basalte;—;Envoie un pigeon à Thorunn : « L'Empire a présenté. Dix mille. Tiens ta voix. »;—
+HGR016;17:00;20:00;Hall des Comptoirs;—;Lettres.;—
+HGR016;20:00;22:00;maison Ambrefer de Haut-Grisemont;HGR018;Souper avec Dagny. Elle trouve sa petite-fille distraite.;—
+HGR016;22:00;24:00;maison Ambrefer de Haut-Grisemont;—;Dort.;—
+HGR017;00:00;07:00;maison Clef-d'Or;—;Dort.;—
+HGR017;07:00;08:00;maison Clef-d'Or;—;Se lève.;—
+HGR017;08:00;08:45;Hall des Comptoirs;HGR016;Il annonce à Gudrun le courrier de Saltevaux. Elle répond « or comptant ».;—
+HGR017;08:45;12:00;Hall des Comptoirs;—;Comptoirs.;—
+HGR017;12:00;14:00;Hall des Comptoirs;—;Repas, puis il prépare ses arguments pour le roi.;—
+HGR017;14:00;15:00;Hall des Comptoirs;HGR039;La consule passe au Hall. Il lui promet sa voix. Il ne parle pas de Bardin.;—
+HGR017;15:00;15:45;Hall des Comptoirs;—;Attend son audience.;—
+HGR017;15:45;16:30;Salle de Basalte;HGR001,HGR022,HGR009,HGR010;Devant le roi avec Solveig : 11 000 or, un débiteur mort ne paie plus.;—
+HGR017;16:30;19:00;Hall des Comptoirs;—;Comptoirs. Il pense aux 50 or avancés à Bardin.;Inquiet
+HGR017;19:00;20:15;Hall des Comptoirs;HGR009;Souper avec Bodvar.;—
+HGR017;20:15;20:30;Hall des Comptoirs;HGR009,HGR059;Il voit l'adresse du billet : un envoyé d'Aëlis.;—
+HGR017;20:30;21:00;Hall des Comptoirs;—;Range ses livres.;—
+HGR017;21:00;22:30;Chope Fendue;—;Jeu de l'oie avec des marchands. Il répète partout que la République paie toujours.;—
+HGR017;22:30;24:00;maison Clef-d'Or;—;Dort.;—
+HGR018;00:00;02:00;anciennes caves à bière;HGR023;Avec Yngvar dans les anciennes caves. Ils passent la nuit ensemble.;—
+HGR018;02:00;07:00;maison Ambrefer de Haut-Grisemont;—;Rentre sans bruit et dort.;—
+HGR018;07:00;12:00;Hall des Comptoirs;—;Comptabilité. Elle retrouve la ligne de l'or de Valgris et la recopie.;Objet : copie de la ligne de Valgris
+HGR018;12:00;13:00;maison Ambrefer de Haut-Grisemont;HGR016;Repas avec sa grand-mère. Elle sourit quand on parle d'Orri.;—
+HGR018;13:00;17:00;Hall des Comptoirs;—;Écritures.;—
+HGR018;17:00;18:00;maison Ambrefer de Haut-Grisemont;—;Repos.;—
+HGR018;18:00;19:00;Bains de la Source chaude (bassin des femmes);—;Aux bains, seule dans le petit bassin.;—
+HGR018;19:00;20:00;maison Ambrefer de Haut-Grisemont;—;Se change.;—
+HGR018;20:00;22:00;maison Ambrefer de Haut-Grisemont;HGR016;Souper. Elle répond à côté. Gudrun la trouve distraite.;—
+HGR018;22:00;23:00;maison Ambrefer de Haut-Grisemont;—;Fait semblant de dormir.;—
+HGR018;23:00;24:00;anciennes caves à bière;HGR023;Retrouve Yngvar. Elle lui montre la copie de la ligne de Valgris.;Secret partagé avec Yngvar
+HGR019;00:00;05:00;Hall de la Forge;—;Dort.;—
+HGR019;05:00;06:00;Hall de la Forge;—;Se lève.;—
+HGR019;06:00;11:00;Grande Forge;—;Passe dans tous les ateliers. Il annonce aux maîtres « une grande commande ».;—
+HGR019;11:00;11:30;Grande Forge;HGR021;Il dit à Orri : « Ce midi, l'Empire parle. Tais-toi et souris à ta fiancée. »;—
+HGR019;11:30;12:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR019;12:00;13:30;Hall de la Forge;—;Repas. Un mot de Lancerre lui arrive : présenté.;Content
+HGR019;13:30;14:15;Grande Forge;HGR001,HGR004,HGR011;Montre la Forge au roi. Il parle de dix mille fers comme d'une chose faite.;—
+HGR019;14:15;15:00;Grande Forge;HGR001,HGR020;Runa donne ses chiffres au roi. Il dit qu'on fera la nuit.;Colère contre Runa
+HGR019;15:00;15:30;Grande Forge;HGR020;« Tu donnes tes chiffres au roi, maintenant ? » Runa : « Je les donne à qui demande. »;Relation Runa −5
+HGR019;15:30;18:00;Grande Forge;—;Ateliers.;—
+HGR019;18:00;19:00;Bains de la Source chaude (bassin des hommes);HGR036;Aux bains avec Lancerre. « Six mille, dit ma fille. Je dirai dix. » Ils se taisent quand Gorm entre.;—
+HGR019;19:00;20:00;Hall de la Forge;—;Repos.;—
+HGR019;20:00;22:30;Hall de la Forge;—;Souper au Hall de la Forge.;—
+HGR019;22:30;23:00;Hall de la Forge;—;Attend que la ville dorme.;—
+HGR019;23:00;24:00;atelier de nuit de la Grande Forge;—;Atelier de nuit avec deux compagnons sûrs : des lames sans poinçon, pour Brokk.;—
+HGR020;00:00;04:30;maison Brasier;—;Dort.;—
+HGR020;04:30;05:00;maison Brasier;—;Se lève.;—
+HGR020;05:00;06:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR020;06:00;07:00;Grande Forge;HGR026;Ottar lui répète « Valgris, cent pour un ». Elle lui dit de se taire.;—
+HGR020;07:00;13:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR020;13:00;14:15;Grande Forge;—;Repas, calculs.;—
+HGR020;14:15;15:00;Grande Forge;HGR001,HGR019;Le roi demande ses chiffres. Elle dit six mille, pas un de plus, sans la nuit. Son père dit qu'on fera la nuit.;Fière et inquiète
+HGR020;15:00;15:30;Grande Forge;HGR019;Son père lui reproche d'avoir parlé. Elle répond qu'elle parle à qui demande.;—
+HGR020;15:30;18:00;Grande Forge;—;Réglages.;—
+HGR020;18:00;19:00;maison Brasier;—;Repos.;—
+HGR020;19:00;19:45;Bains de la Source chaude (bassin des femmes);—;Bains.;—
+HGR020;19:45;21:00;maison Brasier;—;Souper seule.;—
+HGR020;21:00;23:00;maison Brasier;—;Carnets. Elle écrit la liste des coulées de nuit hors registre.;Objet : liste des coulées de nuit
+HGR020;23:00;24:00;maison Brasier;—;Dort.;—
+HGR021;00:00;01:00;ambassade de l'Empire;HGR036,HGR037,HGR038;Dés avec Lancerre et Aubry. Il perd encore.;Dette : 16 or
+HGR021;01:00;09:00;Hall de la Forge;—;Dort.;—
+HGR021;09:00;10:00;Hall de la Forge;—;Se lève.;—
+HGR021;10:00;11:00;Grande Forge;—;Inspection pour la forme.;—
+HGR021;11:00;11:30;Grande Forge;HGR019;Son père lui dit de se taire et de sourire à Dagny.;—
+HGR021;11:30;14:00;Hall de la Forge;—;Repas, repos.;—
+HGR021;14:00;15:00;ambassade de l'Empire;HGR037;À l'ambassade. Il vend à Aubry l'heure où la consule a été reçue.;Dette −1 or
+HGR021;15:00;17:00;Bains de la Source chaude (bassin des hommes);—;Bains.;—
+HGR021;17:00;19:00;Hall de la Forge;—;Repos.;—
+HGR021;19:00;20:00;Chope Fendue;HGR012;Dés avec Kolbein. Kolbein refuse de parler.;—
+HGR021;20:00;20:30;Chope Fendue;HGR033;Ulf note sa dette dans son carnet.;—
+HGR021;20:30;22:30;Chope Fendue;—;Dés.;—
+HGR021;22:30;24:00;ambassade de l'Empire;HGR036,HGR037,HGR038;Dés à l'ambassade. Il gagne une fois.;—
+HGR022;00:00;06:00;maison Rouage;—;Dort.;—
+HGR022;06:00;07:00;maison Rouage;—;Se lève.;—
+HGR022;07:00;12:00;atelier des soufflets;—;Répare une valve de soufflet.;—
+HGR022;12:00;13:00;atelier des soufflets;—;Repas.;—
+HGR022;13:00;14:30;atelier des soufflets;—;Atelier.;—
+HGR022;14:30;15:00;atelier des soufflets;HGR040;Dvalin lui remet une lettre de Nelda. Nelda écrit : la Balance lui offre de l'or pour la pompe, ne rien dire encore.;Serment renouvelé
+HGR022;15:00;15:45;atelier des soufflets;—;Relit la lettre.;—
+HGR022;15:45;16:30;Salle de Basalte;HGR001,HGR017,HGR009,HGR010;Devant le roi avec Hakon. Elle commence à parler des pompes, puis se tait.;Honte
+HGR022;16:30;18:00;atelier des soufflets;—;Atelier.;—
+HGR022;18:00;20:00;maison Rouage;—;Écrit à Nelda pour demander d'être déliée de son serment.;Lettre pour Nelda
+HGR022;20:00;23:00;maison Rouage;—;Horloges.;—
+HGR022;23:00;24:00;maison Rouage;—;Dort.;—
+HGR023;00:00;02:00;anciennes caves à bière;HGR018;Avec Dagny dans les anciennes caves. Ils passent la nuit ensemble.;—
+HGR023;02:00;04:30;maison Souffle-Fort;—;Dort.;—
+HGR023;04:30;05:00;maison Souffle-Fort;—;Se lève, réveille Finna.;—
+HGR023;05:00;13:00;Grande Forge;—;Soufflets et enclumes. Il entend parler de dix mille fers.;—
+HGR023;13:00;14:00;Grande Forge;—;Repas avec les Souffleurs.;—
+HGR023;14:00;16:00;Grande Forge;—;Forge.;—
+HGR023;16:00;17:00;Grande Forge;HGR004;Il demande à Eirik s'il sera avec eux. Eirik dit qu'il ne portera pas un troisième corps.;—
+HGR023;17:00;18:00;Grande Forge;—;Forge.;—
+HGR023;18:00;20:00;Chope Fendue;—;Réunion des Souffleurs. Les chiffres de Runa passent de main en main.;—
+HGR023;20:00;21:00;Chope Fendue;HGR025;Bera dit qu'elle lâchera aussi les soufflets si on vote sans paie double.;Décision : arrêt des soufflets si vote sans paie double
+HGR023;21:00;23:00;Chope Fendue;—;Boit avec les compagnons.;—
+HGR023;23:00;24:00;anciennes caves à bière;HGR018;Retrouve Dagny. Elle lui montre la ligne de Valgris.;—
+HGR024;00:00;04:30;maison Souffle-Fort;—;Dort.;—
+HGR024;04:30;05:00;maison Souffle-Fort;—;Se lève.;—
+HGR024;05:00;08:00;Grande Forge;—;Forge.;—
+HGR024;08:00;09:00;Grande Forge;HGR004;Leçon de trempe. Elle raconte les caisses de lames de la nuit. Eirik ne répond pas.;—
+HGR024;09:00;13:00;Grande Forge;—;Forge.;—
+HGR024;13:00;14:00;Grande Forge;—;Repas.;—
+HGR024;14:00;17:00;Grande Forge;—;Forge.;—
+HGR024;17:00;18:00;Grande Voie;HGR005,HGR052;Courses dans les escaliers avec Tor et Einar. Elle gagne.;Contente
+HGR024;18:00;20:00;maison Souffle-Fort;—;Souper seule, son frère est à la Chope.;—
+HGR024;20:00;24:00;maison Souffle-Fort;—;Dort.;—
+HGR025;00:00;04:30;maison Fer-Sonnant;—;Dort.;—
+HGR025;04:30;05:00;maison Fer-Sonnant;—;Se lève.;—
+HGR025;05:00;13:00;Grande Forge;—;Mailles.;—
+HGR025;13:00;14:00;Grande Forge;—;Repas.;—
+HGR025;14:00;18:00;Grande Forge;—;Forge.;—
+HGR025;18:00;19:00;maison Fer-Sonnant;—;Relit la lettre de Kelda sur la « lame qui chantait faux ».;—
+HGR025;19:00;20:00;maison Fer-Sonnant;—;Écrit à Kelda qu'une place l'attend chez Hervor.;—
+HGR025;20:00;21:00;Chope Fendue;HGR023;Dit à Yngvar qu'elle lâchera les soufflets aussi.;Engagée avec les Souffleurs
+HGR025;21:00;22:00;Chope Fendue;—;Écoute Freya.;—
+HGR025;22:00;24:00;maison Fer-Sonnant;—;Dort.;—
+HGR026;00:00;04:30;maison Soufflet;—;Dort.;—
+HGR026;04:30;05:00;maison Soufflet;—;Se lève.;—
+HGR026;05:00;06:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR026;06:00;07:00;Grande Forge;HGR020;Il répète à Runa « Valgris, cent pour un ». Elle lui fait signe de se taire.;—
+HGR026;07:00;13:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR026;13:00;14:00;Grande Forge;—;Repas.;—
+HGR026;14:00;17:00;Grande Forge;—;Hauts-fourneaux.;—
+HGR026;17:00;18:00;Terrasse des Cols;—;Pipe sur la Terrasse.;—
+HGR026;18:00;18:30;Terrasse des Cols;HGR003;Il dit à la princesse Brynja : « Skarn. Valgris. Cent pour un. » Elle le fait répéter.;Content qu'on l'écoute
+HGR026;18:30;20:00;Terrasse des Cols;—;Pipe.;—
+HGR026;20:00;24:00;maison Soufflet;—;Dort.;—
+HGR027;00:00;05:00;maison Fendroche;—;Dort.;—
+HGR027;05:00;05:30;maison Fendroche;—;Se lève.;—
+HGR027;05:30;06:00;Halle des Ancêtres;HGR001,HGR030;Prie devant la pierre d'Ulfar. Elle salue le roi d'un signe de tête.;—
+HGR027;06:00;12:00;Hall des Profondeurs;—;Hall des Profondeurs. On lui parle des deux commandes.;Résolue : ni l'un ni l'autre
+HGR027;12:00;13:00;Hall des Profondeurs;—;Repas seule.;—
+HGR027;13:00;15:00;Hall des Profondeurs;—;Rapports des mines.;—
+HGR027;15:00;15:45;maison de Gyda, les Marches;HGR051;Chez Gyda. « Porte ta plainte. Le conseil jugera mon fils comme un autre. »;Respect de Gyda (+5)
+HGR027;15:45;17:15;Hall des Profondeurs;—;Lettres.;—
+HGR027;17:15;18:00;Salle de Basalte;HGR001;Entre chez le roi : « Ni l'un ni l'autre. » Il répond qu'on ne vit pas de refus.;Relation Baldrec −3
+HGR027;18:00;18:30;archives runiques;HGR028,HGR054;Bjorn demande le rapport de −151. Elle dit : « Ton père est mort sous la Veine du Nord. C'est tout. »;—
+HGR027;18:30;19:30;archives runiques;HGR028;Torgrim parle des pierres « qui repoussent ». Elle ne répond pas.;—
+HGR027;19:30;21:00;maison Fendroche;—;Souper seule.;—
+HGR027;21:00;24:00;maison Fendroche;—;Dort.;—
+HGR028;00:00;06:00;archives runiques;—;Dort.;—
+HGR028;06:00;08:00;archives runiques;—;Se lève, ouvre les archives.;—
+HGR028;08:00;12:00;archives runiques;HGR029,HGR005;Leçons de Tor et Sölvi.;—
+HGR028;12:00;13:00;archives runiques;—;Repas.;—
+HGR028;13:00;16:00;archives runiques;—;Relit la copie de Hrolf sur les pierres d'affinité.;—
+HGR028;16:00;17:00;archives runiques;HGR002;La reine demande si le rapport de −151 a été trouvé. Non. Bjorn cherche toujours.;—
+HGR028;17:00;18:00;archives runiques;—;Archives.;—
+HGR028;18:00;18:30;archives runiques;HGR027,HGR054;Bjorn et Vigdis. Il ne dit rien.;—
+HGR028;18:30;19:30;archives runiques;HGR027;Il parle à Vigdis de la matière vivante qui repousse. Elle ne répond pas.;Doute
+HGR028;19:30;21:00;archives runiques;HGR010;Vali parle du double de la lettre à Bardin. Torgrim lui dit de le brûler.;—
+HGR028;21:00;22:00;archives runiques;—;Range.;—
+HGR028;22:00;24:00;archives runiques;—;Dort.;—
+HGR029;00:00;07:00;archives runiques;—;Dort.;—
+HGR029;07:00;08:00;archives runiques;—;Se lève.;—
+HGR029;08:00;12:00;archives runiques;HGR028,HGR005;Leçons. Elle souffle à Tor « Porte du Serment ».;—
+HGR029;12:00;13:00;archives runiques;—;Repas.;—
+HGR029;13:00;13:30;archives runiques;HGR031;Leif lui demande de ne montrer la liste des serments à personne.;—
+HGR029;13:30;17:00;archives runiques;—;Copie.;—
+HGR029;17:00;18:00;archives runiques;—;Relit la lettre de Svala.;—
+HGR029;18:00;21:00;archives runiques;—;Lecture.;—
+HGR029;21:00;24:00;archives runiques;—;Dort.;—
+HGR030;00:00;04:00;cellule du temple;—;Dort.;—
+HGR030;04:00;05:00;Halle des Ancêtres;HGR031;Feu sacré avec Leif.;—
+HGR030;05:00;05:30;Halle des Ancêtres;—;Prépare la Halle.;—
+HGR030;05:30;06:00;Halle des Ancêtres;HGR001,HGR027;Se tient à l'écart pendant la prière du roi.;—
+HGR030;06:00;12:00;Halle des Ancêtres;—;Halle des Ancêtres.;—
+HGR030;12:00;14:00;Halle des Ancêtres;—;Repas, puis un deuil.;—
+HGR030;14:00;15:00;Halle des Ancêtres;HGR002;La reine se confie. Asa écoute.;—
+HGR030;15:00;17:00;Halle des Ancêtres;—;Serments.;—
+HGR030;17:00;18:00;Halle des Ancêtres;—;Prière.;—
+HGR030;18:00;19:00;Halle des Ancêtres;HGR031;Feu du soir avec Leif.;—
+HGR030;19:00;19:30;Halle des Ancêtres;HGR051,HGR052;Gyda et Einar à la pierre de Hauk. Asa bénit la plainte.;—
+HGR030;19:30;21:00;Halle des Ancêtres;—;Veille.;—
+HGR030;21:00;24:00;cellule du temple;—;Dort.;—
+HGR031;00:00;04:00;cellule du temple;—;Dort.;—
+HGR031;04:00;05:00;Halle des Ancêtres;HGR030;Feu sacré avec Asa.;—
+HGR031;05:00;12:00;Halle des Ancêtres;—;Halle.;—
+HGR031;12:00;13:00;Halle des Ancêtres;—;Repas.;—
+HGR031;13:00;13:30;archives runiques;HGR029;Demande à Sölvi de garder la liste secrète.;—
+HGR031;13:30;17:00;Halle des Ancêtres;—;Copie des serments.;—
+HGR031;17:00;18:00;Halle des Ancêtres;—;Repos.;—
+HGR031;18:00;19:00;Halle des Ancêtres;HGR030;Feu du soir.;—
+HGR031;19:00;20:00;cellule du temple;—;Souper.;—
+HGR031;20:00;22:00;cellule du temple;—;Étude.;—
+HGR031;22:00;24:00;cellule du temple;—;Dort.;—
+HGR032;00:00;04:00;brasserie royale;—;Dort.;—
+HGR032;04:00;06:00;brasserie royale;—;Brassage.;—
+HGR032;06:00;12:00;brasserie royale;—;Cherche encore la clé du coffre à levure.;Inquiet
+HGR032;12:00;13:00;brasserie royale;—;Repas.;—
+HGR032;13:00;18:00;brasserie royale;—;Caves.;—
+HGR032;18:00;19:00;Chope Fendue;HGR033;Dégustation avec Ulf.;—
+HGR032;19:00;22:00;Chope Fendue;—;Boit.;—
+HGR032;22:00;24:00;brasserie royale;—;Dort.;—
+HGR033;00:00;02:00;Chope Fendue;—;Service.;—
+HGR033;02:00;03:00;Chope Fendue;—;Comptes.;—
+HGR033;03:00;10:00;Chope Fendue;—;Dort.;—
+HGR033;10:00;12:00;Chope Fendue;—;Ouverture.;—
+HGR033;12:00;12:45;Chope Fendue;HGR060;Il dit à Ásgeir que Lancerre parle d'un « roi qui sait compter ». Ásgeir lui demande de faire croire à l'ambassadeur que le roi penche pour Saltevaux.;Mission d'Ásgeir
+HGR033;12:45;14:00;Chope Fendue;—;Service.;—
+HGR033;14:00;16:00;Chope Fendue;—;Sieste.;—
+HGR033;16:00;16:30;ambassade de l'Empire;HGR037;Porte de service de l'ambassade : il dit à Aubry que le roi penche pour Saltevaux.;—
+HGR033;16:30;18:00;Chope Fendue;—;Service.;—
+HGR033;18:00;19:00;Chope Fendue;HGR032;Dégustation avec Hagbard.;—
+HGR033;19:00;20:00;Chope Fendue;—;Service.;—
+HGR033;20:00;20:30;Chope Fendue;HGR021;Note la dette d'Orri.;—
+HGR033;20:30;24:00;Chope Fendue;—;Service.;—
+HGR034;00:00;01:00;Chope Fendue;—;Service.;—
+HGR034;01:00;03:00;chambre de Freya;HGR035;Chez Freya. Elles passent la nuit ensemble.;—
+HGR034;03:00;10:00;Chope Fendue;—;Dort.;—
+HGR034;10:00;14:00;Chope Fendue;—;Cuisine.;—
+HGR034;14:00;16:00;Chope Fendue;—;Repos.;—
+HGR034;16:00;18:00;Chope Fendue;—;Service.;—
+HGR034;18:00;19:00;Chope Fendue;HGR008;Rit avec Ingrid.;—
+HGR034;19:00;20:00;Chope Fendue;HGR008,HGR055;Tanguy lui donne un poème. Elle le met dans son tablier.;—
+HGR034;20:00;24:00;Chope Fendue;—;Service. Elle sert les Souffleurs.;—
+HGR035;00:00;01:00;Chope Fendue;—;Dernière chanson.;—
+HGR035;01:00;03:00;chambre de Freya;HGR034;Avec Mina.;—
+HGR035;03:00;10:00;chambre de Freya;—;Dort.;—
+HGR035;10:00;12:00;chambre de Freya;—;Se lève.;—
+HGR035;12:00;16:00;chambre de Freya;—;Répète.;—
+HGR035;16:00;17:00;chambre de Freya;—;Repos.;—
+HGR035;17:00;18:00;Hall des enfants;HGR006;Chants avec les enfants.;—
+HGR035;18:00;19:00;chambre de Freya;—;Souper.;—
+HGR035;19:00;22:30;Chope Fendue;—;Chante.;—
+HGR035;22:30;23:00;Chope Fendue;HGR014;Hrefna la complimente.;—
+HGR035;23:00;24:00;Chope Fendue;—;Chante.;—
+HGR036;00:00;01:00;ambassade de l'Empire;HGR037,HGR021,HGR038;Dés avec Aubry et Orri. Pell sert le vin.;—
+HGR036;01:00;08:00;ambassade de l'Empire;—;Dort.;—
+HGR036;08:00;09:00;ambassade de l'Empire;—;Se lève.;—
+HGR036;09:00;11:00;ambassade de l'Empire;—;Relit la lettre d'Électra.;—
+HGR036;11:00;11:30;ambassade de l'Empire;HGR037,HGR038;Prépare l'audience. Pell portera le coffret.;—
+HGR036;11:30;12:00;Grande Voie;—;Monte la Grande Voie.;—
+HGR036;12:00;12:45;Salle de Basalte;HGR001,HGR037,HGR038,HGR009,HGR010,HGR011;Présente la commande : dix mille fers, la moitié à la signature. « À cette heure, l'impératrice reçoit votre ambassadeur. »;Satisfait
+HGR036;12:45;13:00;Grande Voie;—;Redescend.;—
+HGR036;13:00;14:00;ambassade de l'Empire;HGR037;Repas avec Aubry.;—
+HGR036;14:00;15:00;maison Ambrefer de Haut-Grisemont;HGR016;Chez Gudrun. Il raconte l'audience.;—
+HGR036;15:00;16:30;ambassade de l'Empire;HGR037;Escrime avec Aubry.;—
+HGR036;16:30;18:00;ambassade de l'Empire;—;Écrit à Électra : « Présenté à midi. »;—
+HGR036;18:00;19:00;Bains de la Source chaude (bassin des hommes);HGR019;Aux bains avec Skarn. « Six mille, dit sa fille. » Ils se taisent quand Gorm entre.;—
+HGR036;19:00;20:00;ambassade de l'Empire;—;Repos.;—
+HGR036;20:00;22:30;ambassade de l'Empire;HGR037,HGR038;Souper. Aubry lui rapporte que le roi pencherait pour Saltevaux.;Inquiet
+HGR036;22:30;24:00;ambassade de l'Empire;HGR037,HGR021,HGR038;Dés.;—
+HGR037;00:00;01:00;ambassade de l'Empire;HGR036,HGR021,HGR038;Dés.;—
+HGR037;01:00;07:00;ambassade de l'Empire;—;Dort.;—
+HGR037;07:00;08:00;ambassade de l'Empire;—;Se lève.;—
+HGR037;08:00;11:00;ambassade de l'Empire;—;Garde.;—
+HGR037;11:00;11:30;ambassade de l'Empire;HGR036,HGR038;Prépare l'audience.;—
+HGR037;11:30;12:00;Grande Voie;—;Escorte l'ambassadeur.;—
+HGR037;12:00;12:45;Salle de Basalte;HGR001,HGR036,HGR038,HGR009,HGR010,HGR011;Se tient derrière l'ambassadeur.;—
+HGR037;12:45;13:00;Grande Voie;—;Redescend.;—
+HGR037;13:00;14:00;ambassade de l'Empire;HGR036;Repas.;—
+HGR037;14:00;15:00;ambassade de l'Empire;HGR021;Orri lui vend l'heure d'audience de la consule.;—
+HGR037;15:00;16:30;ambassade de l'Empire;HGR036;Escrime.;—
+HGR037;16:00;16:30;ambassade de l'Empire;HGR033;Ulf lui dit que le roi penche pour Saltevaux.;—
+HGR037;16:30;20:00;ambassade de l'Empire;—;Garde. Il cherche sa carte du chemin de Pic-d'Ambre et ne la trouve pas.;Soupçon contre Pell
+HGR037;20:00;22:30;ambassade de l'Empire;HGR036,HGR038;Souper.;—
+HGR037;22:30;24:00;ambassade de l'Empire;HGR036,HGR021,HGR038;Dés.;—
+HGR038;00:00;01:00;ambassade de l'Empire;HGR036,HGR037,HGR021;Sert le vin.;—
+HGR038;01:00;05:00;ambassade de l'Empire;—;Dort sur sa paillasse.;—
+HGR038;05:00;08:00;ambassade de l'Empire;—;Feux et bains de l'ambassade.;—
+HGR038;08:00;08:15;ambassade de l'Empire;HGR059;Pip lui donne le billet de Bodvar. Pell demande tout bas si le roi juge lui-même les affaires de la pierre. Pip dit oui.;Espoir
+HGR038;08:15;11:00;ambassade de l'Empire;—;Service.;—
+HGR038;11:00;11:30;ambassade de l'Empire;HGR036,HGR037;On lui confie le coffret.;—
+HGR038;11:30;12:00;Grande Voie;—;Porte le coffret.;—
+HGR038;12:00;12:45;Salle de Basalte;HGR001,HGR036,HGR037,HGR009,HGR010,HGR011;Porte le coffret. Il regarde le roi, une seule fois.;Souvenir : le roi de près (50)
+HGR038;12:45;16:30;ambassade de l'Empire;—;Service. Il touche la carte cachée sous sa paillasse.;—
+HGR038;16:30;16:45;Porte haute;HGR014;Course à la Porte haute. Il demande à Hrefna si le roi a parlé de la pierre. Elle dit que le roi reçoit qui demande.;Idée : demander audience
+HGR038;16:45;20:00;ambassade de l'Empire;—;Service.;—
+HGR038;20:00;22:30;ambassade de l'Empire;HGR036,HGR037;Sert le souper.;—
+HGR038;22:30;24:00;ambassade de l'Empire;HGR036,HGR037,HGR021;Sert le vin. Aubry le regarde longtemps.;Peur
+HGR039;00:00;07:00;consulat de la République;—;Dort.;—
+HGR039;07:00;08:00;consulat de la République;—;Se lève tôt : on annonce un courrier de Saltevaux à la Porte haute.;—
+HGR039;08:00;08:30;consulat de la République;HGR040,HGR055;Dvalin lui remet la commande du Sénat. Elle la lit deux fois et demande audience au roi pour dix heures.;Commande en main
+HGR039;08:30;09:45;consulat de la République;HGR055;Tanguy recopie la commande. Elle prépare ce qu'elle dira sur le paiement, et ce qu'elle ne dira pas.;—
+HGR039;09:45;10:00;Grande Voie;—;Monte vers la Salle de Basalte.;—
+HGR039;10:00;11:00;Salle de Basalte;HGR001,HGR055,HGR009,HGR010,HGR011,HGR003;Présente les chaînes au roi. Il dit qu'elle le paie avec l'argent de son propre comptoir. Elle sourit et parle des démons au large.;Le roi n'a rien promis
+HGR039;11:00;11:45;consulat de la République;HGR003;Brynja promet de pousser au conseil et demande des nouvelles du siège à la Balance. Elle répond « le Sénat tient parole ».;Mensonge entretenu
+HGR039;11:45;13:00;consulat de la République;—;Écrit au Sénat le compte rendu de l'audience.;—
+HGR039;13:00;14:00;consulat de la République;—;Repas.;—
+HGR039;14:00;15:00;Hall des Comptoirs;HGR017;Au Hall des Comptoirs, Hakon lui promet sa voix.;Compte des voix : quatre pour Saltevaux
+HGR039;15:00;17:00;Hall de la Forge;—;Visite au Hall de la Forge. On la fait attendre. Skarn ne vient pas.;Vexée
+HGR039;17:00;18:00;consulat de la République;—;Repos.;—
+HGR039;18:00;18:45;Bains de la Source chaude (bassin des femmes);HGR002,HGR050;Aux bains, elle tente de parler des chaînes à la reine. « Pas ici. »;—
+HGR039;18:45;20:00;consulat de la République;—;Se rhabille, lit.;—
+HGR039;20:00;22:00;consulat de la République;—;Souper seule au consulat.;—
+HGR039;22:00;23:00;consulat de la République;—;Lecture. Elle s'ennuie sous la montagne.;—
+HGR039;23:00;24:00;consulat de la République;—;Dort.;—
+HGR040;00:00;04:30;refuge de la Route du Col;—;Dort au refuge, la sacoche sous la tête.;—
+HGR040;04:30;07:00;en route vers Haut-Grisemont;—;Dernière montée. Il compte : quatorze jours, pas de record.;Déçu
+HGR040;07:00;07:30;Porte haute;HGR013;Asgerd contrôle sa sacoche.;—
+HGR040;07:30;08:00;Grande Voie;—;Monte la Grande Voie.;—
+HGR040;08:00;08:30;consulat de la République;HGR039,HGR055;Remet la commande du Sénat à la consule.;—
+HGR040;08:30;09:00;Monnaie et Grand Registre;HGR007,HGR008,HGR003;Lettres de Hordak pour Grimald et Brynja. Il glisse sa lettre à Ingrid et prend la sienne.;—
+HGR040;09:00;09:20;Salle de Basalte;HGR001,HGR009,HGR010,HGR011;Remet au roi la lettre scellée de Hordak, pour lui seul.;Mission faite
+HGR040;09:20;12:00;écurie de la Porte haute;—;Soigne sa mule.;—
+HGR040;12:00;13:00;Chope Fendue;—;Repas.;—
+HGR040;13:00;14:30;écurie de la Porte haute;—;Dort une heure.;—
+HGR040;14:30;15:00;atelier des soufflets;HGR022;Remet une lettre de Nelda à Solveig.;—
+HGR040;15:00;19:00;Grande Voie;—;Remise des autres lettres de la diaspora.;—
+HGR040;19:00;20:45;Chope Fendue;HGR007;Bière avec Grimald. Il parle de Hordak qui tousse.;—
+HGR040;20:45;21:00;Grande Voie;—;Rentre.;—
+HGR040;21:00;24:00;écurie de la Porte haute;—;Dort.;—
+HGR041;00:00;06:00;maison Taillepierre;—;Dort.;—
+HGR041;06:00;07:00;maison Taillepierre;—;Se lève.;—
+HGR041;07:00;12:00;voûtes de la Grande Voie;HGR056;Tournée des voûtes avec Geir.;—
+HGR041;12:00;13:00;maison Taillepierre;—;Repas.;—
+HGR041;13:00;15:00;atelier de Gorm;—;Calculs.;—
+HGR041;15:00;16:00;atelier de Gorm;HGR002;La reine demande combien de temps pour vider la Veine-Mère. Deux mois de bras, ou une pompe.;—
+HGR041;16:00;18:00;atelier de Gorm;—;Calculs.;—
+HGR041;18:00;19:00;Bains de la Source chaude (bassin des hommes);—;Aux bains, il voit Skarn et l'ambassadeur. Ils se taisent quand il entre.;Souvenir (30)
+HGR041;19:00;20:00;maison Taillepierre;—;Repos.;—
+HGR041;20:00;22:00;maison Taillepierre;HGR056;Souper. Geir demande : « Le roi qui a choisi le pin, c'est notre roi ? » Gorm ne répond pas.;—
+HGR041;22:00;24:00;maison Taillepierre;—;Dort.;—
+HGR042;00:00;06:00;maison d'Eydis;—;Dort.;—
+HGR042;06:00;07:30;grottes à lichen;—;Cueille du lichen bleu.;—
+HGR042;07:30;08:00;cabinet du roi;HGR001;Met le collyre au roi. « Avant l'hiver. »;—
+HGR042;08:00;12:00;maison des simples;—;Maison des simples. Une jeune naine demande la tisane de lune.;—
+HGR042;12:00;13:30;maison des simples;—;Repas.;—
+HGR042;13:30;14:00;Grande Voie;HGR045;Soigne la toux de Bragi sur son banc.;—
+HGR042;14:00;18:00;Grande Voie;—;Visites aux malades.;—
+HGR042;18:00;19:00;maison d'Eydis;—;Préparations.;—
+HGR042;19:00;22:00;maison d'Eydis;HGR053;Ragnvald est revenu. Souper ensemble.;Heureuse
+HGR042;22:00;23:00;maison d'Eydis;—;Prépare le collyre du lendemain.;—
+HGR042;23:00;24:00;maison d'Eydis;HGR053;Ragnvald revient. Ils passent la nuit ensemble.;—
+HGR043;00:00;05:00;les Marches;—;Dort dans son alcôve, Ketta à côté.;—
+HGR043;05:00;06:00;les Marches;—;Se lève.;—
+HGR043;06:00;16:00;Grande Voie;—;Portage.;—
+HGR043;16:00;16:30;Grande Voie;HGR060;Il dit à Ásgeir qu'il sait qui forge la nuit. Il veut de l'or. Ásgeir dit : une preuve d'abord.;Marché en suspens
+HGR043;16:30;18:00;Grande Voie;—;Portage.;—
+HGR043;18:00;19:00;les Marches;—;Eau-de-vie.;—
+HGR043;19:00;21:00;les Marches;HGR044;Ketta lui raconte sa journée.;—
+HGR043;21:00;24:00;les Marches;—;Dort. Vers minuit, il entend un marteau de trop.;—
+HGR044;00:00;05:00;les Marches;—;Dort.;—
+HGR044;05:00;06:00;les Marches;—;Se lève.;—
+HGR044;06:00;13:30;Grande Voie;—;Porte de petits paquets.;—
+HGR044;13:30;14:00;cuisines royales;HGR015;Soupe chez Gunnhild.;—
+HGR044;14:00;15:00;cuisines royales;—;Joue avec les chats.;—
+HGR044;15:00;17:00;trappes de service des wagonnets;HGR005;Avec Tor. La clé ouvre la trappe. Ils parlent de descendre.;Projet avec Tor
+HGR044;17:00;19:00;Grande Voie;—;Porte encore. Elle voit Pell revenir de la Porte haute en regardant derrière lui.;—
+HGR044;19:00;21:00;les Marches;HGR043;Raconte sa journée à Grettir.;—
+HGR044;21:00;24:00;les Marches;—;Dort.;—
+HGR045;00:00;05:00;maison de Bragi;—;Dort.;—
+HGR045;05:00;07:00;Grande Voie;—;Éteint les lanternes.;—
+HGR045;07:00;08:00;maison de Bragi;—;Repas.;—
+HGR045;08:00;12:00;maison de Bragi;—;Dort.;—
+HGR045;12:00;13:30;Grande Voie;—;Banc de la Grande Voie.;—
+HGR045;13:30;14:00;Grande Voie;HGR042;Eydis soigne sa toux.;—
+HGR045;14:00;18:00;Grande Voie;—;Banc.;—
+HGR045;18:00;18:45;Grande Voie;HGR049;Allume les lanternes. Arni le suit.;—
+HGR045;18:45;20:00;Grande Voie;—;Allumage.;—
+HGR045;20:00;21:00;Hall des enfants;HGR005;Conte de la Purge. Tor demande si c'est vrai.;—
+HGR045;21:00;22:00;maison de Bragi;—;Pipe.;—
+HGR045;22:00;24:00;maison de Bragi;—;Dort.;—
+HGR046;00:00;08:00;maison de Sif;—;Dort.;—
+HGR046;08:00;09:00;maison de Sif;—;Se lève.;—
+HGR046;09:00;13:00;atelier de Sif;—;Atelier. Elle sort le camée volé, le regarde, le range.;Remords (20)
+HGR046;13:00;14:00;atelier de Sif;—;Repas.;—
+HGR046;14:00;19:00;atelier de Sif;—;Dessine une couronne d'ambre pour la reine.;—
+HGR046;19:00;20:00;Bains de la Source chaude (bassin des femmes);—;Bains.;—
+HGR046;20:00;24:00;maison de Sif;—;Souper seule. Dort.;—
+HGR047;00:00;05:00;maison Roue-Ferrée;—;Dort.;—
+HGR047;05:00;13:00;quai des wagonnets de Haut-Grisemont;—;Quai des wagonnets. Départ de 5 h.;—
+HGR047;13:00;14:00;maison Roue-Ferrée;HGR048,HGR049;Repas en famille.;—
+HGR047;14:00;18:00;atelier des freins;—;Atelier des freins.;—
+HGR047;18:00;21:00;maison Roue-Ferrée;—;Souper.;—
+HGR047;21:00;24:00;maison Roue-Ferrée;—;Dort.;—
+HGR048;00:00;04:30;maison Roue-Ferrée;—;Dort.;—
+HGR048;04:30;05:00;quai des wagonnets de Haut-Grisemont;—;Prépare le wagonnet.;—
+HGR048;05:00;08:00;en route vers Forge-Profonde;—;Descend la Voie des Wagonnets.;—
+HGR048;08:00;08:30;quai des wagonnets de Forge-Profonde;—;Charge le fer.;—
+HGR048;08:30;13:00;en route vers Haut-Grisemont;—;Remonte.;—
+HGR048;13:00;14:00;maison Roue-Ferrée;HGR047,HGR049;Repas.;—
+HGR048;14:00;15:00;quai des wagonnets de Haut-Grisemont;HGR005,HGR049;Entretien.;—
+HGR048;15:00;18:00;quai des wagonnets de Haut-Grisemont;—;Entretien.;—
+HGR048;18:00;21:00;Chope Fendue;—;Bière.;—
+HGR048;21:00;24:00;maison Roue-Ferrée;—;Dort.;—
+HGR049;00:00;07:00;maison Roue-Ferrée;—;Dort.;—
+HGR049;07:00;08:00;maison Roue-Ferrée;—;Se lève.;—
+HGR049;08:00;13:00;quai des wagonnets de Haut-Grisemont;—;Joue sur le quai.;—
+HGR049;13:00;14:00;maison Roue-Ferrée;HGR047,HGR048;Repas.;—
+HGR049;14:00;15:00;quai des wagonnets de Haut-Grisemont;HGR005,HGR048;Il dit encore « papa fait des voyages de nuit avec des caisses qui tintent ».;—
+HGR049;15:00;18:00;quai des wagonnets de Haut-Grisemont;—;Joue.;—
+HGR049;18:00;18:45;Grande Voie;HGR045;Suit Bragi qui allume les lanternes.;—
+HGR049;18:45;24:00;maison Roue-Ferrée;—;Dort.;—
+HGR050;00:00;05:00;Bains de la Source chaude (bassin des femmes);—;Dort.;—
+HGR050;05:00;16:00;Bains de la Source chaude (bassin des femmes);—;Ouvre les bains.;—
+HGR050;16:00;16:45;Bains de la Source chaude (bassin des femmes);HGR006;Lave les cheveux de Hilde.;—
+HGR050;16:45;18:00;Bains de la Source chaude (bassin des femmes);—;Bains.;—
+HGR050;18:00;18:45;Bains de la Source chaude (bassin des femmes);HGR002,HGR039;La reine et la consule.;—
+HGR050;18:45;19:30;Bains de la Source chaude (bassin des hommes);—;Entend l'ambassadeur parler à Skarn.;—
+HGR050;19:30;21:00;Bains de la Source chaude (bassin des femmes);—;Fermeture.;—
+HGR050;21:00;22:00;Bains de la Source chaude (bassin des femmes);HGR015;Ragots avec Gunnhild.;—
+HGR050;22:00;24:00;Bains de la Source chaude (bassin des femmes);—;Dort.;—
+HGR051;00:00;05:00;maison de Gyda, les Marches;—;Dort.;—
+HGR051;05:00;10:00;lavoir de la Source;—;Lavoir.;—
+HGR051;10:00;11:00;lavoir de la Source;HGR002,HGR052;La reine visite le lavoir. Gyda lui dit la plainte contre Bjarni.;—
+HGR051;11:00;14:00;lavoir de la Source;—;Lavoir.;—
+HGR051;14:00;14:30;maison de Gyda, les Marches;HGR052;Repas avec Einar.;—
+HGR051;14:30;15:00;maison de Gyda, les Marches;—;Repassage.;—
+HGR051;15:00;15:45;maison de Gyda, les Marches;HGR027;Vigdis lui dit : porte ta plainte.;—
+HGR051;15:45;19:00;maison de Gyda, les Marches;—;Repassage.;—
+HGR051;19:00;19:30;Halle des Ancêtres;HGR030,HGR052;À la pierre de Hauk.;—
+HGR051;19:30;21:00;maison de Gyda, les Marches;—;Souper.;—
+HGR051;21:00;24:00;maison de Gyda, les Marches;—;Dort.;—
+HGR052;00:00;06:00;maison de Gyda, les Marches;—;Dort.;—
+HGR052;06:00;10:00;lavoir de la Source;—;Lavoir.;—
+HGR052;10:00;11:00;lavoir de la Source;HGR002,HGR051;La reine.;—
+HGR052;11:00;14:00;lavoir de la Source;—;Lavoir.;—
+HGR052;14:00;14:30;maison de Gyda, les Marches;HGR051;Repas.;—
+HGR052;14:30;17:00;Grande Voie;—;Courses.;—
+HGR052;17:00;18:00;Grande Voie;HGR005,HGR024;Courses avec Tor.;—
+HGR052;18:00;19:00;Grande Voie;—;Bagarres.;—
+HGR052;19:00;19:30;Halle des Ancêtres;HGR030,HGR051;Pierre de son père.;—
+HGR052;19:30;21:00;maison de Gyda, les Marches;—;Souper.;—
+HGR052;21:00;24:00;maison de Gyda, les Marches;—;Dort.;—
+HGR053;00:00;06:00;maison de Ragnvald;—;Dort.;—
+HGR053;06:00;07:00;maison de Ragnvald;—;Se lève.;—
+HGR053;07:00;08:00;salle d'armes de la Garde;HGR011;Rapport à Thyra.;—
+HGR053;08:00;11:00;salle d'armes de la Garde;—;Prépare.;—
+HGR053;11:00;11:40;Salle de Basalte;HGR001,HGR011,HGR009,HGR010;Rapport au roi : troll, cages.;—
+HGR053;11:40;13:00;salle d'armes de la Garde;—;Repas.;—
+HGR053;13:00;15:00;en route vers les pâturages;—;Monte.;—
+HGR053;15:00;16:00;pâturages des cols;HGR058;Ulla : le troll a emporté un homme-bête.;—
+HGR053;16:00;19:00;en route vers Haut-Grisemont;—;Redescend.;—
+HGR053;19:00;22:00;maison d'Eydis;HGR042;Chez Eydis.;—
+HGR053;22:00;23:00;Chope Fendue;HGR011;Bière avec Thyra.;—
+HGR053;23:00;24:00;maison d'Eydis;HGR042;Avec Eydis.;—
+HGR054;00:00;06:00;maison de Bjorn;—;Dort.;—
+HGR054;06:00;07:00;maison de Bjorn;—;Se lève.;—
+HGR054;07:00;18:00;greniers royaux;—;Greniers.;—
+HGR054;18:00;18:30;archives runiques;HGR027,HGR028;Demande le rapport.;—
+HGR054;18:30;20:00;archives runiques;—;Cherche.;—
+HGR054;20:00;22:00;maison de Bjorn;—;Souper.;—
+HGR054;22:00;24:00;maison de Bjorn;—;Dort.;—
+HGR055;00:00;08:00;consulat de la République;—;Dort.;—
+HGR055;08:00;08:30;consulat de la République;HGR040,HGR039;Commande.;—
+HGR055;08:30;09:45;consulat de la République;HGR039;Copie.;—
+HGR055;09:45;10:00;Grande Voie;—;Monte.;—
+HGR055;10:00;11:00;Salle de Basalte;HGR001,HGR039,HGR009,HGR010,HGR011,HGR003;Porte les papiers.;—
+HGR055;11:00;14:00;consulat de la République;—;Copies.;—
+HGR055;14:00;14:20;consulat de la République;HGR008;Reçu.;—
+HGR055;14:20;18:00;consulat de la République;—;Copies.;—
+HGR055;18:00;19:00;Chope Fendue;—;Bière.;—
+HGR055;19:00;20:00;Chope Fendue;HGR008,HGR034;Poème.;—
+HGR055;20:00;23:00;Chope Fendue;—;Bière.;—
+HGR055;23:00;24:00;consulat de la République;—;Poèmes.;—
+HGR056;00:00;07:00;maison Taillepierre;—;Dort.;—
+HGR056;07:00;12:00;voûtes de la Grande Voie;HGR041;Voûtes.;—
+HGR056;12:00;13:00;maison Taillepierre;—;Repas.;—
+HGR056;13:00;18:00;atelier de Gorm;—;Plans.;—
+HGR056;18:00;20:00;Terrasse des Cols;—;Escalade.;—
+HGR056;20:00;22:00;maison Taillepierre;HGR041;Question.;—
+HGR056;22:00;24:00;maison Taillepierre;—;Dort.;—
+HGR057;00:00;05:00;maison Mousse-Grise;—;Dort.;—
+HGR057;05:00;13:00;champignonnières royales;—;Champignonnières.;—
+HGR057;13:00;16:00;champignonnières royales;HGR006;Hilde.;—
+HGR057;16:00;18:00;champignonnières royales;—;Champignonnières.;—
+HGR057;18:00;18:30;cuisines royales;HGR015;Livraison.;—
+HGR057;18:30;20:00;maison Mousse-Grise;—;Souper.;—
+HGR057;20:00;24:00;maison Mousse-Grise;—;Dort.;—
+HGR058;00:00;04:00;cabane des cols;—;Dort.;—
+HGR058;04:00;05:00;cabane des cols;—;Traite.;—
+HGR058;05:00;15:00;pâturages des cols;—;Pâturages.;—
+HGR058;15:00;16:00;pâturages des cols;HGR053;Ragnvald.;—
+HGR058;16:00;19:00;pâturages des cols;—;Pâturages.;—
+HGR058;19:00;21:00;cabane des cols;—;Fromagerie.;—
+HGR058;21:00;24:00;cabane des cols;—;Dort.;—
+HGR059;00:00;06:00;combles de la Salle de Basalte;—;Dort.;—
+HGR059;06:00;07:00;combles de la Salle de Basalte;—;Se lève.;—
+HGR059;07:00;07:30;Salle de Basalte;HGR009;Ordre.;—
+HGR059;07:30;08:00;Grande Voie;—;Descend.;—
+HGR059;08:00;08:15;ambassade de l'Empire;HGR038;Billet.;—
+HGR059;08:15;11:40;Grande Voie;—;Courses.;—
+HGR059;11:40;12:00;Salle de Basalte;HGR001,HGR009,HGR010;Annonce.;—
+HGR059;12:00;20:00;Grande Voie;—;Courses.;—
+HGR059;20:00;20:15;pigeonnier de la Salle de Basalte;—;Pigeon.;—
+HGR059;20:15;20:30;Hall des Comptoirs;HGR009,HGR017;Billet.;—
+HGR059;20:30;20:45;appartements royaux;HGR001,HGR002;Billet au roi.;—
+HGR059;20:45;22:00;cuisines royales;—;Cuisines.;—
+HGR059;22:00;24:00;combles de la Salle de Basalte;—;Dort.;—
+HGR060;00:00;01:00;Chope Fendue;—;Écoute.;—
+HGR060;01:00;07:00;maison d'Ásgeir;—;Dort.;—
+HGR060;07:00;08:00;maison d'Ásgeir;—;Se lève.;—
+HGR060;08:00;12:00;maison d'Ásgeir;—;Rapports.;—
+HGR060;12:00;12:45;Chope Fendue;HGR033;Ulf.;—
+HGR060;12:45;16:00;Grande Voie;—;Rendez-vous.;—
+HGR060;16:00;16:30;Grande Voie;HGR043;Grettir.;—
+HGR060;16:30;18:00;Grande Voie;—;Rendez-vous.;—
+HGR060;18:00;18:45;cabinet du roi;HGR001;Rapport au roi.;—
+HGR060;18:45;21:00;maison d'Ásgeir;—;Notes.;—
+HGR060;21:00;24:00;Chope Fendue;—;Tavernes.;—

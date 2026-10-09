@@ -98,3 +98,10 @@ godot --headless --path . res://scenes/battle.tscn -- --autoplay              # 
 godot --headless --path . res://scenes/battle.tscn -- --autoplay --full-party # avec Kael, Mira, épée
 ```
 L'IA joue les deux camps et affiche `RÉSULTAT : victoire/défaite`.
+
+## Brumeval (le monde vivant)
+
+Deux dossiers à part, qui ne touchent pas au prototype Tactics :
+
+- [`brumeval/`](brumeval/LISEZMOI.md) : un second projet Godot (4.3+), le village de Brumeval en 3D façon HD-2D, en temps réel, avec ses 19 habitants. Ouvrir `brumeval/project.godot` dans Godot.
+- [`monde/`](monde/univers.md) : la conception du monde (univers, peuples, classes, compétences, combat, création de personnage, la République et ses 410 PNJ, la chronique jour par jour, les cartes, les données CSV).

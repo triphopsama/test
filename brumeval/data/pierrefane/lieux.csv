@@ -1,0 +1,15 @@
+id;cle;numero;nom;type;x;y;hauteur;habitants;horaires;acces;cache;terrain_combat;relie_a
+PIE_L01;place;1;Place du port;village;470;470;4;—;toujours;libre;Le marché aux poissons du matin;Pavés, étals (couvert), filets qui sèchent;PIE_L04,PIE_L05,PIE_L03,PIE_L02,PIE_L08
+PIE_L02;port;2;Le quai et le Goéland gris;village;330;440;1;Capitaine Daunel, Yann, Kael;toujours;libre;Le Goéland gris part tous les 6 jours vers Saltevaux;Quai de pierre, caisses (couvert), eau profonde au bord;PIE_L05,PIE_L10,PIE_L01,PIE_L09
+PIE_L03;lanternes;3;Maison des Lanternes;métier;360;560;3;Madame Orsoline, Hugues, Margo, Lysa, Bastien;18 h – 4 h;"Hugues à la porte ; la cave fermée à clé";"Le carnet d'Orsoline ; la cave des captifs punis";Salon (couvert), escalier (hauteur), lanterne rouge;PIE_L01,PIE_L09
+PIE_L04;auberge;4;Au Mouillage (auberge);métier;520;400;5;Ondine, Pâris, Fleur;6 h – 23 h;libre aux heures d'ouverture;"Les ragots d'Ondine ; l'arrière-salle des dés";Tables et bancs (couvert), cheminée (feu);PIE_L07,PIE_L01
+PIE_L05;entrepot;5;Épicerie-entrepôt Daunel;métier;410;360;3;Bérénice, Ambroise, Yann;7 h – 19 h;libre aux heures d'ouverture;Le dossier secret de Bérénice;Caisses et tonneaux (couvert);PIE_L06,PIE_L01,PIE_L02
+PIE_L06;chantier;6;Chantier naval;métier;330;250;2;Maître Ferrat, Thorga;6 h – 18 h;libre;"La forge d'ancres de Thorga ; une coque à moitié finie";Coque (hauteur +2), poutres (couvert), forge (feu);PIE_L05,PIE_L11
+PIE_L07;chapelle;7;Petite chapelle des Sept Astres;sacré;600;300;12;Sœur Odile;toujours ouverte;libre;Les messages des Libres sous l'autel;Lieu sacré (lumière ×1,2);PIE_L04,PIE_L12
+PIE_L08;prevot;8;Maison du prévôt;maison;600;500;8;Prévôt Gourdin;9 h – 12 h, en principe;porte fermée la nuit;L'enveloppe d'Orsoline, chaque mois;Bureau (couvert);PIE_L01,PIE_L14
+PIE_L09;plage;9;Plage aux coquillages;côte;430;660;0;—;toujours;libre;Les coquillages de Fleur;Sable (déplacement -1), eau peu profonde;PIE_L03,PIE_L02
+PIE_L10;jetee;10;Bout de la jetée;côte;230;470;0;—;toujours;libre;Là où Kael mange seul, à midi;Pierres glissantes, eau profonde des deux côtés;PIE_L02
+PIE_L11;hangar;11;Hangar à bateaux du Passeur;maison;250;110;1;Gilles le Passeur;"jour : il dort ; nuit : en mer";porte cadenassée;Les barques des fugitifs vers Aëlinde;Barques (couvert), eau profonde;PIE_L06
+PIE_L12;lande;12;La lande;landes;800;330;36;—;toujours;libre;Le chemin de nuit de Kael;Bruyère, vent, aucun couvert;PIE_L07,PIE_L13,PIE_L14
+PIE_L13;mahaut;13;Cabane de Mahaut;maison;880;170;44;Vieille Mahaut;à toute heure si on vient la chercher;la porte n'est jamais fermée;Les noms des enfants vendus;Herbes sèches (brûlent);PIE_L12
+PIE_L14;sentier;14;Sentier côtier (vers Brumeval);route;960;720;14;—;toujours;libre;Brumeval à 16 km, 3 h de marche;Lande, vent, falaises basses;PIE_L12,PIE_L08

@@ -1,0 +1,68 @@
+nom;id_garde;ids_doublons;fichiers
+Cri de ralliement;CAC015;SMA058;corps_a_corps/soutien_maitres
+Mur de boucliers;CAC042;SMA053;corps_a_corps/soutien_maitres
+Vigilance;CAC054;INT229;corps_a_corps/interaction_vie
+Charge montée;CAC069;SMA103;corps_a_corps/soutien_maitres
+Assommer;CAC106;DOM224;corps_a_corps/distance_ombre
+Mille entailles;CAC110;DOM259;corps_a_corps/distance_ombre
+Souffle long;CAC137;ELE245/INT130;corps_a_corps/magie_elementaire/interaction_vie
+Insaisissable;CAC171;ELE128/INT223;corps_a_corps/magie_elementaire/interaction_vie
+Filet barbelé;CAC192;DOM220;corps_a_corps/distance_ombre
+Boucherie;CAC196;MET389;corps_a_corps/metiers
+Peau de pierre;CAC205;ELE101/INT242;corps_a_corps/magie_elementaire/interaction_vie
+Sentir la roche;CAC208;INT244;corps_a_corps/interaction_vie
+Croc-en-jambe;CAC239;DOM271;corps_a_corps/distance_ombre
+Sable aux yeux;CAC246;DOM148;corps_a_corps/distance_ombre
+Porter lourd;CAC265;MET170;corps_a_corps/metiers
+Marche forcée;CAC266;INT171;corps_a_corps/interaction_vie
+Œil de faucon;DOM006;INT233;distance_ombre/interaction_vie
+Pas sans trace;DOM067;INT143;distance_ombre/interaction_vie
+Vision de nuit;DOM069;INT235;distance_ombre/interaction_vie
+Main invisible;DOM099;INT042;distance_ombre/interaction_vie
+Main de velours;DOM133;INT108;distance_ombre/interaction_vie
+Crochetage;DOM137;INT132;distance_ombre/interaction_vie
+Doigts de fée;DOM138;INT133;distance_ombre/interaction_vie
+Briseur de chaînes;DOM140;INT135;distance_ombre/interaction_vie
+Libérateur;DOM141;INT136;distance_ombre/interaction_vie
+Chat des toits;DOM151;INT123;distance_ombre/interaction_vie
+Déguisement;DOM153;INT066;distance_ombre/interaction_vie
+Mille visages;DOM155;SOM017;distance_ombre/magie_sombre_esprit
+Pistage;DOM159;INT139;distance_ombre/interaction_vie
+Pisteur;DOM160;INT140;distance_ombre/interaction_vie
+Chasse de la meute;DOM162;INT142;distance_ombre/interaction_vie
+Camouflage;DOM163;INT159;distance_ombre/interaction_vie
+Course longue;DOM169;INT169;distance_ombre/interaction_vie
+Désamorçage;DOM175;INT137;distance_ombre/interaction_vie
+Disparition;DOM198;SOM014;distance_ombre/magie_sombre_esprit
+Fondu dans l'ombre;DOM199;SOM203;distance_ombre/magie_sombre_esprit
+Pas sans bruit;DOM202;INT157;distance_ombre/interaction_vie
+Silence du gouffre;DOM203;INT158;distance_ombre/interaction_vie
+Sang-froid;DOM204;INT201;distance_ombre/interaction_vie
+Tourbillon;DOM207;ELE054;distance_ombre/magie_elementaire
+Interrogatoire;DOM222;INT035;distance_ombre/interaction_vie
+Pied marin;DOM231;INT180;distance_ombre/interaction_vie
+Fuite;DOM246;INT172;distance_ombre/interaction_vie
+Sixième sens;DOM249;INT230;distance_ombre/interaction_vie
+Ombre parmi les ombres;DOM257;INT161;distance_ombre/interaction_vie
+Filature;DOM270;INT165;distance_ombre/interaction_vie
+Respiration sous l'eau;ELE046;INT131;magie_elementaire/interaction_vie
+Vol plané;ELE122;SOM217;magie_elementaire/magie_sombre_esprit
+Lecture des affinités;ELE185;SOM252;magie_elementaire/magie_sombre_esprit
+Rune de givre;ELE233;MET054;magie_elementaire/metiers
+Sommeil profond;SOM023;INT187;magie_sombre_esprit/interaction_vie
+Trait d'esprit;SOM099;INT075;magie_sombre_esprit/interaction_vie
+Embaumement;SOM127;MET339;magie_sombre_esprit/metiers
+Culture sans soleil;SOM140;MET372;magie_sombre_esprit/metiers
+Présence terrifiante;SOM223;INT026;magie_sombre_esprit/interaction_vie
+Lecture des désirs;SOM235;INT089;magie_sombre_esprit/interaction_vie
+Ombre portée;SOM250;INT166;magie_sombre_esprit/interaction_vie
+Odorat de chasse;SFN199;INT238;soin_foi_nature/interaction_vie
+Imprégnation élémentaire;SMA123;MET278;soutien_maitres/metiers
+Intimidation;SMA147;INT023;soutien_maitres/interaction_vie
+Menace froide;SMA149;INT024;soutien_maitres/interaction_vie
+Sang mêlé;SMA195;INT251;soutien_maitres/interaction_vie
+Pont entre les peuples;SMA204;INT252;soutien_maitres/interaction_vie
+Oreille de la taverne;MET209;INT028;metiers/interaction_vie
+Marchandage;MET294;INT012;metiers/interaction_vie
+Langue d'argent;MET296;INT008;metiers/interaction_vie
+Questions croisées;MET315;INT036;metiers/interaction_vie

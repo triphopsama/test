@@ -1,0 +1,92 @@
+# Cendrebois
+
+> Village de charbonniers au cœur de la forêt de Cendrebois, au sud-ouest de l'Empire, à 2 jours de Haute-Lance et à une quinzaine de jours de marche cachée jusqu'à la côte de la mer du Sud. 17 PNJ (ids `CEN001` à `CEN017`, fiches complètes dans [donnees/pnj/cendrebois.csv](../donnees/pnj/cendrebois.csv)). C'est d'ici que partent les barques des fugitifs vers Aëlinde. On y vient pour le charbon, pour une prime, ou pour disparaître.
+
+## Ambiance
+
+Une clairière dans une forêt de chênes et de hêtres si serrée qu'on y voit à peine le ciel. Une quinzaine de maisons basses en rondins, noires de suie, et autour, dans les coupes, les **meules** : des dômes de terre qui fument jour et nuit, qu'on surveille, qu'on écoute, qu'on ouvre au bon moment. Tout sent la fumée et le bois mouillé. Les visages sont gris, les mains noires, les voix basses. Les vieux laissent du pain sur le seuil les nuits de brume ; les enfants apprennent que la fumée blanche veut dire danger.
+
+Cendrebois a toujours caché des gens. Cette année, le village paie. L'an dernier, la Chasse de Haute-Lance a brûlé une cabane de fugitifs et pendu Hubert Charbonnel. Il y a un mois, un deuxième soldat a refusé de brûler une cabane, et on l'a pendu à Haute-Lance. **Il y a vingt jours, l'Inquisition de Sainte-Aube est venue** : elle a brûlé la grande meule de Firmin Coudray, qui cachait des fugitifs depuis quinze ans, et tué le blaireau Brocard. Firmin est parti la nuit même avec cinq fugitifs, Sylvain les a menés quatorze jours par la forêt jusqu'à l'anse aux Ronces, et ils ont pris la mer six jours avant le jour 1. **Au matin du jour 1, sans que personne ici le sache encore, ils accostent à Sylve-Claire**, chez la gardienne Serena. Ceux qui restent ne parlent que d'eux : de Firmin, l'humain, qui est parti avec « ses bêtes » ; de Grommel le sanglier ; de Garance et du petit Pic, qui ne savent peut-être pas encore pour Brocard ; du jeune cerf Sauvan ; et de la renarde Esquille, que l'Inquisition avait prise puis relâchée, ce qui fait jaser.
+
+Et maintenant, avec la prime doublée (quatre pièces d'or par tête vivante), la Chasse de Haute-Lance, la Meute de Marchefer et des chasseurs d'Aurelle se mettent en route vers le bois. Et quelqu'un, au village, a vendu Firmin.
+
+## Les lieux
+
+| Lieu | Qui | Ouvert |
+| --- | --- | --- |
+| **La clairière et les maisons** | Tout le village | Le banc d'Arnoul devant la maison du maire |
+| **Les coupes et les meules** | Aubin, Mélie, Jacinthe, Ernoul, Jacqueline, Annette | Jour et nuit : une meule ne se quitte pas |
+| **La meule brûlée de Firmin** | Personne | Un cercle noir au bord de la clairière ; on n'y va plus |
+| **Le fumoir de Mélie** | Mélie, Ronce | Sous le plancher, une fosse où dort une louve |
+| **Le Trou-aux-Fées** | Pruneau, Tom | Une grotte sous les racines d'un vieux chêne, à une demi-heure, que les anciens disent hantée |
+| **La maison des herbes** | Adèle | Toujours ouverte ; pain sur le seuil les nuits de brume |
+| **Le four** | Gisla | 3 h – 12 h |
+| **La maison du garde** | Héribert | Registre de la dîme, plaque de la couronne |
+| **La charrette du charbon** | Herbelin | Départ pour Haute-Lance le mardi et le vendredi à 3 h |
+| **Les sentiers vers la côte** | Sylvain | Quatorze jours de marche cachée jusqu'à l'anse aux Ronces ; un pêcheur y prend la mer une fois par mois |
+
+## Qui tient le village
+
+- **Officiellement**, le maire Aubin Lécorce, et le garde forestier Héribert Gland, qui lève la dîme pour la couronne et surveille la forêt.
+- **En réalité**, Mélie, la femme du maire : c'est chez elle qu'arrivent les lettres de sa cousine Gisèle, blanchisseuse au palais d'Aurelle, et les fugitifs que Vieux Sauvat amène par la draille de Rochemaure. Avec Sylvain le guide et Gisla qui cuit le pain dur, elle est le bout de la chaîne des **Cendres**. Firmin Coudray était l'autre pilier ; il est parti.
+- **Le danger est dedans** : Ernoul Fagot a vendu Firmin au garde, qui l'a vendu à l'Inquisition. Le vieux Arnoul l'a entendu, Thibert a vu l'argent du garde, Jacqueline a trouvé les pièces, Annette a compris. Personne ne l'a encore dit à voix haute.
+
+### Les charbonniers
+
+| # | Nom | Âge | Race | Rôle | Caractère et passions | Envie principale | Secret | Classe / Métier (niv.) | Liens |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CEN001 | **Aubin Lécorce** | 55 | Humain | Maire de Cendrebois, maître-charbonnier | Prudent, las, têtu ; aime les meules, la pipe, le cidre de pommes sauvages | Que le village survive à l'été : plus de Chasse, plus d'Inquisition, plus de pendus | Il sait depuis toujours que sa femme cache des fugitifs, et que Firmin Coudray en cachait plus encore. Il n'a jamais rien fait pour, ni rien contre. Depuis que la meule de Firmin a brûlé, il veut que tout s'arrête, et il ne l'a pas encore dit à Mélie. | — / Charbonnier 40 | Maire ; mari de Mélie ; veut que tout s'arrête |
+| CEN002 | **Mélie Lécorce, dite la Mère du bois** | 52 | Humaine | Femme du maire, charbonnière, cache des fugitifs, maillon des Cendres | Têtue, chaleureuse, inébranlable ; aime chanter aux meules, les champignons, les enfants | Faire partir Ronce et Pruneau par la prochaine barque, malgré la Chasse, la Meute et l'Inquisition | Elle est le maillon des Cendres à Cendrebois depuis vingt ans : les lettres de sa cousine Gisèle, blanchisseuse au palais d'Aurelle, arrivent chez elle, et les fugitifs de la draille de Rochemaure aussi. Elle cache en ce moment la louve Ronce sous le plancher du fumoir, et le blaireau Pruneau au Trou-aux-Fées. Elle soupçonne que quelqu'un du village a vendu Firmin. | — / Charbonnière 30 | Mère du bois ; maillon des Cendres ; cache Ronce et Pruneau |
+| CEN003 | **Arnoul Lécorce** | 80 | Humain | Doyen du village, ancien maître-charbonnier, presque sourd | Radoteur, rusé, sourd quand ça l'arrange ; aime les histoires de la Purge, la pipe, se plaindre | Mourir dans son lit, pas sur une meule ni au bout d'une corde | Il fait semblant d'être plus sourd qu'il n'est. Il a entendu, la veille du jour où l'Inquisition est venue, Ernoul Fagot demander au garde forestier « combien pour un nom ». | — / Charbonnier 44 | Doyen ; père d'Aubin ; a entendu Ernoul |
+| CEN004 | **Jacinthe Charbonnel** | 29 | Humaine | Charbonnière, veuve de Hubert Charbonnel pendu l'an dernier | Fermée, rancunière, debout ; aime sa fille, les chants de deuil, rien d'autre | Voir le lieutenant Chassaing mourir, et que sa fille grandisse loin de la forêt | Elle a gardé la corde avec laquelle on a pendu son mari. Elle sait que la Chasse reviendra avec la prime doublée, et elle a appris de Sylvain à poser des collets assez gros pour un homme. | — / Charbonnière 18 | Veuve d'un pendu ; mère de Mésange ; veut Chassaing |
+| CEN005 | **Mésange Charbonnel** | 6 | Humaine | Fille de la veuve | Rêveuse, curieuse, silencieuse ; aime les oiseaux, les histoires du grand-père Arnoul, la louve | Revoir son papa, qui est « parti dans les arbres » | Elle a vu la louve Ronce sortir du fumoir de Mélie une nuit, et elle croit que c'est un esprit de la forêt. Elle lui laisse des noisettes. | — / — | Fille de Jacinthe ; a vu Ronce |
+| CEN006 | **Ernoul Fagot** | 40 | Humain | Charbonnier endetté | Envieux, lâche, rongé ; aime les dés, l'eau-de-vie, rien d'autre | Payer ses dettes avant que Larquier ne prenne sa meule | C'est lui qui a vendu Firmin Coudray à l'Inquisition, il y a vingt et un jours, pour un quart de prime, par le garde forestier. Il ne pensait pas qu'ils brûleraient tout ni qu'ils tueraient Brocard. Il doit encore 3 or à Larquier, de Haute-Lance, et la prime doublée lui fait de nouveau compter : il soupçonne que Mélie cache quelqu'un. | — / Charbonnier 24 | A vendu Firmin ; endetté ; regarde Mélie |
+| CEN007 | **Jacqueline Fagot** | 41 | Humaine | Charbonnière, femme d'Ernoul | Amère, pieuse, protectrice ; aime le temple de Haute-Lance, son potager, les ragots | Que sa fille épouse un homme de la ville et quitte le bois | Elle a trouvé dans la veste d'Ernoul quatre pièces d'argent neuves, la semaine où l'Inquisition est venue. Elle ne lui a rien demandé. Elle a peur de la réponse. | — / Charbonnière 20 | Femme d'Ernoul ; a trouvé l'argent |
+| CEN008 | **Annette Fagot** | 19 | Humaine | Fille d'Ernoul, charbonnière | Révoltée, tendre, curieuse ; aime les chansons, la forêt la nuit, Sauvan | Savoir si son père a vendu Firmin, et rejoindre Sauvan un jour à Aëlinde | Elle aimait Sauvan, le jeune cerf que Firmin a caché un an dans les bois. Elle lui portait du pain. Il n'a jamais su qu'elle l'aimait. Elle a vu les pièces neuves que sa mère a trouvées, et elle a compris. | — / Charbonnière 9 | Fille d'Ernoul ; aimait Sauvan ; soupçonne son père |
+| CEN015 | **Herbelin, dit Pique-Feu** | 33 | Humain | Charretier du charbon, livre Haute-Lance deux fois par semaine | Bavard, généreux, imprudent ; aime l'eau-de-vie, les histoires, ses bœufs | Que la Chasse ne trouve rien, et une fille à Haute-Lance qui veuille de lui | La pisteuse Albane Merle lui glisse un mot à l'armurerie quand la Chasse va sortir, et il le rapporte à Mélie. Mais quand il boit, il parle : au relais de Rochemaure, cet hiver, il a parlé des « bêtes du bois » devant n'importe qui. Il a aussi parlé de Cendrebois aux écuries de Haute-Lance, devant un esclave cerf. | — / Charretier 16 | Charretier ; porte les avertissements d'Albane ; parle trop |
+
+### La forêt, le garde, les cachés
+
+| # | Nom | Âge | Race | Rôle | Caractère et passions | Envie principale | Secret | Classe / Métier (niv.) | Liens |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CEN009 | **Sylvain Hêtre** | 38 | Humain | Trappeur, guide des fugitifs jusqu'à la côte sud | Taiseux, sûr, patient ; aime la forêt, les collets, la mer qu'il a vue dix fois | Conduire Ronce et Pruneau à l'anse aux Ronces avant que la Meute et la Chasse ne se croisent dans le bois | Il a guidé Firmin et les cinq fugitifs pendant quatorze jours par la forêt jusqu'à l'anse aux Ronces, sur la côte sud, et il les a vus monter dans la barque six jours avant le jour 1. Il est revenu il y a quatre jours. Il connaît le pêcheur de l'anse, qui ne prend la mer qu'une fois par mois. | Rôdeur 20 / Trappeur 26 | Guide des fugitifs ; a mené Firmin à la mer ; mari de Gisla |
+| CEN010 | **Gisla Hêtre** | 35 | Humaine | Boulangère du village, femme du trappeur | Gaie, inquiète, généreuse ; aime le pain, les chansons, les ruches sauvages | Que Sylvain arrête de partir quatorze jours, et un enfant enfin | Elle cuit chaque nuit de passage un pain de plus, dur et salé, qui tient quinze jours, pour les cachés. Elle a peur à chaque départ de Sylvain et ne le lui dit jamais. | — / Boulangère 18 | Femme de Sylvain ; cuit le pain des cachés |
+| CEN011 | **Thibert Hache** | 45 | Humain | Bûcheron du village | Bourru, fort, inquiet ; aime la hache, son fils, la lutte | Que son fils grandisse sans voir pendre personne | Il a vu le garde Héribert compter de l'argent neuf le soir où l'Inquisition est venue. Il ne veut pas savoir d'où il venait. Il a refusé l'an dernier d'aider Firmin, par peur pour son fils, et il en a honte. | Guerrier 6 / Bûcheron 30 | Bûcheron ; père de Tom ; a vu l'argent d'Héribert |
+| CEN012 | **Tom Hache** | 11 | Humain | Fils du bûcheron | Vantard, curieux, au fond gentil ; aime jouer aux chasseurs, les histoires d'Arnoul, grimper | Devenir chasseur de la Chasse, avec un cor et un chien | Il joue à « attraper les fugitifs » avec Mésange. Mais il a trouvé l'entrée du Trou-aux-Fées, a vu le blaireau Pruneau dormir, et ne l'a dit à personne parce que Pruneau lui a appris à siffler. | — / — | Fils de Thibert ; a trouvé Pruneau |
+| CEN013 | **Adèle Fumet, dite la Fumerolle** | 77 | Humaine | Herboriste et vieille sage des croyances de la Brume | Insolente, savante, sans peur ; aime herbes, les vieilles croyances, le feu de bois vert | Vivre assez pour voir un inquisiteur brûler sur son propre bûcher | Sa sœur Isaure a été la première sorcière que le jeune Frère Josse Malherbe, aujourd'hui légat à Aurelle, a fait brûler, il y a vingt ans. Adèle laisse du pain sur le seuil les nuits de brume et enseigne aux enfants les fumées : fumée blanche, danger, fumée noire, tout va bien. Elle a connu, enfant, Tilleul le blaireau, aujourd'hui esclave au palais. | Mage de soin 16 / Herboriste 44 | Herboriste ; sœur d'une brûlée ; soigne Pruneau |
+| CEN014 | **Héribert Gland** | 50 | Humain | Garde forestier de la couronne et percepteur de la dîme du village | Peureux, cupide, double ; aime la chasse, l'argent, son chien | Toucher assez de quarts de prime pour une maison à Haute-Lance et quitter le bois | Mélie le paie depuis des années pour ne rien voir. Mais il y a vingt et un jours, il a pris le nom de Firmin à Ernoul et l'a porté à l'Inquisition, qui lui a donné un quart de prime et en a rendu une part à Ernoul. Il y a quinze ans, son rapport a fait pendre un braconnier, le père d'Albane Merle, la pisteuse de Haute-Lance. | Garde 14 / Percepteur 18 | Garde double ; a vendu Firmin à l'Inquisition ; payé par Mélie |
+| CEN016 | **Pruneau** | 50 | Homme-bête (blaireau) | Fugitif caché au Trou-aux-Fées, frère de Brocard | Doux, endeuillé, patient ; aime creuser, siffler, les enfants | Rejoindre à Lunefeuille sa belle-sœur Garance et son neveu Pic | Il est le frère de Brocard, tué par l'Inquisition le jour de la meule. Il a pris un carreau dans la jambe en fuyant et n'a pas pu suivre Firmin. Il sait que l'enfant Tom l'a vu, et il lui a appris à siffler pour qu'il se taise. | — / Charbonnier 20 | Frère de Brocard ; blessé ; caché au Trou-aux-Fées |
+| CEN017 | **Ronce** | 24 | Femme-bête (loup) | Fugitive des puits de Marchefer, cachée sous le fumoir, sœur de Rouille | Méfiante, rapide, impatiente ; aime courir, les étoiles, son frère | Prendre la prochaine barque, puis faire savoir à son frère Rouille qu'elle est arrivée | Elle s'est évadée il y a trois semaines, marquée d'un trait de « malade » et descendue du convoi par Jeannot, puis menée par Vieux Sauvat sur la draille. Un jeune chasseur de la Meute l'a vue sur la route de Rochemaure et l'a laissée filer. Elle porte un message de Rouille : les puits se lèveront. | Hurleur 6 / Mineur 12 | Sœur de Rouille ; cachée sous le fumoir ; attend la barque |
+
+
+## Les tensions du village
+
+| Tension | Qui | Où ça peut aller |
+| --- | --- | --- |
+| **Qui a vendu Firmin ?** | Ernoul, Héribert, Arnoul, Thibert, Jacqueline, Annette, Mélie | Quatre personnes savent un morceau. Le jour où elles se parlent, le village juge Ernoul, et peut-être le pend lui-même. Héribert, lui, sait aussi que Mélie le paie : s'il tombe, il entraîne les Cendres. |
+| **Ronce et Pruneau** | Mélie, Sylvain, Ronce, Pruneau, Tom, Mésange, Ernoul | Deux fugitifs cachés, un blessé qui ne peut pas marcher quatorze jours, un pêcheur qui ne prend la mer qu'une fois par mois. Deux enfants les ont vus. Ernoul compte. |
+| **Trois meutes vers le bois** | Chassaing (Haute-Lance), Gonfroi (Marchefer), Barbe Rochon et Fergus (Aurelle), Albane (Haute-Lance), Herbelin | Tous veulent les primes doublées. Albane prévient par Herbelin, qui parle trop. Si les chasseurs se croisent dans le bois, ils peuvent se battre entre eux, ou fouiller tout. |
+| **La veuve et la corde** | Jacinthe, Chassaing, Ysambard, Sylvain | Jacinthe a gardé la corde de son mari et pose des collets à hommes. Le jour où Chassaing revient, il y aura un mort, et des représailles. |
+| **Le message de Rouille** | Ronce, Mélie, Jeannot (Marchefer) | Ronce porte la nouvelle que les puits de Marchefer vont se lever. Si elle part, personne ne le saura ici ; si les puits se lèvent, des dizaines de fugitifs prendront le chemin de Cendrebois en même temps. |
+| **Annette et Sauvan** | Annette, Ernoul, Jacqueline | Elle aimait un cerf, ce qui est un crime ; elle sait que son père a vendu celui qui le cachait. Elle peut fuir, dénoncer son père, ou rejoindre les Cendres. |
+| **La lettre de l'Inquisition** | Esquille (partie), Héribert, l'Inquisition | Esquille a été relâchée avec un ordre : trouver où accostent les fugitifs. Le village se demande ce qu'elle a promis. L'Inquisition attend la réponse, et reviendra la chercher ici si elle ne vient pas. |
+
+## Liens avec le reste du monde
+
+- **Sylve-Claire (Aëlinde) :** Firmin Coudray (SYL022), Garance (SYL023), Pic (SYL024), Sauvan (SYL025), Esquille (SYL026) et Grommel (SYL027) y accostent au matin du jour 1, accueillis par Serena. Pruneau est l'oncle de Pic.
+- **Haute-Lance :** la Chasse de Chassaing a brûlé la cabane de l'an dernier et pendu Hubert Charbonnel ; Albane, la pisteuse, est née dans le bois et prévient par Herbelin ; le charbon part chaque semaine pour l'armurerie de Rogier ; Ernoul doit 3 or au marchand Larquier ; Brame, l'esclave des écuries, rêve du bois.
+- **Marchefer :** Ronce, Pruneau, Brocard et Grommel en viennent ; Rouille, le frère de Ronce ; la Meute de Gonfroi a entendu parler du bois par les bavardages d'Herbelin.
+- **Rochemaure :** Vieux Sauvat amène les fugitifs par la draille des bergers.
+- **Aurelle :** Gisèle Fauvel, la cousine de Mélie, blanchisseuse du palais et relais des Cendres ; Vieux Tilleul, esclave du palais, est né dans le bois ; le légat Malherbe a fait brûler la sœur d'Adèle ; les chasseurs Barbe Rochon et Fergus partent vers le bois au jour 2.
+- **Sainte-Aube :** l'Inquisition qui a brûlé la meule et mis à prix la tête de Firmin ; la petite sœur d'Esquille y est otage.
+- **Fort-Corbeau (République) :** Renaud Ostal, le sergent qui avait refusé de brûler la cabane, et la petite Mira, qu'il a sauvée du feu, vivent de l'autre côté de la Corbière.
+
+## Ce que le joueur peut y faire
+
+- Travailler aux meules, couper avec Thibert, cuire avec Gisla, poser des collets avec Sylvain.
+- Découvrir qui a vendu Firmin, et choisir : le dire au village, le dire à Mélie, faire chanter Ernoul ou Héribert, ou se taire.
+- Aider Ronce et Pruneau à gagner l'anse aux Ronces avec Sylvain, ou les livrer pour huit pièces d'or.
+- Rejoindre les Cendres par Mélie ; porter une lettre à Gisèle, au palais d'Aurelle.
+- Accueillir, égarer, combattre ou guider les chasseurs qui arrivent ; empêcher Jacinthe de tuer Chassaing, ou l'y aider.
+- Apprendre les fumées et les vieilles croyances avec Adèle.
+- Relation intime possible avec les adultes libres qui le veulent : Annette, Gisla et Sylvain (s'ils le veulent tous deux), Thibert, Herbelin. Jacinthe ne veut personne pour l'instant. Jamais avec Ronce ou Pruneau tant qu'ils sont des fugitifs sans liberté.

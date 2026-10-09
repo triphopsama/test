@@ -1,0 +1,8 @@
+id;nom;famille;action;lieux;maitre;favorites;competences;bonus;description
+forgeron;Forgeron;Forge et métal;travailler;forge;BRU002;For,End,Int;MET019 Martelage 1,MET020 Lecture du métal 3,MET037 Réparation de forge 5,MET026 Trempe 10;vente_armes 20;Le marteau, l'enclume, le feu. Tu sais ce que vaut une lame et tu la revends mieux.
+boulanger;Boulanger;Bouche et maison;travailler;boulangerie;BRU001;End,Per,Int;MET201 Pain qui rassasie 1;pain 2;Le fournil avant l'aube. Un pain de plus toutes les deux heures de travail.
+meunier;Meunier;Terre et bêtes;travailler;moulin;BRU013;End,Vit,Sag;Meule juste 1;paie 2;La meule, le grain, le vent. Le moulin paie mieux qui le connaît.
+couturier;Couturier;Tissu et cuir;travailler;atelier;BRU019;Agi,Per,Int;Couture fine 1;vente_tissus 20;L'aiguille et le fil. Tu revends mieux le cuir et le tissu.
+pecheur;Pêcheur;Mer et rivière;pecher;port;BRU006;End,Per,Agi;MET162 Nœuds 1,MET159 Lire la mer 5;poisson 1;La ligne, la marée, la patience. Un poisson de plus à chaque pêche.
+herboriste;Herboriste;Soin;cueillir;reveil,fontaine,chene,agnes;BRU015;Sag,Int,Agi;MET222 Herboristerie 1;plante 1,soins 20;Les herbes qui soignent. Une plante de plus à la cueillette, et les remèdes te font plus d'effet.
+courtisan;Courtisan;Plaisir et nuit;travailler_nuit;taverne;;Vol,Agi,Per;Séduction 1,Lecture des envies 5,Discrétion 10;paie 4;Le métier de la nuit, libre et payé : légal et taxé dans la République, mal vu des prudes. Le soir à la taverne, des marins de passage.
