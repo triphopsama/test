@@ -167,6 +167,7 @@ AUR012;13:00;14:00;Grande salle du palais;AUR001,AUR003,AUR013,AUR014,AUR036,AUR
 AUR012;14:00;17:00;Antichambre de l'impératrice;—;Antichambre.;—
 AUR012;17:00;18:00;Chambre d'Ysoline;—;Change de robe.;—
 AUR012;18:00;20:00;Grande salle du palais;AUR040;Parle cérémonial avec Charlier, regarde la table de l'impératrice.;—
+AUR012;20:00;21:00;Chambre d'Ysoline;—;Prend le carnet des visites du soir.;—
 AUR012;21:00;21:30;Appartements de l'impératrice;AUR001,AUR095;Ouvre le carnet. L'impératrice choisit Bastien, le jour même où elle l'a humilié. Ysoline l'écrit.;—
 AUR012;21:30;22:45;Antichambre de l'impératrice;AUR095;Attend dans l'antichambre, le carnet sur les genoux. Gabrielle et elle ne se parlent pas.;—
 AUR012;22:45;23:00;Antichambre de l'impératrice;—;Voit Lorge sortir trop tôt. Écrit l'heure dans le carnet.;souvenir « Lorge sorti à 22 h 45 » (50)
@@ -309,6 +310,7 @@ AUR024;04:30;05:00;Bains de l'impératrice;AUR010,AUR026;Ouvre les bains, compte
 AUR024;05:00;06:00;Bains de l'impératrice;AUR010,AUR026,AUR027;Vérifie la chaleur de l'eau, fait recommencer une cuve trop chaude.;—
 AUR024;06:00;07:00;Bains de l'impératrice;AUR001,AUR010,AUR026,AUR095;Sert l'impératrice au bain. Répond « Majesté » et rien d'autre. Ne regarde ni la renarde ni la chatte.;—
 AUR024;07:00;08:00;Bains de l'impératrice;—;Range les bains.;—
+AUR024;08:00;12:00;Bains de l'impératrice;—;Bains des dames de la cour. Plume et Bru servent.;—
 AUR024;12:00;13:00;Bains de l'impératrice;—;Vide les cuves.;—
 AUR024;13:00;14:00;Chambre d'Odette;—;Repas avec ses chats.;—
 AUR024;14:00;20:00;Bains de l'impératrice;—;Linge et huiles.;—
@@ -715,12 +717,14 @@ AUR061;12:30;13:00;Ville haute;—;Monte au palais.;—
 AUR061;13:00;13:45;Atelier d'essayage du palais;AUR018;Élargit la robe de Ninon pour la troisième fois. Dit seulement : « Il faudra le lui dire. »;—
 AUR061;13:45;15:00;Atelier d'essayage du palais;—;Essayages des dames.;—
 AUR061;15:00;17:30;Atelier d'Aude, rue des Merciers;—;Atelier.;—
+AUR061;17:30;18:00;Atelier d'Aude, rue des Merciers;AUR044;Guillaume raconte qu'il a gagné contre Lorge. Aude pense au pourpoint qu'elle a taillé pour Lorge.;—
 AUR061;18:00;19:00;Atelier d'Aude, rue des Merciers;—;Atelier.;—
 AUR061;19:00;22:00;Maison d'Aude;—;Dessine des robes.;—
 AUR061;22:00;24:00;Maison d'Aude;—;Dort.;—
 AUR062;00:00;01:00;La Cour des Myrtes;—;Cour des Myrtes. Écoute.;—
 AUR062;01:00;08:00;Maison d'Ambrevin;—;Dort.;—
 AUR062;08:00;12:00;Parfumerie Ambrevin, rue des Parfums;—;Boutique.;—
+AUR062;12:00;12:15;Antichambres du palais;—;Monte au palais avec ses flacons.;—
 AUR062;12:15;13:00;Antichambre de l'impératrice;AUR012;Achète à Ysoline le rire de l'impératrice sur le contrat.;ragot : « elle a ri en signant »
 AUR062;13:00;14:30;Antichambres du palais;—;Visites de cour. Revend le rire de l'impératrice.;—
 AUR062;14:30;15:00;Parfumerie Ambrevin, rue des Parfums;AUR033;Jeannette vend le toast de l'impératrice. Ambrevin paie d'un ruban.;—
