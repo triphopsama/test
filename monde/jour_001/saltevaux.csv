@@ -1,0 +1,1128 @@
+pnj;debut;fin;lieu;avec;action;consequence
+SAL001;00:00;06:30;Hôtel Castelmar;—;Dort mal. Il tousse deux fois et se rendort.;Santé -1
+SAL001;06:30;07:00;Hôtel Castelmar;—;Toilette. Il cache un mouchoir propre dans sa manche.;—
+SAL001;07:00;08:00;Bureau du Premier sénateur;SAL004;Ivo pose le pli sur le bureau, « arrivé à l'aube ». Castelmar lit, tousse, roule son mouchoir dans la manche. Il y a du sang. Ivo regarde ailleurs. Castelmar : « Nous verrons. » Puis : « Préparez une lettre pour Grisemont. Des chaînes, pour les passes. »;Mariage Helena-Aymon : 40 %
+SAL001;08:00;08:30;Salle du déjeuner, hôtel Castelmar;SAL101;Castelmar tend la lettre à sa fille entre deux tasses. « L'impératrice demande ta main pour son neveu. Nous verrons. » Helena sait ce que veut dire « nous verrons ». Elle répond : « Bien, père. »;—
+SAL001;08:30;10:00;Bureau du Premier sénateur;—;Relit la lettre seul. Il fait le compte des voix qui suivraient une trêve.;Castelmar : souvenir « la lettre d'Aurelle » (70)
+SAL001;10:00;10:30;Palais du Sénat;—;Arrive au Palais en voiture. Il serre des mains.;—
+SAL001;10:30;12:15;Palais du Sénat (séance);SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;Commande des chaînes à Grisemont : votée
+SAL001;12:15;14:00;Palais du Sénat (cabinet du Premier sénateur);—;Repas léger, seul. Il garde le mouchoir dans sa main.;—
+SAL001;14:00;14:30;Bureau du Premier sénateur;SAL004;Castelmar signe la commande des chaînes et y met son sceau. Ivo la plie. Castelmar : « À la livraison. Ils comprendront. »;—
+SAL001;14:30;18:00;Bureau du Premier sénateur;—;Audiences. Des armateurs, un évêque de province, un marchand de sel. Il promet peu.;—
+SAL001;18:00;19:00;Hôtel Castelmar;—;Se change pour le dîner. Il tousse dans une serviette et la jette au feu.;—
+SAL001;19:00;20:15;Hôtel Castelmar (dîner);SAL002,SAL101,SAL003,SAL012,SAL010;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;Mariage Helena-Aymon : 55 %
+SAL001;20:15;21:00;Hôtel Castelmar (dîner);—;Reste avec Valcourt et Orlan au cognac. Il parle du prince Aymon comme d'un bon parti.;Mariage Helena-Aymon : penché vers oui
+SAL001;21:00;21:20;Hôtel Castelmar (chambre);SAL002;Mélisande sert le verre du soir. La fiole est presque vide.;Castelmar : santé -2
+SAL001;21:20;22:00;Hôtel Castelmar (chambre);—;Se sent lourd après son verre. Il lit trois lignes et pose le livre.;—
+SAL001;22:00;24:00;Hôtel Castelmar (chambre);—;Dort lourdement.;Santé -1
+SAL002;00:00;08:30;Hôtel Castelmar;—;Dort.;—
+SAL002;08:30;09:00;Hôtel Castelmar (appartements de Mélisande);—;Apprend de la femme de chambre qu'une lettre d'Aurelle est arrivée. Elle sourit.;Mélisande : souvenir « Aurelle » (50)
+SAL002;09:00;09:30;Hôtel Castelmar (appartements de Mélisande);SAL005;Mélisande donne ses ordres pour le dîner de ce soir : six couverts, le service bleu. Huguette note tout, y compris le ton.;—
+SAL002;09:30;11:00;Hôtel Castelmar (appartements de Mélisande);—;Toilette. Elle compte les gouttes restantes dans la fiole cachée sous ses mouchoirs.;—
+SAL002;11:00;11:20;Rue des Ateliers;—;En voiture vers l'atelier de Narcisse.;—
+SAL002;11:20;12:00;Atelier de Narcisse;SAL052;Essayage. Narcisse, pour briller, glisse qu'« un sénateur des Libres aime un peu trop la Fourrière ». Mélisande sourit et retient. Narcisse le regrette aussitôt.;Mélisande : souvenir « Sorbier » (50)
+SAL002;12:00;14:00;Hôtel Castelmar;—;Déjeune seule. Elle prépare le salon et change deux fois les fleurs.;—
+SAL002;14:00;16:00;Salon de Mélisande;SAL101,SAL007;Le salon s'ouvre. Helena est souriante et parfaite. Solange, en lui prenant le bras : « Tu as l'air d'une reine qu'on va vendre. » Helena : « Je souris, Solange. C'est ce qu'on attend de moi. »;—
+SAL002;16:00;17:00;Salon de Mélisande;SAL009,SAL101;Ermengarde arrive, pique Mélisande sur ses roses. Helena parle de la loi Sarrazin mieux que les sénateurs. Ermengarde : « Vous êtes la seule Castelmar qui pense. »;Mélisande → Ermengarde : affection -5
+SAL002;17:00;19:00;Hôtel Castelmar (appartements de Mélisande);—;Se repose. Elle pense déjà à la robe de mariée d'Helena.;Mélisande : humeur ravie +10
+SAL002;19:00;20:15;Hôtel Castelmar (dîner);SAL001,SAL101,SAL003,SAL012,SAL010;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;—
+SAL002;20:15;21:00;Hôtel Castelmar (dîner);—;Raccompagne Valcourt et Orlan. Elle ne remarque pas que sa fille est sortie.;—
+SAL002;21:00;21:20;Hôtel Castelmar (chambre);SAL001;Mélisande sert le verre du soir. La fiole est presque vide.;Mélisande : besoin « retourner chez Viviane »
+SAL002;21:20;24:00;Hôtel Castelmar (chambre);—;Veille son mari, qui dort lourd. Puis dort.;—
+SAL003;00:00;10:00;Hôtel Castelmar;—;Dort.;—
+SAL003;10:00;10:30;Hôtel Castelmar;—;Réveil. Il apprend la lettre d'Aurelle par un valet qui l'a apprise de la cuisinière.;Valérien : souvenir « Aurelle » (40)
+SAL003;10:30;11:30;Salle d'armes de la Colline;—;Assaut contre un maître d'armes. Il gagne et ne s'en réjouit pas.;—
+SAL003;11:30;12:15;Palais du Sénat (tribune des héritiers);—;Regarde son père faire voter les chaînes. Personne ne se tourne vers lui.;—
+SAL003;12:15;14:00;Cercle de la Colline;—;Déjeune et boit avec des fils de sénateurs. Il dit qu'Aurelle a « les yeux sur nous ».;—
+SAL003;14:00;16:45;Hôtel Castelmar (appartement de Valérien);—;Dort une heure, puis se fait raser.;—
+SAL003;16:45;17:00;Rue de la Colline;—;Entre par la petite porte de l'hôtel Malvoisin.;—
+SAL003;17:00;18:00;Hôtel Malvoisin (salon de musique);SAL021;Malvoisin est en visite. Séverine : « Je sais ce qu'il vend. J'ai la clé. » Valérien ne veut pas l'entendre et la fait taire d'un baiser. La porte se ferme.;Valérien : souvenir « la clé » (30)
+SAL003;18:00;19:00;Hôtel Castelmar (appartement de Valérien);—;Ressort par la petite porte, rentre, se change.;—
+SAL003;19:00;20:15;Hôtel Castelmar (dîner);SAL001,SAL002,SAL101,SAL012,SAL010;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;Valérien → Helena : jalousie +15
+SAL003;20:15;21:30;Hôtel Castelmar (salon);—;Boit seul pendant que son père parle avec Valcourt et Orlan. Puis il sort.;Valérien : humeur amère +10
+SAL003;21:30;22:00;Tente d'Esmé;SAL098;Valérien demande s'il sera Premier sénateur, puis : « Et ma sœur ? » Esmé : « Elle portera une couronne qui n'est pas la sienne. »;Valérien : jalousie +5
+SAL003;22:00;22:15;Place des Astres;—;Traverse la place vers le Bas-Port, la phrase d'Esmé dans la tête.;—
+SAL003;22:15;24:00;Dé Pipé;SAL070;Valérien joue aux dés. Il perd, rejoue, perd encore. Trois-Doigts lui ouvre une ardoise.;Dette envers Trois-Doigts 315 or
+SAL004;00:00;05:30;Bureau d'Ivo;—;Dort peu. Il ne rêve pas, comme toujours.;—
+SAL004;05:30;06:00;Bureau d'Ivo;—;Lecture d'un livre d'histoire prêté par Prosper.;—
+SAL004;06:00;06:15;Porte de l'hôtel Castelmar;—;Un cavalier aux couleurs d'Aurelle, sous pavillon blanc, remet un pli scellé. Ivo le reçoit lui-même, avant que Huguette n'arrive à la porte.;—
+SAL004;06:15;07:00;Bureau du Premier sénateur;—;Chauffe une lame, lève le sceau, lit. L'impératrice Électra propose de marier Helena à son neveu, le prince Aymon. En échange, une trêve sur la frontière de Fort-Corbeau. Il relit deux fois, referme le sceau, et reste un moment sans bouger.;Ivo : souvenir « la lettre d'Aurelle » (80)
+SAL004;07:00;08:00;Bureau du Premier sénateur;SAL001;Ivo pose le pli sur le bureau, « arrivé à l'aube ». Castelmar lit, tousse, roule son mouchoir dans la manche. Il y a du sang. Ivo regarde ailleurs. Castelmar : « Nous verrons. » Puis : « Préparez une lettre pour Grisemont. Des chaînes, pour les passes. »;Ivo : souvenir « le mouchoir rouge » (60)
+SAL004;08:00;10:00;Bureau du Premier sénateur;—;Rédige la commande des chaînes pour Grisemont. Il recopie la lettre d'Aurelle de mémoire dans un carnet codé.;—
+SAL004;10:00;11:00;Palais du Sénat (cabinet du Premier sénateur);—;Prépare les dossiers de séance.;—
+SAL004;11:00;11:10;Couloir du Palais;SAL060;Tristan, en ronde, croise Ivo. Il a froid dans le dos, comme chaque fois. Ivo le salue d'un signe de tête.;Ivo : souvenir « l'exorciste me regarde » (50)
+SAL004;11:10;14:00;Palais du Sénat (cabinet du Premier sénateur);—;Range les papiers, sert le repas léger de son maître sans le partager.;—
+SAL004;14:00;14:30;Bureau du Premier sénateur;SAL001;Castelmar signe la commande des chaînes et y met son sceau. Ivo la plie. Castelmar : « À la livraison. Ils comprendront. »;—
+SAL004;14:30;15:30;Rue de la Colline;—;Descend à pied vers la place des Poids, la commande sous le bras.;—
+SAL004;15:30;15:50;Comptoir nain;SAL028;Ivo apporte la commande des chaînes, sous le sceau du Premier sénateur. Hordak : « Payé comment ? » « À la livraison. » Hordak lâche un pigeon : « Le roi Baldrec l'aura avant la nuit. Rappelez au Premier sénateur que l'échéance tombe dans vingt jours. »;Ivo : rappel « échéance dans vingt jours »
+SAL004;15:50;18:00;Bureau du Premier sénateur;—;Assiste aux audiences, prend les notes.;—
+SAL004;18:00;19:00;Bureau du Premier sénateur;—;Lit le courrier de Malvoisin et celui de la Grande Peseuse avant de le faire porter. Rien de neuf.;—
+SAL004;19:00;20:00;Bureau d'Ivo;—;Mange seul, une soupe de poisson qu'il aime.;—
+SAL004;20:00;20:30;Jetée;SAL044;Ivo marche seul et regarde l'ouest. L'éclaireuse qu'on lui annonce ne s'est toujours pas montrée. Ilyan est au bout de la jetée. Les deux se saluent sans parler.;—
+SAL004;20:30;21:00;Jetée;SAL101;Helena arrive seule, en manteau. Elle demande à Ivo, et seulement à lui, ce qu'il pense de l'Empire. Ivo choisit. Il lui dit les primes, Marchefer, les colliers. « Ne croyez pas à la trêve. Croyez à ce qu'elle coûte. » Elle demande : « Et vous, Ivo, vous êtes quoi ? » « Votre secrétaire. » Elle regarde son visage sans rides et n'insiste pas.;Ivo : choix « la vérité sur l'Empire, pas sur lui ». Ivo → Helena : attachement +10
+SAL004;21:00;23:00;Bureau d'Ivo;—;Reste assis devant la fenêtre. Il repense à la question d'Helena.;Ivo : inquiétude +10
+SAL004;23:00;24:00;Bureau d'Ivo;—;Écrit en code pour Vaëris : la lettre, la trêve, les chaînes. Il range la feuille dans le double fond d'un livre de Prosper. Il n'a aucun moyen de l'envoyer.;Ivo : humeur mélancolique +10
+SAL005;00:00;05:30;Hôtel Castelmar (chambre d'Huguette);—;Dort.;—
+SAL005;05:30;06:00;Hôtel Castelmar;—;Réveille les domestiques. Elle trouve la porte déjà ouverte et Ivo dans l'entrée, un pli à la main.;Huguette : souvenir « Ivo à la porte » (40)
+SAL005;06:00;08:00;Hôtel Castelmar;—;Intendance : linge, argenterie, menus.;—
+SAL005;08:00;08:10;Couloir de l'hôtel Castelmar;—;Derrière la porte du déjeuner, elle entend tout.;Huguette : souvenir « mariage impérial » (70)
+SAL005;08:10;09:00;Hôtel Castelmar;—;Reprend son service comme si de rien n'était.;—
+SAL005;09:00;09:30;Hôtel Castelmar (appartements de Mélisande);SAL002;Mélisande donne ses ordres pour le dîner de ce soir : six couverts, le service bleu. Huguette note tout, y compris le ton.;—
+SAL005;09:30;15:00;Hôtel Castelmar;—;Intendance. Elle prépare le dîner de six couverts.;—
+SAL005;15:00;16:00;Cuisines de l'hôtel Castelmar;—;Thé avec la cuisinière, qui parle de la toux de Monsieur. Huguette ne dit rien et écoute.;—
+SAL005;16:00;20:15;Hôtel Castelmar;—;Service du dîner. Elle surveille les verres.;—
+SAL005;20:15;21:00;Hôtel Castelmar;—;Voit Helena sortir seule par la porte du jardin, en manteau.;Huguette : souvenir « Helena sortie seule » (50)
+SAL005;21:00;21:45;Office de l'hôtel Castelmar;—;Écrit son rapport pour la Grande Peseuse : la lettre d'Aurelle, le Premier sénateur plus mal après son verre, Helena sortie seule. Elle hésite à le porter avant le jour des Astres.;Huguette : rapport prêt
+SAL005;21:45;24:00;Hôtel Castelmar (chambre d'Huguette);—;Relit un poème de Pontcarré avant de dormir. Dort.;—
+SAL006;00:00;05:30;Hôtel Montval;—;Dort.;—
+SAL006;05:30;06:00;Rue de la Colline;—;Marche jusqu'au temple, à pied, par habitude.;—
+SAL006;06:00;06:45;Temple des Sept Astres (nef);SAL058,SAL060,SAL061;Office de l'aube. Absalon prêche la patience. Montval prie au premier rang, Tristan au dernier, Jeannot tient le cierge.;—
+SAL006;06:45;08:00;Hôtel Montval;—;Déjeune seul.;—
+SAL006;08:00;08:30;Hôtel Montval (bureau);SAL008;Goupil apporte le courrier. Montval lit une lettre de la banque Valcourt et la jette au feu sans un mot.;Montval : humeur sombre +5
+SAL006;08:30;10:30;Hôtel Montval (bureau);—;Compte ce qui reste des terres. Il ne reste presque rien.;Montval : angoisse +5
+SAL006;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL006;12:15;12:45;Rue de la Colline;—;Rentre en voiture.;—
+SAL006;12:45;13:30;Hôtel Montval (salle à manger);SAL007;Montval rappelle à sa petite-fille la date des noces avec Valérien. Solange dit oui à son assiette.;—
+SAL006;13:30;15:00;Hôtel Montval;—;Sieste dans un fauteuil.;—
+SAL006;15:00;18:30;Cercle des Anciennes Familles;—;Cartes et politique. On dit qu'Aurelle a écrit au Premier sénateur. Montval pense aussitôt aux noces de Solange.;—
+SAL006;18:30;19:00;Hôtel Montval;—;Accueille le Père Absalon.;—
+SAL006;19:00;21:00;Hôtel Montval (salle à manger);SAL058,SAL007;Dîner avec le Père Absalon. On parle de la lettre d'Aurelle, dont Montval a entendu un écho au Sénat. Solange ne mange presque rien.;Montval : souvenir « la trêve » (30)
+SAL006;21:00;24:00;Hôtel Montval;—;Lit un peu, puis dort.;—
+SAL007;00:00;07:30;Hôtel Montval (chambre de Solange);—;Dort.;—
+SAL007;07:30;08:00;Hôtel Montval (chambre de Solange);—;Se lève, cache sous l'oreiller un ruban de Zélie.;—
+SAL007;08:00;10:00;Hôtel Montval;—;Leçon de maintien. Elle marche avec un livre sur la tête et pense à la foudre.;—
+SAL007;10:00;12:45;Hôtel Montval (bibliothèque);—;Lit un traité de l'Académie de Lorvane caché dans un livre de prières.;Solange : envie « Lorvane » +5 %
+SAL007;12:45;13:30;Hôtel Montval (salle à manger);SAL006;Montval rappelle à sa petite-fille la date des noces avec Valérien. Solange dit oui à son assiette.;Solange → Montval : rancœur +5
+SAL007;13:30;14:00;Rue de la Colline;—;Va à pied à l'hôtel Castelmar.;—
+SAL007;14:00;16:00;Salon de Mélisande;SAL002,SAL101;Le salon s'ouvre. Helena est souriante et parfaite. Solange, en lui prenant le bras : « Tu as l'air d'une reine qu'on va vendre. » Helena : « Je souris, Solange. C'est ce qu'on attend de moi. »;Solange → Helena : affection +10
+SAL007;16:00;17:00;Jardin de l'hôtel Castelmar;—;Sort du salon avant Ermengarde. Elle marche entre les roses de Mélisande en attendant sa voiture.;—
+SAL007;17:00;19:00;Serre de l'hôtel Montval;—;Travaille seule sa foudre. Une étincelle noircit un pot de terre.;Solange : maîtrise +1
+SAL007;19:00;21:00;Hôtel Montval (salle à manger);SAL006,SAL058;Dîner avec le Père Absalon. On parle de la lettre d'Aurelle, dont Montval a entendu un écho au Sénat. Solange ne mange presque rien.;—
+SAL007;21:00;22:00;Hôtel Montval (chambre de Solange);—;Attend que la maison dorme, habillée.;—
+SAL007;22:00;22:30;Toits de la Colline;SAL008;Goupil fait sortir Solange par les toits.;—
+SAL007;22:30;23:00;En route vers le Jardin d'Ambre;—;Descend vers le quartier des Bains, capuche relevée.;—
+SAL007;23:00;24:00;Jardin d'Ambre (chambre de Zélie);SAL065;Solange : « Helena va épouser l'Empire. Moi, je n'épouserai personne. » Zélie éteint la lampe.;Solange : envie « Lorvane » +10 %
+SAL008;00:00;05:00;Hôtel Montval (soupente);—;Dort.;—
+SAL008;05:00;07:00;Hôtel Montval;—;Allume les feux, cire les bottes.;—
+SAL008;07:00;08:00;Hôtel Montval;—;Sert le déjeuner du sénateur.;—
+SAL008;08:00;08:30;Hôtel Montval (bureau);SAL006;Goupil apporte le courrier. Montval lit une lettre de la banque Valcourt et la jette au feu sans un mot.;—
+SAL008;08:30;15:00;Hôtel Montval;—;Service. Il compte dans sa tête : six ans, moins un jour.;—
+SAL008;15:00;15:15;Porte de service de l'hôtel Montval;SAL084;Saïna livre le linge. Goupil lui donne un gâteau pris en cuisine, « pour Tiko ». Elle le garde contre elle en redescendant.;Goupil : espoir +5
+SAL008;15:15;19:00;Hôtel Montval;—;Service de l'après-midi. Il prépare la salle du dîner.;—
+SAL008;19:00;21:00;Hôtel Montval (office);—;Sert le dîner du sénateur et du haut-prêtre, et mange les restes à l'office.;—
+SAL008;21:00;22:00;Hôtel Montval (soupente);—;Range, vérifie la corde des toits.;—
+SAL008;22:00;22:30;Toits de la Colline;SAL007;Goupil fait sortir Solange par les toits.;Goupil : risque +5
+SAL008;22:30;24:00;Hôtel Montval (soupente);—;Revient seul par les toits. Dort d'un œil, en attendant l'aube pour la faire rentrer.;—
+SAL009;00:00;06:30;Hôtel Sauveterre;—;Dort.;—
+SAL009;06:30;07:00;Rue de la Colline;—;Va au temple en chaise à porteurs.;—
+SAL009;07:00;07:40;Temple des Sept Astres (nef);SAL058;Ermengarde se confesse encore de son vieux vote sur le contrat de dette. Absalon lui donne trois prières et aucun conseil.;Ermengarde : remords +5
+SAL009;07:40;09:00;Hôtel Sauveterre;—;Déjeune et lit les gazettes.;—
+SAL009;09:00;10:30;Palais du Sénat;—;Arrive tôt, comme une doyenne. Elle observe qui parle à qui.;—
+SAL009;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL009;12:15;13:00;Rue de la Colline;—;Se rend chez la Grande Peseuse.;—
+SAL009;13:00;14:15;Hôtel Aubrac;SAL019;Déjeuner. Constance laisse entendre qu'elle ne pleurerait pas si la loi Sarrazin passait. Ermengarde comprend qu'elle vise Malvoisin, pas les endettés.;Ermengarde : loi Sarrazin, vote +5 %
+SAL009;14:15;16:00;Hôtel Sauveterre;—;Sieste.;—
+SAL009;16:00;17:00;Salon de Mélisande;SAL101,SAL002;Ermengarde arrive, pique Mélisande sur ses roses. Helena parle de la loi Sarrazin mieux que les sénateurs. Ermengarde : « Vous êtes la seule Castelmar qui pense. »;Ermengarde → Helena : respect +10
+SAL009;17:00;20:00;Hôtel Sauveterre;—;Broderie et souper. Elle pense à Helena plus qu'à la loi.;Ermengarde : souvenir « la seule Castelmar qui pense » (50)
+SAL009;20:00;24:00;Hôtel Sauveterre;—;Se couche. Dort.;—
+SAL010;00:00;05:30;Hôtel Orlan;—;Dort.;—
+SAL010;05:30;09:00;Grand Port;—;Tour des quais. Il compte ses navires à quai et demande des nouvelles des barques perdues.;—
+SAL010;09:00;10:15;Bureaux de l'armement Orlan;—;Courrier. Le bureau de son fils est vide, comme d'habitude.;—
+SAL010;10:15;10:30;Rue de la Colline;—;Monte au Palais.;—
+SAL010;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL010;12:15;15:00;Sirène Borgne;—;Déjeuner d'armateurs dans la salle du fond. Il parle des chaînes comme d'une affaire faite.;—
+SAL010;15:00;15:30;Chantier du quai Sud;SAL036,SAL045;Orlan inspecte la quille de son trois-mâts. Tassin passe. Orlan : « Prenez garde aux passes, Armelle. La mer est traîtresse. » Gerbaud baisse les yeux.;—
+SAL010;15:30;19:00;Grand Port;—;Quais. Il surveille le chargement d'un navire pour Port-Salin.;—
+SAL010;19:00;20:15;Hôtel Castelmar (dîner);SAL001,SAL002,SAL101,SAL003,SAL012;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;—
+SAL010;20:15;21:00;Hôtel Castelmar (dîner);—;Reste au cognac avec Castelmar et Valcourt, puis prend congé.;Orlan : souvenir « la trêve » (50)
+SAL010;21:00;23:30;Jardin d'Ambre (salon de Philippine);SAL062;Orlan arrive après son dîner. Il parle de la trêve, de navires qui passeraient enfin, et de la petite Castelmar. Philippine sert et écoute.;—
+SAL010;23:30;24:00;Hôtel Orlan;—;Rentre. Dort.;—
+SAL011;00:00;01:00;Sirène Borgne;SAL043;Gaétan boit seul au comptoir. Maguelone le met dehors à la fermeture.;Gaétan : humeur morose +5
+SAL011;01:00;01:30;En route vers l'hôtel Orlan;—;Rentre en titubant par les ruelles.;—
+SAL011;01:30;12:00;Hôtel Orlan;—;Dort.;—
+SAL011;12:00;14:00;Hôtel Orlan;—;Réveil. Il mange, se lave, ne regarde pas son courrier.;—
+SAL011;14:00;14:40;Bureaux de l'armement Orlan;—;Seul, il roule une carte de navigation de son père et la glisse dans son manteau. Il ne sait pas encore s'il osera la porter à Crochard.;Gaétan : nervosité +15. Carte de navigation dans son manteau
+SAL011;14:40;17:30;Bureaux de l'armement Orlan;—;Fait semblant de travailler. Il sursaute à chaque pas dans l'escalier.;—
+SAL011;17:30;18:00;En route vers le Dé Pipé;—;Descend vers le Bas-Port, la main sur son manteau.;—
+SAL011;18:00;19:00;Dé Pipé;SAL070;Gaétan perd encore douze pièces d'or. Trois-Doigts sourit et note.;Gaétan : dette envers Trois-Doigts 92 or
+SAL011;19:00;22:30;Dé Pipé;—;Boit pour oublier les douze pièces. Il ne rejoue pas.;—
+SAL011;22:30;23:00;En route vers les Bains de Corail;—;Traverse le quartier des Bains.;—
+SAL011;23:00;24:00;Bains de Corail (table de Loïs);SAL067;Loïs propose à Gaétan de racheter sa dette chez Trois-Doigts. Gaétan dit qu'il réfléchira.;Gaétan : tentation +10
+SAL012;00:00;06:30;Hôtel Valcourt;—;Dort.;—
+SAL012;06:30;10:15;Banque Valcourt;—;Comptes. Il note les échéances des Montval en rouge.;—
+SAL012;10:15;10:30;Rue de la Colline;—;Monte au Palais.;—
+SAL012;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL012;12:15;15:00;Banque Valcourt;—;Déjeune à son bureau.;—
+SAL012;15:00;15:40;Banque Valcourt;SAL020;Malvoisin rend visite à son prêteur. Il parle d'une trêve possible avec l'Empire « et des affaires qui suivraient ». Valcourt ne demande pas comment il le sait.;Valcourt : souvenir « Malvoisin sait pour Aurelle » (40)
+SAL012;15:40;18:30;Banque Valcourt;—;Comptes. Il relit deux fois la lettre de change du comptoir nain.;—
+SAL012;18:30;19:00;En route vers l'hôtel Castelmar;—;Choisit un œillet pour sa boutonnière, puis l'enlève.;—
+SAL012;19:00;20:15;Hôtel Castelmar (dîner);SAL001,SAL002,SAL101,SAL003,SAL010;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;Valcourt : mélancolie +5
+SAL012;20:15;21:00;Hôtel Castelmar (dîner);—;Reste au cognac. Il remercie Mélisande deux fois de trop.;—
+SAL012;21:00;22:00;Hôtel Valcourt;—;Écrit à sa fille Iris, à Lorvane, et glisse l'argent « pour ses robes ».;Argent -10 or
+SAL012;22:00;24:00;Hôtel Valcourt;—;Dort.;—
+SAL013;00:00;05:30;Hôtel Montclar;—;Dort.;—
+SAL013;05:30;08:00;Marché au sel du port;—;Tâte le sel, parle avec ses anciens collègues sauniers. Il s'y sent chez lui.;—
+SAL013;08:00;10:30;Hôtel Montclar;—;Se fait lire une lettre de son fils Léandre par un valet. Il est fier.;Montclar : fierté +5
+SAL013;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL013;12:15;16:00;Hôtel Montclar;—;Affaires de sel, avec un facteur de Port-Salin.;—
+SAL013;16:00;16:30;Hôtel Montclar;SAL020;Malvoisin rend visite à Montclar et lui parle du sel de Port-Salin. Puis, en passant : « La loi Sarrazin ruinerait vos saunières. » Montclar promet de réfléchir.;Montclar : hésitation +5
+SAL013;16:30;19:00;Hôtel Montclar;—;Affaires. Il pense à ce que Malvoisin a dit des saunières.;—
+SAL013;19:00;20:30;Sirène Borgne;SAL014,SAL043;Montclar : « Relisez-moi votre loi vous-même. » Elle la lit à voix haute. Ce n'est pas ce que Grisvert lui avait lu. Il pose sa fourchette.;Montclar → Grisvert : confiance -20. Montclar : loi Sarrazin, vote 50 %. Montclar : souvenir « Grisvert m'a menti » (70)
+SAL013;20:30;22:00;Hôtel Montclar;—;Rentre. Il demande au valet de lui retrouver toutes les lois que Grisvert lui a lues.;—
+SAL013;22:00;24:00;Hôtel Montclar;—;Essaie de relire seul la loi Sarrazin, lettre par lettre, puis s'endort sur la table.;—
+SAL014;00:00;05:30;Maison Sarrazin;—;Dort.;—
+SAL014;05:30;08:00;Maison Sarrazin;—;Courrier. Une pétition des Libres de Gué-Moreau, signée par Frère Aubin.;—
+SAL014;08:00;10:30;Palais du Sénat;—;Dans son bureau, elle relit la loi avant la séance.;—
+SAL014;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL014;12:15;14:00;Palais du Sénat;—;Mange un morceau de pain en marchant vers le temple.;—
+SAL014;14:00;17:00;Temple des Sept Astres (permanence);SAL059;Permanence pour les endettés. Une veuve, un docker, un garçon sans papiers. Sarrazin note, Adeline soigne.;Sarrazin : dossiers +3
+SAL014;17:00;18:00;Rue des Ateliers;—;Marche vers la boutique de Prosper. Elle ne remarque pas le vendeur de lanternes.;—
+SAL014;18:00;18:50;Arrière-boutique de Prosper;SAL035,SAL080,SAL053,SAL015,SAL087,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;Sarrazin : dîner Montclar décidé
+SAL014;18:50;19:00;Grand Port;—;Descend vers la Sirène Borgne.;—
+SAL014;19:00;20:30;Sirène Borgne;SAL013,SAL043;Montclar : « Relisez-moi votre loi vous-même. » Elle la lit à voix haute. Ce n'est pas ce que Grisvert lui avait lu. Il pose sa fourchette.;Sarrazin : Montclar à moitié gagné
+SAL014;20:30;21:00;Maison Sarrazin;—;Rentre seule à pied par le quai.;—
+SAL014;21:00;23:00;Maison Sarrazin;—;Soupe légère, relit les notes de Jaunet.;—
+SAL014;23:00;24:00;Maison Sarrazin;—;Écrit tard à Montclar une lettre qu'elle n'enverra que demain.;Loi Sarrazin : lettre à Montclar prête
+SAL015;00:00;07:30;Hôtel Sorbier;—;Dort.;—
+SAL015;07:30;10:15;Atelier de verre Sorbier;—;Souffle une coupe pour se calmer les mains.;—
+SAL015;10:15;10:30;Rue de la Colline;—;Monte au Palais.;—
+SAL015;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;—
+SAL015;12:15;15:00;Hôtel Sorbier;—;Déjeune. Le valet lui remet un billet laissé par une gamine à la porte de service : « Combien vaut un loup ? »;Sorbier : peur +20. Souvenir « le billet » (70)
+SAL015;15:00;17:45;Atelier de verre Sorbier;—;Travaille sans rien réussir. Il casse deux coupes.;—
+SAL015;17:45;18:00;Rue des Ateliers;—;Va à la réunion, le billet dans sa poche.;—
+SAL015;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL035,SAL080,SAL053,SAL087,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;—
+SAL015;18:50;21:00;Hôtel Sorbier;—;Dîne seul. Il brûle le billet, puis regrette de l'avoir brûlé.;—
+SAL015;21:00;21:30;Ruelles de la Fourrière;—;Prend le chemin de derrière, deux fois plus long.;—
+SAL015;21:30;24:00;Fourrière (chez Tobias);SAL080;Sorbier arrive par les ruelles de derrière. Il ne parle pas du billet de Fouine. Tobias voit qu'il a peur et ne demande rien. Ils passent la nuit ensemble.;Sorbier : secret gardé (billet)
+SAL016;00:00;05:30;Hôtel Ferval;—;Dort.;—
+SAL016;05:30;08:00;Fauconnerie Ferval;—;Nourrit ses faucons à la main.;—
+SAL016;08:00;10:15;Entrepôts Ferval;—;Inventaire des carreaux. Il manque de quoi honorer la prochaine livraison.;—
+SAL016;10:15;10:30;Rue de la Colline;—;Monte au Palais.;—
+SAL016;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;Ferval → Castelmar : respect -10
+SAL016;12:15;16:00;Entrepôts Ferval;—;Déjeune mal. Il maudit Castelmar et les nains devant ses commis.;Ferval : rancune +10
+SAL016;16:00;16:30;Forge de Thrain;SAL050;Ferval commande deux mille carreaux. Thrain tourne un carreau dans ses doigts, regarde sa propre marque, et accepte sans le regarder.;Commande : 2 000 carreaux
+SAL016;16:30;17:30;Entrepôts Ferval;—;Prépare les caisses.;—
+SAL016;17:30;18:00;Entrepôts Ferval;SAL089;Merlin passe chez Ferval. Ils parlent de « vin de Valmer » et d'une livraison par les cales de Tassin. Ferval ne dit rien des carreaux commandés.;Ferval : commande impériale en cours
+SAL016;18:00;20:30;Hôtel Ferval;—;Souper seul.;—
+SAL016;20:30;21:00;En route vers le quartier des Bains;—;Descend à pied, sans escorte.;—
+SAL016;21:00;24:00;Chez Morgane;SAL066;Ferval vient pour sa soirée de la semaine. Il parle des nains, du Premier sénateur, de sa maison qu'on écarte. Morgane l'écoute, le dirige, le renvoie apaisé à minuit.;Ferval : humeur apaisé +10
+SAL017;00:00;04:30;Hôtel d'Ambrevaux;—;Dort mal. La Passe Rouge, comme souvent.;d'Ambrevaux : humeur hanté +5
+SAL017;04:30;06:30;Corniche au-dessus du port;—;Promenade à cheval dans la brume.;—
+SAL017;06:30;08:30;Salle d'armes de la Colline;—;Sabre contre un vieux sergent. Il garde le bras dur.;—
+SAL017;08:30;10:00;Hôtel d'Ambrevaux;—;Lit le registre de la capitainerie que Pontcarré a fait porter. Deux barques. Des lanternes.;—
+SAL017;10:00;10:05;Marches du Palais du Sénat;SAL092;Gilbert crie « La Passe Rouge ! » au passage de d'Ambrevaux. Deux gardes l'écartent. D'Ambrevaux monte les marches sans se retourner, blanc.;d'Ambrevaux : humeur hanté +10
+SAL017;10:05;10:30;Palais du Sénat;—;Attend la séance seul dans un couloir. Il a les mains froides.;—
+SAL017;10:30;12:15;Palais du Sénat (séance);SAL001,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;Chaînes : votées
+SAL017;12:15;16:00;Hôtel d'Ambrevaux;—;Déjeuner et lettre à son fils Victorin, à Lorvane.;—
+SAL017;16:00;19:00;Cercle des officiers;—;Parle des chaînes comme d'une victoire. Il ne parle pas de Gilbert.;—
+SAL017;19:00;21:00;Hôtel d'Ambrevaux;—;Dîne seul.;—
+SAL017;21:00;23:00;Hôtel d'Ambrevaux;—;Eau-de-vie, seul, devant le feu.;—
+SAL017;23:00;24:00;Hôtel d'Ambrevaux;—;Dort.;—
+SAL018;00:00;06:00;Maison Grisvert;—;Dort.;—
+SAL018;06:00;10:30;Palais du Sénat;—;Compte les voix pour les chaînes et les écrit en double.;—
+SAL018;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL090;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;Décompte des voix noté
+SAL018;12:15;12:25;Boulangerie de Bertille;SAL049;Grisvert achète ses deux gâteaux au miel. Bertille lui demande si le Sénat parle du pain. « Le Sénat parle de chaînes. »;—
+SAL018;12:25;12:30;Place des Poids;—;Traverse la place, un gâteau à la main.;—
+SAL018;12:30;12:50;Hôtel de la Balance;SAL020;Grisvert remet à Malvoisin le compte du vote des chaînes et une ligne de plus : « Le Premier sénateur a reçu ce matin un pli d'Aurelle. » Une pièce d'or change de main.;Argent +1 or
+SAL018;12:50;19:00;Palais du Sénat;—;Met au propre le procès-verbal. Il change un mot dans la copie destinée à Montclar.;Grisvert : tromperie +1
+SAL018;19:00;20:00;Maison Grisvert;—;Souper.;—
+SAL018;20:00;23:00;Maison Grisvert;—;Copie le procès-verbal pour Malvoisin, à la lampe.;—
+SAL018;23:00;24:00;Maison Grisvert;—;Dort.;—
+SAL019;00:00;05:30;Hôtel Aubrac;—;Dort.;—
+SAL019;05:30;07:30;Jardins de l'hôtel Aubrac;—;Taille ses rosiers et pense à Malvoisin.;—
+SAL019;07:30;08:00;Hôtel de la Balance;—;Arrive avant tout le monde.;—
+SAL019;08:00;08:45;Hôtel de la Balance (cabinet de la Grande Peseuse);SAL023;Comptes de la semaine. Isabeau demande si Théo a écrit à la Balance. Constance : « Pas encore. »;—
+SAL019;08:45;13:00;Hôtel de la Balance;—;Affaires de la Guilde. Elle apprend par un commis qu'un courrier impérial est passé à l'aube.;Constance : souvenir « courrier impérial » (40)
+SAL019;13:00;14:15;Hôtel Aubrac;SAL009;Déjeuner. Constance laisse entendre qu'elle ne pleurerait pas si la loi Sarrazin passait. Ermengarde comprend qu'elle vise Malvoisin, pas les endettés.;—
+SAL019;14:15;15:00;Hôtel de la Balance;—;Lit des comptes de Port-Salin.;—
+SAL019;15:00;15:45;Hôtel de la Balance;SAL027;Pesée des prix. Constance demande à Lebœuf combien il reste de grain au quai Nord. Il donne un chiffre trop bas. Elle le note sans le croire.;Constance → Lebœuf : méfiance +5
+SAL019;15:45;19:00;Hôtel de la Balance;—;Pesée des prix du sel et du vin. Elle attend le rapport d'Huguette, qui ne vient pas.;Rapport d'Huguette attendu
+SAL019;19:00;21:00;Hôtel Aubrac;—;Souper seule.;—
+SAL019;21:00;22:00;Hôtel Aubrac;SAL023;Échecs. Isabeau n'a pas de lettre de Théo depuis dix jours. Constance : « Votre frère est un homme prudent. » Isabeau perd la partie.;—
+SAL019;22:00;24:00;Hôtel Aubrac;—;Dort.;—
+SAL020;00:00;06:30;Hôtel Malvoisin;—;Dort.;—
+SAL020;06:30;08:00;Écurie de l'hôtel Malvoisin;—;Brosse lui-même son cheval.;—
+SAL020;08:00;09:00;En route vers le quai Nord;—;Descend vers l'entrepôt en voiture.;—
+SAL020;09:00;09:30;Bureaux de l'entrepôt Malvoisin;SAL025;Malvoisin demande trois contrats de main-d'œuvre vierges pour ce soir, « la barge de Gué-Moreau ». Il fait prévenir Courtecuisse pour 22 h.;—
+SAL020;09:30;12:30;Bureaux de l'entrepôt Malvoisin;—;Comptes de la Cave. Il fait le prix des trois endettés de ce soir.;—
+SAL020;12:30;12:50;Hôtel de la Balance;SAL018;Grisvert remet à Malvoisin le compte du vote des chaînes et une ligne de plus : « Le Premier sénateur a reçu ce matin un pli d'Aurelle. » Une pièce d'or change de main.;Malvoisin : souvenir « pli d'Aurelle » (50)
+SAL020;12:50;15:00;Hôtel de la Balance;—;Déjeuner du conseil. Il pense au pli d'Aurelle et ne le dit à personne.;—
+SAL020;15:00;15:40;Banque Valcourt;SAL012;Malvoisin rend visite à son prêteur. Il parle d'une trêve possible avec l'Empire « et des affaires qui suivraient ». Valcourt ne demande pas comment il le sait.;—
+SAL020;15:40;16:00;Rue de la Colline;—;Va chez Montclar.;—
+SAL020;16:00;16:30;Hôtel Montclar;SAL013;Malvoisin rend visite à Montclar et lui parle du sel de Port-Salin. Puis, en passant : « La loi Sarrazin ruinerait vos saunières. » Montclar promet de réfléchir.;—
+SAL020;16:30;19:30;Visites de la Colline;—;Deux sénateurs de province, un armateur. Il promet du sel, du vin, des voix.;—
+SAL020;19:30;21:00;Hôtel Malvoisin (dîner);SAL021,SAL089;Merlin, au dessert : « L'impératrice veut la petite Castelmar. » Malvoisin réfléchit tout haut : une trêve, ce sont des acheteurs impériaux qui viennent sans se cacher. Séverine sourit, comme on le lui demande.;Malvoisin : envie « Grand Peseur » +5 %
+SAL020;21:00;22:00;Hôtel Malvoisin (bureau);—;Ouvre son tiroir. La clé de la Cave est à sa place. Il descend au quai Nord.;—
+SAL020;22:00;23:00;Cave aux Contrats;SAL026,SAL076;Courtecuisse signe trois contrats antidatés. Malvoisin regarde l'encre sécher.;Trois endettés : légalisés
+SAL020;23:00;24:00;Cave aux Contrats;SAL076;Malvoisin passe devant les grilles et regarde les nouveaux. Il demande si le loup mange. Gâtebois : « Il mord encore. » Malvoisin reste à la Cave pour la barge.;—
+SAL021;00:00;10:00;Hôtel Malvoisin;—;Dort.;—
+SAL021;10:00;10:30;Hôtel Malvoisin (chambre de Séverine);—;Ambre lui coiffe les cheveux. Séverine lui demande si elle dort bien. Ambre ment.;Séverine → Ambre : protection +5
+SAL021;10:30;12:00;Hôtel Malvoisin (chambre de Séverine);—;Toilette. Elle touche le double de la clé, cousu dans un ourlet.;—
+SAL021;12:00;13:00;Jardins de la Colline;—;Promenade.;—
+SAL021;13:00;15:00;Hôtel Malvoisin;—;Déjeuner seule.;—
+SAL021;15:00;17:00;Hôtel Malvoisin (salon de musique);—;Harpe. Elle joue la même phrase vingt fois.;—
+SAL021;17:00;18:00;Hôtel Malvoisin (salon de musique);SAL003;Malvoisin est en visite. Séverine : « Je sais ce qu'il vend. J'ai la clé. » Valérien ne veut pas l'entendre et la fait taire d'un baiser. La porte se ferme.;Séverine → Valérien : confiance -10
+SAL021;18:00;19:30;Hôtel Malvoisin (chambre de Séverine);—;S'habille pour le dîner de son mari.;—
+SAL021;19:30;21:00;Hôtel Malvoisin (dîner);SAL020,SAL089;Merlin, au dessert : « L'impératrice veut la petite Castelmar. » Malvoisin réfléchit tout haut : une trêve, ce sont des acheteurs impériaux qui viennent sans se cacher. Séverine sourit, comme on le lui demande.;Séverine : dégoût +10
+SAL021;21:00;24:00;Hôtel Malvoisin (chambre de Séverine);—;Ne dort pas avant minuit. Elle tient la clé dans sa main.;Séverine : envie « parler » +10 %
+SAL022;00:00;05:00;Hôtel Malvoisin (sous l'escalier);—;Dort.;—
+SAL022;05:00;06:00;Cuisines de l'hôtel Malvoisin;—;Allume le fourneau.;—
+SAL022;06:00;10:00;Hôtel Malvoisin;—;Service.;—
+SAL022;10:00;10:30;Hôtel Malvoisin (chambre de Séverine);—;Coiffe Séverine. Elle dit qu'elle dort bien.;Ambre → Séverine : gratitude +5
+SAL022;10:30;18:00;Hôtel Malvoisin;—;Service. Elle prépare le dessert du dîner.;—
+SAL022;18:00;18:10;Jardin de l'hôtel Malvoisin;—;Voit Valérien Castelmar partir par la petite porte. Elle détourne les yeux.;Ambre : souvenir (40)
+SAL022;18:10;21:00;Hôtel Malvoisin;—;Sert le dîner. Elle entend « la petite Castelmar » et « acheteurs impériaux ».;—
+SAL022;21:00;22:00;Cuisines de l'hôtel Malvoisin;—;Vaisselle.;—
+SAL022;22:00;23:00;Hôtel Malvoisin (sous l'escalier);SAL025;Leçon de lecture à la bougie. Ambre lit trois lignes de son propre contrat. Marion l'aide pour « indéfiniment ».;Ambre : lecture +5 %
+SAL022;23:00;24:00;Hôtel Malvoisin (sous l'escalier);—;Dort.;—
+SAL023;00:00;06:30;Maison Lancier;—;Dort mal. Elle pense à Théo.;Isabeau : inquiétude +5
+SAL023;06:30;08:00;Hôtel de la Balance;—;Ouvre les livres de comptes.;—
+SAL023;08:00;08:45;Hôtel de la Balance (cabinet de la Grande Peseuse);SAL019;Comptes de la semaine. Isabeau demande si Théo a écrit à la Balance. Constance : « Pas encore. »;Isabeau → Constance : méfiance +5
+SAL023;08:45;13:00;Hôtel de la Balance;—;Comptes de Chassagne et de Delorme. Il manque une ligne à Lorvane.;—
+SAL023;13:00;13:20;Sortie du Palais de justice;SAL035;Jaunet trouve sur sa porte l'avis de Crochard : bail racheté, trois mois dus, dix jours pour payer. Isabeau, qui passe, lit par-dessus son épaule et propose de lui prêter. Il refuse avec une blague.;Isabeau → Jaunet : affection +10
+SAL023;13:20;19:00;Hôtel de la Balance;—;Comptes. Elle pense à Jaunet plus qu'aux chiffres.;—
+SAL023;19:00;21:00;Maison Lancier;—;Souper.;—
+SAL023;21:00;22:00;Hôtel Aubrac;SAL019;Échecs. Isabeau n'a pas de lettre de Théo depuis dix jours. Constance : « Votre frère est un homme prudent. » Isabeau perd la partie.;Isabeau : humeur inquiète +10
+SAL023;22:00;24:00;Maison Lancier;—;Écrit une lettre à Théo, qu'elle ne sait où envoyer. Dort tard.;—
+SAL024;00:00;05:30;Maison Crochard;—;Dort avec ses chats.;—
+SAL024;05:30;07:00;Rue des Changeurs;—;Ouvre le comptoir.;—
+SAL024;07:00;07:20;Rue des Changeurs;SAL055;Jacquet apporte deux pièces d'argent. Crochard les compte, puis : « Votre petite a les doigts fins. Une enfant habile, ça se place. » Jacquet sort sans répondre.;Crochard : souvenir « Bonnefoy cédera » (40)
+SAL024;07:20;11:00;Rue des Changeurs;—;Prêts du matin. Un pêcheur, une couturière.;—
+SAL024;11:00;11:30;Rue des Changeurs;—;Envoie son commis afficher l'avis sur la porte de l'avocat Jaunet.;—
+SAL024;11:30;13:00;Rue des Changeurs;—;Soupe. Il compte en mangeant.;—
+SAL024;13:00;13:15;Rue des Changeurs;SAL057;Roseline prend le linge sale de Crochard. Elle fouille les poches dans la rue d'à côté : rien aujourd'hui.;—
+SAL024;13:15;19:30;Rue des Changeurs;—;Comptoir. Il relit la reconnaissance de dette de Bastien dans son coffre, comme chaque jour.;—
+SAL024;19:30;19:45;Rue des Changeurs;SAL072,SAL073;Croc et Jacotte apportent les recouvrements du jour. Crochard compte deux fois.;Argent +6 or
+SAL024;19:45;21:00;Maison Crochard;—;Souper.;—
+SAL024;21:00;23:00;Maison Crochard;—;Comptes avec ses chats sur les genoux.;—
+SAL024;23:00;24:00;Maison Crochard;—;Dort.;—
+SAL025;00:00;06:00;Maison Pelletier;—;Dort.;—
+SAL025;06:00;07:00;En route vers le quai Nord;—;Descend vers l'entrepôt avec sa mère qui part au marché.;—
+SAL025;07:00;09:00;Bureaux de l'entrepôt Malvoisin;—;Écritures.;—
+SAL025;09:00;09:30;Bureaux de l'entrepôt Malvoisin;SAL020;Malvoisin demande trois contrats de main-d'œuvre vierges pour ce soir, « la barge de Gué-Moreau ». Il fait prévenir Courtecuisse pour 22 h.;Marion : souvenir « trois contrats pour la barge » (60)
+SAL025;09:30;19:00;Bureaux de l'entrepôt Malvoisin;—;Prépare les trois contrats vierges. Elle pense aux notes de Bastien, cachées chez elle.;Marion : malaise +10
+SAL025;19:00;20:00;En route vers chez elle;—;Remonte la rue.;—
+SAL025;20:00;20:15;Devant chez Roseline;SAL057;Roseline, rentrant du temple, arrête sa voisine : « Tu travailles chez Malvoisin. Tu as connu un commis qui s'appelait Bastien ? » Marion dit non.;Marion : souvenir « la mère de Bastien » (70)
+SAL025;20:15;21:45;Maison Pelletier;—;Soupe avec sa mère. Elle ne parle pas.;—
+SAL025;21:45;22:00;Rue de la Colline;—;Monte à l'hôtel Malvoisin par l'entrée des domestiques.;—
+SAL025;22:00;23:00;Hôtel Malvoisin (sous l'escalier);SAL022;Leçon de lecture à la bougie. Ambre lit trois lignes de son propre contrat. Marion l'aide pour « indéfiniment ».;Marion : colère +5
+SAL025;23:00;24:00;Maison Pelletier;—;Ne dort pas. Elle relit les notes de Bastien sous la couverture.;Marion : envie « parler à Roseline » +10 %
+SAL026;00:00;07:00;Maison Courtecuisse;—;Dort.;—
+SAL026;07:00;08:00;Maison Courtecuisse;—;Déjeune.;—
+SAL026;08:00;12:00;Étude de Courtecuisse;—;Actes de vente. Un commis de Malvoisin le prévient pour 22 h.;Courtecuisse : rendez-vous à la Cave
+SAL026;12:00;12:45;Temple des Sept Astres;—;Messe de midi.;—
+SAL026;12:45;14:00;Maison Courtecuisse;—;Repas.;—
+SAL026;14:00;18:00;Étude de Courtecuisse;—;Actes et contrats.;—
+SAL026;18:00;18:20;Rue de la Saumure (atelier de Mélusine);SAL075;Courtecuisse commande un contrat « au nom de Gué-Moreau » pour cette nuit. Il paie le prix fort et ne s'assied pas.;—
+SAL026;18:20;19:00;En route vers le temple;—;Remonte vers la place des Astres.;—
+SAL026;19:00;20:30;Temple des Sept Astres (chorale);—;Chorale. Il chante juste et pense aux doubles.;—
+SAL026;20:30;21:45;Maison Courtecuisse;—;Souper. Il prépare un double registre pour les trois contrats.;—
+SAL026;21:45;22:00;En route vers le quai Nord;—;Descend avec une lanterne sourde.;—
+SAL026;22:00;23:00;Cave aux Contrats;SAL076,SAL020;Courtecuisse signe trois contrats antidatés. Malvoisin regarde l'encre sécher.;Courtecuisse : peur +10
+SAL026;23:00;23:30;En route vers le cimetière du temple;—;Remonte par les ruelles, les doubles sous le manteau.;—
+SAL026;23:30;24:00;Cimetière du temple;—;Pose les doubles dans le tombeau de famille. Il ne voit pas le novice.;Vu par Jeannot (sans être reconnu)
+SAL027;00:00;05:30;Maison Lebœuf;—;Dort.;—
+SAL027;05:30;08:30;Greniers du quai Nord;—;Tâte son grain caché. Il est sec, il est cher.;Lebœuf : avidité +5
+SAL027;08:30;09:00;Place des Poids;—;Prépare la pesée.;—
+SAL027;09:00;09:45;Place des Poids;SAL049;Pesée publique. Le grain monte d'un sixième. Le pain reste à 3 deniers « pour aujourd'hui ». Bertille, devant tout le monde : « Et demain ? » Lebœuf : « Demain est un autre jour. »;—
+SAL027;09:45;13:00;Hôtel de la Balance;—;Écrit le nouveau prix du grain.;—
+SAL027;13:00;15:00;Maison Lebœuf;—;Repas long.;—
+SAL027;15:00;15:45;Hôtel de la Balance;SAL019;Pesée des prix. Constance demande à Lebœuf combien il reste de grain au quai Nord. Il donne un chiffre trop bas. Elle le note sans le croire.;—
+SAL027;15:45;19:00;Fours du Grand Marché;—;Tournée des boulangers. Il évite celui de Bertille.;—
+SAL027;19:00;21:00;Maison Lebœuf;—;Souper.;—
+SAL027;21:00;23:30;Combats de coqs du Bas-Port;—;Parie et gagne deux pièces.;—
+SAL027;23:30;24:00;En route vers chez lui;—;Rentre, content.;—
+SAL028;00:00;06:30;Comptoir nain;—;Dort au-dessus du comptoir.;—
+SAL028;06:30;12:00;Comptoir nain;—;Ouvre le comptoir. Change, prêts. Il range les reconnaissances de dette du Sénat dans le coffre du fond.;—
+SAL028;12:00;12:45;Comptoir nain;SAL050,SAL054;Bière de midi. Thrain boit sans parler. Nelda raconte que la Balance lui a encore proposé de l'or pour ses plans. Hordak : « Un plan vendu, c'est un nain de moins. »;—
+SAL028;12:45;15:30;Comptoir nain;—;Change de l'or de Port-Salin.;—
+SAL028;15:30;15:50;Comptoir nain;SAL004;Ivo apporte la commande des chaînes, sous le sceau du Premier sénateur. Hordak : « Payé comment ? » « À la livraison. » Hordak lâche un pigeon : « Le roi Baldrec l'aura avant la nuit. Rappelez au Premier sénateur que l'échéance tombe dans vingt jours. »;Commande de chaînes : envoyée à Baldrec. Hordak : souvenir « le Sénat commande à crédit » (60)
+SAL028;15:50;19:00;Comptoir nain;—;Compte les jours sur le calendrier des échéances : vingt.;Hordak : patience -5
+SAL028;19:00;20:00;Comptoir nain;—;Souper.;—
+SAL028;20:00;21:30;Comptoir nain (veillée);SAL050,SAL054;Thrain : « Un nain qui sait et se tait, c'est un nain qui vend. » Hordak : « Alors parle, ou vends. » Nelda dit qu'on lui a pris un pot de poudre noire. Elle pense à Moineau et n'en dit pas plus.;Hordak : souvenir « Thrain sait quelque chose » (40)
+SAL028;21:30;24:00;Comptoir nain;—;Dort.;—
+SAL029;00:00;06:30;Hôtel Coustel;—;Dort.;—
+SAL029;06:30;08:30;Hôtel Coustel;—;Lit les dossiers que la Balance lui a fait porter.;—
+SAL029;08:30;09:15;Palais de justice;SAL030,SAL035;Jaunet plaide pour un endetté de la corporation des dockers devant Moissan. Coustel fait passer l'affaire dans sa propre chambre, « pour cause d'encombrement ».;—
+SAL029;09:15;13:00;Palais de justice;—;Audiences. Il juge l'affaire du docker endetté « conforme ».;Docker : contrat maintenu
+SAL029;13:00;15:00;Cercle de la Colline;—;Déjeuner au cercle.;—
+SAL029;15:00;17:00;Palais de justice;—;Jugements écrits.;—
+SAL029;17:00;19:00;Hôtel Coustel;—;Se change.;—
+SAL029;19:00;22:30;Opéra de la Colline;—;Opéra. Il dort au deuxième acte.;—
+SAL029;22:30;23:00;Opéra de la Colline (foyer);SAL052;Entracte. Narcisse complimente le juge sur son habit. Coustel lui demande le nom de son tailleur concurrent, pour rire.;—
+SAL029;23:00;24:00;Hôtel Coustel;—;Rentre. Dort.;—
+SAL030;00:00;06:00;Maison Moissan;—;Dort.;—
+SAL030;06:00;08:00;Jardin de la maison Moissan;—;Jardin, avec le chien.;—
+SAL030;08:00;08:30;Palais de justice;—;Prépare l'affaire du docker.;—
+SAL030;08:30;09:15;Palais de justice;SAL029,SAL035;Jaunet plaide pour un endetté de la corporation des dockers devant Moissan. Coustel fait passer l'affaire dans sa propre chambre, « pour cause d'encombrement ».;Moissan → Coustel : respect -10
+SAL030;09:15;13:00;Palais de justice;—;Audiences des petites affaires qu'on lui laisse.;—
+SAL030;13:00;14:00;Maison Moissan;—;Repas.;—
+SAL030;14:00;18:30;Palais de justice;—;Dossiers. Elle recopie pour elle le nom du docker que Coustel lui a pris.;—
+SAL030;18:30;19:00;Maison Moissan;—;Prend le chien.;—
+SAL030;19:00;19:20;Grand Port (quai de la promenade);SAL032;Moissan promène son chien. Jehanne la salue. Elles parlent des enfants disparus. Moissan : « Apportez-moi des noms, sergente. »;—
+SAL030;19:20;20:30;Grand Port (quai de la promenade);—;Finit la promenade jusqu'au bout du quai.;—
+SAL030;20:30;23:00;Maison Moissan;—;Lit.;—
+SAL030;23:00;24:00;Maison Moissan;—;Dort.;—
+SAL031;00:00;05:30;Maison Dufaur;—;Dort.;—
+SAL031;05:30;06:00;Caserne du guet;—;Reçoit l'ordre d'escorter un courrier impérial jusqu'à l'hôtel Castelmar. Il envoie deux gardes.;—
+SAL031;06:00;08:00;Caserne du guet;—;Revue des gardes.;—
+SAL031;08:00;12:30;Rondes de la Colline;—;Rondes. Il salue les voitures.;—
+SAL031;12:30;13:00;Grand Port;—;Descend à la Sirène.;—
+SAL031;13:00;13:45;Sirène Borgne;SAL043;Dufaur raconte que ses gardes ont escorté un courrier impérial à l'aube, jusqu'à l'hôtel Castelmar. Maguelone retient.;—
+SAL031;13:45;15:00;Sirène Borgne;—;Sieste dans la chambre de Maguelone.;—
+SAL031;15:00;15:20;Tour du guet;SAL032;Jehanne fait son rapport : rien. Dufaur signe sans lire. Elle remarque qu'il ne demande jamais rien sur le quai Nord.;—
+SAL031;15:20;19:00;Tour du guet;—;Paperasse. Il signe la disparition d'une plainte.;—
+SAL031;19:00;21:00;Maison Dufaur;—;Souper.;—
+SAL031;21:00;24:00;Sirène Borgne (chambre de Maguelone);—;Attend Maguelone, boit un verre, s'endort.;—
+SAL032;00:00;05:30;Logis de Jehanne;—;Dort.;—
+SAL032;05:30;06:00;Tour du guet;—;Prend son service.;—
+SAL032;06:00;06:15;Tour du guet;SAL033;Jehanne donne ses rondes à Coq. Il bâille et répète les noms des rues de travers.;Jehanne → Coq : mépris +5
+SAL032;06:15;14:30;Rondes du Bas-Port;—;Rondes. Elle compte les enfants du porche : il en manque toujours quatre depuis le printemps.;—
+SAL032;14:30;14:50;Rue de la Saumure;SAL075;Fin de ronde. Jehanne s'arrête devant l'atelier de « peintre d'enseignes ». Elles parlent d'une enseigne qui n'existe pas. Mélusine sait qu'on la regarde, et pas seulement comme une faussaire.;Jehanne → Mélusine : affection +5
+SAL032;14:50;15:00;Rue de la Saumure;—;Remonte vers la tour du guet en souriant malgré elle.;—
+SAL032;15:00;15:20;Tour du guet;SAL031;Jehanne fait son rapport : rien. Dufaur signe sans lire. Elle remarque qu'il ne demande jamais rien sur le quai Nord.;Jehanne : soupçon envers Dufaur +5
+SAL032;15:20;17:30;Cour de la tour du guet;—;Entraînement à la hallebarde.;—
+SAL032;17:30;18:00;En route vers le temple;—;Monte à la place des Astres.;—
+SAL032;18:00;18:40;Porche du temple;SAL091,SAL094;Moineau raconte le chiot à Père Cloche. Jehanne, qui mange sa soupe à côté, entend « Croc » et « demain soir ».;Jehanne : carnet +1 page
+SAL032;18:40;19:00;Grand Port;—;Descend vers les quais.;—
+SAL032;19:00;19:20;Grand Port (quai de la promenade);SAL030;Moissan promène son chien. Jehanne la salue. Elles parlent des enfants disparus. Moissan : « Apportez-moi des noms, sergente. »;Jehanne → Moissan : confiance +5
+SAL032;19:20;22:00;Bas-Port;—;Rôde près du Dé Pipé sans entrer. Elle voit Coq y entrer, puis en sortir.;Jehanne → Coq : soupçon +10
+SAL032;22:00;23:00;Logis de Jehanne;—;Écrit dans son carnet : « Croc. Demain soir. Grelot ? »;—
+SAL032;23:00;24:00;Logis de Jehanne;—;Dort.;—
+SAL033;00:00;02:00;Bas-Port;SAL072,SAL073;Affaires de nuit des Requins. Coq raconte que le guet a reçu un nouveau carnet de plaintes et qu'il l'a « égaré ».;—
+SAL033;02:00;05:45;Logis de Coq;—;Dort.;—
+SAL033;05:45;06:00;Tour du guet;—;Arrive en retard.;—
+SAL033;06:00;06:15;Tour du guet;SAL032;Jehanne donne ses rondes à Coq. Il bâille et répète les noms des rues de travers.;—
+SAL033;06:15;14:00;Rondes du port;—;Rondes paresseuses. Il dort une heure derrière les tonneaux.;—
+SAL033;14:00;15:00;Bas-Port;—;Mange une friture.;—
+SAL033;15:00;15:40;Cour du Dé Pipé;SAL072,SAL095,SAL094,SAL056,SAL085;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;—
+SAL033;15:40;20:00;Dé Pipé;—;Joue aux cartes et perd. Il remet son tabard sans bouton.;—
+SAL033;20:00;23:40;Bas-Port;—;Traîne pour Croc. Il relève les heures des rondes de Jehanne pour le lendemain.;—
+SAL033;23:40;24:00;Bas-Port;SAL072;Coq donne à Croc les heures des rondes de Jehanne pour demain.;Argent +5 argent
+SAL034;00:00;05:30;Maison du bourreau;—;Dort.;—
+SAL034;05:30;08:30;Jardin du bourreau;—;Bêche ses salades.;—
+SAL034;08:30;12:45;Tour de la justice;—;Entretien des cordes et des outils. Pas de question ordonnée aujourd'hui.;—
+SAL034;12:45;13:00;Grand Marché;—;Fait la queue chez la boulangère.;—
+SAL034;13:00;13:10;Boulangerie de Bertille;SAL049;« Deux pains. Et un pour les petits. » Bertille le regarde enfin dans les yeux.;Lenoir : humeur joie discrète +10
+SAL034;13:10;15:00;Maison du bourreau;—;Mange un pain, garde l'autre pour les petits du porche.;—
+SAL034;15:00;19:30;Maison du bourreau;—;Sculpte un oiseau dans du tilleul.;—
+SAL034;19:30;20:00;Porche du temple;—;Laisse le pain aux mendiants du porche, sans attendre.;—
+SAL034;20:00;21:00;Temple des Sept Astres (nef);—;Prie pour l'homme-bête qu'il a pendu.;—
+SAL034;21:00;24:00;Maison du bourreau;—;Dort.;—
+SAL035;00:00;06:30;Logis de Jaunet;—;Dort.;—
+SAL035;06:30;08:30;Logis de Jaunet;—;Relit son plaidoyer pour le docker.;—
+SAL035;08:30;09:15;Palais de justice;SAL029,SAL030;Jaunet plaide pour un endetté de la corporation des dockers devant Moissan. Coustel fait passer l'affaire dans sa propre chambre, « pour cause d'encombrement ».;Jaunet : humeur furieux +10
+SAL035;09:15;13:00;Palais de justice;—;Deux petites affaires devant Moissan. Il en gagne une.;—
+SAL035;13:00;13:20;Sortie du Palais de justice;SAL023;Jaunet trouve sur sa porte l'avis de Crochard : bail racheté, trois mois dus, dix jours pour payer. Isabeau, qui passe, lit par-dessus son épaule et propose de lui prêter. Il refuse avec une blague.;Jaunet : délai « bail » 10 jours
+SAL035;13:20;14:00;En route vers la Fourrière;—;Mange une pomme en marchant.;—
+SAL035;14:00;15:30;Fourrière (permanence de Jaunet);—;Relit des contrats pour des hommes-bêtes.;—
+SAL035;15:30;16:30;Fourrière (permanence de Jaunet);SAL080;Tobias amène deux voisins qui ont des contrats à relire. Jaunet relit, gratuitement. Il ne parle pas de son loyer.;—
+SAL035;16:30;17:45;Fourrière (permanence de Jaunet);—;Permanence.;—
+SAL035;17:45;18:00;Rue des Ateliers;—;Va à la réunion.;—
+SAL035;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL080,SAL053,SAL015,SAL087,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;—
+SAL035;18:50;22:00;Logis de Jaunet;—;Compte ce qu'il a. Il lui manque deux mois et demi de loyer.;Jaunet : inquiétude +10
+SAL035;22:00;24:00;Logis de Jaunet;—;Écrit le discours de la sénatrice pour le vote.;—
+SAL036;00:00;04:30;Maison Tassin;—;Dort.;—
+SAL036;04:30;08:00;Grand Port;—;Quais. Elle compte ses deux navires.;—
+SAL036;08:00;12:00;Bureau de l'armement Tassin;—;Affaires. Une lettre de Malvoisin pour le prochain voyage.;—
+SAL036;12:00;14:00;Maison Tassin;—;Repas.;—
+SAL036;14:00;15:00;Grand Port;—;Quais.;—
+SAL036;15:00;15:30;Chantier du quai Sud;SAL010,SAL045;Orlan inspecte la quille de son trois-mâts. Tassin passe. Orlan : « Prenez garde aux passes, Armelle. La mer est traîtresse. » Gerbaud baisse les yeux.;Tassin → Orlan : haine +5
+SAL036;15:30;19:15;Grand Port;—;Regarde longtemps le trois-mâts d'Orlan.;Tassin : rancune +5
+SAL036;19:15;19:30;Sirène Borgne;SAL037;Tassin glisse une bourse à Pontcarré pour le prochain navire. Il la range sans compter.;Argent -3 or
+SAL036;19:30;21:00;Sirène Borgne;—;Boit avec ses capitaines.;—
+SAL036;21:00;24:00;Maison Tassin;—;Dort.;—
+SAL037;00:00;05:00;Maison Pontcarré;—;Dort.;—
+SAL037;05:00;05:30;Capitainerie;—;Ouvre le registre.;—
+SAL037;05:30;05:50;Capitainerie;SAL044;Ilyan déclare les deux barques de pêche manquantes. Pontcarré l'inscrit au registre et ajoute « brume » dans la marge.;Rumeur « la mer prend des barques » (40)
+SAL037;05:50;12:00;Capitainerie;—;Douane. Il fait porter une copie du registre au sénateur d'Ambrevaux.;—
+SAL037;12:00;12:40;Sirène Borgne;SAL043;Pontcarré mange ses crabes et récite à Maguelone un vers qu'il destine à « une dame de la Colline ». Elle rit.;—
+SAL037;12:40;14:00;Capitainerie;—;Écritures.;—
+SAL037;14:00;19:15;Grand Port;—;Quais. Il taxe un cinquième de tout.;—
+SAL037;19:15;19:30;Sirène Borgne;SAL036;Tassin glisse une bourse à Pontcarré pour le prochain navire. Il la range sans compter.;Argent +3 or
+SAL037;19:30;21:00;Maison Pontcarré;—;Souper.;—
+SAL037;21:00;22:30;Maison Pontcarré;—;Écrit un poème pour Huguette, sur une lettre « venue de loin ».;Pontcarré : poème +1
+SAL037;22:30;24:00;Maison Pontcarré;—;Dort.;—
+SAL038;00:00;01:30;Maison Quéméneur;—;Dort.;—
+SAL038;01:30;03:30;Quai Nord;SAL039;Contrebande de la Balance. Une barque sans feu, des balles de soie, quelques caisses. Bras-de-Fer ne demande pas ce qu'il y a dedans.;Prime de contrebande +2 or
+SAL038;03:30;05:00;Maison Quéméneur;—;Dort un peu.;—
+SAL038;05:00;05:30;Quai Sud;SAL039,SAL040,SAL041,SAL087;Appel des dockers. Bras-de-Fer annonce qu'il n'y aura pas de denier de plus cette saison. Personne ne répond. Toussaint crache par terre.;—
+SAL038;05:30;12:00;Quai Sud;—;Dirige le déchargement.;—
+SAL038;12:00;12:30;Quai Sud (soupe);SAL041,SAL039;Toussaint, à voix basse : « Le jour où la Cave reçoit, on croise les bras. » Bras-de-Fer : « Mes hommes mangent avec la prime. » Yvon écoute et se tait.;—
+SAL038;12:30;18:30;Quai Sud;—;Quais.;—
+SAL038;18:30;18:40;Quai du Grand Port;SAL047;Bras-de-Fer donne une pièce à Loïc sans rien dire et repart.;—
+SAL038;18:40;19:00;Grand Port;—;Va à la Sirène sans se retourner vers Margaux.;—
+SAL038;19:00;21:00;Sirène Borgne;—;Boit avec ses contremaîtres.;—
+SAL038;21:00;24:00;Maison Quéméneur;—;Dort.;—
+SAL039;00:00;01:30;Baraque d'Yvon;—;Dort.;—
+SAL039;01:30;03:30;Quai Nord;SAL038;Contrebande de la Balance. Une barque sans feu, des balles de soie, quelques caisses. Bras-de-Fer ne demande pas ce qu'il y a dedans.;Yvon : fatigue +10
+SAL039;03:30;03:45;En route vers le Grand Marché;—;Porte trois balles de soie sur l'épaule.;—
+SAL039;03:45;04:15;Arrière-boutique de Riboud;SAL048;Yvon porte trois balles de soie de contrebande à la porte de Riboud, qui les compte en chemise de nuit.;Argent +2 argent
+SAL039;04:15;05:00;Baraque d'Yvon;—;Somnole.;—
+SAL039;05:00;05:30;Quai Sud;SAL038,SAL040,SAL041,SAL087;Appel des dockers. Bras-de-Fer annonce qu'il n'y aura pas de denier de plus cette saison. Personne ne répond. Toussaint crache par terre.;—
+SAL039;05:30;12:00;Quai Sud;—;Décharge des sacs de sel.;—
+SAL039;12:00;12:30;Quai Sud (soupe);SAL041,SAL038;Toussaint, à voix basse : « Le jour où la Cave reçoit, on croise les bras. » Bras-de-Fer : « Mes hommes mangent avec la prime. » Yvon écoute et se tait.;—
+SAL039;12:30;18:00;Quai Sud;—;Quais.;—
+SAL039;18:00;18:30;Quai du Grand Port;SAL046;Yvon fait rire Margaux en imitant le receveur Pontcarré qui déclame. Elle lui donne une claque sur l'épaule.;Yvon → Margaux : affection +5
+SAL039;18:30;20:00;Sirène Borgne;—;Boit une bière.;—
+SAL039;20:00;20:15;Sirène Borgne;SAL042;Saule, à Yvon : « Dis à Toussaint : pas avant la nuit sans lune. » Yvon hoche la tête.;Message pour Toussaint
+SAL039;20:15;21:30;Sirène Borgne;—;Finit sa bière.;—
+SAL039;21:30;21:45;En route vers le quai Nord;—;Cherche Toussaint.;—
+SAL039;21:45;22:00;Quai Nord;SAL041;Yvon passe le mot de Saule : « Pas avant la nuit sans lune. » Toussaint serre les dents.;—
+SAL039;22:00;23:00;Rue de la Saumure (chambre louée);SAL093;Yvon monte une heure chez Nanette. Il paie, puis il raconte un rêve qu'il fait souvent, un garçon enchaîné. Elle ne rit pas.;Argent -2 argent
+SAL039;23:00;24:00;Baraque d'Yvon;—;Dort. Rêve du garçon enchaîné.;Yvon : cauchemar
+SAL040;00:00;04:45;Baraquement des endettés;—;Dort.;—
+SAL040;04:45;05:00;Quai Sud;—;Arrive à l'appel.;—
+SAL040;05:00;05:30;Quai Sud;SAL038,SAL039,SAL041,SAL087;Appel des dockers. Bras-de-Fer annonce qu'il n'y aura pas de denier de plus cette saison. Personne ne répond. Toussaint crache par terre.;—
+SAL040;05:30;12:30;Quai Sud;—;Porte des sacs. Elle porte plus que les hommes.;—
+SAL040;12:30;12:50;Quai Sud;SAL041;Toussaint partage son pain avec Ursule. Ils ne parlent pas de la grève. Elle compte ses pièces : neuf.;Ursule : 9 or restant
+SAL040;12:50;19:00;Quai Sud;—;Quais.;—
+SAL040;19:00;20:00;Quai Sud;—;Repas des endettés.;—
+SAL040;20:00;24:00;Baraquement des endettés;—;Pense à ses enfants à Hautecombe. Dort.;—
+SAL041;00:00;04:30;Citerne sous les quais;—;Veille sur deux fugitifs. Il leur laisse son manteau.;—
+SAL041;04:30;05:00;Quai Sud;—;Remonte par la trappe sans bruit.;—
+SAL041;05:00;05:30;Quai Sud;SAL038,SAL039,SAL040,SAL087;Appel des dockers. Bras-de-Fer annonce qu'il n'y aura pas de denier de plus cette saison. Personne ne répond. Toussaint crache par terre.;Toussaint → Bras-de-Fer : respect -5
+SAL041;05:30;12:00;Quai Sud;—;Quais.;—
+SAL041;12:00;12:30;Quai Sud (soupe);SAL038,SAL039;Toussaint, à voix basse : « Le jour où la Cave reçoit, on croise les bras. » Bras-de-Fer : « Mes hommes mangent avec la prime. » Yvon écoute et se tait.;Toussaint → Bras-de-Fer : respect -10. Toussaint : envie « la grève » +5 %
+SAL041;12:30;12:50;Quai Sud;SAL040;Toussaint partage son pain avec Ursule. Ils ne parlent pas de la grève. Elle compte ses pièces : neuf.;Toussaint → Ursule : affection +5
+SAL041;12:50;17:45;Quai Sud;—;Quais.;—
+SAL041;17:45;18:00;Rue des Ateliers;—;Monte à la réunion.;—
+SAL041;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL035,SAL080,SAL053,SAL015,SAL087;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;Toussaint : impatience +10
+SAL041;18:50;21:00;Citerne sous les quais;—;Porte du pain aux fugitifs.;—
+SAL041;21:00;21:45;Quai Nord;—;Voit de loin la Marie-Moreau accoster et trois endettés entrer dans l'entrepôt. « La Cave a reçu. »;Toussaint : envie « la grève » +15 %
+SAL041;21:45;22:00;Quai Nord;SAL039;Yvon passe le mot de Saule : « Pas avant la nuit sans lune. » Toussaint serre les dents.;Toussaint : patience forcée
+SAL041;22:00;24:00;Citerne sous les quais;—;Nuit près de la citerne. Il dort assis.;Citerne menacée par Sourde (il l'ignore)
+SAL042;00:00;05:30;Cotre la Mouette rieuse;—;Dort à bord.;—
+SAL042;05:30;10:00;Cotre la Mouette rieuse;—;Répare une voile.;—
+SAL042;10:00;10:20;Grand Port;SAL047;Loïc, entre deux courses, demande à Saule de le prendre sur la Mouette rieuse. Elle rit : « Quand tu sauras nager sous l'eau froide. »;—
+SAL042;10:20;12:00;Halle aux poissons;—;Achète du poisson salé pour les nuits en mer.;—
+SAL042;12:00;14:00;Cotre la Mouette rieuse;—;Repas à bord.;—
+SAL042;14:00;17:00;Cotre la Mouette rieuse;—;Sieste.;—
+SAL042;17:00;20:00;Cotre la Mouette rieuse;—;Compte les jours jusqu'à la nuit sans lune.;—
+SAL042;20:00;20:15;Sirène Borgne;SAL039;Saule, à Yvon : « Dis à Toussaint : pas avant la nuit sans lune. » Yvon hoche la tête.;—
+SAL042;20:15;22:00;Sirène Borgne;—;Boit. Elle évite la table de Tassin.;—
+SAL042;22:00;24:00;Cotre la Mouette rieuse;—;Dort.;—
+SAL043;00:00;01:00;Sirène Borgne;SAL011;Gaétan boit seul au comptoir. Maguelone le met dehors à la fermeture.;—
+SAL043;01:00;01:30;Sirène Borgne;—;Ferme la taverne.;—
+SAL043;01:30;04:45;Sirène Borgne (chambre de Maguelone);—;Dort.;—
+SAL043;04:45;05:00;En route vers la halle aux poissons;—;Descend à la halle dans la brume.;—
+SAL043;05:00;05:30;Halle aux poissons;SAL046;Maguelone achète la marée du jour pour la Sirène. Margaux lui fait payer le congre plus cher que la veille.;Argent -1 or
+SAL043;05:30;07:00;Sirène Borgne;—;Prépare la soupe de poisson.;—
+SAL043;07:00;12:00;Sirène Borgne;—;Service.;—
+SAL043;12:00;12:40;Sirène Borgne;SAL037;Pontcarré mange ses crabes et récite à Maguelone un vers qu'il destine à « une dame de la Colline ». Elle rit.;—
+SAL043;12:40;13:00;Sirène Borgne;—;Service.;—
+SAL043;13:00;13:45;Sirène Borgne;SAL031;Dufaur raconte que ses gardes ont escorté un courrier impérial à l'aube, jusqu'à l'hôtel Castelmar. Maguelone retient.;Maguelone : souvenir « courrier d'Aurelle » (55)
+SAL043;13:45;15:30;Sirène Borgne (chambre de Maguelone);—;Sieste.;—
+SAL043;15:30;19:00;Sirène Borgne;—;Service.;—
+SAL043;19:00;20:30;Sirène Borgne;SAL014,SAL013;Montclar : « Relisez-moi votre loi vous-même. » Elle la lit à voix haute. Ce n'est pas ce que Grisvert lui avait lu. Il pose sa fourchette.;—
+SAL043;20:30;23:00;Sirène Borgne;—;Service du soir. Tassin, Saule, Bras-de-Fer, chacun à sa table.;—
+SAL043;23:00;23:40;Sirène Borgne;SAL074;Fouine achète le courrier impérial à Maguelone. Il tient maintenant trois secrets : Sorbier, la maladie du Premier sénateur, le mariage.;Argent +2 or
+SAL043;23:40;24:00;Sirène Borgne;—;Range les bancs.;—
+SAL044;00:00;03:45;Logis d'Ilyan;—;Dort.;—
+SAL044;03:45;05:30;Les passes;—;Sonde les passes à la marée. Il compte les barques de pêche au mouillage : deux sont parties hier par temps clair, aucune n'est rentrée.;Ilyan : souvenir « deux barques manquent » (60)
+SAL044;05:30;05:50;Capitainerie;SAL037;Ilyan déclare les deux barques de pêche manquantes. Pontcarré l'inscrit au registre et ajoute « brume » dans la marge.;Rumeur « la mer prend des barques » (40)
+SAL044;05:50;08:00;Grand Port;—;Attend le premier navire.;—
+SAL044;08:00;14:00;Les passes;—;Pilote deux navires dans les passes.;—
+SAL044;14:00;16:15;Plage sous la jetée;—;Nage dans l'eau froide.;—
+SAL044;16:15;17:00;Ambassade d'Aëlinde;SAL090;Ilyan raconte les barques perdues et les lanternes vues au large. Lithiel écoute, sans rien écrire.;Ilyan : devoir rendu
+SAL044;17:00;20:00;Logis d'Ilyan;—;Repas.;—
+SAL044;20:00;20:30;Jetée;SAL004;Ivo marche seul et regarde l'ouest. L'éclaireuse qu'on lui annonce ne s'est toujours pas montrée. Ilyan est au bout de la jetée. Les deux se saluent sans parler.;—
+SAL044;20:30;21:30;Jetée;—;Voit arriver la fille du Premier sénateur. Elle parle au secrétaire. Il ne s'approche pas.;Ilyan : souvenir « la fille du Premier sénateur et le secrétaire » (45)
+SAL044;21:30;24:00;Logis d'Ilyan;—;Dort.;—
+SAL045;00:00;05:30;Maison Coquelin;—;Dort.;—
+SAL045;05:30;06:00;Chantier du quai Sud;—;Ouvre le chantier.;—
+SAL045;06:00;06:20;Chantier du quai Sud;SAL047;Loïc prend les messages du jour au chantier. Gerbaud lui donne un quignon en plus.;—
+SAL045;06:20;12:00;Chantier du quai Sud;—;Chantier. La quille du trois-mâts d'Orlan.;—
+SAL045;12:00;13:00;Chantier du quai Sud;—;Repas sur place. Il relit la lettre de Ferrat sur Thorga et ne répond pas.;Gerbaud : hésitation +5
+SAL045;13:00;15:00;Chantier du quai Sud;—;Chantier.;—
+SAL045;15:00;15:30;Chantier du quai Sud;SAL010,SAL036;Orlan inspecte la quille de son trois-mâts. Tassin passe. Orlan : « Prenez garde aux passes, Armelle. La mer est traîtresse. » Gerbaud baisse les yeux.;Gerbaud : souvenir (40)
+SAL045;15:30;18:00;Chantier du quai Sud;—;Chantier.;—
+SAL045;18:00;24:00;Maison Coquelin;—;Souper, puis dort.;—
+SAL046;00:00;03:30;Maison des Le Fur;—;Dort.;—
+SAL046;03:30;05:00;Halle aux poissons;—;La criée. Margaux crie les prix plus fort que tout le monde et prête deux pièces d'argent à une voisine, à un sixième la semaine.;Créance +2 argent
+SAL046;05:00;05:30;Halle aux poissons;SAL043;Maguelone achète la marée du jour pour la Sirène. Margaux lui fait payer le congre plus cher que la veille.;—
+SAL046;05:30;13:00;Halle aux poissons;—;Vente.;—
+SAL046;13:00;14:00;Maison des Le Fur;—;Repas.;—
+SAL046;14:00;17:30;Maison des Le Fur;—;Sieste.;—
+SAL046;17:30;18:00;Quai du Grand Port;—;Ragots avec les poissonnières.;—
+SAL046;18:00;18:30;Quai du Grand Port;SAL039;Yvon fait rire Margaux en imitant le receveur Pontcarré qui déclame. Elle lui donne une claque sur l'épaule.;—
+SAL046;18:30;20:00;Quai du Grand Port;—;Voit Bras-de-Fer donner une pièce à Loïc. Elle continue les ragots sans entendre.;Margaux : inquiétude +5
+SAL046;20:00;21:00;Maison des Le Fur;SAL047;Souper. Margaux demande à Loïc pourquoi Bras-de-Fer lui a donné une pièce. Loïc hausse les épaules.;Margaux : inquiétude +5
+SAL046;21:00;24:00;Maison des Le Fur;—;Dort.;—
+SAL047;00:00;05:30;Maison des Le Fur;—;Dort.;—
+SAL047;05:30;06:00;En route vers le quai Sud;—;Court au chantier.;—
+SAL047;06:00;06:20;Chantier du quai Sud;SAL045;Loïc prend les messages du jour au chantier. Gerbaud lui donne un quignon en plus.;—
+SAL047;06:20;10:00;Grand Port;—;Porte des messages pour Gerbaud et Maguelone.;—
+SAL047;10:00;10:20;Grand Port;SAL042;Loïc, entre deux courses, demande à Saule de le prendre sur la Mouette rieuse. Elle rit : « Quand tu sauras nager sous l'eau froide. »;Loïc : envie « la Mouette » +5 %
+SAL047;10:20;16:00;Grand Port;—;Courses.;—
+SAL047;16:00;17:30;Grève du Bas-Port;SAL094,SAL095,SAL056,SAL085;Jeux sur la grève. Grelot ne parle que du chiot. Moineau, à part, montre à Loïc le bouton : « C'est celui de Coq. » Loïc dit qu'il a vu le même tabard au quai Nord.;Loïc : souvenir « le bouton de Coq » (50)
+SAL047;17:30;18:30;Quai du Grand Port;—;Dernières courses.;—
+SAL047;18:30;18:40;Quai du Grand Port;SAL038;Bras-de-Fer donne une pièce à Loïc sans rien dire et repart.;Argent +1 argent
+SAL047;18:40;20:00;Grand Port;—;Range la pièce dans sa chaussure.;—
+SAL047;20:00;21:00;Maison des Le Fur;SAL046;Souper. Margaux demande à Loïc pourquoi Bras-de-Fer lui a donné une pièce. Loïc hausse les épaules.;—
+SAL047;21:00;24:00;Maison des Le Fur;—;Dort.;—
+SAL048;00:00;03:45;Maison Riboud;—;Dort.;—
+SAL048;03:45;04:15;Arrière-boutique de Riboud;SAL039;Yvon porte trois balles de soie de contrebande à la porte de Riboud, qui les compte en chemise de nuit.;Soie de contrebande +3 balles
+SAL048;04:15;06:30;Maison Riboud;—;Dort.;—
+SAL048;06:30;11:30;Boutique de Riboud;—;Ouvre la boutique. Il mélange la soie de contrebande à la bonne.;—
+SAL048;11:30;12:00;Boutique de Riboud;SAL089;Merlin achète deux coupons de soie verte et paie en monnaie de l'Empire. Riboud range les pièces à part.;Argent +4 or (monnaie impériale)
+SAL048;12:00;13:00;Boutique de Riboud;—;Repas.;—
+SAL048;13:00;19:00;Boutique de Riboud;—;Vente. Un commis de Narcisse vient chercher du bleu nuit.;—
+SAL048;19:00;20:00;Maison Riboud;—;Se change.;—
+SAL048;20:00;23:00;Salle des marchands;—;Dîner de marchands. On parle du grain.;—
+SAL048;23:00;24:00;Maison Riboud;—;Dort.;—
+SAL049;00:00;01:45;Logis de Bertille;—;Dort.;—
+SAL049;01:45;06:00;Fournil de Bertille;—;Fournil. Pétrit, enfourne, défourne.;—
+SAL049;06:00;06:30;Grand Marché;—;Ouvre la vente.;—
+SAL049;06:30;06:45;Grand Marché;SAL094;Moineau vole une pomme à l'étal voisin. Bertille la voit et lui tend en plus un quignon.;—
+SAL049;06:45;09:00;Boulangerie de Bertille;—;Vente.;—
+SAL049;09:00;09:45;Place des Poids;SAL027;Pesée publique. Le grain monte d'un sixième. Le pain reste à 3 deniers « pour aujourd'hui ». Bertille, devant tout le monde : « Et demain ? » Lebœuf : « Demain est un autre jour. »;Bertille → Lebœuf : affection -10. Rumeur « le pain à 4 deniers » (60)
+SAL049;09:45;12:15;Boulangerie de Bertille;—;Vente. Tout le monde parle du grain.;—
+SAL049;12:15;12:25;Boulangerie de Bertille;SAL018;Grisvert achète ses deux gâteaux au miel. Bertille lui demande si le Sénat parle du pain. « Le Sénat parle de chaînes. »;—
+SAL049;12:25;13:00;Boulangerie de Bertille;—;Vente.;—
+SAL049;13:00;13:10;Boulangerie de Bertille;SAL034;« Deux pains. Et un pour les petits. » Bertille le regarde enfin dans les yeux.;Bertille → Lenoir : affection +5
+SAL049;13:10;14:00;Boulangerie de Bertille;—;Ferme et range.;—
+SAL049;14:00;16:30;Logis de Bertille;—;Sieste. Elle sourit en s'endormant.;Bertille : humeur +5
+SAL049;16:30;17:00;Fournil de Bertille;—;Prépare le banc pour la réunion.;—
+SAL049;17:00;18:00;Fournil de Bertille;—;Réunion des boulangers. Si le pain passe à 4 deniers, ils éteignent tous leurs fours un jour entier. Bertille ira demander des affiches à Prosper.;Boulangers : grève « fours éteints » prête
+SAL049;18:00;20:00;Logis de Bertille;—;Souper.;—
+SAL049;20:00;20:45;Devant l'échoppe de Jacquet;SAL055,SAL056;Veillée de voisins. Jacquet demande à Bertille si Crochard l'a déjà menacée. « Il menace tout le monde. Moi, j'ai un four. »;—
+SAL049;20:45;24:00;Logis de Bertille;—;Dort.;—
+SAL050;00:00;05:30;Logis de Thrain;—;Dort.;—
+SAL050;05:30;12:00;Forge de Thrain;—;Forge des fers de carreaux.;—
+SAL050;12:00;12:45;Comptoir nain;SAL028,SAL054;Bière de midi. Thrain boit sans parler. Nelda raconte que la Balance lui a encore proposé de l'or pour ses plans. Hordak : « Un plan vendu, c'est un nain de moins. »;—
+SAL050;12:45;16:00;Forge de Thrain;—;Forge.;—
+SAL050;16:00;16:30;Forge de Thrain;SAL016;Ferval commande deux mille carreaux. Thrain tourne un carreau dans ses doigts, regarde sa propre marque, et accepte sans le regarder.;Thrain → Ferval : respect -20
+SAL050;16:30;18:00;Forge de Thrain;—;Forge. Il frappe plus fort que nécessaire.;—
+SAL050;18:00;20:00;Logis de Thrain;—;Souper.;—
+SAL050;20:00;21:30;Comptoir nain (veillée);SAL028,SAL054;Thrain : « Un nain qui sait et se tait, c'est un nain qui vend. » Hordak : « Alors parle, ou vends. » Nelda dit qu'on lui a pris un pot de poudre noire. Elle pense à Moineau et n'en dit pas plus.;Thrain : envie « parler » +10 %
+SAL050;21:30;24:00;Logis de Thrain;—;Dort mal.;—
+SAL051;00:00;01:00;Quartier des Bains;—;Livraisons de nuit.;—
+SAL051;01:00;01:20;Jardin d'Ambre (porte de service);SAL062;Viviane livre ses fioles à Philippine. On parle bas, on paie comptant.;—
+SAL051;01:20;03:00;Quartier des Bains;—;Livraisons. Une fiole pour Morgane, du baume pour Loïs.;—
+SAL051;03:00;11:00;Boutique de Viviane;—;Dort.;—
+SAL051;11:00;14:00;Boutique de Viviane;—;Prépare une tisane « pour le cœur » qu'on viendra chercher bientôt.;—
+SAL051;14:00;20:00;Boutique de Viviane;—;Boutique.;—
+SAL051;20:00;21:00;Boutique de Viviane;—;Souper.;—
+SAL051;21:00;23:40;Quartier des Bains;—;Livraisons de nuit. Loïs la fait monter au grenier.;—
+SAL051;23:40;24:00;Bains de Corail (grenier);SAL068,SAL069;Viviane soigne la toux de Mirabelle. Mirabelle, tout bas : « Vous pourriez porter un mot ? » Viviane ne répond pas. Quentin, dans le noir, fait trembler une flamme qu'il n'a pas touchée.;Viviane : souvenir « un mot à porter » (40)
+SAL052;00:00;08:00;Logis de Narcisse;—;Dort.;—
+SAL052;08:00;11:20;Atelier de Narcisse;—;Coupe une robe pour la Colline.;—
+SAL052;11:20;12:00;Atelier de Narcisse;SAL002;Essayage. Narcisse, pour briller, glisse qu'« un sénateur des Libres aime un peu trop la Fourrière ». Mélisande sourit et retient. Narcisse le regrette aussitôt.;Narcisse : remords +10. Rumeur « Sorbier et la Fourrière » (30)
+SAL052;12:00;18:00;Atelier de Narcisse;—;Atelier. Il pense à Sorbier et pique son doigt deux fois.;—
+SAL052;18:00;22:00;Hôtels de la Colline;—;Essayages à domicile. Il ne parle de personne.;—
+SAL052;22:00;22:30;Opéra de la Colline;—;Arrive pour le dernier acte.;—
+SAL052;22:30;23:00;Opéra de la Colline (foyer);SAL029;Entracte. Narcisse complimente le juge sur son habit. Coustel lui demande le nom de son tailleur concurrent, pour rire.;—
+SAL052;23:00;24:00;Opéra de la Colline;—;Souper après l'opéra.;—
+SAL053;00:00;02:00;Cave de Prosper;—;Presse cachée. Il tire un pamphlet sur la loi Sarrazin.;—
+SAL053;02:00;07:30;Logis de Prosper;—;Dort.;—
+SAL053;07:30;12:00;Boutique de Prosper;—;Copie un acte pour un notaire.;—
+SAL053;12:00;12:30;Boutique de Prosper;—;Thé.;—
+SAL053;12:30;18:00;Boutique de Prosper;—;Copies. Il prépare l'arrière-boutique pour la réunion.;—
+SAL053;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL035,SAL080,SAL015,SAL087,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;—
+SAL053;18:50;22:00;Logis de Prosper;—;Souper.;—
+SAL053;22:00;24:00;Cave de Prosper;—;Presse cachée. Il tire une affiche : « Le pain à 4 deniers ? Qui le mange ? »;Tracts : 200 exemplaires
+SAL054;00:00;06:30;Logis de Nelda;—;Dort.;—
+SAL054;06:30;10:00;Atelier de Nelda;—;Répare une horloge.;—
+SAL054;10:00;10:30;Atelier de Nelda;—;Un commis de la Balance revient pour ses plans. Elle refuse encore.;Nelda : refus de la Balance
+SAL054;10:30;12:00;Atelier de Nelda;—;Atelier.;—
+SAL054;12:00;12:45;Comptoir nain;SAL028,SAL050;Bière de midi. Thrain boit sans parler. Nelda raconte que la Balance lui a encore proposé de l'or pour ses plans. Hordak : « Un plan vendu, c'est un nain de moins. »;—
+SAL054;12:45;17:00;Atelier de Nelda;—;Atelier.;—
+SAL054;17:00;17:30;Atelier de Nelda;—;Découvre qu'il manque un pot de poudre noire sur l'étagère. Elle pense à Moineau.;Nelda : souvenir « la poudre manquante » (50)
+SAL054;17:30;20:00;Atelier de Nelda;—;Atelier.;—
+SAL054;20:00;21:30;Comptoir nain (veillée);SAL028,SAL050;Thrain : « Un nain qui sait et se tait, c'est un nain qui vend. » Hordak : « Alors parle, ou vends. » Nelda dit qu'on lui a pris un pot de poudre noire. Elle pense à Moineau et n'en dit pas plus.;—
+SAL054;21:30;24:00;Logis de Nelda;—;Dort.;—
+SAL055;00:00;05:30;Logis de Jacquet;—;Dort mal.;—
+SAL055;05:30;07:00;Échoppe de Jacquet;—;Ouvre l'échoppe, puis part chez Crochard.;—
+SAL055;07:00;07:20;Rue des Changeurs;SAL024;Jacquet apporte deux pièces d'argent. Crochard les compte, puis : « Votre petite a les doigts fins. Une enfant habile, ça se place. » Jacquet sort sans répondre.;Jacquet : peur 70
+SAL055;07:20;07:30;Rue des Ateliers;—;Rentre lentement.;—
+SAL055;07:30;09:45;Échoppe de Jacquet;SAL056;Suzon range les lacets et cire les bottes. Son père ne chante pas ce matin.;—
+SAL055;09:45;12:00;Échoppe de Jacquet;—;Ressemelle des bottes. Il ne chante pas.;—
+SAL055;12:00;12:45;Échoppe de Jacquet;SAL056;Repas. Jacquet coupe le pain en deux parts égales et regarde les mains de sa fille.;—
+SAL055;12:45;14:30;Échoppe de Jacquet;SAL056;Suzon aide encore, puis dit qu'elle va « chez la boulangère ». Jacquet la laisse partir.;—
+SAL055;14:30;19:00;Échoppe de Jacquet;—;Travaille sans chanter.;—
+SAL055;19:00;20:00;Échoppe de Jacquet;SAL056;Souper. Suzon ne dit pas où elle était. Jacquet ne demande pas.;—
+SAL055;20:00;20:45;Devant l'échoppe de Jacquet;SAL049,SAL056;Veillée de voisins. Jacquet demande à Bertille si Crochard l'a déjà menacée. « Il menace tout le monde. Moi, j'ai un four. »;Jacquet → Bertille : confiance +5
+SAL055;20:45;24:00;Logis de Jacquet;—;Dort mal.;Jacquet : peur +5
+SAL056;00:00;06:45;Logis de Jacquet;—;Dort.;—
+SAL056;06:45;07:30;Logis de Jacquet;—;Se lève et attend son père.;—
+SAL056;07:30;09:45;Échoppe de Jacquet;SAL055;Suzon range les lacets et cire les bottes. Son père ne chante pas ce matin.;Suzon : inquiétude +5
+SAL056;09:45;10:00;En route vers le temple;—;Court à l'école.;—
+SAL056;10:00;12:00;École du temple;SAL085;Leçon de lettres. Suzon aide Tiko à tracer son nom. Il garde son bonnet sur les oreilles.;—
+SAL056;12:00;12:45;Échoppe de Jacquet;SAL055;Repas. Jacquet coupe le pain en deux parts égales et regarde les mains de sa fille.;—
+SAL056;12:45;14:30;Échoppe de Jacquet;SAL055;Suzon aide encore, puis dit qu'elle va « chez la boulangère ». Jacquet la laisse partir.;—
+SAL056;14:30;15:00;En route vers le Bas-Port;—;File en douce au Bas-Port.;—
+SAL056;15:00;15:40;Cour du Dé Pipé;SAL072,SAL095,SAL094,SAL085,SAL033;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;Suzon : souvenir « les chiens » (30)
+SAL056;15:40;16:00;Bas-Port;—;Suit Moineau vers la grève.;—
+SAL056;16:00;17:30;Grève du Bas-Port;SAL047,SAL094,SAL095,SAL085;Jeux sur la grève. Grelot ne parle que du chiot. Moineau, à part, montre à Loïc le bouton : « C'est celui de Coq. » Loïc dit qu'il a vu le même tabard au quai Nord.;—
+SAL056;17:30;19:00;En route vers l'échoppe;—;Rentre avant son père, se lave les pieds.;—
+SAL056;19:00;20:00;Échoppe de Jacquet;SAL055;Souper. Suzon ne dit pas où elle était. Jacquet ne demande pas.;—
+SAL056;20:00;20:45;Devant l'échoppe de Jacquet;SAL055,SAL049;Veillée de voisins. Jacquet demande à Bertille si Crochard l'a déjà menacée. « Il menace tout le monde. Moi, j'ai un four. »;—
+SAL056;20:45;24:00;Logis de Jacquet;—;Dort.;—
+SAL057;00:00;04:30;Logis de Roseline;—;Dort.;—
+SAL057;04:30;12:00;Lavoir du Grand Marché;—;Lavoir.;—
+SAL057;12:00;13:00;Logis de Roseline;—;Repas.;—
+SAL057;13:00;13:15;Rue des Changeurs;SAL024;Roseline prend le linge sale de Crochard. Elle fouille les poches dans la rue d'à côté : rien aujourd'hui.;Roseline : déception +5
+SAL057;13:15;18:30;Hôtels de la Colline;—;Livraisons de linge, dont celui des Malvoisin.;—
+SAL057;18:30;19:00;En route vers le temple;—;Monte au temple.;—
+SAL057;19:00;19:40;Temple des Sept Astres (nef);—;Prie pour Bastien.;—
+SAL057;19:40;20:00;En route vers chez elle;—;Redescend.;—
+SAL057;20:00;20:15;Devant chez Roseline;SAL025;Roseline, rentrant du temple, arrête sa voisine : « Tu travailles chez Malvoisin. Tu as connu un commis qui s'appelait Bastien ? » Marion dit non.;Roseline : souvenir (40)
+SAL057;20:15;24:00;Logis de Roseline;—;Ressort le reçu au nom d'Orsoline, le range. Dort.;—
+SAL058;00:00;05:30;Temple des Sept Astres (appartements);—;Dort.;—
+SAL058;05:30;06:00;Temple des Sept Astres;—;S'habille pour l'office.;—
+SAL058;06:00;06:45;Temple des Sept Astres (nef);SAL006,SAL060,SAL061;Office de l'aube. Absalon prêche la patience. Montval prie au premier rang, Tristan au dernier, Jeannot tient le cierge.;—
+SAL058;06:45;07:00;Temple des Sept Astres;—;Bénit les cierges.;—
+SAL058;07:00;07:40;Temple des Sept Astres (nef);SAL009;Ermengarde se confesse encore de son vieux vote sur le contrat de dette. Absalon lui donne trois prières et aucun conseil.;—
+SAL058;07:40;09:00;Temple des Sept Astres (appartements);—;Déjeune.;—
+SAL058;09:00;12:30;Temple des Sept Astres;—;Audiences. Un marchand veut une messe pour son navire.;—
+SAL058;12:30;15:30;Hôtel de la Balance;—;Banquet de la Guilde. Il bénit le pain et parle de pénitence juste.;—
+SAL058;15:30;16:00;Temple des Sept Astres;—;Rentre.;—
+SAL058;16:00;17:00;Temple des Sept Astres (nef);—;Office.;—
+SAL058;17:00;18:30;Temple des Sept Astres (appartements);—;Repos.;—
+SAL058;18:30;19:00;Rue de la Colline;—;Va chez Montval.;—
+SAL058;19:00;21:00;Hôtel Montval (salle à manger);SAL006,SAL007;Dîner avec le Père Absalon. On parle de la lettre d'Aurelle, dont Montval a entendu un écho au Sénat. Solange ne mange presque rien.;—
+SAL058;21:00;24:00;Temple des Sept Astres (appartements);—;Rentre. Dort.;—
+SAL059;00:00;01:00;Crypte du temple;—;Change les couvertures des fugitifs.;—
+SAL059;01:00;04:45;Temple des Sept Astres (cellule d'Adeline);—;Dort.;—
+SAL059;04:45;06:00;Temple des Sept Astres;—;Prière.;—
+SAL059;06:00;12:00;Dispensaire du temple;—;Soins. Une toux, une brûlure, un docker à l'épaule.;—
+SAL059;12:00;12:40;Porche du temple;SAL091,SAL094,SAL095,SAL096;Soupe. Père Cloche dit à Adeline qu'il a revu « le vendeur de lanternes » rôder hier sur le chemin de la sénatrice. Adeline ne comprend pas encore.;Adeline : souvenir « le vendeur de lanternes » (40)
+SAL059;12:40;14:00;Dispensaire du temple;—;Range.;—
+SAL059;14:00;17:00;Temple des Sept Astres (permanence);SAL014;Permanence pour les endettés. Une veuve, un docker, un garçon sans papiers. Sarrazin note, Adeline soigne.;—
+SAL059;17:00;18:00;Temple des Sept Astres;—;Écrit en code à Sœur Odile, pour un pèlerin qui part demain.;—
+SAL059;18:00;19:00;Temple des Sept Astres (nef);—;Office du soir.;—
+SAL059;19:00;21:30;Temple des Sept Astres (nef);—;Écoute Roseline prier. Elle ne lui dit rien de ce qu'elle sait des ventes.;—
+SAL059;21:30;22:30;Crypte du temple;—;Apporte de l'eau aux fugitifs. Elle remarque des miettes de pain fraîches.;Adeline : souvenir « quelqu'un d'autre vient » (40)
+SAL059;22:30;24:00;Temple des Sept Astres (cellule d'Adeline);—;Dort.;—
+SAL060;00:00;01:00;Temple des Sept Astres;—;Veille.;—
+SAL060;01:00;04:00;Temple des Sept Astres (cellule de Tristan);—;Dort.;—
+SAL060;04:00;06:00;Temple des Sept Astres;—;Jeûne et prière.;—
+SAL060;06:00;06:45;Temple des Sept Astres (nef);SAL058,SAL006,SAL061;Office de l'aube. Absalon prêche la patience. Montval prie au premier rang, Tristan au dernier, Jeannot tient le cierge.;—
+SAL060;06:45;09:00;Temple des Sept Astres;—;Étude des rituels de chasse.;—
+SAL060;09:00;11:00;Palais du Sénat;—;Ronde dans les couloirs.;—
+SAL060;11:00;11:10;Couloir du Palais;SAL004;Tristan, en ronde, croise Ivo. Il a froid dans le dos, comme chaque fois. Ivo le salue d'un signe de tête.;Tristan : obsession +10
+SAL060;11:10;14:00;Grand Port;—;Ronde au port. Rien.;—
+SAL060;14:00;14:30;En route vers le temple;—;Remonte.;—
+SAL060;14:30;15:00;Temple des Sept Astres (cloître);SAL088;Tristan dit à Jorand que ce matin encore, au Palais, il a eu froid. « C'est près du Premier sénateur. » Jorand : « Alors cherchez près de lui. »;Tristan : obsession +5
+SAL060;15:00;17:00;Temple des Sept Astres (scriptorium);—;Étude.;—
+SAL060;17:00;17:15;Temple des Sept Astres (scriptorium);SAL061;Tristan demande à Jeannot où il va après la prière du soir. Jeannot dit qu'il dort. Tristan le regarde longtemps.;Tristan → Jeannot : soupçon +5
+SAL060;17:15;21:00;Temple des Sept Astres (scriptorium);—;Étude. Il dessine de mémoire le visage d'Ivo, puis l'efface.;Tristan : trouble +5
+SAL060;21:00;24:00;Temple des Sept Astres;—;Veille.;—
+SAL061;00:00;04:45;Temple des Sept Astres (dortoir des novices);—;Dort.;—
+SAL061;04:45;06:00;Temple des Sept Astres;—;Prière.;—
+SAL061;06:00;06:45;Temple des Sept Astres (nef);SAL058,SAL006,SAL060;Office de l'aube. Absalon prêche la patience. Montval prie au premier rang, Tristan au dernier, Jeannot tient le cierge.;—
+SAL061;06:45;12:00;Temple des Sept Astres;—;Ménage, puis copie au scriptorium.;—
+SAL061;12:00;14:00;Temple des Sept Astres;—;Mange et met de côté un pain.;—
+SAL061;14:00;16:00;École du temple;—;Aide à l'école des petits.;—
+SAL061;16:00;17:00;Temple des Sept Astres;—;Balaye le cloître.;—
+SAL061;17:00;17:15;Temple des Sept Astres (scriptorium);SAL060;Tristan demande à Jeannot où il va après la prière du soir. Jeannot dit qu'il dort. Tristan le regarde longtemps.;Jeannot : peur +10
+SAL061;17:15;18:00;Temple des Sept Astres;—;Tremble encore en rangeant les cierges.;—
+SAL061;18:00;19:00;Temple des Sept Astres (nef);—;Office du soir.;—
+SAL061;19:00;23:00;Temple des Sept Astres (dortoir des novices);—;Attend que tout le monde dorme.;—
+SAL061;23:00;23:40;Crypte du temple;—;Porte le pain aux fugitifs.;—
+SAL061;23:40;24:00;Cimetière du temple;—;Rentre de la crypte avec son panier vide. Il voit une lanterne entre les tombeaux. Un homme pose quelque chose dans le tombeau des Courtecuisse.;Jeannot : souvenir « la lanterne au cimetière » (50)
+SAL062;00:00;01:00;Jardin d'Ambre;—;Tient la maison.;—
+SAL062;01:00;01:20;Jardin d'Ambre (porte de service);SAL051;Viviane livre ses fioles à Philippine. On parle bas, on paie comptant.;Argent -3 argent
+SAL062;01:20;04:00;Jardin d'Ambre;—;Tient la maison jusqu'à la fermeture.;—
+SAL062;04:00;12:00;Jardin d'Ambre (appartement de Philippine);—;Dort.;—
+SAL062;12:00;13:00;Jardin d'Ambre (appartement de Philippine);SAL064;Déjeuner au lit. Rose-de-Brume chantonne. Philippine relit son registre de la veille.;—
+SAL062;13:00;15:00;Jardin d'Ambre (appartement de Philippine);—;Toilette.;—
+SAL062;15:00;18:00;Jardin d'Ambre;—;Comptes.;—
+SAL062;18:00;21:00;Jardin d'Ambre;—;Ouvre le Jardin.;—
+SAL062;21:00;23:30;Jardin d'Ambre (salon de Philippine);SAL010;Orlan arrive après son dîner. Il parle de la trêve, de navires qui passeraient enfin, et de la petite Castelmar. Philippine sert et écoute.;Registre : « Orlan et la trêve »
+SAL062;23:30;24:00;Jardin d'Ambre (appartement de Philippine);—;Note dans son registre ce qu'Orlan a dit de la trêve.;Registre +1 page
+SAL063;00:00;03:00;Jardin d'Ambre;—;Courtisan. Un client riche et bavard.;—
+SAL063;03:00;13:00;Logis d'Ilario;—;Dort.;—
+SAL063;13:00;15:00;Logis d'Ilario;—;Réveil, bain.;—
+SAL063;15:00;16:00;Salle d'armes de la Colline;SAL089;Assaut au fleuret. Merlin parle trop de la Colline entre deux touches. Ilario le laisse gagner et écoute.;Ilario : souvenir « Merlin et la Colline » (30)
+SAL063;16:00;16:30;Rue de la Colline;—;Monte par l'escalier des jardins.;—
+SAL063;16:30;18:00;Hôtels de la Colline;—;Visite à domicile chez une épouse de sénateur. Elle parle de la toux du Premier sénateur.;—
+SAL063;18:00;24:00;Jardin d'Ambre;—;Jardin d'Ambre.;—
+SAL064;00:00;03:00;Jardin d'Ambre;—;Courtisane. Elle chante pour un client.;—
+SAL064;03:00;12:00;Jardin d'Ambre (appartement de Philippine);—;Dort.;—
+SAL064;12:00;13:00;Jardin d'Ambre (appartement de Philippine);SAL062;Déjeuner au lit. Rose-de-Brume chantonne. Philippine relit son registre de la veille.;—
+SAL064;13:00;15:00;Jardin d'Ambre;—;Se lave les cheveux.;—
+SAL064;15:00;16:30;Jetée;—;Promenade sur la jetée. Elle chante une chanson de pêcheur de Brumeval, à voix basse.;Rose-de-Brume : mélancolie +10
+SAL064;16:30;18:00;Jardin d'Ambre;—;Se prépare.;—
+SAL064;18:00;24:00;Jardin d'Ambre;—;Jardin d'Ambre.;—
+SAL065;00:00;02:00;Jardin d'Ambre;—;Danse.;—
+SAL065;02:00;12:00;Jardin d'Ambre (chambre de Zélie);—;Dort.;—
+SAL065;12:00;14:00;Jardin d'Ambre (chambre de Zélie);—;Réveil.;—
+SAL065;14:00;16:00;Jardin d'Ambre;—;Entraînement.;—
+SAL065;16:00;18:00;Jardin d'Ambre (chambre de Zélie);—;Repos.;—
+SAL065;18:00;23:00;Jardin d'Ambre;—;Danse, puis guette Solange à la fenêtre.;—
+SAL065;23:00;24:00;Jardin d'Ambre (chambre de Zélie);SAL007;Solange : « Helena va épouser l'Empire. Moi, je n'épouserai personne. » Zélie éteint la lampe.;Zélie → Solange : affection +5
+SAL066;00:00;02:00;Chez Morgane;—;Rendez-vous avec un client de la Colline.;—
+SAL066;02:00;13:00;Chez Morgane;—;Dort.;—
+SAL066;13:00;15:00;Chez Morgane;—;Réveil, écrit son carnet codé.;—
+SAL066;15:00;16:30;Corniche au-dessus du port;—;Cheval.;—
+SAL066;16:30;21:00;Chez Morgane;—;Se prépare.;—
+SAL066;21:00;24:00;Chez Morgane;SAL016;Ferval vient pour sa soirée de la semaine. Il parle des nains, du Premier sénateur, de sa maison qu'on écarte. Morgane l'écoute, le dirige, le renvoie apaisé à minuit.;Morgane : carnet +1 page
+SAL067;00:00;04:00;Bains de Corail;—;Tient la maison.;—
+SAL067;04:00;14:00;Bains de Corail;—;Dort.;—
+SAL067;14:00;17:00;Bains de Corail;—;Bain.;—
+SAL067;17:00;19:00;Bains de Corail;—;Comptes.;—
+SAL067;19:00;23:00;Bains de Corail;—;Bains de Corail. Il fait monter Viviane au grenier.;—
+SAL067;23:00;24:00;Bains de Corail (table de Loïs);SAL011;Loïs propose à Gaétan de racheter sa dette chez Trois-Doigts. Gaétan dit qu'il réfléchira.;Loïs : souvenir « le fils Orlan mord » (40)
+SAL068;00:00;04:00;Bains de Corail;—;Au travail sous contrat.;—
+SAL068;04:00;05:00;Bains de Corail (grenier);—;Ramenée au grenier fermé à clé.;—
+SAL068;05:00;14:00;Bains de Corail (grenier);—;Enfermée. Dort, tousse.;—
+SAL068;14:00;17:00;Bains de Corail (grenier);—;Enfermée. Elle tâte l'épingle cachée dans sa paillasse.;—
+SAL068;17:00;23:00;Bains de Corail;—;Au travail sous contrat.;—
+SAL068;23:00;23:40;Bains de Corail;—;À travers le mur, elle entend le nom d'Orlan.;Mirabelle : souvenir « le fils Orlan » (40)
+SAL068;23:40;24:00;Bains de Corail (grenier);SAL051,SAL069;Viviane soigne la toux de Mirabelle. Mirabelle, tout bas : « Vous pourriez porter un mot ? » Viviane ne répond pas. Quentin, dans le noir, fait trembler une flamme qu'il n'a pas touchée.;Mirabelle : envie « s'enfuir » +5 %
+SAL069;00:00;04:00;Bains de Corail;—;Au travail sous contrat.;—
+SAL069;04:00;08:00;Bains de Corail (grenier);—;Enfermé. Dort.;—
+SAL069;08:00;14:00;Bains de Corail (grenier);—;Enfermé. Il lit son livre caché.;—
+SAL069;14:00;17:00;Bains de Corail (grenier);—;Enfermé. Il répète un geste de la main.;—
+SAL069;17:00;23:40;Bains de Corail;—;Au travail sous contrat. Loïs le renvoie au grenier, fiévreux.;—
+SAL069;23:40;24:00;Bains de Corail (grenier);SAL051,SAL068;Viviane soigne la toux de Mirabelle. Mirabelle, tout bas : « Vous pourriez porter un mot ? » Viviane ne répond pas. Quentin, dans le noir, fait trembler une flamme qu'il n'a pas touchée.;Quentin : illusion +1
+SAL070;00:00;05:00;Dé Pipé;—;Tripot.;—
+SAL070;05:00;16:00;Dé Pipé;—;Dort.;—
+SAL070;16:00;17:30;Cour du Dé Pipé;SAL072;Combats de chiens. Trois-Doigts, à peine levé, paie à Croc sa part de la semaine en regardant ses deux doigts manquants.;Argent -5 or
+SAL070;17:30;18:00;Dé Pipé;—;Ouvre les tables.;—
+SAL070;18:00;19:00;Dé Pipé;SAL011;Gaétan perd encore douze pièces d'or. Trois-Doigts sourit et note.;Créance sur Gaétan : 92 or
+SAL070;19:00;22:15;Dé Pipé;—;Tripot.;—
+SAL070;22:15;24:00;Dé Pipé;SAL003;Valérien joue aux dés. Il perd, rejoue, perd encore. Trois-Doigts lui ouvre une ardoise.;Créance sur Valérien : 315 or
+SAL071;00:00;01:00;Cour des Gueux;—;Cartes.;—
+SAL071;01:00;11:00;Cour des Gueux;—;Dort.;—
+SAL071;11:00;13:00;Cour des Gueux;—;Réveil.;—
+SAL071;13:00;21:00;Cour des Gueux;—;Achats, ventes, jugements des voleurs.;—
+SAL071;21:00;21:45;Cour des Gueux;SAL091;Père Cloche dit à Gaude que Croc tourne autour de Grelot avec un chiot. Gaude pose ses cartes.;Gaude : vigilance +10
+SAL071;21:45;23:00;Cour des Gueux;—;Cour des Gueux.;—
+SAL071;23:00;23:20;Cour des Gueux;SAL100;Ruben paie une pièce d'or à Mère Gaude. Elle la mord, la range, lui dit de ne pas se faire prendre en tournée.;Argent +1 or
+SAL071;23:20;23:30;Cour des Gueux;—;Attend Jacotte.;—
+SAL071;23:30;24:00;Cour des Gueux;SAL073;Jacotte rapporte : Croc veut Grelot demain soir, et il cherche toujours Fifine. Gaude : « Demain, le petit dort chez moi. »;Gaude → Croc : haine +10
+SAL072;00:00;02:00;Bas-Port;SAL073,SAL033;Affaires de nuit des Requins. Coq raconte que le guet a reçu un nouveau carnet de plaintes et qu'il l'a « égaré ».;Croc → Coq : confiance +5
+SAL072;02:00;04:00;Bas-Port;SAL073;Croc et Jacotte font la tournée des receleurs qui paient leur part. Une ruelle, deux portes, une menace.;—
+SAL072;04:00;13:00;Bas-Port;—;Dort.;—
+SAL072;13:00;15:00;Bas-Port;—;Réveil.;—
+SAL072;15:00;15:40;Cour du Dé Pipé;SAL095,SAL094,SAL056,SAL085,SAL033;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;Croc : souvenir « le petit viendra » (60)
+SAL072;15:40;16:00;Cour du Dé Pipé;—;Combats.;—
+SAL072;16:00;17:30;Cour du Dé Pipé;SAL070;Combats de chiens. Trois-Doigts, à peine levé, paie à Croc sa part de la semaine en regardant ses deux doigts manquants.;Argent +5 or
+SAL072;17:30;18:00;Bas-Port;—;Rejoint Jacotte.;—
+SAL072;18:00;19:30;Bas-Port;—;Racket avec Jacotte.;—
+SAL072;19:30;19:45;Rue des Changeurs;SAL024,SAL073;Croc et Jacotte apportent les recouvrements du jour. Crochard compte deux fois.;—
+SAL072;19:45;21:00;Bas-Port;—;Racket.;—
+SAL072;21:00;23:15;Bas-Port;—;Affaires de nuit. Il presse ses hommes pour retrouver Fifine.;—
+SAL072;23:15;23:35;Bas-Port;SAL079;Croc : « Mon homme est prêt. Toi, tu l'es ? » Ulric : « Quand ce sera le moment. »;—
+SAL072;23:35;23:40;Bas-Port;—;Attend Coq en sifflant.;—
+SAL072;23:40;24:00;Bas-Port;SAL033;Coq donne à Croc les heures des rondes de Jehanne pour demain.;Croc : souvenir (50)
+SAL073;00:00;02:00;Bas-Port;SAL072,SAL033;Affaires de nuit des Requins. Coq raconte que le guet a reçu un nouveau carnet de plaintes et qu'il l'a « égaré ».;—
+SAL073;02:00;04:00;Bas-Port;SAL072;Croc et Jacotte font la tournée des receleurs qui paient leur part. Une ruelle, deux portes, une menace.;Jacotte : lassitude +5
+SAL073;04:00;13:00;Bas-Port;—;Dort.;—
+SAL073;13:00;15:00;Bas-Port;—;Réveil.;—
+SAL073;15:00;17:30;Cour du Dé Pipé;—;Voit Croc montrer le chiot à Grelot. Elle ne dit rien.;Jacotte : souvenir « le chiot » (50)
+SAL073;17:30;18:00;Bas-Port;—;Attend Croc.;—
+SAL073;18:00;19:30;Bas-Port;—;Racket avec Croc.;—
+SAL073;19:30;19:45;Rue des Changeurs;SAL024,SAL072;Croc et Jacotte apportent les recouvrements du jour. Crochard compte deux fois.;—
+SAL073;19:45;21:00;Bas-Port;—;Racket avec Croc.;—
+SAL073;21:00;23:30;Bas-Port;—;Affaires de nuit, puis s'éclipse.;—
+SAL073;23:30;24:00;Cour des Gueux;SAL071;Jacotte rapporte : Croc veut Grelot demain soir, et il cherche toujours Fifine. Gaude : « Demain, le petit dort chez moi. »;Jacotte : pencher vers Gaude +5 %
+SAL074;00:00;01:00;Tavernes du Bas-Port;—;Tournée des tavernes.;—
+SAL074;01:00;09:30;Rue de la Saumure (boutique de Fouine);—;Dort.;—
+SAL074;09:30;10:15;Rue de la Saumure (boutique de Fouine);—;Écrit un billet : « Combien vaut un loup ? »;—
+SAL074;10:15;10:25;Rue de la Saumure (boutique de Fouine);SAL096;Fouine donne à Fifine un billet plié et un sou : « Hôtel Sorbier, à la porte de service. Tu ne l'as pas lu. »;—
+SAL074;10:25;22:00;Rue de la Saumure (boutique de Fouine);—;Bric-à-brac.;—
+SAL074;22:00;22:15;Place des Astres;—;Va à la tente d'Esmé.;—
+SAL074;22:15;22:35;Tente d'Esmé;SAL098;Fouine achète à Esmé la question de Valérien sur sa sœur.;Fouine : secret « Valérien et sa sœur »
+SAL074;22:35;23:00;Grand Port;—;Descend à la Sirène.;—
+SAL074;23:00;23:40;Sirène Borgne;SAL043;Fouine achète le courrier impérial à Maguelone. Il tient maintenant trois secrets : Sorbier, la maladie du Premier sénateur, le mariage.;Fouine : envie « le plus gros secret » +10 %
+SAL074;23:40;24:00;Rue de la Saumure (boutique de Fouine);—;Rentre et compte ses secrets.;—
+SAL075;00:00;01:00;Rue de la Saumure (atelier de Mélusine);—;Faux à la bougie.;—
+SAL075;01:00;09:00;Rue de la Saumure (atelier de Mélusine);—;Dort.;—
+SAL075;09:00;14:30;Rue de la Saumure (atelier de Mélusine);—;Peint une vraie enseigne pour un vrai boulanger.;—
+SAL075;14:30;14:50;Rue de la Saumure;SAL032;Fin de ronde. Jehanne s'arrête devant l'atelier de « peintre d'enseignes ». Elles parlent d'une enseigne qui n'existe pas. Mélusine sait qu'on la regarde, et pas seulement comme une faussaire.;Mélusine → Jehanne : trouble +5
+SAL075;14:50;18:00;Rue de la Saumure (atelier de Mélusine);—;Atelier. Elle pense à la sergente.;—
+SAL075;18:00;18:20;Rue de la Saumure (atelier de Mélusine);SAL026;Courtecuisse commande un contrat « au nom de Gué-Moreau » pour cette nuit. Il paie le prix fort et ne s'assied pas.;Argent +3 or
+SAL075;18:20;19:00;Rue de la Saumure (atelier de Mélusine);—;Atelier.;—
+SAL075;19:00;19:20;Rue de la Saumure (atelier de Mélusine);SAL087;Armand commande un affranchissement pour une femme de la citerne. Mélusine : « Demain soir. Prix coûtant, comme toujours. »;—
+SAL075;19:20;22:00;Rue de la Saumure (atelier de Mélusine);—;Souper.;—
+SAL075;22:00;24:00;Rue de la Saumure (atelier de Mélusine);—;Faux à la bougie : un affranchissement pour Armand, un contrat pour Courtecuisse.;Argent : le second paie le premier
+SAL076;00:00;06:00;Cave aux Contrats;—;Garde la Cave.;—
+SAL076;06:00;14:00;Logis de Gâtebois;—;Dort.;—
+SAL076;14:00;16:00;Logis de Gâtebois;—;Réveil.;—
+SAL076;16:00;16:30;Cave aux Contrats;—;Prend la garde.;—
+SAL076;16:30;16:45;Cave aux Contrats;SAL078;Gâtebois passe le gruau à travers la grille. Ysar ne le prend qu'une fois la main retirée. Gâtebois montre la marque de morsure : « Doucement, le loup. Il te reste peu de nuits. »;—
+SAL076;16:45;21:00;Cave aux Contrats;—;Garde. Il pense à sa fille de Gué-Moreau.;—
+SAL076;21:00;21:45;Quai Nord;SAL077;La Marie-Moreau accoste, chargée de grain. Sous le grain, trois endettés de Gué-Moreau. Fidèle et Gâtebois les font entrer dans l'entrepôt. Fidèle repère une silhouette de docker près des grues.;—
+SAL076;21:45;22:00;Cave aux Contrats;—;Enferme les trois nouveaux.;—
+SAL076;22:00;23:00;Cave aux Contrats;SAL026,SAL020;Courtecuisse signe trois contrats antidatés. Malvoisin regarde l'encre sécher.;—
+SAL076;23:00;24:00;Cave aux Contrats;SAL020;Malvoisin passe devant les grilles et regarde les nouveaux. Il demande si le loup mange. Gâtebois : « Il mord encore. » Malvoisin reste à la Cave pour la barge.;—
+SAL077;00:00;05:30;Entrepôt Malvoisin (loge);—;Dort avec son chien.;—
+SAL077;05:30;06:30;Ruelles de la Fourrière;—;Course.;—
+SAL077;06:30;06:45;Ruelles de la Fourrière;SAL081;Fidèle court avec son chien. Nayla, qui part à la tannerie, s'arrête et le regarde passer. Il ne tourne pas la tête.;—
+SAL077;06:45;09:30;Entrepôt Malvoisin (loge);—;Mange.;—
+SAL077;09:30;09:45;Fond de la Fourrière;SAL086;Sourde, à voix basse : « Je connais peut-être un trou où dorment des gens qui ne sont pas d'ici. » Fidèle donne une pièce. Elle en veut deux. « Demain. »;Fidèle : souvenir « un trou » (50)
+SAL077;09:45;15:00;Entrepôt Malvoisin;—;Garde.;—
+SAL077;15:00;15:15;Entrepôt Malvoisin (grille);SAL081,SAL080;Nayla rôde devant la grille. Fidèle sort. Ils se font face sans un mot. Tobias arrive et prend Nayla par l'épaule.;Fidèle : souvenir « la sœur du loup » (50)
+SAL077;15:15;20:00;Entrepôt Malvoisin;—;Garde.;—
+SAL077;20:00;21:00;Entrepôt Malvoisin (loge);—;Seul avec son chien.;—
+SAL077;21:00;21:45;Quai Nord;SAL076;La Marie-Moreau accoste, chargée de grain. Sous le grain, trois endettés de Gué-Moreau. Fidèle et Gâtebois les font entrer dans l'entrepôt. Fidèle repère une silhouette de docker près des grues.;Fidèle → Toussaint : soupçon +5
+SAL077;21:45;24:00;Entrepôt Malvoisin;—;Garde la barge et l'entrée de la Cave.;—
+SAL078;00:00;06:00;Cave aux Contrats;—;Enfermé. Dort mal.;—
+SAL078;06:00;16:30;Cave aux Contrats;—;Enfermé. Il compte les gouttes du plafond. Il sent l'odeur de la tannerie par la grille d'égout.;Ysar : espoir +5
+SAL078;16:30;16:45;Cave aux Contrats;SAL076;Gâtebois passe le gruau à travers la grille. Ysar ne le prend qu'une fois la main retirée. Gâtebois montre la marque de morsure : « Doucement, le loup. Il te reste peu de nuits. »;Ysar : haine +5
+SAL078;16:45;21:45;Cave aux Contrats;—;Enfermé.;—
+SAL078;21:45;24:00;Cave aux Contrats;—;Entend arriver trois nouveaux. Il attend la nuit sans lune et sa vente.;—
+SAL079;00:00;06:30;Logis d'Ulric;—;Dort.;—
+SAL079;06:30;08:00;Logis d'Ulric;—;Graisse ses lanternes.;—
+SAL079;08:00;16:00;Grand Marché;—;Vend des lanternes.;—
+SAL079;16:00;18:00;Logis d'Ulric;—;Repos.;—
+SAL079;18:00;19:00;Rue des Ateliers (porche en face de Prosper);—;Sous un porche, il regarde la porte de Prosper.;Ulric : repérage +1
+SAL079;19:00;20:30;Grand Port;—;Suit la sénatrice de loin jusqu'à la Sirène et attend dehors.;—
+SAL079;20:30;21:00;Grand Port;—;La regarde rentrer seule par le quai. Il ne bouge pas.;Ulric : hésitation +5
+SAL079;21:00;23:15;Logis d'Ulric;—;Repos.;—
+SAL079;23:15;23:35;Bas-Port;SAL072;Croc : « Mon homme est prêt. Toi, tu l'es ? » Ulric : « Quand ce sera le moment. »;Ulric : hésitation +5
+SAL079;23:35;24:00;Logis d'Ulric;—;Rentre. Dort.;—
+SAL080;00:00;05:30;Fourrière (chez Tobias);—;Dort.;—
+SAL080;05:30;07:00;Fourrière;—;Passe chez Écorce.;—
+SAL080;07:00;12:00;Tannerie de Bruno;SAL081,SAL083;Travail des peaux. Tobias garde un œil sur Nayla, qui gratte le cuir trop fort.;Tobias : humeur inquiet +5
+SAL080;12:00;13:00;Tannerie de Bruno;—;Mange avec Nayla. « Ne fais pas de bêtise. »;—
+SAL080;13:00;14:00;Tannerie de Bruno;SAL081,SAL083;Reprise. Bruno passe entre les cuves et évite le regard de Nayla.;—
+SAL080;14:00;15:00;Fourrière;—;Affaires du quartier.;—
+SAL080;15:00;15:15;Entrepôt Malvoisin (grille);SAL081,SAL077;Nayla rôde devant la grille. Fidèle sort. Ils se font face sans un mot. Tobias arrive et prend Nayla par l'épaule.;Tobias : humeur inquiet +10
+SAL080;15:15;15:30;Fourrière;—;Raccompagne Nayla.;—
+SAL080;15:30;16:30;Fourrière (permanence de Jaunet);SAL035;Tobias amène deux voisins qui ont des contrats à relire. Jaunet relit, gratuitement. Il ne parle pas de son loyer.;—
+SAL080;16:30;17:45;Fourrière;—;Affaires du quartier.;—
+SAL080;17:45;18:00;Rue des Ateliers;—;Va à la réunion.;—
+SAL080;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL035,SAL053,SAL015,SAL087,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;—
+SAL080;18:50;21:30;Fourrière (chez Tobias);—;Compte la caisse secrète.;—
+SAL080;21:30;24:00;Fourrière (chez Tobias);SAL015;Sorbier arrive par les ruelles de derrière. Il ne parle pas du billet de Fouine. Tobias voit qu'il a peur et ne demande rien. Ils passent la nuit ensemble.;Tobias : inquiétude +5
+SAL081;00:00;05:30;Fourrière;—;Dort.;—
+SAL081;05:30;06:30;Fourrière;—;Se lève.;—
+SAL081;06:30;06:45;Ruelles de la Fourrière;SAL077;Fidèle court avec son chien. Nayla, qui part à la tannerie, s'arrête et le regarde passer. Il ne tourne pas la tête.;Nayla → Fidèle : haine +5
+SAL081;06:45;07:00;Tannerie de Bruno;—;Arrive à la tannerie.;—
+SAL081;07:00;12:00;Tannerie de Bruno;SAL080,SAL083;Travail des peaux. Tobias garde un œil sur Nayla, qui gratte le cuir trop fort.;—
+SAL081;12:00;13:00;Tannerie de Bruno;—;Mange avec Tobias.;—
+SAL081;13:00;14:00;Tannerie de Bruno;SAL080,SAL083;Reprise. Bruno passe entre les cuves et évite le regard de Nayla.;—
+SAL081;14:00;15:00;Quai Nord;—;Rôde autour de l'entrepôt Malvoisin.;—
+SAL081;15:00;15:15;Entrepôt Malvoisin (grille);SAL077,SAL080;Nayla rôde devant la grille. Fidèle sort. Ils se font face sans un mot. Tobias arrive et prend Nayla par l'épaule.;Nayla → Tobias : agacement +5
+SAL081;15:15;16:30;Fourrière;—;Rentre avec Tobias, puis seule.;—
+SAL081;16:30;17:00;Auvent d'Écorce;SAL082;Nayla vient chercher une tisane. Écorce : « Ton frère respire encore. Ne lui ôte pas l'air en voulant le sauver. » Nayla ne répond pas.;Nayla : résolution +5
+SAL081;17:00;22:00;Fourrière;—;Attend la nuit.;—
+SAL081;22:00;23:00;Fourrière (arrière-cour);SAL087;Armand a trouvé dans l'après-midi la grille d'égout sous l'entrepôt. Nayla montre la poudre. Ils parlent de « la nuit sans lune » avec trois jeunes loups. Tobias n'est pas prévenu.;Coup de la Cave : préparé à 30 %
+SAL081;23:00;24:00;Fourrière;—;Dort.;—
+SAL082;00:00;06:00;Fourrière;—;Dort.;—
+SAL082;06:00;09:00;Fourrière;—;Prières aux esprits.;—
+SAL082;09:00;16:30;Auvent d'Écorce;—;Tisanes et conseils sous l'auvent.;—
+SAL082;16:30;17:00;Auvent d'Écorce;SAL081;Nayla vient chercher une tisane. Écorce : « Ton frère respire encore. Ne lui ôte pas l'air en voulant le sauver. » Nayla ne répond pas.;Écorce : inquiétude +5
+SAL082;17:00;20:00;Fourrière;—;Souper.;—
+SAL082;20:00;21:00;Auvent d'Écorce;SAL085;Contes aux enfants. Écorce raconte la louve qui traversa la mer sur le dos d'une baleine. Tiko s'endort à la fin.;—
+SAL082;21:00;23:30;Fourrière;—;Dort.;—
+SAL082;23:30;24:00;Fourrière;—;La vieille chèvre se réveille en sueur. Dans la fumée : « La femme aux cornes cachées. Cette nuit, on lui a mis un collier. »;Écorce : souvenir (70). Écorce : peur +20
+SAL083;00:00;04:45;Maison Gros-Museau;—;Dort.;—
+SAL083;04:45;05:00;Tannerie de Bruno;—;Ouvre la tannerie.;—
+SAL083;05:00;05:30;Tannerie de Bruno;—;Un commis apporte une commande au nom d'une « maison Gerlier » : six colliers de cuir, dont deux petits. Bruno sait pour qui c'est. Il signe.;Bruno : humeur honteuse +15
+SAL083;05:30;07:00;Tannerie de Bruno;—;Tannerie.;—
+SAL083;07:00;12:00;Tannerie de Bruno;SAL080,SAL081;Travail des peaux. Tobias garde un œil sur Nayla, qui gratte le cuir trop fort.;—
+SAL083;12:00;13:00;Maison Gros-Museau;—;Repas en famille. Il ne parle pas.;—
+SAL083;13:00;14:00;Tannerie de Bruno;SAL080,SAL081;Reprise. Bruno passe entre les cuves et évite le regard de Nayla.;—
+SAL083;14:00;17:00;Tannerie de Bruno;—;Coupe le cuir des colliers lui-même, pour que personne d'autre ne le fasse.;—
+SAL083;17:00;18:00;Maison Gros-Museau;—;Se lave longtemps.;—
+SAL083;18:00;20:00;Quai Sud;—;Pêche sur le quai.;—
+SAL083;20:00;24:00;Maison Gros-Museau;—;Lit, puis dort.;—
+SAL084;00:00;05:00;Chez Saïna, Fourrière;—;Dort.;—
+SAL084;05:00;07:00;Lavoir de la Fourrière;—;Lavoir.;—
+SAL084;07:00;09:45;Lavoir de la Fourrière;SAL085;Tiko aide sa mère à tordre les draps. Il fait la course avec les bulles de savon.;—
+SAL084;09:45;14:00;Lavoir de la Fourrière;—;Lavoir.;—
+SAL084;14:00;15:00;En route vers la Colline;—;Monte avec le linge.;—
+SAL084;15:00;15:15;Porte de service de l'hôtel Montval;SAL008;Saïna livre le linge. Goupil lui donne un gâteau pris en cuisine, « pour Tiko ». Elle le garde contre elle en redescendant.;Saïna → Goupil : affection +5
+SAL084;15:15;17:00;Hôtels de la Colline;—;Livre le linge.;—
+SAL084;17:00;19:00;En route vers la Fourrière;—;Redescend.;—
+SAL084;19:00;20:00;Chez Saïna, Fourrière;SAL085;Tiko mange le gâteau de Goupil en trois bouchées. Saïna rit pour la première fois de la journée.;Saïna : humeur douce +5
+SAL084;20:00;21:00;Chez Saïna, Fourrière;—;Raccommode.;—
+SAL084;21:00;24:00;Chez Saïna, Fourrière;—;Dort.;—
+SAL085;00:00;06:30;Chez Saïna, Fourrière;—;Dort.;—
+SAL085;06:30;07:00;Chez Saïna, Fourrière;—;Se lève, met son bonnet.;—
+SAL085;07:00;09:45;Lavoir de la Fourrière;SAL084;Tiko aide sa mère à tordre les draps. Il fait la course avec les bulles de savon.;—
+SAL085;09:45;10:00;En route vers le temple;—;Court à l'école.;—
+SAL085;10:00;12:00;École du temple;SAL056;Leçon de lettres. Suzon aide Tiko à tracer son nom. Il garde son bonnet sur les oreilles.;—
+SAL085;12:00;14:00;Temple des Sept Astres;—;Mange à l'école.;—
+SAL085;14:00;15:00;Bas-Port;—;Rejoint Suzon au Bas-Port.;—
+SAL085;15:00;15:40;Cour du Dé Pipé;SAL072,SAL095,SAL094,SAL056,SAL033;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;Tiko : peur des chiens +5
+SAL085;15:40;16:00;Bas-Port;—;Suit les autres vers la grève.;—
+SAL085;16:00;17:30;Grève du Bas-Port;SAL047,SAL094,SAL095,SAL056;Jeux sur la grève. Grelot ne parle que du chiot. Moineau, à part, montre à Loïc le bouton : « C'est celui de Coq. » Loïc dit qu'il a vu le même tabard au quai Nord.;—
+SAL085;17:30;19:00;En route vers la Fourrière;—;Rentre.;—
+SAL085;19:00;20:00;Chez Saïna, Fourrière;SAL084;Tiko mange le gâteau de Goupil en trois bouchées. Saïna rit pour la première fois de la journée.;Tiko : joie +10
+SAL085;20:00;21:00;Auvent d'Écorce;SAL082;Contes aux enfants. Écorce raconte la louve qui traversa la mer sur le dos d'une baleine. Tiko s'endort à la fin.;—
+SAL085;21:00;24:00;Chez Saïna, Fourrière;—;Dort.;—
+SAL086;00:00;04:00;Bas-Port;—;Écoute la nuit sous les fenêtres.;—
+SAL086;04:00;05:00;Fourrière;—;Dort une heure.;—
+SAL086;05:00;09:30;Bas-Port;—;Ramassage.;—
+SAL086;09:30;09:45;Fond de la Fourrière;SAL077;Sourde, à voix basse : « Je connais peut-être un trou où dorment des gens qui ne sont pas d'ici. » Fidèle donne une pièce. Elle en veut deux. « Demain. »;Sourde : envie « une chambre » +5 %. Argent +1 argent
+SAL086;09:45;12:00;Bas-Port;—;Ramassage.;—
+SAL086;12:00;13:00;Fond de la Fourrière;—;Mange.;—
+SAL086;13:00;18:00;Fond de la Fourrière;—;Tri des chiffons.;—
+SAL086;18:00;21:00;Fond de la Fourrière;—;Souper.;—
+SAL086;21:00;24:00;Quai Sud;—;Écoute près des quais, au-dessus de la citerne.;—
+SAL087;00:00;04:45;Logis d'Armand;—;Dort.;—
+SAL087;04:45;05:00;Quai Sud;—;Arrive à l'appel.;—
+SAL087;05:00;05:30;Quai Sud;SAL038,SAL039,SAL040,SAL041;Appel des dockers. Bras-de-Fer annonce qu'il n'y aura pas de denier de plus cette saison. Personne ne répond. Toussaint crache par terre.;—
+SAL087;05:30;14:00;Quai Sud;—;Docker.;—
+SAL087;14:00;15:00;Logis d'Armand;—;Mange.;—
+SAL087;15:00;17:00;Égouts;—;Égouts. Il trouve la grille sous l'entrepôt Malvoisin.;Armand : grille trouvée
+SAL087;17:00;17:30;Place des Astres (roulottes);SAL097;Armand demande à Boniface de la place dans les cages pour la tournée. Boniface : « Deux, pas plus. Et pas cette semaine. Trop d'yeux. »;Armand : souvenir « deux places, plus tard » (40)
+SAL087;17:30;18:00;Rue des Ateliers;—;Va à la réunion.;—
+SAL087;18:00;18:50;Arrière-boutique de Prosper;SAL014,SAL035,SAL080,SAL053,SAL015,SAL041;Réunion des Libres. On compte les voix : deux sûres. Tout tient à Montclar et à Sauveterre. Sarrazin dînera ce soir avec Montclar. Toussaint parle de grève, on lui dit d'attendre.;—
+SAL087;18:50;19:00;Rue de la Saumure;—;Descend chez Mélusine.;—
+SAL087;19:00;19:20;Rue de la Saumure (atelier de Mélusine);SAL075;Armand commande un affranchissement pour une femme de la citerne. Mélusine : « Demain soir. Prix coûtant, comme toujours. »;—
+SAL087;19:20;22:00;Logis d'Armand;—;Souper.;—
+SAL087;22:00;23:00;Fourrière (arrière-cour);SAL081;Armand a trouvé dans l'après-midi la grille d'égout sous l'entrepôt. Nayla montre la poudre. Ils parlent de « la nuit sans lune » avec trois jeunes loups. Tobias n'est pas prévenu.;Coup de la Cave : préparé à 30 %
+SAL087;23:00;24:00;Logis d'Armand;—;Dort.;—
+SAL088;00:00;05:00;Temple des Sept Astres (cellule de Jorand);—;Dort.;—
+SAL088;05:00;07:00;Temple des Sept Astres;—;Prière.;—
+SAL088;07:00;10:00;Rues de la ville;—;Aumônes et visites aux malades.;—
+SAL088;10:00;10:30;Palais du Sénat;—;Fouille à l'entrée.;—
+SAL088;10:30;12:15;Palais du Sénat (tribune du public);—;Assiste au vote des chaînes. Il regarde le secrétaire du Premier sénateur plus que les sénateurs.;—
+SAL088;12:15;14:30;Temple des Sept Astres;—;Repas.;—
+SAL088;14:30;15:00;Temple des Sept Astres (cloître);SAL060;Tristan dit à Jorand que ce matin encore, au Palais, il a eu froid. « C'est près du Premier sénateur. » Jorand : « Alors cherchez près de lui. »;Inquisition : piste « l'entourage de Castelmar »
+SAL088;15:00;18:00;Temple des Sept Astres (cellule de Jorand);—;Écrit son rapport.;—
+SAL088;18:00;21:00;Temple des Sept Astres;—;Office, souper.;—
+SAL088;21:00;21:15;Temple des Sept Astres (cellule de Jorand);—;Cachette le rapport.;—
+SAL088;21:15;21:30;Temple des Sept Astres (cellule de Jorand);SAL089;Jorand remet son rapport cacheté à Merlin. Merlin le glisse dans une caisse de vin vide.;—
+SAL088;21:30;24:00;Temple des Sept Astres (cellule de Jorand);—;Dort.;—
+SAL089;00:00;08:00;Maison Merlin;—;Dort.;—
+SAL089;08:00;11:30;Entrepôt de vins Merlin;—;Entrepôt de vins.;—
+SAL089;11:30;12:00;Boutique de Riboud;SAL048;Merlin achète deux coupons de soie verte et paie en monnaie de l'Empire. Riboud range les pièces à part.;—
+SAL089;12:00;14:30;Hôtel de la Balance;—;Déjeuner d'affaires.;—
+SAL089;14:30;15:00;Rue de la Colline;—;Va à la salle d'armes.;—
+SAL089;15:00;16:00;Salle d'armes de la Colline;SAL063;Assaut au fleuret. Merlin parle trop de la Colline entre deux touches. Ilario le laisse gagner et écoute.;—
+SAL089;16:00;17:30;Maison Merlin;—;Se change.;—
+SAL089;17:30;18:00;Entrepôts Ferval;SAL016;Merlin passe chez Ferval. Ils parlent de « vin de Valmer » et d'une livraison par les cales de Tassin. Ferval ne dit rien des carreaux commandés.;—
+SAL089;18:00;19:30;Salons de la Colline;—;Salons. Il entend parler du pli d'Aurelle.;—
+SAL089;19:30;21:00;Hôtel Malvoisin (dîner);SAL020,SAL021;Merlin, au dessert : « L'impératrice veut la petite Castelmar. » Malvoisin réfléchit tout haut : une trêve, ce sont des acheteurs impériaux qui viennent sans se cacher. Séverine sourit, comme on le lui demande.;—
+SAL089;21:00;21:15;Place des Astres;—;Va au temple.;—
+SAL089;21:15;21:30;Temple des Sept Astres (cellule de Jorand);SAL088;Jorand remet son rapport cacheté à Merlin. Merlin le glisse dans une caisse de vin vide.;Rapport de Jorand : en route vers l'Empire
+SAL089;21:30;24:00;Entrepôt de vins Merlin;—;Range le rapport de Jorand dans une caisse pour l'Empire.;—
+SAL090;00:00;06:00;Ambassade d'Aëlinde;—;Dort.;—
+SAL090;06:00;08:00;Jardin de l'ambassade;—;Jardin.;—
+SAL090;08:00;10:30;Ambassade d'Aëlinde;—;Courrier d'Aëlis.;—
+SAL090;10:30;12:15;Palais du Sénat (séance);SAL001,SAL017,SAL010,SAL016,SAL014,SAL013,SAL009,SAL006,SAL012,SAL015,SAL018;D'Ambrevaux lit le registre de la capitainerie : deux barques perdues, des lanternes au large. Il demande des chaînes pour fermer les passes « avant l'hiver ». Orlan appuie. Ferval propose sa maison d'armes. Castelmar : « Les nains livrent à temps. » Adopté à main levée, Ferval seul contre. Lithiel écoute depuis la tribune des ambassades.;Lithiel : souvenir « les chaînes des nains » (40)
+SAL090;12:15;14:00;Ambassade d'Aëlinde;—;Audiences.;—
+SAL090;14:00;16:15;Ambassade d'Aëlinde;—;Écrit pour Aëlis le vote des chaînes.;—
+SAL090;16:15;17:00;Ambassade d'Aëlinde;SAL044;Ilyan raconte les barques perdues et les lanternes vues au large. Lithiel écoute, sans rien écrire.;Lithiel : souvenir « les barques » (40)
+SAL090;17:00;21:00;Ambassade d'Aëlinde;—;Note ce qu'a dit Ilyan.;—
+SAL090;21:00;22:00;Ambassade d'Aëlinde;—;Harpe.;—
+SAL090;22:00;24:00;Ambassade d'Aëlinde;—;Dort.;—
+SAL091;00:00;06:00;Cour des Gueux;—;Dort.;—
+SAL091;06:00;07:00;Porche du temple;—;S'installe sous le porche.;—
+SAL091;07:00;10:00;Porche du temple;SAL095;Grelot mendie à côté de Père Cloche. Le vieux lui apprend à dire merci aux gens qui ne donnent rien.;—
+SAL091;10:00;12:00;Porche du temple;SAL095,SAL094;Moineau rejoint son frère et Père Cloche. Elle compte les passants qui donnent, Grelot ceux qui sourient.;—
+SAL091;12:00;12:40;Porche du temple;SAL059,SAL094,SAL095,SAL096;Soupe. Père Cloche dit à Adeline qu'il a revu « le vendeur de lanternes » rôder hier sur le chemin de la sénatrice. Adeline ne comprend pas encore.;—
+SAL091;12:40;18:00;Porche du temple;—;Mendie, écoute.;—
+SAL091;18:00;18:40;Porche du temple;SAL094,SAL032;Moineau raconte le chiot à Père Cloche. Jehanne, qui mange sa soupe à côté, entend « Croc » et « demain soir ».;Cloche : souvenir « Croc veut le petit » (50)
+SAL091;18:40;20:30;Porche du temple;—;Mendie. Il pense à Croc.;—
+SAL091;20:30;21:00;En route vers la Cour des Gueux;—;Descend.;—
+SAL091;21:00;21:45;Cour des Gueux;SAL071;Père Cloche dit à Gaude que Croc tourne autour de Grelot avec un chiot. Gaude pose ses cartes.;—
+SAL091;21:45;24:00;Cour des Gueux;—;Dort.;—
+SAL092;00:00;07:00;Sous le pont du Bas-Port;—;Dort.;—
+SAL092;07:00;10:00;Marches du Palais du Sénat;—;Mendie.;—
+SAL092;10:00;10:05;Marches du Palais du Sénat;SAL017;Gilbert crie « La Passe Rouge ! » au passage de d'Ambrevaux. Deux gardes l'écartent. D'Ambrevaux monte les marches sans se retourner, blanc.;—
+SAL092;10:05;18:00;Devant le Palais du Sénat;—;Mendie, plus loin, là où les gardes l'ont posé.;—
+SAL092;18:00;22:00;Bas-Port;—;Eau-de-vie.;—
+SAL092;22:00;24:00;Sous le pont du Bas-Port;—;Dort.;—
+SAL093;00:00;03:00;Rue de la Saumure;—;Trottoir.;—
+SAL093;03:00;14:00;Chez Nanette (Bas-Port);—;Dort, Fifine contre elle.;—
+SAL093;14:00;16:00;Chez Nanette (Bas-Port);—;Réveil.;—
+SAL093;16:00;17:00;Porche du temple;—;Soupe.;—
+SAL093;17:00;19:00;Chez Nanette (Bas-Port);—;Se prépare.;—
+SAL093;19:00;20:00;Chez Nanette (Bas-Port);SAL096;Nanette fait manger Fifine, puis ferme la porte à double tour avant de sortir. « Tu n'ouvres à personne. »;—
+SAL093;20:00;22:00;Rue de la Saumure;—;Trottoir.;—
+SAL093;22:00;23:00;Rue de la Saumure (chambre louée);SAL039;Yvon monte une heure chez Nanette. Il paie, puis il raconte un rêve qu'il fait souvent, un garçon enchaîné. Elle ne rit pas.;Nanette : souvenir « le garçon enchaîné » (30)
+SAL093;23:00;24:00;Rue de la Saumure;—;Trottoir.;—
+SAL094;00:00;06:00;Cour des Gueux;—;Dort.;—
+SAL094;06:00;06:30;Grand Marché;—;Vol au marché.;—
+SAL094;06:30;06:45;Grand Marché;SAL049;Moineau vole une pomme à l'étal voisin. Bertille la voit et lui tend en plus un quignon.;Moineau → Bertille : confiance +5
+SAL094;06:45;10:00;Grand Marché;—;Vol au marché.;—
+SAL094;10:00;12:00;Porche du temple;SAL091,SAL095;Moineau rejoint son frère et Père Cloche. Elle compte les passants qui donnent, Grelot ceux qui sourient.;—
+SAL094;12:00;12:40;Porche du temple;SAL091,SAL059,SAL095,SAL096;Soupe. Père Cloche dit à Adeline qu'il a revu « le vendeur de lanternes » rôder hier sur le chemin de la sénatrice. Adeline ne comprend pas encore.;—
+SAL094;12:40;15:00;Bas-Port (quais effondrés);SAL095;Jeux dans la vase. Moineau apprend à son frère à marcher sur les pieux sans tomber.;—
+SAL094;15:00;15:40;Cour du Dé Pipé;SAL072,SAL095,SAL056,SAL085,SAL033;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;Moineau : peur 60
+SAL094;15:40;16:00;Bas-Port;—;Tire Grelot jusqu'à la grève sans lui lâcher le col.;—
+SAL094;16:00;17:30;Grève du Bas-Port;SAL047,SAL095,SAL056,SAL085;Jeux sur la grève. Grelot ne parle que du chiot. Moineau, à part, montre à Loïc le bouton : « C'est celui de Coq. » Loïc dit qu'il a vu le même tabard au quai Nord.;Moineau → Loïc : confiance +5
+SAL094;17:30;18:00;En route vers le temple;—;Monte au porche.;—
+SAL094;18:00;18:40;Porche du temple;SAL091,SAL032;Moineau raconte le chiot à Père Cloche. Jehanne, qui mange sa soupe à côté, entend « Croc » et « demain soir ».;—
+SAL094;18:40;19:00;En route vers la Cour des Gueux;—;Redescend.;—
+SAL094;19:00;21:00;Cour des Gueux;SAL095;Moineau et Grelot mangent ce qu'ils ont. Grelot parle encore du chiot. Moineau lui dit non, puis se tait.;Moineau : peur +5
+SAL094;21:00;24:00;Cour des Gueux;—;Dort, le bouton dans le poing.;—
+SAL095;00:00;06:30;Cour des Gueux;—;Dort.;—
+SAL095;06:30;07:00;En route vers le temple;—;Monte au porche.;—
+SAL095;07:00;10:00;Porche du temple;SAL091;Grelot mendie à côté de Père Cloche. Le vieux lui apprend à dire merci aux gens qui ne donnent rien.;—
+SAL095;10:00;12:00;Porche du temple;SAL091,SAL094;Moineau rejoint son frère et Père Cloche. Elle compte les passants qui donnent, Grelot ceux qui sourient.;—
+SAL095;12:00;12:40;Porche du temple;SAL091,SAL059,SAL094,SAL096;Soupe. Père Cloche dit à Adeline qu'il a revu « le vendeur de lanternes » rôder hier sur le chemin de la sénatrice. Adeline ne comprend pas encore.;—
+SAL095;12:40;15:00;Bas-Port (quais effondrés);SAL094;Jeux dans la vase. Moineau apprend à son frère à marcher sur les pieux sans tomber.;—
+SAL095;15:00;15:40;Cour du Dé Pipé;SAL072,SAL094,SAL056,SAL085,SAL033;Combats de chiens. Les enfants se glissent pour voir. Croc montre un chiot à Grelot : « Il est à toi. Viens le chercher demain soir. » Moineau tire son frère par le col. En partant, elle voit le tabard de Coq : il manque le même bouton que celui qu'elle garde.;Grelot : envie « un chien » +20 %
+SAL095;15:40;16:00;Bas-Port;—;Se laisse traîner en regardant derrière lui.;—
+SAL095;16:00;17:30;Grève du Bas-Port;SAL047,SAL094,SAL056,SAL085;Jeux sur la grève. Grelot ne parle que du chiot. Moineau, à part, montre à Loïc le bouton : « C'est celui de Coq. » Loïc dit qu'il a vu le même tabard au quai Nord.;Grelot : impatience +10
+SAL095;17:30;18:30;Grand Marché;—;Cherche une ficelle pour faire un collier au chiot.;—
+SAL095;18:30;19:00;En route vers la Cour des Gueux;—;Rentre.;—
+SAL095;19:00;21:00;Cour des Gueux;SAL094;Moineau et Grelot mangent ce qu'ils ont. Grelot parle encore du chiot. Moineau lui dit non, puis se tait.;—
+SAL095;21:00;24:00;Cour des Gueux;—;Dort. Rêve du chiot.;—
+SAL096;00:00;05:30;Chez Nanette (Bas-Port);—;Cachée chez Nanette. Dort.;—
+SAL096;05:30;10:15;Bas-Port;—;Messages pour les receleurs.;—
+SAL096;10:15;10:25;Rue de la Saumure (boutique de Fouine);SAL074;Fouine donne à Fifine un billet plié et un sou : « Hôtel Sorbier, à la porte de service. Tu ne l'as pas lu. »;Argent +1 sou
+SAL096;10:25;11:30;Rue de la Colline;—;Porte le billet à la porte de service de l'hôtel Sorbier.;—
+SAL096;11:30;12:00;En route vers le temple;—;Redescend.;—
+SAL096;12:00;12:40;Porche du temple;SAL091,SAL059,SAL094,SAL095;Soupe. Père Cloche dit à Adeline qu'il a revu « le vendeur de lanternes » rôder hier sur le chemin de la sénatrice. Adeline ne comprend pas encore.;—
+SAL096;12:40;15:00;Bas-Port;—;Messages.;—
+SAL096;15:00;17:00;Jardin du temple;—;Jardin. Une pousse verte lui sort du doigt quand un chien aboie.;Fifine : peur +5
+SAL096;17:00;19:00;Bas-Port;—;Rentre en se cachant.;—
+SAL096;19:00;20:00;Chez Nanette (Bas-Port);SAL093;Nanette fait manger Fifine, puis ferme la porte à double tour avant de sortir. « Tu n'ouvres à personne. »;Fifine → Nanette : confiance +5
+SAL096;20:00;24:00;Chez Nanette (Bas-Port);—;Cachée chez Nanette. Croc la cherche toujours.;—
+SAL097;00:00;06:00;Roulotte de Boniface;—;Dort.;—
+SAL097;06:00;10:00;Place des Astres;—;Prépare le départ.;—
+SAL097;10:00;12:00;Place des Astres;—;Soins des bêtes. La harpie mange mal.;—
+SAL097;12:00;15:00;Place des Astres;—;Vérifie les doubles fonds des cages.;—
+SAL097;15:00;16:00;Place des Astres;SAL099,SAL100,SAL098;Dernier spectacle de l'après-midi avant la tournée. Lison rate une chute exprès, Ruben vide deux bourses pendant que la foule crie. Esmé appelle les curieux vers sa tente.;—
+SAL097;16:00;17:00;Place des Astres;—;Compte la recette.;—
+SAL097;17:00;17:30;Place des Astres (roulottes);SAL087;Armand demande à Boniface de la place dans les cages pour la tournée. Boniface : « Deux, pas plus. Et pas cette semaine. Trop d'yeux. »;—
+SAL097;17:30;20:00;Place des Astres;—;Prépare le spectacle.;—
+SAL097;20:00;21:00;Place des Astres;SAL099,SAL100;Dernier spectacle du soir. Ruben jongle avec des torches, Lison tombe deux fois, la harpie crie.;—
+SAL097;21:00;23:00;Place des Astres;—;Charge les roulottes pour l'aube.;Départ de la troupe : jour 2 à l'aube
+SAL097;23:00;24:00;Roulotte de Boniface;—;Dort.;—
+SAL098;00:00;08:00;Tente d'Esmé;—;Dort.;—
+SAL098;08:00;14:00;Tente d'Esmé;—;Range ses cartes.;—
+SAL098;14:00;15:00;Tente d'Esmé;—;Clients.;—
+SAL098;15:00;16:00;Place des Astres;SAL097,SAL099,SAL100;Dernier spectacle de l'après-midi avant la tournée. Lison rate une chute exprès, Ruben vide deux bourses pendant que la foule crie. Esmé appelle les curieux vers sa tente.;—
+SAL098;16:00;21:30;Tente d'Esmé;—;Clients. Trois veuves et un marin.;—
+SAL098;21:30;22:00;Tente d'Esmé;SAL003;Valérien demande s'il sera Premier sénateur, puis : « Et ma sœur ? » Esmé : « Elle portera une couronne qui n'est pas la sienne. »;Esmé : secret à vendre « Valérien et sa sœur »
+SAL098;22:00;22:15;Tente d'Esmé;—;Attend Fouine.;—
+SAL098;22:15;22:35;Tente d'Esmé;SAL074;Fouine achète à Esmé la question de Valérien sur sa sœur.;Argent +2 or
+SAL098;22:35;24:00;Tente d'Esmé;—;Dort.;—
+SAL099;00:00;07:30;Roulotte de la troupe;SAL100;Lison et Ruben dorment serrés dans la roulotte, la dernière nuit avant la tournée.;—
+SAL099;07:30;09:00;Place des Astres;—;Déjeune.;—
+SAL099;09:00;11:00;Place des Astres;—;Entraînement.;—
+SAL099;11:00;15:00;Place des Astres;—;Se repose, se maquille.;—
+SAL099;15:00;16:00;Place des Astres;SAL097,SAL100,SAL098;Dernier spectacle de l'après-midi avant la tournée. Lison rate une chute exprès, Ruben vide deux bourses pendant que la foule crie. Esmé appelle les curieux vers sa tente.;Lison : genou écorché
+SAL099;16:00;20:00;Place des Astres;—;Panse son genou.;—
+SAL099;20:00;21:00;Place des Astres;SAL097,SAL100;Dernier spectacle du soir. Ruben jongle avec des torches, Lison tombe deux fois, la harpie crie.;—
+SAL099;21:00;24:00;Roulotte de la troupe;—;Charge, puis dort.;—
+SAL100;00:00;07:30;Roulotte de la troupe;SAL099;Lison et Ruben dorment serrés dans la roulotte, la dernière nuit avant la tournée.;—
+SAL100;07:30;10:00;Place des Astres;—;Déjeune.;—
+SAL100;10:00;12:00;Place des Astres;—;Jongle.;—
+SAL100;12:00;15:00;Place des Astres;—;Repas.;—
+SAL100;15:00;16:00;Place des Astres;SAL097,SAL099,SAL098;Dernier spectacle de l'après-midi avant la tournée. Lison rate une chute exprès, Ruben vide deux bourses pendant que la foule crie. Esmé appelle les curieux vers sa tente.;Ruben : bourses +2
+SAL100;16:00;20:00;Place des Astres;—;Cache les bourses.;—
+SAL100;20:00;21:00;Place des Astres;SAL097,SAL099;Dernier spectacle du soir. Ruben jongle avec des torches, Lison tombe deux fois, la harpie crie.;Bourses +1
+SAL100;21:00;23:00;Bas-Port;—;Descend à la Cour des Gueux.;—
+SAL100;23:00;23:20;Cour des Gueux;SAL071;Ruben paie une pièce d'or à Mère Gaude. Elle la mord, la range, lui dit de ne pas se faire prendre en tournée.;Dette envers Mère Gaude 5 or
+SAL100;23:20;24:00;Roulotte de la troupe;—;Rentre et dort.;—
+SAL101;00:00;06:45;Hôtel Castelmar (chambre d'Helena);—;Dort.;—
+SAL101;06:45;08:00;Hôtel Castelmar (chambre d'Helena);—;Lecture. Un procès-verbal du Sénat pris sur le bureau de son père.;—
+SAL101;08:00;08:30;Salle du déjeuner, hôtel Castelmar;SAL001;Castelmar tend la lettre à sa fille entre deux tasses. « L'impératrice demande ta main pour son neveu. Nous verrons. » Helena sait ce que veut dire « nous verrons ». Elle répond : « Bien, père. »;Helena : humeur colère contenue +20. Helena → Castelmar : confiance -10
+SAL101;08:30;09:00;Hôtel Castelmar (chambre d'Helena);—;Relit la lettre d'Aurelle, mot par mot.;Helena : souvenir « la lettre d'Aurelle » (80)
+SAL101;09:00;10:45;Bibliothèque de l'hôtel Castelmar;—;Leçon de droit avec un clerc du Sénat. Elle pose des questions sur les traités de trêve.;—
+SAL101;10:45;12:30;Corniche au-dessus du port;—;Promenade à cheval. Elle galope trop vite.;—
+SAL101;12:30;14:00;Hôtel Castelmar (chambre d'Helena);—;Se change. Elle choisit une robe bleu nuit et sa broche en forme de balance.;—
+SAL101;14:00;16:00;Salon de Mélisande;SAL002,SAL007;Le salon s'ouvre. Helena est souriante et parfaite. Solange, en lui prenant le bras : « Tu as l'air d'une reine qu'on va vendre. » Helena : « Je souris, Solange. C'est ce qu'on attend de moi. »;Helena → Solange : confiance +5
+SAL101;16:00;17:00;Salon de Mélisande;SAL009,SAL002;Ermengarde arrive, pique Mélisande sur ses roses. Helena parle de la loi Sarrazin mieux que les sénateurs. Ermengarde : « Vous êtes la seule Castelmar qui pense. »;—
+SAL101;17:00;19:00;Hôtel Castelmar (chambre d'Helena);—;Relit les procès-verbaux sur Fort-Corbeau. Elle cherche ce que vaut une trêve.;—
+SAL101;19:00;20:15;Hôtel Castelmar (dîner);SAL001,SAL002,SAL003,SAL012,SAL010;Castelmar parle de la lettre comme d'« une proposition ». Mélisande est ravie. Orlan : « Une trêve, ce sont des navires qui passent. » Valérien : « Ma sœur épouse l'Empire, et moi j'hérite de quoi ? » Valcourt regarde Mélisande. Helena ne dit rien de tout le repas.;Helena : silence décidé
+SAL101;20:15;20:30;En route vers la Jetée;—;Sort par la porte du jardin, en manteau.;—
+SAL101;20:30;21:00;Jetée;SAL004;Helena arrive seule, en manteau. Elle demande à Ivo, et seulement à lui, ce qu'il pense de l'Empire. Ivo choisit. Il lui dit les primes, Marchefer, les colliers. « Ne croyez pas à la trêve. Croyez à ce qu'elle coûte. » Elle demande : « Et vous, Ivo, vous êtes quoi ? » « Votre secrétaire. » Elle regarde son visage sans rides et n'insiste pas.;Helena → Ivo : confiance +15. Helena : souvenir « ce qu'elle coûte » (80)
+SAL101;21:00;21:30;Jetée;—;Reste seule un moment à regarder la mer.;Helena : décision « ne pas dire oui »
+SAL101;21:30;22:00;En route vers l'hôtel Castelmar;—;Rentre par la porte du jardin.;—
+SAL101;22:00;23:00;Hôtel Castelmar (chambre d'Helena);—;Pense au visage d'Ivo, qui n'a pas changé depuis ses onze ans.;—
+SAL101;23:00;24:00;Hôtel Castelmar (chambre d'Helena);—;Lit, puis dort.;—
